@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { services, stories } from "./data";
+import { services } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import { EnquiryButton } from "./site-controls";
 
@@ -92,31 +92,5 @@ export function Numbers() {
         </li>)}
       </ul>
     </div>
-  </section>;
-}
-
-export function Journal() {
-  const dialog = useRef<HTMLDialogElement>(null);
-  const [active, setActive] = useState(0);
-  const story = stories[active];
-  return <section className="journal section-shell section-space" id="journal" aria-labelledby="journal-heading">
-    <div className="section-heading" data-reveal>
-      <div><span className="eyebrow">Notes from a curious world</span><h2 id="journal-heading">A little fuel for <em>your wanderlust.</em></h2></div>
-      <div className="section-aside"><p>Stories, ideas and a different perspective from our travel people.</p></div>
-    </div>
-    <div className="journal-grid">
-      {stories.map((s, i) => <button type="button" className={`journal-card journal-card-${i}`} key={s.title} data-reveal onClick={() => { setActive(i); dialog.current?.showModal(); }}>
-        <span className="journal-photo"><Image src={s.image} alt={s.alt} fill sizes="(max-width: 760px) 90vw, 33vw" /><span className="journal-arrow"><Arrow diagonal /></span></span>
-        <span className="journal-meta"><span className="eyebrow">{s.category}</span><span>{s.read}</span></span>
-        <span className="journal-title">{s.title}</span>
-      </button>)}
-    </div>
-    <dialog ref={dialog} className="enquiry-dialog journal-dialog" aria-label={story.title} onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}>
-      <button type="button" className="dialog-close" aria-label="Close story" onClick={() => dialog.current?.close()}>×</button>
-      <span className="eyebrow">{story.category} · {story.read}</span>
-      <h2>{story.title}</h2>
-      {story.paragraphs.map(p => <p key={p}>{p}</p>)}
-      <button type="button" className="text-link" onClick={() => dialog.current?.close()}>Back to the journal <Arrow /></button>
-    </dialog>
   </section>;
 }

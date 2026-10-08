@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Brand, EnquiryButton } from "./site-controls";
 
-const explore = [["Destinations", "/#map"], ["East Africa", "/#spotlight"], ["Our story", "/#story"], ["Journal", "/#journal"], ["Contact us", "/contact"]];
-const journeys = [["Leisure & holidays", "/#services"], ["Corporate travel", "/#services"], ["Groups & MICE", "/#services"], ["FAQ", "/#questions"]];
+const explore = [["Destinations", "/#map"], ["East Africa", "/#spotlight"], ["Our story", "/#story"], ["Contact us", "/contact"]];
+const journeys = [["Leisure & holidays", "/#services"], ["Corporate travel", "/#services"], ["Groups & MICE", "/#services"]];
 
 export function Footer() {
   return <footer className="footer">

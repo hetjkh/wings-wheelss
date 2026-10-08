@@ -37,7 +37,6 @@ const menuLinks = [
   { label: "East Africa", href: "/#spotlight", image: "/images/tanzania.png", note: "Wild at heart" },
   { label: "Our story", href: "/#story", image: "/images/about-airport.png", note: "Built around real journeys" },
   { label: "Journeys", href: "/#services", image: "/images/corporate.png", note: "Leisure, corporate & groups" },
-  { label: "Journal", href: "/#journal", image: "/images/kyoto.jpg", note: "Fuel for your wanderlust" },
   { label: "Contact", href: "/contact", image: "/images/dubai-terrace.png", note: "Let's start a conversation" },
 ];
 

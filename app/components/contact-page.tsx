@@ -72,7 +72,7 @@ export function ContactPage() {
     <header className="contact-hero section-shell" id="top">
       <div className="contact-top">
         <Brand />
-        <nav aria-label="Primary"><Link href="/">Home</Link><Link href="/#map">Destinations</Link><Link href="/#story">Our story</Link><Link href="/#journal">Journal</Link></nav>
+        <nav aria-label="Primary"><Link href="/">Home</Link><Link href="/#map">Destinations</Link><Link href="/#story">Our story</Link><Link href="/#services">Journeys</Link></nav>
         <MenuButton />
       </div>
 

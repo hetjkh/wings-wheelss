@@ -29,7 +29,7 @@ export function Hero() {
         <div className="hero-notch hero-notch-logo"><Brand /></div>
         <div className="hero-top-right"><MenuButton /></div>
 
-        <a href="#intro" className="scroll-badge" aria-label="Scroll down">
+        <a href="#who" className="scroll-badge" aria-label="Scroll down">
           <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="badge-circle" d="M50 50m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0" /></defs><text><textPath href="#badge-circle" textLength="222" lengthAdjust="spacing">Scroll down · Scroll down · </textPath></text></svg>
           <span>↓</span>
         </a>

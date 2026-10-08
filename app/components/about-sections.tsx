@@ -21,7 +21,7 @@ export function WhoWeAre() {
     const timer = setTimeout(() => setActive(a => (a + 1) % reasons.length), 4200);
     return () => clearTimeout(timer);
   }, [active, paused]);
-  return <section className="who section-shell section-space" aria-labelledby="who-heading" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+  return <section className="who section-shell section-space" id="who" aria-labelledby="who-heading" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
     <div className="who-head" data-reveal>
       <div><span className="eyebrow eyebrow-rule">Who we are</span><h2 id="who-heading">More than <em>a booking.</em></h2></div>
       <p className="who-lead"><span className="script">People travel for</span> different reasons.</p>
@@ -47,55 +47,6 @@ export function WhoWeAre() {
     <div className="who-foot" data-reveal>
       <p><span className="script">Different journeys.</span> The same&nbsp;need&nbsp;—</p>
       <ul>{needs.map((n, i) => <li key={n}><span>{String.fromCharCode(97 + i)}.</span>{n}</li>)}</ul>
-    </div>
-  </section>;
-}
-
-const guides: { icon: IconKind; title: string; copy: string; image: string; alt: string }[] = [
-  { icon: "ear", title: "We listen first.", copy: "Before recommending flights, hotels or destinations, we understand why you're travelling and what matters to you.", image: "/images/groups.png", alt: "Travellers walking together through an airport" },
-  { icon: "nodes", title: "We connect the details.", copy: "Flights, hotels, visas, transfers and schedules shouldn't operate as separate pieces.", image: "/images/airport.png", alt: "An airport terminal at sunset with a plane at the gate" },
-  { icon: "bulb", title: "We think beyond the booking.", copy: "A confirmed ticket isn't the end of our involvement.", image: "/images/kenya-safari.png", alt: "Travellers on safari watching giraffes in Kenya" },
-  { icon: "people", title: "We stay human.", copy: "Technology makes travel faster. People make travel easier when something doesn't go as expected.", image: "/images/paris.png", alt: "A café terrace beside the Seine at sunset" },
-];
-
-const principles = ["Integrity", "Care", "Partnership", "Responsibility", "Continuous improvement"];
-
-export function WhatGuidesUs() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = window.setTimeout(() => setActive(i => (i + 1) % guides.length), 5500);
-    return () => window.clearTimeout(timer);
-  }, [active, paused]);
-
-  return <section className="guides section-shell" id="values" aria-labelledby="guides-heading">
-    <div className="guides-panel" data-reveal onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="guides-visual">
-        {guides.map((g, i) => <Image key={g.image} src={g.image} alt={g.alt} fill sizes="(max-width: 900px) 100vw, 45vw" className={i === active ? "is-active" : ""} />)}
-        <div className="guides-visual-shade" />
-        <span className="guides-big-number" key={active} aria-hidden="true">0{active + 1}</span>
-        <span className="script guides-script">Travel is about places.<br />We&apos;re about the people.</span>
-        <ul className="guides-principles" aria-label="Our principles">{principles.map(p => <li key={p}>{p}</li>)}</ul>
-      </div>
-
-      <div className="guides-content">
-        <span className="eyebrow eyebrow-rule">Our values</span>
-        <h2 id="guides-heading">What <em>guides us.</em></h2>
-        <p className="guides-intro">Four simple commitments behind every journey we plan, whether it&apos;s a board meeting in Nairobi or a honeymoon in the Maldives.</p>
-        <div className="guides-list">
-          {guides.map((g, i) => <div key={g.title} className={i === active ? "guide-row is-active" : "guide-row"}>
-            <button type="button" aria-expanded={i === active} onClick={() => setActive(i)} onFocus={() => setActive(i)}>
-              <span className="guide-num">0{i + 1}</span>
-              <span className="guide-title">{g.title}</span>
-              <span className="guide-icon"><TravelIcon kind={g.icon} size={22} /></span>
-            </button>
-            <div className="guide-body"><div><p>{g.copy}</p></div></div>
-            <span className={paused ? "guide-progress is-paused" : "guide-progress"} aria-hidden="true" />
-          </div>)}
-        </div>
-      </div>
     </div>
   </section>;
 }
