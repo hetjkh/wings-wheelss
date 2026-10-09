@@ -118,12 +118,13 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 /* The story is an open magazine spread. */
 .j-story { display: grid; grid-template-columns: 1fr 1fr; position: relative; padding: 32px 0 42px; }
 .j-story-photo { position: relative; min-height: 430px; }
-.j-story-copy { align-self: center; padding: 27px max(35px, calc((100vw - 1200px) / 2)) 15px 45px; }
-.j-story-copy .j-eyebrow { margin-bottom: 14px; color: #8c7b59; }
-.j-story-copy > p { font-size: 17px; line-height: 1.45; margin-top: 19px; max-width: 545px; }
-.j-story-words { display: flex; justify-content: space-between; gap: 10px; margin-top: 34px; }
-.j-story-words li { font-size: 11px; text-transform: uppercase; color: #817359; }
-.j-story-words li + li { border-left: 1px solid #bdb29c; padding-left: 16px; }
+.j-story-copy { align-self: center; padding: 27px max(35px, calc((100vw - 1200px) / 2)) 15px clamp(45px, 5vw, 80px); }
+.j-story-copy .j-eyebrow { margin-bottom: 20px; color: #8c7b59; font-size: 13px; }
+.journey-page .j-story-copy h2 { font-size: clamp(36px, 3.8vw, 58px); }
+.j-story-copy > p { font-size: clamp(18px, 1.45vw, 21px); line-height: 1.65; margin-top: 30px; max-width: 580px; }
+.j-story-words { display: flex; justify-content: space-between; gap: 14px; margin-top: 48px; max-width: 580px; padding-top: 26px; border-top: 1px solid #d6cbb3; }
+.j-story-words li { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: #817359; }
+.j-story-words li + li { border-left: 1px solid #bdb29c; padding-left: 18px; }
 /* Watercolour-like landscape and a real geographic outline. */
 .j-network { position: relative; isolation: isolate; padding: 24px 0 72px; }
 .j-network-content { position: relative; z-index: 2; text-align: center; }
@@ -191,7 +192,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-team { position: relative; overflow: clip; background: linear-gradient(180deg, #221a13, #5e4536 45%, #b98a68); }
 /* The sky is extended above the photograph so the headline never covers the team. */
 .j-team-head { position: relative; z-index: 2; text-align: center; padding-top: calc(var(--tear) + clamp(72px, 12svh, 130px)); }
-.j-team-head .j-eyebrow { color: #f3dfae; font-size: 12px; letter-spacing: .28em; }
+.j-team-head .j-eyebrow { color: #f3dfae; font-size: clamp(15px, 1.35vw, 20px); letter-spacing: .2em; text-shadow: 0 1px 12px #1d160c80; }
 .journey-page .j-team-head h2 { margin-top: 20px; color: #fff8e9; font-size: clamp(52px, 7.4vw, 116px); line-height: .9; letter-spacing: -.04em; text-shadow: 0 4px 40px #2a190a73; }
 .j-team-photo { position: relative; width: 100%; aspect-ratio: 3 / 2; max-height: 125svh; margin-top: clamp(-120px, -8vw, -40px); mask-image: linear-gradient(transparent, #000 22%); }
 .j-team-photo img { object-position: center 55%; }
@@ -258,8 +259,9 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-intro-heading { gap: 45px; }
   .j-intro-heading > p { font-size: 17px; }
   .j-story-copy { padding: 25px 6vw 20px 30px; }
-  .j-story-copy > p { font-size: 16px; }
+  .j-story-copy > p { font-size: 17px; }
   .j-story-words { flex-wrap: wrap; justify-content: flex-start; row-gap: 13px; }
+  .j-story-words li { font-size: 12px; }
   .j-pillars li { padding-inline: 20px; gap: 16px; }
   .j-pillars h3 { font-size: 18px; }
   .j-values-grid li { padding-inline: 22px; }
@@ -284,9 +286,9 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-audience p { font-size: 15px; }
   .j-story-photo { min-height: 390px; }
   .j-story-copy { padding-left: 25px; }
-  .j-story-copy > p { font-size: 15px; }
-  .j-story-words { margin-top: 20px; }
-  .j-story-words li { font-size: 10px; }
+  .j-story-copy > p { font-size: 16px; margin-top: 22px; }
+  .j-story-words { margin-top: 32px; padding-top: 20px; }
+  .j-story-words li { font-size: 11px; }
   .j-network-landscape { height: 290px; }
   .j-map { width: 74%; margin-top: 40px; }
   .j-values-grid p { font-size: 14px; }
@@ -342,10 +344,10 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-story { grid-template-columns: 1fr; padding-top: 13px; padding-bottom: 0; }
   .j-story-photo { min-height: 290px; }
   .j-story-copy { padding: 38px 24px 40px; }
-  .j-story-copy h2 { font-size: 35px; }
-  .j-story-copy > p { font-size: 17px; }
-  .j-story-words { margin-top: 27px; justify-content: space-between; gap: 8px; }
-  .j-story-words li { font-size: 9px; }
+  .journey-page .j-story-copy h2 { font-size: 36px; }
+  .j-story-copy > p { font-size: 17px; margin-top: 22px; }
+  .j-story-words { margin-top: 32px; padding-top: 20px; justify-content: space-between; gap: 8px; }
+  .j-story-words li { font-size: 10px; letter-spacing: .08em; }
   .j-story-words li + li { padding-left: 9px; }
   .j-network { padding: 47px 0 37px; }
   .j-network h2 { font-size: 27px; }
@@ -372,7 +374,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-split-copy .j-button { font-size: 12px; }
   .j-team-photo { aspect-ratio: 1; margin-top: -24px; }
   .j-team-photo img { object-position: 48% center; }
-  .j-team-head .j-eyebrow { font-size: 10px; letter-spacing: .2em; }
+  .j-team-head .j-eyebrow { font-size: 13px; letter-spacing: .14em; }
   .journey-page .j-team-head h2 { font-size: clamp(46px, 13vw, 60px); }
   .j-team-band { margin-top: -28px; padding-bottom: 44px; }
   .j-team-copy > p { font-size: 18px; }
