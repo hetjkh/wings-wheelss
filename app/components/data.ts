@@ -27,44 +27,25 @@ export const destinations: Destination[] = [
   { id: "kyoto", name: "Kyoto", country: "Japan", region: "Asia", image: "/images/kyoto.jpg", alt: "A traditional lantern-lit lane leading to a pagoda in Kyoto", tagline: "Culture, harmony, discovery", description: "Lantern-lit lanes, quiet temple gardens and the small rituals of everyday life. A city with a story around every corner.", flight: "≈ 9h 45m", season: "Mar – May · Oct – Nov", iso: "JPN", map: { x: 877.1, y: 151.7, dx: -10, dy: 26 } },
 ];
 
-export const hub = destinations.find(d => d.id === "dubai")!;
+export const office = {
+  phones: [{ label: "+971 54 785 8338", href: "tel:+971547858338" }, { label: "+971 52 288 0935", href: "tel:+971522880935" }],
+  email: "reservation@wwtravels.net",
+  whatsapp: "https://wa.me/971547858338",
+  company: "Wings and Wheels Travel and Tourism LLC",
+  address: ["Office No. 27, Al Khaimah Building", "Port Saeed, Deira, Dubai, UAE"],
+  hours: "Mon – Sat: 9:00 AM – 7:00 PM",
+  map: "https://www.google.com/maps/search/?api=1&query=Al+Khaimah+Building+Port+Saeed+Deira+Dubai",
+  socials: [
+    { label: "Facebook", href: "https://www.facebook.com/search/top?q=Wings%20%26%20Wheels%20Travel%20and%20Tourism" },
+    { label: "Instagram", href: "https://www.instagram.com/wingsandwheels.travel" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/wingsandwheels" },
+  ],
+};
 
-export const spotlights = [
-  {
-    id: "africa", index: "01", title: "East Africa", subtitle: "Kenya · Tanzania · Uganda", heading: ["Wild", "at heart"], side: ["Wider", "skies", "slower", "you"],
-    copy: "Golden savannahs, ancient mountains and quiet forest trails. Our regional connections across East Africa mean every safari is shaped by people who live it.",
-    script: "Same sky. A whole new you.",
-    images: [
-      { src: "/images/tanzania.png", alt: "Elephants beneath Kilimanjaro", caption: "The great outdoors" },
-      { src: "/images/kenya-safari.png", alt: "A safari vehicle watching giraffes in Kenya", caption: "Safari mornings" },
-      { src: "/images/uganda.png", alt: "Mountain gorillas above a lake in Uganda", caption: "Forest encounters" },
-    ],
-  },
-  {
-    id: "europe", index: "02", title: "Europe", subtitle: "Greece · France · Italy", heading: ["Timeless", "beauty"], side: ["Slower", "days", "brighter", "you"],
-    copy: "Whitewashed villages, riverside cafés and alpine lakes that stay with you. Classic Europe, thoughtfully paced and personally planned.",
-    script: "Same views. A different you.",
-    images: [
-      { src: "/images/santorini.jpg", alt: "Blue domes in Santorini", caption: "Explore iconic places" },
-      { src: "/images/paris.png", alt: "A Paris café beside the Seine", caption: "Taste local life" },
-      { src: "/images/lake.jpg", alt: "A boat on a Dolomites lake", caption: "Find your quiet" },
-    ],
-  },
-  {
-    id: "ocean", index: "03", title: "Ocean & Gulf", subtitle: "Maldives · Dubai", heading: ["Golden", "hours"], side: ["Warm", "water", "easy", "days"],
-    copy: "Overwater villas, desert sunsets and skyline evenings, all a short hop from our home in the UAE. Escapes that feel far away, without the long journey.",
-    script: "Nothing on the clock.",
-    images: [
-      { src: "/images/maldives-villa.png", alt: "An overwater villa at sunset in the Maldives", caption: "Barefoot luxury" },
-      { src: "/images/dubai-terrace.png", alt: "Dubai skyline from a terrace", caption: "City evenings" },
-      { src: "/images/maldives.jpg", alt: "Overwater villas in a turquoise lagoon", caption: "Turquoise lagoons" },
-    ],
-  },
-];
-
-export const services = [
-  { id: "leisure", number: "01", label: "Leisure & holidays", title: "A little less everyday.", copy: "Slow mornings, new horizons and time for what you love. Escapes shaped entirely around you.", image: "/images/maldives-villa.png", alt: "An overwater villa at sunset", points: ["Tailor-made itineraries", "Honeymoons & family trips", "Handpicked stays"] },
-  { id: "africa", number: "02", label: "Africa travel", title: "Into the wild, with people who know it.", copy: "Safaris, gorilla treks and coastal escapes across Kenya, Tanzania, Uganda and beyond.", image: "/images/kenya-safari.png", alt: "A safari vehicle watching giraffes", points: ["Private & small-group safaris", "Local guides & lodges", "Beach extensions"] },
-  { id: "corporate", number: "03", label: "Corporate travel", title: "Go places. Do great things.", copy: "From a single meeting to a global team, we connect every detail so you can focus on what's next.", image: "/images/corporate.png", alt: "A business traveller in an airport lounge at sunset", points: ["Flights, stays & transfers", "Visa & travel support", "24/7 assistance"] },
-  { id: "groups", number: "04", label: "Groups & MICE", title: "Better, together.", copy: "Shared adventures, incentives and events. Bring your people together; we'll bring the plans to life.", image: "/images/groups.png", alt: "A group of travellers walking through an airport", points: ["Conferences & events", "Incentive journeys", "One coordinated plan"] },
+export const navLinks = [
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Our story", href: "/#story" },
+  { label: "Network", href: "/#network" },
+  { label: "Contact", href: "/contact" },
 ];

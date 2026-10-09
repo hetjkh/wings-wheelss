@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Caveat, Jost, Playfair_Display } from "next/font/google";
+import { Inter, Jost } from "next/font/google";
 import "./globals.css";
 
-const display = Playfair_Display({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-display", display: "swap" });
-const body = Jost({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const script = Caveat({ subsets: ["latin"], variable: "--font-script", display: "swap" });
+const heading = Jost({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-heading", display: "swap" });
+const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Wings & Wheels | Where Your Next Horizon Begins",
-  description: "Extraordinary places. Thoughtfully personal journeys. Explore holidays, East African safaris, corporate travel and group experiences with Wings & Wheels.",
+  title: "Wings & Wheels Travel and Tourism | Corporate, Leisure & Group Travel from Dubai",
+  description: "Wings & Wheels Travel and Tourism coordinates flights, hotels, visas, transfers and on-ground support for business, leisure and group travellers from Dubai to Africa and worldwide.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${display.variable} ${body.variable} ${script.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
       <body>{children}</body>
     </html>
   );

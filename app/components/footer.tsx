@@ -1,18 +1,36 @@
 import Link from "next/link";
-import { Brand, EnquiryButton } from "./site-controls";
+import { navLinks, office } from "./data";
+import { Brand } from "./site-controls";
 
-const explore = [["Destinations", "/#map"], ["East Africa", "/#spotlight"], ["Our story", "/#story"], ["Contact us", "/contact"]];
-const journeys = [["Leisure & holidays", "/#services"], ["Corporate travel", "/#services"], ["Groups & MICE", "/#services"]];
+const serviceLinks = ["Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Visa assistance"];
 
 export function Footer() {
   return <footer className="footer">
-    <div className="section-shell footer-top">
-      <div className="footer-brand"><Brand light /><p>Travel a little deeper.<br />Come back with a little more.</p></div>
-      <nav className="footer-col" aria-label="Explore"><span>Explore</span>{explore.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
-      <nav className="footer-col" aria-label="Journeys"><span>Journeys</span>{journeys.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
-      <div className="footer-col"><span>Start planning</span><p>Every great journey starts with a conversation.</p><EnquiryButton className="button button-light">Plan your trip</EnquiryButton></div>
+    <div className="shell footer-top">
+      <div className="footer-brand">
+        <Brand light />
+        <p>Corporate, leisure and group travel, coordinated from Dubai to Africa and worldwide since 2013.</p>
+        <div className="footer-social">{office.socials.map(s => <a key={s.label} href={s.href} target="_blank" rel="noreferrer">{s.label}</a>)}</div>
+      </div>
+      <nav className="footer-col" aria-label="Company">
+        <h3>Company</h3>
+        {navLinks.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+      </nav>
+      <nav className="footer-col" aria-label="Services">
+        <h3>Services</h3>
+        {serviceLinks.map(label => <Link key={label} href="/#services">{label}</Link>)}
+      </nav>
+      <div className="footer-col">
+        <h3>Contact</h3>
+        {office.phones.map(p => <a key={p.href} href={p.href}>{p.label}</a>)}
+        <a href={`mailto:${office.email}`}>{office.email}</a>
+        <a href={office.map} target="_blank" rel="noreferrer">{office.address.join(", ")}</a>
+        <span>{office.hours}<br />Sunday: Closed</span>
+      </div>
     </div>
-    <div className="footer-wordmark" aria-hidden="true">Wings &amp; Wheels</div>
-    <div className="section-shell footer-bottom"><span>© {new Date().getFullYear()} Wings &amp; Wheels. All rights reserved.</span><span>Thoughtfully planned · Personally experienced</span><a href="#top">Back to top ↑</a></div>
+    <div className="shell footer-bottom">
+      <span>© {new Date().getFullYear()} {office.company}. All rights reserved.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </footer>;
 }
