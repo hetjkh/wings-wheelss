@@ -63,15 +63,19 @@ export default function JourneyPage() {
     <JourneyHeader />
     <main>
       <section className="j-hero" id="top" aria-labelledby="journey-heading">
-        <Image className="j-photo j-hero-photo" src={image("hero")} alt="A traveller on a yacht watching the sun set over Mediterranean mountains" fill sizes="100vw" preload />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster={image("hero")} autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
-          <span className="j-eyebrow">People. Places. Further together.</span>
-          <h1 id="journey-heading">More than<br />a booking.</h1>
-          <span className="j-small-rule" />
-          <p>Every journey has a different purpose — business,<br className="j-desktop-break" /> leisure, group travel or complex connections.<br className="j-desktop-break" /> What stays the same is the need for clarity,<br className="j-desktop-break" /> coordination and support when it matters.</p>
-          <EnquiryButton className="j-button j-button-cream">Plan Your Journey</EnquiryButton>
+          <div className="j-hero-title">
+            <span className="j-eyebrow">People. Places. Further together.</span>
+            <h1 id="journey-heading">More than<br />a booking.</h1>
+          </div>
+          <div className="j-hero-aside">
+            <span className="j-small-rule" />
+            <p>Every journey has a different purpose — business,<br className="j-desktop-break" /> leisure, group travel or complex connections.<br className="j-desktop-break" /> What stays the same is the need for clarity,<br className="j-desktop-break" /> coordination and support when it matters.</p>
+            <EnquiryButton className="j-button j-button-cream">Plan Your Journey</EnquiryButton>
+          </div>
         </div>
         <a href="#about" className="j-scroll-note">A little further, together <span>↓</span></a>
       </section>

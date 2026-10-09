@@ -62,13 +62,22 @@
 /* Opening spread */
 .j-hero { position: relative; min-height: 610px; height: min(740px, 50vw); color: #fff9ed; }
 .j-hero-photo { object-position: center 58%; }
-.j-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #14232b96, #1e252d34 52%, transparent 78%), linear-gradient(180deg, #1e26273d, transparent 25%); }
+video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.j-hero-shade { position: absolute; inset: 0; background: linear-gradient(0deg, #141d1f8c, #141d1f2e 38%, transparent 62%), linear-gradient(90deg, #14232b40, transparent 55%), linear-gradient(180deg, #1e262733, transparent 18%); }
 .j-hero-content { position: relative; z-index: 2; padding-top: clamp(135px, 10.7vw, 170px); }
 .j-hero .j-eyebrow { margin-bottom: 19px; color: #eee7d5; }
 .journey-page .j-hero h1 { font-size: clamp(58px, 5.9vw, 90px); line-height: .95; text-transform: uppercase; letter-spacing: -.025em; color: #fff9ed; }
 .j-small-rule { display: block; width: 48px; height: 1px; background: #d9c797; margin: 24px 0 18px; }
-.j-hero-content > p { font-size: 17px; line-height: 1.4; max-width: 445px; text-shadow: 0 1px 8px #17222250; }
-.j-hero-content > .j-button { margin-top: 24px; }
+.j-hero-aside > p { font-size: 17px; line-height: 1.4; max-width: 445px; text-shadow: 0 1px 10px #17222280; }
+.j-hero-content { text-shadow: 0 2px 18px #1722224d; }
+.j-hero-content .j-button { text-shadow: none; }
+.j-hero-aside > .j-button { margin-top: 24px; }
+.j-hero .j-hero-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 445px); align-items: end; gap: 48px; }
+.j-hero-aside .j-small-rule { margin-top: 0; }
+@media (max-width: 800px) {
+  .j-hero .j-hero-content { grid-template-columns: 1fr; gap: 0; }
+  .j-hero-aside .j-small-rule { margin-top: 24px; }
+}
 .j-scroll-note { position: absolute; bottom: 43px; right: 8%; font-family: var(--body); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; display: flex; gap: 20px; align-items: center; }
 .j-scroll-note span { font: 23px Georgia, serif; }
 .j-intro { position: relative; padding: 82px 0 85px; }
@@ -268,7 +277,7 @@
   .j-header-cta { margin-left: auto; }
   .j-hero { height: 590px; min-height: 590px; }
   .j-hero-content { padding-top: 145px; }
-  .j-hero-content > p { font-size: 16px; }
+  .j-hero-aside > p { font-size: 16px; }
   .j-intro { padding: 56px 0 64px; }
   .j-audiences { column-gap: 3%; }
   .j-audience h3 { font-size: 18px; }
@@ -292,14 +301,14 @@
   .j-menu-toggle { margin-left: auto; }
   .j-hero { min-height: 660px; height: 90svh; max-height: 780px; }
   .j-hero-photo { object-position: 65% center; }
-  .j-hero-shade { background: linear-gradient(90deg,#152329ab,#17293236), linear-gradient(0deg,#182722ba,transparent 48%); }
+  .j-hero-shade { background: linear-gradient(0deg,#182722b0,#1827224d 45%,transparent 70%), linear-gradient(180deg,#1e262740,transparent 20%); }
   .j-hero-content { padding-top: 135px; }
   .j-hero .j-eyebrow { font-size: 8px; margin-bottom: 21px; letter-spacing: .18em; }
   .journey-page .j-hero h1 { font-size: clamp(49px, 12vw, 70px); }
   .j-small-rule { margin-top: 27px; }
-  .j-hero-content > p { max-width: 280px; font-size: 16px; line-height: 1.5; }
+  .j-hero-aside > p { max-width: 280px; font-size: 16px; line-height: 1.5; }
   .j-desktop-break { display: none; }
-  .j-hero-content > .j-button { margin-top: 27px; }
+  .j-hero-aside > .j-button { margin-top: 27px; }
   .j-scroll-note { bottom: 43px; right: 25px; font-size: 8px; }
   .j-intro { padding-top: 48px; }
   .j-intro-heading { grid-template-columns: 1fr; gap: 22px; }
@@ -398,7 +407,7 @@
 .journey-page main > section { min-height: 100svh; }
 .journey-page .j-hero {
   height: auto; min-height: 100svh; max-height: none;
-  display: flex; align-items: center; padding: 125px 0 105px;
+  display: flex; align-items: flex-end; padding: 125px 0 clamp(72px, 11svh, 120px);
   z-index: 0;
 }
 .j-hero .j-hero-content { padding-top: 0; }
@@ -435,7 +444,7 @@
   .j-network .j-network-landscape { bottom: 215px; }
 }
 @media (max-width: 600px) {
-  .journey-page .j-hero { padding: 110px 0 95px; }
+  .journey-page .j-hero { padding: 110px 0 90px; }
   .j-intro { padding-block: calc(var(--tear) + 40px) 60px; }
   .j-intro .j-audiences { margin-top: 40px; }
   .j-story { align-content: center; }

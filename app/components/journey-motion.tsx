@@ -9,6 +9,9 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
   useEffect(() => {
     const page = root.current;
     if (!page) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      page.querySelectorAll("video").forEach(video => video.pause());
+    }
     let disposed = false;
     let revert = () => {};
 
