@@ -177,12 +177,12 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-split-panel:hover .j-split-photo { transform: scale(1.03); }
 .j-business .j-split-photo img { object-position: 8% center; }
 .j-leisure .j-split-photo img { object-position: 88% center; }
-.j-split-shade { position: absolute; inset: 0; background: linear-gradient(0deg, #1b1d16e0, #1b1d1660 38%, transparent 62%); pointer-events: none; }
+.j-split-shade { position: absolute; inset: 0; background: linear-gradient(0deg, #1b1d16e6, #1b1d1670 45%, transparent 72%); pointer-events: none; }
 .j-split-copy { position: relative; z-index: 2; width: 100%; padding: 0 clamp(28px, 5vw, 72px) calc(var(--tear) + clamp(40px, 7svh, 72px)); color: #f1e9d6; }
-.journey-page .j-split-copy h2 { font-size: clamp(32px, 3.2vw, 46px); color: #fff8e9; }
-.j-split-copy h2 span { display: block; font-size: clamp(19px, 1.7vw, 24px); margin-top: 8px; line-height: 1.15; color: #e8d7a8; }
-.j-split-copy > p { font-size: 16px; margin-top: 14px; max-width: 380px; }
-.j-split-copy .j-button { margin-top: 22px; padding: 10px 22px; font-size: 13px; min-height: 40px; gap: 12px; }
+.journey-page .j-split-copy h2 { font-size: clamp(42px, 4.4vw, 68px); color: #fff8e9; }
+.j-split-copy h2 span { display: block; font-size: clamp(22px, 2.1vw, 32px); margin-top: 12px; line-height: 1.15; color: #e8d7a8; }
+.j-split-copy > p { font-size: clamp(18px, 1.4vw, 21px); line-height: 1.5; margin-top: 18px; max-width: 440px; }
+.j-split-copy .j-button { margin-top: 28px; padding: 13px 28px; font-size: 15px; min-height: 48px; gap: 14px; }
 @media (max-width: 800px) {
   .j-split { grid-template-columns: 1fr; }
   .j-split-panel { min-height: 75svh; }
@@ -370,8 +370,10 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-principles { font-size: 12px; line-height: 1.8; margin-top: 48px; }
   .j-principles span { padding-inline: 4px; }
   .j-split-panel { min-height: 68svh; }
-  .j-split-copy > p { font-size: 15px; }
-  .j-split-copy .j-button { font-size: 12px; }
+  .journey-page .j-split-copy h2 { font-size: 40px; }
+  .j-split-copy h2 span { font-size: 22px; }
+  .j-split-copy > p { font-size: 17px; }
+  .j-split-copy .j-button { font-size: 14px; }
   .j-team-photo { aspect-ratio: 1; margin-top: -24px; }
   .j-team-photo img { object-position: 48% center; }
   .j-team-head .j-eyebrow { font-size: 13px; letter-spacing: .14em; }
