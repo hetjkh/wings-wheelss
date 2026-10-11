@@ -219,17 +219,15 @@ export default function CorporatePage() {
         <div className="j-shell s-split-head k-team-head-row">
           <div>
             <span className="j-eyebrow s-eyebrow">05 / Business teams on the move</span>
-            <h2 id="team-heading" className="s-title">Travelling as a team shouldn&apos;t mean managing ten different journeys.</h2>
+            <h2 id="team-heading" className="s-title s-rows"><span>One team travelling.</span><span className="k-team-soft">Not ten journeys to manage.</span></h2>
           </div>
-          <div className="k-team-intro">
-            <p className="k-body">From management retreats to sales meetings and exhibitions, we keep every traveller, booking and movement connected.</p>
-            <a className="j-button j-button-cream" href="/groups-mice">Explore Groups &amp; MICE <Arrow /></a>
-          </div>
+          <p className="k-body">Retreats, sales meetings or exhibitions: every traveller, booking and movement stays connected.</p>
         </div>
         <div className="j-shell k-team-grid" data-progress="top 75%" data-progress-end="top 10%">
           <div className="k-team-copy">
             <span className="k-team-head">We coordinate for your team</span>
             <ul className="k-team-list">{teamList.map((item, i) => <li key={item.label} style={{ "--i": i } as React.CSSProperties}><TravelIcon kind={item.icon} size={18} />{item.label}</li>)}</ul>
+            <a className="j-button j-button-olive k-team-link" href="/groups-mice">Explore Groups &amp; MICE <Arrow /></a>
           </div>
           <figure className="k-team-map" aria-label={`Ten journeys, from ${origins.map(o => o.city).join(", ")}, coming together in Dubai`}>
             <svg viewBox="434 62 378 300" aria-hidden="true">
