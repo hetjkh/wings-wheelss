@@ -184,7 +184,32 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
         select(".j-story-copy, .j-team-copy, .j-faq-grid > div:first-child").forEach((block: HTMLElement) => {
           reveal(Array.from(block.children).filter((child): child is HTMLElement => child instanceof HTMLElement && child.tagName !== "DIALOG"), block);
         });
-        select(".j-steps li, .j-values-grid li, .j-pillars li, .j-faq-list details, .j-network-content h2, .j-values h2, .j-process-content h2, .j-split-copy").forEach((item: HTMLElement) => reveal([item], item));
+        select(".j-steps li, .j-values-grid li, .j-pillars li, .j-faq-list details, .j-network-content h2, .j-values h2, .j-process-content h2, .j-split-copy, .ab-story-quote, .ab-net-title, .ab-stop").forEach((item: HTMLElement) => reveal([item], item));
+        // The plane flies the network route and each stop lights up as it is reached.
+        select(".ab-route").forEach((route: HTMLElement) => {
+          const path = route.querySelector<SVGPathElement>(".ab-route-track");
+          const plane = route.querySelector<SVGGElement>(".ab-route-plane");
+          if (!path || !plane) return;
+          const dots = Array.from(route.querySelectorAll<SVGCircleElement>(".ab-route-stop"));
+          const length = path.getTotalLength();
+          const state = { p: 0 };
+          const fly = () => {
+            const point = path.getPointAtLength(length * state.p);
+            route.style.setProperty("--route", String(state.p));
+            plane.setAttribute("transform", `translate(${point.x} ${point.y})`);
+            dots.forEach(dot => dot.classList.toggle("is-reached", point.x >= Number(dot.getAttribute("cx")) - 1));
+          };
+          fly();
+          gsap.to(state, { p: 1, ease: "none", onUpdate: fly, scrollTrigger: { trigger: route, start: "top 85%", end: "bottom 65%", scrub: .8 } });
+          focusCleanups.push(() => {
+            route.style.removeProperty("--route");
+            plane.setAttribute("transform", "translate(1200 70)");
+            dots.forEach(dot => dot.classList.remove("is-reached"));
+          });
+        });        // The photographs set into the story heading open up as it scrolls into view.
+        select(".ab-pill").forEach((pill: HTMLElement) => {
+          gsap.from(pill, { width: 0, ease: "none", scrollTrigger: { trigger: pill, start: "top 92%", end: "top 50%", scrub: .8 } });
+        });
         if (!intro?.classList.contains("is-exploring")) {
           select(".j-journey-card").forEach((item: HTMLElement) => reveal([item], item));
         }

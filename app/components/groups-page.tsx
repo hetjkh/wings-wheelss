@@ -12,10 +12,10 @@ import "./services.css";
 import "./groups.css";
 
 const origins = [
-  { city: "London", who: "Executives" },
-  { city: "Riyadh", who: "Sales team" },
-  { city: "Nairobi", who: "Delegates" },
-  { city: "Mumbai", who: "Suppliers" },
+  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M250 70 C 340 70, 330 180, 372 180" },
+  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M250 290 C 340 290, 330 180, 372 180" },
+  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M750 70 C 660 70, 670 180, 628 180" },
+  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M750 290 C 660 290, 670 180, 628 180" },
 ];
 const sequence: { icon: IconKind; label: string }[] = [
   { icon: "plane", label: "Flights" }, { icon: "pin", label: "Arrivals" }, { icon: "bed", label: "Hotels" },
@@ -97,37 +97,17 @@ export default function GroupsPage() {
     <JourneyHeader introId="people" />
     <main>
       <section className="j-hero s-hero g-hero" id="top" aria-labelledby="groups-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/about/business-airport.jpg" alt="" fill preload sizes="100vw" />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content g-hero-content">
           <div className="g-hero-copy">
             <span className="j-eyebrow" data-hero>Groups &amp; MICE</span>
-            <h1 id="groups-hero-heading"><span className="s-line"><span data-hero>Bringing people</span></span><span className="s-line"><span data-hero>together.</span></span><span className="s-line g-hero-soft"><span data-hero>Getting every detail</span></span><span className="s-line g-hero-soft"><span data-hero>there too.</span></span></h1>
-            <p data-hero>From corporate meetings and international exhibitions to incentive travel and large group movements, Wings &amp; Wheels coordinates the journey around your event.</p>
-            <ul className="g-hero-list" data-hero>{["Flights", "Hotels", "Transfers", "Groups", "Events", "Support"].map(item => <li key={item}>{item}.</li>)}</ul>
+            <h1 id="groups-hero-heading"><span className="s-line"><span data-hero>Bringing people</span></span><span className="s-line"><span data-hero>together.</span></span><span className="s-line g-hero-soft"><span data-hero>Every detail too.</span></span></h1>
+            <p data-hero>Meetings, exhibitions, incentives and large group travel, coordinated around your event.</p>
             <div className="s-actions" data-hero>
               <EnquiryButton className="j-button j-button-cream" service="Groups & MICE">Plan your group travel</EnquiryButton>
               <a className="j-button j-button-outline-light" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp our team</a>
-            </div>
-            <p className="g-hero-note" data-hero>Group &amp; MICE travel across the UAE, Africa and worldwide.</p>
-          </div>
-          <div className="g-badge-wrap" aria-hidden="true">
-            <div className="g-badge">
-              <span className="g-badge-strap" />
-              <span className="g-badge-clip" />
-              <div className="g-badge-card">
-                <div className="g-badge-top"><span>W&amp;W</span><span>Groups &amp; MICE</span></div>
-                <span className="g-badge-role">Delegate</span>
-                <strong>Your whole group</strong>
-                <dl>
-                  <div><dt>Event</dt><dd>Dubai</dd></div>
-                  <div><dt>Arriving from</dt><dd>London · Nairobi · Riyadh · Mumbai</dd></div>
-                  <div><dt>Access</dt><dd>Flights · Hotels · Transfers</dd></div>
-                </dl>
-                <span className="g-badge-code" />
-                <div className="g-badge-foot">UAE · Africa · Worldwide</div>
-              </div>
             </div>
           </div>
         </div>
@@ -135,36 +115,41 @@ export default function GroupsPage() {
       </section>
 
       <section className="g-converge j-torn-top" id="people" aria-labelledby="people-heading">
-        <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">01 / Many cities, one venue</span>
+        <div className="j-shell g-converge-inner">
           <div className="g-converge-head">
-            <h2 id="people-heading" className="s-title">The event may be in<br />one place.<span className="g-soft">Your people may not be.</span></h2>
+            <div>
+              <span className="j-eyebrow s-eyebrow">01 / Many cities, one venue</span>
+              <h2 id="people-heading" className="s-title s-rows"><span>The event may be in one place.</span><span className="g-soft">Your people may not be.</span></h2>
+            </div>
             <div className="g-converge-copy">
-              <p className="s-lead-body g-body">A conference in Dubai could involve executives flying from London, delegates arriving from Nairobi, a sales team travelling from Riyadh and suppliers coming from India.</p>
-              <p className="g-staccato" data-stagger><span>Different flights.</span><span>Different arrival times.</span><span>Different hotels.</span><strong>One event.</strong></p>
+              <p className="g-body">A Dubai conference can bring executives from London, delegates from Nairobi, a sales team from Riyadh and suppliers from India.</p>
+              <p className="g-staccato" data-stagger><span>Different flights.</span><span>Different arrival times.</span><span>Different hotels.</span></p>
             </div>
           </div>
-          <figure className="g-join" aria-label="Executives from London, a sales team from Riyadh, delegates from Nairobi and suppliers from Mumbai, all travelling to one event in Dubai">
-            <ul className="g-join-from" data-stagger>{origins.map((origin, i) => <li key={origin.city} data-city={i}>
-              <span className="g-join-icon"><TravelIcon kind="plane" size={18} /></span>
-              <div><strong>{origin.city}</strong><span>{origin.who}</span></div>
-            </li>)}</ul>
-            <svg className="g-join-lines" viewBox="0 0 200 400" preserveAspectRatio="none" aria-hidden="true">
-              {[50, 150, 250, 350].map(y => <path key={y} data-trace pathLength={1} d={`M0 ${y} C 110 ${y}, 90 200, 200 200`} />)}
+          <figure className="g-stage" data-progress="top 85%" data-progress-end="top 30%" aria-label="Executives from London, a sales team from Riyadh, delegates from Nairobi and suppliers from Mumbai, all travelling to one event in Dubai">
+            <svg className="g-stage-lines" viewBox="0 0 1000 360" aria-hidden="true">
+              <circle className="g-orbit" cx="500" cy="180" r="128" />
+              <circle className="g-orbit g-orbit-outer" cx="500" cy="180" r="158" />
+              {origins.map((origin, i) => <g key={origin.city} data-city={i}>
+                <path className="g-stage-track" d={origin.path} />
+                <path className="g-stage-route" data-trace pathLength={1} d={origin.path} />
+                <circle className="g-stage-light" r="5"><animateMotion dur="3.6s" begin={`${i * .9}s`} repeatCount="indefinite" path={origin.path} keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1" /></circle>
+              </g>)}
             </svg>
-            <div className="g-join-event">
-              <Image src="/images/dubai.jpg" alt="" fill sizes="(max-width: 800px) 92vw, 32vw" />
-              <div className="g-join-event-copy">
-                <span>The event</span>
-                <strong>Dubai</strong>
-                <p>One coordinated travel plan for everyone.</p>
-              </div>
+            <ul className="g-passes">{origins.map((origin, i) => <li key={origin.city} className="g-pass" data-city={i} style={{ "--i": i } as React.CSSProperties}>
+              <span className="g-pass-route">{origin.code} <TravelIcon kind="plane" size={13} /> DXB</span>
+              <strong>{origin.city}</strong>
+              <span className="g-pass-foot"><span>{origin.who}</span><span>Arr {origin.arrives}</span></span>
+            </li>)}</ul>
+            <div className="g-venue">
+              <Image src="/images/dubai.jpg" alt="" fill sizes="(max-width: 991px) 60vw, 22vw" />
+              <div className="g-venue-copy"><span>The venue</span><strong>Dubai</strong><em>One event.</em></div>
             </div>
           </figure>
-          <div className="g-route" data-progress="top 88%" data-progress-end="top 55%">
-            <p className="s-lead">Wings &amp; Wheels brings those movements together into one coordinated travel plan.</p>
-            <ol>{sequence.map((step, i) => <li key={step.label} style={{ "--i": i } as React.CSSProperties}><TravelIcon kind={step.icon} size={18} />{step.label}</li>)}</ol>
-            <p className="g-route-close">One event. One coordinated journey.</p>
+          <div className="g-route" data-progress="top 95%" data-progress-end="top 70%">
+            <p>We bring every movement into one plan</p>
+            <ol>{sequence.map((step, i) => <li key={step.label} style={{ "--i": i } as React.CSSProperties}><TravelIcon kind={step.icon} size={16} />{step.label}</li>)}</ol>
+            <p className="g-route-close">One coordinated journey.</p>
           </div>
         </div>
       </section>
@@ -172,7 +157,7 @@ export default function GroupsPage() {
       <section className="g-manage j-torn-top" id="manage" aria-labelledby="manage-heading">
         <div className="j-shell">
           <div className="s-split-head g-manage-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title">From the first arrival<br />to the final departure.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span>From the first arrival</span><span>to the final departure.</span></h2></div>
             <p className="g-runsheet-tag"><span>Run sheet</span><span>8 items · All coordinated</span></p>
           </div>
           <ol className="g-runsheet">{managed.map((item, i) => <li key={item.title}>
@@ -202,7 +187,7 @@ export default function GroupsPage() {
       <section className="g-day j-torn-top" id="timeline" aria-labelledby="day-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <h2 id="day-heading" className="s-title">The exhibition starts at 10:00 AM.<span className="g-soft">Our work starts long before the doors open.</span></h2>
+            <h2 id="day-heading" className="s-title s-rows"><span>The exhibition starts at 10:00&nbsp;AM.</span><span className="g-soft">Our work starts long before</span><span className="g-soft">the doors open.</span></h2>
             <span className="j-eyebrow s-eyebrow g-day-eyebrow">04 / Exhibition day</span>
           </div>
           <div className="g-day-grid" data-progress="top 70%" data-progress-end="bottom 70%">

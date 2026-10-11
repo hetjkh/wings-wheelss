@@ -5,9 +5,9 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyMotion } from "./journey-motion";
 import { JourneyFooter } from "./journey-footer";
-import { NetworkMap } from "./network-map";
 import "./journey.css";
 import "./journey-explorer.css";
+import "./about-sections.css";
 
 const image = (name: string) => `/images/journey/${name}.webp`;
 const audiences = [
@@ -23,11 +23,18 @@ const steps = [
   { icon: "plane", text: <>You travel</> },
   { icon: "support", text: <>We stay<br />available</> },
 ] as const;
-const pillars = [
-  { icon: "pin", title: "UAE base", text: "Regional coordination and international access." },
-  { icon: "people", title: "Africa network", text: "Local knowledge and on-ground connections." },
-  { icon: "globe", title: "Global reach", text: "International travel planning and coordination." },
-] as const;
+const routePath = "M0 90 C 100 90, 120 40, 200 40 C 330 40, 470 90, 600 90 C 730 90, 870 40, 1000 40 C 1080 40, 1120 70, 1200 70";
+const stops = [
+  { x: 200, y: 40, title: "UAE base", lead: "Where we start", text: "Regional coordination with international access.", place: "Dubai", photo: image("dubai"), alt: "Dubai skyline in the evening light" },
+  { x: 600, y: 90, title: "Africa network", lead: "Where we know the ground", text: "Local knowledge and on-ground connections in Sudan, South Sudan, Uganda, Kenya and Tanzania.", place: "East Africa", photo: image("safari"), alt: "A traveller watching the East African savannah" },
+  { x: 1000, y: 40, title: "Global reach", lead: "Wherever you're going", text: "International travel planning and coordination.", place: "Worldwide", photo: image("leisure"), alt: "A turquoise island lagoon" },
+];
+const heart = [
+  { word: "People", photo: "team" },
+  { word: "Places", photo: "leisure" },
+  { word: "Connections", photo: "dubai" },
+  { word: "Opportunities", photo: "business" },
+];
 const values = [
   { icon: "ear", title: "We listen first.", text: "We begin by understanding why you’re travelling and what matters most." },
   { icon: "nodes", title: "We connect the details.", text: "Flights, hotels, visas, transfers and schedules should work together, not separately." },
@@ -94,34 +101,66 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      <section className="j-story j-paper" id="story" aria-labelledby="story-heading">
+      <section className="j-story j-paper ab-story" id="story" aria-labelledby="story-heading">
         <div className="j-shell">
           <div className="j-section-label"><span>02 / A little about us</span><span>Rooted in Dubai. Connected to the world.</span></div>
-          <div className="j-story-grid">
-            <div className="j-story-art">
-              <div className="j-story-photo"><Image className="j-photo" src={image("story")} alt="Business travellers enjoying a conversation before their flight" fill sizes="(max-width: 700px) 78vw, 37vw" /></div>
-              <div className="j-story-stamp" aria-hidden="true"><span>Personally planned</span><TravelIcon kind="plane" size={30} /><span>Human at heart</span></div>
-              <figure className="j-story-postcard"><div><Image src={image("safari")} alt="A traveller looking out over the African savannah" fill sizes="(max-width: 700px) 48vw, 22vw" /></div><figcaption>A little further, together. <Arrow diagonal /></figcaption></figure>
-              <span className="j-story-margin-note">Good journeys begin with a conversation.</span>
-            </div>
-            <div className="j-story-copy">
+          <div className="ab-story-head">
+            <div>
               <span className="j-eyebrow">The people behind the journey</span>
-              <h2 id="story-heading">Built around<br /><em>real journeys.</em></h2>
-              <p className="j-story-lead">The world is full of moving parts.<br />Your journey shouldn&apos;t feel that way.</p>
+              <h2 id="story-heading" className="ab-story-title">
+                <span>Built <span className="ab-pill" aria-hidden="true"><Image src={image("story")} alt="" fill sizes="200px" /></span> around</span>
+                <span><em>Real</em> <span className="ab-pill ab-pill-wide" aria-hidden="true"><Image src={image("safari")} alt="" fill sizes="240px" /></span> <em>journeys.</em></span>
+              </h2>
+            </div>
+            <div className="ab-stamp" aria-hidden="true">
+              <svg viewBox="0 0 120 120"><defs><path id="ab-stamp-ring" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" /></defs><text><textPath href="#ab-stamp-ring">Personally planned · Human at heart · </textPath></text></svg>
+              <TravelIcon kind="plane" size={26} />
+            </div>
+          </div>
+          <div className="ab-story-body">
+            <p className="ab-story-quote">The world is full of moving parts. <span>Your journey shouldn&apos;t feel that way.</span></p>
+            <div className="j-story-copy ab-story-copy">
               <p>Wings &amp; Wheels began with a simple belief: travel should feel easier to manage. That starts with listening, understanding your plans and taking care of the details that connect them.</p>
               <p>Today, we bring local knowledge, regional connections and international capability to journeys that can begin almost anywhere. And wherever you&apos;re going, there&apos;s a real person with you along the way.</p>
               <Link href="/contact" className="j-story-link">Start a conversation with us <span><Arrow diagonal /></span></Link>
             </div>
           </div>
-          <div className="j-story-bottom"><span>At the heart of it all</span><ul className="j-story-words">{["People", "Places", "Connections", "Opportunities"].map(word => <li key={word}>{word}</li>)}</ul><TravelIcon kind="globe" size={24} /></div>
+        </div>
+        <div className="ab-ticker">
+          <span className="j-shell ab-ticker-label">At the heart of it all</span>
+          <p className="j-sr-only">People, places, connections and opportunities.</p>
+          <div className="ab-ticker-window" aria-hidden="true">
+            <div className="ab-ticker-track">{[0, 1].map(copy => <div key={copy} className="ab-ticker-set">{heart.map(item => <span key={item.word} className="ab-ticker-item"><span className="ab-ticker-photo"><Image src={image(item.photo)} alt="" fill sizes="80px" /></span>{item.word}</span>)}</div>)}</div>
+          </div>
         </div>
       </section>
 
-      <section className="j-network j-paper" id="network" aria-labelledby="network-heading">
-        <div className="j-network-landscape j-network-africa"><Image src={image("safari")} alt="" fill sizes="45vw" /></div>
-        <div className="j-network-landscape j-network-dubai"><Image src={image("dubai")} alt="" fill sizes="40vw" /></div>
-        <div className="j-shell j-network-content"><h2 id="network-heading">Local where it matters.<br />Connected where you’re going.</h2><p>Operating from the UAE, Wings &amp; Wheels is supported by a growing network<br className="j-desktop-break" /> across key African markets and international destinations.</p><EnquiryButton className="j-button j-button-outline" service="Africa travel">Explore Our Africa Network</EnquiryButton><NetworkMap /></div>
-        <ul className="j-shell j-pillars">{pillars.map(pillar => <li key={pillar.title}><TravelIcon kind={pillar.icon} size={35} /><div><h3>{pillar.title}</h3><p>{pillar.text}</p></div></li>)}</ul>
+      <section className="j-network ab-net j-torn-top" id="network" aria-labelledby="network-heading">
+        <div className="j-shell">
+          <div className="ab-net-top">
+            <span className="j-eyebrow">03 / Our network</span>
+            <p>Based in the UAE, with a growing network across key African markets and destinations worldwide.</p>
+          </div>
+          <h2 id="network-heading" className="ab-net-title">
+            <span className="ab-net-row"><span className="ab-net-big">Local</span><span className="ab-net-small">where it<br />matters.</span></span>
+            <span className="ab-net-row ab-net-row-2"><span className="ab-net-big">Connected</span><span className="ab-net-small">where you&apos;re<br />going.</span></span>
+          </h2>
+          <div className="ab-route">
+            <svg className="ab-route-line" viewBox="0 0 1200 120" aria-hidden="true">
+              <path className="ab-route-track" d={routePath} />
+              <path className="ab-route-drawn" d={routePath} pathLength={1} />
+              {stops.map(stop => <circle key={stop.title} className="ab-route-stop" cx={stop.x} cy={stop.y} r="7" />)}
+              <g className="ab-route-plane" transform="translate(1200 70)"><g transform="translate(-13 -13)"><TravelIcon kind="plane" size={26} /></g></g>
+            </svg>
+            <ol className="ab-stops">{stops.map((stop, i) => <li key={stop.title} className="ab-stop" style={{ "--y": stop.y, "--tilt": `${i % 2 ? 2.5 : -2.5}deg` } as React.CSSProperties}>
+              <figure className="ab-stop-photo"><div><Image src={stop.photo} alt={stop.alt} fill sizes="(max-width: 800px) 70vw, 20vw" /></div><figcaption>{stop.place}</figcaption></figure>
+              <span className="ab-stop-step">0{i + 1} · {stop.lead}</span>
+              <h3>{stop.title}</h3>
+              <p>{stop.text}</p>
+            </li>)}</ol>
+          </div>
+          <div className="ab-net-cta"><EnquiryButton className="j-button j-button-olive" service="Africa travel">Explore Our Africa Network</EnquiryButton></div>
+        </div>
       </section>
 
       <section className="j-values j-paper j-torn-top" aria-labelledby="values-heading">

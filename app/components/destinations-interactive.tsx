@@ -5,38 +5,6 @@ import Image from "next/image";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 
-const departures = [
-  { time: "08:40", city: "NAIROBI", why: "Safari & nature", gate: "A4" },
-  { time: "10:15", city: "MALE", why: "Beach & escape", gate: "B12" },
-  { time: "12:30", city: "PARIS", why: "Culture & discovery", gate: "C7" },
-  { time: "14:05", city: "KILIMANJARO", why: "Family holidays", gate: "A9" },
-  { time: "16:50", city: "ENTEBBE", why: "Wildlife & nature", gate: "B3" },
-  { time: "19:20", city: "LONDON", why: "Business & city", gate: "C2" },
-];
-const boardRows = 4;
-
-/** A split-flap departures board from Dubai; letters flip as a new flight moves to the top. */
-export function DepartureBoard() {
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setOffset(value => (value + 1) % departures.length), 3600);
-    return () => window.clearInterval(timer);
-  }, []);
-  const rows = Array.from({ length: boardRows }, (_, i) => departures[(offset + i) % departures.length]);
-  return <div className="d-board" aria-hidden="true">
-    <div className="d-board-head"><span>Departures</span><span>Dubai · DXB</span></div>
-    <div className="d-board-cols"><span>Time</span><span>Destination</span><span>Gate</span></div>
-    <ol>{rows.map((row, i) => <li key={i} className={i === 0 ? "is-next" : undefined}>
-      <span className="d-board-time">{row.time}</span>
-      <span className="d-board-city">{row.city.padEnd(11, " ").split("").map((char, c) => <span key={`${offset}-${c}`} className="d-flap" style={{ "--i": c + i * 2 } as React.CSSProperties}>{char === " " ? "\u00a0" : char}</span>)}</span>
-      <span className="d-board-gate">{row.gate}</span>
-      <span className="d-board-why">{row.why}</span>
-    </li>)}</ol>
-    <div className="d-board-foot"><span className="d-board-dot" />Now boarding · {rows[0].why}</div>
-  </div>;
-}
-
 export type Mood = { title: string; text: string; icon: IconKind; photo: string; alt: string; position?: string };
 
 /** Six reasons to travel; the photograph follows whichever reason is in focus. */

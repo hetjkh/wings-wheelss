@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { countries } from "./countries";
 import { office } from "./data";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
@@ -53,7 +52,6 @@ export function ContactPage() {
   const [service, setService] = useState("");
   const [sent, setSent] = useState(false);
   const [message, setMessage] = useState("");
-  const status = clock === null ? "Mon – Sat, 9 AM – 7 PM" : clock.isOpen ? "Our office is open now" : "Closed now · we'll reply on the next working day";
 
   return <ChapterMotion className="contact-page">
     <a className="skip-link" href="#form">Skip to the form</a>
@@ -61,7 +59,7 @@ export function ContactPage() {
     <JourneyHeader introId="reach" />
     <main>
       <section className="j-hero s-hero c-hero" id="top" aria-labelledby="contact-heading">
-        <Image className="j-photo j-hero-photo" src="/images/dubai-terrace.png" alt="" fill preload sizes="100vw" />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
@@ -72,11 +70,6 @@ export function ContactPage() {
           <div className="j-hero-aside">
             <span className="j-small-rule" data-hero />
             <p data-hero>Questions, quotes or bookings: our travel consultants in Dubai are here to help.</p>
-            <div className={clock?.isOpen ? "c-clock is-open" : "c-clock"} data-hero>
-              <span className="c-clock-label">Dubai, local time</span>
-              <strong suppressHydrationWarning>{clock?.time ?? "--:--"}</strong>
-              <span className="c-clock-status"><i />{status}</span>
-            </div>
           </div>
         </div>
         <a href="#reach" className="j-scroll-note">Four ways to reach us <span>↓</span></a>

@@ -5,32 +5,13 @@
 .journey-page .d-title-soft { color: var(--ochre); }
 
 /* Opening: the lounge window and a departures board */
-.d-hero .j-hero-photo { object-position: 62% 40%; }
 .d-hero .j-hero-shade { background: linear-gradient(90deg, #1d140de6, #1d140d8c 42%, #1d140d26 70%), linear-gradient(0deg, #1d140dcc, transparent 45%), linear-gradient(180deg, #1d140d73, transparent 24%); }
-.journey-page .d-hero .d-hero-content { grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr); align-items: end; gap: 6%; }
+.journey-page .d-hero .d-hero-content { grid-template-columns: minmax(0, 46rem); align-items: end; }
 .journey-page .d-hero h1 { font-size: calc(var(--u) * 4.75); }
 .d-hero-copy > p { max-width: 27em; margin-top: calc(var(--u) * 1.75); font: 400 calc(var(--u) * 1.5)/1.2 var(--heading); color: #f3e7cf; }
 .journey-page .d-hero h1 em { font-style: normal; color: var(--sand); }
 .d-hero .s-actions { margin-top: calc(var(--u) * 2); }
 
-.d-board { position: relative; padding: calc(var(--u) * 1.5); border: 1px solid #fff8e926; background: #140e0abf; backdrop-filter: blur(12px); box-shadow: 0 30px 60px #0000004d; text-shadow: none; }
-.d-board-head, .d-board-cols, .d-board-foot { display: flex; justify-content: space-between; font: 400 calc(var(--u) * .6875)/1.2 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--sand); }
-.d-board-head { padding-bottom: calc(var(--u) * .9); border-bottom: 1px solid #fff8e926; }
-.d-board-head span:first-child { font: 400 calc(var(--u) * 1.25)/1 var(--heading); letter-spacing: .14em; color: var(--cream); }
-.d-board-cols { display: grid; grid-template-columns: 4.6em 1fr 3em; gap: var(--u); margin-top: calc(var(--u) * .9); color: #ecd9ad99; }
-.d-board-cols span:last-child { text-align: right; }
-.d-board ol { margin-top: calc(var(--u) * .5); }
-.d-board li { display: grid; grid-template-columns: 4.6em 1fr 3em; grid-template-areas: "time city gate" ". why why"; column-gap: var(--u); align-items: center; padding: calc(var(--u) * .7) 0; border-bottom: 1px solid #fff8e914; }
-.d-board-time, .d-board-gate { font: 400 calc(var(--u) * .9375)/1 var(--body); letter-spacing: .08em; color: #efe6d2; font-variant-numeric: tabular-nums; }
-.d-board-time { grid-area: time; } .d-board-gate { grid-area: gate; text-align: right; }
-.d-board-city { grid-area: city; display: flex; gap: 2px; perspective: 400px; }
-.d-flap { display: inline-grid; place-items: center; width: 1.05em; height: 1.35em; border-radius: 2px; background: linear-gradient(180deg, #2e241c 50%, #241b15 50%); box-shadow: inset 0 -1px 0 #0006; font: 500 calc(var(--u) * 1.0625)/1 var(--body); color: var(--cream); transform-origin: 50% 50%; animation: d-flap .5s cubic-bezier(.3, .7, .4, 1) both; animation-delay: calc(var(--i) * 28ms); }
-.d-board .is-next .d-flap { color: var(--sand); }
-@keyframes d-flap { 0% { transform: rotateX(90deg); opacity: .2; } 60% { transform: rotateX(-12deg); opacity: 1; } 100% { transform: none; } }
-.d-board-why { grid-area: why; margin-top: 6px; font: 400 calc(var(--u) * .875)/1.2 var(--heading); color: #ecd9adb3; }
-.d-board-foot { justify-content: flex-start; align-items: center; gap: 10px; margin-top: calc(var(--u) * 1.1); color: var(--cream); }
-.d-board-dot { width: 7px; height: 7px; border-radius: 50%; background: #8fd39a; box-shadow: 0 0 0 0 #8fd39a99; animation: d-pulse 1.8s ease-out infinite; }
-@keyframes d-pulse { to { box-shadow: 0 0 0 10px #8fd39a00; } }
 
 /* 01 · A mood index with a photograph that follows it */
 .d-moods { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #fff; }
@@ -233,17 +214,14 @@
 @keyframes d-spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 1100px) {
-  .journey-page .d-hero .d-hero-content { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5%; }
   .d-africa-reasons { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 24px; }
   .d-africa-reasons li:nth-child(4) { border-left: 0; }
   .d-season { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 991px) {
-  .journey-page .d-hero .d-hero-content { grid-template-columns: 1fr; gap: 40px; }
   .journey-page .d-hero h1 { font-size: 64px; }
   .journey-page .d-moods .s-title { font-size: 44px; }
   .d-moods .s-split-head { grid-template-columns: 1fr; gap: 24px; }
-  .d-board { max-width: 520px; }
   .d-moods-body, .d-africa-grid, .d-season, .d-four-grid { grid-template-columns: 1fr; gap: 48px; }
   .d-legs-route, .d-leg::before { display: none; }
   .d-legs ol { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
@@ -263,9 +241,6 @@
   .journey-page .d-hero h1 { font-size: clamp(40px, 11vw, 54px); }
   .journey-page .d-moods .s-title { font-size: 30px; }
   .d-hero-copy > p { font-size: 18px; }
-  .d-board { padding: 16px; }
-  .d-board li:nth-child(n + 4) { display: none; }
-  .d-flap { font-size: 13px; }
   .d-mood-title { font-size: 22px; }
   .d-mood { padding: 16px 0; }
   .d-rail-wrap { margin-top: 24px; }
@@ -293,5 +268,5 @@
   .d-quiz-done p { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .d-flap, .d-board-dot, .d-arc-pulse, .d-seal, .d-season-short, .d-picks li, .d-quiz-question, .d-quiz-done { animation: none; }
+  .d-arc-pulse, .d-seal, .d-season-short, .d-picks li, .d-quiz-question, .d-quiz-done { animation: none; }
 }

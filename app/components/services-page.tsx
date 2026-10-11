@@ -67,7 +67,7 @@ export default function ServicesPage() {
     <JourneyHeader introId="approach" />
     <main>
       <section className="j-hero s-hero" id="top" aria-labelledby="services-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/about-airport.png" alt="" fill preload sizes="100vw" />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
@@ -77,12 +77,11 @@ export default function ServicesPage() {
           </div>
           <div className="j-hero-aside">
             <span className="j-small-rule" data-hero />
-            <p data-hero>From flights and hotels to visas, transfers, holidays and travel support, Wings &amp; Wheels coordinates the details around where you need to go.</p>
+            <p data-hero>Flights, hotels, visas, transfers and holidays, coordinated around where you need to go.</p>
             <div className="s-actions" data-hero>
               <EnquiryButton className="j-button j-button-cream">Plan your journey</EnquiryButton>
               <WhatsAppLink className="j-button j-button-outline-light" />
             </div>
-            <ul className="s-hero-tags" data-hero>{["Business", "Leisure", "Groups", "Worldwide travel"].map(tag => <li key={tag}>{tag}</li>)}</ul>
           </div>
         </div>
         <a href="#approach" className="j-scroll-note">Every part, together <span>↓</span></a>
@@ -158,7 +157,7 @@ export default function ServicesPage() {
         <div className="j-shell">
           <div className="j-section-label s-draw"><span>04 / Every journey is different</span><span>Simple · Multi-destination · Group</span></div>
           <div className="s-split-head">
-            <h2 id="scale-heading" className="s-title">One flight or<br />twelve moving parts.</h2>
+            <h2 id="scale-heading" className="s-title s-rows"><span>One flight or</span><span>twelve moving parts.</span></h2>
             <p className="s-lead">Whether it&apos;s a quick return trip or a group arriving from four cities, every detail is held in one plan.</p>
           </div>
           <div className="s-tickets">{examples.map(example => <article key={example.type} className="s-ticket">
@@ -206,7 +205,7 @@ export default function ServicesPage() {
         <div className="j-shell s-network-grid">
           <div className="s-network-copy">
             <span className="j-eyebrow s-eyebrow">06 / Our network</span>
-            <h2 id="network-heading" className="s-title">Local connections.<br />Journeys that<br />go further.</h2>
+            <h2 id="network-heading" className="s-title s-rows"><span>Local</span><span>connections.</span><span>Journeys that</span><span>go further.</span></h2>
             <p className="s-lead-body">Wings &amp; Wheels combines its UAE base with a growing network across key African markets and international destinations.</p>
             <EnquiryButton className="j-button j-button-outline" service="Africa travel">Explore our Africa network</EnquiryButton>
           </div>

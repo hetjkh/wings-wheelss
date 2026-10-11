@@ -59,7 +59,7 @@ export default function AfricaPage() {
     <JourneyHeader introId="connections" />
     <main>
       <section className="j-hero s-hero" id="top" aria-labelledby="africa-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/kenya-safari.png" alt="" fill preload sizes="100vw" />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
@@ -69,7 +69,7 @@ export default function AfricaPage() {
           </div>
           <div className="j-hero-aside">
             <span className="j-small-rule" data-hero />
-            <p data-hero>From business travel and regional connections to safaris, holidays and international journeys, Wings &amp; Wheels connects travellers between the UAE, Africa and beyond.</p>
+            <p data-hero>Business trips, safaris and holidays, connecting travellers between the UAE, Africa and beyond.</p>
             <div className="s-actions" data-hero>
               <a className="j-button j-button-cream" href="#destinations">Explore Africa <Arrow /></a>
               <EnquiryButton className="j-button j-button-outline-light" service="Africa travel">Talk to our Africa team</EnquiryButton>
@@ -103,7 +103,7 @@ export default function AfricaPage() {
         <div className="j-shell s-network-grid">
           <div className="s-network-copy">
             <span className="j-eyebrow s-eyebrow">02 / Our Africa network</span>
-            <h2 id="network-heading" className="s-title">Local connections.<br />International reach.</h2>
+            <h2 id="network-heading" className="s-title s-rows"><span>Local</span><span>connections.</span><span>International reach.</span></h2>
             <p className="s-lead-body">With offices and partners across key African markets, W&amp;W provides on-ground support, regional expertise and seamless coordination between the UAE, Africa and worldwide.</p>
             <Link className="j-button j-button-outline" href="/contact">Our Africa offices <Arrow /></Link>
           </div>

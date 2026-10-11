@@ -3,9 +3,9 @@
 .africa-page .a-business { z-index: 5; } .africa-page .a-destinations { z-index: 6; } .africa-page .a-multi { z-index: 7; }
 .a-body { max-width: 26em; margin-top: calc(var(--u) * 1.25); font: 300 calc(var(--u) * 1.25)/1.35 var(--body); }
 .journey-page .a-title-md { font-size: calc(var(--u) * 3); }
+.journey-page .a-network .s-rows { font-size: calc(var(--u) * 2.75); }
 
 /* Opening */
-.africa-page .s-hero .j-hero-photo { object-position: 40% 45%; }
 .journey-page .j-hero-aside > .a-corridor-tag { margin-top: 28px; font: 400 calc(var(--u) * .75)/1.2 var(--body); letter-spacing: .14em; text-transform: uppercase; color: #efe6d2; }
 .a-corridor-tag span { margin: 0 10px; color: var(--sand); }
 

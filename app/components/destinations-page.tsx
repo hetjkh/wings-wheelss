@@ -5,7 +5,7 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
-import { DepartureBoard, FourThings, MoodIndex, PostcardRail, SeasonRibbon, type Mood, type Postcard, type Season } from "./destinations-interactive";
+import { FourThings, MoodIndex, PostcardRail, SeasonRibbon, type Mood, type Postcard, type Season } from "./destinations-interactive";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -75,20 +75,18 @@ export default function DestinationsPage() {
     <JourneyHeader introId="find" />
     <main>
       <section className="j-hero s-hero d-hero" id="top" aria-labelledby="destinations-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/about/hero-lounge.jpg" alt="" fill preload sizes="100vw" />
+        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content d-hero-content">
           <div className="d-hero-copy">
             <span className="j-eyebrow" data-hero>Destinations</span>
-            <h1 id="destinations-hero-heading"><span className="s-line"><span data-hero>Where will your</span></span><span className="s-line"><span data-hero>next journey</span></span><span className="s-line"><span data-hero><em>take you?</em></span></span></h1>
-            <p data-hero>From cities built for business to islands made for switching off, discover destinations across the Middle East, Africa and beyond.</p>
+            <h1 id="destinations-hero-heading"><span className="s-line"><span data-hero>Where will your</span></span><span className="s-line"><span data-hero>next journey <em>take you?</em></span></span></h1>
+            <p data-hero>Business cities to island escapes, across the Middle East, Africa and beyond.</p>
             <div className="s-actions" data-hero>
               <a className="j-button j-button-cream" href="#featured">Explore destinations <Arrow /></a>
             </div>
-            <ul className="s-hero-tags" data-hero><li>Business</li><li>Leisure</li><li>Groups</li><li>Experiences</li></ul>
           </div>
-          <div className="d-hero-board" data-hero><DepartureBoard /></div>
         </div>
         <a href="#find" className="j-scroll-note">Find your journey <span>↓</span></a>
       </section>
