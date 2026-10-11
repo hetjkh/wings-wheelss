@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const heading = Jost({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-heading", display: "swap" });
-const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const heading = localFont({
+  src: [
+    { path: "../public/fonts/apris-regular.woff2", weight: "400", style: "normal" },
+    { path: "../public/fonts/apris-medium.woff2", weight: "500", style: "normal" },
+  ],
+  variable: "--font-heading", display: "swap",
+});
+const body = localFont({
+  src: [
+    { path: "../public/fonts/founders-light.woff2", weight: "300", style: "normal" },
+    { path: "../public/fonts/founders-regular.woff2", weight: "400", style: "normal" },
+  ],
+  variable: "--font-body", display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Wings & Wheels Travel and Tourism | Corporate, Leisure & Group Travel from Dubai",

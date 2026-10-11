@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { navLinks, office } from "./data";
+import { office, siteLinks as navLinks } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 
-const serviceOptions = ["General enquiry", "Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Visa assistance"];
+const serviceOptions = ["General enquiry", "Flights", "Hotels", "Visa assistance", "Airport & ground transfers", "Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Travel support"];
 
-export function EnquiryButton({ children = "Request a quote", className = "button button-gold", service = "General enquiry", destination = "", icon = true }: { children?: React.ReactNode; className?: string; service?: string; destination?: string; icon?: boolean }) {
+export function EnquiryButton({ children = "Request a quote", className = "button button-gold", service = "General enquiry", destination = "", message = "", icon = true }: { children?: React.ReactNode; className?: string; service?: string; destination?: string; message?: string; icon?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [complete, setComplete] = useState(false);
   return <>
@@ -33,7 +33,7 @@ export function EnquiryButton({ children = "Request a quote", className = "butto
             <label>Service *<select name="service" defaultValue={service}>{serviceOptions.map(item => <option key={item}>{item}</option>)}</select></label>
             <label>Destination<input name="destination" defaultValue={destination} maxLength={100} /></label>
           </div>
-          <label>Your requirements *<textarea name="message" placeholder="Travel dates, number of travellers, anything we should know" rows={3} required minLength={10} maxLength={1000} /></label>
+          <label>Your requirements *<textarea key={message} name="message" defaultValue={message} placeholder="Travel dates, number of travellers, anything we should know" rows={3} required minLength={10} maxLength={1000} /></label>
           <p className="demo-note">Preview form · Your details won&apos;t be sent or stored.</p>
           <button type="submit" className="button button-dark">Send request <Arrow /></button>
         </form>

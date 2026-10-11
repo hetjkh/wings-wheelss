@@ -42,10 +42,13 @@ export const office = {
   ],
 };
 
-export const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Our story", href: "/#story" },
-  { label: "Network", href: "/#network" },
+/** Pages only: the main navigation never points at sections within a page. */
+export const siteLinks = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/travel-services" },
+  { label: "Corporate", href: "/corporate-travel" },
+  { label: "Groups & MICE", href: "/groups-mice" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "Africa", href: "/africa" },
   { label: "Contact", href: "/contact" },
 ];

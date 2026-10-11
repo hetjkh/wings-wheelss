@@ -20,6 +20,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
         import("gsap"),
         import("gsap/ScrollTrigger"),
       ]);
+      await document.fonts.ready;
       if (disposed || !page) return;
       gsap.registerPlugin(ScrollTrigger);
       const media = gsap.matchMedia(page);
@@ -29,11 +30,13 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
         desktop: "(min-width: 801px)",
         compact: "(max-width: 800px)",
         tall: "(min-height: 620px)",
+        explorer: "(min-width: 992px) and (min-height: 700px)",
         reduced: "(prefers-reduced-motion: reduce)",
       }, context => {
         if (context.conditions?.reduced) return;
         const desktop = context.conditions?.desktop;
         const select = gsap.utils.selector(page);
+        const focusCleanups: Array<() => void> = [];
 
         const hero = page.querySelector<HTMLElement>(".j-hero");
         const intro = page.querySelector<HTMLElement>(".j-intro");
@@ -59,24 +62,61 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
             }, 0);
         }
 
-        const process = page.querySelector<HTMLElement>(".j-process");
-        if (intro && process) {
-          gsap.timeline({
-            scrollTrigger: {
-              id: "journey-services-cover", trigger: intro,
-              // Let taller mobile content scroll fully before holding its last view.
-              start: () => intro.offsetHeight > window.innerHeight ? "bottom bottom" : "top top",
-              endTrigger: process, end: "top top", pin: intro, pinSpacing: false,
-              scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
-            },
-          })
-            .to(select(".j-intro-cover-shade"), { opacity: .16, ease: "none" }, 0)
-            .to(select(".j-intro > .j-shell"), { y: -20, opacity: .6, ease: "none" }, 0)
-            .fromTo(process, { "--top-tear-x": "-14px", "--top-tear-scale": 1.3 }, {
-              "--top-tear-x": "14px", "--top-tear-scale": 1, ease: "none",
-            }, 0);
+        // The itinerary moves horizontally while the route is drawn by scrolling.
+        // Compact screens and reduced-motion users keep all cards in normal flow.
+        if (intro && context.conditions?.explorer) {
+          intro.classList.add("is-exploring");
+          if (intro.offsetHeight > window.innerHeight + 1) {
+            intro.classList.remove("is-exploring");
+          } else {
+            const track = intro.querySelector<HTMLElement>(".j-journey-track")!;
+            const viewport = intro.querySelector<HTMLElement>(".j-journey-window")!;
+            const cards = Array.from(intro.querySelectorAll<HTMLElement>(".j-journey-card"));
+            const path = intro.querySelector<SVGPathElement>(".j-journey-route path")!;
+            const length = path.getTotalLength();
+            const distance = () => {
+              const style = getComputedStyle(viewport);
+              return Math.max(0, track.scrollWidth - viewport.clientWidth + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight));
+            };
+            const explorer = gsap.timeline({
+              scrollTrigger: {
+                id: "journey-explorer", trigger: intro, start: "top top",
+                end: () => `+=${Math.max(distance(), window.innerHeight)}`,
+                pin: true, pinSpacing: true, scrub: .6,
+                anticipatePin: 1, invalidateOnRefresh: true,
+              },
+            });
+            explorer.to(track, { x: () => -distance(), ease: "none", duration: 1 }, 0)
+              .fromTo(path, { strokeDasharray: length, strokeDashoffset: length * .7 }, {
+                strokeDashoffset: 0, duration: 1, ease: "none",
+              }, 0)
+              .fromTo(select(".j-explorer-progress > span"), { scaleX: 0 }, {
+                scaleX: 1, duration: 1, ease: "none",
+              }, 0);
+            cards.forEach(card => {
+              const button = card.querySelector<HTMLButtonElement>(".j-journey-enquiry")!;
+              let focusFrame = 0;
+              const showFocusedCard = () => {
+                if (!button.matches(":focus-visible")) return;
+                // Let the browser finish its native focus scroll before moving
+                // the pinned track to the newly focused card.
+                cancelAnimationFrame(focusFrame);
+                focusFrame = requestAnimationFrame(() => {
+                  const progress = gsap.utils.clamp(0, 1, (card.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2) / (distance() || 1));
+                  const trigger = explorer.scrollTrigger!;
+                  window.scrollTo({ top: trigger.start + (trigger.end - trigger.start) * progress, behavior: "instant" });
+                  ScrollTrigger.update();
+                  explorer.progress(progress);
+                });
+              };
+              button.addEventListener("focus", showFocusedCard);
+              focusCleanups.push(() => { cancelAnimationFrame(focusFrame); button.removeEventListener("focus", showFocusedCard); });
+            });
+            focusCleanups.push(() => intro.classList.remove("is-exploring"));
+          }
         }
 
+        const process = page.querySelector<HTMLElement>(".j-process");
         // The story waits behind the services chapter and is uncovered as it lifts away.
         // Sections overlap by the tear height, so the story starts that much higher.
         const tear = () => parseFloat(getComputedStyle(page).getPropertyValue("--tear")) || 0;
@@ -141,14 +181,16 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           trigger.addEventListener("focusin", show);
           focusCleanups.push(() => trigger.removeEventListener("focusin", show));
         };
-        const focusCleanups: Array<() => void> = [];
-        select(".j-intro-heading, .j-story-copy, .j-team-copy, .j-faq-grid > div:first-child").forEach((block: HTMLElement) => {
+        select(".j-story-copy, .j-team-copy, .j-faq-grid > div:first-child").forEach((block: HTMLElement) => {
           reveal(Array.from(block.children).filter((child): child is HTMLElement => child instanceof HTMLElement && child.tagName !== "DIALOG"), block);
         });
-        select(".j-audience, .j-steps li, .j-values-grid li, .j-pillars li, .j-faq-list details, .j-network-content h2, .j-values h2, .j-process-content h2, .j-split-copy").forEach((item: HTMLElement) => reveal([item], item));
+        select(".j-steps li, .j-values-grid li, .j-pillars li, .j-faq-list details, .j-network-content h2, .j-values h2, .j-process-content h2, .j-split-copy").forEach((item: HTMLElement) => reveal([item], item));
+        if (!intro?.classList.contains("is-exploring")) {
+          select(".j-journey-card").forEach((item: HTMLElement) => reveal([item], item));
+        }
 
         // Overscan keeps every edge covered while photographs move independently.
-        select(".j-hero, .j-process, .j-story-photo, .j-team-photo, .j-split-photo").forEach((frame: HTMLElement) => {
+        select(".j-hero, .j-process, .j-story-photo, .j-people-photo, .j-split-photo").forEach((frame: HTMLElement) => {
           const photo = frame.querySelector(":scope > .j-photo");
           if (!photo) return;
           const hero = frame.classList.contains("j-hero");
@@ -177,10 +219,6 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
               scrollTrigger: { trigger: ".j-network", start: "top bottom", end: "bottom top", scrub: 1 },
             });
           });
-          gsap.fromTo(select(".j-flight-plane"), { x: -18, y: 5, rotation: -14 }, {
-            x: 18, y: -5, rotation: -4, ease: "none",
-            scrollTrigger: { trigger: ".j-audiences", start: "top bottom", end: "bottom 25%", scrub: 1 },
-          });
           gsap.to(select(".j-map-route"), { strokeDashoffset: -35, ease: "none",
             scrollTrigger: { trigger: ".j-network", start: "top 70%", end: "bottom 30%", scrub: 1 },
           });
@@ -189,17 +227,24 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
         // Recalculate after fonts load and accordions change the document height.
         let active = true;
         const refresh = () => { if (active) ScrollTrigger.refresh(); };
-        page.addEventListener("toggle", refresh, true);
+        const refreshAccordion = (event: Event) => {
+          if (event.target instanceof HTMLDetailsElement) refresh();
+        };
+        page.addEventListener("toggle", refreshAccordion, true);
         document.fonts.ready.then(refresh);
         return () => {
           active = false;
           focusCleanups.forEach(cleanup => cleanup());
-          page.removeEventListener("toggle", refresh, true);
+          page.removeEventListener("toggle", refreshAccordion, true);
         };
       });
     }
 
-    setup().catch(() => { revert(); });
+    setup().catch(error => {
+      console.error("Journey motion could not initialize", error);
+      page.querySelector(".j-intro")?.classList.remove("is-exploring");
+      revert();
+    });
     return () => { disposed = true; revert(); };
   }, []);
 

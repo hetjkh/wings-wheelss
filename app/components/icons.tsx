@@ -22,6 +22,11 @@ const paths = {
   search: <><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></>,
   document: <><path d="M6 3h8l4 4v14H6V3Z" /><path d="M14 3v4h4M9 12h6M9 16h6" /></>,
   briefcase: <><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18" /></>,
+  bed: <><path d="M3 5v15M3 16h18v4M21 16v-3a3 3 0 0 0-3-3h-7v6" /><circle cx="7" cy="12.5" r="2" /></>,
+  car: <><path d="M4 17v-5l2.2-5h11.6L20 12v5H4Z" /><path d="M4 12h16M6.5 20v-3M17.5 20v-3" /><circle cx="8" cy="14.5" r=".8" /><circle cx="16" cy="14.5" r=".8" /></>,
+  sun: <><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></>,
+  return: <path d="M9 14 4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3" />,
+  chat: <><path d="M4 20.5 5.4 16.6A8.5 8.5 0 1 1 8.2 19.3L4 20.5Z" /><path d="M9 10.5c.3 1.6 1.9 3.3 3.6 3.8l1.2-1.1 1.7.8" /></>,
 };
 
 export type IconKind = keyof typeof paths;

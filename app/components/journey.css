@@ -2,18 +2,18 @@
 .journey-page {
   --paper: #f7f4eb; --olive: #615c43; --brown: #4b473b; --ochre: #8e7850;
   --ink: #423f34; --text: #656052; --muted: #766f61; --gold: #b09a6f; --line: #ded7c8;
-  --heading: Georgia, 'Times New Roman', serif;
-  background: var(--paper); color: var(--text); font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.45;
+  --heading: var(--font-heading), Georgia, serif;
+  background: var(--paper); color: var(--text); font-family: var(--body); font-size: 18px; line-height: 1.6;
   overflow: clip;
 }
 .journey-page h1, .journey-page h2, .journey-page h3 { font-family: var(--heading); font-weight: 400; color: var(--ink); letter-spacing: -.035em; }
-.journey-page h2 { font-size: clamp(30px, 3.05vw, 46px); line-height: 1.04; text-transform: uppercase; }
-.journey-page h3 { font-size: 21px; line-height: 1.15; text-transform: uppercase; }
+.journey-page h2 { font-size: clamp(40px, 4.2vw, 64px); line-height: 1.08; text-transform: none; }
+.journey-page h3 { font-size: 28px; line-height: 1.15; text-transform: none; }
 .j-shell { width: min(1200px, 84%); margin-inline: auto; }
 .j-paper { background-color: var(--paper); background-image: url('/images/journey/paper.svg'); }
 .j-photo { object-fit: cover; }
 .j-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.j-button { display: inline-flex; justify-content: center; align-items: center; gap: 20px; padding: 11px 25px; min-height: 43px; border: 1px solid transparent; border-radius: 40px; font: 14px/1.25 Georgia, serif; white-space: nowrap; transition: background .2s, transform .2s, box-shadow .2s; }
+.j-button { display: inline-flex; justify-content: center; align-items: center; gap: 20px; padding: 11px 25px; min-height: 43px; border: 1px solid transparent; border-radius: 40px; font: 14px/1.25 var(--heading); white-space: nowrap; transition: background .2s, transform .2s, box-shadow .2s; }
 .j-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px #332c271a; }
 .j-button svg { width: 16px; height: 16px; }
 .j-button-cream { color: #4c493c; background: #eee4c8; border-color: #e1d8be; }
@@ -41,11 +41,12 @@
 /* A quiet masthead sits directly on the photograph. */
 .j-header { position: fixed; z-index: 40; inset: 0 0 auto; color: #fff9ec; transition: background .25s, color .25s, box-shadow .25s; }
 .j-header-inner { min-height: 88px; display: flex; align-items: center; gap: 30px; }
-.j-brand { font: 31px/1.1 Georgia, serif; letter-spacing: -.055em; white-space: nowrap; }
+.j-brand { font: 31px/1.1 var(--heading); letter-spacing: -.055em; white-space: nowrap; }
 .j-desktop-nav { display: flex; align-items: center; justify-content: center; gap: 29px; margin-left: auto; }
 .j-desktop-nav a { font-size: 14px; padding-block: 10px; position: relative; }
 .j-desktop-nav a::after { content: ''; position: absolute; left: 0; bottom: 5px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transition: transform .2s; }
-.j-desktop-nav a:hover::after { transform: scaleX(1); }
+.j-desktop-nav a:hover::after, .j-desktop-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.j-menu nav a[aria-current="page"] { color: var(--ochre, #a18d77); }
 .j-header-cta { margin-left: auto; padding: 10px 21px; min-height: 38px; font-size: 12px; color: #fff9ec; background: #615c43b3; }
 .j-header-scrolled { background: #f7f4ebf5; color: var(--brown); backdrop-filter: blur(16px); box-shadow: 0 1px 0 #72664c24; }
 .j-header-scrolled .j-header-inner { min-height: 74px; }
@@ -66,7 +67,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-hero-shade { position: absolute; inset: 0; background: linear-gradient(0deg, #141d1f8c, #141d1f2e 38%, transparent 62%), linear-gradient(90deg, #14232b40, transparent 55%), linear-gradient(180deg, #1e262733, transparent 18%); }
 .j-hero-content { position: relative; z-index: 2; padding-top: clamp(135px, 10.7vw, 170px); }
 .j-hero .j-eyebrow { margin-bottom: 19px; color: #eee7d5; }
-.journey-page .j-hero h1 { font-size: clamp(58px, 5.9vw, 90px); line-height: .95; text-transform: uppercase; letter-spacing: -.025em; color: #fff9ed; }
+.journey-page .j-hero h1 { font-size: clamp(64px, 7.8vw, 120px); line-height: 1; text-transform: none; letter-spacing: -.025em; color: #fff9ed; }
 .j-small-rule { display: block; width: 48px; height: 1px; background: #d9c797; margin: 24px 0 18px; }
 .j-hero-aside > p { font-size: 17px; line-height: 1.4; max-width: 445px; text-shadow: 0 1px 10px #17222280; }
 .j-hero-content { text-shadow: 0 2px 18px #1722224d; }
@@ -79,27 +80,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-hero-aside .j-small-rule { margin-top: 24px; }
 }
 .j-scroll-note { position: absolute; bottom: 43px; right: 8%; font-family: var(--body); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; display: flex; gap: 20px; align-items: center; }
-.j-scroll-note span { font: 23px Georgia, serif; }
-.j-intro { position: relative; padding: 82px 0 85px; }
-.j-intro-heading { display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; align-items: center; }
-.j-intro-heading h2 { font-size: clamp(28px, 2.65vw, 41px); }
-.j-intro-heading > p { max-width: 430px; font-size: 19px; line-height: 1.4; }
-.j-audiences { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 4%; position: relative; margin-top: 62px; }
-.j-audience { position: relative; }
-.j-audience:nth-of-type(2) { padding-top: 10px; }
-.j-audience:nth-of-type(4) { transform: translateY(-9px); }
-.j-audience-photo { position: relative; aspect-ratio: 1; margin-bottom: 22px; }
-.j-audience-photo img { object-fit: cover; transition: filter .35s, transform .4s; }
-.j-audience:nth-of-type(2) img { object-position: 80% center; }
-.j-audience:hover .j-audience-photo img { filter: saturate(1.08); transform: translateY(-4px); }
-.j-photo-pin { position: absolute; z-index: 1; right: -7px; top: -7px; display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; font: 8px Georgia,serif; color: #f6efdc; background: #66583d; box-shadow: 1px 2px 4px #0002; }
-.j-audience h3 { font-size: clamp(19px, 1.8vw, 26px); margin-bottom: 10px; }
-.j-audience p { font-size: 17px; line-height: 1.45; max-width: 250px; padding-right: 12px; }
-.j-card-link { position: absolute; inset: 0; z-index: 2; }
-.j-card-link > svg { position: absolute; right: 0; bottom: 8px; opacity: 0; transition: opacity .2s; }
-.j-card-link:hover > svg, .j-card-link:focus-visible > svg { opacity: 1; }
-.j-flight-line { position: absolute; pointer-events: none; top: -30px; left: -12%; width: 124%; height: 160px; fill: none; stroke: #a89574; stroke-width: 1.3px; stroke-dasharray: 2 4; }
-.j-flight-plane { position: absolute; top: -24px; left: 50%; color: #85704a; transform: rotate(-9deg); }
+.j-scroll-note span { font: 23px var(--heading); }
 /* Five connected moments on safari */
 .j-process { position: relative; color: #fcf6e6; padding: 90px 0 64px; }
 .j-process > .j-photo { object-position: center 54%; }
@@ -115,16 +96,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-service-list { display: flex; justify-content: center; gap: 0; margin-top: clamp(44px, 6svh, 64px); }
 .j-service-list li { padding: 0 28px; font-size: 17px; line-height: 1; letter-spacing: .02em; }
 .j-service-list li + li { border-left: 1px solid #ded3b999; }
-/* The story is an open magazine spread. */
-.j-story { display: grid; grid-template-columns: 1fr 1fr; position: relative; padding: 32px 0 42px; }
-.j-story-photo { position: relative; min-height: 430px; }
-.j-story-copy { align-self: center; padding: 27px max(35px, calc((100vw - 1200px) / 2)) 15px clamp(45px, 5vw, 80px); }
-.j-story-copy .j-eyebrow { margin-bottom: 20px; color: #8c7b59; font-size: 13px; }
-.journey-page .j-story-copy h2 { font-size: clamp(36px, 3.8vw, 58px); }
-.j-story-copy > p { font-size: clamp(18px, 1.45vw, 21px); line-height: 1.65; margin-top: 30px; max-width: 580px; }
-.j-story-words { display: flex; justify-content: space-between; gap: 14px; margin-top: 48px; max-width: 580px; padding-top: 26px; border-top: 1px solid #d6cbb3; }
-.j-story-words li { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: #817359; }
-.j-story-words li + li { border-left: 1px solid #bdb29c; padding-left: 18px; }
+/* Story layout is defined with the editorial sections below. */
 /* Watercolour-like landscape and a real geographic outline. */
 .j-network { position: relative; isolation: isolate; padding: 24px 0 72px; }
 .j-network-content { position: relative; z-index: 2; text-align: center; }
@@ -147,7 +119,7 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-network-dubai img { object-position: 72% center; }
 .j-map { display: block; width: min(600px, 56%); height: auto; margin: 52px auto 0; overflow: visible; }
 .j-map circle { fill: #766343; stroke: var(--paper); stroke-width: 1.5; }
-.j-map text { fill: #514c3e; font: 15px Georgia,serif; paint-order: stroke; stroke: #f7f4ebaa; stroke-width: 4px; stroke-linejoin: round; }
+.j-map text { fill: #514c3e; font: 15px var(--heading); paint-order: stroke; stroke: #f7f4ebaa; stroke-width: 4px; stroke-linejoin: round; }
 .j-map .j-map-route { stroke: #a48d65; stroke-width: 1.1; stroke-dasharray: 3 4; fill: none; }
 .j-map .j-map-hub { fill: none; stroke: #a48d65; stroke-width: .7; }
 .j-pillars { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 64px; padding-top: 36px; border-top: 1px solid #ddd4c1; }
@@ -256,12 +228,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-desktop-nav { gap: 18px; }
   .j-desktop-nav a { font-size: 12px; }
   .j-header-cta { padding: 9px 15px; gap: 9px; }
-  .j-intro-heading { gap: 45px; }
-  .j-intro-heading > p { font-size: 17px; }
-  .j-story-copy { padding: 25px 6vw 20px 30px; }
-  .j-story-copy > p { font-size: 17px; }
-  .j-story-words { flex-wrap: wrap; justify-content: flex-start; row-gap: 13px; }
-  .j-story-words li { font-size: 12px; }
   .j-pillars li { padding-inline: 20px; gap: 16px; }
   .j-pillars h3 { font-size: 18px; }
   .j-values-grid li { padding-inline: 22px; }
@@ -280,15 +246,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-hero { height: 590px; min-height: 590px; }
   .j-hero-content { padding-top: 145px; }
   .j-hero-aside > p { font-size: 16px; }
-  .j-intro { padding: 56px 0 64px; }
-  .j-audiences { column-gap: 3%; }
-  .j-audience h3 { font-size: 18px; }
-  .j-audience p { font-size: 15px; }
-  .j-story-photo { min-height: 390px; }
-  .j-story-copy { padding-left: 25px; }
-  .j-story-copy > p { font-size: 16px; margin-top: 22px; }
-  .j-story-words { margin-top: 32px; padding-top: 20px; }
-  .j-story-words li { font-size: 11px; }
   .j-network-landscape { height: 290px; }
   .j-map { width: 74%; margin-top: 40px; }
   .j-values-grid p { font-size: 14px; }
@@ -312,20 +269,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-desktop-break { display: none; }
   .j-hero-aside > .j-button { margin-top: 27px; }
   .j-scroll-note { bottom: 43px; right: 25px; font-size: 8px; }
-  .j-intro { padding-top: 48px; }
-  .j-intro-heading { grid-template-columns: 1fr; gap: 22px; }
-  .j-intro-heading h2 { font-size: clamp(27px, 7vw, 37px); }
-  .j-intro-heading > p { font-size: 17px; }
-  .j-audiences { grid-template-columns: 1fr 1fr; column-gap: 28px; row-gap: 33px; margin-top: 37px; }
-  .j-audience:nth-of-type(2) { padding-top: 0; }
-  .j-audience:nth-of-type(4) { transform: none; }
-  .j-audience h3 { font-size: 20px; }
-  .j-audience p { font-size: 15px; padding-right: 0; }
-  .j-flight-line { top: -10px; height: 130px; }
-  .j-flight-plane { left: 44%; top: 110px; }
-  .j-flight-plane svg { width: 25px; }
-  .j-audience-photo { margin-bottom: 12px; }
-  .j-card-link > svg { display: none; }
   .j-process { padding: 68px 0 53px; }
   .journey-page .j-process h2 { font-size: 35px; }
   .j-process-intro { font-size: 18px; margin-top: 16px; }
@@ -341,14 +284,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-steps li:not(:last-child)::after { height: 24px; }
   .j-service-list { flex-wrap: wrap; gap: 16px 0; margin-top: 40px; }
   .j-service-list li { padding-inline: 14px; font-size: 15px; }
-  .j-story { grid-template-columns: 1fr; padding-top: 13px; padding-bottom: 0; }
-  .j-story-photo { min-height: 290px; }
-  .j-story-copy { padding: 38px 24px 40px; }
-  .journey-page .j-story-copy h2 { font-size: 36px; }
-  .j-story-copy > p { font-size: 17px; margin-top: 22px; }
-  .j-story-words { margin-top: 32px; padding-top: 20px; justify-content: space-between; gap: 8px; }
-  .j-story-words li { font-size: 10px; letter-spacing: .08em; }
-  .j-story-words li + li { padding-left: 9px; }
   .j-network { padding: 47px 0 37px; }
   .j-network h2 { font-size: 27px; }
   .j-network-content > p { font-size: 16px; }
@@ -423,12 +358,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-intro, .j-process, .j-values, .j-faq {
   display: flex; flex-direction: column; justify-content: center;
 }
-.j-intro { z-index: 5; justify-content: flex-start; padding-block: calc(var(--tear) + clamp(48px, 8svh, 88px)) clamp(64px, 9svh, 110px); }
-.j-intro > .j-shell { position: relative; z-index: 1; }
-.j-intro-cover-shade {
-  position: absolute; inset: 0; z-index: 2;
-  background: #35372b; opacity: 0; pointer-events: none;
-}
 .j-process { z-index: 6; background-color: #35372b; }
 .j-values { z-index: 5; }
 .j-values::after {
@@ -436,23 +365,77 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   background: #35372b; opacity: var(--values-shade, 0); pointer-events: none;
 }
 .j-split { z-index: 6; }
-.j-intro-heading { align-items: center; }
-.j-intro .j-audiences { margin-top: clamp(64px, 10svh, 110px); }
 .j-network { display: flex; flex-direction: column; justify-content: space-between; }
 .j-network .j-network-landscape { bottom: 215px; }
-.j-story { align-items: center; align-content: end; z-index: 0; }
-.j-story-photo { height: min(68svh, 650px); }
 .j-faq { justify-content: flex-start; padding-top: 48px; padding-bottom: max(185px, 22svh); }
 @media (max-width: 800px) {
-  .j-intro { padding-block: calc(var(--tear) + 48px) 72px; }
   .j-network .j-network-landscape { bottom: 215px; }
 }
 @media (max-width: 600px) {
   .journey-page .j-hero { padding: 110px 0 90px; }
-  .j-intro { padding-block: calc(var(--tear) + 40px) 60px; }
-  .j-intro .j-audiences { margin-top: 40px; }
-  .j-story { align-content: center; }
-  .j-story-photo { height: 290px; }
   .j-network .j-network-landscape { bottom: 320px; }
   .j-faq { padding-top: 40px; padding-bottom: 175px; }
+}
+
+/* Editorial travel index and story spread. */
+.j-story { position: relative; z-index: 0; display: flex; align-items: center; padding: calc(var(--tear) + 54px) 0 54px; }
+.j-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 6vw, 90px); align-items: center; margin: 52px 0 48px; }
+.j-story-art { position: relative; padding: 0 65px 96px 0; }
+.j-story-photo { position: relative; height: clamp(350px, 32vw, 455px); overflow: hidden; }
+.j-story-photo img { object-position: 43% center; }
+.j-story-postcard { position: absolute; width: 62%; bottom: 0; right: 0; padding: 9px 9px 0; background: #f7f4eb; box-shadow: 0 12px 30px #423f3417; transform: rotate(-5deg); }
+.j-story-postcard > div { position: relative; aspect-ratio: 1.65; overflow: hidden; }
+.j-story-postcard img { object-fit: cover; object-position: 42% 60%; }
+.j-story-postcard figcaption { display: flex; align-items: center; justify-content: space-between; padding: 14px 4px; font-size: 13px; font-style: italic; color: #64583f; }
+.j-story-postcard figcaption svg { width: 15px; height: 15px; }
+.j-story-stamp { position: absolute; top: 27px; right: 9px; width: 111px; height: 111px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border-radius: 50%; border: 1px solid #8a7b5b; outline: 5px solid var(--paper); background: var(--paper); color: #776646; transform: rotate(13deg); }
+.j-story-stamp span { font: 8px/1 var(--body); text-transform: uppercase; letter-spacing: .1em; }
+.j-story-stamp svg { transform: rotate(-20deg); }
+.j-story-margin-note { position: absolute; bottom: 34px; left: 0; max-width: 115px; font: 9px/1.8 var(--body); text-transform: uppercase; letter-spacing: .12em; color: #81745c; }
+.j-story-copy .j-eyebrow { color: #77684f; font-size: 9px; margin-bottom: 22px; }
+.journey-page .j-story-copy h2 { font-size: clamp(48px, 5.1vw, 76px); line-height: 1.02; text-transform: none; letter-spacing: -.055em; }
+.j-story-copy > p { font: 13px/1.85 var(--body); max-width: 440px; margin-top: 18px; }
+.j-story-copy > .j-story-lead { font: 23px/1.4 var(--heading); letter-spacing: -.02em; color: #534d3e; margin: 25px 0 23px; }
+.j-story-link { display: inline-flex; align-items: center; gap: 24px; margin-top: 27px; font: 11px/1.5 var(--body); color: #534d3e; }
+.j-story-link > span { display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid #b4a88e; border-radius: 50%; transition: background .2s, color .2s; }
+.j-story-link svg { width: 16px; }
+.j-story-link:hover > span { background: #57573f; color: #fff9ec; }
+.j-story-bottom { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-top: 25px; border-top: 1px solid #b8ad9566; color: #81745c; }
+.j-story-bottom > span { font: 9px/1.5 var(--body); text-transform: uppercase; letter-spacing: .13em; }
+.j-story-words { display: flex; flex-wrap: wrap; gap: 25px; }
+.j-story-words li { display: flex; align-items: center; gap: 25px; font-size: 18px; font-style: italic; color: #655b47; }
+.j-story-words li + li::before { content: ''; width: 3px; height: 3px; background: #a3916c; border-radius: 50%; }
+@media (max-width: 1100px) {
+  .j-story-art { padding-right: 40px; }
+  .j-story-stamp { right: -9px; }
+  .j-story-grid { gap: 44px; }
+  .j-story-bottom { gap: 20px; }
+  .j-story-words, .j-story-words li { gap: 16px; }
+  .j-story-words li { font-size: 16px; }
+}
+@media (max-width: 700px) {
+  .j-section-label { font-size: 8px; gap: 16px; }
+  .j-section-label > span:last-child { max-width: 140px; text-align: right; letter-spacing: .08em; }
+  .j-story { padding: calc(var(--tear) + 38px) 0 45px; }
+  .j-story-grid { grid-template-columns: 1fr; gap: 48px; margin: 32px 0 35px; }
+  .j-story-art { max-width: 500px; width: 100%; margin-inline: auto; padding: 0 48px 82px 0; }
+  .j-story-photo { height: clamp(310px, 80vw, 430px); }
+  .j-story-stamp { width: 100px; height: 100px; top: 20px; right: 0; }
+  .j-story-stamp span { font-size: 7px; }
+  .j-story-postcard { width: 62%; }
+  .j-story-postcard figcaption { font-size: 11px; padding-block: 12px; }
+  .j-story-margin-note { font-size: 8px; max-width: 100px; bottom: 18px; }
+  .j-story-copy .j-eyebrow { margin-bottom: 17px; }
+  .journey-page .j-story-copy h2 { font-size: clamp(48px, 11vw, 66px); }
+  .j-story-copy > .j-story-lead { font-size: 22px; }
+  .j-story-copy > p { max-width: none; font-size: 13px; }
+  .j-story-bottom { flex-wrap: wrap; row-gap: 16px; }
+  .j-story-bottom > span { width: 100%; }
+  .j-story-bottom > svg { display: none; }
+  .j-story-words, .j-story-words li { gap: 13px; }
+  .j-story-words li { font-size: 15px; }
+}
+@media (max-width: 370px) {
+  .j-story-words, .j-story-words li { gap: 9px; }
+  .j-story-words li { font-size: 13px; }
 }

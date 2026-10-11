@@ -2,12 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { countries } from "./countries";
 import { office } from "./data";
-import { Footer } from "./footer";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
-import { SiteChrome } from "./site-controls";
+import { EnquiryButton } from "./site-controls";
+import { JourneyHeader } from "./journey-header";
+import { JourneyFooter } from "./journey-footer";
+import { ChapterMotion } from "./chapter-motion";
+import "./journey.css";
+import "./journey-explorer.css";
+import "./services.css";
+import "./contact.css";
 
 const services: { label: string; icon: IconKind }[] = [
   { label: "Flight booking", icon: "plane" },
@@ -19,124 +24,190 @@ const services: { label: string; icon: IconKind }[] = [
   { label: "Something else", icon: "compass" },
 ];
 
-function dubaiOpenNow() {
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const open = { from: 9, to: 19 };
+const axis = { from: 6, to: 22 };
+
+/** Dubai is UTC+4 all year, so the office clock never needs daylight-saving rules. */
+function dubaiNow() {
   const now = new Date(Date.now() + 4 * 3600 * 1000);
-  const day = now.getUTCDay();
+  const day = (now.getUTCDay() + 6) % 7;
   const hour = now.getUTCHours() + now.getUTCMinutes() / 60;
-  return day !== 0 && hour >= 9 && hour < 19;
+  const time = `${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")}`;
+  return { day, hour, time, isOpen: day !== 6 && hour >= open.from && hour < open.to };
+}
+
+function useDubaiClock() {
+  const [clock, setClock] = useState<ReturnType<typeof dubaiNow> | null>(null);
+  useEffect(() => {
+    const update = () => setClock(dubaiNow());
+    const first = setTimeout(update, 0);
+    const timer = setInterval(update, 30000);
+    return () => { clearTimeout(first); clearInterval(timer); };
+  }, []);
+  return clock;
 }
 
 export function ContactPage() {
+  const clock = useDubaiClock();
   const [service, setService] = useState("");
   const [sent, setSent] = useState(false);
   const [message, setMessage] = useState("");
-  const [open, setOpen] = useState<boolean | null>(null);
+  const status = clock === null ? "Mon – Sat, 9 AM – 7 PM" : clock.isOpen ? "Our office is open now" : "Closed now · we'll reply on the next working day";
 
-  useEffect(() => {
-    const update = () => setOpen(dubaiOpenNow());
-    const first = setTimeout(update, 0);
-    const timer = setInterval(update, 60000);
-    return () => { clearTimeout(first); clearInterval(timer); };
-  }, []);
-
-  const quick = [
-    { icon: "support" as const, title: "Call us", lines: office.phones.map(p => <a key={p.href} href={p.href}>{p.label}</a>) },
-    { icon: "document" as const, title: "Email us", lines: [<a key="e" href={`mailto:${office.email}`}>{office.email}</a>] },
-    { icon: "pin" as const, title: "Visit our office", lines: [<a key="a" href={office.map} target="_blank" rel="noreferrer">{office.address.join(", ")}</a>] },
-    { icon: "calendar" as const, title: "Office hours", lines: [<span key="h">Monday – Saturday, 9:00 AM – 7:00 PM</span>, <span key="s">Sunday: Closed</span>] },
-  ];
-
-  return <SiteChrome>
+  return <ChapterMotion className="contact-page">
     <a className="skip-link" href="#form">Skip to the form</a>
+    <div className="s-progress" aria-hidden="true"><span /></div>
+    <JourneyHeader introId="reach" />
     <main>
-      <section className="page-banner" id="top" aria-labelledby="contact-heading">
-        <Image src="/images/dubai-terrace.png" alt="" fill preload sizes="100vw" className="hero-image" />
-        <div className="hero-shade" />
-        <div className="shell page-banner-inner">
-          <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Contact us</span></nav>
-          <h1 id="contact-heading">Contact us</h1>
-          <p>Questions, quotes or bookings: our travel consultants in Dubai are here to help.</p>
+      <section className="j-hero s-hero c-hero" id="top" aria-labelledby="contact-heading">
+        <Image className="j-photo j-hero-photo" src="/images/dubai-terrace.png" alt="" fill preload sizes="100vw" />
+        <div className="j-hero-shade" />
+        <div className="j-hero-cover-shade" aria-hidden="true" />
+        <div className="j-shell j-hero-content">
+          <div className="j-hero-title">
+            <span className="j-eyebrow" data-hero>Contact us</span>
+            <h1 id="contact-heading"><span className="s-line"><span data-hero>Talk to</span></span><span className="s-line"><span data-hero>our team.</span></span><span className="s-hero-accent" data-hero>We&apos;re here to help.</span></h1>
+          </div>
+          <div className="j-hero-aside">
+            <span className="j-small-rule" data-hero />
+            <p data-hero>Questions, quotes or bookings: our travel consultants in Dubai are here to help.</p>
+            <div className={clock?.isOpen ? "c-clock is-open" : "c-clock"} data-hero>
+              <span className="c-clock-label">Dubai, local time</span>
+              <strong suppressHydrationWarning>{clock?.time ?? "--:--"}</strong>
+              <span className="c-clock-status"><i />{status}</span>
+            </div>
+          </div>
+        </div>
+        <a href="#reach" className="j-scroll-note">Four ways to reach us <span>↓</span></a>
+      </section>
+
+      <section className="c-reach j-torn-top" id="reach" aria-labelledby="reach-heading">
+        <div className="j-shell">
+          <div className="j-section-label s-draw"><span>01 / Four ways to reach us</span><span>Pick whichever suits you</span></div>
+          <h2 id="reach-heading" className="s-title c-reach-title">Call, write,<br />message or visit.</h2>
+          <ul className="c-lines" data-stagger="0.1">
+            <li className="c-line">
+              <span className="c-line-kind"><TravelIcon kind="support" size={20} />Call us</span>
+              <span className="c-line-values">{office.phones.map(phone => <a key={phone.href} href={phone.href}>{phone.label}</a>)}</span>
+              <span className="c-line-note">Mon – Sat, 9 AM – 7 PM</span>
+            </li>
+            <li className="c-line">
+              <span className="c-line-kind"><TravelIcon kind="chat" size={20} />WhatsApp</span>
+              <span className="c-line-values"><a href={office.whatsapp} target="_blank" rel="noreferrer">Chat on WhatsApp <Arrow /></a></span>
+              <span className="c-line-note">Quick questions and instant replies</span>
+            </li>
+            <li className="c-line">
+              <span className="c-line-kind"><TravelIcon kind="document" size={20} />Email us</span>
+              <span className="c-line-values"><a href={`mailto:${office.email}`}>{office.email}</a></span>
+              <span className="c-line-note">For quotes, bookings and documents</span>
+            </li>
+            <li className="c-line">
+              <span className="c-line-kind"><TravelIcon kind="pin" size={20} />Visit us</span>
+              <span className="c-line-values"><a href={office.map} target="_blank" rel="noreferrer">Port Saeed, Deira <Arrow /></a></span>
+              <span className="c-line-note">{office.address[0]}</span>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section className="shell contact-quick" aria-label="Contact details">
-        {quick.map(q => <div key={q.title} className="quick-card" data-reveal>
-          <span className="quick-icon"><TravelIcon kind={q.icon} size={22} /></span>
-          <h2>{q.title}</h2>
-          {q.lines}
-        </div>)}
-      </section>
-
-      <section className="section contact-main" id="form" aria-labelledby="form-heading">
-        <div className="shell contact-grid">
-          <aside className="contact-info" data-reveal>
-            <span className="eyebrow">Get in touch</span>
-            <h2 id="form-heading">Send us your travel request</h2>
-            <p>Need flight options, visa help or a full holiday plan? Fill in the form and a consultant will reply with options and a quote.</p>
-            <div className={open === null ? "office-status" : open ? "office-status is-open" : "office-status is-closed"}><i />{open === null ? "Office hours: Mon – Sat, 9 AM – 7 PM" : open ? "Our office is open now" : "Our office is closed now. We'll reply on the next working day."}</div>
-            <a className="whatsapp-card" href={office.whatsapp} target="_blank" rel="noreferrer">
-              <span><TravelIcon kind="support" size={20} /></span>
-              <span><b>Chat on WhatsApp</b><small>Quick questions and instant replies</small></span>
-              <Arrow />
-            </a>
-            <div className="contact-company">
+      <section className="c-form j-torn-top" id="form" aria-labelledby="form-heading">
+        <div className="j-shell c-form-grid">
+          <aside className="c-form-aside">
+            <span className="j-eyebrow s-eyebrow">02 / Get in touch</span>
+            <h2 id="form-heading" className="s-title">Send us your<br />travel request.</h2>
+            <p className="s-lead-body c-body">Need flight options, visa help or a full holiday plan? Fill in the form and a consultant will reply with options and a quote.</p>
+            <ol className="c-next" data-stagger>
+              <li><span>01</span>You send the request</li>
+              <li><span>02</span>A consultant reviews it</li>
+              <li><span>03</span>We reply with options and a quote</li>
+            </ol>
+            <div className="c-company">
               <strong>{office.company}</strong>
-              {office.address.map(l => <span key={l}>{l}</span>)}
+              {office.address.map(line => <span key={line}>{line}</span>)}
             </div>
-            <div className="contact-social"><span>Follow us</span>{office.socials.map(s => <a key={s.label} href={s.href} target="_blank" rel="noreferrer">{s.label}</a>)}</div>
+            <div className="c-social"><span>Follow us</span>{office.socials.map(social => <a key={social.label} href={social.href} target="_blank" rel="noreferrer">{social.label}</a>)}</div>
           </aside>
 
-          <div className="contact-form" data-reveal>
-            {sent ? <div className="enquiry-success">
+          <div className="c-sheet" data-enter>
+            <div className="c-sheet-head"><span>Travel request</span><span>Wings &amp; Wheels · Dubai</span></div>
+            {sent ? <div className="c-done" role="status">
               <TravelIcon kind="check" size={34} />
-              <span className="eyebrow">Request received</span>
               <h3>Thank you for contacting us</h3>
               <p>This form is a preview, so your details haven&apos;t been sent or saved yet. For now, please call, email or WhatsApp our team directly.</p>
-              <button type="button" className="button button-dark" onClick={() => { setSent(false); setMessage(""); setService(""); }}>Send another request <Arrow /></button>
+              <button type="button" className="j-button j-button-olive" onClick={() => { setSent(false); setMessage(""); setService(""); }}>Send another request <Arrow /></button>
             </div> : <form onSubmit={event => { event.preventDefault(); setSent(true); }}>
-              <p className="form-required">Fields marked * are required</p>
-
+              <p className="c-required">Fields marked * are required</p>
               <fieldset>
-                <legend><i>1</i>Your details</legend>
-                <div className="form-row">
+                <legend><span>01</span>Your details</legend>
+                <div className="c-fields">
                   <label>Full name *<input name="name" autoComplete="name" placeholder="As on your passport" required minLength={2} maxLength={100} /></label>
                   <label>Email address *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
-                </div>
-                <div className="form-row">
                   <label>Phone number *<input name="phone" type="tel" autoComplete="tel" placeholder="+971 50 000 0000" required pattern="\+?[0-9 ()\-]{7,24}" title="7–20 digits, with your country code" /></label>
-                  <label><span>WhatsApp number <small>(optional)</small></span><input name="whatsapp" type="tel" placeholder="+971 50 000 0000" pattern="\+?[0-9 ()\-]{7,24}" title="7–20 digits, with your country code" /></label>
+                  <label>WhatsApp number (optional)<input name="whatsapp" type="tel" placeholder="+971 50 000 0000" pattern="\+?[0-9 ()\-]{7,24}" title="7–20 digits, with your country code" /></label>
+                  <label className="c-wide">Nationality *<select name="nationality" required defaultValue=""><option value="" disabled>Select your nationality</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
                 </div>
-                <label>Nationality *<select name="nationality" required defaultValue=""><option value="" disabled>Select your nationality</option>{countries.map(c => <option key={c}>{c}</option>)}</select></label>
               </fieldset>
-
               <fieldset>
-                <legend><i>2</i>Service required</legend>
-                <div className="service-pills" role="radiogroup" aria-label="What service do you need? *">
-                  {services.map(s => <label key={s.label} className={service === s.label ? "is-active" : undefined}>
-                    <input type="radio" name="service" value={s.label} checked={service === s.label} onChange={() => setService(s.label)} required />
-                    <TravelIcon kind={s.icon} size={16} />{s.label}
+                <legend><span>02</span>Service required *</legend>
+                <div className="c-services" role="radiogroup" aria-label="What service do you need?">
+                  {services.map(item => <label key={item.label} className={service === item.label ? "c-service is-active" : "c-service"}>
+                    <input type="radio" name="service" value={item.label} checked={service === item.label} onChange={() => setService(item.label)} required />
+                    <TravelIcon kind={item.icon} size={20} /><span>{item.label}</span>
                   </label>)}
                 </div>
-                <label>Destination country<select name="destination" defaultValue=""><option value="">Select a country</option>{countries.map(c => <option key={c}>{c}</option>)}</select></label>
+                <div className="c-fields">
+                  <label className="c-wide">Destination country<select name="destination" defaultValue=""><option value="">Select a country</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
+                </div>
               </fieldset>
-
               <fieldset>
-                <legend><i>3</i>Your message</legend>
-                <label>Tell us about your requirements *
-                  <textarea name="message" rows={4} placeholder="Travel dates, number of travellers, budget, anything we should know" required minLength={10} maxLength={1000} value={message} onChange={e => setMessage(e.target.value)} />
-                  <span className="char-count">{message.length}/1000 characters</span>
+                <legend><span>03</span>Your message</legend>
+                <label className="c-message">Tell us about your requirements *
+                  <textarea name="message" rows={4} placeholder="Travel dates, number of travellers, budget, anything we should know" required minLength={10} maxLength={1000} value={message} onChange={event => setMessage(event.target.value)} />
+                  <span className="c-count">{message.length}/1000 characters</span>
                 </label>
               </fieldset>
-
-              <div className="form-submit">
-                <p className="demo-note">Preview form · Your details won&apos;t be sent or stored.</p>
-                <button type="submit" className="button button-gold">Send request <Arrow /></button>
+              <div className="c-submit">
+                <p>Preview form · Your details won&apos;t be sent or stored.</p>
+                <button type="submit" className="j-button j-button-olive">Send request <Arrow /></button>
               </div>
             </form>}
           </div>
         </div>
       </section>
+
+      <section className="c-hours j-torn-top" id="hours" aria-labelledby="hours-heading">
+        <div className="j-shell">
+          <div className="s-split-head c-hours-head">
+            <div><span className="j-eyebrow s-eyebrow">03 / Office hours</span><h2 id="hours-heading" className="s-title">When you&apos;ll<br />find us in.</h2></div>
+            <div className="c-visit">
+              <span>Our office</span>
+              <strong>{office.address[0]}</strong>
+              <p>{office.address[1]}</p>
+              <a className="j-button j-button-cream" href={office.map} target="_blank" rel="noreferrer">Open in Google Maps <Arrow /></a>
+            </div>
+          </div>
+          <figure className="c-week" aria-label="Open Monday to Saturday, 9 AM to 7 PM. Closed on Sunday.">
+            <div className="c-week-axis" aria-hidden="true">{[6, 9, 12, 15, 19, 22].map(hour => <span key={hour} style={{ "--at": (hour - axis.from) / (axis.to - axis.from) } as React.CSSProperties}>{String(hour).padStart(2, "0")}:00</span>)}</div>
+            <ol>{days.map((day, i) => {
+              const today = clock?.day === i;
+              const closed = i === 6;
+              return <li key={day} className={`${today ? "is-today" : ""}${closed ? " is-closed" : ""}`.trim() || undefined} aria-hidden="true">
+                <span className="c-day">{day}{today && <small>Today</small>}</span>
+                <span className="c-track">
+                  {closed ? <span className="c-closed">Closed</span> : <span className="c-open" style={{ "--from": (open.from - axis.from) / (axis.to - axis.from), "--to": (open.to - axis.from) / (axis.to - axis.from) } as React.CSSProperties}><span>9:00 AM – 7:00 PM</span></span>}
+                  {today && clock && clock.hour >= axis.from && clock.hour <= axis.to && <span className="c-now" style={{ "--at": (clock.hour - axis.from) / (axis.to - axis.from) } as React.CSSProperties}><b>Now · {clock.time}</b></span>}
+                </span>
+              </li>;
+            })}</ol>
+          </figure>
+          <div className="c-hours-foot">
+            <p>Outside office hours? Send a request any time and we&apos;ll reply on the next working day.</p>
+            <EnquiryButton className="j-button j-button-outline-light">Request a quote</EnquiryButton>
+          </div>
+        </div>
+      </section>
     </main>
-    <Footer />
-  </SiteChrome>;
+    <JourneyFooter />
+  </ChapterMotion>;
 }

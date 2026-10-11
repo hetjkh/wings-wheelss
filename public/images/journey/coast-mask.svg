@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs><filter id="coast"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="12" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+  <path fill="white" filter="url(#coast)" d="M30 267 67 221 120 194 148 125 205 100 240 54 298 78 346 54 377 104 414 91 458 149 506 163 530 202 589 205 630 232 693 229 771 261 747 292 700 306 676 358 612 371 579 419 516 441 482 408 445 449 388 415 332 435 292 391 243 371 207 319 158 326 117 301 61 301Z"/>
+</svg>

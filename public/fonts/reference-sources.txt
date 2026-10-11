@@ -1,0 +1,3 @@
+Typography reference: https://www.flyward.com/about
+Source stylesheet: https://cdn.prod.website-files.com/697797a5e8e563920247d163/css/flyward-new-site.shared.6b8f5d9f4.min.css
+Apris Regular / Medium; Founders Grotesk Text Light / Regular.
