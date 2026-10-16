@@ -16,7 +16,7 @@ export function HomePayLater() {
     <section className="e-pay-later" id="pay-later" aria-labelledby="pay-later-title">
       <div className="e-shell">
         <div className="e-section-bar">
-          <span className="e-label"><span>06</span><span>A little more freedom to fly</span></span>
+          <span className="e-label"><span>07</span><span>A little more freedom to fly</span></span>
           <span className="n-kicker">Your journey. Your pace.</span>
         </div>
         <div className="e-pay-heading">

@@ -4,6 +4,7 @@ import { Arrow, TravelIcon } from "./icons";
 import { office } from "./data";
 import { HomeStories } from "./home-stories";
 import { HomeClientele } from "./home-clientele";
+import { HomeTestimonials } from "./home-testimonials";
 import { HomePayLater } from "./home-pay-later";
 import { HomeReminders } from "./home-reminders";
 import { HomeFaq } from "./home-faq";
@@ -87,5 +88,5 @@ function ContactChapter() {
 }
 
 export function HomeEditorial() {
-  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><PeopleChapter /><PartnershipChapter /><HomeClientele /><HomePayLater /><HomeReminders /><HomeFaq /><ContactChapter /></>;
+  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><PeopleChapter /><PartnershipChapter /><HomeClientele /><HomeTestimonials /><HomePayLater /><HomeReminders /><HomeFaq /><ContactChapter /></>;
 }

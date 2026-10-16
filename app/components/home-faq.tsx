@@ -16,7 +16,7 @@ export function HomeFaq() {
     <section className="e-faq" id="faqs" aria-labelledby="home-faq-title">
       <div className="e-shell e-faq-grid">
         <div className="e-faq-intro">
-          <span className="e-label"><span>08</span><span>Good to know</span></span>
+          <span className="e-label"><span>09</span><span>Good to know</span></span>
           <h2 id="home-faq-title" data-editorial-title>
             <span className="e-line"><span>FAQs</span></span>
           </h2>

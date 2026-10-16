@@ -57,7 +57,7 @@ export function HomeReminders() {
         </div>
 
         <div className="e-reminders-copy">
-          <span className="e-label"><span>07</span><span>Before you leave</span></span>
+          <span className="e-label"><span>08</span><span>Before you leave</span></span>
           <h2 id="reminders-title">
             Things to remember<br />
             <span>before your travel.</span>
