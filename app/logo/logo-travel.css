@@ -1,0 +1,235 @@
+/* Travel layouts. Sizes are in em so the stage and the cards scale together. */
+.lb-plane, .lb-car { display: block; fill: var(--lac); }
+.lb-art svg { overflow: visible; }
+.lb-art svg text { font: 400 9px/1 var(--font-body), sans-serif; letter-spacing: .1em; fill: currentColor; text-anchor: middle; }
+.lb-thin { fill: none; stroke: currentColor; stroke-width: .8; opacity: .4; }
+
+/* Flight path */
+.lb-fp { position: relative; display: inline-flex; align-items: flex-end; gap: 1em; padding-top: .75em; font-size: .78em; }
+.lb-fp > svg:not(.lb-plane) { position: absolute; left: .3em; right: .3em; top: .05em; width: calc(100% - .6em); fill: none; stroke: var(--lac); stroke-width: 1.6; stroke-dasharray: 5 6; stroke-linecap: round; }
+.lb-fp-plane { position: absolute; left: 50%; top: -.1em; width: .36em; translate: -50% 0; rotate: 90deg; }
+.lb-fp .lb-amp { margin-bottom: .1em; font-size: .5em; }
+
+/* Boarding pass */
+.lb-pass { display: inline-flex; border: .02em solid currentColor; border-radius: .1em; font-size: .8em; }
+.lb-pass-main { display: grid; justify-items: start; gap: .1em; padding: .18em .3em .2em; }
+.lb-pass-main .lb-row { font-size: .9em; }
+.lb-pass-route { display: inline-flex; align-items: center; gap: .1em; }
+.lb-pass-route b, .lb-pass-stub b { font: 500 .13em/1 var(--font-body), sans-serif; letter-spacing: .2em; }
+.lb-pass-route .lb-plane { width: .16em; rotate: 90deg; }
+.lb-pass-stub { position: relative; display: grid; align-content: center; justify-items: center; gap: .1em; padding: 0 .2em; border-left: .02em dashed currentColor; }
+.lb-pass-stub b { font-size: .22em; }
+.lb-pass-stub i { width: .5em; height: .2em; background: repeating-linear-gradient(90deg, currentColor 0 .02em, transparent .02em .035em, currentColor .035em .045em, transparent .045em .07em); opacity: .7; }
+.lb-pass-stub::before, .lb-pass-stub::after { content: ''; position: absolute; left: -.07em; width: .12em; height: .12em; border-radius: 50%; background: var(--lbg); transition: background .4s; }
+.lb-pass-stub::before { top: -.07em; }
+.lb-pass-stub::after { bottom: -.07em; }
+
+/* Passport stamp */
+.lb-stamp { display: grid; justify-items: center; gap: .1em; padding: .14em .3em; border: .03em solid var(--lac); border-radius: .06em; outline: .012em solid var(--lac); outline-offset: -.08em; color: var(--lac); rotate: -9deg; font-size: .78em; }
+.lb-stamp .lb-amp { color: inherit; }
+
+/* Compass */
+.lb-compass { display: inline-flex; align-items: center; gap: .08em; font-size: .85em; }
+.lb-compass-rose { position: relative; display: grid; place-items: center; width: 1.25em; aspect-ratio: 1; }
+.lb-compass-rose svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.lb-compass-star { fill: var(--lac); stroke: none; opacity: .22; }
+.lb-compass-rose text { stroke: none; }
+.lb-compass-rose .lb-amp { position: relative; margin: 0; font-size: .55em; }
+
+/* Globe & orbit */
+.lb-globe { position: relative; display: grid; place-items: center; width: 2.3em; aspect-ratio: 1; }
+.lb-globe > svg:not(.lb-plane) { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lb-globe-orbit { fill: none; stroke: var(--lac); stroke-width: 1.3; }
+.lb-globe-plane { position: absolute; right: -.05em; top: 33%; width: .26em; rotate: -30deg; }
+.lb-globe .lb-row { position: relative; font-size: .6em; }
+
+/* Luggage tag */
+.lb-tag { position: relative; display: grid; align-items: center; width: 2.9em; aspect-ratio: 220 / 100; }
+.lb-tag > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lb-tag-body { fill: none; stroke: currentColor; stroke-width: 2.4; }
+.lb-tag circle { fill: none; stroke: currentColor; stroke-width: 2.4; }
+.lb-tag-string { fill: none; stroke: var(--lac); stroke-width: 2.4; stroke-linecap: round; }
+.lb-tag-text { position: relative; display: grid; justify-items: center; gap: .1em; margin-left: .55em; }
+.lb-tag-text .lb-row { font-size: .6em; }
+.lb-tag-text small { font-size: .07em; }
+
+/* Map pin */
+.lb-pin { display: inline-flex; align-items: flex-end; gap: .04em; font-size: .95em; }
+.lb-pin-drop { position: relative; display: grid; justify-items: center; width: .62em; aspect-ratio: 60 / 80; margin-bottom: .08em; filter: drop-shadow(0 .06em .05em #0003); }
+.lb-pin-drop svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--lac); }
+.lb-pin-drop .lb-amp { position: relative; margin: .08em 0 0; font-size: .34em; color: var(--lbg); }
+
+/* Sunrise */
+.lb-sunrise { position: relative; display: grid; justify-items: center; }
+.lb-sunrise svg { width: 2.2em; margin-bottom: -.42em; }
+.lb-sun { fill: var(--lac); opacity: .85; }
+.lb-sun-rays { fill: none; stroke: var(--lac); stroke-width: 3; stroke-linecap: round; }
+.lb-sunrise .lb-row { position: relative; padding: 0 .1em .04em; border-bottom: .02em solid currentColor; }
+
+/* Open road */
+.lb-road { display: grid; justify-items: center; }
+.lb-road svg { width: 2.4em; margin-top: .02em; fill: none; stroke: currentColor; }
+.lb-road-edge { stroke-width: 2; }
+.lb-road-mid { stroke: var(--lac); stroke-width: 3; stroke-dasharray: 7 6; }
+
+/* Contrail */
+.lb-trail { position: relative; display: inline-grid; padding: 0 .35em .3em 0; }
+.lb-trail > svg:not(.lb-plane) { position: absolute; left: -.15em; right: .15em; top: .15em; bottom: 0; width: calc(100% + 0em); height: 100%; fill: none; stroke: var(--lac); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1 7; opacity: .9; }
+.lb-trail-plane { position: absolute; right: .02em; top: -.05em; width: .36em; rotate: 42deg; }
+.lb-trail .lb-row { position: relative; }
+
+/* Plane window */
+.lb-window { display: grid; padding: .09em; width: 1.6em; height: 2.05em; border-radius: .8em / .72em; background: color-mix(in srgb, var(--lfg) 12%, transparent); }
+.lb-window-glass { position: relative; display: grid; place-items: center; overflow: hidden; border: .025em solid currentColor; border-radius: .72em / .64em; background: linear-gradient(180deg, color-mix(in srgb, var(--lac) 30%, var(--lbg)), var(--lbg)); }
+.lb-window-glass svg { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 40%; fill: var(--lfg); opacity: .12; }
+.lb-window-glass .lb-row { position: relative; font-size: .48em; }
+
+/* Tail fin */
+.lb-tail { position: relative; display: grid; place-items: center; width: 2.2em; aspect-ratio: 170 / 130; }
+.lb-tail > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lb-tail-fin { fill: var(--lac); }
+.lb-tail-body { stroke: currentColor; stroke-width: 3; }
+.lb-tail-text { position: relative; translate: .12em .1em; rotate: -68deg; color: var(--lbg); font-size: .5em; }
+.lb-tail-text .lb-amp { color: inherit; opacity: .8; }
+
+/* Pilot wings */
+.lb-pilot { display: inline-flex; align-items: center; gap: .04em; }
+.lb-pilot svg { width: 1.05em; fill: none; stroke: var(--lac); stroke-width: 2.6; stroke-linecap: round; }
+.lb-pilot svg.lb-flip { scale: -1 1; }
+.lb-pilot-badge { display: grid; place-items: center; width: 1.1em; aspect-ratio: 1; border: .025em solid currentColor; border-radius: 50%; outline: .012em solid currentColor; outline-offset: -.08em; }
+.lb-pilot-badge .lb-row { font-size: .36em; }
+
+/* Take-off */
+.lb-runway { position: relative; display: grid; justify-items: center; gap: .06em; padding-top: .3em; font-size: .9em; }
+.lb-runway-plane { position: absolute; right: -.25em; top: -.1em; width: .34em; rotate: 60deg; }
+.lb-runway svg:not(.lb-plane) { width: 2.6em; }
+.lb-runway-strip { fill: currentColor; }
+.lb-runway-keys, .lb-runway-mid { stroke: var(--lbg); stroke-width: 2.4; }
+.lb-runway-mid { stroke-dasharray: 10 8; }
+
+/* Route map */
+.lb-route { display: grid; justify-items: stretch; gap: .08em; font-size: .9em; }
+.lb-route-top { display: inline-flex; align-items: center; gap: .06em; }
+.lb-route-line { position: relative; display: flex; align-items: center; justify-content: space-between; width: 1.6em; margin: 0 .06em; }
+.lb-route-line svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.lb-route-line i { position: relative; width: .1em; height: .1em; border-radius: 50%; background: var(--lac); }
+.lb-route-line .lb-amp { position: relative; margin: 0; padding: 0 .1em; background: var(--lbg); font-size: .42em; transition: background .4s; }
+.lb-route-codes { display: flex; justify-content: space-between; padding: 0 .12em; }
+.lb-route-codes b { font: 500 .12em/1 var(--font-body), sans-serif; letter-spacing: .25em; }
+
+/* Departure board */
+.lb-board { display: grid; justify-items: center; gap: .2em; font-size: 1.1em; }
+.lb-board-row { display: flex; gap: .05em; }
+.lb-board-row i { position: relative; display: grid; place-items: center; width: .78em; height: .95em; border-radius: .06em; background: var(--lfg); color: var(--lbg); font-style: normal; font-size: .9em; transition: background .4s, color .4s; }
+.lb-board-row i::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: .02em; background: var(--lbg); opacity: .6; }
+.lb-board-row .lb-board-amp { width: .6em; color: var(--lac); }
+
+/* Coordinates */
+.lb-coord { display: grid; justify-items: center; gap: .14em; padding: .16em .3em; --c: color-mix(in srgb, var(--lfg) 60%, transparent); background:
+  linear-gradient(var(--c), var(--c)) 0 0 / .2em .02em no-repeat, linear-gradient(var(--c), var(--c)) 0 0 / .02em .2em no-repeat,
+  linear-gradient(var(--c), var(--c)) 100% 0 / .2em .02em no-repeat, linear-gradient(var(--c), var(--c)) 100% 0 / .02em .2em no-repeat,
+  linear-gradient(var(--c), var(--c)) 0 100% / .2em .02em no-repeat, linear-gradient(var(--c), var(--c)) 0 100% / .02em .2em no-repeat,
+  linear-gradient(var(--c), var(--c)) 100% 100% / .2em .02em no-repeat, linear-gradient(var(--c), var(--c)) 100% 100% / .02em .2em no-repeat; }
+.lb-coord-line { display: flex; align-items: center; gap: .1em; }
+.lb-coord-line i { width: .1em; height: .1em; border: .015em solid var(--lac); border-radius: 50%; }
+
+/* Mountains */
+.lb-peaks { display: grid; justify-items: center; }
+.lb-peaks svg { width: 2.4em; margin-bottom: .04em; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linejoin: round; }
+.lb-peaks-sun { fill: var(--lac); stroke: none; }
+
+/* Plane & car */
+.lb-duo { display: inline-flex; align-items: baseline; padding: .4em 0 .3em; }
+.lb-duo-l, .lb-duo-r { position: relative; }
+.lb-duo-l .lb-plane { position: absolute; right: -.1em; top: -.42em; width: .3em; rotate: 70deg; }
+.lb-duo-l svg:last-child { position: absolute; left: -.2em; top: -.22em; width: .7em; fill: none; stroke: var(--lac); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.lb-duo-r .lb-car { position: absolute; left: 50%; bottom: -.32em; width: .3em; translate: -50% 0; }
+.lb-duo-r i { position: absolute; left: -.1em; right: -.1em; bottom: -.33em; height: .015em; background: currentColor; opacity: .5; }
+
+/* Travel seal */
+.lb-seal { position: relative; display: grid; place-items: center; width: 2.3em; aspect-ratio: 1; }
+.lb-seal > svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.lb-seal text { stroke: none; font-size: 13px; letter-spacing: 0; text-anchor: start; }
+.lb-seal-spin { transform-origin: 100px 100px; animation: lb-roll 40s linear infinite; }
+.lb-seal .lb-row { position: relative; font-size: .52em; }
+
+/* Postcard */
+.lb-postcard { display: grid; grid-template-columns: 1.3fr 1fr; width: 3.2em; aspect-ratio: 3 / 2; padding: .14em; border: .02em solid currentColor; border-radius: .05em; box-shadow: .05em .05em 0 color-mix(in srgb, var(--lfg) 15%, transparent); }
+.lb-postcard-l { display: grid; align-content: center; justify-items: center; gap: .14em; border-right: .015em solid color-mix(in srgb, var(--lfg) 35%, transparent); }
+.lb-postcard-l .lb-row { font-size: .55em; }
+.lb-postcard-l small { font-size: .065em; }
+.lb-postcard-r { display: grid; align-content: start; gap: .16em; padding-left: .12em; }
+.lb-postcard-r i { height: .015em; background: currentColor; opacity: .35; }
+.lb-postcard-r .lb-postcard-stamp { justify-self: end; display: grid; place-items: center; width: .34em; height: .4em; margin-bottom: .12em; border: .015em dashed var(--lac); background: none; opacity: 1; }
+.lb-postcard-stamp .lb-plane { width: .2em; }
+
+/* Suitcase */
+.lb-case { position: relative; display: grid; place-items: center; width: 2.1em; aspect-ratio: 160 / 136; }
+.lb-case > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lb-case-handle { fill: none; stroke: currentColor; stroke-width: 6; }
+.lb-case-body { fill: var(--lac); }
+.lb-case-strap { stroke: var(--lbg); stroke-width: 6; opacity: .35; }
+.lb-case circle { fill: currentColor; }
+.lb-case-text { position: relative; margin-top: .14em; color: var(--lbg); font-size: .5em; }
+.lb-case-text .lb-amp { color: inherit; }
+
+/* Hot-air balloon */
+.lb-balloon { position: relative; display: grid; justify-items: center; width: 1.4em; aspect-ratio: 120 / 170; }
+.lb-balloon > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lb-balloon-env { fill: var(--lac); }
+.lb-balloon-gore { fill: none; stroke: var(--lbg); stroke-width: 2; opacity: .4; }
+.lb-balloon-rope { stroke: currentColor; stroke-width: 2; }
+.lb-balloon-basket { fill: currentColor; }
+.lb-balloon-text { position: relative; margin-top: 1.15em; color: var(--lbg); font-size: .36em; }
+.lb-balloon-text .lb-amp { color: inherit; }
+
+/* Paper plane */
+.lb-paper { position: relative; display: inline-grid; align-items: end; padding: .55em .9em 0 0; }
+.lb-paper > svg { position: absolute; right: -.1em; top: 0; width: 2.6em; }
+.lb-paper-trail { fill: none; stroke: var(--lac); stroke-width: 2; stroke-dasharray: 5 6; stroke-linecap: round; opacity: .8; }
+.lb-paper-plane { fill: var(--lbg); stroke: currentColor; stroke-width: 2.4; stroke-linejoin: round; transition: fill .4s; }
+.lb-paper-fold { fill: none; stroke: currentColor; stroke-width: 2; }
+.lb-paper .lb-row { position: relative; }
+
+/* Above the clouds */
+.lb-clouds { position: relative; display: grid; place-items: center; padding: .4em .3em; }
+.lb-clouds > svg:not(.lb-plane) { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--lfg); opacity: .1; }
+.lb-clouds-plane { position: absolute; right: 0; top: .05em; width: .32em; rotate: 75deg; }
+.lb-clouds .lb-row { position: relative; }
+
+/* Signpost */
+.lb-sign { position: relative; display: grid; justify-items: center; width: 2em; height: 2.2em; font-size: 1.15em; }
+.lb-sign-post { position: absolute; left: 50%; top: .05em; bottom: .25em; width: .07em; translate: -50% 0; border-radius: .04em; background: currentColor; }
+.lb-sign-arrow { position: absolute; display: grid; place-items: center; width: 1.7em; height: .95em; font-size: .5em; line-height: 1; }
+.lb-sign-left { top: .5em; right: 50%; padding-left: .2em; background: var(--lac); color: var(--lbg); clip-path: polygon(22% 0, 100% 0, 100% 100%, 22% 100%, 0 50%); }
+.lb-sign-right { top: 1.9em; left: 50%; padding-right: .2em; background: var(--lfg); color: var(--lbg); clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%); }
+.lb-sign .lb-amp { position: absolute; bottom: -.05em; margin: 0; font-size: .4em; }
+.lb-sign::after { content: ''; position: absolute; bottom: .22em; width: .6em; height: .02em; background: currentColor; opacity: .5; }
+
+/* Dubai skyline */
+.lb-skyline { display: grid; justify-items: center; }
+.lb-skyline svg { width: 2.6em; margin-top: .02em; fill: currentColor; opacity: .85; border-bottom: .02em solid var(--lac); }
+
+/* Postage stamp */
+.lb-postage { display: inline-grid; padding: .06em; background: radial-gradient(circle, transparent .028em, var(--lac) .032em) -.06em -.06em / .12em .12em; font-size: .85em; }
+.lb-postage-in { display: grid; justify-items: center; gap: .08em; padding: .14em .22em .12em; background: var(--lac); color: var(--lbg); outline: .012em solid color-mix(in srgb, var(--lbg) 60%, transparent); outline-offset: -.05em; }
+.lb-postage-in .lb-row { font-size: .75em; }
+.lb-postage-in .lb-amp { color: inherit; opacity: .75; }
+.lb-postage-foot { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.lb-postage-foot .lb-plane { width: .14em; fill: var(--lbg); rotate: 45deg; }
+.lb-postage-foot b { font: 500 .14em/1 var(--font-body), sans-serif; }
+
+/* In motion */
+.lb-speed { display: inline-flex; align-items: center; gap: .04em; }
+.lb-speed svg { width: .7em; fill: none; stroke: var(--lac); stroke-width: 3; stroke-linecap: round; }
+.lb-speed .lb-row { font-style: italic; skew: -12deg 0; }
+
+/* Orbit */
+.lb-orbit { position: relative; display: grid; place-items: center; padding: .3em .2em; }
+.lb-orbit > svg:not(.lb-plane) { position: absolute; left: -.1em; right: -.1em; top: 50%; width: calc(100% + .2em); translate: 0 -50%; fill: none; stroke: var(--lac); stroke-width: 1.6; }
+.lb-orbit-back { opacity: .35; }
+.lb-orbit .lb-row { position: relative; }
+.lb-orbit-front { z-index: 1; }
+.lb-orbit-plane { position: absolute; z-index: 2; right: .3em; bottom: .12em; width: .26em; rotate: 250deg; }
+
+@media (prefers-reduced-motion: reduce) { .lb-seal-spin { animation: none; } }

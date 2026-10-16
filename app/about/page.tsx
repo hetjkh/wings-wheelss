@@ -1,5 +1,5 @@
-import HomePage from "../components/home-page";
+import JourneyPage from "../components/journey-page";
 
 export default function About() {
-  return <HomePage />;
+  return <JourneyPage />;
 }

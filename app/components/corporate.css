@@ -2,8 +2,8 @@
    ten journeys meeting on a map, three widening horizons, four steps when plans change, two sides of a journey and a staircase. */
 .corporate-page .k-verbs { z-index: 2; } .corporate-page .k-services { z-index: 3; } .corporate-page .k-day { z-index: 4; }
 .corporate-page .k-companies { z-index: 5; } .corporate-page .k-team { z-index: 6; } .corporate-page .k-network { z-index: 7; }
-.corporate-page .k-support { z-index: 8; } .corporate-page .k-sides { z-index: 9; } .corporate-page .k-steps { z-index: 10; }
-.corporate-page .s-final { z-index: 11; } .corporate-page .j-footer { z-index: 12; }
+.corporate-page .k-support { z-index: 8; } .corporate-page .k-sides { z-index: 9; } .corporate-page .k-steps { z-index: 11; }
+.corporate-page .s-final { z-index: 12; } .corporate-page .j-footer { z-index: 13; }
 .k-body { max-width: 30em; margin-top: calc(var(--u) * 1.25); font: 300 calc(var(--u) * 1.125)/1.4 var(--body); }
 .journey-page .k-soft { display: block; color: var(--ochre); }
 
@@ -255,3 +255,11 @@
 @media (prefers-reduced-motion: reduce) {
   .k-crowd .k-rotate { animation: none; }
 }
+
+/* Partnership band: the way into the corporate partnerships page. */
+.corporate-page .k-partner { z-index: 10; }
+.k-partner { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #efe4cf; }
+.k-partner-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 8%; align-items: end; }
+.journey-page .k-partner .s-title { font-size: calc(var(--u) * 3); }
+.k-partner-aside .j-button { margin-top: calc(var(--u) * 1.75); }
+@media (max-width: 991px) { .k-partner-grid { grid-template-columns: 1fr; gap: 24px; } }

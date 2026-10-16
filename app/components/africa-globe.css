@@ -1,0 +1,19 @@
+.h-globe { position: relative; width: 100%; aspect-ratio: 1; margin: 0 auto; }
+.h-globe canvas { display: block; width: 100%; height: 100%; opacity: 0; cursor: grab; touch-action: pan-y; transition: opacity 1.2s ease; }
+.h-globe canvas.is-ready { opacity: 1; }
+.h-globe canvas.is-grabbing { cursor: grabbing; }
+.h-globe-label { display: none; }
+@supports (anchor-name: --a) {
+  .h-globe-label { position: absolute; display: block; padding: 5px 9px; border-radius: 999px; background: #3d2d20; color: #faf7f2; font: 400 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; pointer-events: none; transition: opacity .3s; }
+  .h-globe-label.is-right { left: anchor(right); top: anchor(center); translate: 10px -50%; }
+  .h-globe-label.is-left { right: anchor(left); top: anchor(center); translate: -10px -50%; }
+  .h-globe-label.is-below-left { right: anchor(center); top: anchor(bottom); translate: 12px 8px; }
+  .h-globe-label.is-below-right { left: anchor(center); top: anchor(bottom); translate: -12px 8px; }
+  .h-globe-label.is-hub { background: #b5462a; }
+}
+@media (max-width: 767px) {
+  .h-globe-label { padding: 4px 7px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .h-globe canvas { transition: none; }
+}

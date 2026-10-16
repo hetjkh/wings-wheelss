@@ -42,13 +42,28 @@ export const office = {
   ],
 };
 
+export type SiteLink = { label: string; href: string; children?: { label: string; href: string; note: string }[] };
+
 /** Pages only: the main navigation never points at sections within a page. */
-export const siteLinks = [
-  { label: "About", href: "/about" },
+export const siteLinks: SiteLink[] = [
+  {
+    label: "About", href: "/about", children: [
+      { label: "About Us", href: "/about", note: "Our story, our team and how we travel" },
+      { label: "Franchise Opportunities", href: "/franchise", note: "Grow with our network in Saudi Arabia, Egypt and Morocco" },
+    ],
+  },
   { label: "Services", href: "/travel-services" },
-  { label: "Corporate", href: "/corporate-travel" },
+  {
+    label: "Corporate", href: "/corporate-travel", children: [
+      { label: "Corporate Travel Solutions", href: "/corporate-travel", note: "The travel services we manage for your business" },
+      { label: "Corporate Partnerships", href: "/corporate-partnerships", note: "Preferred terms, benefits and a dedicated account" },
+    ],
+  },
   { label: "Groups & MICE", href: "/groups-mice" },
   { label: "Destinations", href: "/destinations" },
   { label: "Africa", href: "/africa" },
   { label: "Contact", href: "/contact" },
 ];
+
+/** Every page once, submenu pages included, for footers. */
+export const pageLinks = siteLinks.flatMap(link => link.children ? link.children.map(({ label, href }) => ({ label, href })) : [link]);

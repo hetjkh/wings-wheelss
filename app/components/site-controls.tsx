@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { office, siteLinks as navLinks } from "./data";
+import { office, pageLinks as navLinks } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 
 const serviceOptions = ["General enquiry", "Flights", "Hotels", "Visa assistance", "Airport & ground transfers", "Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Travel support"];

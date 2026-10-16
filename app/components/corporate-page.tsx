@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
@@ -125,8 +126,8 @@ export default function CorporatePage() {
             <span className="j-small-rule" data-hero />
             <p data-hero>From one executive trip to company-wide travel, we handle the details so your people keep moving.</p>
             <div className="s-actions" data-hero>
-              <EnquiryButton className="j-button j-button-cream" service="Corporate travel">Talk to our corporate team</EnquiryButton>
-              <WhatsAppLink className="j-button j-button-outline-light" />
+              <Link className="j-button j-button-cream" href="/corporate-partnerships">Become a corporate partner <Arrow /></Link>
+              <EnquiryButton className="j-button j-button-outline-light" service="Corporate travel">Talk to our corporate team</EnquiryButton>
             </div>
           </div>
         </div>
@@ -309,6 +310,19 @@ export default function CorporatePage() {
         </div>
       </section>
 
+      <section className="k-partner j-torn-top" id="partner" aria-labelledby="partner-heading">
+        <div className="j-shell k-partner-grid">
+          <div>
+            <span className="j-eyebrow s-eyebrow">Travelling often?</span>
+            <h2 id="partner-heading" className="s-title s-rows"><span>Not just corporate travel.</span><span className="k-soft">A corporate travel partnership.</span></h2>
+          </div>
+          <div className="k-partner-aside">
+            <p className="k-body">Preferred terms, partner benefits and a dedicated account manager, arranged around how your company really travels.</p>
+            <Link className="j-button j-button-olive" href="/corporate-partnerships">Become a corporate partner <Arrow /></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="k-steps j-torn-top" id="how" aria-labelledby="how-heading">
         <div className="j-shell">
           <div className="s-split-head">
@@ -334,6 +348,7 @@ export default function CorporatePage() {
           <p className="s-lead-body">Let us take care of what happens in between.</p>
           <div className="s-actions">
             <EnquiryButton className="j-button j-button-cream" service="Corporate travel">Talk to our corporate team</EnquiryButton>
+            <Link className="j-button j-button-outline-light" href="/corporate-partnerships">Become a corporate partner <Arrow /></Link>
             <WhatsAppLink className="j-button j-button-outline-light" />
           </div>
         </div>

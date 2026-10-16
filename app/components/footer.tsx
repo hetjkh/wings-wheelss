@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { office, siteLinks } from "./data";
+import { office, pageLinks } from "./data";
 import { Brand } from "./site-controls";
 
 const serviceLinks = ["Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Visa assistance"];
@@ -14,7 +14,7 @@ export function Footer() {
       </div>
       <nav className="footer-col" aria-label="Company">
         <h3>Company</h3>
-        {siteLinks.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+        {pageLinks.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
       <nav className="footer-col" aria-label="Services">
         <h3>Services</h3>

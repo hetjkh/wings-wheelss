@@ -1,0 +1,17 @@
+{
+  "tool": "Built-in image_gen",
+  "prompts": [
+    {
+      "asset": "mountain-terrace.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: wide luxury travel website background photograph, 1536x1024 or wider landscape. Create an editorial photograph from an exclusive outdoor restaurant terrace overlooking many layers of distant Mediterranean mountain ridges at dusk. Composition: upper 50 percent of image is completely open smooth muted pale peach dusty pink sky, perfect empty negative space for dark website text. Layered mauve and warm grey distant mountain ranges occupy the middle from 50 to 78 percent. Bottom foreground: dark olive scrub on hillside at left; chic dark wood terrace dining tables with delicate clear wine glasses and simple dark chairs only at bottom right, with the nearest table cut off by the bottom frame. A pale stone infinity pool edge along bottom left. Calm cinematic natural film photography, fine subtle grain, quiet sophisticated travel magazine mood, warm cream, taupe, desaturated peach, dark brown. No people, no text, no logo, no watermarks. Do not put any elements in the empty upper half. This is a usable photographic website asset, not a screenshot or webpage mockup."
+    },
+    {
+      "asset": "private-travel.webp",
+      "prompt": "Photorealistic editorial luxury travel photograph, portrait composition 1024x1536. A secluded Mediterranean seaside resort wooden sundeck, two elegant ivory cushioned loungers and a large cream canvas parasol slightly left of center, overlooking calm sparkling golden olive seawater. Camera looks slightly down from terrace height. Water fills the entire upper two thirds, parasol in middle, wood deck and loungers in lower third. Natural afternoon sun, sophisticated warm analog film photography, muted gold and chocolate and ivory, fine grain, tactile detail, magazine quality. No buildings, no pool, no text, no logos, no people. Full bleed image with no borders. It will be a tall full-height image on a premium travel website."
+    },
+    {
+      "asset": "corporate-travel.webp",
+      "prompt": "Photorealistic editorial travel fashion photograph, portrait composition 1024x1536. Confident adult businesswoman in a tasteful black tailored trouser suit and sunglasses walking towards camera along a Mediterranean marina wooden jetty, elegant black jacket over shoulders, small professional leather bag. Tall white sailboats and yacht masts on both sides frame her. Pale clear cyan sky occupies upper half, subject centered slightly right in middle. Sunlit warm late afternoon, quiet luxurious European travel editorial film photography, muted blue, tan wood, deep black suit, natural human proportions, candid motion, full body. Lower quarter wooden jetty has open space for website text overlay. No text, no logo, no watermarks. Image only, no webpage design."
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+/* Tabs between the brand sheet and the lab. */
+.lg-tabs { position: sticky; top: 14px; z-index: 20; display: flex; gap: 4px; width: max-content; margin: 14px auto 0; padding: 4px; border: 1px solid #2b21191f; border-radius: 99px; background: #fffdf8e6; backdrop-filter: blur(12px); box-shadow: 0 10px 30px #2b21191a; }
+.lg-tabs button { padding: 10px 18px; border: 0; border-radius: 99px; background: none; color: #6f604e; font: 400 11px/1 var(--font-body), sans-serif; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: background .25s, color .25s; }
+.lg-tabs button.is-on { background: #2b2119; color: #f3e7cf; }
+.lg-page [role="tabpanel"][hidden] { display: none; }
+
+/* The lab. */
+.lb { --lbg: #f7f1e6; --lfg: #2b2119; --lac: #b5462a; padding: 28px 16px 80px; }
+.lb-controls { display: grid; gap: 22px; max-width: 1400px; margin: 0 auto 18px; padding: 22px; border: 1px solid #e3d8c6; border-radius: 22px; background: #fffdf8; }
+.lb-group { display: grid; gap: 12px; min-width: 0; }
+.lb-group-label { font: 400 10px/1 var(--font-body), sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #8e7962; }
+.lb-fonts { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+.lb-fonts button { display: grid; justify-items: center; gap: 6px; padding: 12px 8px 10px; border: 1px solid #e3d8c6; border-radius: 14px; background: #faf6ee; color: #2b2119; cursor: pointer; transition: border-color .2s, background .2s, translate .2s; }
+.lb-fonts button:hover { translate: 0 -2px; border-color: #c9b597; }
+.lb-fonts button.is-on { border-color: #2b2119; background: #2b2119; color: #f3e7cf; }
+.lb-fonts button > span { font-size: 26px; line-height: 1.1; white-space: nowrap; }
+.lb-fonts small { font: 400 10px/1.2 var(--font-body), sans-serif; letter-spacing: .04em; text-align: center; opacity: .75; }
+.lb-row-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 24px; align-items: end; }
+.lb-themes { display: flex; flex-wrap: wrap; gap: 8px; }
+.lb-themes button { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; border: 1px solid #e3d8c6; border-radius: 99px; background: #faf6ee; color: #2b2119; font: 400 12px/1 var(--font-body), sans-serif; cursor: pointer; }
+.lb-themes button.is-on { border-color: #2b2119; box-shadow: inset 0 0 0 1px #2b2119; }
+.lb-themes i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #2b21191f; }
+.lb-spacing input { width: 100%; accent-color: #b5462a; }
+
+.lb-stage { position: relative; max-width: 1400px; margin: 0 auto 16px; border-radius: 26px; background: var(--lbg); color: var(--lfg); container-type: inline-size; transition: background .4s, color .4s; }
+.lb-stage figcaption { position: absolute; left: 24px; right: 24px; bottom: 20px; display: flex; justify-content: space-between; font: 400 10px/1 var(--font-body), sans-serif; letter-spacing: .18em; text-transform: uppercase; opacity: .65; }
+.lb-art { display: grid; place-items: center; font-family: var(--lf); font-weight: 400; line-height: 1; letter-spacing: var(--lsp, 0); }
+.lb-art-stage { min-height: min(68svh, 640px); padding: 60px 20px 70px; font-size: min(14cqi, 26svh); }
+
+.lb-filters { display: flex; flex-wrap: wrap; gap: 8px; max-width: 1400px; margin: 28px auto 14px; }
+.lb-filters button { padding: 9px 16px; border: 1px solid #e3d8c6; border-radius: 99px; background: #fffdf8; color: #2b2119; font: 400 11px/1 var(--font-body), sans-serif; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+.lb-filters button.is-on { border-color: #2b2119; background: #2b2119; color: #f3e7cf; }
+.lb-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: 1400px; margin: 0 auto; }
+.lb-grid button { display: grid; width: 100%; padding: 0; border: 1px solid transparent; border-radius: 20px; background: var(--lbg); color: var(--lfg); cursor: pointer; container-type: inline-size; overflow: hidden; transition: background .4s, color .4s, border-color .2s, translate .25s; }
+.lb-grid button:hover { translate: 0 -3px; }
+.lb-grid button.is-on { border-color: var(--lac); box-shadow: 0 0 0 2px var(--lac); }
+.lb-grid .lb-art { aspect-ratio: 4 / 3; font-size: 14cqi; }
+.lb-card-name { padding: 12px 16px 14px; border-top: 1px solid color-mix(in srgb, var(--lfg) 15%, transparent); font: 400 10px/1 var(--font-body), sans-serif; letter-spacing: .16em; text-align: left; text-transform: uppercase; opacity: .7; }
+
+/* Shared pieces. */
+.lb-row { display: inline-flex; align-items: baseline; white-space: nowrap; }
+.lb-amp { margin: 0 .05em; font-size: .6em; color: var(--lac); }
+.lb-art small { display: block; font: 400 .1em/1 var(--font-body), sans-serif; letter-spacing: .3em; text-transform: uppercase; opacity: .75; }
+
+/* 02 Stacked */
+.lb-stack { display: grid; justify-items: center; line-height: .82; font-size: .62em; }
+.lb-stack .lb-amp { margin: .02em 0; font-size: .55em; }
+
+/* 03 Interlocked */
+.lb-overlap { position: relative; display: inline-flex; align-items: baseline; font-size: 1.15em; }
+.lb-overlap > span:nth-child(2) { margin-left: -.42em; color: var(--lac); mix-blend-mode: multiply; opacity: .9; }
+.lb-overlap .lb-amp { position: absolute; left: 50%; top: -.2em; translate: -50% 0; margin: 0; font-size: .35em; color: var(--lfg); }
+
+/* 04 Circle */
+.lb-circle { display: grid; place-items: center; width: 2.6em; aspect-ratio: 1; border: .025em solid currentColor; border-radius: 50%; outline: .012em solid currentColor; outline-offset: -.12em; font-size: .7em; }
+.lb-circle .lb-row { font-size: .62em; }
+
+/* 05 Diamond */
+.lb-diamond { display: grid; place-items: center; width: 1.9em; aspect-ratio: 1; rotate: 45deg; border: .02em solid currentColor; font-size: .8em; }
+.lb-diamond .lb-row { rotate: -45deg; font-size: .55em; }
+
+/* 06 Crest */
+.lb-crest { position: relative; display: grid; place-items: center; width: 1.9em; aspect-ratio: 100 / 120; font-size: .85em; }
+.lb-crest svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.lb-crest svg path + path { stroke-width: .6; opacity: .6; }
+.lb-crest .lb-row { margin-top: -.15em; font-size: .46em; }
+.lb-crest small { position: absolute; bottom: 26%; font-size: .075em; }
+
+/* 07 Reflection */
+.lb-reflect { display: grid; justify-items: center; line-height: .9; }
+.lb-reflect > .lb-row:last-child { scale: 1 -1; opacity: .35; -webkit-mask-image: linear-gradient(0deg, #000, transparent 70%); mask-image: linear-gradient(0deg, #000, transparent 70%); }
+
+/* 08 Grand ampersand */
+.lb-bigamp { position: relative; display: grid; place-items: center; }
+.lb-bigamp-bg { position: absolute; font-size: 2.1em; color: var(--lac); opacity: .28; }
+.lb-bigamp .lb-row { position: relative; }
+.lb-gap { width: .5em; }
+
+/* 09 Outline / 10 Solid & line */
+.lb-outline > span:not(.lb-amp), .lb-split > span:last-child { color: transparent; -webkit-text-stroke: .012em var(--lfg); }
+.lb-outline .lb-amp { font-size: .7em; }
+
+/* 11 Badge */
+.lb-pill { display: grid; justify-items: center; gap: .14em; padding: .22em .6em .28em; border: .02em solid currentColor; border-radius: 99em; font-size: .9em; }
+.lb-pill .lb-row { font-size: .8em; }
+.lb-pill small { font-size: .085em; }
+
+/* 12 Wing & wheel */
+.lb-ww { display: inline-flex; align-items: center; gap: .02em; }
+.lb-ww-wing { position: relative; }
+.lb-ww-wing svg { position: absolute; right: 78%; top: 8%; width: .62em; fill: none; stroke: var(--lac); stroke-width: 2.2; stroke-linecap: round; }
+.lb-ww-wheel { position: relative; display: grid; place-items: center; width: 1.25em; aspect-ratio: 1; }
+.lb-ww-wheel svg { position: absolute; inset: 0; fill: none; stroke: var(--lac); stroke-width: 1.4; opacity: .55; animation: lb-roll 18s linear infinite; }
+.lb-ww-wheel svg path { opacity: .5; }
+.lb-ww-wheel { font-size: .82em; }
+@keyframes lb-roll { to { rotate: 360deg; } }
+
+/* 13 Postmark */
+.lb-post { position: relative; display: inline-flex; align-items: center; font-size: .75em; }
+.lb-post-ring { position: relative; z-index: 1; display: grid; place-items: center; align-content: center; gap: .08em; width: 2.1em; aspect-ratio: 1; border: .03em solid currentColor; border-radius: 50%; outline: .014em dashed currentColor; outline-offset: .06em; background: var(--lbg); transition: background .4s; }
+.lb-post-ring .lb-row { font-size: .5em; }
+.lb-post-ring small { font-size: .085em; }
+.lb-post-waves { width: 1.6em; margin-left: -.4em; fill: none; stroke: currentColor; stroke-width: 2; opacity: .45; }
+
+/* 14 Framed wordmark */
+.lb-framed { display: inline-flex; align-items: center; gap: .18em; font-size: .9em; }
+.lb-framed-word { display: grid; justify-items: center; gap: .06em; padding: .06em .2em; border-inline: .015em solid currentColor; }
+.lb-framed-word b { font: 400 .14em/1 var(--lf); letter-spacing: .3em; text-transform: uppercase; }
+.lb-framed-word .lb-amp { margin: 0; font-size: .18em; }
+
+/* 15 Swash */
+.lb-swash { display: grid; justify-items: center; }
+.lb-swash .lb-row { font-style: italic; skew: -8deg 0; }
+.lb-swash svg { width: 2.3em; margin-top: -.12em; fill: none; stroke: var(--lac); stroke-width: 3; stroke-linecap: round; }
+
+/* 16 Diagonal tile */
+.lb-tile { position: relative; display: grid; grid-template: 1fr 1fr / 1fr 1fr; width: 1.7em; aspect-ratio: 1; padding: .1em; border: .02em solid currentColor; font-size: .8em; }
+.lb-tile > span:first-child { align-self: start; justify-self: start; font-size: .7em; }
+.lb-tile > span:last-child { grid-area: 2 / 2; align-self: end; justify-self: end; font-size: .7em; }
+.lb-tile .lb-amp { position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0; font-size: .42em; }
+.lb-tile::after { content: ''; position: absolute; left: 50%; top: 50%; width: 140%; height: .015em; background: currentColor; opacity: .25; translate: -50% -50%; rotate: -45deg; }
+
+@media (max-width: 1100px) { .lb-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .lb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lb-row-controls { grid-template-columns: 1fr; }
+  .lb-art-stage { min-height: 52svh; font-size: 20cqi; }
+  .lb-fonts { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+  .lg-tabs button { padding: 9px 12px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .lb-ww-wheel svg { animation: none; } }

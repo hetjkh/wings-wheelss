@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { EnquiryButton } from "./site-controls";
-import { siteLinks } from "./data";
+import { pageLinks, siteLinks } from "./data";
+import { NavDropdown } from "./nav-dropdown";
 import { Arrow, TravelIcon } from "./icons";
 
 export type JourneyLink = { label: string; href: string };
@@ -41,14 +42,14 @@ export function JourneyHeader({ introId = "about" }: { introId?: string }) {
     <header className={`j-header${scrolled ? " j-header-scrolled" : ""}`}>
       <div className="j-shell j-header-inner">
         <Link className="j-brand" href="/" aria-label="Wings and Wheels home">Wings &amp; Wheels</Link>
-        <nav className="j-desktop-nav" aria-label="Main navigation">{links.map(link => <a key={link.href} href={link.href} aria-current={current(link.href)}>{link.label}</a>)}</nav>
+        <nav className="j-desktop-nav" aria-label="Main navigation">{links.map(link => link.children ? <NavDropdown key={link.href} link={link} current={pathname} /> : <a key={link.href} href={link.href} aria-current={current(link.href)}>{link.label}</a>)}</nav>
         <EnquiryButton className="j-button j-header-cta">Plan Your Journey</EnquiryButton>
         <button className="j-menu-toggle" aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="journey-menu" aria-haspopup="dialog" onClick={() => { menu.current?.showModal(); setMenuOpen(true); }}><TravelIcon kind="menu" /></button>
       </div>
     </header>
     <dialog ref={menu} id="journey-menu" className="j-menu" aria-label="Navigation" onClose={() => setMenuOpen(false)} onClick={event => { if (event.target === event.currentTarget) close(); }}>
       <div className="j-menu-heading"><span className="j-brand">Wings &amp; Wheels</span><button onClick={close} aria-label="Close navigation">×</button></div>
-      <nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} key={link.href} onClick={close} aria-current={current(link.href)}>{link.label}<Arrow /></a>)}</nav>
+      <nav aria-label="Mobile navigation">{pageLinks.map(link => <a href={link.href} key={link.href} onClick={close} aria-current={current(link.href)}>{link.label}<Arrow /></a>)}</nav>
       <Link href="/contact" className="j-button j-button-olive" onClick={close}>Talk to our team <Arrow /></Link>
       <p>People. Places. Further together.</p>
     </dialog>
