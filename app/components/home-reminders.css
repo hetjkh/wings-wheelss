@@ -1,0 +1,253 @@
+.e-reminders {
+  position: relative;
+  z-index: 9;
+  color: var(--ink);
+  background: #f3ebe0;
+  overflow: visible;
+}
+
+.e-reminders::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--e-tear) + 1px);
+  left: 0;
+  width: 100%;
+  height: var(--e-tear);
+  background: #f3ebe0;
+  mask: url("/images/journey/torn-edge.svg") calc(var(--e-tear-x, 0px) - 32px) 0 / calc(100% + 64px) 100% no-repeat;
+  pointer-events: none;
+}
+
+.e-reminders-stage {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  min-height: min(920px, 100svh);
+}
+
+.e-reminders-visual {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  background: #1c1612;
+}
+
+.e-reminders-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 55%, #f3ebe0 98%),
+    linear-gradient(180deg, #1a141066, transparent 35%, #1a141055);
+  pointer-events: none;
+}
+
+.e-reminders-stamp {
+  position: absolute;
+  left: 28px;
+  bottom: 32px;
+  display: grid;
+  gap: 4px;
+  font: 400 11px/1.4 var(--body);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #fff8e9;
+}
+
+.e-reminders-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px clamp(28px, 4vw, 70px) 70px;
+  background:
+    radial-gradient(ellipse 70% 45% at 100% 0%, #e4d3b855, transparent 60%),
+    #f3ebe0;
+}
+
+.e-reminders-copy .e-label {
+  color: #8a7358;
+  margin-bottom: 22px;
+}
+
+.home-page .e-reminders-copy h2 {
+  font-size: clamp(40px, 4.6vw, 74px);
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+
+.home-page .e-reminders-copy h2 > span {
+  color: #9e8f79;
+}
+
+.e-reminders-lead {
+  max-width: 34em;
+  margin-top: 20px;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.5;
+  color: #6f6254;
+}
+
+.e-reminders-gates {
+  margin-top: 36px;
+  border-top: 1px solid #3d2d2018;
+  list-style: none;
+}
+
+.e-reminders-gates button {
+  display: grid;
+  grid-template-columns: 2.4em 6.5em 1fr;
+  align-items: baseline;
+  gap: 14px;
+  width: 100%;
+  padding: 15px 0;
+  border: 0;
+  border-bottom: 1px solid #3d2d2018;
+  background: transparent;
+  color: #8a7966;
+  text-align: left;
+  cursor: pointer;
+  transition: color .3s ease, padding-left .3s ease;
+}
+
+.e-reminders-gates button.is-active,
+.e-reminders-gates button:hover,
+.e-reminders-gates button:focus-visible {
+  color: var(--ink);
+  padding-left: 6px;
+}
+
+.e-reminders-num {
+  font: 400 11px/1 var(--body);
+  letter-spacing: .14em;
+}
+
+.e-reminders-gate {
+  font: 400 10px/1 var(--body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .7;
+}
+
+.e-reminders-name {
+  font: 400 clamp(18px, 1.55vw, 26px)/1.1 var(--heading);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.e-reminders-gates button.is-active .e-reminders-gate {
+  opacity: 1;
+  color: #8a7358;
+}
+
+.e-reminders-panel {
+  margin-top: 28px;
+  min-height: 8.5em;
+  padding: 22px 0 0;
+}
+
+.e-reminders-panel .n-kicker {
+  color: #8a7358;
+  margin-bottom: 12px;
+}
+
+.home-page .e-reminders-panel h3 {
+  font-size: clamp(26px, 2.4vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+}
+
+.e-reminders-panel p {
+  max-width: 32em;
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #6f6254;
+}
+
+.e-reminders-panel a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.e-reminders-cta {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #3d2d2018;
+}
+
+.home-page .e-reminders-cta h3 {
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.05;
+}
+
+.e-reminders-cta p {
+  margin-top: 10px;
+  max-width: 24em;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #6f6254;
+}
+
+.e-reminders-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.e-reminders-button {
+  background: var(--ink);
+  color: #fff8e9;
+  border-color: var(--ink);
+}
+
+.e-reminders-button:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+@media (max-width: 999px) {
+  .e-reminders-stage {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .e-reminders-visual {
+    min-height: min(58vw, 380px);
+  }
+
+  .e-reminders-shade {
+    background:
+      linear-gradient(180deg, transparent 40%, #f3ebe0 100%),
+      linear-gradient(90deg, #1a141040, transparent 50%);
+  }
+
+  .e-reminders-copy {
+    padding: 28px clamp(20px, 5vw, 40px) 55px;
+  }
+
+  .home-page .e-reminders-copy h2 {
+    font-size: clamp(36px, 7.5vw, 60px);
+  }
+
+  .e-reminders-gates button {
+    grid-template-columns: 2.2em 1fr;
+  }
+
+  .e-reminders-gate { display: none; }
+}
+
+@media (max-width: 700px) {
+  .e-reminders-visual { min-height: 260px; }
+  .e-reminders-stamp { left: 20px; bottom: 22px; }
+  .e-reminders-name { font-size: 18px; }
+  .e-reminders-panel { min-height: 0; }
+  .e-reminders-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .e-reminders-actions { align-items: flex-start; }
+}

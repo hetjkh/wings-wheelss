@@ -1,0 +1,18 @@
+{
+  "mode": "built-in image_gen",
+  "generated": "2026-10-16",
+  "assets": [
+    {
+      "file": "kenya-dawn.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium travel website full-bleed editorial photograph, landscape 3:2 high resolution. Primary request: an extraordinary but natural photograph of a lone African elephant walking from left to right across the golden grasslands of Kenya, photographed from a respectful distance at ground level with a wide lens. A sculptural flat-topped acacia tree at the far right edge, distant layered hills and huge pale warm ivory sky occupying upper half, light dust suspended behind the elephant, fine grass details. Elephant in lower right third with landscape stretching into negative space on left for website typography. Lighting: early morning sidelight, subtle film grain, atmospheric muted olive and ochre, warm ivory highlights, cinematic magazine quality, sophisticated natural colors, absolutely no orange oversaturation. Constraints: single continuous photograph, not a collage, no borders, no text, no letters, no watermark, no logos, no graphic overlays."
+    },
+    {
+      "file": "island-retreat.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium travel editorial website photograph, landscape 3:2, high resolution. Scene: intimate architect-designed island retreat in the Maldives, viewed from inside a shaded warm teak veranda through flowing translucent ivory linen curtains framing both edges, towards a sunlit timber jetty, luminous pale turquoise lagoon and one distant overwater bungalow. Foreground sculptural timber lounge chair and casually folded linen. Composition: tactile curtains in foreground, inviting walkway middle ground, endless calm sea background; beautifully layered depth, editorial architectural photography, no people. Lighting: clean late morning daylight, soft natural shadow, muted aquamarine, cream, honey-colored wood, expensive understated film photography. Avoid: no sunset, no orange cast, no excessive HDR, no garish blue, no text or logo, no watermark, no collage."
+    },
+    {
+      "file": "together-at-dusk.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium travel website editorial photograph, high resolution landscape 3:2. Scene: an intimate outdoor dinner prepared for a corporate retreat at a Mediterranean coastal villa. A single long beautifully set table for twelve guests runs diagonally from lower left foreground towards center right distance, ivory linen tablecloth, simple ceramic dishes, delicate wine glasses, low arrangements of olive branches, small candles, woven chairs. Stone terrace, ancient olive tree at left, calm blue sea and distant mountain headland, soft dusk sky. A few small unobtrusive people chatting naturally far in background, faces not prominent. Composition luxurious but genuinely relaxed, large olive branches overlapping upper edge for depth, wide editorial photography, impeccable realistic perspective and material textures. Lighting: blue hour mixed with delicate amber candlelight, muted sage greens, chalk whites, warm stone, restrained sophisticated colors, subtle film grain, high-end travel magazine. No text, no watermark, no logos, no collage, no extravagant wedding florals."
+    }
+  ]
+}
