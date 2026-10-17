@@ -19,9 +19,6 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
     const amount = Number(photo.dataset.editorialParallax) * (desktop ? 1 : .4);
     gsap.fromTo(photo, { yPercent: -amount }, { yPercent: amount, ease: "none", scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .8 } });
   });
-  gsap.fromTo(".e-people-title [data-ink]", { color: "#c8bcab" }, { color: "#3d2d20", stagger: .12, ease: "none", scrollTrigger: { trigger: ".e-people-title", start: "top 85%", end: "bottom 45%", scrub: .4 } });
-  gsap.fromTo(".e-type-photo", { clipPath: "inset(0 50% 0 50% round 100px)" }, { clipPath: "inset(0 0% 0 0% round 100px)", stagger: .15, ease: "none", scrollTrigger: { trigger: ".e-people-title", start: "top 90%", end: "bottom 55%", scrub: .6 } });
-
   if (desktop) {
     const gallery = root.querySelector<HTMLElement>(".e-destinations")!;
     const track = gallery.querySelector<HTMLElement>(".e-destination-track")!;

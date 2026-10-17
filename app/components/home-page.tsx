@@ -31,53 +31,6 @@ export default function HomePage() {
 
       <HomeServices />
 
-      <div className="n-story-scene">
-        <div className="n-story-background" aria-hidden="true">
-          <Image src="/images/about/coast-road.jpg" alt="" fill sizes="100vw" className="n-cover" />
-          <div className="n-story-shade" />
-        </div>
-      <section className="n-intro" id="home-story" aria-labelledby="intro-title">
-        <div className="n-shell n-intro-inner">
-          <div className="n-intro-top" data-home-reveal>
-            <span className="n-kicker">A little about us</span>
-            <span className="n-kicker">Dubai · Since 2013</span>
-          </div>
-
-          <div className="n-intro-main">
-            <div className="n-intro-title-block">
-              <h2 id="intro-title" data-home-reveal>
-                <span className="n-intro-line">Travel is about</span>
-                <span className="n-intro-line n-intro-line-soft">places.</span>
-                <span className="n-intro-line">We’re about</span>
-                <span className="n-intro-line n-intro-line-people">
-                  <span className="n-intro-portrait" aria-hidden="true">
-                    <Image src="/images/about/team.jpg" alt="" fill sizes="120px" className="n-cover" />
-                  </span>
-                  <span>people.</span>
-                </span>
-              </h2>
-            </div>
-
-            <div className="n-intro-aside">
-              <p className="n-intro-lead" data-home-reveal>
-                Some journeys take you somewhere new.<br />
-                Others bring you closer to what matters.
-              </p>
-              <p className="n-intro-body" data-home-reveal>
-                From a meeting in another city to a holiday you’ve been dreaming of, we bring the moving parts together. Flights, hotels, visas and transfers — with a real team by your side.
-              </p>
-              <Link href="/about" className="n-button n-button-white" data-home-reveal>Our story <Arrow /></Link>
-            </div>
-          </div>
-
-          <ul className="n-intro-route" aria-label="Where we work from">
-            <li data-home-reveal><span>01</span><strong>Based in the UAE</strong></li>
-            <li data-home-reveal><span>02</span><strong>Connected across Africa</strong></li>
-            <li data-home-reveal><span>03</span><strong>Open to the world</strong></li>
-          </ul>
-        </div>
-      </section>
-
       <section className="n-travel-heading" aria-labelledby="travel-title">
         <div className="n-travel-heading-surface">
           <div className="n-travel-heading-grid" aria-hidden="true" />
@@ -85,7 +38,6 @@ export default function HomePage() {
           <h2 id="travel-title">Travel designed<br />around you</h2>
         </div>
       </section>
-      </div>
 
       <section className="n-travel" aria-labelledby="travel-title">
         <div className="n-travel-pair">

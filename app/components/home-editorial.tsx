@@ -6,7 +6,6 @@ import { HomeStories } from "./home-stories";
 import { HomeClientele } from "./home-clientele";
 import { HomeTestimonials } from "./home-testimonials";
 import { HomePayLater } from "./home-pay-later";
-import { HomeReminders } from "./home-reminders";
 import { HomeFaq } from "./home-faq";
 
 const images = "/images/home/editorial";
@@ -71,22 +70,10 @@ function GroupsChapter() {
   </section>;
 }
 
-function PeopleChapter() {
-  return <section className="e-people" aria-labelledby="e-people-title" data-home-cover><div className="e-shell">
-    <div className="e-section-bar"><ChapterLabel number="04">The Wings & Wheels way</ChapterLabel><span className="n-kicker">People before everything.</span></div>
-    <h2 id="e-people-title" className="e-people-title"><span className="e-people-line"><span data-ink>A wider</span><span className="e-type-photo"><Image src={`${images}/kenya-dawn.webp`} alt="" fill sizes="20vw" className="n-cover" /></span><span data-ink>world.</span></span><span className="e-people-line"><span data-ink>A human</span><span className="e-type-photo e-type-photo-person"><Image src="/images/about/team.jpg" alt="A travel consultant planning the details of a journey" fill sizes="20vw" className="n-cover" /></span><span data-ink>touch.</span></span></h2>
-    <div className="e-people-detail"><p className="e-people-statement">The destination matters.<br /><span>So does who takes you there.</span></p><div><p>We listen first. We connect the details. And we stay human. Behind your itinerary is someone who understands why you’re going.</p><Link href="/about" className="e-link">Get to know us<Arrow /></Link></div></div>
-  </div></section>;
-}
-
-function PartnershipChapter() {
-  return <aside className="e-partners" aria-labelledby="e-partners-title" data-home-cover><div className="e-shell"><div className="e-section-bar"><span className="n-kicker">For a longer journey together</span><span className="n-kicker">Business. Partnership. Possibility.</span></div><h2 id="e-partners-title" data-editorial-title><Lines lines={["Go further.", "Grow together."]} /></h2><div className="e-partner-links"><Link href="/corporate-partnerships"><span className="e-partner-number">01 / For your business</span><span><strong>A partner in<br />every journey.</strong><span>A named contact. A travel programme built around your people.</span></span><Arrow /></Link><Link href="/franchise"><span className="e-partner-number">02 / For your ambition</span><span><strong>Your market.<br />Our shared vision.</strong><span>Bring Wings & Wheels to your market with your local knowledge.</span></span><Arrow /></Link></div></div></aside>;
-}
-
 function ContactChapter() {
   return <section className="e-contact" aria-labelledby="e-contact-title"><div className="e-contact-photo" data-editorial-parallax="6"><Image src="/images/home/private-travel.webp" alt="Sun loungers waiting beside a quiet Mediterranean sea" fill sizes="100vw" className="n-cover" /></div><div className="e-contact-shade" /><div className="e-shell e-contact-inner"><span className="n-kicker">Every great journey starts with a conversation.</span><Link href="/contact" className="e-contact-heading"><h2 id="e-contact-title" data-editorial-title><Lines lines={["Where do we", "go from here?"]} /></h2><span aria-hidden="true">↗</span></Link><div className="e-contact-bottom"><p>A destination in mind? A possibility taking shape?<br />Tell us your story. We’ll help with the journey.</p><a href={office.whatsapp} target="_blank" rel="noreferrer" className="n-button n-button-white"><TravelIcon kind="chat" size={18} />Let’s talk on WhatsApp</a></div></div></section>;
 }
 
 export function HomeEditorial() {
-  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><PeopleChapter /><PartnershipChapter /><HomeClientele /><HomeTestimonials /><HomePayLater /><HomeReminders /><HomeFaq /><ContactChapter /></>;
+  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><HomeClientele /><HomeTestimonials /><HomePayLater /><HomeFaq /><ContactChapter /></>;
 }
