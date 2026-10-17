@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { office } from "./data";
 import { Arrow, TravelIcon } from "./icons";
@@ -43,10 +43,10 @@ export function Hero() {
 }
 
 const audiences = [
-  { title: "Business", text: "Meetings, projects and regional travel.", image: "/images/about/business.jpg", alt: "A business traveller working on a laptop in an airport lounge overlooking Dubai" },
-  { title: "Leisure", text: "Holidays and memorable journeys.", image: "/images/about/leisure-sun.jpg", alt: "A traveller in a sun hat relaxing by an infinity pool at sunset" },
-  { title: "Groups & MICE", text: "Organised travel across multiple travellers.", image: "/images/groups.png", alt: "A group of colleagues with luggage walking through an airport terminal" },
-  { title: "Connections", text: "Between the UAE, Africa and worldwide.", image: "/images/dubai-terrace.png", alt: "The Dubai skyline at sunset seen from a terrace" },
+  { title: "Business", text: "Meetings, projects and regional travel.", image: "/images/library/business-conversation.webp", alt: "Two business travellers talking at a lounge table" },
+  { title: "Leisure", text: "Holidays and memorable journeys.", image: "/images/library/family-lake.webp", alt: "A parent and child enjoying a lakeside mountain view" },
+  { title: "Groups & MICE", text: "Organised travel across multiple travellers.", image: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom" },
+  { title: "Connections", text: "Between the UAE, Africa and worldwide.", image: "/images/library/dubai-marina.webp", alt: "Modern towers and waterfront buildings at Dubai Marina" },
 ];
 
 function SectionMark({ index, label }: { index: string; label: string }) {
@@ -86,7 +86,7 @@ const journey = [
 
 export function Services() {
   return <section className="ww-do" id="services" aria-labelledby="services-heading">
-    <Image src="/images/about/coast-road.jpg" alt="" fill sizes="100vw" className="ww-bg" />
+    <Image src="/images/library/algarve.webp" alt="" fill sizes="100vw" className="ww-bg" />
     <div className="ww-do-shade" />
     <div className="shell ww-do-inner">
       <div className="ww-do-head" data-reveal>
@@ -112,8 +112,8 @@ export function Process() {
   return <section className="ww-story" id="story" aria-labelledby="story-heading">
     <div className="shell ww-story-grid">
       <div className="ww-collage" data-reveal>
-        <div className="ww-collage-main"><Image src="/images/about/story-walk.jpg" alt="A traveller with a suitcase walking through an airport towards the Dubai skyline" fill sizes="(max-width: 900px) 90vw, 36vw" /></div>
-        <div className="ww-collage-small"><Image src="/images/tanzania.png" alt="Sunset over the plains of Tanzania" fill sizes="(max-width: 900px) 50vw, 18vw" /></div>
+        <div className="ww-collage-main"><Image src="/images/library/airport-traveller.webp" alt="A traveller with a rolling suitcase inside an airport terminal" fill sizes="(max-width: 900px) 90vw, 36vw" /></div>
+        <div className="ww-collage-small"><Image src="/images/library/elephant-herd.webp" alt="An elephant herd gathering beside a waterhole in South Africa" fill sizes="(max-width: 900px) 50vw, 18vw" /></div>
         <svg className="ww-badge" viewBox="0 0 120 120" aria-hidden="true">
           <defs><path id="badge-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
           <text><textPath href="#badge-circle">Wings & Wheels · Since 2013 · Dubai ·</textPath></text>
@@ -149,7 +149,7 @@ const pillars = [
 
 export function Network() {
   return <section className="ww-network" id="network" aria-labelledby="network-heading">
-    <Image src="/images/about/globe.jpg" alt="" fill sizes="100vw" className="ww-bg" />
+    <Image src="/images/library/global-connections.webp" alt="" fill sizes="100vw" className="ww-bg" />
     <div className="ww-network-shade" />
     <div className="shell ww-network-grid">
       <div className="ww-network-copy" data-reveal>
@@ -206,7 +206,7 @@ export function Guides() {
 export function Split() {
   return <section className="ww-split" aria-label="Business and leisure travel">
     <div className="ww-split-panel">
-      <Image src="/images/about/business-airport.jpg" alt="A business traveller walking through an airport terminal at sunset" fill sizes="(max-width: 900px) 100vw, 60vw" className="ww-bg" />
+      <Image src="/images/library/business-terminal-v2.webp" alt="Business travellers walking through a bright airport terminal" fill sizes="(max-width: 900px) 100vw, 60vw" className="ww-bg" />
       <div className="ww-split-copy">
         <span className="ww-kicker">Corporate</span>
         <h2 className="ww-title is-light is-small">Business when<br />it needs to work.</h2>
@@ -214,7 +214,7 @@ export function Split() {
       </div>
     </div>
     <div className="ww-split-panel">
-      <Image src="/images/maldives-villa.png" alt="An overwater villa in the Maldives at sunset" fill sizes="(max-width: 900px) 100vw, 60vw" className="ww-bg" />
+      <Image src="/images/library/maldives-reef.webp" alt="Colourful fish and coral beneath the clear Maldivian sea" fill sizes="(max-width: 900px) 100vw, 60vw" className="ww-bg" />
       <div className="ww-split-copy">
         <span className="ww-kicker">Leisure</span>
         <h2 className="ww-title is-light is-small">Leisure when it<br />needs to feel different.</h2>
@@ -241,7 +241,7 @@ export function Team() {
         <Link href="/contact" className="button button-dark ww-button">Meet our team <Arrow /></Link>
       </div>
       <div className="ww-people-media" data-reveal>
-        <div className="ww-people-photo"><Image src="/images/about/team.jpg" alt="A Wings & Wheels travel consultant planning a trip at her desk" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
+        <div className="ww-people-photo"><Image src="/images/library/solo-consultant.webp" alt="A travel consultant reviewing routes and reservations at her office desk" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
         <div className="ww-people-card">
           <dl>{teamFacts.map(f => <div key={f.label}><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
           <p>One team. Multiple markets.</p>
@@ -253,7 +253,7 @@ export function Team() {
 
 export function ContactBand() {
   return <section className="cta-band" aria-labelledby="cta-heading">
-    <Image src="/images/dubai-terrace.png" alt="" fill sizes="100vw" className="ww-bg" />
+    <Image src="/images/library/dubai-clouds.webp" alt="" fill sizes="100vw" className="ww-bg" />
     <div className="cta-shade" />
     <div className="shell cta-inner" data-reveal>
       <span className="ww-kicker">Get in touch</span>

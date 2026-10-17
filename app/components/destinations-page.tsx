@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -13,21 +13,21 @@ import "./services.css";
 import "./destinations.css";
 
 const moods: Mood[] = [
-  { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/dubai.jpg", alt: "Dubai's skyline and highway interchanges at sunset" },
-  { title: "Beach & Escape", text: "Island stays, resorts and slower journeys.", icon: "sun", photo: "/images/maldives.jpg", alt: "Overwater villas along a turquoise lagoon" },
-  { title: "Culture & Discovery", text: "Cities, heritage, food and local experiences.", icon: "compass", photo: "/images/kyoto.jpg", alt: "Travellers in kimono walking a lantern-lit Kyoto street" },
-  { title: "Safari & Nature", text: "Wildlife, landscapes and extraordinary environments.", icon: "leaf", photo: "/images/journey/safari.webp", alt: "Elephants on the savannah beneath Kilimanjaro", position: "60% center" },
-  { title: "Family Holidays", text: "Destinations and stays designed around travelling together.", icon: "heart", photo: "/images/journey/leisure.webp", alt: "An unhurried afternoon beside a turquoise lagoon", position: "70% center" },
-  { title: "Groups & Experiences", text: "Celebrations, incentive travel, friends and organised journeys.", icon: "people", photo: "/images/groups.png", alt: "A group of colleagues walking through an airport together", position: "40% center" },
+  { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/library/dubai-marina.webp", alt: "Modern towers and waterfront buildings at Dubai Marina" },
+  { title: "Beach & Escape", text: "Island stays, resorts and slower journeys.", icon: "sun", photo: "/images/library/maldives-reef.webp", alt: "Colourful fish and coral beneath the clear Maldivian sea" },
+  { title: "Culture & Discovery", text: "Cities, heritage, food and local experiences.", icon: "compass", photo: "/images/library/rome-colosseum.webp", alt: "The ancient Colosseum in Rome beneath a bright sky" },
+  { title: "Safari & Nature", text: "Wildlife, landscapes and extraordinary environments.", icon: "leaf", photo: "/images/library/south-africa-safari.webp", alt: "Safari guests watching lions from an open vehicle in South Africa", position: "center" },
+  { title: "Family Holidays", text: "Destinations and stays designed around travelling together.", icon: "heart", photo: "/images/library/family-lake.webp", alt: "A parent and child enjoying a lakeside mountain view", position: "center" },
+  { title: "Groups & Experiences", text: "Celebrations, incentive travel, friends and organised journeys.", icon: "people", photo: "/images/library/retreat-dinner.webp", alt: "A candlelit retreat dinner on a terrace overlooking the sea", position: "center" },
 ];
 
 const postcards: Postcard[] = [
-  { name: "Kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/kenya-safari.png", alt: "Giraffes on a hillside with Nairobi and the coast beyond", position: "55% center", service: "Africa travel" },
-  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa", code: "TZ", photo: "/images/tanzania.png", alt: "Elephants crossing the savannah beneath Kilimanjaro", service: "Africa travel" },
-  { name: "Uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa", code: "UG", photo: "/images/uganda.png", alt: "Mountain gorillas resting on a forested hillside", service: "Africa travel" },
-  { name: "Dubai & UAE", line: "Business. Lifestyle. Experiences.", region: "Middle East", code: "AE", photo: "/images/dubai-terrace.png", alt: "A terrace overlooking the Dubai skyline at sunset", position: "60% center", service: "Leisure & holidays" },
-  { name: "Maldives", line: "Barefoot luxury. Endless blue.", region: "Indian Ocean", code: "MV", photo: "/images/maldives-villa.png", alt: "A thatched villa deck and plunge pool above the lagoon", service: "Leisure & holidays" },
-  { name: "Europe", line: "Cities. Culture. Escapes.", region: "Europe", code: "EU", photo: "/images/paris.png", alt: "The Eiffel Tower and the Seine at sunset from a Paris terrace", service: "Leisure & holidays" },
+  { name: "Kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center", service: "Africa travel" },
+  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa", code: "TZ", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", service: "Africa travel" },
+  { name: "Uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa", code: "UG", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", service: "Africa travel" },
+  { name: "Dubai & UAE", line: "Business. Lifestyle. Experiences.", region: "Middle East", code: "AE", photo: "/images/library/dubai-clouds.webp", alt: "Dubai towers rising above a sea of morning clouds", position: "center", service: "Leisure & holidays" },
+  { name: "Maldives", line: "Barefoot luxury. Endless blue.", region: "Indian Ocean", code: "MV", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", service: "Leisure & holidays" },
+  { name: "Europe", line: "Cities. Culture. Escapes.", region: "Europe", code: "EU", photo: "/images/library/florence.webp", alt: "Florence and its cathedral beneath the Tuscan hills", service: "Leisure & holidays" },
 ];
 
 const cities = [
@@ -47,23 +47,23 @@ const africaReasons: { icon: IconKind; label: string }[] = [
 ];
 
 const legs: { days: string; kind: string; place: string; note: string; icon: IconKind; photo: string; alt: string; position?: string }[] = [
-  { days: "Days 1–2", kind: "Stopover", place: "Dubai", note: "City, skyline and a night in the desert.", icon: "briefcase", photo: "/images/dubai.jpg", alt: "Dubai's skyline at sunset", position: "40% center" },
-  { days: "Days 3–6", kind: "Safari", place: "Maasai Mara", note: "Game drives from a tented camp.", icon: "leaf", photo: "/images/kenya.jpg", alt: "A safari vehicle on the grasslands at sunset", position: "35% center" },
-  { days: "Days 7–10", kind: "Island", place: "Maldives", note: "An overwater villa and nothing planned.", icon: "sun", photo: "/images/maldives.jpg", alt: "Overwater villas on a turquoise lagoon" },
-  { days: "Days 11–13", kind: "Lakes", place: "Europe", note: "A slower finish among the mountains.", icon: "mountain", photo: "/images/lake.jpg", alt: "A wooden boat on an alpine lake", position: "center 70%" },
+  { days: "Days 1–2", kind: "Stopover", place: "Dubai", note: "City, skyline and a night in the desert.", icon: "briefcase", photo: "/images/library/dubai-panorama.webp", alt: "Dubai skyline and the Burj Khalifa in clear daylight", position: "center" },
+  { days: "Days 3–6", kind: "Safari", place: "Maasai Mara", note: "Game drives from a tented camp.", icon: "leaf", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center" },
+  { days: "Days 7–10", kind: "Island", place: "Maldives", note: "An overwater villa and nothing planned.", icon: "sun", photo: "/images/library/maldives-aerial.webp", alt: "An aerial view of overwater villas surrounding a Maldivian island" },
+  { days: "Days 11–13", kind: "Lakes", place: "Europe", note: "A slower finish among the mountains.", icon: "mountain", photo: "/images/library/swiss-lake.webp", alt: "A turquoise alpine lake surrounded by Swiss mountain peaks", position: "center" },
 ];
 
 const seasons: Season[] = [
-  { months: "October – December", short: "Oct — Dec", photo: "/images/about/leisure-sun.jpg", alt: "A traveller in a sun hat relaxing on a terrace above the sea", picks: [
+  { months: "October – December", short: "Oct — Dec", photo: "/images/library/finland-village.webp", alt: "A warmly lit winter village in snowy Finnish Lapland", picks: [
     { place: "Dubai & UAE", note: "Outdoor season" }, { place: "Maldives", note: "Island escapes" }, { place: "Kenya", note: "Safari + coast" }, { place: "Europe", note: "Festive city breaks" },
   ] },
-  { months: "January – March", short: "Jan — Mar", photo: "/images/journey/safari.webp", alt: "Elephants on the savannah beneath Kilimanjaro", picks: [
+  { months: "January – March", short: "Jan — Mar", photo: "/images/library/maldives-jetty.webp", alt: "A wooden jetty leading across turquoise water to a tropical island", picks: [
     { place: "UAE", note: "City and leisure travel" }, { place: "East Africa", note: "Safari experiences" }, { place: "Maldives", note: "Winter sun" },
   ] },
-  { months: "April – June", short: "Apr — Jun", photo: "/images/lake.jpg", alt: "A wooden boat on an alpine lake beneath limestone peaks", picks: [
+  { months: "April – June", short: "Apr — Jun", photo: "/images/library/venice.webp", alt: "Venice Grand Canal lined with historic palaces", picks: [
     { place: "Europe", note: "Spring cities and countryside" }, { place: "East Africa", note: "Selected nature experiences" },
   ] },
-  { months: "July – September", short: "Jul — Sep", photo: "/images/kenya.jpg", alt: "A safari vehicle crossing the grasslands at sunset", picks: [
+  { months: "July – September", short: "Jul — Sep", photo: "/images/library/swiss-valley.webp", alt: "Green Swiss alpine meadows and chalets beneath snow-covered peaks", picks: [
     { place: "Kenya & Tanzania", note: "Safari season" }, { place: "Europe", note: "Summer journeys" },
   ] },
 ];
@@ -114,7 +114,7 @@ export default function DestinationsPage() {
       </section>
 
       <section className="d-africa j-torn-top" id="africa" aria-labelledby="africa-heading">
-        <div className="d-africa-photo" data-frame><Image src="/images/kenya-safari.png" alt="" fill sizes="60vw" /></div>
+        <div className="d-africa-photo" data-frame><Image src="/images/library/africa-dawn.webp" alt="" fill sizes="60vw" /></div>
         <div className="d-africa-shade" />
         <div className="j-shell d-africa-grid">
           <div className="d-africa-copy">
@@ -194,7 +194,7 @@ export default function DestinationsPage() {
       </section>
 
       <section className="s-final d-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/santorini.jpg" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/algarve.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content d-final-content">
           <span className="j-eyebrow">Your next destination</span>

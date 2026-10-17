@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
@@ -34,10 +34,10 @@ const managed = [
 ];
 
 const kinds = [
-  { word: "Meetings", photo: "/images/corporate.png", position: "30% 40%", formats: ["Sales meetings", "Training programmes"] },
-  { word: "Incentive travel", photo: "/images/journey/team-original.png", position: "center 40%", formats: ["Corporate retreats", "Company events"] },
-  { word: "Conferences", photo: "/images/groups.png", position: "center 45%", formats: ["Product launches", "Delegations"] },
-  { word: "Exhibitions", photo: "/images/airport.png", position: "center 55%", formats: ["Site visits", "Exhibitor teams"] },
+  { word: "Meetings", photo: "/images/library/business-conversation.webp", position: "center", formats: ["Sales meetings", "Training programmes"] },
+  { word: "Incentive travel", photo: "/images/library/winter-retreat.webp", position: "center", formats: ["Corporate retreats", "Company events"] },
+  { word: "Conferences", photo: "/images/library/conference.webp", position: "center", formats: ["Product launches", "Delegations"] },
+  { word: "Exhibitions", photo: "/images/library/exhibition.webp", position: "center", formats: ["Site visits", "Exhibitor teams"] },
 ];
 
 const day = [
@@ -142,7 +142,7 @@ export default function GroupsPage() {
               <span className="g-pass-foot"><span>{origin.who}</span><span>Arr {origin.arrives}</span></span>
             </li>)}</ul>
             <div className="g-venue">
-              <Image src="/images/dubai.jpg" alt="" fill sizes="(max-width: 991px) 60vw, 22vw" />
+              <Image src="/images/library/dubai-panorama.webp" alt="" fill sizes="(max-width: 991px) 60vw, 22vw" />
               <div className="g-venue-copy"><span>The venue</span><strong>Dubai</strong><em>One event.</em></div>
             </div>
           </figure>
@@ -313,7 +313,7 @@ export default function GroupsPage() {
           </div>
           <figure className="g-sheet" aria-label="An example group itinerary being revised after a flight delay">
             <div className="g-sheet-coordinator">
-              <span className="g-sheet-photo"><Image src="/images/about/team.jpg" alt="" fill sizes="160px" style={{ objectPosition: "35% center" }} /></span>
+              <span className="g-sheet-photo"><Image src="/images/library/solo-consultant.webp" alt="A travel consultant reviewing routes and reservations at her office desk" fill sizes="160px" style={{ objectPosition: "center" }} /></span>
               <span className="g-sheet-pen">Your coordinator<br />is on it</span>
             </div>
             <header><span>Group itinerary</span><span>Day 1 · Nairobi delegates</span></header>
@@ -344,7 +344,7 @@ export default function GroupsPage() {
       </section>
 
       <section className="s-final g-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/airport.png" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/dubai-clouds.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <div className="g-arrived" aria-label="40 of 40 travellers arrived"><span data-count="40" aria-hidden="true">40</span><span aria-hidden="true">/ 40 arrived</span></div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "./travel-image";
 import { useEffect, useRef, useState } from "react";
 
 export type ValuePanel = { note: string; title: [string, string]; text: string; photo: string; alt: string; position?: string };

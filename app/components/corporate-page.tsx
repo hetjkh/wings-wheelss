@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -19,20 +19,20 @@ const verbs = [
 ];
 
 const services: { icon: IconKind; title: string; photo: string; position?: string; items: string[]; service: string }[] = [
-  { icon: "plane", title: "Business flights", photo: "/images/about/business-airport.jpg", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
-  { icon: "bed", title: "Hotels", photo: "/images/about/story-traveller.jpg", position: "65% center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
-  { icon: "document", title: "Visas & documentation", photo: "/images/about/lounge.jpg", position: "60% center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
-  { icon: "car", title: "Airport & ground transfers", photo: "/images/about/coast-road.jpg", position: "85% center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },
-  { icon: "people", title: "Meetings & events travel", photo: "/images/about-airport.png", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
-  { icon: "support", title: "Travel support", photo: "/images/about/team.jpg", position: "35% center", items: ["Changes & rebooking", "Emergency assistance", "Onward travel", "Dedicated support"], service: "Travel support" },
+  { icon: "plane", title: "Business flights", photo: "/images/library/business-terminal-v2.webp", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
+  { icon: "bed", title: "Hotels", photo: "/images/library/business-hotel.webp", position: "center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
+  { icon: "document", title: "Visas & documentation", photo: "/images/library/passport-preparation.webp", position: "center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
+  { icon: "car", title: "Airport & ground transfers", photo: "/images/library/airport-transfer.webp", position: "center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },
+  { icon: "people", title: "Meetings & events travel", photo: "/images/library/conference.webp", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
+  { icon: "support", title: "Travel support", photo: "/images/library/solo-consultant.webp", position: "center", items: ["Changes & rebooking", "Emergency assistance", "Onward travel", "Dedicated support"], service: "Travel support" },
 ];
 
 const day = [
-  { time: "06:00", label: "Departure", photo: "/images/airport.png" },
-  { time: "09:00", label: "Meeting", photo: "/images/journey/story-original.png" },
-  { time: "12:30", label: "Client visit", photo: "/images/dubai.jpg" },
-  { time: "15:00", label: "Team meeting", photo: "/images/about/business.jpg" },
-  { time: "19:30", label: "Return flight", photo: "/images/about/hero-lounge.jpg" },
+  { time: "06:00", label: "Departure", photo: "/images/library/flight-wing.webp" },
+  { time: "09:00", label: "Meeting", photo: "/images/library/business-conversation.webp" },
+  { time: "12:30", label: "Client visit", photo: "/images/library/dubai-panorama.webp" },
+  { time: "15:00", label: "Team meeting", photo: "/images/library/travel-support-v2.webp" },
+  { time: "19:30", label: "Return flight", photo: "/images/library/executive-lounge.webp" },
 ];
 
 const companies = [
@@ -52,9 +52,9 @@ const teamList: { icon: IconKind; label: string }[] = [
 ];
 
 const rings = [
-  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/dubai.jpg" },
-  { title: "Africa network", scope: "Where we know the ground", text: "Local knowledge and on-ground connections.", photo: "/images/kenya-safari.png" },
-  { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/about/globe.jpg" },
+  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/library/dubai-marina.webp" },
+  { title: "Africa network", scope: "Where we know the ground", text: "Local knowledge and on-ground connections.", photo: "/images/library/kenya-game-drive.webp" },
+  { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/library/sydney-harbour.webp" },
 ];
 
 const statuses: { label: string; note: string; icon: IconKind }[] = [
@@ -290,23 +290,33 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="k-sides j-torn-top" id="benefits" aria-labelledby="sides-heading">
-        <h2 id="sides-heading" className="k-sides-title">One journey, two sides.</h2>
+      <section className="k-sides" id="benefits" aria-labelledby="sides-heading">
+        <div className="k-sides-heading">
+          <div className="k-sides-heading-surface">
+            <div className="k-sides-heading-grid" aria-hidden="true" />
+            <div className="k-sides-heading-map" aria-hidden="true" />
+            <h2 id="sides-heading" className="k-sides-title">One journey,<br />two sides.</h2>
+          </div>
+        </div>
         <div className="k-sides-grid">
-          <div className="k-side k-side-travellers">
-            <div className="k-side-photo" data-frame><Image src="/images/about/story-walk.jpg" alt="A business traveller arriving at her hotel room with a view of the city" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+          <article className="k-side k-side-travellers">
+            <div className="k-side-photo"><Image src="/images/library/airport-traveller.webp" alt="A traveller with a rolling suitcase inside an airport terminal" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="k-side-shade" aria-hidden="true" />
+            <span className="k-side-note">01 / Support at every step</span>
             <div className="k-side-copy">
-              <span className="j-eyebrow">For your travellers</span>
+              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <span aria-hidden="true">↗</span></EnquiryButton><h3>For your<br />travellers</h3></div>
               <ul>{forTravellers.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>
             </div>
-          </div>
-          <div className="k-side k-side-business">
-            <div className="k-side-photo" data-frame><Image src="/images/about/team.jpg" alt="A Wings & Wheels coordinator reviewing company travel at her desk" fill sizes="(max-width: 800px) 100vw, 50vw" style={{ objectPosition: "35% center" }} /></div>
+          </article>
+          <article className="k-side k-side-business">
+            <div className="k-side-photo"><Image src="/images/library/travel-planning-v2.webp" alt="A travel coordinator reviewing a printed itinerary beside a laptop" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="k-side-shade" aria-hidden="true" />
+            <span className="k-side-note">02 / Keep your business moving</span>
             <div className="k-side-copy">
-              <span className="j-eyebrow">For your business</span>
+              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <span aria-hidden="true">↗</span></EnquiryButton><h3>For your<br />business</h3></div>
               <ul>{forBusiness.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
@@ -340,7 +350,7 @@ export default function CorporatePage() {
       </section>
 
       <section className="s-final k-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/journey/business-original.png" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/business-boarding.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -41,12 +41,12 @@ export function HomeReminders() {
       <div className="e-reminders-stage">
         <div className="e-reminders-visual" aria-hidden="true">
           <Image
-            src="/images/about/lounge.jpg"
+            src="/images/library/visa-passports.webp"
             alt=""
             fill
             sizes="(max-width: 999px) 100vw, 48vw"
             className="n-cover"
-            style={{ objectPosition: "35% center" }}
+            style={{ objectPosition: "center" }}
           />
           <div className="e-reminders-shade" />
           <div className="e-reminders-stamp">

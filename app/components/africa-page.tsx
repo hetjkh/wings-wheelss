@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -13,10 +13,10 @@ import "./services.css";
 import "./africa.css";
 
 const reasons = [
-  { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/about/business-airport.jpg", alt: "Business travellers walking through an airport terminal", position: "40% center" },
-  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/journey/safari.webp", alt: "A traveller watching elephants on the savannah beneath Kilimanjaro", position: "60% center" },
-  { title: "Family", text: "Holidays and journeys together.", photo: "/images/journey/leisure.webp", alt: "An unhurried afternoon beside a turquoise lagoon", position: "70% center" },
-  { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", photo: "/images/groups.png", alt: "Colleagues walking through an airport together", position: "40% center" },
+  { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", position: "center" },
+  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/south-africa-safari.webp", alt: "Safari guests watching lions from an open vehicle in South Africa", position: "center" },
+  { title: "Family", text: "Holidays and journeys together.", photo: "/images/library/zanzibar.webp", alt: "A traditional dhow sailing off a palm-lined white sand beach in Zanzibar", position: "center" },
+  { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center" },
 ];
 
 const pillars = [
@@ -38,18 +38,18 @@ const business: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const destinations = [
-  { name: "Kenya", line: "Safari. City. Coast.", photo: "/images/kenya-safari.png", alt: "Giraffes on a hillside with Nairobi and the coast beyond", position: "55% center" },
-  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", photo: "/images/tanzania.png", alt: "Elephants crossing the savannah beneath Kilimanjaro", position: "center" },
-  { name: "Uganda", line: "Wildlife. Nature. Adventure.", photo: "/images/uganda.png", alt: "Mountain gorillas resting on a forested hillside", position: "center" },
+  { name: "Kenya", line: "Safari. City. Coast.", photo: "/images/library/nairobi-city.webp", alt: "Nairobi city centre and the Kenyatta International Convention Centre above the green urban canopy", position: "center" },
+  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", position: "center" },
+  { name: "Uganda", line: "Wildlife. Nature. Adventure.", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", position: "center" },
 ];
 const more = ["Rwanda", "Ethiopia", "Mauritius", "Seychelles", "South Africa"];
 
 const itinerary = [
-  { name: "Dubai", role: "International hub", photo: "/images/journey/dubai.webp" },
-  { name: "Nairobi", role: "City", photo: "/images/kenya-safari.png", position: "15% center" },
-  { name: "Maasai Mara", role: "Safari", photo: "/images/kenya.jpg", position: "30% center" },
-  { name: "Zanzibar", role: "Beach", photo: "/images/maldives.jpg" },
-  { name: "Dubai", role: "Home", photo: "/images/dubai-terrace.png", position: "60% center" },
+  { name: "Dubai", role: "International hub", photo: "/images/library/dubai-panorama.webp" },
+  { name: "Nairobi", role: "City", photo: "/images/library/nairobi-city.webp", position: "center" },
+  { name: "Maasai Mara", role: "Safari", photo: "/images/library/kenya-game-drive.webp", position: "center" },
+  { name: "Zanzibar", role: "Beach", photo: "/images/library/zanzibar.webp" },
+  { name: "Dubai", role: "Home", photo: "/images/library/dubai-clouds.webp", position: "center" },
 ];
 
 export default function AfricaPage() {
@@ -114,8 +114,8 @@ export default function AfricaPage() {
 
       <section className="a-corridor j-torn-top" id="corridor" aria-labelledby="corridor-heading">
         <div className="a-corridor-photos" aria-hidden="true">
-          <div data-frame><Image src="/images/journey/dubai.webp" alt="" fill sizes="50vw" /></div>
-          <div data-frame><Image src="/images/kenya.jpg" alt="" fill sizes="50vw" /></div>
+          <div data-frame><Image src="/images/library/dubai-marina.webp" alt="" fill sizes="50vw" /></div>
+          <div data-frame><Image src="/images/library/mountain-hiker.webp" alt="" fill sizes="50vw" /></div>
         </div>
         <div className="a-corridor-shade" />
         <div className="j-shell a-corridor-content">
@@ -141,7 +141,7 @@ export default function AfricaPage() {
 
       <section className="a-business j-torn-top" id="business" aria-labelledby="business-heading">
         <div className="j-shell a-business-grid">
-          <div className="a-business-photo" data-frame><Image src="/images/corporate.png" alt="A business traveller checking his phone in an airport terminal" fill sizes="(max-width: 991px) 100vw, 42vw" /></div>
+          <div className="a-business-photo" data-frame><Image src="/images/library/executive-lounge.webp" alt="A traveller waiting in a quiet airport lounge overlooking the city" fill sizes="(max-width: 991px) 100vw, 42vw" /></div>
           <div className="a-business-copy">
             <span className="j-eyebrow s-eyebrow">04 / Business across borders</span>
             <h2 id="business-heading" className="s-title a-title-md">When business moves across Africa, travel has to move with it.</h2>
@@ -203,7 +203,7 @@ export default function AfricaPage() {
       </section>
 
       <section className="s-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/about/globe.jpg" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/cape-town.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">UAE ↔ Africa ↔ Worldwide</span>

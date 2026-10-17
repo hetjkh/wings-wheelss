@@ -1,15 +1,8 @@
+import { faqs } from "./faqs";
 import Link from "next/link";
 import { Arrow } from "./icons";
 import "./home-faq.css";
 
-const faqs = [
-  { question: "Do you support both business and leisure travel?", answer: "Yes. We coordinate corporate travel, family holidays, individual journeys and group trips. The same team brings care and attention to every itinerary, whatever takes you there." },
-  { question: "Can you help with group and MICE travel?", answer: "We help organise meetings, incentives, conferences and exhibitions, including flights, accommodation, transfers and coordination for travellers arriving from different locations." },
-  { question: "Do you assist with visas and transfers?", answer: "Yes. We can help you understand the visa requirements for your itinerary and coordinate airport and local transfers. Visa approval and processing times are determined by the relevant authorities." },
-  { question: "Which regions do you mainly cover?", answer: "We operate from Dubai, with connections across the UAE and key African markets including Sudan, South Sudan, Uganda, Kenya and Tanzania, alongside international destinations." },
-  { question: "Do you coordinate complex multi-stop journeys?", answer: "Absolutely. We bring flights, hotels, transfers and the details between each stop into one coordinated plan, including journeys across multiple countries." },
-  { question: "Will someone be available during travel?", answer: "Our team stays connected throughout your journey. We’ll share the relevant contact details before you leave so you know who to speak to if your plans change." },
-];
 
 export function HomeFaq() {
   return (
@@ -25,10 +18,10 @@ export function HomeFaq() {
         </div>
 
         <div className="e-faq-list">
-          {faqs.map(faq => (
+          {faqs.map((faq, index) => (
             <details key={faq.question} name="home-faq" data-editorial-reveal>
               <summary>
-                <span>{faq.question}</span>
+                <span>{String(index + 1).padStart(2, "0")} — {faq.question}</span>
                 <span className="e-faq-mark" aria-hidden="true" />
               </summary>
               <p>{faq.answer}</p>

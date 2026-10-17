@@ -100,6 +100,7 @@
   .a-corridor-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .5fr) minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 991px) {
+  .a-corridor-photos { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
   .journey-page .a-title-md { font-size: 40px; }
   .a-corridor-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
   .a-side, .a-side-right, .a-hub { grid-column: 1; grid-row: auto; }

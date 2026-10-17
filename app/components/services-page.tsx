@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Arrow, TravelIcon, type IconKind } from "./icons";
+import Image from "./travel-image";
+import { TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { JourneyPlanner } from "./journey-planner";
 import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
+import { ServicesIndex, type IndexedService } from "./services-index";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -21,21 +21,20 @@ const stops: { icon: IconKind; title: string; text: string }[] = [
   { icon: "return", title: "Return", text: "And we’ll help when it’s time." },
 ];
 
-type Service = { icon: IconKind; title: string; photo: string; alt: string; position?: string; items: string[]; cta: string; service?: string };
-const services: Service[] = [
-  { icon: "plane", title: "Flights", photo: "/images/airport.png", alt: "Travellers walking through a terminal toward a waiting aircraft at sunset", position: "70% center", items: ["Flight bookings", "Multi-city itineraries", "Group flights", "Business travel", "International connections"], cta: "Explore flights", service: "Flights" },
-  { icon: "bed", title: "Hotels", photo: "/images/about/story-traveller.jpg", alt: "A traveller arriving at a hotel room overlooking the Dubai skyline", position: "center 40%", items: ["Business hotels", "Resorts", "Family accommodation", "Group stays", "Longer stays"], cta: "Explore hotels", service: "Hotels" },
-  { icon: "document", title: "Visas & documentation", photo: "/images/about/lounge.jpg", alt: "A passport and boarding pass on a lounge table beside a suitcase", position: "35% center", items: ["Visa assistance", "Travel documentation guidance", "Travel insurance assistance", "Pre-departure checks"], cta: "Visa support", service: "Visa assistance" },
-  { icon: "car", title: "Airport & ground transfers", photo: "/images/about/coast-road.jpg", alt: "A car on a coastal road winding toward the sunset", position: "88% center", items: ["Airport transfers", "Private vehicles", "Chauffeur services", "Group transportation", "Hotel / venue transfers"], cta: "Arrange a transfer", service: "Airport & ground transfers" },
-  { icon: "sun", title: "Holidays & experiences", photo: "/images/maldives-villa.png", alt: "An overwater villa with a private pool at sunset", items: ["Family holidays", "Safari", "Beach escapes", "City breaks", "Multi-destination travel", "Selected experiences"], cta: "Explore destinations", service: "Leisure & holidays" },
-  { icon: "support", title: "Travel support", photo: "/images/about/hero-lounge.jpg", alt: "A traveller waiting in an airport lounge as the sun sets over the city", position: "60% center", items: ["Changes", "Rebooking assistance", "Cancellations", "Onward travel", "Traveller support"], cta: "Talk to our team" },
+const services: IndexedService[] = [
+  { icon: "plane", title: "Flights", line: "From here to wherever you need to be.", photo: "/images/library/airport-traveller.webp", alt: "A traveller with a rolling suitcase inside an airport terminal", position: "center", items: ["Flight bookings", "Multi-city itineraries", "Group flights", "Business travel", "International connections"], cta: "Explore flights", service: "Flights" },
+  { icon: "bed", title: "Hotels", line: "Somewhere that fits the reason you’re there.", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", position: "center", items: ["Business hotels", "Resorts", "Family accommodation", "Group stays", "Longer stays"], cta: "Explore hotels", service: "Hotels" },
+  { icon: "document", title: "Visas & documentation", line: "The paperwork, checked before you leave.", photo: "/images/library/visa-passports.webp", alt: "Two passports held against a pink background", position: "center", items: ["Visa assistance", "Travel documentation guidance", "Travel insurance assistance", "Pre-departure checks"], cta: "Visa support", service: "Visa assistance" },
+  { icon: "car", title: "Airport & ground transfers", line: "Someone waiting when you land.", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", items: ["Airport transfers", "Private vehicles", "Chauffeur services", "Group transportation", "Hotel / venue transfers"], cta: "Arrange a transfer", service: "Airport & ground transfers" },
+  { icon: "sun", title: "Holidays & experiences", line: "Time that is entirely yours.", photo: "/images/library/maldives-sandbank.webp", alt: "A white sandbank between a turquoise lagoon and the Indian Ocean", items: ["Family holidays", "Safari", "Beach escapes", "City breaks", "Multi-destination travel", "Selected experiences"], cta: "Explore destinations", service: "Leisure & holidays" },
+  { icon: "support", title: "Travel support", line: "A real person, when plans change.", photo: "/images/library/travel-support-v2.webp", alt: "Two travel consultants reviewing a world map and planning a route together", position: "center", items: ["Changes", "Rebooking assistance", "Cancellations", "Onward travel", "Traveller support"], cta: "Talk to our team" },
 ];
 
 const reasons = [
-  { title: "Business", line: "Somewhere to be.", text: "Executive and company travel built around schedules and meetings.", photo: "/images/corporate.png", alt: "A business traveller checking his phone in an airport terminal", position: "66% center", cta: "Corporate travel", service: "Corporate travel" },
-  { title: "Leisure", line: "Somewhere to discover.", text: "Holidays, city breaks, safaris, beaches and more.", photo: "/images/about/leisure-sun.jpg", alt: "A traveller in a sun hat watching the sunset over the sea", position: "center 40%", cta: "Explore destinations", service: "Leisure & holidays" },
-  { title: "Groups & MICE", line: "Somewhere to be — together.", text: "Team travel, exhibitions, conferences and events.", photo: "/images/groups.png", alt: "Colleagues walking through an airport together with their luggage", position: "40% center", cta: "Groups & MICE", service: "Groups & MICE" },
-  { title: "Africa", line: "Somewhere we’re particularly connected.", text: "Travel between the UAE, key African markets and beyond.", photo: "/images/journey/team.webp", alt: "Travellers looking over an African landscape at sunset", position: "55% center", cta: "Explore Africa", service: "Africa travel" },
+  { title: "Business", line: "Somewhere to be.", text: "Executive and company travel built around schedules and meetings.", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", position: "center", cta: "Corporate travel", service: "Corporate travel" },
+  { title: "Leisure", line: "Somewhere to discover.", text: "Holidays, city breaks, safaris, beaches and more.", photo: "/images/library/bali-coast.webp", alt: "Turquoise water and dramatic cliffs on the coast of Nusa Penida", position: "center", cta: "Explore destinations", service: "Leisure & holidays" },
+  { title: "Groups & MICE", line: "Somewhere to be — together.", text: "Team travel, exhibitions, conferences and events.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center", cta: "Groups & MICE", service: "Groups & MICE" },
+  { title: "Africa", line: "Somewhere we’re particularly connected.", text: "Travel between the UAE, key African markets and beyond.", photo: "/images/library/cape-coast.webp", alt: "Ocean waves meeting the rocky South African coastline", position: "center", cta: "Explore Africa", service: "Africa travel" },
 ];
 
 const examples: { type: string; route: string[]; items: { icon: IconKind; label: string }[] }[] = [
@@ -116,22 +115,7 @@ export default function ServicesPage() {
             <div><span className="j-eyebrow s-eyebrow">02 / Our travel services</span><h2 id="services-heading" className="s-title">Whatever the<br />journey needs.</h2></div>
             <p className="s-lead">A complete travel service, coordinated around you. Choose one part, or let us bring every part together.</p>
           </div>
-          <div className="s-service-grid">{services.map((item, i) => <article key={item.title} className="s-service" aria-labelledby={`service-${i}`}>
-            <div className="s-service-photo">
-              <Image src={item.photo} alt={item.alt} fill sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 30vw" style={item.position ? { objectPosition: item.position } : undefined} />
-              <span className="s-service-icon" aria-hidden="true"><TravelIcon kind={item.icon} size={22} /></span>
-              <span className="s-service-number">{String(i + 1).padStart(2, "0")}</span>
-              <div className="s-service-body">
-                <h3 id={`service-${i}`}>{item.title}</h3>
-                <div className="s-service-more">
-                  <div>
-                    <ul>{item.items.map(line => <li key={line}>{line}</li>)}</ul>
-                    {item.service ? <EnquiryButton className="j-journey-enquiry" service={item.service}>{item.cta}</EnquiryButton> : <Link className="j-journey-enquiry" href="/contact">{item.cta}<Arrow /></Link>}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>)}</div>
+          <ServicesIndex services={services} />
         </div>
       </section>
 
@@ -174,7 +158,7 @@ export default function ServicesPage() {
 
       <section className="s-principle j-torn-top" aria-labelledby="principle-heading">
         <div className="s-principle-frame">
-          <Image className="j-photo" src="/images/journey/business.webp" alt="A traveller boarding an aircraft at sunrise" fill sizes="100vw" />
+          <Image className="j-photo" src="/images/library/business-boarding.webp" alt="A business traveller approaching an aircraft on the apron" fill sizes="100vw" />
           <div className="s-principle-shade" />
         </div>
         <div className="j-shell s-principle-copy">
@@ -188,7 +172,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="s-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
-        <video className="j-photo s-beyond-video" src="/videos/dubai-skyline.mp4" poster="/videos/dubai-skyline-poster.jpg" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+        <video className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.jpg" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
         <div className="s-beyond-shade" />
         <div className="j-shell s-beyond-content">
           <div className="s-split-head">
@@ -235,7 +219,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="s-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/journey/hero.webp" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/iceland-coast.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels</span>

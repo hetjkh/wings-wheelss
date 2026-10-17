@@ -1,0 +1,17 @@
+{
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "file": "business-terminal-v2.png",
+      "prompt": "Create a tack-sharp high-resolution editorial photograph at 2048 x 3072 pixels, portrait 2:3, for a tall corporate travel website panel. A professionally dressed businesswoman and businessman with carry-on suitcases walking through a bright contemporary airport terminal, framed at medium full-body distance, clear polished floor and architectural window mullions, realistic terminal outside, gentle natural daylight. The travelers and nearby architecture must be crisply in focus with realistic fine clothing texture, high shutter speed, deep depth of field, no soft focus, no bokeh over subjects, no haze, no motion blur. Believable unbranded airport, no readable text, no logos, no collage, no watermarks. Keep people around the middle of the frame with breathing room above and below for portrait crop."
+    },
+    {
+      "file": "travel-support-v2.png",
+      "prompt": "Create a tack-sharp high-resolution professional editorial photograph at 2048 x 2560 pixels, portrait 4:5, for a tall travel agency team and support website panel. Two adult travel consultants, one woman and one man, seated close together reviewing a paper world map at a warm contemporary office desk, a laptop partly visible, modest office greenery and books in background. Natural candid interaction, subjects looking at the map. Medium shot with both faces, hands and the map sharply resolved, deep depth of field, crisp realistic hair and fabric textures, clean daylight, high shutter speed. No soft focus, no haze, no motion blur, no text, no logos, no watermarks. Frame centrally with some space above heads and below desk to fit tall and square crops."
+    },
+    {
+      "file": "travel-planning-v2.png",
+      "prompt": "Create a tack-sharp high-resolution editorial photograph at 2048 x 3072 pixels, portrait 2:3, for a tall corporate travel planning card on a premium travel website. A professional travel coordinator seated at a neat office desk, side three-quarter view, carefully reviewing a printed itinerary beside an open laptop showing a simple unlabeled map, a notebook and passport holder on the desk. Include the person's upper body, hands, laptop and desk with clear composition. Modern understated office in daylight. Crisp fine detail in face, hair, clothing and paper, deep depth of field, no soft focus, no background haze, no motion blur. No readable text, no brands, no logos, no watermark. Subjects arranged centrally for flexible portrait and square cropping."
+    }
+  ]
+}

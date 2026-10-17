@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { faqs } from "./faqs";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -9,12 +10,12 @@ import "./journey.css";
 import "./journey-explorer.css";
 import "./about-sections.css";
 
-const image = (name: string) => `/images/journey/${name}.webp`;
+const image = (name: string) => name === "hero" ? "/images/journey/hero.webp" : `/images/library/${name}.webp`;
 const audiences = [
-  { id: "business", title: "Business", text: "From the first meeting to the flight home. We take care of the details, so you can focus on what brings you there.", photo: "business", alt: "A business traveller boarding a private jet at sunrise", service: "Corporate travel" },
-  { id: "leisure", title: "Leisure", text: "Slow mornings, wide horizons and a little more wonder. Thoughtfully planned escapes, shaped around you.", photo: "leisure", alt: "A traveller overlooking a turquoise island lagoon", service: "Leisure & holidays" },
-  { id: "groups", title: "Groups & MICE", text: "Shared experiences, seamlessly coordinated. Bringing people together for meetings, milestones and everything in between.", photo: "team", alt: "A group taking in a mountain landscape together", service: "Groups & MICE" },
-  { id: "connections", title: "Connections", text: "From Dubai to Africa and beyond. Local knowledge and a connected team make even complex journeys feel effortless.", photo: "dubai", alt: "Dubai skyline in the soft evening light", service: "Africa travel" },
+  { id: "business", title: "Business", text: "From the first meeting to the flight home. We take care of the details, so you can focus on what brings you there.", photo: "business-boarding", alt: "A business traveller approaching an aircraft on the apron", service: "Corporate travel" },
+  { id: "leisure", title: "Leisure", text: "Slow mornings, wide horizons and a little more wonder. Thoughtfully planned escapes, shaped around you.", photo: "maldives-jetty", alt: "A wooden jetty leading across turquoise water to a tropical island", service: "Leisure & holidays" },
+  { id: "groups", title: "Groups & MICE", text: "Shared experiences, seamlessly coordinated. Bringing people together for meetings, milestones and everything in between.", photo: "retreat-dinner", alt: "A candlelit retreat dinner on a terrace overlooking the sea", service: "Groups & MICE" },
+  { id: "connections", title: "Connections", text: "From Dubai to Africa and beyond. Local knowledge and a connected team make even complex journeys feel effortless.", photo: "dubai-panorama", alt: "Dubai skyline and the Burj Khalifa in clear daylight", service: "Africa travel" },
 ];
 const steps = [
   { icon: "people", text: <>You tell us where<br />you need to be</> },
@@ -25,15 +26,15 @@ const steps = [
 ] as const;
 const routePath = "M0 90 C 100 90, 120 40, 200 40 C 330 40, 470 90, 600 90 C 730 90, 870 40, 1000 40 C 1080 40, 1120 70, 1200 70";
 const stops = [
-  { x: 200, y: 40, title: "UAE base", lead: "Where we start", text: "Regional coordination with international access.", place: "Dubai", photo: image("dubai"), alt: "Dubai skyline in the evening light" },
-  { x: 600, y: 90, title: "Africa network", lead: "Where we know the ground", text: "Local knowledge and on-ground connections in Sudan, South Sudan, Uganda, Kenya and Tanzania.", place: "East Africa", photo: image("safari"), alt: "A traveller watching the East African savannah" },
-  { x: 1000, y: 40, title: "Global reach", lead: "Wherever you're going", text: "International travel planning and coordination.", place: "Worldwide", photo: image("leisure"), alt: "A turquoise island lagoon" },
+  { x: 200, y: 40, title: "UAE base", lead: "Where we start", text: "Regional coordination with international access.", place: "Dubai", photo: image("dubai-marina"), alt: "Modern towers and waterfront buildings at Dubai Marina" },
+  { x: 600, y: 90, title: "Africa network", lead: "Where we know the ground", text: "Local knowledge and on-ground connections in Sudan, South Sudan, Uganda, Kenya and Tanzania.", place: "East Africa", photo: image("africa-dawn"), alt: "An elephant crossing golden Kenyan grasslands beneath an acacia tree" },
+  { x: 1000, y: 40, title: "Global reach", lead: "Wherever you're going", text: "International travel planning and coordination.", place: "Worldwide", photo: image("fuji-blossoms"), alt: "Cherry blossoms and a red pagoda with Mount Fuji in the distance" },
 ];
 const heart = [
-  { word: "People", photo: "team" },
-  { word: "Places", photo: "leisure" },
-  { word: "Connections", photo: "dubai" },
-  { word: "Opportunities", photo: "business" },
+  { word: "People", photo: "business-conversation" },
+  { word: "Places", photo: "venice" },
+  { word: "Connections", photo: "auckland" },
+  { word: "Opportunities", photo: "business-terminal-v2" },
 ];
 const values = [
   { icon: "ear", title: "We listen first.", text: "We begin by understanding why you’re travelling and what matters most." },
@@ -41,14 +42,6 @@ const values = [
   { icon: "leaf", title: "We think beyond the booking.", text: "A confirmed reservation is only the beginning of our support." },
   { icon: "people", title: "We stay human.", text: "Technology makes travel faster, but people make travel better." },
 ] as const;
-const faqs = [
-  { question: "Do you support both business and leisure travel?", answer: "Yes. We coordinate corporate travel, family holidays, individual journeys and group trips. The same team brings care and attention to every itinerary, whatever takes you there." },
-  { question: "Can you help with group and MICE travel?", answer: "We help organise meetings, incentives, conferences and exhibitions, including flights, accommodation, transfers and coordination for travellers arriving from different locations." },
-  { question: "Do you assist with visas and transfers?", answer: "Yes. We can help you understand the visa requirements for your itinerary and coordinate airport and local transfers. Visa approval and processing times are determined by the relevant authorities." },
-  { question: "Which regions do you mainly cover?", answer: "We operate from Dubai, with connections across the UAE and key African markets including Sudan, South Sudan, Uganda, Kenya and Tanzania, alongside international destinations." },
-  { question: "Do you coordinate complex multi-stop journeys?", answer: "Absolutely. We bring flights, hotels, transfers and the details between each stop into one coordinated plan, including journeys across multiple countries." },
-  { question: "Will someone be available during travel?", answer: "Our team stays connected throughout your journey. We’ll share the relevant contact details before you leave so you know who to speak to if your plans change." },
-];
 
 export default function JourneyPage() {
   return <JourneyMotion>
@@ -93,7 +86,7 @@ export default function JourneyPage() {
       </section>
 
       <section className="j-process j-torn-top j-torn-bottom" id="services" aria-labelledby="services-heading">
-        <Image className="j-photo" src={image("safari")} alt="A safari traveller watching the East African savannah through binoculars" fill sizes="100vw" />
+        <Image className="j-photo" src={image("kenya-game-drive")} alt="A safari vehicle crossing Kenyan grasslands at sunset" fill sizes="100vw" />
         <div className="j-process-shade" />
         <div className="j-shell j-process-content"><h2 id="services-heading">We connect the parts<br />of the journey.</h2><p className="j-process-intro">A booking is only one part.<br />The journey is the full picture.</p>
           <ol className="j-steps">{steps.map((step, i) => <li key={step.icon}><span className="j-step-icon"><TravelIcon kind={step.icon} size={33} /></span><span className="j-sr-only">Step {i + 1}: </span><p>{step.text}</p></li>)}</ol>
@@ -108,8 +101,8 @@ export default function JourneyPage() {
             <div>
               <span className="j-eyebrow">The people behind the journey</span>
               <h2 id="story-heading" className="ab-story-title">
-                <span>Built <span className="ab-pill" aria-hidden="true"><Image src={image("story")} alt="" fill sizes="200px" /></span> around</span>
-                <span><em>Real</em> <span className="ab-pill ab-pill-wide" aria-hidden="true"><Image src={image("safari")} alt="" fill sizes="240px" /></span> <em>journeys.</em></span>
+                <span>Built <span className="ab-pill" aria-hidden="true"><Image src={image("travel-planning-v2")} alt="" fill sizes="200px" /></span> around</span>
+                <span><em>Real</em> <span className="ab-pill ab-pill-wide" aria-hidden="true"><Image src={image("mountain-hiker")} alt="" fill sizes="240px" /></span> <em>journeys.</em></span>
               </h2>
             </div>
             <div className="ab-stamp" aria-hidden="true">
@@ -167,19 +160,19 @@ export default function JourneyPage() {
         <div className="j-shell">
           <h2 id="values-heading">Principles<br />that guide us</h2>
           <div className="j-principles-scene">
-            <div className="j-principles-art" aria-hidden="true"><Image src="/images/maldives.jpg" alt="" fill sizes="(max-width: 700px) 90vw, 58vw" /></div>
+            <div className="j-principles-art" aria-hidden="true"><Image src={image("swiss-peaks")} alt="" fill sizes="(max-width: 700px) 90vw, 58vw" /></div>
             <ul className="j-values-grid">{values.map(value => <li key={value.title}><h3>{value.title}</h3><p>{value.text}</p></li>)}</ul>
           </div>
         </div>
       </section>
 
       <section className="j-split j-torn-top" id="destinations" aria-label="Business and leisure journeys">
-        <article className="j-split-panel j-business"><div className="j-split-photo"><Image className="j-photo" src={image("business")} alt="A business traveller boarding a private jet at sunrise" fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div className="j-split-shade" /><div className="j-split-copy"><h2>Business<span>When it needs to work.</span></h2><p>Same team. Same attention to the journey.</p><EnquiryButton className="j-button j-button-cream" service="Corporate travel">Explore Corporate Travel</EnquiryButton></div></article>
-        <article className="j-split-panel j-leisure"><div className="j-split-photo"><Image className="j-photo" src={image("leisure")} alt="An unhurried afternoon beside a turquoise lagoon" fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div className="j-split-shade" /><div className="j-split-copy"><h2>Leisure<span>When it needs to feel different.</span></h2><p>Unhurried days, planned with the same care.</p><EnquiryButton className="j-button j-button-cream" service="Leisure & holidays">Explore Destinations</EnquiryButton></div></article>
+        <article className="j-split-panel j-business"><div className="j-split-photo"><Image className="j-photo" src={image("executive-lounge")} alt="A traveller waiting in a quiet airport lounge overlooking the city" fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div className="j-split-shade" /><div className="j-split-copy"><h2>Business<span>When it needs to work.</span></h2><p>Same team. Same attention to the journey.</p><EnquiryButton className="j-button j-button-cream" service="Corporate travel">Explore Corporate Travel</EnquiryButton></div></article>
+        <article className="j-split-panel j-leisure"><div className="j-split-photo"><Image className="j-photo" src={image("resort-bay")} alt="A beachfront resort beside a turquoise bay" fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div className="j-split-shade" /><div className="j-split-copy"><h2>Leisure<span>When it needs to feel different.</span></h2><p>Unhurried days, planned with the same care.</p><EnquiryButton className="j-button j-button-cream" service="Leisure & holidays">Explore Destinations</EnquiryButton></div></article>
       </section>
 
       <section className="j-team j-team-editorial j-torn-top" id="team" aria-labelledby="team-heading">
-        <div className="j-people-photo"><Image className="j-photo" src={image("story")} alt="Travel colleagues sharing a conversation before a journey" fill sizes="(max-width: 800px) 100vw, 48vw" /></div>
+        <div className="j-people-photo"><Image className="j-photo" src={image("travel-support-v2")} alt="Two travel consultants reviewing a world map and planning a route together" fill sizes="(max-width: 800px) 100vw, 48vw" /></div>
         <div className="j-people-content">
           <h2 id="team-heading">The people<br />behind W&amp;W</h2>
           <p>Real people. Regional knowledge. A shared commitment to making every journey feel easier.</p>
@@ -188,7 +181,7 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      <section className="j-faq j-paper" id="faqs" aria-labelledby="faq-heading"><div className="j-shell j-faq-grid"><div><span className="j-eyebrow">Good to know</span><h2 id="faq-heading">FAQs</h2><p>A few things you<br />might be wondering.</p><Link className="j-text-link" href="/contact">Let’s talk <Arrow /></Link></div><div className="j-faq-list">{faqs.map(faq => <details key={faq.question} name="journey-faq"><summary>{faq.question}<span className="j-chevron" aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div></div></section>
+      <section className="j-faq j-paper" id="faqs" aria-labelledby="faq-heading"><div className="j-shell j-faq-grid"><div><span className="j-eyebrow">Good to know</span><h2 id="faq-heading">FAQs</h2><p>A few things you<br />might be wondering.</p><Link className="j-text-link" href="/contact">Let’s talk <Arrow /></Link></div><div className="j-faq-list">{faqs.map((faq, index) => <details key={faq.question} name="journey-faq"><summary>{String(index + 1).padStart(2, "0")} — {faq.question}<span className="j-chevron" aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div></div></section>
     </main>
     <JourneyFooter />
   </JourneyMotion>;

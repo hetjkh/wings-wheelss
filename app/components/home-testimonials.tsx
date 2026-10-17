@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import { Arrow } from "./icons";
 import "./home-testimonials.css";
 
@@ -12,9 +12,9 @@ const voices = [
     role: "Operations Director",
     route: "Dubai → Nairobi",
     kind: "Corporate travel",
-    photo: "/images/about/business.jpg",
-    alt: "A business traveller in an airport lounge overlooking Dubai",
-    position: "66% center",
+    photo: "/images/library/executive-lounge.webp",
+    alt: "A traveller waiting in a quiet airport lounge overlooking the city",
+    position: "center",
   },
   {
     quote: "From the first call to the last transfer, everything felt personal. Our Maldives week was the first holiday in years where we didn’t think about logistics once.",
@@ -22,8 +22,8 @@ const voices = [
     role: "Family travellers",
     route: "Dubai → Maldives",
     kind: "Private travel",
-    photo: "/images/maldives-villa.png",
-    alt: "An overwater villa with a private pool at sunset",
+    photo: "/images/library/maldives-jetty.webp",
+    alt: "A wooden jetty leading across turquoise water to a tropical island",
     position: "center",
   },
   {
@@ -32,9 +32,9 @@ const voices = [
     role: "Event lead",
     route: "Multi-city → Dubai",
     kind: "Groups & MICE",
-    photo: "/images/groups.png",
-    alt: "Colleagues walking through an airport together with their luggage",
-    position: "40% center",
+    photo: "/images/library/exhibition.webp",
+    alt: "Business delegates networking in a modern trade exhibition hall",
+    position: "center",
   },
   {
     quote: "Going home shouldn’t feel complicated. Their team in Dubai and the connections on the ground made the journey to Kampala feel close again.",
@@ -42,9 +42,9 @@ const voices = [
     role: "Frequent traveller",
     route: "Dubai → Kampala",
     kind: "Africa travel",
-    photo: "/images/home/editorial/kenya-dawn.webp",
-    alt: "Golden light over East African grasslands",
-    position: "70% center",
+    photo: "/images/library/uganda-gorilla.webp",
+    alt: "A mountain gorilla in a green Ugandan forest landscape",
+    position: "center",
   },
 ] as const;
 

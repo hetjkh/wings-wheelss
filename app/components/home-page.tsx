@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow } from "./icons";
 import { office, pageLinks } from "./data";
@@ -42,12 +42,12 @@ export default function HomePage() {
       <section className="n-travel" aria-labelledby="travel-title">
         <div className="n-travel-pair">
           <article className="n-travel-panel">
-            <div className="n-panel-photo"><Image src="/images/home/private-travel.webp" alt="Ivory sun loungers and a parasol beside the golden Mediterranean sea" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
+            <div className="n-panel-photo"><Image src="/images/library/palm-beach.webp" alt="Palm trees along a white Maldivian beach beside pale blue water" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
             <div className="n-panel-shade" /><span className="n-panel-note">01 / Make time for yourself</span>
             <div className="n-panel-copy"><div><Link href="/destinations" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Private<br />travel</h3></div><p>Unhurried escapes for individuals and families. Your kind of places, your own pace, every detail considered.</p></div>
           </article>
           <article className="n-travel-panel">
-            <div className="n-panel-photo"><Image src="/images/home/corporate-travel.webp" alt="A businesswoman walking along a sunlit marina lined with sailing yachts" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
+            <div className="n-panel-photo"><Image src="/images/library/business-terminal-v2.webp" alt="Business travellers walking through a bright airport terminal" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
             <div className="n-panel-shade" /><span className="n-panel-note">02 / Focus on what brings you here</span>
             <div className="n-panel-copy"><div><Link href="/corporate-travel" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Corporate<br />travel</h3></div><p>Well-connected travel for businesses and their people. From the first meeting to the journey home.</p></div>
           </article>

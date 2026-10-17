@@ -1,0 +1,33 @@
+{
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "file": "business-hotel.png",
+      "prompt": "Photorealistic natural editorial travel photograph for a premium travel agency website hotel service card. A beautifully appointed contemporary business hotel room, king bed with crisp ivory linen, warm wood, comfortable desk, floor to ceiling windows overlooking a believable Dubai skyline in gentle morning light. Wide 3:2 composition, room is the main subject, generous detail at center for portrait and landscape crops. Natural materials and realistic architecture, understated luxury, no people, no text, no logos, no watermark. Generate high resolution."
+    },
+    {
+      "file": "airport-transfer.png",
+      "prompt": "Photorealistic natural editorial travel photograph for an airport ground transfer service on a premium travel website. A professional chauffeur in a dark suit beside an elegant unbranded black executive minivan at a modern airport arrivals forecourt, helping an adult traveler load a dark rolling suitcase into the open rear luggage compartment. Realistic proportions and candid body language, softly lit early morning, center framed subjects with room for portrait or landscape crops, 3:2 landscape. No visible branding, no readable text, no watermark. High resolution."
+    },
+    {
+      "file": "conference.png",
+      "prompt": "Photorealistic natural editorial event photograph for a premium business travel agency groups and MICE conferences section. A modern international conference in a spacious tasteful Dubai hotel ballroom, diverse adult delegates seen from back and side in rows of comfortable seats, a softly lit stage and a speaker in the distance, warm wood and muted neutral interiors, realistic architecture and candid professional atmosphere. Wide 3:2 framing with a clear central subject area usable for vertical crop. No text, no branding, no watermarks. High resolution."
+    },
+    {
+      "file": "travel-support.png",
+      "prompt": "Photorealistic natural editorial photograph for a travel agency travel support and itinerary planning service. Two professional travel consultants, a woman and a man, discussing a route on an open paper world map at a contemporary office desk with a laptop and telephone headset nearby. Camera over the side of the desk, people naturally interacting and looking at map, modest bright office with soft daylight and a plant, authentic candid business photography, neutral warm colors. Landscape 3:2 composition with both people and planning materials central for flexible crop. No readable text, no airline branding, no logos, no watermark. High resolution."
+    },
+    {
+      "file": "nairobi-city.png",
+      "prompt": "Photorealistic natural editorial travel photograph of Nairobi, Kenya for a business travel itinerary city stop. A realistic panoramic view of central Nairobi with the recognizable circular Kenyatta International Convention Centre tower and helipad, leafy city streets and modern buildings, green urban canopy, hazy Ngong Hills far in the distance, clear early morning light. Wide 3:2 landscape, natural true colors, professional architectural travel photography. Show only the city, no safari animals, no ocean, no composite montage, no text, no logos, no watermark. High resolution."
+    },
+    {
+      "file": "exhibition.png",
+      "prompt": "Photorealistic natural editorial event photograph for an international trade exhibition travel services card. A large modern exhibition centre in Dubai, tall clean truss ceiling, bright professional booths without any visible brand names, adult business delegates in smart casual clothing walking along the central aisle with conference lanyards, candid networking conversations, realistic human proportions, natural neutral light. Premium documentary event photography, 3:2 landscape, central aisle usable for portrait crop, no readable text, no logos, no watermarks. High resolution."
+    },
+    {
+      "file": "zanzibar.png",
+      "prompt": "Photorealistic natural editorial travel photograph for a premium travel agency Zanzibar beach itinerary. A quiet white sand beach on Zanzibar's northeast coast, leaning coconut palms framing pale turquoise Indian Ocean water, one traditional wooden dhow with a triangular lateen sail offshore, simple thatched beachfront accommodation mostly hidden among palms. Clear tropical daylight, honest natural colors and detailed sand, wide landscape composition, no overwater villas, no mountains, no people, no text, no logos, no watermark. High resolution 3:2 landscape."
+    }
+  ]
+}

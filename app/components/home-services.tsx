@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,12 +9,12 @@ import { Arrow, TravelIcon } from "./icons";
 import "./home-services.css";
 
 const services = [
-  { title: "Flights", phase: "Fly", photo: "/images/airport.png", alt: "Travellers walking through a terminal toward a waiting aircraft at sunset", position: "70% center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
-  { title: "Hotels", phase: "Stay", photo: "/images/about/story-traveller.jpg", alt: "A traveller arriving at a hotel room overlooking the Dubai skyline", position: "center 40%", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
-  { title: "Visas & documentation", phase: "Arrive", photo: "/images/about/lounge.jpg", alt: "A passport and boarding pass on a lounge table beside a suitcase", position: "35% center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
-  { title: "Airport & ground transfers", phase: "Move", photo: "/images/about/coast-road.jpg", alt: "A car on a coastal road winding toward the sunset", position: "88% center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
-  { title: "Holidays & experiences", phase: "Feel", photo: "/images/maldives-villa.png", alt: "An overwater villa with a private pool at sunset", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
-  { title: "Travel support", phase: "Return", photo: "/images/about/hero-lounge.jpg", alt: "A traveller waiting in an airport lounge as the sun sets over the city", position: "60% center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
+  { title: "Flights", phase: "Fly", photo: "/images/library/flight-wing.webp", alt: "An aircraft wing above white clouds and turquoise ocean", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
+  { title: "Hotels", phase: "Stay", photo: "/images/library/business-hotel.webp", alt: "A contemporary hotel room with a desk and wide windows overlooking Dubai", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
+  { title: "Visas & documentation", phase: "Arrive", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
+  { title: "Airport & ground transfers", phase: "Move", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
+  { title: "Holidays & experiences", phase: "Feel", photo: "/images/library/holiday-arrival.webp", alt: "Two holiday travellers with suitcases arriving beside turquoise water", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
+  { title: "Travel support", phase: "Return", photo: "/images/library/travel-support-v2.webp", alt: "Two travel consultants reviewing a world map and planning a route together", position: "center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
 ] as const;
 
 const total = services.length;
@@ -80,7 +80,10 @@ export function HomeServices() {
 
   const jump = (index: number) => {
     const st = trigger.current;
-    if (!st) return;
+    if (!st) {
+      setActive(index);
+      return;
+    }
     const progress = Math.min(1, index / chapters);
     window.scrollTo({ top: st.start + progress * (st.end - st.start), behavior: "instant" });
   };
@@ -120,7 +123,7 @@ export function HomeServices() {
 
           <div className="n-services-deck">
             {services.map((item, index) => (
-              <figure key={item.title} className="n-services-card" style={{ zIndex: index + 1 }}>
+              <figure key={item.title} className={`n-services-card${index === active ? " is-active" : ""}`} style={{ zIndex: index + 1 }}>
                 <div className="n-services-card-photo">
                   <Image src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 92vw, 44vw" className="n-cover" style={{ objectPosition: item.position }} priority={index === 0} />
                 </div>

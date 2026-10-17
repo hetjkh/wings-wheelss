@@ -205,8 +205,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             .fromTo(section.querySelector(".s-final-photo"), { clipPath: "inset(10% 6% 10% 6% round 24px)", scale: 1.25 }, { clipPath: "inset(0% 0% 0% 0% round 0px)", scale: 1, ease: "none" }, 0);
         });
         select(".s-beyond-video").forEach((video: HTMLElement) => {
-          gsap.fromTo(video, { scale: 1.25, yPercent: -4 }, {
-            scale: 1.05, yPercent: 4, ease: "none",
+          gsap.fromTo(video, { scale: 1.08, yPercent: -2 }, {
+            scale: 1.04, yPercent: 2, ease: "none",
             scrollTrigger: { trigger: video.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
           });
         });

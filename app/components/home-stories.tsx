@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { storyRegions } from "./story-regions";
 import "./home-stories.css";
@@ -12,31 +12,31 @@ const zones: { id: ZoneId; name: string; pin: [number, number]; kicker: string; 
   {
     id: "gulf", name: "The Gulf", pin: [654, 162], kicker: "Where every journey starts", title: "Dubai",
     text: "Our home, and the place most journeys begin. Skyline stays, desert evenings and a team that knows every arrival gate by heart.",
-    photo: "/images/dubai.jpg", photoAlt: "Dubai skyline at dusk", inset: "/images/dubai-terrace.png", insetAlt: "A terrace table overlooking the Dubai skyline", href: "/destinations", cta: "Plan a Dubai stay",
+    photo: "/images/library/dubai-panorama.webp", photoAlt: "Dubai skyline and the Burj Khalifa in clear daylight", inset: "/images/library/dubai-marina.webp", insetAlt: "Modern towers and waterfront buildings at Dubai Marina", href: "/destinations", cta: "Plan a Dubai stay",
   },
   {
     id: "africa", name: "Africa", pin: [561, 227], kicker: "Closer than you think", title: "Kenya & Tanzania",
     text: "Sunrise game drives, business weeks in Nairobi and the long-awaited journey home. Planned locally, by people who know the roads.",
-    photo: "/images/kenya-safari.png", photoAlt: "A safari vehicle on the Kenyan savannah", inset: "/images/tanzania.png", insetAlt: "Tanzanian landscape", href: "/africa", cta: "Explore our Africa network",
+    photo: "/images/library/nairobi-city.webp", photoAlt: "Nairobi city centre above a green urban canopy", inset: "/images/library/zanzibar.webp", insetAlt: "A dhow sailing off a palm-lined Zanzibar beach", href: "/africa", cta: "Explore our Africa network",
   },
   {
     id: "europe", name: "Europe", pin: [533, 99], kicker: "Slow summers", title: "The Mediterranean",
     text: "Island light, coastal drives and long lunches by the water. Every connection timed so the holiday starts the moment you land.",
-    photo: "/images/santorini.jpg", photoAlt: "White houses of Santorini above the Aegean Sea", inset: "/images/about/coast-road.jpg", insetAlt: "A coastal road winding above the sea at sunset", href: "/destinations", cta: "Find your summer",
+    photo: "/images/library/santorini-blue.webp", photoAlt: "Blue-domed churches and whitewashed houses above the Aegean in Santorini", inset: "/images/library/greek-waterfront.webp", insetAlt: "A sunlit waterfront dining terrace beside a Greek island beach", href: "/destinations", cta: "Find your summer",
   },
   {
     id: "asia", name: "Asia & Indian Ocean", pin: [778, 143], kicker: "Far, made simple", title: "Kyoto to the Maldives",
     text: "Lantern-lit streets one week, an overwater villa the next. Long-haul made easy, with every transfer arranged before you ask.",
-    photo: "/images/kyoto.jpg", photoAlt: "A Kyoto street leading to a pagoda at dusk", inset: "/images/maldives.jpg", insetAlt: "Overwater villas in the Maldives", href: "/destinations", cta: "Discover Asia",
+    photo: "/images/library/kyoto-garden.webp", photoAlt: "Kyoto Golden Pavilion among green trees beside its garden pond", inset: "/images/library/maldives-aerial.webp", insetAlt: "An aerial view of overwater villas surrounding a Maldivian island", href: "/destinations", cta: "Discover Asia",
   },
   {
     id: "americas", name: "The Americas", pin: [222, 116], kicker: "Across the Atlantic", title: "Mountains & cities",
     text: "Wild national parks, city weeks and conferences across the ocean. Planned from Dubai, looked after end to end.",
-    photo: "/images/mountains.jpg", photoAlt: "Snow-capped mountains above a forested valley", inset: "/images/airport.png", insetAlt: "Travellers walking through an airport terminal", href: "/destinations", cta: "Plan the long haul",
+    photo: "/images/library/canada-lake.webp", photoAlt: "Turquoise water and pine forest beneath rugged Canadian mountain peaks", inset: "/images/library/city-taxi.webp", insetAlt: "A yellow taxi on a tree-lined city street", href: "/destinations", cta: "Plan the long haul",
   },
 ];
 
-const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=1080&q=70`;
+const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=2048&q=90`;
 
 export function HomeStories() {
   const [active, setActive] = useState(0);

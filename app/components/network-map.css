@@ -1,0 +1,35 @@
+.network-map { width: 100%; min-width: 0; color: #514c3e; }
+.network-map-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font: 500 11px/1.4 var(--body); letter-spacing: .08em; text-transform: uppercase; }
+.network-map-heading > span:last-child { color: #766343; }
+.network-map-canvas { display: block; width: 100%; height: auto; }
+.network-map-land { opacity: .68; }
+.network-map-canvas text { fill: #514c3e; font: 500 9px/1 var(--body); paint-order: stroke; stroke: var(--paper, #f5f1e7); stroke-width: 3px; stroke-linejoin: round; }
+.network-map-canvas .network-map-region { fill: #948b76; font-size: 9px; letter-spacing: 2px; stroke: none; }
+.network-map-canvas .network-map-ocean { fill: #948b76; font-size: 7px; letter-spacing: 1.5px; stroke: none; }
+.network-map-route { fill: none; stroke: #a48d65; stroke-width: 1; stroke-dasharray: 3 4; opacity: .45; transition: opacity .25s, stroke-width .25s; }
+.network-map-route.is-selected { opacity: 1; stroke: #68512e; stroke-width: 1.8; }
+.network-map-point { cursor: pointer; outline: none; }
+.network-map-hit { fill: transparent; }
+.network-map-dot { fill: #766343; stroke: #fff8e9; stroke-width: 1.5; }
+.network-map-ring { fill: #a48d6522; stroke: #a48d65; stroke-width: 1; opacity: 0; transition: opacity .2s; }
+.network-map-leader { fill: none; stroke: #a48d65; stroke-width: .6; }
+.network-map-point:is(.is-selected, :hover, :focus-visible) .network-map-ring { opacity: 1; }
+.network-map-point:is(.is-selected, :hover, :focus-visible) text { fill: #2b2119; font-weight: 700; }
+.network-map-point:focus-visible .network-map-ring { stroke: #2b2119; stroke-width: 2; }
+.network-map-halo { fill: #a48d6522; stroke: #a48d65; stroke-width: .7; }
+.network-map-home text { font-weight: 700; font-size: 11px; }
+.network-map-home .network-map-home-note { font-size: 6px; font-weight: 500; letter-spacing: .8px; }
+.network-map-hint { margin: 12px 0 0; font: 500 clamp(20px, 1.8vw, 26px)/1.35 var(--body); color: #2b2119; }
+.network-map-options { display: flex; flex-wrap: wrap; gap: 12px; padding: 22px 0 28px; }
+.network-map-options button { min-height: 56px; padding: 14px 24px; border: 1px solid #a48d65; border-radius: 32px; background: transparent; color: #514c3e; font: 600 18px/1.2 var(--body); cursor: pointer; transition: background .2s, color .2s; }
+.network-map-options button[aria-pressed="true"] { background: #514c3e; border-color: #514c3e; color: #fff8e9; }
+.network-map-options button:hover { border-color: #514c3e; }
+.network-map-options button:focus-visible { outline: 2px solid #766343; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .network-map-canvas text { font-size: 12px; }
+  .network-map-home text { font-size: 13px; }
+  .network-map-home .network-map-home-note { font-size: 7px; }
+  .network-map-heading { font-size: 10px; }
+  .network-map-options { padding: 18px 0 24px; gap: 10px; }
+  .network-map-options button { min-height: 50px; padding: 12px 18px; font-size: 16px; }
+}

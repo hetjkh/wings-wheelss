@@ -324,6 +324,7 @@
     gap: 22px;
     height: auto;
     min-height: 0;
+    max-height: none;
   }
   .n-services-card {
     position: relative;
@@ -354,4 +355,9 @@
 @media (prefers-reduced-motion: reduce) {
   .n-services-phase, .n-services-detail, .n-services-now-note { animation: none; }
   .n-services-track-fill, .n-services-plane { transition: none; }
+}
+
+@media (min-width: 1000px) and (prefers-reduced-motion: reduce) {
+  .n-services-card { visibility: hidden; }
+  .n-services-card.is-active { visibility: visible; }
 }

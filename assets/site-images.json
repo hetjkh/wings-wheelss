@@ -1,0 +1,267 @@
+{
+  "flight-wing": {
+    "source": "assets/1.jpg",
+    "alt": "An aircraft wing above white clouds and turquoise ocean"
+  },
+  "resort-bay": {
+    "source": "assets/3.jpg",
+    "alt": "A beachfront resort beside a turquoise bay"
+  },
+  "mountain-hiker": {
+    "source": "assets/5.jpg",
+    "alt": "A hiker on a rocky mountain ledge above a cloud-covered coast"
+  },
+  "city-taxi": {
+    "source": "assets/6.jpg",
+    "alt": "A yellow taxi on a tree-lined city street"
+  },
+  "paris-eiffel": {
+    "source": "assets/9.jpg",
+    "alt": "The Eiffel Tower beneath a clear blue Paris sky"
+  },
+  "dubai-panorama": {
+    "source": "assets/274791-3840x2160-desktop-4k-dubai-background-photo.jpg",
+    "alt": "Dubai skyline and the Burj Khalifa in clear daylight"
+  },
+  "dubai-marina": {
+    "source": "assets/dubai.jpg",
+    "alt": "Modern towers and waterfront buildings at Dubai Marina"
+  },
+  "dubai-clouds": {
+    "source": "assets/contact-us.jpg",
+    "alt": "Dubai towers rising above a sea of morning clouds"
+  },
+  "airport-traveller": {
+    "source": "assets/airticket.jpg",
+    "alt": "A traveller with a rolling suitcase inside an airport terminal"
+  },
+  "santorini-blue": {
+    "source": "assets/gallery/summer/greece/5.jpg",
+    "alt": "Blue-domed churches and whitewashed houses above the Aegean in Santorini"
+  },
+  "greek-waterfront": {
+    "source": "assets/gallery/summer/greece/6.jpg",
+    "alt": "A sunlit waterfront dining terrace beside a Greek island beach"
+  },
+  "bali-temple": {
+    "source": "assets/gallery/summer/indonesia/11.jpg",
+    "alt": "A lakeside Balinese temple beneath a pink sunset sky"
+  },
+  "bali-coast": {
+    "source": "assets/gallery/summer/indonesia/2.jpg",
+    "alt": "Turquoise water and dramatic cliffs on the coast of Nusa Penida"
+  },
+  "florence": {
+    "source": "assets/gallery/summer/itlay/2.jpg",
+    "alt": "Florence and its cathedral beneath the Tuscan hills"
+  },
+  "venice": {
+    "source": "assets/gallery/summer/itlay/3.jpg",
+    "alt": "Venice Grand Canal lined with historic palaces"
+  },
+  "amalfi-coast": {
+    "source": "assets/gallery/summer/itlay/5.jpg",
+    "alt": "Colourful houses climbing the cliffs above the Amalfi Coast"
+  },
+  "rome-colosseum": {
+    "source": "assets/gallery/summer/itlay/6.jpg",
+    "alt": "The ancient Colosseum in Rome beneath a bright sky"
+  },
+  "maldives-villas": {
+    "source": "assets/gallery/summer/maldives/1.jpg",
+    "alt": "Overwater villa decks and pools above a clear Maldivian lagoon"
+  },
+  "maldives-reef": {
+    "source": "assets/gallery/summer/maldives/2.jpg",
+    "alt": "Colourful fish and coral beneath the clear Maldivian sea"
+  },
+  "maldives-jetty": {
+    "source": "assets/gallery/summer/maldives/4.jpg",
+    "alt": "A wooden jetty leading across turquoise water to a tropical island"
+  },
+  "maldives-sandbank": {
+    "source": "assets/gallery/summer/maldives/5.jpg",
+    "alt": "A white sandbank between a turquoise lagoon and the Indian Ocean"
+  },
+  "maldives-aerial": {
+    "source": "assets/gallery/summer/maldives/6.jpg",
+    "alt": "An aerial view of overwater villas surrounding a Maldivian island"
+  },
+  "auckland": {
+    "source": "assets/gallery/summer/new-zeland/1.jpg",
+    "alt": "Auckland waterfront and Sky Tower across the harbour"
+  },
+  "algarve": {
+    "source": "assets/gallery/summer/portugal/6.jpg",
+    "alt": "A sheltered Algarve beach beneath golden coastal cliffs"
+  },
+  "south-africa-safari": {
+    "source": "assets/gallery/summer/south-africa/3.jpg",
+    "alt": "Safari guests watching lions from an open vehicle in South Africa"
+  },
+  "elephant-herd": {
+    "source": "assets/gallery/summer/south-africa/4.jpg",
+    "alt": "An elephant herd gathering beside a waterhole in South Africa"
+  },
+  "cape-coast": {
+    "source": "assets/gallery/summer/south-africa/5.jpg",
+    "alt": "Ocean waves meeting the rocky South African coastline"
+  },
+  "cape-town": {
+    "source": "assets/gallery/summer/south-africa/6.jpg",
+    "alt": "Cape Town beneath Table Mountain beside a bright blue bay"
+  },
+  "finland-village": {
+    "source": "assets/gallery/winter/finland/2.jpg",
+    "alt": "A warmly lit winter village in snowy Finnish Lapland"
+  },
+  "kyoto-golden-pavilion": {
+    "source": "assets/gallery/winter/japan/3.jpg",
+    "alt": "The Golden Pavilion reflecting in a still garden pond in Kyoto"
+  },
+  "kyoto-garden": {
+    "source": "assets/gallery/winter/japan/6.jpg",
+    "alt": "Kyoto Golden Pavilion among green trees beside its garden pond"
+  },
+  "fuji-blossoms": {
+    "source": "assets/gallery/winter/japan/5.jpg",
+    "alt": "Cherry blossoms and a red pagoda with Mount Fuji in the distance"
+  },
+  "iceland-coast": {
+    "source": "assets/gallery/winter/iceland/3.jpg",
+    "alt": "Dark cliffs and sea stacks along the Icelandic coast at dusk"
+  },
+  "norway-fjord": {
+    "source": "assets/gallery/winter/norway/5.jpg",
+    "alt": "A broad Norwegian fjord winding between mountains in evening light"
+  },
+  "swiss-valley": {
+    "source": "assets/gallery/winter/swiss/1.jpg",
+    "alt": "Green Swiss alpine meadows and chalets beneath snow-covered peaks"
+  },
+  "swiss-lake": {
+    "source": "assets/gallery/winter/swiss/3.jpg",
+    "alt": "A turquoise alpine lake surrounded by Swiss mountain peaks"
+  },
+  "swiss-peaks": {
+    "source": "assets/gallery/winter/swiss/5.jpg",
+    "alt": "A wooden bench overlooking an alpine lake and snow-covered Swiss peaks"
+  },
+  "canada-lake": {
+    "source": "assets/gallery/winter/canada/5.jpg",
+    "alt": "Turquoise water and pine forest beneath rugged Canadian mountain peaks"
+  },
+  "sydney-harbour": {
+    "source": "assets/gallery/winter/austria/3.jpg",
+    "alt": "Sydney Opera House and Harbour Bridge beside the water"
+  },
+  "family-lake": {
+    "source": "assets/phil.jpg",
+    "alt": "A parent and child enjoying a lakeside mountain view"
+  },
+  "winter-retreat": {
+    "source": "assets/pexels-alex-sanchez-2150797975-31363489.jpg",
+    "alt": "A snow-covered alpine retreat surrounded by winter forest"
+  },
+  "holiday-arrival": {
+    "source": "assets/jani.jpg",
+    "alt": "Two holiday travellers with suitcases arriving beside turquoise water"
+  },
+  "palm-beach": {
+    "source": "assets/Maldives.jpg",
+    "alt": "Palm trees along a white Maldivian beach beside pale blue water"
+  },
+  "visa-passports": {
+    "source": "assets/visa.jpg",
+    "alt": "Two passports held against a pink background"
+  },
+  "kenya-game-drive": {
+    "source": "public/images/kenya.jpg",
+    "alt": "A safari vehicle crossing Kenyan grasslands at sunset"
+  },
+  "tanzania-kilimanjaro": {
+    "source": "public/images/tanzania.png",
+    "alt": "A safari landscape beneath Mount Kilimanjaro in Tanzania"
+  },
+  "uganda-gorilla": {
+    "source": "public/images/uganda.png",
+    "alt": "A mountain gorilla in a green Ugandan forest landscape"
+  },
+  "business-boarding": {
+    "source": "public/images/journey/business-original.png",
+    "alt": "A business traveller approaching an aircraft on the apron"
+  },
+  "business-conversation": {
+    "source": "public/images/journey/story-original.png",
+    "alt": "Two business travellers talking at a lounge table"
+  },
+  "executive-lounge": {
+    "source": "public/images/about/hero-lounge.jpg",
+    "alt": "A traveller waiting in a quiet airport lounge overlooking the city"
+  },
+  "africa-dawn": {
+    "source": "public/images/home/editorial/kenya-dawn.webp",
+    "alt": "An elephant crossing golden Kenyan grasslands beneath an acacia tree"
+  },
+  "retreat-dinner": {
+    "source": "public/images/home/editorial/together-at-dusk.webp",
+    "alt": "A candlelit retreat dinner on a terrace overlooking the sea"
+  },
+  "global-connections": {
+    "source": "public/images/about/globe.jpg",
+    "alt": "An illustration of routes connecting Africa and the Middle East"
+  },
+  "business-hotel": {
+    "source": "assets/generated/business-hotel.png",
+    "alt": "A contemporary hotel room with a desk and wide windows overlooking Dubai",
+    "generated": true
+  },
+  "airport-transfer": {
+    "source": "assets/generated/airport-transfer.png",
+    "alt": "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle",
+    "generated": true
+  },
+  "conference": {
+    "source": "assets/generated/conference.png",
+    "alt": "Delegates attending an international conference in a modern hotel ballroom",
+    "generated": true
+  },
+  "zanzibar": {
+    "source": "assets/generated/zanzibar.png",
+    "alt": "A traditional dhow sailing off a palm-lined white sand beach in Zanzibar",
+    "generated": true
+  },
+  "nairobi-city": {
+    "source": "assets/generated/nairobi-city.png",
+    "alt": "Nairobi city centre and the Kenyatta International Convention Centre above the green urban canopy",
+    "generated": true
+  },
+  "exhibition": {
+    "source": "assets/generated/exhibition.png",
+    "alt": "Business delegates networking in a modern trade exhibition hall",
+    "generated": true
+  },
+  "solo-consultant": {
+    "source": "public/images/about/team.jpg",
+    "alt": "A travel consultant reviewing routes and reservations at her office desk"
+  },
+  "passport-preparation": {
+    "source": "assets/2.jpg",
+    "alt": "A traveller holding a passport while packing a bag for a journey"
+  },
+  "business-terminal-v2": {
+    "source": "assets/generated/business-terminal-v2.png",
+    "alt": "Business travellers walking through a bright airport terminal",
+    "generated": true
+  },
+  "travel-support-v2": {
+    "source": "assets/generated/travel-support-v2.png",
+    "alt": "Two travel consultants reviewing a world map and planning a route together",
+    "generated": true
+  },
+  "travel-planning-v2": {
+    "source": "assets/generated/travel-planning-v2.png",
+    "alt": "A travel coordinator reviewing a printed itinerary beside a laptop",
+    "generated": true
+  }
+}

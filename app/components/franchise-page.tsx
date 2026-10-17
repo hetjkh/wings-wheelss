@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -29,10 +29,10 @@ const advantages: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const builds = [
-  { title: "Corporate travel", text: "Business flights, hotels, transfers, corporate accounts and recurring travel requirements.", photo: "/images/about/business.jpg", alt: "A travel coordinator planning a multi-city business itinerary", position: "40% center" },
-  { title: "Holidays & leisure", text: "International holidays, family travel, customised itineraries and unique destination experiences.", photo: "/images/santorini.jpg", alt: "White houses and blue domes above the sea in Santorini", position: "center" },
-  { title: "Groups & MICE", text: "Exhibitions, conferences, incentives, delegations and coordinated group movements.", photo: "/images/journey/team-original.png", alt: "A group of travellers looking out over an African valley at sunset", position: "center" },
-  { title: "Travel services", text: "Flights, accommodation, visa assistance (where permitted), airport transfers and traveller support.", photo: "/images/about/lounge.jpg", alt: "A quiet lounge prepared for travellers", position: "center" },
+  { title: "Corporate travel", text: "Business flights, hotels, transfers, corporate accounts and recurring travel requirements.", photo: "/images/library/travel-planning-v2.webp", alt: "A travel coordinator reviewing a printed itinerary beside a laptop", position: "center" },
+  { title: "Holidays & leisure", text: "International holidays, family travel, customised itineraries and unique destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
+  { title: "Groups & MICE", text: "Exhibitions, conferences, incentives, delegations and coordinated group movements.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center" },
+  { title: "Travel services", text: "Flights, accommodation, visa assistance (where permitted), airport transfers and traveller support.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
 ];
 
 const network = [
@@ -44,11 +44,11 @@ const network = [
 ];
 
 const partners = [
-  { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/about/story-walk.jpg", position: "30% center" },
-  { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/dubai-terrace.png", position: "35% center" },
-  { label: "Investors", text: "Investors with capable local operating teams.", photo: "/images/journey/business-original.png", position: "15% center" },
-  { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/about/business-airport.jpg", position: "35% center" },
-  { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/kenya.jpg", position: "30% center" },
+  { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/library/travel-support-v2.webp", position: "center" },
+  { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/library/business-conversation.webp", position: "center" },
+  { label: "Investors", text: "Investors with capable local operating teams.", photo: "/images/library/business-boarding.webp", position: "center" },
+  { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/library/business-terminal-v2.webp", position: "center" },
+  { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/library/cape-town.webp", position: "center" },
 ];
 
 const matters = ["Local market knowledge", "Financial capability", "Operational commitment", "Regulatory compliance", "A long-term approach to developing the Wings & Wheels brand"];
@@ -86,7 +86,7 @@ export default function FranchisePage() {
     <JourneyHeader introId="beyond" />
     <main>
       <section className="j-hero s-hero f-hero" id="top" aria-labelledby="franchise-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/dubai.jpg" alt="" fill priority sizes="100vw" style={{ objectPosition: "center 40%" }} />
+        <Image className="j-photo j-hero-photo" src="/images/library/dubai-clouds.webp" alt="" fill priority sizes="100vw" style={{ objectPosition: "center" }} />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
@@ -109,7 +109,7 @@ export default function FranchisePage() {
 
       <section className="f-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
         <figure className="f-beyond-photo">
-          <Image src="/images/about/team.jpg" alt="A Wings & Wheels coordinator planning journeys with maps, with the Dubai skyline behind" fill sizes="(max-width: 991px) 100vw, 46vw" />
+          <Image src="/images/library/travel-support-v2.webp" alt="Two travel consultants reviewing a world map and planning a route together" fill sizes="(max-width: 991px) 100vw, 46vw" />
           <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
         </figure>
         <div className="j-shell f-beyond-grid">
@@ -181,7 +181,7 @@ export default function FranchisePage() {
       </section>
 
       <section className="f-network j-torn-top" id="network" aria-labelledby="network-heading">
-        <div className="f-network-photo"><Image src="/images/about/globe.jpg" alt="A night map of Africa and the Middle East with routes glowing out from the Gulf" fill sizes="(max-width: 991px) 100vw, 55vw" /></div>
+        <div className="f-network-photo"><Image src="/images/library/global-connections.webp" alt="An illustration of routes connecting Africa and the Middle East" fill sizes="(max-width: 991px) 100vw, 55vw" /></div>
         <div className="j-shell f-network-grid">
           <div className="f-network-copy">
             <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
@@ -249,7 +249,7 @@ export default function FranchisePage() {
       </section>
 
       <section className="s-final f-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/journey/dubai-original.png" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/dubai-panorama.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels franchise opportunities</span>

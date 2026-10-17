@@ -36,6 +36,7 @@
   z-index: 6;
   height: var(--travel-heading-height);
   isolation: isolate;
+  overflow: clip;
   pointer-events: none;
 }
 .n-travel-heading-surface {

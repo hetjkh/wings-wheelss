@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import { destinations } from "./data";
 import { TravelIcon } from "./icons";
 import { EnquiryButton } from "./site-controls";

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
@@ -24,10 +24,10 @@ const compare = [
 ];
 
 const values: ValuePanel[] = [
-  { note: "Pay less on the routes you fly", title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/about/business-airport.jpg", alt: "A business traveller with a carry-on walking through a bright airport terminal" },
-  { note: "Someone who knows your team", title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/about/team.jpg", alt: "The Wings & Wheels team planning a journey together", position: "35% center" },
-  { note: "Comfort for every traveller", title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/about/lounge.jpg", alt: "A quiet airport lounge with soft seating and warm light", position: "55% center" },
-  { note: "Less time on paperwork", title: ["Simpler", "paperwork"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/about/business.jpg", alt: "A coordinator reviewing a Dubai, Nairobi and Johannesburg itinerary", position: "40% center" },
+  { note: "Pay less on the routes you fly", title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/library/flight-wing.webp", alt: "An aircraft wing above white clouds and turquoise ocean" },
+  { note: "Someone who knows your team", title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/library/solo-consultant.webp", alt: "A travel consultant reviewing routes and reservations at her office desk", position: "center" },
+  { note: "Comfort for every traveller", title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/library/executive-lounge.webp", alt: "A traveller waiting in a quiet airport lounge overlooking the city", position: "center" },
+  { note: "Less time on paperwork", title: ["Simpler", "paperwork"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/library/travel-planning-v2.webp", alt: "A travel coordinator reviewing a printed itinerary beside a laptop", position: "center" },
 ];
 
 const levels = [
@@ -179,7 +179,7 @@ export default function PartnershipPage() {
           </div>
           <div className="p-bento" data-stagger="0.07">
             <figure className="p-bento-photo">
-              <Image src="/images/about/business.jpg" alt="A Wings & Wheels coordinator reviewing a Dubai, Nairobi and Johannesburg itinerary" fill sizes="(max-width: 991px) 92vw, 28vw" style={{ objectPosition: "40% center" }} />
+              <Image src="/images/library/business-conversation.webp" alt="Two business travellers talking at a lounge table" fill sizes="(max-width: 991px) 92vw, 28vw" style={{ objectPosition: "center" }} />
               <figcaption><strong>One account.</strong><span>Every journey.</span></figcaption>
             </figure>
             {advantages.map((item, i) => <div key={item.title} className="p-bento-item">
@@ -193,7 +193,7 @@ export default function PartnershipPage() {
       </section>
 
       <section className="p-steps j-torn-top" id="how" aria-labelledby="how-heading">
-        <div className="p-steps-photo"><Image src="/images/about/hero-lounge.jpg" alt="A business traveller waiting in an airport lounge overlooking the Dubai skyline" fill sizes="(max-width: 991px) 100vw, 46vw" style={{ objectPosition: "62% center" }} /></div>
+        <div className="p-steps-photo"><Image src="/images/library/airport-traveller.webp" alt="A traveller with a rolling suitcase inside an airport terminal" fill sizes="(max-width: 991px) 100vw, 46vw" style={{ objectPosition: "center" }} /></div>
         <div className="j-shell p-steps-grid">
           <div className="p-steps-side">
             <span className="j-eyebrow s-eyebrow">06 / How it works</span>
@@ -223,7 +223,7 @@ export default function PartnershipPage() {
       </section>
 
       <section className="s-final p-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/journey/business-original.png" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/dubai-marina.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels corporate partnerships</span>

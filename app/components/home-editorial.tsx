@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon } from "./icons";
 import { office } from "./data";
@@ -7,8 +7,6 @@ import { HomeClientele } from "./home-clientele";
 import { HomeTestimonials } from "./home-testimonials";
 import { HomePayLater } from "./home-pay-later";
 import { HomeFaq } from "./home-faq";
-
-const images = "/images/home/editorial";
 
 function ChapterLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return <span className="e-label"><span>{number}</span><span>{children}</span></span>;
@@ -23,7 +21,7 @@ const network = [{ country: "Kenya", city: "Nairobi", code: "NBO" }, { country: 
 function AfricaChapter() {
   return <section className="e-africa" aria-labelledby="e-africa-title">
     <div className="e-africa-landscape">
-      <div className="e-africa-photo" data-editorial-parallax="8"><Image src={`${images}/kenya-dawn.webp`} alt="An elephant crossing golden Kenyan grasslands beneath an acacia tree" fill sizes="100vw" className="n-cover" /></div>
+      <div className="e-africa-photo" data-editorial-parallax="8"><Image src={"/images/library/africa-dawn.webp"} alt="An elephant crossing golden Kenyan grasslands beneath an acacia tree" fill sizes="100vw" className="n-cover" /></div>
       <div className="e-africa-shade" />
       <div className="e-shell e-africa-top"><ChapterLabel number="01">Our home is Dubai. Our heart goes further.</ChapterLabel><span className="n-kicker">UAE ↔ Africa</span></div>
       <div className="e-shell e-africa-title"><span className="n-kicker">A world of connections. A deeper connection.</span><h2 id="e-africa-title" data-editorial-title><Lines lines={["Africa.", "Feel closer."]} /></h2></div>
@@ -38,10 +36,10 @@ function AfricaChapter() {
 }
 
 const places = [
-  { name: "Kenya", line: "Answer the call of the wild.", region: "East Africa", photo: `${images}/kenya-dawn.webp`, alt: "An elephant on the sunlit Kenyan savannah", href: "/africa", position: "70% center" },
-  { name: "Maldives", line: "Make room for absolutely nothing.", region: "Indian Ocean", photo: `${images}/island-retreat.webp`, alt: "An inviting veranda opening onto a turquoise lagoon", href: "/destinations", position: "60% center" },
-  { name: "Europe", line: "Take the beautiful way around.", region: "The Mediterranean", photo: "/images/santorini.jpg", alt: "Whitewashed terraces overlooking the Aegean Sea in Santorini", href: "/destinations", position: "center" },
-  { name: "Japan", line: "Find wonder in the little things.", region: "East Asia", photo: "/images/kyoto.jpg", alt: "A lantern-lit Kyoto lane with a traditional pagoda", href: "/destinations", position: "center" },
+  { name: "Kenya", line: "Answer the call of the wild.", region: "East Africa", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", href: "/africa", position: "center" },
+  { name: "Maldives", line: "Make room for absolutely nothing.", region: "Indian Ocean", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", href: "/destinations", position: "center" },
+  { name: "Europe", line: "Take the beautiful way around.", region: "The Mediterranean", photo: "/images/library/amalfi-coast.webp", alt: "Colourful houses climbing the cliffs above the Amalfi Coast", href: "/destinations", position: "center" },
+  { name: "Japan", line: "Find wonder in the little things.", region: "East Asia", photo: "/images/library/kyoto-golden-pavilion.webp", alt: "The Golden Pavilion reflecting in a still garden pond in Kyoto", href: "/destinations", position: "center" },
 ];
 
 function DestinationChapter() {
@@ -62,7 +60,7 @@ function DestinationChapter() {
 function GroupsChapter() {
   return <section className="e-together" aria-labelledby="e-together-title" data-home-cover>
     <div className="e-together-hero">
-      <div className="e-together-photo" data-editorial-parallax="7"><Image src={`${images}/together-at-dusk.webp`} alt="A candlelit retreat dinner on a Mediterranean terrace overlooking the sea" fill sizes="100vw" className="n-cover" /></div>
+      <div className="e-together-photo" data-editorial-parallax="7"><Image src={"/images/library/retreat-dinner.webp"} alt="A candlelit retreat dinner on a terrace overlooking the sea" fill sizes="100vw" className="n-cover" /></div>
       <div className="e-together-shade" />
       <div className="e-shell e-together-content"><ChapterLabel number="03">Groups, meetings & shared moments</ChapterLabel><h2 id="e-together-title" data-editorial-title><Lines lines={["Better", "together."]} /></h2><div className="e-together-caption"><span>One shared experience.<br />A thousand reasons to remember.</span><Link href="/groups-mice" className="n-button n-button-white">Bring your people<Arrow /></Link></div></div>
     </div>
@@ -71,7 +69,7 @@ function GroupsChapter() {
 }
 
 function ContactChapter() {
-  return <section className="e-contact" aria-labelledby="e-contact-title"><div className="e-contact-photo" data-editorial-parallax="6"><Image src="/images/home/private-travel.webp" alt="Sun loungers waiting beside a quiet Mediterranean sea" fill sizes="100vw" className="n-cover" /></div><div className="e-contact-shade" /><div className="e-shell e-contact-inner"><span className="n-kicker">Every great journey starts with a conversation.</span><Link href="/contact" className="e-contact-heading"><h2 id="e-contact-title" data-editorial-title><Lines lines={["Where do we", "go from here?"]} /></h2><span aria-hidden="true">↗</span></Link><div className="e-contact-bottom"><p>A destination in mind? A possibility taking shape?<br />Tell us your story. We’ll help with the journey.</p><a href={office.whatsapp} target="_blank" rel="noreferrer" className="n-button n-button-white"><TravelIcon kind="chat" size={18} />Let’s talk on WhatsApp</a></div></div></section>;
+  return <section className="e-contact" aria-labelledby="e-contact-title"><div className="e-contact-photo" data-editorial-parallax="6"><Image src="/images/library/norway-fjord.webp" alt="A broad Norwegian fjord winding between mountains in evening light" fill sizes="100vw" className="n-cover" /></div><div className="e-contact-shade" /><div className="e-shell e-contact-inner"><span className="n-kicker">Every great journey starts with a conversation.</span><Link href="/contact" className="e-contact-heading"><h2 id="e-contact-title" data-editorial-title><Lines lines={["Where do we", "go from here?"]} /></h2><span aria-hidden="true">↗</span></Link><div className="e-contact-bottom"><p>A destination in mind? A possibility taking shape?<br />Tell us your story. We’ll help with the journey.</p><a href={office.whatsapp} target="_blank" rel="noreferrer" className="n-button n-button-white"><TravelIcon kind="chat" size={18} />Let’s talk on WhatsApp</a></div></div></section>;
 }
 
 export function HomeEditorial() {
