@@ -41,12 +41,29 @@
 .n-story-scene {
   position: relative;
   z-index: 6;
-  color: var(--ink);
-  background: transparent;
+  color: #fff8ed;
+}
+/* The photograph ends under the opaque middle of the paper, leaving its
+   lower torn edge transparent so the travel portraits show through. */
+.n-story-background {
+  position: absolute;
+  inset: 0 0 calc(var(--travel-heading-height) * .5);
+  overflow: hidden;
+  background: #26353b;
+}
+.n-story-background img {
+  object-position: 62% center;
+}
+.n-story-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, #101820d0 0%, #122028a8 42%, #15243066 72%, #1a2a3440 100%),
+    linear-gradient(105deg, #0f1824e0 0%, #0f182488 38%, #0f182420 72%);
 }
 .n-story-scene .n-intro {
-  background: #faf7f2;
-  padding: clamp(80px, 7vw, 120px) 0 clamp(40px, 5vw, 70px);
+  background: transparent;
+  padding: clamp(90px, 8vw, 130px) 0 clamp(30px, 4vw, 55px);
   overflow: visible;
 }
 .n-story-scene .n-intro-inner {
@@ -57,78 +74,68 @@
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 22px;
-  border-bottom: 1px solid #d5c7b66b;
-  color: #8a7358;
+  border-bottom: 1px solid #fff8ed33;
+  color: #e9cfa8;
 }
-.n-intro-top .n-kicker { margin-bottom: 0; }
-.home-page .n-intro-title {
-  margin: clamp(40px, 5vw, 70px) 0;
-  font-size: clamp(42px, 6.4vw, 108px);
-  line-height: .96;
-  letter-spacing: -.02em;
+.n-intro-main {
+  display: grid;
+  grid-template-columns: 1.2fr .9fr;
+  gap: clamp(36px, 6vw, 90px);
+  align-items: end;
+  margin-top: clamp(36px, 4vw, 58px);
+}
+.home-page .n-story-scene .n-intro h2 {
+  font-size: clamp(44px, 5.6vw, 92px);
+  line-height: .98;
+  letter-spacing: -.015em;
+  text-shadow: none;
 }
 .n-intro-line {
+  display: block;
+}
+.n-intro-line-soft {
+  color: #e9cfa8;
+  margin-bottom: .12em;
+}
+.n-intro-line-people {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: .2em .28em;
+  gap: .28em;
+  margin-top: .08em;
+  color: #fff8ed;
 }
-.n-intro-line + .n-intro-line {
-  margin-top: .14em;
-}
-.n-intro-line-end {
-  justify-content: flex-end;
-  color: #9e8f79;
-}
-.n-intro-soft {
-  color: #9e8f79;
-}
-.n-intro-photo {
+.n-intro-portrait {
   position: relative;
   display: inline-block;
-  flex-shrink: 0;
-  width: 1.7em;
-  height: .68em;
+  width: clamp(52px, 5.5vw, 88px);
+  height: clamp(34px, 3.6vw, 56px);
   overflow: hidden;
-  border-radius: 999px;
+  flex-shrink: 0;
+  border: 1px solid #fff8ed55;
 }
-.n-intro-photo img {
-  object-position: center 45%;
-}
-.n-intro-photo-people {
-  width: 1.4em;
-}
-.n-intro-photo-people img {
-  object-position: 25% 40%;
-}
-.n-intro-detail {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(28px, 6vw, 90px);
-  align-items: start;
-  padding-top: 34px;
-  border-top: 1px solid #d5c7b66b;
+.n-intro-aside {
+  padding-bottom: 8px;
 }
 .n-story-scene .n-intro-lead {
   margin: 0;
-  font: 400 clamp(24px, 2.4vw, 40px) / 1.18 var(--heading);
-  color: var(--ink);
+  font: 400 clamp(22px, 2vw, 32px) / 1.2 var(--heading);
+  color: #fff8ed;
 }
 .n-story-scene .n-intro-body {
   max-width: 28em;
-  margin: 0 0 26px;
+  margin: 22px 0 28px;
   font-size: clamp(16px, 1.25vw, 19px);
   line-height: 1.5;
-  color: #6f6254;
+  color: #efe4d2;
 }
 .n-intro-route {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   list-style: none;
-  margin-top: clamp(48px, 6vw, 80px);
+  margin-top: clamp(48px, 6vw, 85px);
   padding-top: 24px;
-  border-top: 1px solid #d5c7b66b;
+  border-top: 1px solid #fff8ed33;
 }
 .n-intro-route li {
   display: grid;
@@ -143,43 +150,48 @@
   left: 0;
   width: 28px;
   height: 1px;
-  background: #b59a78;
+  background: #e9cfa8;
 }
 .n-intro-route span {
   font: 400 11px/1 var(--body);
   letter-spacing: .14em;
-  color: #8a7358;
+  color: #e9cfa8;
 }
 .n-intro-route strong {
   font: 400 clamp(15px, 1.2vw, 18px) / 1.3 var(--heading);
   letter-spacing: .04em;
   text-transform: uppercase;
   font-weight: 400;
-  color: var(--ink);
 }
 @media (max-width: 999px) {
-  .home-page .n-intro-title {
-    font-size: clamp(38px, 7.5vw, 72px);
-  }
-  .n-intro-detail {
+  .n-intro-main {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 28px;
+    align-items: start;
+  }
+  .home-page .n-story-scene .n-intro h2 {
+    font-size: clamp(40px, 7vw, 68px);
   }
 }
 @media (max-width: 767px) {
-  .n-story-scene .n-intro { padding-top: 70px; }
+  .n-story-scene .n-intro { padding-top: 80px; }
+  .n-story-background img { object-position: 58% center; }
+  .n-story-shade {
+    background:
+      linear-gradient(180deg, #101820e0 0%, #122028c4 50%, #15243088 100%),
+      linear-gradient(180deg, #0f1824aa, transparent 70%);
+  }
   .n-intro-top .n-kicker:last-child { display: none; }
-  .n-intro-line-end { justify-content: flex-start; }
-  .n-story-scene .n-intro-lead { font-size: 24px; }
-  .n-story-scene .n-intro-body { font-size: 17px; margin-bottom: 22px; }
+  .n-story-scene .n-intro-lead { font-size: 22px; }
+  .n-story-scene .n-intro-body { font-size: 17px; margin: 18px 0 24px; }
   .n-intro-route {
     grid-template-columns: 1fr;
     gap: 0;
-    margin-top: 42px;
+    margin-top: 48px;
   }
   .n-intro-route li {
     padding: 16px 0;
-    border-bottom: 1px solid #d5c7b645;
+    border-bottom: 1px solid #fff8ed22;
   }
   .n-intro-route li:last-child { border-bottom: 0; }
   .n-intro-route li::before { display: none; }
@@ -219,12 +231,14 @@
   letter-spacing: .005em;
 }
 .n-travel {
-  /* Pull the panels under the heading tear so the cream page never shows through. */
-  margin-top: calc(var(--travel-heading-height) * -.42);
-  z-index: 5;
-  background: transparent;
+  margin-top: calc(var(--travel-heading-height) * -.32);
+  z-index: 2;
 }
-.n-travel .n-panel-copy { bottom: 55px; }
+.n-travel > .n-edge-travel {
+  height: var(--travel-tear-height);
+  mask-image: url('/images/home/travel-bottom-tear.svg');
+}
+.n-travel .n-panel-copy { bottom: calc(var(--travel-tear-height) + 25px); }
 .n-travel .n-panel-note { top: 180px; }
 .n-support-inner { padding-top: 80px; }
 @supports not (-webkit-text-stroke: 1px #fff) {
@@ -240,7 +254,8 @@
   .home-page .n-travel-heading h2 { font-size: clamp(27px, 7.1vw, 49px); line-height: 1.06; -webkit-text-stroke-width: .7px; }
   .n-travel-heading-map { width: 65%; right: -30%; opacity: .45; }
   .n-travel-heading-grid { background-size: 50% 100%, 100% 50%; }
-  .n-travel .n-panel-copy { bottom: 40px; }
+  .n-travel .n-panel-copy { bottom: 55px; }
+  .n-travel .n-travel-panel:last-child .n-panel-copy { bottom: calc(var(--travel-tear-height) + 25px); }
   .n-support-inner { padding-top: 40px; }
   .n-travel .n-panel-note { top: 150px; }
   .n-travel .n-travel-panel:last-child .n-panel-note { top: 35px; }

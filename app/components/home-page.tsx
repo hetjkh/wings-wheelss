@@ -8,6 +8,10 @@ import { HomeEditorial } from "./home-editorial";
 import "./home.css";
 import "./home-editorial.css";
 
+function PaperEdge({ position = "bottom", variant = "default", className = "" }: { position?: "top" | "bottom"; variant?: "default" | "travel"; className?: string }) {
+  return <div className={`n-edge n-edge-${position} n-edge-${variant} ${className}`} aria-hidden="true" />;
+}
+
 export default function HomePage() {
   return <HomeExperience>
     <a className="skip-link" href="#home-services">Skip to content</a>
@@ -28,6 +32,10 @@ export default function HomePage() {
       <HomeServices />
 
       <div className="n-story-scene">
+        <div className="n-story-background" aria-hidden="true">
+          <Image src="/images/about/coast-road.jpg" alt="" fill sizes="100vw" className="n-cover" />
+          <div className="n-story-shade" />
+        </div>
       <section className="n-intro" id="home-story" aria-labelledby="intro-title">
         <div className="n-shell n-intro-inner">
           <div className="n-intro-top" data-home-reveal>
@@ -35,33 +43,30 @@ export default function HomePage() {
             <span className="n-kicker">Dubai · Since 2013</span>
           </div>
 
-          <h2 id="intro-title" className="n-intro-title" data-home-reveal>
-            <span className="n-intro-line">
-              <span>Travel is about</span>
-              <span className="n-intro-photo">
-                <Image src="/images/about/leisure-sun.jpg" alt="" fill sizes="160px" className="n-cover" />
-              </span>
-              <span className="n-intro-soft">places.</span>
-            </span>
-            <span className="n-intro-line n-intro-line-end">
-              <span>We’re about</span>
-              <span className="n-intro-photo n-intro-photo-people">
-                <Image src="/images/about/team.jpg" alt="A travel consultant planning the details of a journey" fill sizes="140px" className="n-cover" />
-              </span>
-              <span>people.</span>
-            </span>
-          </h2>
+          <div className="n-intro-main">
+            <div className="n-intro-title-block">
+              <h2 id="intro-title" data-home-reveal>
+                <span className="n-intro-line">Travel is about</span>
+                <span className="n-intro-line n-intro-line-soft">places.</span>
+                <span className="n-intro-line">We’re about</span>
+                <span className="n-intro-line n-intro-line-people">
+                  <span className="n-intro-portrait" aria-hidden="true">
+                    <Image src="/images/about/team.jpg" alt="" fill sizes="120px" className="n-cover" />
+                  </span>
+                  <span>people.</span>
+                </span>
+              </h2>
+            </div>
 
-          <div className="n-intro-detail">
-            <p className="n-intro-lead" data-home-reveal>
-              Some journeys take you somewhere new.<br />
-              Others bring you closer to what matters.
-            </p>
-            <div data-home-reveal>
-              <p className="n-intro-body">
+            <div className="n-intro-aside">
+              <p className="n-intro-lead" data-home-reveal>
+                Some journeys take you somewhere new.<br />
+                Others bring you closer to what matters.
+              </p>
+              <p className="n-intro-body" data-home-reveal>
                 From a meeting in another city to a holiday you’ve been dreaming of, we bring the moving parts together. Flights, hotels, visas and transfers — with a real team by your side.
               </p>
-              <Link href="/about" className="n-button" data-home-reveal>Our story <Arrow /></Link>
+              <Link href="/about" className="n-button n-button-white" data-home-reveal>Our story <Arrow /></Link>
             </div>
           </div>
 
@@ -95,6 +100,7 @@ export default function HomePage() {
             <div className="n-panel-copy"><div><Link href="/corporate-travel" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Corporate<br />travel</h3></div><p>Well-connected travel for businesses and their people. From the first meeting to the journey home.</p></div>
           </article>
         </div>
+        <PaperEdge variant="travel" />
       </section>
 
       <HomeEditorial />

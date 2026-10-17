@@ -119,13 +119,17 @@ export default function ServicesPage() {
           <div className="s-service-grid">{services.map((item, i) => <article key={item.title} className="s-service" aria-labelledby={`service-${i}`}>
             <div className="s-service-photo">
               <Image src={item.photo} alt={item.alt} fill sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 30vw" style={item.position ? { objectPosition: item.position } : undefined} />
-              <span className="s-service-icon"><TravelIcon kind={item.icon} size={24} /></span>
-            </div>
-            <div className="s-service-body">
+              <span className="s-service-icon" aria-hidden="true"><TravelIcon kind={item.icon} size={22} /></span>
               <span className="s-service-number">{String(i + 1).padStart(2, "0")}</span>
-              <h3 id={`service-${i}`}>{item.title}</h3>
-              <ul className="s-draw">{item.items.map(line => <li key={line} className="s-draw">{line}</li>)}</ul>
-              {item.service ? <EnquiryButton className="j-journey-enquiry" service={item.service}>{item.cta}</EnquiryButton> : <Link className="j-journey-enquiry" href="/contact">{item.cta}<Arrow /></Link>}
+              <div className="s-service-body">
+                <h3 id={`service-${i}`}>{item.title}</h3>
+                <div className="s-service-more">
+                  <div>
+                    <ul>{item.items.map(line => <li key={line}>{line}</li>)}</ul>
+                    {item.service ? <EnquiryButton className="j-journey-enquiry" service={item.service}>{item.cta}</EnquiryButton> : <Link className="j-journey-enquiry" href="/contact">{item.cta}<Arrow /></Link>}
+                  </div>
+                </div>
+              </div>
             </div>
           </article>)}</div>
         </div>

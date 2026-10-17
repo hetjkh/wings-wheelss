@@ -19,7 +19,7 @@ export function HomeClientele() {
     <section className="e-clientele" id="clientele" aria-labelledby="clientele-title">
       <div className="e-shell">
         <div className="e-section-bar">
-          <span className="e-label"><span>05</span><span>Organisations we travel with</span></span>
+          <span className="e-label"><span>06</span><span>Organisations we travel with</span></span>
           <span className="n-kicker">Trusted across industries</span>
         </div>
         <div className="e-clientele-heading">
