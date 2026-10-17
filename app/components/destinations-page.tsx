@@ -7,10 +7,13 @@ import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { FourThings, MoodIndex, PostcardRail, SeasonRibbon, type Mood, type Postcard, type Season } from "./destinations-interactive";
 import { office } from "./data";
+import { DubaiTrips } from "./destination-dubai-trips";
+import { DestinationConnections, DestinationPlanning } from "./destination-additions";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./destinations.css";
+import "./destinations-additions.css";
 
 const moods: Mood[] = [
   { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/library/dubai-marina.webp", alt: "Modern towers and waterfront buildings at Dubai Marina" },
@@ -22,12 +25,12 @@ const moods: Mood[] = [
 ];
 
 const postcards: Postcard[] = [
-  { name: "Kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center", service: "Africa travel" },
-  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa", code: "TZ", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", service: "Africa travel" },
-  { name: "Uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa", code: "UG", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", service: "Africa travel" },
-  { name: "Dubai & UAE", line: "Business. Lifestyle. Experiences.", region: "Middle East", code: "AE", photo: "/images/library/dubai-clouds.webp", alt: "Dubai towers rising above a sea of morning clouds", position: "center", service: "Leisure & holidays" },
-  { name: "Maldives", line: "Barefoot luxury. Endless blue.", region: "Indian Ocean", code: "MV", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", service: "Leisure & holidays" },
-  { name: "Europe", line: "Cities. Culture. Escapes.", region: "Europe", code: "EU", photo: "/images/library/florence.webp", alt: "Florence and its cathedral beneath the Tuscan hills", service: "Leisure & holidays" },
+  { name: "Kenya", href: "/destinations/kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center", service: "Africa travel" },
+  { name: "Tanzania", href: "/destinations/tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa", code: "TZ", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", service: "Africa travel" },
+  { name: "Uganda", href: "/destinations/uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa", code: "UG", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", service: "Africa travel" },
+  { name: "Dubai & UAE", href: "/destinations/dubai-uae", line: "Business. Lifestyle. Experiences.", region: "Middle East", code: "AE", photo: "/images/library/dubai-clouds.webp", alt: "Dubai towers rising above a sea of morning clouds", position: "center", service: "Leisure & holidays" },
+  { name: "Maldives", href: "/destinations/maldives", line: "Barefoot luxury. Endless blue.", region: "Indian Ocean", code: "MV", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", service: "Leisure & holidays" },
+  { name: "Europe", href: "/destinations/europe", line: "Cities. Culture. Escapes.", region: "Europe", code: "EU", photo: "/images/library/florence.webp", alt: "Florence and its cathedral beneath the Tuscan hills", service: "Leisure & holidays" },
 ];
 
 const cities = [
@@ -46,12 +49,6 @@ const africaReasons: { icon: IconKind; label: string }[] = [
   { icon: "route", label: "Regional travel" },
 ];
 
-const legs: { days: string; kind: string; place: string; note: string; icon: IconKind; photo: string; alt: string; position?: string }[] = [
-  { days: "Days 1–2", kind: "Stopover", place: "Dubai", note: "City, skyline and a night in the desert.", icon: "briefcase", photo: "/images/library/dubai-panorama.webp", alt: "Dubai skyline and the Burj Khalifa in clear daylight", position: "center" },
-  { days: "Days 3–6", kind: "Safari", place: "Maasai Mara", note: "Game drives from a tented camp.", icon: "leaf", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center" },
-  { days: "Days 7–10", kind: "Island", place: "Maldives", note: "An overwater villa and nothing planned.", icon: "sun", photo: "/images/library/maldives-aerial.webp", alt: "An aerial view of overwater villas surrounding a Maldivian island" },
-  { days: "Days 11–13", kind: "Lakes", place: "Europe", note: "A slower finish among the mountains.", icon: "mountain", photo: "/images/library/swiss-lake.webp", alt: "A turquoise alpine lake surrounded by Swiss mountain peaks", position: "center" },
-];
 
 const seasons: Season[] = [
   { months: "October – December", short: "Oct — Dec", photo: "/images/library/finland-village.webp", alt: "A warmly lit winter village in snowy Finnish Lapland", picks: [
@@ -143,28 +140,11 @@ export default function DestinationsPage() {
 
       <section className="d-many j-torn-top" id="combine" aria-labelledby="combine-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>04 / One journey, many experiences</span><span>One example itinerary · 13 days</span></div>
-          <div className="s-split-head">
-            <h2 id="combine-heading" className="s-title">The destination may be the same.<span className="d-title-soft">The journey shouldn&apos;t be.</span></h2>
-            <div>
-              <p className="s-lead">Combine destinations, stopovers and experiences into one coordinated itinerary.</p>
-              <EnquiryButton className="j-button j-button-olive d-many-cta" service="Leisure & holidays">Plan a multi-destination trip</EnquiryButton>
-            </div>
-          </div>
-          <div className="d-legs">
-            <svg className="d-legs-route" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path data-trace pathLength={1} d="M0 20 C 120 4, 160 36, 250 20 S 400 4, 500 20 S 640 36, 750 20 S 880 4, 1000 20" /></svg>
-            <ol>{legs.map((leg, i) => <li key={leg.place} className="d-leg">
-              <div className="d-leg-photo" data-frame><Image src={leg.photo} alt={leg.alt} fill sizes="(max-width: 600px) 92vw, (max-width: 991px) 46vw, 23vw" style={leg.position ? { objectPosition: leg.position } : undefined} /></div>
-              <div className="d-leg-shade" />
-              <span className="d-leg-stop" aria-hidden="true"><TravelIcon kind={leg.icon} size={18} /></span>
-              <div className="d-leg-copy">
-                <span className="d-leg-days">{String(i + 1).padStart(2, "0")} · {leg.days}</span>
-                <h3><span>{leg.kind}</span>{leg.place}</h3>
-                <p>{leg.note}</p>
-              </div>
-            </li>)}</ol>
-          </div>
+          <div className="j-section-label s-draw"><span>04 / One destination. Many ways to experience it.</span><span>Dubai, through your eyes</span></div>
+          <div className="s-split-head"><h2 id="combine-heading" className="s-title">Dubai isn&apos;t<br />one kind of trip.</h2><p className="s-lead">One skyline. Five different reasons to be here.</p></div>
         </div>
+        <DubaiTrips />
+        <div className="j-shell d-dubai-close"><h3>The destination may be the same.<br /><span>The journey shouldn&apos;t be.</span></h3><p>Tell us why you&apos;re travelling, who you&apos;re travelling with and how you want the trip to feel. We&apos;ll help shape the journey around you.</p></div>
       </section>
 
       <section className="d-seasons j-torn-top" id="seasons" data-steps={seasons.length} aria-labelledby="seasons-heading">
@@ -193,6 +173,9 @@ export default function DestinationsPage() {
         </div>
       </section>
 
+      <DestinationConnections />
+      <DestinationPlanning />
+
       <section className="s-final d-final j-torn-top" aria-labelledby="final-heading">
         <Image className="j-photo s-final-photo" src="/images/library/algarve.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
@@ -201,7 +184,7 @@ export default function DestinationsPage() {
           <h2 id="final-heading">Some journeys start with a place.<br /><span>Others start with an idea.</span></h2>
           <p className="s-lead-body">Tell us where you&apos;re thinking of going — or simply what you&apos;re looking for — and we&apos;ll help take it from there.</p>
           <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream">Start planning</EnquiryButton>
+            <a className="j-button j-button-cream" href="#destination-enquiry">Start planning <Arrow /></a>
             <a className="j-button j-button-outline-light" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp us</a>
           </div>
         </div>

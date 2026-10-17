@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import Image from "./travel-image";
+import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 
@@ -32,7 +33,7 @@ export function MoodIndex({ moods }: { moods: Mood[] }) {
   </div>;
 }
 
-export type Postcard = { name: string; line: string; region: string; code: string; photo: string; alt: string; position?: string; service: string };
+export type Postcard = { name: string; line: string; region: string; code: string; photo: string; alt: string; position?: string; service: string; href?: string };
 
 /** A row of postcards that can be dragged, swiped or stepped through. */
 export function PostcardRail({ cards }: { cards: Postcard[] }) {
@@ -106,7 +107,7 @@ export function PostcardRail({ cards }: { cards: Postcard[] }) {
           <span className="d-postcard-number">{String(i + 1).padStart(2, "0")}</span>
           <h3>{card.name}</h3>
           <p>{card.line}</p>
-          <EnquiryButton className="d-postcard-link" service={card.service} destination={card.name}>Explore {card.name}</EnquiryButton>
+          {card.href ? <Link className="d-postcard-link" href={card.href}>Explore {card.name}<Arrow /></Link> : <EnquiryButton className="d-postcard-link" service={card.service} destination={card.name}>Explore {card.name}</EnquiryButton>}
         </div>
       </li>)}
     </ol>

@@ -1,0 +1,142 @@
+export type DestinationGuide = {
+  slug: string; name: string; line: string; region: string; photo: string; alt: string;
+  intro: string; bestFor: string[]; experiences: { name: string; text: string }[];
+  lengths: { time: string; text: string }[]; combinations: string[];
+  climate: string; practical: string; official: { label: string; href: string };
+};
+
+export const destinationGuides: DestinationGuide[] = [
+  {
+    slug: "kenya", name: "Kenya", line: "Safari. City. Coast.", region: "East Africa",
+    photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset",
+    intro: "Start with Nairobi, make room for the open plains, or take the journey towards the coast. Kenya brings city time, wildlife and the Indian Ocean into a trip shaped around the people travelling.",
+    bestFor: ["Safari", "Couples", "Families", "Groups", "Business + leisure"],
+    experiences: [
+      { name: "Nairobi", text: "A city stay for meetings, dining and a first introduction to Kenya." },
+      { name: "Maasai Mara", text: "Make space for guided game drives and time in the open landscape." },
+      { name: "Amboseli", text: "Explore a different safari landscape, with elephants and mountain views." },
+      { name: "Diani / Coast", text: "Slow the pace with a beach stay after the city or safari." },
+      { name: "Selected regional experiences", text: "Bring nearby destinations into the itinerary, with the connections planned together." },
+    ],
+    lengths: [
+      { time: "Short stay", text: "Focus on Nairobi, with room for the reason you are there." },
+      { time: "5–7 days", text: "Build around one safari area and a city arrival." },
+      { time: "8–10 days", text: "Allow more time for safari and a slower finish." },
+      { time: "10+ days", text: "Explore a longer safari, coast or regional combination." },
+    ],
+    combinations: ["Kenya + Tanzania", "Kenya + Zanzibar", "Kenya + Dubai"],
+    climate: "Conditions vary between the highlands, safari areas and coast. Plan clothing and activities around your stops and dates.",
+    practical: "Allow time for transfers between the city, parks and coast. Ask about luggage limits and availability for any smaller aircraft in your itinerary.",
+    official: { label: "Magical Kenya travel inspiration", href: "https://magicalkenya.com/" },
+  },
+  {
+    slug: "tanzania", name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa",
+    photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania",
+    intro: "Wide landscapes, island time and a mountain on the horizon. Choose a safari-led journey, a slower Zanzibar stay, or connect different sides of Tanzania in one considered itinerary.",
+    bestFor: ["Safari", "Nature", "Couples", "Families", "Beach + safari"],
+    experiences: [
+      { name: "Serengeti", text: "Let guided wildlife experiences set the rhythm of your days." },
+      { name: "Ngorongoro", text: "Include the crater landscape as part of a carefully paced safari." },
+      { name: "Zanzibar", text: "Combine time by the water with the character of Stone Town." },
+      { name: "Kilimanjaro region", text: "Plan around the mountain region; trekking needs a dedicated itinerary and preparation." },
+    ],
+    lengths: [
+      { time: "Short stay", text: "Choose one area rather than fitting every experience into a few days." },
+      { time: "5–7 days", text: "Give a safari or island stay its own space." },
+      { time: "8–10 days", text: "Consider a safari with time to unwind afterwards." },
+      { time: "10+ days", text: "Make room for a longer safari and island combination." },
+    ],
+    combinations: ["Tanzania + Kenya", "Tanzania + Zanzibar", "Tanzania + Dubai"],
+    climate: "Altitude, coast and inland safari areas bring different conditions. The right timing depends on the places and experiences you choose.",
+    practical: "Keep transfer days realistic. Activities, park visits and island connections should be confirmed as part of the full itinerary.",
+    official: { label: "Tanzania Tourist Board", href: "https://tanzaniatourism.go.tz/" },
+  },
+  {
+    slug: "uganda", name: "Uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa",
+    photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape",
+    intro: "Forests, rivers and time outdoors. A Uganda journey can bring wildlife, landscapes and city connections together, with enough time between places to enjoy what you came for.",
+    bestFor: ["Wildlife", "Nature", "Adventure", "Couples", "Small groups"],
+    experiences: [
+      { name: "Entebbe & Kampala", text: "Start with a city arrival and the practical details of your onward journey." },
+      { name: "Bwindi", text: "Explore the possibility of a guided gorilla experience, with permits and suitability checked before booking." },
+      { name: "Queen Elizabeth National Park", text: "Build wildlife and landscape experiences into a wider journey." },
+      { name: "Jinja & the Nile", text: "Make time for riverside scenery and selected outdoor experiences." },
+    ],
+    lengths: [
+      { time: "Short stay", text: "Keep to a city stay or a single nearby experience." },
+      { time: "5–7 days", text: "Focus on one wildlife area with time for transfers." },
+      { time: "8–10 days", text: "Combine a few contrasting landscapes at a comfortable pace." },
+      { time: "10+ days", text: "Allow a broader nature itinerary or a regional extension." },
+    ],
+    combinations: ["Uganda + Kenya", "Uganda + Tanzania", "Uganda + Dubai"],
+    climate: "Pack for changing conditions between cities, forests and higher ground. Check the outlook for each part of your route.",
+    practical: "Some wildlife experiences need advance permits and have participation requirements. Confirm these before committing to travel dates.",
+    official: { label: "Uganda Ministry of Tourism", href: "https://www.tourism.go.ug/" },
+  },
+  {
+    slug: "dubai-uae", name: "Dubai & UAE", line: "Business. Lifestyle. Experiences.", region: "Middle East",
+    photo: "/images/library/dubai-panorama.webp", alt: "Dubai skyline and the Burj Khalifa in clear daylight",
+    intro: "A short stop between journeys, a week with family, or business with a little more time around it. Dubai and the UAE can be planned around a very different kind of day, even when the destination stays the same.",
+    bestFor: ["City breaks", "Families", "Business", "Groups", "Stopovers"],
+    experiences: [
+      { name: "Downtown Dubai", text: "Make room for the skyline, city attractions and time around your hotel." },
+      { name: "Old Dubai", text: "Discover the creek, neighbourhoods and a different side of the city." },
+      { name: "Coast & desert", text: "Balance city days with selected beach or desert experiences." },
+      { name: "Beyond Dubai", text: "Consider other emirates as part of your UAE itinerary." },
+    ],
+    lengths: [
+      { time: "48 hours", text: "Keep a business visit or stopover focused and well connected." },
+      { time: "4–5 days", text: "Pair a city break or exhibition with leisure time." },
+      { time: "7 days", text: "Plan a family holiday with a gentler daily rhythm." },
+      { time: "Longer stay", text: "Include more of the UAE or connect to your next destination." },
+    ],
+    combinations: ["Dubai + Kenya", "Dubai + Maldives", "Dubai + Europe"],
+    climate: "Plan outdoor time around seasonal temperatures, with indoor alternatives and time to rest.",
+    practical: "Choose your hotel around the purpose of the trip. Allow for travel time between meetings, attractions and different emirates.",
+    official: { label: "Visit Dubai trip planning", href: "https://www.visitdubai.com/en/plan-your-trip" },
+  },
+  {
+    slug: "maldives", name: "Maldives", line: "Barefoot luxury. Endless blue.", region: "Indian Ocean",
+    photo: "/images/library/maldives-villas.webp", alt: "Overwater villas and pools above a clear Maldivian lagoon",
+    intro: "Pick an island for the way you want to spend your time. Quiet days, family space, time in the water or an occasion worth slowing down for: the right stay starts with what matters to you.",
+    bestFor: ["Beach escapes", "Couples", "Families", "Honeymoons", "Rest"],
+    experiences: [
+      { name: "Island stays", text: "Find a resort and room style that fit your group and preferred pace." },
+      { name: "Time on the water", text: "Explore available lagoon and marine activities with your chosen resort." },
+      { name: "Space for two", text: "Plan quieter days and the details of a special occasion." },
+      { name: "Family island time", text: "Consider room layouts, dining and suitable activities together." },
+    ],
+    lengths: [
+      { time: "Short escape", text: "Choose your island with transfer time in mind." },
+      { time: "5–7 days", text: "Settle into one island without rushing the journey." },
+      { time: "8–10 days", text: "Leave room for slower days and chosen activities." },
+      { time: "Longer journey", text: "Combine island time with a city or safari stop." },
+    ],
+    combinations: ["Maldives + Dubai", "Maldives + Kenya", "Maldives + Europe"],
+    climate: "Tropical conditions can affect time on the water and transfers. Check expectations for your travel dates and chosen island.",
+    practical: "Confirm airport-to-island transfers with the stay. Arrival times, baggage allowances and transfer operating hours can affect your plans.",
+    official: { label: "Visit Maldives", href: "https://visitmaldives.com/" },
+  },
+  {
+    slug: "europe", name: "Europe", line: "Cities. Culture. Escapes.", region: "Europe",
+    photo: "/images/library/florence.webp", alt: "Florence and its cathedral beneath the Tuscan hills",
+    intro: "A single city, time in the countryside, or several places connected thoughtfully. Start with the feeling you want from the trip, then build a route that leaves time to experience each stop.",
+    bestFor: ["Culture", "City breaks", "Couples", "Families", "Multi-destination"],
+    experiences: [
+      { name: "City days", text: "Choose a base for culture, neighbourhoods and the places on your list." },
+      { name: "Italian journeys", text: "Consider Florence, Venice or other stops as part of a connected route." },
+      { name: "Lakes & countryside", text: "Build in a quieter stretch between cities." },
+      { name: "Business + leisure", text: "Make room around meetings or an exhibition for a more personal journey." },
+    ],
+    lengths: [
+      { time: "Short stay", text: "Give one city your attention." },
+      { time: "5–7 days", text: "Explore one region or a carefully chosen pair of stops." },
+      { time: "8–10 days", text: "Combine city and countryside without filling every day." },
+      { time: "10+ days", text: "Shape a multi-country itinerary with realistic travel days." },
+    ],
+    combinations: ["Europe + Dubai", "Europe + Maldives", "Europe + East Africa"],
+    climate: "Seasons and temperatures vary widely by country and altitude. Plan for the specific cities and regions you will visit.",
+    practical: "Currencies, languages and entry rules vary by country. Check the details for every stop, including connections outside the Schengen area.",
+    official: { label: "Your Europe travel information", href: "https://europa.eu/youreurope/citizens/travel/index_en.htm" },
+  },
+];
