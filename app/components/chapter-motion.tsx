@@ -286,6 +286,12 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         });
 
         let active = true;
+        // Expanding an answer changes chapter heights and the positions of later scenes.
+        const refreshDetails = () => ScrollTrigger.refresh();
+        select("details").forEach(details => {
+          details.addEventListener("toggle", refreshDetails);
+          cleanups.push(() => details.removeEventListener("toggle", refreshDetails));
+        });
         document.fonts.ready.then(() => { if (active) ScrollTrigger.refresh(); });
         return () => {
           active = false;

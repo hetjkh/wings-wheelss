@@ -24,10 +24,10 @@ const compare = [
 ];
 
 const values: ValuePanel[] = [
-  { note: "Pay less on the routes you fly", title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/library/flight-wing.webp", alt: "An aircraft wing above white clouds and turquoise ocean" },
-  { note: "Someone who knows your team", title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/library/solo-consultant.webp", alt: "A travel consultant reviewing routes and reservations at her office desk", position: "center" },
-  { note: "Comfort for every traveller", title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/library/executive-lounge.webp", alt: "A traveller waiting in a quiet airport lounge overlooking the city", position: "center" },
-  { note: "Less time on paperwork", title: ["Simpler", "paperwork"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/library/travel-planning-v2.webp", alt: "A travel coordinator reviewing a printed itinerary beside a laptop", position: "center" },
+  { note: "Pay less on the routes you fly", title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/library/corporate-preferred-rates.webp", alt: "A business traveller in an airport lounge overlooking Dubai at dusk" },
+  { note: "Someone who knows your team", title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/library/corporate-account-manager.webp", alt: "An account manager coordinating travel at a desk overlooking Dubai", position: "center" },
+  { note: "Comfort for every traveller", title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/library/corporate-travel-benefits.webp", alt: "A traveller relaxing in an airport lounge at sunset", position: "center" },
+  { note: "Less time on paperwork", title: ["Simpler", "work"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/library/corporate-simpler-work.webp", alt: "A corporate travel coordinator reviewing bookings and reports on office monitors", position: "center" },
 ];
 
 const levels = [
@@ -223,7 +223,7 @@ export default function PartnershipPage() {
       </section>
 
       <section className="s-final p-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/dubai-marina.webp" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/corporate-partnership-lounge.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels corporate partnerships</span>

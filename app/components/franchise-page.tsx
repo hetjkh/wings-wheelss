@@ -40,11 +40,11 @@ const network = [
   "International group movements and exhibitions",
   "Regional leisure packages and destination experiences",
   "Corporate referrals and multi-country itineraries",
-  "A growing network of franchise partners",
+  "Collaboration with participating travel partners",
 ];
 
 const partners = [
-  { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/library/travel-support-v2.webp", position: "center" },
+  { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/library/franchise-travel-agencies.webp", position: "center" },
   { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/library/business-conversation.webp", position: "center" },
   { label: "Investors", text: "Investors with capable local operating teams.", photo: "/images/library/business-boarding.webp", position: "center" },
   { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/library/business-terminal-v2.webp", position: "center" },
@@ -64,6 +64,15 @@ const steps = [
   { title: "Business evaluation", text: "We discuss the proposed model, investment requirements and territory." },
   { title: "Due diligence & agreement", text: "Legal, financial, licensing and contractual review." },
   { title: "Market setup & launch", text: "Onboarding, training and go-to-market support." },
+];
+
+const faqs = [
+  { question: "Which countries are currently being considered?", answer: "Our current expansion focus is Saudi Arabia, Egypt and Morocco." },
+  { question: "Do I need previous travel industry experience?", answer: "Relevant travel, hospitality or business management experience is preferred. Applicants without direct industry experience may be considered if they have a capable operating team and suitable commercial background." },
+  { question: "Is territory exclusivity available?", answer: "Territory rights, if offered, would depend on the market, proposed investment, performance commitments and final agreement." },
+  { question: "What is the franchise investment?", answer: "Investment requirements will be discussed with qualified applicants after an initial assessment. No fixed public investment amount is being advertised at this stage." },
+  { question: "Will Wings & Wheels provide operational and marketing support?", answer: "The proposed level of operational, technology, training and marketing support will be defined during commercial discussions and documented in the franchise agreement." },
+  { question: "When can the franchise begin operating?", answer: "Launch timing will depend on due diligence, contractual agreements, local licences, regulatory requirements and operational readiness." },
 ];
 
 function MarketMap({ pin, city }: { pin: { x: number; y: number }; city: string }) {
@@ -109,7 +118,7 @@ export default function FranchisePage() {
 
       <section className="f-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
         <figure className="f-beyond-photo">
-          <Image src="/images/library/travel-support-v2.webp" alt="Two travel consultants reviewing a world map and planning a route together" fill sizes="(max-width: 991px) 100vw, 46vw" />
+          <Image src="/images/library/franchise-local-connections.webp" alt="Two business partners reviewing plans together in an office overlooking Dubai" fill sizes="(max-width: 991px) 100vw, 46vw" />
           <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
         </figure>
         <div className="j-shell f-beyond-grid">
@@ -181,13 +190,15 @@ export default function FranchisePage() {
       </section>
 
       <section className="f-network j-torn-top" id="network" aria-labelledby="network-heading">
-        <div className="f-network-photo"><Image src="/images/library/global-connections.webp" alt="An illustration of routes connecting Africa and the Middle East" fill sizes="(max-width: 991px) 100vw, 55vw" /></div>
+        <div className="f-network-photo"><Image src="/images/library/franchise-africa-network.webp" alt="An illuminated globe showing travel connections across Africa and the Middle East" fill sizes="(max-width: 991px) 100vw, 62vw" /></div>
         <div className="j-shell f-network-grid">
           <div className="f-network-copy">
             <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
             <h2 id="network-heading" className="s-title s-rows"><span>Connecting more</span><span className="k-soft">than destinations.</span></h2>
-            <p className="k-body">From our base in Dubai, we connect businesses and travellers across the Middle East, Africa and key international markets.</p>
+            <p className="k-body">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network.</p>
+            <p className="k-body">For potential franchise partners in Saudi Arabia, Egypt and Morocco, this creates opportunities to explore cross-market travel cooperation, including:</p>
             <ul className="f-network-list" data-stagger="0.08">{network.map(item => <li key={item}><TravelIcon kind="check" size={18} />{item}</li>)}</ul>
+            <p className="f-network-note">A growing network. Local market opportunities. Shared international ambition.</p>
           </div>
         </div>
       </section>
@@ -248,8 +259,20 @@ export default function FranchisePage() {
         </div>
       </section>
 
+      <section className="f-faq j-torn-top" id="faq" aria-labelledby="faq-heading">
+        <div className="j-shell">
+          <div className="s-split-head">
+            <div><span className="j-eyebrow s-eyebrow">09 / Frequently asked questions</span><h2 id="faq-heading" className="s-title s-rows"><span>Your questions.</span><span className="k-soft">Our answers.</span></h2></div>
+          </div>
+          <div className="f-faq-list">{faqs.map(faq => <details key={faq.question} className="f-faq-item">
+            <summary>{faq.question}<span className="f-faq-toggle" aria-hidden="true" /></summary>
+            <p>{faq.answer}</p>
+          </details>)}</div>
+        </div>
+      </section>
+
       <section className="s-final f-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/dubai-panorama.webp" alt="" fill sizes="100vw" />
+        <Image className="j-photo s-final-photo" src="/images/library/franchise-three-markets.webp" alt="" fill sizes="100vw" />
         <div className="s-final-shade" />
         <div className="j-shell s-final-content">
           <span className="j-eyebrow">Wings &amp; Wheels franchise opportunities</span>

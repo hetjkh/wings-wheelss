@@ -90,6 +90,46 @@ const itinerary = [
   { time: "19:30", item: "Welcome dinner", detail: "With the event team", note: "Still on schedule", phase: 3 },
 ];
 
+const coordinationBenefits = [
+  { audience: "For your organiser", title: "One less thing to coordinate.", items: ["Central travel contact", "Coordinated traveller information", "Arrival/departure planning", "Hotel coordination", "Transfer planning", "Travel updates"] },
+  { audience: "For your travellers", title: "A clearer journey.", items: ["Clear travel information", "Confirmed arrangements", "Coordinated airport transfers", "Hotel details", "Event movement information", "Support when something changes"] },
+];
+
+const travelProcess = [
+  { icon: "calendar", phase: "The brief", title: "Share the event", text: "Dates, destination, expected traveller numbers and requirements." },
+  { icon: "route", phase: "The plan", title: "Build the travel plan", text: "Flights, hotels, transfers and traveller movements are structured around the programme." },
+  { icon: "people", phase: "The people", title: "Coordinate the group", text: "Traveller information and individual requirements are consolidated." },
+  { icon: "check", phase: "The confirmation", title: "Confirm arrangements", text: "Bookings and travel components are coordinated." },
+  { icon: "plane", phase: "The journey", title: "Move the group", text: "Arrival, accommodation and transportation plans come together." },
+  { icon: "support", phase: "The support", title: "Stay supported", text: "Our team remains available as travel requirements evolve." },
+] satisfies { icon: IconKind; phase: string; title: string; text: string }[];
+
+function GroupCoordinationVisual({ traveller = false }: { traveller?: boolean }) {
+  if (traveller) return <div className="g-itinerary-pass" aria-label="An illustrative traveller pass connecting the airport, hotel and event venue">
+    <div className="g-itinerary-photo">
+      <Image src="/images/library/airport-traveller.webp" alt="" fill sizes="(max-width: 600px) 85vw, 40vw" />
+      <span className="g-itinerary-badge"><TravelIcon kind="people" size={16} />Guest itinerary</span>
+      <span className="g-itinerary-destination">Your event.<br /><em>Your journey, in hand.</em></span>
+    </div>
+    <div className="g-itinerary-stub">
+      <div className="g-itinerary-stops">{([{ icon: "plane", label: "Airport" }, { icon: "bed", label: "Hotel" }, { icon: "pin", label: "Venue" }] as const).map(stop => <span key={stop.label}><TravelIcon kind={stop.icon} size={22} />{stop.label}</span>)}</div>
+      <span className="g-pass-barcode" aria-hidden="true" />
+    </div>
+  </div>;
+
+  return <div className="g-coordination-board" aria-label="An illustrative group movement plan bringing different departure cities into one event, with flights, hotels and transfers coordinated">
+    <div className="g-board-header"><span><i />Group movement plan</span><span className="g-board-plan-label">One shared plan</span></div>
+    <div className="g-board-labels"><span>Departure cities</span><span>Event destination</span></div>
+    <div className="g-board-routes">
+      <div className="g-board-cities">{["London", "Nairobi", "Riyadh"].map(city => <span key={city}><TravelIcon kind="plane" size={16} />{city}</span>)}</div>
+      <svg className="g-board-connectors" viewBox="0 0 120 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25H42V125H0M0 75H116M42 25V125M108 67L116 75L108 83" /></svg>
+      <div className="g-board-event"><TravelIcon kind="people" size={26} /><strong>One event</strong><span>All travellers connected</span></div>
+    </div>
+    <div className="g-board-services">{([{ icon: "plane", label: "Flights" }, { icon: "bed", label: "Hotels" }, { icon: "car", label: "Transfers" }] as const).map(service => <span key={service.label}><TravelIcon kind={service.icon} size={20} />{service.label}<TravelIcon kind="check" size={14} /></span>)}</div>
+    <span className="g-board-note"><TravelIcon kind="support" size={15} />One coordinator for the whole journey</span>
+  </div>;
+}
+
 export default function GroupsPage() {
   return <ChapterMotion className="groups-page">
     <a className="skip-link" href="#people">Skip to content</a>
@@ -340,6 +380,31 @@ export default function GroupsPage() {
             </a>
           </div>
           <EventBrief />
+        </div>
+      </section>
+
+      <section className="g-benefits j-torn-top" id="coordination" aria-labelledby="coordination-heading">
+        <div className="j-shell">
+          <span className="j-eyebrow s-eyebrow">11 / For the organiser. For the traveller.</span>
+          <h2 id="coordination-heading" className="s-title g-new-title">Better coordination<br />for everyone involved.</h2>
+          <div className="g-benefits-grid" data-stagger="0.1">{coordinationBenefits.map((benefit, i) => <article key={benefit.audience} className={`g-benefit g-benefit-${i === 0 ? "organiser" : "traveller"}`} aria-labelledby={`benefit-heading-${i}`}>
+            <div className="g-benefit-top"><span className="g-benefit-audience"><TravelIcon kind={i === 0 ? "briefcase" : "people"} size={20} />{benefit.audience}</span><span className="g-benefit-index">0{i + 1}</span></div>
+            <GroupCoordinationVisual traveller={i === 1} />
+            <div className="g-benefit-copy"><h3 id={`benefit-heading-${i}`}>{benefit.title}</h3>
+            <ul>{benefit.items.map((item, n) => <li key={item}><span className="g-benefit-tick"><TravelIcon kind={(["chat", "people", "plane", "bed", "car", "support"] as const)[n]} size={18} /></span>{item}</li>)}</ul></div>
+          </article>)}</div>
+        </div>
+      </section>
+
+      <section className="g-process j-torn-top" id="how-it-works" aria-labelledby="process-heading">
+        <div className="j-shell">
+          <span className="j-eyebrow s-eyebrow">12 / How Group &amp; MICE travel works</span>
+          <h2 id="process-heading" className="s-title g-new-title">From brief to arrival.</h2>
+          <div className="g-process-route-label" aria-hidden="true"><span><i />Your event brief</span><span>One connected travel plan</span><span>Ongoing support<TravelIcon kind="check" size={16} /></span></div>
+          <ol className="g-process-grid" data-progress="top 85%" data-progress-end="bottom 75%">{travelProcess.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
+            <div className="g-process-marker"><TravelIcon kind={step.icon} size={30} /><span>{String(i + 1).padStart(2, "0")}</span></div>
+            <div className="g-process-copy"><span className="g-process-phase">{step.phase}</span><h3>{step.title}</h3><p>{step.text}</p></div>
+          </li>)}</ol>
         </div>
       </section>
 

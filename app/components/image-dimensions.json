@@ -262,5 +262,41 @@
   "/images/kyoto.jpg": [
     1000,
     667
+  ],
+  "/images/library/corporate-preferred-rates.webp": [
+    1164,
+    1351
+  ],
+  "/images/library/corporate-account-manager.webp": [
+    1169,
+    1345
+  ],
+  "/images/library/corporate-travel-benefits.webp": [
+    1160,
+    1356
+  ],
+  "/images/library/corporate-simpler-work.webp": [
+    1165,
+    1350
+  ],
+  "/images/library/corporate-partnership-lounge.webp": [
+    2158,
+    729
+  ],
+  "/images/library/franchise-local-connections.webp": [
+    1304,
+    1206
+  ],
+  "/images/library/franchise-africa-network.webp": [
+    1639,
+    959
+  ],
+  "/images/library/franchise-travel-agencies.webp": [
+    1318,
+    1193
+  ],
+  "/images/library/franchise-three-markets.webp": [
+    1911,
+    823
   ]
 }

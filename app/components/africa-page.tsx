@@ -6,11 +6,14 @@ import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
+import { AfricaCorridor } from "./africa-corridor";
+import { AfricaEnquiry } from "./africa-enquiry";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./africa.css";
+import "./africa-updates.css";
 
 const reasons = [
   { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", position: "center" },
@@ -24,11 +27,6 @@ const pillars = [
   { icon: "people", title: "East Africa", text: "Regional expertise." },
   { icon: "globe", title: "Worldwide", text: "International travel support." },
 ] as const;
-
-const corridor = [
-  { from: "From the UAE", into: "Travelling into Africa", items: ["Business travel", "Safari & leisure", "Family travel", "Groups", "Projects", "Regional travel"], route: ["Dubai", "Africa"] },
-  { from: "From Africa", into: "Travelling into the UAE", items: ["Business meetings", "Exhibitions & conferences", "Family travel", "Medical / personal travel", "Groups", "International connections"], route: ["Africa", "Dubai"] },
-];
 
 const business: { icon: IconKind; title: string; text: string }[] = [
   { icon: "briefcase", title: "Executive travel", text: "Individual business journeys requiring careful coordination." },
@@ -50,6 +48,34 @@ const itinerary = [
   { name: "Maasai Mara", role: "Safari", photo: "/images/library/kenya-game-drive.webp", position: "center" },
   { name: "Zanzibar", role: "Beach", photo: "/images/library/zanzibar.webp" },
   { name: "Dubai", role: "Home", photo: "/images/library/dubai-clouds.webp", position: "center" },
+];
+
+const dubaiReasons = ["Business", "Exhibitions", "Holidays", "Groups", "Onward international travel"];
+const delegateOrigins = ["Nairobi", "Kampala", "Juba", "Khartoum", "Tanzania"];
+const delegateServices: { icon: IconKind; label: string }[] = [
+  { icon: "plane", label: "Group flights" }, { icon: "document", label: "Visa assistance" }, { icon: "bed", label: "Hotels" },
+  { icon: "car", label: "Airport transfers" }, { icon: "route", label: "Venue transportation" }, { icon: "people", label: "Delegate travel" }, { icon: "support", label: "Changes & support" },
+];
+const journeys = [
+  { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
+  { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
+  { title: "City. Safari. Coast.", photo: "/images/library/kenya-game-drive.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Arrival" }, { from: "Nairobi", to: "Maasai Mara", why: "Safari" }, { from: "Maasai Mara", to: "Diani", why: "Beach" }, { from: "Diani", to: "Dubai", why: "Home" }] },
+];
+const africaPurposes = [
+  { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", href: "/corporate-travel", link: "Corporate travel" },
+  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/south-africa-safari.webp", href: "/destinations/kenya", link: "Discover Kenya" },
+  { title: "Family", text: "Visits, holidays and journeys together.", photo: "/images/library/family-lake.webp", href: "/destinations", link: "Find your destination" },
+  { title: "Groups", text: "Organised travel across multiple travellers.", photo: "/images/library/travel-support-v2.webp", href: "/groups-mice", link: "Plan group travel" },
+  { title: "MICE", text: "Meetings, incentives, conferences and exhibitions.", photo: "/images/library/conference.webp", href: "/groups-mice", link: "Explore Groups & MICE" },
+  { title: "Coast & islands", text: "Indian Ocean escapes and extensions.", photo: "/images/library/zanzibar.webp", href: "/destinations/tanzania", link: "Discover Tanzania & Zanzibar" },
+];
+const supportServices: { icon: IconKind; title: string; text: string }[] = [
+  { icon: "plane", title: "Flights", text: "Regional and international arrangements." },
+  { icon: "bed", title: "Hotels", text: "Business and leisure accommodation." },
+  { icon: "document", title: "Visas", text: "Documentation assistance where applicable." },
+  { icon: "car", title: "Transfers", text: "Airport and ground movements." },
+  { icon: "compass", title: "Experiences", text: "Safari, leisure and destination arrangements." },
+  { icon: "support", title: "Support", text: "Assistance when travel plans change." },
 ];
 
 export default function AfricaPage() {
@@ -113,29 +139,12 @@ export default function AfricaPage() {
       </section>
 
       <section className="a-corridor j-torn-top" id="corridor" aria-labelledby="corridor-heading">
-        <div className="a-corridor-photos" aria-hidden="true">
-          <div data-frame><Image src="/images/library/dubai-marina.webp" alt="" fill sizes="50vw" /></div>
-          <div data-frame><Image src="/images/library/mountain-hiker.webp" alt="" fill sizes="50vw" /></div>
-        </div>
-        <div className="a-corridor-shade" />
         <div className="j-shell a-corridor-content">
           <div className="a-corridor-head">
             <span className="j-eyebrow s-eyebrow">03 / Two regions. One travel network.</span>
             <h2 id="corridor-heading" className="s-title">UAE <span className="a-arrows" aria-label="to and from">↔</span> Africa</h2>
           </div>
-          <div className="a-corridor-grid">
-            {corridor.map((side, i) => <article key={side.from} className={`a-side${i ? " a-side-right" : ""}`} data-enter>
-              <span className="j-eyebrow">{side.from}</span>
-              <h3>{side.into}</h3>
-              <ul data-draw-group>{side.items.map(item => <li key={item} className="s-draw"><TravelIcon kind="check" size={16} />{item}</li>)}</ul>
-              <EnquiryButton className="j-button j-button-olive" service="Africa travel">{side.route[0]} <span aria-hidden="true">→</span> {side.route[1]}</EnquiryButton>
-            </article>)}
-            <div className="a-hub" aria-hidden="true">
-              <span className="a-hub-line"><span className="a-hub-plane"><TravelIcon kind="plane" size={18} /></span></span>
-              <div className="a-hub-badge"><span className="a-hub-mark">W</span><span>Wings &amp; Wheels</span></div>
-              <p>Coordinating both sides of the journey.</p>
-            </div>
-          </div>
+          <AfricaCorridor />
         </div>
       </section>
 
@@ -200,6 +209,75 @@ export default function AfricaPage() {
             </li>)}</ol>
           </div>
         </div>
+      </section>
+
+      <section className="a-arrival j-torn-top" id="dubai-arrival" aria-labelledby="arrival-heading">
+        <div className="j-shell a-arrival-grid">
+          <figure className="a-arrival-photo"><Image src="/images/library/airport-transfer.webp" alt="A driver welcoming a business traveller with luggage outside a contemporary airport terminal" fill sizes="(max-width: 900px) 92vw, 48vw" /><figcaption><TravelIcon kind="pin" size={16} />Your Dubai arrival, coordinated.</figcaption></figure>
+          <div className="a-arrival-copy">
+            <span className="j-eyebrow s-eyebrow">07 / Africa → Dubai</span>
+            <span className="a-small-title">Travelling to the UAE</span>
+            <h2 id="arrival-heading" className="s-title a-editorial-title">Dubai may be<br />the destination.<br /><em>Or just the beginning.</em></h2>
+            <p className="a-body">Wings &amp; Wheels can assist travellers, companies and groups travelling from African markets into Dubai and onward internationally.</p>
+            <div className="a-arrival-route" aria-label="From Africa to Dubai, then business, exhibitions, holidays, groups or onward international travel"><span>Africa</span><Arrow /><strong>Dubai</strong><Arrow /></div>
+            <ul className="a-arrival-reasons">{dubaiReasons.map(reason => <li key={reason}>{reason}</li>)}</ul>
+            <a className="j-button j-button-olive" href="#africa-enquiry">Plan travel to Dubai<Arrow /></a>
+          </div>
+        </div>
+      </section>
+
+      <section className="a-delegates j-torn-top" id="delegate-travel" aria-labelledby="delegates-heading">
+        <div className="j-shell">
+          <div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">08 / Exhibitions &amp; delegations</span><h2 id="delegates-heading" className="s-title a-editorial-title">Bringing your team<br />to Dubai?</h2></div><div><p className="a-subhead">We&apos;ll help coordinate what happens before the event starts.</p><p className="a-body">For organisations travelling from Africa to exhibitions, conferences and corporate events in the UAE, W&amp;W can coordinate:</p></div></div>
+          <div className="a-delegate-grid">
+            <div className="a-delegate-plan">
+              <span className="a-plan-label">Different departure points. One event.</span>
+              <div className="a-delegate-flow"><ul>{delegateOrigins.map(city => <li key={city}><TravelIcon kind="plane" size={16} />{city}</li>)}</ul><svg viewBox="0 0 100 250" preserveAspectRatio="none" aria-hidden="true"><path data-trace pathLength={1} d="M0 25H35V225H0M0 75H35M0 125H94M0 175H35M86 117L94 125L86 133" /></svg><div className="a-delegate-event"><TravelIcon kind="people" size={36} /><strong>Dubai<br />event</strong><span>One coordinated arrival</span></div></div>
+              <div className="s-actions"><a className="j-button j-button-cream" href="#africa-enquiry">Plan delegate travel<Arrow /></a><Link className="j-text-link" href="/groups-mice">Explore Groups &amp; MICE<Arrow /></Link></div>
+            </div>
+            <div className="a-delegate-services"><div className="a-delegate-photo"><Image src="/images/library/exhibition.webp" alt="Visitors meeting at a professional trade exhibition" fill sizes="(max-width: 900px) 92vw, 40vw" /></div><ul>{delegateServices.map(service => <li key={service.label}><TravelIcon kind={service.icon} size={20} />{service.label}</li>)}</ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="a-journeys j-torn-top" id="journey-continues" aria-labelledby="journeys-heading">
+        <div className="j-shell">
+          <span className="j-eyebrow s-eyebrow">09 / People don&apos;t always travel one way</span><h2 id="journeys-heading" className="s-title a-editorial-title">The journey continues.</h2>
+          <div className="a-journey-grid">{journeys.map((journey, i) => <article className="a-journey-card" key={journey.title}>
+            <div className="a-journey-photo"><Image src={journey.photo} alt="" fill sizes="(max-width: 700px) 92vw, 30vw" /><span>0{i + 1} / Journey example</span></div>
+            <div className="a-journey-copy"><h3>{journey.title}</h3><ol>{journey.stops.map(stop => <li key={`${stop.from}-${stop.to}`}><div><span>{stop.from}</span><Arrow /><strong>{stop.to}</strong></div><p>{stop.why}</p></li>)}</ol></div>
+          </article>)}</div>
+          <p className="a-journey-statement">We don&apos;t just book the flight.<br /><span>We help connect the journey.</span></p>
+        </div>
+      </section>
+
+      <section className="a-purposes j-torn-top" id="travel-purposes" aria-labelledby="purposes-heading">
+        <div className="j-shell"><span className="j-eyebrow s-eyebrow">10 / Africa, for different reasons</span><h2 id="purposes-heading" className="s-title a-editorial-title">What brings you to Africa?</h2>
+          <div className="a-purpose-grid">{africaPurposes.map((purpose, i) => <Link className="a-purpose-tile" href={purpose.href} key={purpose.title} aria-label={`${purpose.title}: ${purpose.text} ${purpose.link}`}>
+            <Image src={purpose.photo} alt="" fill sizes="(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 30vw" />
+            <span className="a-purpose-number">0{i + 1}</span><div><h3>{purpose.title}</h3><p>{purpose.text}</p><span className="a-purpose-link">{purpose.link}<Arrow /></span></div>
+          </Link>)}</div>
+        </div>
+      </section>
+
+      <section className="a-expertise j-torn-top" id="travel-expertise" aria-labelledby="expertise-heading">
+        <div className="j-shell a-expertise-grid">
+          <figure className="a-expertise-photo"><Image src="/images/library/corporate-account-manager.webp" alt="A professional travel coordinator reviewing routes, bookings and itineraries across multiple screens, with a phone and notebook on her desk" fill sizes="(max-width: 900px) 92vw, 48vw" /><figcaption>People who bring the details together.</figcaption></figure>
+          <div><span className="j-eyebrow s-eyebrow">11 / Behind every cross-border journey</span><h2 id="expertise-heading" className="s-title a-editorial-title">Different countries.<br />Different requirements.<br /><em>One team keeping track.</em></h2><p className="a-body">International and regional journeys can involve different flight arrangements, visa requirements, accommodation, transfers and schedules. Wings &amp; Wheels helps bring those details together before the traveller begins the journey.</p>
+            <div className="a-operations-sheet"><header><span>Journey coordination</span><span>Illustrative itinerary</span></header><div className="a-operations-route">Africa<Arrow />Dubai<Arrow />Beyond</div><dl><div><dt><TravelIcon kind="plane" size={18} />Flight schedules</dt><dd>International &amp; regional connections</dd></div><div><dt><TravelIcon kind="document" size={18} />Travel documents</dt><dd>Requirements checked for each stop</dd></div><div><dt><TravelIcon kind="bed" size={18} />Accommodation</dt><dd>Stays aligned with the itinerary</dd></div><div><dt><TravelIcon kind="car" size={18} />Ground transfers</dt><dd>Airport, hotel &amp; onward movements</dd></div></dl></div>
+            <p className="a-expertise-statement">There&apos;s expertise behind every booking.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="a-support j-torn-top" id="africa-support" aria-labelledby="support-heading">
+        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">12 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
+          <ol className="a-support-grid">{supportServices.map((service, i) => <li key={service.title}><span className="a-support-icon"><TravelIcon kind={service.icon} size={30} /></span><span className="a-support-index">0{i + 1}</span><h3>{service.title}</h3><p>{service.text}</p>{i < supportServices.length - 1 && <span className="a-support-arrow"><Arrow /></span>}</li>)}</ol>
+        </div>
+      </section>
+
+      <section className="a-enquiry j-torn-top" id="africa-enquiry" aria-labelledby="enquiry-heading">
+        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">13 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
       <section className="s-final j-torn-top" aria-labelledby="final-heading">

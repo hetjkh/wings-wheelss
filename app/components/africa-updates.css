@@ -1,0 +1,209 @@
+/* Africa journeys: two directions, connected itineraries and a dedicated travel brief. */
+.africa-page .a-arrival { z-index: 8; }
+.africa-page .a-delegates { z-index: 9; }
+.africa-page .a-journeys { z-index: 10; }
+.africa-page .a-purposes { z-index: 11; }
+.africa-page .a-expertise { z-index: 12; }
+.africa-page .a-support { z-index: 13; }
+.africa-page .a-enquiry { z-index: 14; }
+.africa-page .s-final { z-index: 15; }
+.africa-page .j-footer { z-index: 16; }
+.a-arrival, .a-delegates, .a-journeys, .a-purposes, .a-expertise, .a-support, .a-enquiry { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 4); }
+.africa-page .a-editorial-title { font-size: clamp(32px, 3.5vw, 68px); line-height: 1; }
+.a-editorial-title em { font-style: normal; color: var(--ochre); }
+.a-section-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 8%; align-items: end; }
+.a-section-head .a-body { font-size: clamp(16px, 1.15vw, 22px); }
+.a-subhead { max-width: 24em; font: 400 clamp(24px, 2vw, 38px)/1.1 var(--heading); color: var(--ink); }
+.a-small-title, .a-plan-label { display: block; font: 400 clamp(11px, .75vw, 14px)/1.3 var(--body); letter-spacing: .12em; text-transform: uppercase; }
+
+/* Tall photographs. Headline first; details on hover, focus or tap. */
+.a-corridor { padding: calc(var(--tear) + var(--u) * 3) 0 calc(var(--u) * 4); }
+.a-corridor .a-corridor-grid { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: none; margin-top: calc(var(--u) * 2.5); }
+.a-corridor-card { position: relative; display: flex; align-items: center; min-height: clamp(650px, 82svh, 1000px); overflow: hidden; isolation: isolate; }
+.a-corridor-card > img { z-index: -3; object-fit: cover; transition: scale 1s ease; }
+.a-corridor-card[data-open="true"] > img { scale: 1.04; }
+.a-corridor-card-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(0deg, #170f0af2, #170f0a38 65%, #170f0a22); }
+.a-corridor-card-copy { width: 100%; padding: clamp(24px, 3vw, 60px); }
+.africa-page .a-corridor-card h3 { font: 400 clamp(32px, 3vw, 58px)/1.02 var(--heading); text-transform: uppercase; color: var(--cream); }
+.a-corridor-card h3 button { display: flex; justify-content: space-between; align-items: start; gap: 16px; width: 100%; border: 0; padding: 0; background: none; font: inherit; text-align: left; color: inherit; cursor: pointer; }
+.a-corridor-card h3 button > span { font: 300 30px/1 var(--body); color: var(--sand); }
+.a-corridor-card h3 button:focus-visible { outline: 2px solid var(--sand); outline-offset: 10px; }
+.a-corridor-reveal { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .45s ease, opacity .35s ease; }
+.a-corridor-reveal > div { overflow: hidden; }
+.a-corridor-card[data-open="true"] .a-corridor-reveal { grid-template-rows: 1fr; opacity: 1; }
+.a-corridor-reveal ul { margin-top: 24px; margin-bottom: 24px; }
+.a-corridor-reveal li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid #fff8e933; font: 300 clamp(15px, 1.1vw, 21px)/1.3 var(--body); color: var(--cream); }
+.a-corridor-reveal li svg { flex-shrink: 0; color: var(--sand); }
+.a-corridor-bridge { position: absolute; z-index: 3; left: 50%; top: 36%; translate: -50% -50%; text-align: center; pointer-events: none; }
+.a-corridor-bridge > span { display: grid; place-items: center; width: 76px; height: 76px; margin-inline: auto; border: 1px solid var(--sand); border-radius: 50%; background: var(--night); box-shadow: 0 0 0 7px #2b211966; font: 400 36px/1 var(--heading); color: var(--cream); }
+.a-corridor-bridge p { margin-top: 16px; font: 400 16px/1.2 var(--heading); color: var(--sand); }
+
+/* Dubai arrival: a welcome on the ground, followed by onward connections. */
+.a-arrival { background: var(--paper); }
+.a-arrival-grid, .a-expertise-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6%; align-items: center; }
+.a-arrival-photo, .a-expertise-photo { position: relative; align-self: stretch; min-height: 650px; margin: 0; overflow: hidden; }
+.a-arrival-photo img, .a-expertise-photo img { object-fit: cover; }
+.a-arrival-photo img { object-position: 45% center; }
+.a-arrival-photo::after, .a-expertise-photo::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #1a130ebf); }
+.a-arrival-photo figcaption, .a-expertise-photo figcaption { position: absolute; z-index: 1; left: 24px; bottom: 28px; right: 24px; display: flex; gap: 10px; align-items: center; font: 400 clamp(13px, 1vw, 18px)/1.3 var(--body); color: var(--cream); }
+.a-arrival .a-small-title { margin-bottom: 14px; color: var(--ochre); }
+.a-arrival .a-body { font-size: clamp(16px, 1.15vw, 22px); }
+.a-arrival-route { display: flex; align-items: center; gap: 20px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule); font: 400 clamp(24px, 2.3vw, 42px)/1 var(--heading); text-transform: uppercase; }
+.a-arrival-route strong { font-weight: 400; color: var(--ochre); }
+.a-arrival-route svg { color: var(--ochre); }
+.a-arrival-reasons { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px; }
+.a-arrival-reasons li { padding: 8px 12px; border: 1px solid var(--rule); border-radius: 30px; font: 300 clamp(13px, 1vw, 18px)/1.2 var(--body); }
+
+/* Delegates: a shared arrival plan and the services around the event. */
+.a-delegates { background: #ede3d2; }
+.a-delegate-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; margin-top: calc(var(--u) * 2.5); }
+.a-delegate-plan { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: clamp(24px, 2.5vw, 48px); background: var(--night); color: var(--cream); }
+.a-plan-label { color: var(--sand); }
+.a-delegate-flow { display: grid; grid-template-columns: minmax(0, 1fr) .5fr minmax(0, 1fr); align-items: center; }
+.a-delegate-flow ul { display: grid; gap: 10px; }
+.a-delegate-flow li { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #fff8e933; font: 300 clamp(14px, 1.05vw, 20px)/1.2 var(--body); }
+.a-delegate-flow li svg { flex-shrink: 0; color: var(--sand); }
+.a-delegate-flow > svg { width: 100%; height: 250px; overflow: visible; }
+.a-delegate-flow > svg path { fill: none; stroke: var(--sand); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: var(--trace-offset, 0); }
+.a-delegate-event { display: grid; gap: 16px; justify-items: center; padding: 30px 12px; border: 1px solid #ecd9ad88; background: #fff8e90a; text-align: center; }
+.a-delegate-event strong { font: 400 clamp(27px, 2.5vw, 48px)/1 var(--heading); text-transform: uppercase; }
+.a-delegate-event > span { max-width: 10em; font: 300 clamp(12px, .85vw, 16px)/1.3 var(--body); color: var(--sand); }
+.a-delegate-plan .j-text-link { color: var(--sand); }
+.a-delegate-services { display: flex; flex-direction: column; background: #fffdf8; }
+.a-delegate-photo { position: relative; min-height: 220px; flex: 1; }
+.a-delegate-photo img { object-fit: cover; }
+.a-delegate-services ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 28px; }
+.a-delegate-services li { display: flex; gap: 10px; align-items: center; font: 300 clamp(14px, 1vw, 18px)/1.3 var(--body); }
+.a-delegate-services li svg { flex-shrink: 0; color: var(--ochre); }
+
+/* Three complete journeys, each with its own route and reason to travel. */
+.a-journeys { background: #fffdf8; }
+.a-journey-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: calc(var(--u) * 2.5); }
+.a-journey-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); }
+.a-journey-photo { position: relative; height: clamp(180px, 17vw, 320px); }
+.a-journey-photo img { object-fit: cover; }
+.a-journey-photo > span { position: absolute; z-index: 1; bottom: 16px; left: 16px; padding: 8px 10px; background: #2b2119e6; font: 400 10px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
+.a-journey-copy { padding: clamp(20px, 1.7vw, 32px); }
+.africa-page .a-journey-copy h3 { min-height: 2.1em; font: 400 clamp(25px, 2vw, 38px)/1.05 var(--heading); text-transform: uppercase; color: var(--ink); }
+.a-journey-copy ol { margin-top: 22px; }
+.a-journey-copy li { position: relative; padding: 0 0 24px 20px; border-left: 1px solid var(--rule); }
+.a-journey-copy li::before { content: ''; position: absolute; left: -4px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--ochre); }
+.a-journey-copy li:last-child { padding-bottom: 0; border-color: transparent; }
+.a-journey-copy li > div { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font: 400 clamp(16px, 1.3vw, 24px)/1.2 var(--heading); }
+.a-journey-copy li strong { font-weight: 400; }
+.a-journey-copy li svg { width: 14px; color: var(--ochre); }
+.a-journey-copy li p { margin-top: 5px; font: 300 clamp(13px, .9vw, 17px)/1.3 var(--body); color: var(--ochre); }
+.a-journey-statement { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); font: 400 clamp(30px, 3vw, 56px)/1.05 var(--heading); text-align: center; text-transform: uppercase; color: var(--ink); }
+.a-journey-statement span { color: var(--ochre); }
+
+/* Editorial purpose tiles lead to the relevant destinations and travel services. */
+.a-purposes { background: var(--night); color: var(--cream); }
+.africa-page .a-purposes .s-title { color: var(--cream); }
+.a-purposes .s-eyebrow { color: var(--sand); }
+.a-purpose-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+.a-purpose-tile { position: relative; display: flex; align-items: end; min-height: clamp(380px, 34vw, 620px); padding: clamp(22px, 2vw, 40px); isolation: isolate; overflow: hidden; }
+.a-purpose-tile > img { z-index: -3; object-fit: cover; transition: scale .7s ease; }
+.a-purpose-tile::after { content: ''; position: absolute; z-index: -2; inset: 0; background: linear-gradient(0deg, #170e08f2, #170e0833 80%); }
+.a-purpose-tile:hover > img, .a-purpose-tile:focus-visible > img { scale: 1.05; }
+.a-purpose-tile:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+.a-purpose-number { position: absolute; top: 24px; left: 24px; font: 400 12px/1 var(--body); letter-spacing: .14em; color: var(--sand); }
+.africa-page .a-purpose-tile h3 { font: 400 clamp(32px, 3vw, 58px)/1 var(--heading); text-transform: uppercase; color: var(--cream); }
+.a-purpose-tile p { max-width: 22em; margin-top: 12px; font: 300 clamp(15px, 1.1vw, 21px)/1.4 var(--body); color: #f1e5cf; }
+.a-purpose-link { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 24px; padding-top: 14px; border-top: 1px solid #fff8e94d; font: 400 clamp(11px, .75vw, 14px)/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--sand); }
+
+/* A real person, with an itinerary-style view of the work behind the journey. */
+.a-expertise { background: #eee6d8; }
+.a-expertise .a-editorial-title { font-size: clamp(30px, 2.8vw, 54px); }
+.a-expertise .a-body { font-size: clamp(16px, 1.1vw, 21px); }
+.a-expertise-photo { min-height: 760px; }
+.a-expertise-photo img { object-position: 45% center; }
+.a-operations-sheet { margin-top: 28px; padding: 24px; border: 1px solid #d7c9b2; background: #fffdf8; }
+.a-operations-sheet header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--line); font: 400 clamp(10px, .7vw, 13px)/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ochre); }
+.a-operations-sheet header > span:first-child { color: var(--ink); }
+.a-operations-route { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-block: 20px; font: 400 clamp(22px, 1.8vw, 34px)/1 var(--heading); text-transform: uppercase; color: var(--ink); }
+.a-operations-sheet dl > div { padding-block: 12px; border-top: 1px solid var(--line); }
+.a-operations-sheet dt { display: flex; align-items: center; gap: 10px; font: 400 clamp(14px, 1vw, 18px)/1.3 var(--body); color: var(--ink); }
+.a-operations-sheet dt svg { color: var(--ochre); }
+.a-operations-sheet dd { margin: 5px 0 0 28px; font: 300 clamp(13px, .9vw, 17px)/1.4 var(--body); color: var(--text); }
+.a-expertise-statement { margin-top: 24px; font: 400 clamp(23px, 2vw, 38px)/1.15 var(--heading); color: var(--ink); }
+
+/* A concise support chain. */
+.a-support { background: var(--paper); }
+.a-support .a-section-head > .j-button { justify-self: end; }
+.a-support-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 36px; margin-top: 36px; }
+.a-support-grid li { position: relative; padding: 28px 0; border-top: 1px solid var(--rule); }
+.a-support-icon { display: inline-grid; place-items: center; width: 58px; height: 58px; border: 1px solid var(--rule); border-radius: 50%; color: var(--ink); }
+.a-support-index { position: absolute; top: 30px; right: 0; font: 400 11px/1 var(--body); letter-spacing: .1em; color: var(--ochre); }
+.africa-page .a-support-grid h3 { margin-top: 20px; font: 400 clamp(28px, 2.4vw, 44px)/1 var(--heading); text-transform: uppercase; color: var(--ink); }
+.a-support-grid p { max-width: 22em; margin-top: 10px; padding-right: 24px; font: 300 clamp(15px, 1.05vw, 20px)/1.4 var(--body); }
+.a-support-arrow { position: absolute; bottom: 30px; right: 0; color: var(--ochre); }
+
+/* A dedicated Africa brief, ready for the visitor to review and share. */
+.a-enquiry { background: #e9dfcd; }
+.a-enquiry-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 7%; align-items: start; }
+.a-enquiry-intro { position: sticky; top: 100px; }
+.a-enquiry-intro .a-body { font-size: clamp(16px, 1.15vw, 22px); }
+.a-enquiry-route { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 28px 0; padding-block: 24px; border-block: 1px solid #c7b695; font: 400 clamp(20px, 1.8vw, 34px)/1 var(--heading); text-transform: uppercase; color: var(--ink); }
+.a-enquiry-intro > .j-text-link { font-size: 14px; line-height: 1.4; }
+.a-enquiry-form { min-width: 0; padding: clamp(22px, 2.5vw, 48px); border: 1px solid #d4c4a8; background: #fffdf8; }
+.a-form-header { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid var(--line); font: 400 13px/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ochre); }
+.a-enquiry-form fieldset { min-width: 0; border: 0; margin: 0; padding: 28px 0; }
+.a-enquiry-form legend { float: left; width: 100%; margin-bottom: 20px; font: 400 clamp(12px, .9vw, 16px)/1.3 var(--body); letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.a-enquiry-form legend > span { margin-right: 12px; color: var(--ochre); }
+.a-form-fields { clear: both; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.a-form-fields label, .a-form-notes { display: flex; flex-direction: column; gap: 10px; min-width: 0; font: 400 11px/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--ochre); }
+.a-form-wide { grid-column: 1 / -1; }
+.a-form-fields input, .a-form-notes textarea { width: 100%; min-width: 0; padding: 10px 0; border: 0; border-bottom: 1px solid #cdbda9; border-radius: 0; background: transparent; font: 300 clamp(15px, 1vw, 18px)/1.4 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.a-form-fields input:focus-visible, .a-form-notes textarea:focus-visible { outline: 2px solid var(--ochre); outline-offset: 4px; }
+.a-form-purposes { clear: both; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.a-form-purposes label { display: flex; align-items: center; gap: 10px; font: 300 clamp(14px, 1vw, 18px)/1.3 var(--body); cursor: pointer; color: var(--ink); }
+.a-form-purposes input { flex-shrink: 0; width: 17px; height: 17px; accent-color: var(--ink); }
+.a-form-notes { clear: both; }
+.a-form-notes textarea { resize: vertical; }
+.a-enquiry-form > button { margin-top: 24px; }
+.a-form-direct { margin-top: 24px; font: 300 14px/1.5 var(--body); color: var(--text); }
+.a-form-direct a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.a-enquiry-ready { margin-top: 24px; padding: 22px; border: 1px solid var(--rule); background: #f4eddf; }
+.a-enquiry-ready strong { font: 400 24px/1.2 var(--heading); color: var(--ink); }
+.a-enquiry-ready p { margin-top: 8px; font: 300 15px/1.4 var(--body); }
+.a-enquiry-ready pre { margin: 18px 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 300 14px/1.6 var(--body); }
+
+@media (max-width: 1000px) {
+  .a-journey-grid { gap: 14px; }
+  .a-purpose-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a-journey-copy { padding: 18px; }
+}
+@media (max-width: 900px) {
+  .a-arrival-grid, .a-expertise-grid, .a-delegate-grid, .a-enquiry-grid, .a-section-head { grid-template-columns: 1fr; gap: 32px; }
+  .a-arrival-photo { min-height: 440px; }
+  .a-expertise-photo { min-height: 560px; }
+  .a-expertise-photo img { object-position: center 65%; }
+  .a-enquiry-intro { position: static; }
+  .a-support .a-section-head > .j-button { justify-self: start; }
+  .a-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a-delegate-photo { min-height: 300px; }
+}
+@media (max-width: 700px) {
+  .a-corridor .a-corridor-grid, .a-journey-grid { grid-template-columns: 1fr; }
+  .a-corridor-card { min-height: 650px; }
+  .a-corridor-bridge { display: none; }
+  .a-journey-photo { height: 240px; }
+  .a-journey-copy h3 { min-height: 0; }
+}
+@media (max-width: 600px) {
+  .a-purpose-grid, .a-form-fields, .a-form-purposes, .a-support-grid { grid-template-columns: 1fr; }
+  .a-purpose-tile { min-height: 440px; }
+  .a-arrival-photo { min-height: 380px; }
+  .a-delegate-plan { padding: 22px; }
+  .a-delegate-flow li { padding: 10px 7px; font-size: 12px; gap: 6px; }
+  .a-delegate-event { padding-inline: 6px; }
+  .a-delegate-event strong { font-size: 26px; }
+  .a-delegate-event > span { font-size: 11px; }
+  .a-delegate-services ul { padding: 22px; gap: 18px 12px; }
+  .a-enquiry-form { padding: 22px 18px; }
+  .a-enquiry-ready { padding: 18px 14px; }
+  .a-operations-sheet { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .a-corridor-card > img, .a-corridor-reveal, .a-purpose-tile > img { transition: none; }
+}
