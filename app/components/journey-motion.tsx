@@ -64,7 +64,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
 
         // The itinerary moves horizontally while the route is drawn by scrolling.
         // Compact screens and reduced-motion users keep all cards in normal flow.
-        if (intro && context.conditions?.explorer) {
+        if (intro && context.conditions?.explorer && !intro.hasAttribute("data-static-intro")) {
           intro.classList.add("is-exploring");
           if (intro.offsetHeight > window.innerHeight + 1) {
             intro.classList.remove("is-exploring");

@@ -1,0 +1,42 @@
+.partnership-page .p-hero { --partner-x: 0px; --partner-y: 0px; --partner-scroll: 0; isolation: isolate; background: #191715; }
+.p-hero-scene { position: absolute; z-index: 0; inset: 0; overflow: clip; pointer-events: none; }
+.p-hero-lounge, .p-hero-room { position: absolute; inset: -4%; pointer-events: none; will-change: transform; }
+.p-hero-lounge { transform: translate3d(calc(var(--partner-x) * -.18), calc(var(--partner-y) * -.12 - var(--partner-scroll) * 10px), 0) scale(1.02); }
+/* People, furniture, contact shadows and floor share one photographic plane. */
+.p-hero-room { z-index: 1; transform: translate3d(calc(var(--partner-x) * .08), calc(var(--partner-y) * .05 - var(--partner-scroll) * 10px), 0) scale(1.02); }
+.p-hero-lounge img, .p-hero-room img { object-fit: cover; object-position: 60% center; }
+.p-hero-foreground { position: absolute; z-index: 3; inset: -5%; pointer-events: none; transform: translate3d(calc(var(--partner-x) * 1.2), calc(var(--partner-y) * .7 + var(--partner-scroll) * 24px), 0) scale(1.02); will-change: transform; }
+.p-hero-foreground img { object-fit: cover; }
+.partnership-page .p-hero .j-hero-shade { z-index: 2; pointer-events: none; background: linear-gradient(90deg, #101310c7, #10131066 40%, transparent 65%), linear-gradient(0deg, #14171080, transparent 50%), linear-gradient(180deg, #10181255, transparent 22%); }
+.partnership-page .p-hero .j-hero-cover-shade { z-index: 3; }
+.partnership-page .p-hero .j-hero-content { z-index: 4; display: block; text-shadow: 0 2px 26px #100c08; }
+.partnership-page .p-hero .j-hero-title { max-width: 63%; }
+.partnership-page .j-hero.p-hero h1 { font-size: clamp(46px, 4.1vw, 72px); }
+.partnership-page .p-hero .s-hero-accent { margin-top: 20px; font-size: clamp(21px, 2vw, 32px); line-height: 1.15; }
+.partnership-page .p-hero .j-hero-aside { width: 48%; margin-top: 26px; }
+.partnership-page .p-hero .j-hero-aside > p { max-width: 25em; font-size: clamp(18px, 1.5vw, 24px); line-height: 1.3; }
+.partnership-page .p-hero .j-hero-aside .j-small-rule { margin-bottom: 18px; }
+.partnership-page .p-hero .j-scroll-note { z-index: 6; }
+
+@media (max-width: 991px) {
+  .partnership-page .p-hero .j-hero-title { max-width: 75%; }
+  .partnership-page .p-hero .j-hero-aside { width: 65%; }
+}
+@media (max-width: 800px) {
+  .partnership-page .p-hero { padding-top: 330px; padding-bottom: 95px; }
+  .p-hero-scene { bottom: auto; height: 52svh; }
+  .p-hero-scene::after { content: ''; position: absolute; z-index: 2; inset: 40% 0 -2px; background: linear-gradient(transparent, #191715); }
+  .p-hero-lounge img, .p-hero-room img { object-position: 80% center; }
+  .p-hero-foreground { opacity: .5; bottom: auto; height: 52svh; }
+  .partnership-page .p-hero .j-hero-shade { background: linear-gradient(0deg, #100e0cf5, #100e0caa 48%, #100e0c1a 85%), linear-gradient(90deg, #100e0c44, transparent); }
+  .partnership-page .p-hero .j-hero-title { max-width: none; }
+  .partnership-page .j-hero.p-hero h1 { font-size: clamp(38px, 7.9vw, 62px); }
+  .partnership-page .p-hero .s-hero-accent { font-size: 23px; }
+  .partnership-page .p-hero .j-hero-aside { width: 100%; margin-top: 22px; }
+  .partnership-page .p-hero .j-hero-aside > p { max-width: 27em; font-size: 18px; }
+  .partnership-page .p-hero .j-hero-aside .j-small-rule { margin-top: 0; }
+  .partnership-page .p-hero .s-actions { margin-top: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-hero-lounge, .p-hero-room, .p-hero-foreground { transform: none; will-change: auto; }
+}

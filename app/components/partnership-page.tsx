@@ -8,6 +8,7 @@ import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { PartnerForm } from "./partner-form";
 import { ValuePanels, type ValuePanel } from "./value-panels";
+import { PartnershipHeroScene } from "./partnership-hero-scene";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -83,7 +84,7 @@ export default function PartnershipPage() {
     <JourneyHeader introId="why" />
     <main>
       <section className="j-hero s-hero p-hero" id="top" aria-labelledby="partnership-hero-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
+        <PartnershipHeroScene />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">

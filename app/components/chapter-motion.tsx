@@ -44,7 +44,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           yPercent: 40, opacity: 0, duration: 1.1, stagger: .09, delay: .1,
           ease: "power3.out", clearProps: "opacity,transform",
         });
-        gsap.fromTo(select(".s-hero .j-hero-photo"), { scale: 1.14 }, { scale: 1.06, duration: 2.4, ease: "power2.out" });
+        const heroPhotos = select(".s-hero .j-hero-photo");
+        if (heroPhotos.length) gsap.fromTo(heroPhotos, { scale: 1.14 }, { scale: 1.06, duration: 2.4, ease: "power2.out" });
 
         // Every chapter holds still and darkens while the next one tears over it.
         const chapters = select("main > section") as HTMLElement[];

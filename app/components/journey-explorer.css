@@ -36,9 +36,6 @@
 .journey-page .j-story-words li { font: 400 calc(var(--type-unit) * 1.25)/1.2 var(--heading); }
 .journey-page .j-faq-list summary { font: 400 calc(var(--type-unit) * 1.5)/1.2 var(--heading); }
 .journey-page .j-faq-list details > p { font: 300 calc(var(--type-unit) * 1.125)/1.4 var(--body); }
-.journey-page .j-footer nav { font-size: calc(var(--type-unit) * .875); }
-.journey-page .j-footer-tagline, .journey-page .j-footer-bottom { font-size: calc(var(--type-unit) * .75); }
-.journey-page .j-footer-bottom { flex-wrap: wrap; }
 .j-section-label { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); font: 400 calc(var(--type-unit) * .75)/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; }
 
 /* An open itinerary: small photographs, numbered stops, and a drawn route. */

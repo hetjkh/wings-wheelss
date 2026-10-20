@@ -207,15 +207,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-chevron { width: 9px; height: 9px; border-right: 1px solid #8e7f60; border-bottom: 1px solid #8e7f60; transform: rotate(45deg); transition: transform .2s; flex-shrink: 0; margin-right: 5px; }
 .j-faq-list details[open] .j-chevron { transform: rotate(225deg); }
 .j-faq-list details > p { font-size: 17px; line-height: 1.65; padding: 0 40px 24px 0; max-width: 640px; }
-.j-footer { position: relative; background: #454734; color: #ede7d7; padding: 22px 0 0; }
-.j-footer::before { content: ''; position: absolute; left: 0; top: -56px; height: 60px; width: 100%; background: #454734; clip-path: polygon(0 38%,2% 42%,4% 30%,6% 37%,8% 36%,11% 25%,14% 36%,18% 45%,23% 58%,27% 53%,30% 59%,33% 55%,37% 66%,42% 62%,46% 74%,49% 69%,54% 62%,57% 65%,61% 52%,65% 57%,68% 48%,71% 44%,75% 30%,79% 39%,82% 24%,85% 32%,89% 15%,92% 21%,96% 10%,100% 0,100% 100%,0 100%); }
-.j-footer-main { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: 20px 0 38px; }
-.j-footer .j-brand { font-size: 31px; }
-.j-footer-tagline { font-family: var(--body); font-size: 8px; letter-spacing: .14em; text-transform: uppercase; margin-top: 9px; }
-.j-footer nav { display: flex; gap: 25px; font-size: 12px; }
-.j-footer nav a:hover, .j-footer-bottom a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-.j-footer .j-button { font-size: 12px; padding: 9px 20px; min-height: 38px; }
-.j-footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 19px 0; border-top: 1px solid #cfc6a52e; color: #dbd3bc; font-size: 10px; }
 .journey-page .enquiry-dialog { margin: auto; background: var(--paper); font-family: var(--body); }
 .journey-page .enquiry-dialog h2 { text-transform: none; }
 .journey-page .enquiry-dialog .button { border-radius: 30px; }
@@ -235,8 +226,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-service-list li { padding-inline: 20px; }
   .j-team-copy { grid-template-columns: 1fr; gap: 32px; }
   .j-team-copy > p { max-width: 640px; }
-  .j-footer-main { flex-wrap: wrap; }
-  .j-footer nav { gap: 18px; }
 }
 @media (max-width: 800px) {
   .j-desktop-nav { display: none; }
@@ -327,12 +316,6 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-faq-list { border-left: 0; padding-left: 0; }
   .j-faq-list summary { font-size: 17px; padding-block: 18px; }
   .j-faq-list details > p { font-size: 16px; padding-right: 8px; }
-  .j-footer { padding-top: 8px; }
-  .j-footer-main { display: grid; gap: 28px; padding: 14px 0 28px; }
-  .j-footer nav { flex-wrap: wrap; gap: 14px 23px; font-size: 13px; }
-  .j-footer-main > .j-button { justify-self: start; }
-  .j-footer-bottom { flex-wrap: wrap; justify-content: flex-start; gap: 10px 22px; font-size: 10px; }
-  .j-footer-bottom > span { width: 100%; }
   .journey-page { --tear: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .journey-page *, .journey-page *::before, .journey-page *::after { transition: none !important; animation: none !important; } }

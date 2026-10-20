@@ -1,3 +1,52 @@
+/* About: hero and introduction follow the people-first page narrative. */
+.journey-page .ab-hero { min-height: min(760px, 72svh); padding: 125px 0 75px; }
+.journey-page .ab-hero .j-hero-photo { object-position: 65% center; }
+.journey-page .ab-hero .j-hero-shade { background: linear-gradient(90deg, #101615e6, #10161599 38%, #1016151a 75%), linear-gradient(0deg, #10161588, transparent 55%); }
+.journey-page .ab-hero .j-hero-content { display: block; }
+.journey-page .ab-hero .j-hero-title, .journey-page .ab-hero .j-hero-aside { max-width: 54%; }
+.journey-page .ab-hero h1 { font-size: clamp(34px, 3.1vw, 60px); line-height: 1.02; letter-spacing: .015em; }
+.ab-hero h1 > span { display: block; }
+.ab-hero h1 em { font-style: normal; color: #e8c88b; }
+.journey-page .ab-hero .j-eyebrow { margin-bottom: 14px; color: #e8c88b; }
+.journey-page .ab-hero .j-hero-aside { margin-top: 20px; }
+.journey-page .ab-hero .j-hero-aside > p { max-width: 34em; font: 400 clamp(15px, 1.15vw, 20px)/1.4 var(--body); }
+.journey-page .ab-hero .j-button { margin-top: 20px; border-radius: 3px; background: #e8c88b; border-color: #e8c88b; color: #241e15; }
+.ab-hero-tags { display: flex; flex-wrap: wrap; gap: 6px 0; margin-top: 20px; font: 400 clamp(9px, .72vw, 13px)/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; }
+.ab-hero-tags li + li::before { content: '|'; display: inline-block; margin-inline: 11px; opacity: .65; }
+.journey-page .ab-intro { min-height: 0; padding: calc(var(--tear) + 45px) 0 60px; background: #faf7f2; }
+.ab-intro-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 5%; align-items: start; }
+.ab-intro .ab-intro-copy { display: block; }
+.ab-intro-copy .j-eyebrow { margin-bottom: 10px; color: #77684f; }
+.journey-page .ab-intro-copy h2 { max-width: none; margin-bottom: 20px; font-size: clamp(36px, 3.65vw, 68px); line-height: .98; }
+.ab-intro-copy h2 em { font-style: normal; color: var(--ochre); }
+.ab-intro .ab-intro-copy > p { max-width: 37em; margin: 0 0 14px; font: 400 clamp(15px, 1.05vw, 19px)/1.45 var(--body); letter-spacing: 0; }
+.ab-intro .j-journey-window { margin: 0; }
+.ab-intro .j-journey-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; padding: 0; }
+.ab-intro .j-journey-card, .ab-intro .j-journey-card:nth-of-type(even) { margin: 0; width: auto; rotate: none; }
+.ab-intro .j-journey-image { width: 100%; aspect-ratio: 1 / 1.25; border-radius: 2px; rotate: none; }
+.ab-intro .j-journey-number { display: none; }
+.ab-intro .j-journey-copy { padding-top: 14px; }
+.journey-page .ab-intro .j-journey-copy h3 { font: 500 clamp(12px, .9vw, 17px)/1.25 var(--body); letter-spacing: .025em; text-transform: uppercase; }
+.ab-intro .j-journey-copy > p { min-height: 0; margin-top: 8px; font: 400 clamp(13px, .95vw, 17px)/1.4 var(--body); }
+.ab-intro .j-journey-enquiry { margin-top: 12px; font-size: 11px; }
+@media (max-width: 1100px) {
+  .ab-intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .ab-intro .ab-intro-copy > p { max-width: 58em; }
+  .ab-intro .j-journey-image { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 700px) {
+  .journey-page .ab-hero { min-height: 100svh; padding: 130px 0 85px; }
+  .journey-page .ab-hero .j-hero-title, .journey-page .ab-hero .j-hero-aside { max-width: 100%; }
+  .journey-page .ab-hero h1 { font-size: clamp(27px, 6.6vw, 43px); }
+  .journey-page .ab-hero .j-hero-shade { background: linear-gradient(90deg, #101615d9, #10161577), linear-gradient(0deg, #101615e6, transparent 90%); }
+  .journey-page .ab-hero .j-hero-aside > p { max-width: 29em; font-size: 16px; }
+  .ab-hero-tags { max-width: 35em; font-size: 9px; }
+  .ab-hero-tags li + li::before { margin-inline: 7px; }
+  .journey-page .ab-intro { padding: calc(var(--tear) + 32px) 0 44px; }
+  .ab-intro .j-journey-track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 16px; }
+  .ab-intro .j-journey-image { aspect-ratio: 4 / 5; }
+}
+
 /* About: the story spread and the UAE–Africa network. */
 .journey-page .ab-story { display: block; padding: calc(var(--tear) + 54px) 0 0; }
 .ab-story-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; margin-top: calc(var(--type-unit) * 3); }

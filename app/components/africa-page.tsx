@@ -8,19 +8,14 @@ import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
 import { AfricaCorridor } from "./africa-corridor";
 import { AfricaEnquiry } from "./africa-enquiry";
+import { AfricaLandscape } from "./africa-landscape";
+import { AfricaPurposeScene } from "./africa-purpose-scene";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./africa.css";
 import "./africa-updates.css";
-
-const reasons = [
-  { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", position: "center" },
-  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/south-africa-safari.webp", alt: "Safari guests watching lions from an open vehicle in South Africa", position: "center" },
-  { title: "Family", text: "Holidays and journeys together.", photo: "/images/library/zanzibar.webp", alt: "A traditional dhow sailing off a palm-lined white sand beach in Zanzibar", position: "center" },
-  { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center" },
-];
 
 const pillars = [
   { icon: "pin", title: "UAE", text: "Middle East coordination." },
@@ -84,45 +79,14 @@ export default function AfricaPage() {
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="connections" />
     <main>
-      <section className="j-hero s-hero" id="top" aria-labelledby="africa-hero-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Africa</span>
-            <h1 id="africa-hero-heading"><span className="s-line"><span data-hero>Africa is</span></span><span className="s-line"><span data-hero>closer than</span></span><span className="s-line"><span data-hero>you think.</span></span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>Business trips, safaris and holidays, connecting travellers between the UAE, Africa and beyond.</p>
-            <div className="s-actions" data-hero>
-              <a className="j-button j-button-cream" href="#destinations">Explore Africa <Arrow /></a>
-              <EnquiryButton className="j-button j-button-outline-light" service="Africa travel">Talk to our Africa team</EnquiryButton>
-            </div>
-            <p className="a-corridor-tag" data-hero>UAE <span>↔</span> Africa <span>↔</span> Worldwide</p>
-          </div>
-        </div>
-        <a href="#connections" className="j-scroll-note">A continent of connections <span>↓</span></a>
-      </section>
+      <AfricaLandscape />
 
       <section className="a-connections j-torn-top" id="connections" aria-labelledby="connections-heading">
         <div className="j-shell">
           <div className="j-section-label s-draw"><span>01 / A continent of connections</span><span>Individuals · Companies · Groups · Organisations</span></div>
-          <div className="s-split-head">
-            <h2 id="connections-heading" className="s-title">Africa isn&apos;t<br />one journey.</h2>
-            <div>
-              <p className="s-lead">Different reasons to travel. One connected network.</p>
-              <p className="s-lead-body a-body">Wings &amp; Wheels helps coordinate travel across the UAE–Africa corridor for individuals, companies, groups and organisations.</p>
-            </div>
-          </div>
-          <ol className="a-reasons" data-stagger>{reasons.map((item, i) => <li key={item.title} className="a-reason">
-            <div className="a-reason-photo" data-frame><Image src={item.photo} alt={item.alt} fill sizes="(max-width: 600px) 90vw, (max-width: 991px) 45vw, 22vw" style={{ objectPosition: item.position }} /></div>
-            <span className="a-number">{String(i + 1).padStart(2, "0")}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </li>)}</ol>
         </div>
+        <h2 id="connections-heading" className="j-sr-only">A continent of connections. Four ways to travel Africa.</h2>
+        <AfricaPurposeScene />
       </section>
 
       <section className="a-network j-torn-top" id="network" aria-labelledby="network-heading">

@@ -1,5 +1,5 @@
-import JourneyPage from "../components/journey-page";
+import { AboutPage } from "../components/about-page";
 
 export default function About() {
-  return <JourneyPage />;
+  return <AboutPage />;
 }

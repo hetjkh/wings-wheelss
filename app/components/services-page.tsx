@@ -7,10 +7,12 @@ import { JourneyPlanner } from "./journey-planner";
 import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
 import { ServicesIndex, type IndexedService } from "./services-index";
+import { ServicesFinal } from "./services-final";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
+import "./services-final.css";
 
 const stops: { icon: IconKind; title: string; text: string }[] = [
   { icon: "calendar", title: "Plan", text: "Get ready for your journey." },
@@ -218,19 +220,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="s-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/iceland-coast.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <span className="j-eyebrow">Wings &amp; Wheels</span>
-          <h2 id="final-heading">Where you&apos;re going matters.<br />So does everything in between.</h2>
-          <p className="s-lead-body">Flights, hotels, visas, transfers, experiences and support — brought together around one journey.</p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream">Start planning</EnquiryButton>
-            <WhatsAppLink className="j-button j-button-outline-light" />
-          </div>
-        </div>
-      </section>
+      <ServicesFinal />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

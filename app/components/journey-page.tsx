@@ -6,24 +6,18 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyMotion } from "./journey-motion";
 import { JourneyFooter } from "./journey-footer";
+import { AboutJourneyProcess } from "./about-journey-process";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./about-sections.css";
 
 const image = (name: string) => name === "hero" ? "/images/journey/hero.webp" : `/images/library/${name}.webp`;
 const audiences = [
-  { id: "business", title: "Business", text: "From the first meeting to the flight home. We take care of the details, so you can focus on what brings you there.", photo: "business-boarding", alt: "A business traveller approaching an aircraft on the apron", service: "Corporate travel" },
-  { id: "leisure", title: "Leisure", text: "Slow mornings, wide horizons and a little more wonder. Thoughtfully planned escapes, shaped around you.", photo: "maldives-jetty", alt: "A wooden jetty leading across turquoise water to a tropical island", service: "Leisure & holidays" },
-  { id: "groups", title: "Groups & MICE", text: "Shared experiences, seamlessly coordinated. Bringing people together for meetings, milestones and everything in between.", photo: "retreat-dinner", alt: "A candlelit retreat dinner on a terrace overlooking the sea", service: "Groups & MICE" },
-  { id: "connections", title: "Connections", text: "From Dubai to Africa and beyond. Local knowledge and a connected team make even complex journeys feel effortless.", photo: "dubai-panorama", alt: "Dubai skyline and the Burj Khalifa in clear daylight", service: "Africa travel" },
+  { id: "business", title: "Business", text: "Meetings, projects and regional travel.", photo: "corporate-preferred-rates", alt: "A business traveller working in an airport lounge overlooking Dubai", service: "Corporate travel" },
+  { id: "leisure", title: "Leisure", text: "Holidays and memorable journeys.", photo: "zanzibar", alt: "Palm-lined white sand and turquoise water in Zanzibar", service: "Leisure & holidays" },
+  { id: "groups", title: "Groups & MICE", text: "Organised travel across multiple travellers.", photo: "conference", alt: "Delegates gathering for a conference in a modern hotel ballroom", service: "Groups & MICE" },
+  { id: "connections", title: "Connections", text: "Between the UAE, Africa and worldwide.", photo: "dubai-panorama", alt: "Dubai skyline and the Burj Khalifa in clear daylight", service: "Africa travel" },
 ];
-const steps = [
-  { icon: "people", text: <>You tell us where<br />you need to be</> },
-  { icon: "compass", text: <>We understand<br />the journey</> },
-  { icon: "nodes", text: <>We coordinate<br />the details</> },
-  { icon: "plane", text: <>You travel</> },
-  { icon: "support", text: <>We stay<br />available</> },
-] as const;
 const routePath = "M0 90 C 100 90, 120 40, 200 40 C 330 40, 470 90, 600 90 C 730 90, 870 40, 1000 40 C 1080 40, 1120 70, 1200 70";
 const stops = [
   { x: 200, y: 40, title: "UAE base", lead: "Where we start", text: "Regional coordination with international access.", place: "Dubai", photo: image("dubai-marina"), alt: "Modern towers and waterfront buildings at Dubai Marina" },
@@ -48,51 +42,44 @@ export default function JourneyPage() {
     <a className="skip-link" href="#about">Skip to content</a>
     <JourneyHeader />
     <main>
-      <section className="j-hero" id="top" aria-labelledby="journey-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster={image("hero")} autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
+      <section className="j-hero ab-hero" id="top" aria-labelledby="journey-heading">
+        <Image className="j-photo j-hero-photo" src="/images/about/people-and-journeys.webp" alt="Travel consultants working together around a table to plan a journey" fill sizes="100vw" quality={90} preload />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">
           <div className="j-hero-title">
-            <span className="j-eyebrow">People. Places. Further together.</span>
-            <h1 id="journey-heading">More than<br />a booking.</h1>
+            <span className="j-eyebrow">About Wings &amp; Wheels</span>
+            <h1 id="journey-heading"><span>Travel is about</span>{" "}<span>places.</span>{" "}<span>We&apos;re about</span>{" "}<span><em>the people</em></span>{" "}<span>moving between them.</span></h1>
           </div>
           <div className="j-hero-aside">
-            <span className="j-small-rule" />
-            <p>Every journey has a different purpose — business,<br className="j-desktop-break" /> leisure, group travel or complex connections.<br className="j-desktop-break" /> What stays the same is the need for clarity,<br className="j-desktop-break" /> coordination and support when it matters.</p>
-            <EnquiryButton className="j-button j-button-cream">Plan Your Journey</EnquiryButton>
+            <p>Wings &amp; Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide.</p>
+            <a className="j-button j-button-cream" href="#about">Discover our story <Arrow /></a>
+            <ul className="ab-hero-tags" aria-label="Our travel services">{["Business", "Leisure", "Groups", "MICE", "International travel"].map(label => <li key={label}>{label}</li>)}</ul>
           </div>
         </div>
-        <a href="#about" className="j-scroll-note">A little further, together <span>↓</span></a>
+        <a href="#about" className="j-scroll-note">Who we are <span>↓</span></a>
       </section>
 
-      <section className="j-intro j-paper j-torn-top" id="about" aria-labelledby="intro-heading">
-        <div className="j-shell">
-          <div className="j-travel-heading">
-            <h2 id="intro-heading">We combine personal travel support with practical coordination</h2>
-            <p>From the meeting that matters to the escape you have been dreaming of. We bring clarity, care and a thoughtful team to every journey.</p>
+      <section className="j-intro ab-intro j-paper j-torn-top" id="about" aria-labelledby="intro-heading" data-static-intro>
+        <div className="j-shell ab-intro-grid">
+          <div className="j-travel-heading ab-intro-copy">
+            <span className="j-eyebrow">Who we are</span>
+            <h2 id="intro-heading">More than<br /><em>a booking.</em></h2>
+            <p>People travel for different reasons. A CEO has a meeting tomorrow. A family has been planning a holiday for months. A company is bringing delegates to an exhibition. A traveller is connecting between Africa, Dubai and somewhere beyond.</p>
+            <p>Different journeys. The same need — clear information, good coordination and someone there when it matters.</p>
           </div>
           <div className="j-journey-window">
             <div className="j-journey-track">
-              <svg className="j-journey-route" viewBox="0 0 2100 290" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 C95 180 22 21 121 43 S183 214 262 139 S326 13 384 82 S419 220 508 158 S598 79 661 175 S776 249 805 170 S830 26 926 66 S1003 240 1096 153 S1150 20 1250 75 S1304 247 1408 161 S1487 49 1559 139 S1630 262 1721 154 S1800 29 1890 87 S1990 224 2100 109" /></svg>
               {audiences.map((item, i) => <article key={item.id} id={`journey-${item.id}`} className="j-journey-card" aria-labelledby={`journey-${item.id}-heading`}>
                 <div className="j-journey-image"><Image src={image(item.photo)} alt={item.alt} fill sizes="(max-width: 600px) 65vw, (max-width: 991px) 35vw, 15vw" /><span className="j-journey-number" aria-hidden="true">{i + 1}</span></div>
                 <div className="j-journey-copy"><h3 id={`journey-${item.id}-heading`}>{item.title}</h3><p>{item.text}</p><EnquiryButton className="j-journey-enquiry" service={item.service}>Explore {item.title}</EnquiryButton></div>
               </article>)}
             </div>
           </div>
-          <div className="j-explorer-footer"><span className="j-hint-motion">Scroll to discover <Arrow /></span><div className="j-explorer-progress" aria-hidden="true"><span /></div><a href="#services">Our approach <Arrow /></a></div>
         </div>
       </section>
 
-      <section className="j-process j-torn-top j-torn-bottom" id="services" aria-labelledby="services-heading">
-        <Image className="j-photo" src={image("kenya-game-drive")} alt="A safari vehicle crossing Kenyan grasslands at sunset" fill sizes="100vw" />
-        <div className="j-process-shade" />
-        <div className="j-shell j-process-content"><h2 id="services-heading">We connect the parts<br />of the journey.</h2><p className="j-process-intro">A booking is only one part.<br />The journey is the full picture.</p>
-          <ol className="j-steps">{steps.map((step, i) => <li key={step.icon}><span className="j-step-icon"><TravelIcon kind={step.icon} size={33} /></span><span className="j-sr-only">Step {i + 1}: </span><p>{step.text}</p></li>)}</ol>
-          <ul className="j-service-list">{["Flights", "Hotels", "Visas", "Transfers", "Groups", "Experiences", "Support"].map(item => <li key={item}>{item}</li>)}</ul>
-        </div>
-      </section>
+      <AboutJourneyProcess />
 
       <section className="j-story j-paper ab-story" id="story" aria-labelledby="story-heading">
         <div className="j-shell">
