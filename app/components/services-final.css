@@ -35,6 +35,7 @@
   --mx: 50%; --my: 50%;
   position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--stub);
   width: min(100%, 1040px); margin-inline: auto; border-radius: 22px; background: #fbf6ec; color: var(--ink);
+  transform-style: preserve-3d;
   mask: radial-gradient(circle at calc(100% - var(--stub)) 0, #0000 14px, #000 14.5px) top / 100% 51% no-repeat, radial-gradient(circle at calc(100% - var(--stub)) 100%, #0000 14px, #000 14.5px) bottom / 100% 51% no-repeat;
 }
 .sv-pass-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at var(--mx) var(--my), #ffffffb3, #fff0 42%); mix-blend-mode: soft-light; opacity: 0; transition: opacity .5s; pointer-events: none; }

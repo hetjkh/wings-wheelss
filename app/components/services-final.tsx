@@ -30,7 +30,16 @@ export function ServicesFinal() {
     media.add("(min-width: 992px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)", () => {
       const view = root.querySelector<HTMLElement>(".sv-view");
       const bezel = root.querySelector<HTMLElement>(".sv-bezel");
-      if (!view || !bezel) return;
+      const photo = root.querySelector<HTMLElement>(".sv-view img");
+      const shade = root.querySelector<HTMLElement>(".sv-view-shade");
+      const blind = root.querySelector<HTMLElement>(".sv-blind");
+      const sideA = root.querySelector<HTMLElement>(".sv-side-a");
+      const sideB = root.querySelector<HTMLElement>(".sv-side-b");
+      const headline = root.querySelector<HTMLElement>(".sv-headline");
+      const passWrap = root.querySelector<HTMLElement>(".sv-pass");
+      const chips = root.querySelectorAll<HTMLElement>(".sv-chip");
+      const routeFill = root.querySelector<HTMLElement>(".sv-route-fill");
+      if (!view || !bezel || !photo || !shade || !blind || !sideA || !sideB || !headline || !passWrap || !routeFill) return;
       // The window's resting size lives in CSS on the bezel; the photo is clipped to match it.
       const inset = () => {
         const box = bezel.getBoundingClientRect();
@@ -42,22 +51,26 @@ export function ServicesFinal() {
       root.classList.add("is-scene");
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
-        scrollTrigger: { trigger: root, start: "top top", end: "+=170%", pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true },
+        scrollTrigger: {
+          trigger: root, start: "top top", end: "+=170%", pin: true, scrub: .8,
+          anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: -1,
+        },
       });
       timeline
-        .fromTo(".sv-blind", { yPercent: 0 }, { yPercent: -100, duration: .26, ease: "power1.inOut" }, .02)
-        .fromTo(".sv-view img", { scale: 1.35 }, { scale: 1, duration: .8 }, 0)
+        .fromTo(blind, { yPercent: 0 }, { yPercent: -100, duration: .26, ease: "power1.inOut" }, .02)
+        .fromTo(photo, { scale: 1.35 }, { scale: 1, duration: .8 }, 0)
         .fromTo(view, { clipPath: inset }, { clipPath: "inset(0px 0px 0px 0px round 0px)", duration: .42, ease: "power2.inOut" }, .3)
         .fromTo(bezel, { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.6, duration: .2 }, .3)
-        .fromTo(".sv-view-shade", { opacity: 0 }, { opacity: 1, duration: .3 }, .4)
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: .3 }, .4)
         .fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42)
-        .fromTo(".sv-side-a", { x: 0 }, { x: () => -window.innerWidth * .04, duration: .42 }, .3)
-        .fromTo(".sv-side-b", { x: 0 }, { x: () => window.innerWidth * .04, duration: .42 }, .3)
-        .fromTo(".sv-headline", { y: 0 }, { y: () => -window.innerHeight * .13, duration: .25, ease: "power2.inOut" }, .72)
-        .fromTo(".sv-pass", { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
-        .fromTo(".sv-chip", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
-        .fromTo(".sv-route-fill", { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
+        .fromTo(sideA, { x: 0 }, { x: () => -window.innerWidth * .04, duration: .42 }, .3)
+        .fromTo(sideB, { x: 0 }, { x: () => window.innerWidth * .04, duration: .42 }, .3)
+        .fromTo(headline, { y: 0 }, { y: () => -window.innerHeight * .13, duration: .25, ease: "power2.inOut" }, .72)
+        .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
+        .fromTo(chips, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
+        .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
         .to({}, { duration: .06 });
+      requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => root.classList.remove("is-scene");
     });
 

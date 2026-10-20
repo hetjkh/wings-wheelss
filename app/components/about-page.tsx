@@ -15,33 +15,33 @@ import "./about.css";
 const tags = ["Business", "Leisure", "Groups", "MICE", "International travel"];
 
 const audiences: Audience[] = [
-  { title: "Business", text: "Meetings, projects and regional travel.", href: "/corporate-travel", image: "/images/library/corporate-preferred-rates.webp", alt: "A business traveller reviewing plans before a meeting" },
-  { title: "Leisure", text: "Holidays and memorable journeys.", href: "/destinations", image: "/images/library/zanzibar.webp", alt: "Turquoise water and white sand on the Zanzibar coast" },
-  { title: "Groups & MICE", text: "Organised travel across multiple travellers.", href: "/groups-mice", image: "/images/library/conference.webp", alt: "Delegates gathered in a conference hall" },
-  { title: "Connections", text: "Between the UAE, Africa and worldwide.", href: "/africa", image: "/images/library/dubai-panorama.webp", alt: "The Dubai skyline at dusk" },
+  { title: "Business", text: "Meetings, projects and regional travel.", href: "/corporate-travel", image: "/images/about/business-lounge-v2.webp", alt: "A business traveller working in a sunlit airport lounge" },
+  { title: "Leisure", text: "Holidays and memorable journeys.", href: "/destinations", image: "/images/about/leisure-bay-v2.webp", alt: "Turquoise water and white sand along a palm-lined bay" },
+  { title: "Groups & MICE", text: "Organised travel across multiple travellers.", href: "/groups-mice", image: "/images/about/conference-v2.webp", alt: "Delegates gathered in a sunlit conference hall" },
+  { title: "Connections", text: "Between the UAE, Africa and worldwide.", href: "/africa", image: "/images/about/dubai-v2.webp", alt: "The Dubai skyline reflected in the waterfront at dusk" },
 ];
 
 const steps: { title: string; text: string; code: string; icon: IconKind; image: string; alt: string }[] = [
-  { title: "You tell us where you need to be", text: "A meeting that matters, a long-awaited holiday or a team travelling together.", code: "Tell us", icon: "chat", image: "/images/library/business-conversation.webp", alt: "A traveller talking through plans with a consultant" },
-  { title: "We understand the journey", text: "Why you are travelling, who is going and what matters most along the way.", code: "Listen", icon: "ear", image: "/images/library/travel-planning-v2.webp", alt: "A travel plan being sketched out on paper" },
-  { title: "We coordinate the details", text: "Flights, hotels, visas and transfers brought together as one plan.", code: "Connect", icon: "nodes", image: "/images/library/corporate-account-manager.webp", alt: "A consultant coordinating travel arrangements" },
-  { title: "You travel", text: "Clear information before you leave, so you can focus on the reason you're going.", code: "Depart", icon: "plane", image: "/images/library/business-boarding.webp", alt: "Travellers boarding an aircraft" },
-  { title: "We stay available", text: "When plans change, someone who knows your journey is still there.", code: "Support", icon: "support", image: "/images/library/travel-support-v2.webp", alt: "A support specialist helping a traveller by phone" },
+  { title: "You tell us where you need to be", text: "A meeting that matters, a long-awaited holiday or a team travelling together.", code: "Tell us", icon: "chat", image: "/images/about/consultation-v2.webp", alt: "A traveller talking through plans with a consultant" },
+  { title: "We understand the journey", text: "Why you are travelling, who is going and what matters most along the way.", code: "Listen", icon: "ear", image: "/images/about/planning-v2.webp", alt: "A map, notebook and travel essentials arranged for planning a journey" },
+  { title: "We coordinate the details", text: "Flights, hotels, visas and transfers brought together as one plan.", code: "Connect", icon: "nodes", image: "/images/about/coordinator-v2.webp", alt: "A consultant coordinating travel arrangements" },
+  { title: "You travel", text: "Clear information before you leave, so you can focus on the reason you're going.", code: "Depart", icon: "plane", image: "/images/about/departure-v2.webp", alt: "Travellers walking through a sunlit airport concourse toward their departure gate" },
+  { title: "We stay available", text: "When plans change, someone who knows your journey is still there.", code: "Support", icon: "support", image: "/images/about/support-v2.webp", alt: "A support specialist helping a traveller by phone" },
 ];
 
 const services = ["Flights", "Hotels", "Visas", "Transfers", "Groups", "Experiences", "Support"];
 
 const story = [
-  { text: "Wings & Wheels was built around a simple idea: travel should feel easier to manage.", image: "/images/about/story-walk.jpg", alt: "A traveller walking through a city at the start of a journey", caption: "Where it begins" },
-  { text: "Not because every journey is simple — but because the traveller shouldn't have to manage every moving part alone.", image: "/images/library/travel-planning-v2.webp", alt: "Plans and notes laid out for an upcoming trip", caption: "Every moving part" },
-  { text: "Today, Wings & Wheels combines local knowledge, regional connections and international travel capability to support journeys that can begin almost anywhere and continue almost anywhere.", image: "/images/library/mountain-hiker.webp", alt: "A hiker looking out over a mountain range", caption: "Almost anywhere" },
+  { text: "Wings & Wheels was built around a simple idea: travel should feel easier to manage.", image: "/images/about/story-walk-v2.webp", alt: "A traveller walking through a city at the start of a journey", caption: "Where it begins" },
+  { text: "Not because every journey is simple — but because the traveller shouldn't have to manage every moving part alone.", image: "/images/about/planning-v2.webp", alt: "Plans and notes laid out for an upcoming trip", caption: "Every moving part" },
+  { text: "Today, Wings & Wheels combines local knowledge, regional connections and international travel capability to support journeys that can begin almost anywhere and continue almost anywhere.", image: "/images/about/mountain-v2.webp", alt: "A hiker looking out over a mountain range", caption: "Almost anywhere" },
 ];
 
 const words = [
-  { word: "People", image: "/images/library/business-conversation.webp" },
-  { word: "Places", image: "/images/library/venice.webp" },
-  { word: "Connections", image: "/images/library/global-connections.webp" },
-  { word: "Opportunities", image: "/images/library/business-terminal-v2.webp" },
+  { word: "People", image: "/images/about/consultation-v2.webp" },
+  { word: "Places", image: "/images/about/venice-v2.webp" },
+  { word: "Connections", image: "/images/about/dubai-v2.webp" },
+  { word: "Opportunities", image: "/images/about/departure-v2.webp" },
 ];
 
 const advantages: { title: string; text: string; icon: IconKind }[] = [
@@ -58,9 +58,9 @@ const principles: { title: string; text: string; icon: IconKind }[] = [
 ];
 
 const crew = [
-  { caption: "Coordinating the details", image: "/images/about/team.jpg", alt: "A Wings & Wheels consultant reviewing an itinerary at a desk with flight schedules on screen" },
-  { caption: "Communicating with travellers", image: "/images/library/corporate-account-manager.webp", alt: "A consultant on a call with a traveller" },
-  { caption: "Keeping plans moving", image: "/images/library/travel-support-v2.webp", alt: "A support specialist helping a traveller by phone" },
+  { caption: "Coordinating the details", image: "/images/about/coordinator-v2.webp", alt: "A travel coordinator reviewing arrangements at a desk with two screens" },
+  { caption: "Communicating with travellers", image: "/images/about/consultation-v2.webp", alt: "A travel consultant listening to a client across a desk" },
+  { caption: "Keeping plans moving", image: "/images/about/support-v2.webp", alt: "A support specialist helping a traveller by phone" },
 ];
 
 const values = ["Integrity", "Care", "Partnership", "Responsibility", "Continuous improvement"];
@@ -110,7 +110,7 @@ export function AboutPage() {
       <section className="au-hero" aria-labelledby="about-title">
         <div className="au-hero-photo">
           <div className="au-hero-photo-inner">
-            <Image src="/images/about/people-and-journeys.webp" alt="Travellers and consultants planning a journey together" fill preload sizes="100vw" />
+            <Image src="/images/about/hero-v2.webp" alt="Travellers and consultants planning a journey together" fill preload sizes="100vw" />
           </div>
           <div className="au-hero-shade" />
         </div>

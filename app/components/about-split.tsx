@@ -44,7 +44,7 @@ export function AboutSplit() {
 
   return <div className="au-split-stage" ref={stage}>
     <article className="au-split-panel au-split-business" onFocus={() => goTo.current(.62)}>
-      <div className="au-split-photo"><Image src="/images/library/executive-lounge.webp" alt="A business traveller working in an executive lounge" fill sizes="(max-width: 991px) 100vw, 64vw" /></div>
+      <div className="au-split-photo"><Image src="/images/about/business-lounge-v2.webp" alt="A business traveller working in an executive lounge" fill sizes="(max-width: 991px) 100vw, 64vw" /></div>
       <div className="au-split-shade" />
       <div className="au-split-copy">
         <span className="au-split-kicker">For business</span>
@@ -53,7 +53,7 @@ export function AboutSplit() {
       </div>
     </article>
     <article className="au-split-panel au-split-leisure" onFocus={() => goTo.current(.38)}>
-      <div className="au-split-photo"><Image src="/images/library/resort-bay.webp" alt="A quiet resort bay with clear water and palm trees" fill sizes="(max-width: 991px) 100vw, 64vw" /></div>
+      <div className="au-split-photo"><Image src="/images/about/leisure-bay-v2.webp" alt="A quiet resort bay with clear water and palm trees" fill sizes="(max-width: 991px) 100vw, 64vw" /></div>
       <div className="au-split-shade" />
       <div className="au-split-copy">
         <span className="au-split-kicker">For leisure</span>

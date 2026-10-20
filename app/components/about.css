@@ -444,6 +444,8 @@
   .au-split-stage { display: grid; height: auto; }
   .au-split-panel { position: relative; min-height: 78svh; clip-path: none; }
   .au-split-photo { inset: 0; transform: none; }
+  .au-split-business .au-split-photo img { object-position: 25% center; }
+  .au-split-leisure .au-split-photo img { object-position: 75% center; }
   .au-split-copy, .au-split-leisure .au-split-copy { left: 20px; right: 20px; bottom: 36px; max-width: none; justify-items: start; text-align: left; }
   .about-page .au-split h2 { font-size: clamp(44px, 12vw, 72px); }
   .au-split h2 span { font-size: 18px; }
