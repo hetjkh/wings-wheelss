@@ -23,54 +23,6 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       const desktop = Boolean(context.conditions.desktop);
       const cleanups: (() => void)[] = [];
 
-      // The ink and cream hero copies must animate in lockstep, so stagger within each copy.
-      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 110, duration: 1.15, stagger: index => (index % 5) * .08, ease: "power4.out", delay: .1 });
-      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 24, opacity: 0, duration: .9, stagger: index => (index % 3) * .1, ease: "power3.out", delay: .45 });
-      gsap.from(q(".au-hero-photo img"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
-
-      const hero = one(".au-hero");
-      const heroInner = one(".au-hero-photo-inner");
-      const shell = one(".au-hero-inner");
-      if (hero && heroInner && shell && desktop) {
-        // Centred text in the map slides out to the page's left edge; offsetLeft ignores the title's scale.
-        const travellers = q(".au-hero-eyebrow, .au-hero-title .au-line, .au-hero-aside");
-        gsap.timeline({ scrollTrigger: { id: "about-hero", trigger: hero, start: "top top", end: "+=120%", pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true } })
-          .fromTo(q(".au-hero-photo, .au-hero-ghost"), { "--map": 1 }, { "--map": 34, ease: "power2.in", duration: 1 }, 0)
-          .fromTo(page, { "--hero-fg": "#3d2d20" }, { "--hero-fg": "#fff8e9", ease: "none", duration: .25 }, .3)
-          .fromTo(heroInner, { scale: 1.16 }, { scale: 1, ease: "none", duration: 1 }, 0)
-          .fromTo(one(".au-hero-shade"), { opacity: .35 }, { opacity: 1, ease: "none", duration: 1 }, 0)
-          .fromTo(one(".au-hero-title"), { scale: .74 }, { scale: 1, ease: "power2.inOut", duration: .7 }, .28)
-          .fromTo(travellers, { x: 0 }, { x: (_, element: HTMLElement) => -element.offsetLeft, ease: "power2.inOut", duration: .7, stagger: .03 }, .28)
-          .to(one(".au-hero-scroll"), { opacity: 0, duration: .15 }, 0);
-
-        const xTo = gsap.quickTo(heroInner, "x", { duration: 1, ease: "power3" });
-        const yTo = gsap.quickTo(heroInner, "y", { duration: 1, ease: "power3" });
-        const drift = (event: PointerEvent) => {
-          const box = hero.getBoundingClientRect();
-          xTo(((event.clientX - box.left) / box.width - .5) * -28);
-          yTo(((event.clientY - box.top) / box.height - .5) * -18);
-        };
-        hero.addEventListener("pointermove", drift);
-        cleanups.push(() => hero.removeEventListener("pointermove", drift));
-      }
-
-      const heroCta = one(".au-hero-inner .au-cta");
-      const ghostCta = one(".au-hero-ghost .au-cta");
-      if (heroCta && ghostCta) {
-        const on = () => ghostCta.classList.add("is-hover");
-        const off = () => ghostCta.classList.remove("is-hover");
-        heroCta.addEventListener("pointerenter", on);
-        heroCta.addEventListener("pointerleave", off);
-        heroCta.addEventListener("focus", on);
-        heroCta.addEventListener("blur", off);
-        cleanups.push(() => {
-          heroCta.removeEventListener("pointerenter", on);
-          heroCta.removeEventListener("pointerleave", off);
-          heroCta.removeEventListener("focus", on);
-          heroCta.removeEventListener("blur", off);
-        });
-      }
-
       q("[data-lines]").forEach(heading => gsap.from(heading.querySelectorAll(".au-line > span"), {
         yPercent: 110, duration: 1.1, stagger: .1, ease: "power4.out",
         scrollTrigger: { trigger: heading, start: "top 88%", once: true },

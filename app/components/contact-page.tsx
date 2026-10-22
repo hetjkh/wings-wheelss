@@ -8,6 +8,7 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -103,22 +104,15 @@ export function ContactPage() {
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="reach" />
     <main>
-      <section className="j-hero s-hero c-hero" id="top" aria-labelledby="contact-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Contact us</span>
-            <h1 id="contact-heading"><span className="s-line"><span data-hero>Talk to</span></span><span className="s-line"><span data-hero>our team.</span></span><span className="s-hero-accent" data-hero>We&apos;re here to help.</span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>Questions, quotes or bookings: our travel consultants in Dubai are here to help.</p>
-          </div>
-        </div>
-        <a href="#reach" className="j-scroll-note">Four ways to reach us <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="contact-heading"
+        eyebrow="Contact us"
+        lines={["Talk to", "our team."]}
+        sub="We're here to help."
+        text="Questions, quotes or bookings: our travel consultants in Dubai are here to help."
+        action={{ label: "Send a request", href: "#form" }}
+        media={{ video: "/hero.mp4" }}
+      />
 
       <section className="c-reach j-torn-top" id="reach" aria-labelledby="reach-heading">
         <div className="j-shell">

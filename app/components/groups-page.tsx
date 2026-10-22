@@ -4,6 +4,8 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
+import { ClosingScene } from "./services-final";
 import { EventBrief } from "./event-brief";
 import { office } from "./data";
 import "./journey.css";
@@ -34,8 +36,8 @@ const managed = [
 ];
 
 const kinds = [
-  { word: "Meetings", photo: "/images/library/business-conversation.webp", position: "center", formats: ["Sales meetings", "Training programmes"] },
-  { word: "Incentive travel", photo: "/images/library/winter-retreat.webp", position: "center", formats: ["Corporate retreats", "Company events"] },
+  { word: "Meetings", photo: "/images/library/groups-meeting-room.webp", position: "center", formats: ["Sales meetings", "Training programmes"] },
+  { word: "Incentive travel", photo: "/images/library/groups-desert-incentive.webp", position: "center", formats: ["Corporate retreats", "Company events"] },
   { word: "Conferences", photo: "/images/library/conference.webp", position: "center", formats: ["Product launches", "Delegations"] },
   { word: "Exhibitions", photo: "/images/library/exhibition.webp", position: "center", formats: ["Site visits", "Exhibitor teams"] },
 ];
@@ -136,23 +138,15 @@ export default function GroupsPage() {
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="people" />
     <main>
-      <section className="j-hero s-hero g-hero" id="top" aria-labelledby="groups-hero-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content g-hero-content">
-          <div className="g-hero-copy">
-            <span className="j-eyebrow" data-hero>Groups &amp; MICE</span>
-            <h1 id="groups-hero-heading"><span className="s-line"><span data-hero>Bringing people</span></span><span className="s-line"><span data-hero>together.</span></span><span className="s-line g-hero-soft"><span data-hero>Every detail too.</span></span></h1>
-            <p data-hero>Meetings, exhibitions, incentives and large group travel, coordinated around your event.</p>
-            <div className="s-actions" data-hero>
-              <EnquiryButton className="j-button j-button-cream" service="Groups & MICE">Plan your group travel</EnquiryButton>
-              <a className="j-button j-button-outline-light" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp our team</a>
-            </div>
-          </div>
-        </div>
-        <a href="#people" className="j-scroll-note">One event, many journeys <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="groups-hero-heading"
+        eyebrow="Groups & MICE"
+        lines={["Bringing", "people", "together."]}
+        sub="Every detail too."
+        text="Meetings, exhibitions, incentives and large group travel, coordinated around your event."
+        action={{ label: "Plan your group travel", service: "Groups & MICE" }}
+        media={{ image: "/images/library/groups-gala.webp", alt: "Guests gathering for a corporate gala dinner in an ornate ballroom" }}
+      />
 
       <section className="g-converge j-torn-top" id="people" aria-labelledby="people-heading">
         <div className="j-shell g-converge-inner">
@@ -408,20 +402,26 @@ export default function GroupsPage() {
         </div>
       </section>
 
-      <section className="s-final g-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/dubai-clouds.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <div className="g-arrived" aria-label="40 of 40 travellers arrived"><span data-count="40" aria-hidden="true">40</span><span aria-hidden="true">/ 40 arrived</span></div>
-          <span className="j-eyebrow">Groups &amp; MICE</span>
-          <h2 id="final-heading">Everyone has arrived.<br /><span>Now the event can begin.</span></h2>
-          <p className="s-lead-body">From the first flight to the final transfer, Wings &amp; Wheels helps coordinate the journey that happens around your event.</p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream" service="Groups & MICE">Plan your group travel</EnquiryButton>
-            <a className="j-button j-button-outline-light" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp our team</a>
-          </div>
-        </div>
-      </section>
+      <ClosingScene
+        chapter="13 / Wings & Wheels"
+        ticket="Groups & MICE"
+        left={<>Everyone has<br />arrived.</>}
+        right={<>Now the event<br /><em>can begin.</em></>}
+        photo="/images/library/groups-rooftop.webp"
+        photoPosition="center 55%"
+        pass={["Boarding pass", "40 of 40 arrived"]}
+        from="First flight"
+        to="Final transfer"
+        text="From the first flight to the final transfer, Wings & Wheels helps coordinate the journey that happens around your event."
+        chips={[
+          { icon: "plane", label: "Flights" },
+          { icon: "bed", label: "Hotels" },
+          { icon: "car", label: "Transfers" },
+          { icon: "people", label: "Groups" },
+          { icon: "support", label: "Support" },
+        ]}
+        action={{ label: "Plan your group travel", service: "Groups & MICE" }}
+      />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

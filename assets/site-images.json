@@ -1,4 +1,49 @@
 {
+  "corporate-partnership-hero-v2": {
+    "source": "assets/generated/corporate-partnership-hero-v2.png",
+    "alt": "Two business partners meeting in a warmly lit lounge overlooking the Dubai skyline at dusk",
+    "generated": true
+  },
+  "services-flights-v3": {
+    "source": "assets/generated/services-flights-v3.png",
+    "alt": "A traveller with a suitcase walking toward an aircraft at a sunlit airport",
+    "generated": true
+  },
+  "services-hotels-v3": {
+    "source": "assets/generated/services-hotels-v3.png",
+    "alt": "An overwater resort villa above a clear lagoon at sunset",
+    "generated": true
+  },
+  "services-visas-v4": {
+    "source": "assets/generated/services-visas-v4.png",
+    "alt": "An open passport with a visa page and entry stamps beside a visa application, boarding pass and flight itinerary",
+    "generated": true
+  },
+  "services-visas-v3": {
+    "source": "assets/generated/services-visas-v3.png",
+    "alt": "Travel document covers, papers and a pen arranged on a desk",
+    "generated": true
+  },
+  "services-transfers-v3": {
+    "source": "assets/generated/services-transfers-v3.png",
+    "alt": "A driver welcoming a traveller beside an airport transfer car",
+    "generated": true
+  },
+  "services-holidays-v3": {
+    "source": "assets/generated/services-holidays-v3.png",
+    "alt": "A small palm-lined sandbank in turquoise island waters",
+    "generated": true
+  },
+  "services-principle-v3-desktop": {
+    "source": "assets/generated/services-principle-v3-desktop.png",
+    "alt": "A travel advisor speaking with a traveller in an airport lounge",
+    "generated": true
+  },
+  "services-principle-v3-mobile": {
+    "source": "assets/generated/services-principle-v3-mobile.png",
+    "alt": "A travel advisor speaking with a traveller in an airport lounge",
+    "generated": true
+  },
   "journey-above-clouds": {
     "source": "assets/generated/journey-above-clouds.png",
     "alt": "Sunlit clouds surrounding alpine peaks beneath a blue and gold dawn sky",
@@ -23,6 +68,11 @@
   "paris-eiffel": {
     "source": "assets/9.jpg",
     "alt": "The Eiffel Tower beneath a clear blue Paris sky"
+  },
+  "dubai-sunset-v2": {
+    "source": "assets/generated/dubai-sunset-v2.png",
+    "alt": "Sunset over Dubai, with the Burj Khalifa above an illuminated skyline and turquoise waterfront",
+    "generated": true
   },
   "dubai-panorama": {
     "source": "assets/274791-3840x2160-desktop-4k-dubai-background-photo.jpg",
@@ -259,6 +309,11 @@
     "alt": "Business travellers walking through a bright airport terminal",
     "generated": true
   },
+  "services-support-v4": {
+    "source": "assets/generated/services-support-v4.png",
+    "alt": "Two travel consultants seated at a desk reviewing a map and itinerary in a sunlit office",
+    "generated": true
+  },
   "travel-support-v2": {
     "source": "assets/generated/travel-support-v2.png",
     "alt": "Two travel consultants reviewing a world map and planning a route together",
@@ -268,5 +323,105 @@
     "source": "assets/generated/travel-planning-v2.png",
     "alt": "A travel coordinator reviewing a printed itinerary beside a laptop",
     "generated": true
+  },
+  "home-corporate-team": {
+    "source": "public/new/Business_team_walking_in_lobby_2K_20261022193806.jpg",
+    "alt": "Business colleagues walking through a bright hotel lobby"
+  },
+  "home-palm-suite": {
+    "source": "public/new/Hotel_suite_overlooking_Palm_Jum…_2K_20261022193722.jpg",
+    "alt": "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline"
+  },
+  "services-event-planner": {
+    "source": "public/new/Planner_coordinating_large_confe…_2K_20261022193809.jpg",
+    "alt": "An event planner coordinating with a colleague in a busy conference venue"
+  },
+  "corporate-executive-view": {
+    "source": "public/new/Corporate_executive_looking_at_park_2K_20261022193700.jpg",
+    "alt": "An executive looking out over a city park from a high-rise office"
+  },
+  "corporate-boardroom": {
+    "source": "public/new/Business_meeting_in_boardroom_2K_20261022193744.jpg",
+    "alt": "Business delegates in a modern boardroom meeting overlooking a city skyline"
+  },
+  "corporate-team-meeting": {
+    "source": "public/new/Professionals_in_boardroom_meeting_2K_20261022193757.jpg",
+    "alt": "A team meeting around a table in an elegant sunlit conference room"
+  },
+  "corporate-airport-lounge": {
+    "source": "public/new/Airport_VIP_lounge_interior_view_2K_20261022193839.jpg",
+    "alt": "A spacious airport lounge with comfortable seating and runway views"
+  },
+  "partnership-rail-travel": {
+    "source": "public/new/Professionals_working_on_train_2K_20261022193825.jpg",
+    "alt": "Professionals working together at a table on a train journey"
+  },
+  "partnership-boardroom": {
+    "source": "public/new/Modern_executive_boardroom_interior_2K_20261022193843.jpg",
+    "alt": "A modern executive boardroom prepared for a corporate meeting"
+  },
+  "groups-meeting-room": {
+    "source": "public/new/Minimalist_ryokan_interior_design_2K_20261022193712.jpg",
+    "alt": "A meeting table in a Japanese-style room opening onto a quiet garden"
+  },
+  "groups-desert-incentive": {
+    "source": "public/new/Vehicles_driving_on_sand_dunes_2K_20261022193736.jpg",
+    "alt": "A group enjoying a desert gathering beside off-road vehicles at sunset"
+  },
+  "groups-gala": {
+    "source": "public/new/Corporate_gala_dinner_networking…_2K_20261022193817.jpg",
+    "alt": "Guests gathering for a corporate gala dinner in an ornate ballroom"
+  },
+  "groups-rooftop": {
+    "source": "public/new/Corporate_group_networking_on_ro…_2K_20261022193821.jpg",
+    "alt": "Colleagues networking on a rooftop terrace overlooking a city skyline"
+  },
+  "franchise-travel-booking": {
+    "source": "public/new/Professional_booking_travel_on_t…_2K_20261022193849.jpg",
+    "alt": "A professional reviewing travel arrangements on a tablet in a lounge"
+  },
+  "franchise-group-meeting": {
+    "source": "public/new/Business_professionals_having_me…_2K_20261022193858.jpg",
+    "alt": "Business colleagues meeting around a table in a sunlit hotel room"
+  },
+  "franchise-business-lunch": {
+    "source": "public/new/Business_lunch_on_waterfront_ter…_2K_20261022193711.jpg",
+    "alt": "Business partners sharing a waterfront lunch overlooking Sydney Harbour"
+  },
+  "africa-safari-lodge": {
+    "source": "public/new/Safari_lodge_overlooking_savanna_2K_20261022193801.jpg",
+    "alt": "A group relaxing at a safari lodge overlooking open savanna at sunset"
+  },
+  "africa-wildlife-drive": {
+    "source": "public/new/Photographers_observing_lions_in…_2K_20261022193656.jpg",
+    "alt": "Travellers photographing wildlife from an open safari vehicle on the savanna"
+  },
+  "destinations-rome": {
+    "source": "public/new/Colosseum_in_Rome_2K_20261022193640.jpg",
+    "alt": "The Colosseum in Rome in warm evening light"
+  },
+  "destinations-spring-tulips": {
+    "source": "public/new/Tulip_fields_in_spring_2K_20261022193614.jpg",
+    "alt": "Rows of colourful tulips in bloom beneath a wide spring sky"
+  },
+  "destinations-venice": {
+    "source": "public/new/Gondolas_on_Grand_Canal_2K_20261022193643.jpg",
+    "alt": "Gondolas moored on Venice Grand Canal at sunset"
+  },
+  "europe-lake-como": {
+    "source": "public/new/Historic_villa_on_Lake_Como_2K_20261022193546.jpg",
+    "alt": "A historic lakeside villa and gardens on Lake Como beneath mountain scenery"
+  },
+  "dubai-waterfront": {
+    "source": "public/new/Dubai_skyline_reflecting_in_water_2K_20261022193731.jpg",
+    "alt": "The Burj Khalifa and Dubai skyline reflecting in calm waterfront waters at dusk"
+  },
+  "about-business-traveller": {
+    "source": "public/new/Business_traveler_working_on_laptop_2K_20261022193859.jpg",
+    "alt": "A business traveller working on a laptop at a table in an airport lounge"
+  },
+  "home-personal-support": {
+    "source": "public/new/Staff_assisting_client_at_desk_2K_20261022193814.jpg",
+    "alt": "A concierge helping a traveller review documents at a hotel desk"
   }
 }

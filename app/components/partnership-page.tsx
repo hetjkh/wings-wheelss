@@ -2,13 +2,13 @@ import { Fragment } from "react";
 import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
-import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
+import { ClosingScene } from "./services-final";
 import { PartnerForm } from "./partner-form";
 import { ValuePanels, type ValuePanel } from "./value-panels";
-import { PartnershipHeroScene } from "./partnership-hero-scene";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -83,26 +83,15 @@ export default function PartnershipPage() {
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="why" />
     <main>
-      <section className="j-hero s-hero p-hero" id="top" aria-labelledby="partnership-hero-heading">
-        <PartnershipHeroScene />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Corporate partnerships</span>
-            <h1 id="partnership-hero-heading"><span className="s-line"><span data-hero>Not just</span></span><span className="s-line"><span data-hero>corporate travel.</span></span><span className="s-hero-accent" data-hero>A corporate travel partnership.</span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>Your business deserves more than standard travel rates. We build an arrangement around how your company really travels.</p>
-            <div className="s-actions" data-hero>
-              <EnquiryButton className="j-button j-button-cream" service="Corporate partnership">Become a corporate partner</EnquiryButton>
-              <a className="j-button j-button-outline-light" href="#proposal">Request a proposal</a>
-            </div>
-          </div>
-        </div>
-        <a href="#why" className="j-scroll-note">More than a provider <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="partnership-hero-heading"
+        eyebrow="Corporate partnerships"
+        lines={["Not just", "corporate travel."]}
+        sub="A corporate travel partnership."
+        text="Your business deserves more than standard travel rates. We build an arrangement around how your company really travels."
+        action={{ label: "Become a corporate partner", service: "Corporate travel" }}
+        media={{ image: "/images/library/corporate-partnership-hero-v2.webp", alt: "Two business partners meeting in a warmly lit lounge overlooking the Dubai skyline at dusk", position: "82% center" }}
+      />
 
       <section className="p-why j-torn-top" id="why" aria-labelledby="why-heading">
         <div className="j-shell p-why-grid">
@@ -180,7 +169,7 @@ export default function PartnershipPage() {
           </div>
           <div className="p-bento" data-stagger="0.07">
             <figure className="p-bento-photo">
-              <Image src="/images/library/business-conversation.webp" alt="Two business travellers talking at a lounge table" fill sizes="(max-width: 991px) 92vw, 28vw" style={{ objectPosition: "center" }} />
+              <Image src="/images/library/partnership-rail-travel.webp" alt="Professionals working together at a table on a train journey" fill sizes="(max-width: 991px) 92vw, 28vw" style={{ objectPosition: "center" }} />
               <figcaption><strong>One account.</strong><span>Every journey.</span></figcaption>
             </figure>
             {advantages.map((item, i) => <div key={item.title} className="p-bento-item">
@@ -194,7 +183,7 @@ export default function PartnershipPage() {
       </section>
 
       <section className="p-steps j-torn-top" id="how" aria-labelledby="how-heading">
-        <div className="p-steps-photo"><Image src="/images/library/airport-traveller.webp" alt="A traveller with a rolling suitcase inside an airport terminal" fill sizes="(max-width: 991px) 100vw, 46vw" style={{ objectPosition: "center" }} /></div>
+        <div className="p-steps-photo"><Image src="/images/library/partnership-boardroom.webp" alt="A modern executive boardroom prepared for a corporate meeting" fill sizes="(max-width: 991px) 100vw, 46vw" style={{ objectPosition: "center" }} /></div>
         <div className="j-shell p-steps-grid">
           <div className="p-steps-side">
             <span className="j-eyebrow s-eyebrow">06 / How it works</span>
@@ -223,19 +212,25 @@ export default function PartnershipPage() {
         </div>
       </section>
 
-      <section className="s-final p-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/corporate-partnership-lounge.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <span className="j-eyebrow">Wings &amp; Wheels corporate partnerships</span>
-          <h2 id="final-heading">Your business is going places.</h2>
-          <p className="s-lead-body">Let&apos;s build a partnership that goes with it.</p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream" service="Corporate partnership">Become a corporate partner</EnquiryButton>
-            <Link className="j-button j-button-outline-light" href="/contact">Speak to our corporate team</Link>
-          </div>
-        </div>
-      </section>
+      <ClosingScene
+        chapter="08 / Wings & Wheels"
+        ticket="Corporate partnerships"
+        left={<>Your business is<br />going places.</>}
+        right={<>Let&apos;s build a<br />partnership <em>that goes with it.</em></>}
+        photo="/images/library/corporate-partnership-lounge.webp"
+        photoPosition="30% center"
+        pass={["Boarding pass", "A partner in how you move"]}
+        from="Your company"
+        to="How you travel"
+        text="Let's build a partnership that goes with your business — rates, support and a plan that matches how your people move."
+        chips={[
+          { icon: "briefcase", label: "Corporate" },
+          { icon: "handshake", label: "Partnership" },
+          { icon: "globe", label: "Regions" },
+          { icon: "support", label: "Support" },
+        ]}
+        action={{ label: "Become a corporate partner", service: "Corporate travel" }}
+      />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

@@ -5,6 +5,8 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
+import { ClosingScene } from "./services-final";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -29,9 +31,9 @@ const advantages: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const builds = [
-  { title: "Corporate travel", text: "Business flights, hotels, transfers, corporate accounts and recurring travel requirements.", photo: "/images/library/travel-planning-v2.webp", alt: "A travel coordinator reviewing a printed itinerary beside a laptop", position: "center" },
+  { title: "Corporate travel", text: "Business flights, hotels, transfers, corporate accounts and recurring travel requirements.", photo: "/images/library/franchise-travel-booking.webp", alt: "A professional reviewing travel arrangements on a tablet in a lounge", position: "center" },
   { title: "Holidays & leisure", text: "International holidays, family travel, customised itineraries and unique destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
-  { title: "Groups & MICE", text: "Exhibitions, conferences, incentives, delegations and coordinated group movements.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center" },
+  { title: "Groups & MICE", text: "Exhibitions, conferences, incentives, delegations and coordinated group movements.", photo: "/images/library/franchise-group-meeting.webp", alt: "Business colleagues meeting around a table in a sunlit hotel room", position: "center" },
   { title: "Travel services", text: "Flights, accommodation, visa assistance (where permitted), airport transfers and traveller support.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
 ];
 
@@ -45,7 +47,7 @@ const network = [
 
 const partners = [
   { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/library/franchise-travel-agencies.webp", position: "center" },
-  { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/library/business-conversation.webp", position: "center" },
+  { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/library/franchise-business-lunch.webp", position: "center" },
   { label: "Investors", text: "Investors with capable local operating teams.", photo: "/images/library/business-boarding.webp", position: "center" },
   { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/library/business-terminal-v2.webp", position: "center" },
   { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/library/cape-town.webp", position: "center" },
@@ -94,27 +96,15 @@ export default function FranchisePage() {
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="beyond" />
     <main>
-      <section className="j-hero s-hero f-hero" id="top" aria-labelledby="franchise-hero-heading">
-        <Image className="j-photo j-hero-photo" src="/images/library/dubai-clouds.webp" alt="" fill priority sizes="100vw" style={{ objectPosition: "center" }} />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Franchise opportunities</span>
-            <h1 id="franchise-hero-heading"><span className="s-line"><span data-hero>Local ambition.</span></span><span className="s-line"><span data-hero>International opportunity.</span></span><span className="s-hero-accent" data-hero>Become part of the Wings &amp; Wheels network.</span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>We are expanding through franchise partnerships in Saudi Arabia, Egypt and Morocco — and looking for ambitious entrepreneurs and established travel businesses to grow with us.</p>
-            <div className="s-actions" data-hero>
-              <a className="j-button j-button-cream" href="#markets">Explore franchise opportunities</a>
-              <EnquiryButton className="j-button j-button-outline-light" service="Franchise overview">Request the overview</EnquiryButton>
-            </div>
-            <p className="f-hero-focus" data-hero><span>Current expansion focus</span>Saudi Arabia <i /> Egypt <i /> Morocco</p>
-          </div>
-        </div>
-        <a href="#beyond" className="j-scroll-note">Build your market <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="franchise-hero-heading"
+        eyebrow="Franchise opportunities"
+        lines={["Local", "ambition."]}
+        sub="Global reach."
+        text="Partnerships in Saudi Arabia, Egypt and Morocco."
+        action={{ label: "Explore the markets", href: "#markets" }}
+        media={{ video: "/hero.mp4" }}
+      />
 
       <section className="f-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
         <figure className="f-beyond-photo">
@@ -271,20 +261,25 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      <section className="s-final f-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/franchise-three-markets.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <span className="j-eyebrow">Wings &amp; Wheels franchise opportunities</span>
-          <h2 id="final-heading">Let&apos;s build the next chapter together.</h2>
-          <p className="s-lead-body">We are looking to connect with ambitious partners who share our belief in thoughtful travel management, strong local relationships and international collaboration.</p>
-          <p className="f-final-markets">Saudi Arabia. Egypt. Morocco. <strong>Three markets. One opportunity.</strong></p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream" service="Franchise partnership">Become a franchise partner</EnquiryButton>
-            <Link className="j-button j-button-outline-light" href="/contact">Speak to our expansion team</Link>
-          </div>
-        </div>
-      </section>
+      <ClosingScene
+        chapter="10 / Wings & Wheels"
+        ticket="Franchise opportunities"
+        left={<>Let&apos;s build the<br />next chapter.</>}
+        right={<>Together, in<br /><em>three markets.</em></>}
+        photo="/images/library/franchise-three-markets.webp"
+        photoPosition="70% center"
+        pass={["Boarding pass", "Saudi · Egypt · Morocco"]}
+        from="Your market"
+        to="Our network"
+        text="We are looking to connect with ambitious partners who share our belief in thoughtful travel management, strong local relationships and international collaboration."
+        chips={[
+          { icon: "handshake", label: "Partners" },
+          { icon: "globe", label: "Markets" },
+          { icon: "briefcase", label: "Business" },
+          { icon: "support", label: "Support" },
+        ]}
+        action={{ label: "Become a franchise partner" }}
+      />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

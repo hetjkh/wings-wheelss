@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
 import { Cta } from "./about-cta";
+import { MaskedHero } from "./masked-hero";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { AboutMotion } from "./about-motion";
@@ -15,7 +16,7 @@ import "./about.css";
 const tags = ["Business", "Leisure", "Groups", "MICE", "International travel"];
 
 const audiences: Audience[] = [
-  { title: "Business", text: "Meetings, projects and regional travel.", href: "/corporate-travel", image: "/images/about/business-lounge-v2.webp", alt: "A business traveller working in a sunlit airport lounge" },
+  { title: "Business", text: "Meetings, projects and regional travel.", href: "/corporate-travel", image: "/images/library/about-business-traveller.webp", alt: "A business traveller working on a laptop at a table in an airport lounge" },
   { title: "Leisure", text: "Holidays and memorable journeys.", href: "/destinations", image: "/images/about/leisure-bay-v2.webp", alt: "Turquoise water and white sand along a palm-lined bay" },
   { title: "Groups & MICE", text: "Organised travel across multiple travellers.", href: "/groups-mice", image: "/images/about/conference-v2.webp", alt: "Delegates gathered in a sunlit conference hall" },
   { title: "Connections", text: "Between the UAE, Africa and worldwide.", href: "/africa", image: "/images/about/dubai-v2.webp", alt: "The Dubai skyline reflected in the waterfront at dusk" },
@@ -83,42 +84,21 @@ function Marquee({ items, className }: { items: string[]; className: string }) {
   </div>;
 }
 
-/** The ghost copy is cream and masked to the map, so text reads cream on the photo and ink on the paper. */
-function HeroCopy({ ghost = false }: { ghost?: boolean }) {
-  const Title = ghost ? "p" : "h1";
-  return <div className="j-shell au-hero-inner">
-    <span className="j-eyebrow au-hero-eyebrow">About Wings &amp; Wheels</span>
-    <Title id={ghost ? undefined : "about-title"} className="au-hero-title">
-      <Line>Travel is about</Line>
-      <Line><em>places.</em></Line>
-      <Line>We&apos;re about</Line>
-      <Line>the people</Line>
-      <span className="au-line au-hero-sub"><span>moving between them.</span></span>
-    </Title>
-    <div className="au-hero-aside">
-      <p>Wings &amp; Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide.</p>
-      <Cta href="#who" light={ghost}>Discover our story</Cta>
-    </div>
-  </div>;
-}
-
 export function AboutPage() {
   return <AboutMotion>
     <a className="skip-link" href="#main-content">Skip to content</a>
     <JourneyHeader introId="who" />
     <main id="main-content">
-      <section className="au-hero" aria-labelledby="about-title">
-        <div className="au-hero-photo">
-          <div className="au-hero-photo-inner">
-            <Image src="/images/about/hero-v2.webp" alt="Travellers and consultants planning a journey together" fill preload sizes="100vw" />
-          </div>
-          <div className="au-hero-shade" />
-        </div>
-        <HeroCopy />
-        <div className="au-hero-ghost" aria-hidden="true" inert><HeroCopy ghost /></div>
-        <span className="au-hero-scroll" aria-hidden="true"><span />Scroll</span>
-        <Marquee items={tags} className="au-ribbon" />
-      </section>
+      <MaskedHero
+        id="about-title"
+        eyebrow="About Wings & Wheels"
+        lines={["Travel is about", { text: "places.", accent: true }, "We're about", "the people"]}
+        sub="moving between them."
+        text="Wings & Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide."
+        action={{ label: "Discover our story", href: "#who" }}
+        media={{ image: "/images/about/hero-v2.webp", alt: "Travellers and consultants planning a journey together" }}
+        tags={tags}
+      />
 
       <section className="au-who au-torn" id="who" aria-labelledby="who-title">
         <div className="j-shell">

@@ -1,8 +1,8 @@
 import Image from "./travel-image";
 import Link from "next/link";
-import { Arrow } from "./icons";
 import { office, pageLinks } from "./data";
 import { HomeExperience, HomeHeader } from "./home-experience";
+import { MaskedHero } from "./masked-hero";
 import { HomeServices } from "./home-services";
 import { HomeEditorial } from "./home-editorial";
 import "./home.css";
@@ -17,17 +17,14 @@ export default function HomePage() {
     <a className="skip-link" href="#home-services">Skip to content</a>
     <HomeHeader />
     <main>
-      <section className="n-hero" id="top" aria-labelledby="home-title">
-        <div className="n-hero-visual"><video className="n-cover" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" /></div>
-        <div className="n-hero-shade" />
-        <div className="n-hero-copy">
-          <span className="n-kicker">Wings & Wheels · Dubai & beyond</span>
-          <h1 id="home-title">Every journey.<br />A world of<br />possibilities.</h1>
-          <p>Business, leisure and everything in between.<br />Thoughtfully planned. Personally supported.</p>
-          <Link href="/contact" className="n-button n-button-cream">Plan your journey <Arrow /></Link>
-        </div>
-        <div className="n-hero-caption n-shell"><span>People. Places. Further together.</span><a href="#home-services">Scroll to explore <span>↓</span></a><span>From our home in Dubai, to your next horizon.</span></div>
-      </section>
+      <MaskedHero
+        id="home-title"
+        eyebrow="Wings & Wheels · Dubai & beyond"
+        lines={["Every journey.", "A world of", "possibilities."]}
+        text="Business, leisure and everything in between. Thoughtfully planned. Personally supported."
+        action={{ label: "Plan your journey", href: "/contact" }}
+        media={{ video: "/hero.mp4" }}
+      />
 
       <HomeServices />
 
@@ -47,7 +44,7 @@ export default function HomePage() {
             <div className="n-panel-copy"><div><Link href="/destinations" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Private<br />travel</h3></div><p>Unhurried escapes for individuals and families. Your kind of places, your own pace, every detail considered.</p></div>
           </article>
           <article className="n-travel-panel">
-            <div className="n-panel-photo"><Image src="/images/library/business-terminal-v2.webp" alt="Business travellers walking through a bright airport terminal" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
+            <div className="n-panel-photo"><Image src="/images/library/home-corporate-team.webp" alt="Business colleagues walking through a bright hotel lobby" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
             <div className="n-panel-shade" /><span className="n-panel-note">02 / Focus on what brings you here</span>
             <div className="n-panel-copy"><div><Link href="/corporate-travel" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Corporate<br />travel</h3></div><p>Well-connected travel for businesses and their people. From the first meeting to the journey home.</p></div>
           </article>

@@ -21,8 +21,10 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
       if (animate) video?.play().catch(() => {}); else video?.pause();
       if (!animate) return;
       const desktop = conditions?.desktop;
-      const hero = gsap.timeline({ scrollTrigger: { id: "home-hero", trigger: ".n-hero", start: "top top", end: () => `+=${window.innerHeight * (desktop ? .7 : .6)}`, pin: !!desktop, scrub: .7, invalidateOnRefresh: true, refreshPriority: 4 } });
-      hero.to(".n-hero-visual", { scale: 1.12, ease: "none" }, 0).to(".n-hero-copy", { y: -70, opacity: .15, ease: "none" }, 0).to(".n-hero-shade", { opacity: .75 }, 0);
+      if (root.current?.querySelector(".n-hero")) {
+        const hero = gsap.timeline({ scrollTrigger: { id: "home-hero", trigger: ".n-hero", start: "top top", end: () => `+=${window.innerHeight * (desktop ? .7 : .6)}`, pin: !!desktop, scrub: .7, invalidateOnRefresh: true, refreshPriority: 4 } });
+        hero.to(".n-hero-visual", { scale: 1.12, ease: "none" }, 0).to(".n-hero-copy", { y: -70, opacity: .15, ease: "none" }, 0).to(".n-hero-shade", { opacity: .75 }, 0);
+      }
       gsap.from(".n-travel-heading h2", { y: 35, ease: "none", scrollTrigger: { trigger: ".n-travel-heading", start: "top bottom", end: "center center", scrub: .6 } });
       if (desktop) {
         const pair = gsap.timeline({ scrollTrigger: { id: "home-travel", trigger: ".n-travel", start: "top top", end: () => `+=${window.innerHeight * .75}`, pin: true, scrub: .65, invalidateOnRefresh: true, refreshPriority: 3 } });
@@ -49,7 +51,10 @@ export function HomeHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 80);
+    const update = () => {
+      const masked = document.querySelector(".home-page .au-hero");
+      setScrolled(window.scrollY > (masked ? window.innerHeight * 1.2 : 80));
+    };
     update(); window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
   }, []);

@@ -10,6 +10,7 @@ import { AfricaCorridor } from "./africa-corridor";
 import { AfricaDelegates } from "./africa-delegates";
 import { AfricaEnquiry } from "./africa-enquiry";
 import { AfricaLandscape } from "./africa-landscape";
+import { ClosingScene } from "./services-final";
 import { AfricaPurposeScene } from "./africa-purpose-scene";
 import { office } from "./data";
 import "./journey.css";
@@ -54,9 +55,9 @@ const journeys = [
 ];
 const africaPurposes = [
   { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", href: "/corporate-travel", link: "Corporate travel" },
-  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/south-africa-safari.webp", href: "/destinations/kenya", link: "Discover Kenya" },
+  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/africa-wildlife-drive.webp", href: "/destinations/kenya", link: "Discover Kenya" },
   { title: "Family", text: "Visits, holidays and journeys together.", photo: "/images/library/family-lake.webp", href: "/destinations", link: "Find your destination" },
-  { title: "Groups", text: "Organised travel across multiple travellers.", photo: "/images/library/travel-support-v2.webp", href: "/groups-mice", link: "Plan group travel" },
+  { title: "Groups", text: "Organised travel across multiple travellers.", photo: "/images/library/africa-safari-lodge.webp", href: "/groups-mice", link: "Plan group travel" },
   { title: "MICE", text: "Meetings, incentives, conferences and exhibitions.", photo: "/images/library/conference.webp", href: "/groups-mice", link: "Explore Groups & MICE" },
   { title: "Coast & islands", text: "Indian Ocean escapes and extensions.", photo: "/images/library/zanzibar.webp", href: "/destinations/tanzania", link: "Discover Tanzania & Zanzibar" },
 ];
@@ -186,9 +187,18 @@ export default function AfricaPage() {
         </div>
       </section>
 
-      <section className="a-delegates j-torn-top" id="delegate-travel" aria-labelledby="delegates-heading">
+      <section className="a-delegates" id="delegate-travel" aria-labelledby="delegates-heading">
         <div className="j-shell">
-          <div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">08 / Exhibitions &amp; delegations</span><h2 id="delegates-heading" className="s-title a-editorial-title">Bringing your team<br />to Dubai?</h2></div><div><p className="a-subhead">We&apos;ll help coordinate what happens before the event starts.</p><p className="a-body">For organisations travelling from Africa to exhibitions, conferences and corporate events in the UAE, W&amp;W can coordinate:</p></div></div>
+          <div className="a-delegate-header">
+            <div>
+              <span className="j-eyebrow">08 / Exhibitions &amp; delegations</span>
+              <h2 id="delegates-heading">Bringing your team<br />to Dubai?</h2>
+            </div>
+            <div className="a-delegate-intro">
+              <p>We&apos;ll coordinate the travel.<br />You focus on the event.</p>
+              <p>For organisations travelling from Africa to exhibitions, conferences and corporate events in the UAE, W&amp;W brings the travel arrangements together.</p>
+            </div>
+          </div>
           <AfricaDelegates />
         </div>
       </section>
@@ -233,19 +243,24 @@ export default function AfricaPage() {
         <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">13 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
-      <section className="s-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/cape-town.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <span className="j-eyebrow">UAE ↔ Africa ↔ Worldwide</span>
-          <h2 id="final-heading">Different countries.<br />One connected journey.</h2>
-          <p className="s-lead-body">Whether you&apos;re travelling for business, bringing a team to Dubai, discovering Africa or continuing somewhere beyond, Wings &amp; Wheels helps connect what happens in between.</p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream" service="Africa travel">Start your journey</EnquiryButton>
-            <a className="j-button j-button-outline-light" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp our team</a>
-          </div>
-        </div>
-      </section>
+      <ClosingScene
+        chapter="14 / Wings & Wheels"
+        ticket="UAE ↔ Africa ↔ Worldwide"
+        left={<>Different<br />countries.</>}
+        right={<>One connected<br /><em>journey.</em></>}
+        photo="/images/library/cape-town.webp"
+        pass={["Boarding pass", "UAE · Africa · Worldwide"]}
+        from="UAE"
+        to="Africa"
+        text="Whether you're travelling for business, bringing a team to Dubai, discovering Africa or continuing somewhere beyond, Wings & Wheels helps connect what happens in between."
+        chips={[
+          { icon: "globe", label: "Africa" },
+          { icon: "briefcase", label: "Business" },
+          { icon: "plane", label: "Flights" },
+          { icon: "support", label: "Support" },
+        ]}
+        action={{ label: "Start your journey", service: "Africa travel" }}
+      />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

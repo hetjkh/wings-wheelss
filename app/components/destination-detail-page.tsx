@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Image from "./travel-image";
 import { Arrow } from "./icons";
 import { JourneyHeader } from "./journey-header";
+import { MaskedHero } from "./masked-hero";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { DestinationPlanning } from "./destination-additions";
@@ -32,11 +31,16 @@ export function DestinationDetailPage({ guide }: { guide: DestinationGuide }) {
     <a className="skip-link" href="#why-go">Skip to content</a>
     <JourneyHeader introId="why-go" />
     <main>
-      <section className="j-hero s-hero dg-hero" id="top" aria-labelledby="destination-title">
-        <Image className="j-photo j-hero-photo" src={guide.photo} alt={guide.alt} fill sizes="100vw" priority />
-        <div className="j-hero-shade" />
-        <div className="j-shell dg-hero-copy"><Link className="dg-back" href="/destinations"><Arrow back />All destinations</Link><span className="j-eyebrow">{guide.region}</span><h1 id="destination-title">{guide.name}</h1><p>{guide.line}</p><a className="j-button j-button-cream" href="#destination-enquiry">Build my {guide.name} journey <Arrow /></a></div>
-      </section>
+      <MaskedHero
+        key={guide.slug}
+        id="destination-title"
+        eyebrow={guide.region}
+        lines={[guide.name]}
+        text={guide.line}
+        action={{ label: `Build my ${guide.name} journey`, href: "#destination-enquiry" }}
+        media={{ image: guide.photo, alt: guide.alt }}
+        back={{ href: "/destinations", label: "All destinations" }}
+      />
       <section className="dg-intro j-torn-top" id="why-go" aria-labelledby="why-heading" style={{ zIndex: 2 }}>
         <div className="j-shell dg-intro-grid"><div><span className="j-eyebrow s-eyebrow">01 / Why go</span><h2 className="s-title" id="why-heading">{guide.line}</h2></div><div><p className="dg-intro-text">{guide.intro}</p><h3 className="dg-small-title">Best for</h3><ul className="dg-tags">{guide.bestFor.map(item => <li key={item}>{item}</li>)}</ul></div></div>
       </section>

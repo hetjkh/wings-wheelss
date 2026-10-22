@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
-import Link from "next/link";
 import Image from "./travel-image";
-import { Arrow, TravelIcon, type IconKind } from "./icons";
-import { EnquiryButton } from "./site-controls";
+import { TravelIcon, type IconKind } from "./icons";
+import { PillCta } from "./about-cta";
 
 export type IndexedService = { icon: IconKind; title: string; line: string; photo: string; alt: string; position?: string; items: string[]; cta: string; service?: string };
 
@@ -54,9 +53,7 @@ export function ServicesIndex({ services }: { services: IndexedService[] }) {
           <h3>{item.title}</h3>
           <p>{item.line}</p>
           <ul>{item.items.map((line, n) => <li key={line} style={{ "--n": n } as CSSProperties}>{line}</li>)}</ul>
-          {item.service
-            ? <EnquiryButton className="s-strip-cta" service={item.service}>{item.cta}</EnquiryButton>
-            : <Link className="s-strip-cta" href="/contact">{item.cta}<Arrow /></Link>}
+          <PillCta light service={item.service}>{item.cta}</PillCta>
         </div>
       </div>;
     })}

@@ -1,11 +1,12 @@
 import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
-import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
+import { PillCta } from "./about-cta";
 import { JourneyFooter } from "./journey-footer";
 import { JourneyPlanner } from "./journey-planner";
 import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
 import { ServicesIndex, type IndexedService } from "./services-index";
 import { ServicesFinal } from "./services-final";
 import { office } from "./data";
@@ -24,18 +25,18 @@ const stops: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const services: IndexedService[] = [
-  { icon: "plane", title: "Flights", line: "From here to wherever you need to be.", photo: "/images/library/airport-traveller.webp", alt: "A traveller with a rolling suitcase inside an airport terminal", position: "center", items: ["Flight bookings", "Multi-city itineraries", "Group flights", "Business travel", "International connections"], cta: "Explore flights", service: "Flights" },
-  { icon: "bed", title: "Hotels", line: "Somewhere that fits the reason you’re there.", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", position: "center", items: ["Business hotels", "Resorts", "Family accommodation", "Group stays", "Longer stays"], cta: "Explore hotels", service: "Hotels" },
-  { icon: "document", title: "Visas & documentation", line: "The paperwork, checked before you leave.", photo: "/images/library/visa-passports.webp", alt: "Two passports held against a pink background", position: "center", items: ["Visa assistance", "Travel documentation guidance", "Travel insurance assistance", "Pre-departure checks"], cta: "Visa support", service: "Visa assistance" },
-  { icon: "car", title: "Airport & ground transfers", line: "Someone waiting when you land.", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", items: ["Airport transfers", "Private vehicles", "Chauffeur services", "Group transportation", "Hotel / venue transfers"], cta: "Arrange a transfer", service: "Airport & ground transfers" },
-  { icon: "sun", title: "Holidays & experiences", line: "Time that is entirely yours.", photo: "/images/library/maldives-sandbank.webp", alt: "A white sandbank between a turquoise lagoon and the Indian Ocean", items: ["Family holidays", "Safari", "Beach escapes", "City breaks", "Multi-destination travel", "Selected experiences"], cta: "Explore destinations", service: "Leisure & holidays" },
-  { icon: "support", title: "Travel support", line: "A real person, when plans change.", photo: "/images/library/travel-support-v2.webp", alt: "Two travel consultants reviewing a world map and planning a route together", position: "center", items: ["Changes", "Rebooking assistance", "Cancellations", "Onward travel", "Traveller support"], cta: "Talk to our team" },
+  { icon: "plane", title: "Flights", line: "From here to wherever you need to be.", photo: "/images/library/services-flights-v3.webp", alt: "A traveller with a suitcase walking toward an aircraft at a sunlit airport", position: "center", items: ["Flight bookings", "Multi-city itineraries", "Group flights", "Business travel", "International connections"], cta: "Explore flights", service: "Flights" },
+  { icon: "bed", title: "Hotels", line: "Somewhere that fits the reason you’re there.", photo: "/images/library/services-hotels-v3.webp", alt: "An overwater resort villa above a clear lagoon at sunset", position: "center", items: ["Business hotels", "Resorts", "Family accommodation", "Group stays", "Longer stays"], cta: "Explore hotels", service: "Hotels" },
+  { icon: "document", title: "Visas & documentation", line: "The paperwork, checked before you leave.", photo: "/images/library/services-visas-v4.webp", alt: "An open passport with a visa page and entry stamps beside a visa application, boarding pass and flight itinerary", position: "center", items: ["Visa assistance", "Travel documentation guidance", "Travel insurance assistance", "Pre-departure checks"], cta: "Visa support", service: "Visa assistance" },
+  { icon: "car", title: "Airport & ground transfers", line: "Someone waiting when you land.", photo: "/images/library/services-transfers-v3.webp", alt: "A driver welcoming a traveller beside an airport transfer car", position: "center", items: ["Airport transfers", "Private vehicles", "Chauffeur services", "Group transportation", "Hotel / venue transfers"], cta: "Arrange a transfer", service: "Airport & ground transfers" },
+  { icon: "sun", title: "Holidays & experiences", line: "Time that is entirely yours.", photo: "/images/library/services-holidays-v3.webp", alt: "A small palm-lined sandbank in turquoise island waters", position: "center", items: ["Family holidays", "Safari", "Beach escapes", "City breaks", "Multi-destination travel", "Selected experiences"], cta: "Explore destinations", service: "Leisure & holidays" },
+  { icon: "support", title: "Travel support", line: "A real person, when plans change.", photo: "/images/library/services-support-v4.webp", alt: "Two travel consultants seated at a desk reviewing a map and itinerary in a sunlit office", position: "center", items: ["Changes", "Rebooking assistance", "Cancellations", "Onward travel", "Traveller support"], cta: "Talk to our team" },
 ];
 
 const reasons = [
   { title: "Business", line: "Somewhere to be.", text: "Executive and company travel built around schedules and meetings.", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", position: "center", cta: "Corporate travel", service: "Corporate travel" },
   { title: "Leisure", line: "Somewhere to discover.", text: "Holidays, city breaks, safaris, beaches and more.", photo: "/images/library/bali-coast.webp", alt: "Turquoise water and dramatic cliffs on the coast of Nusa Penida", position: "center", cta: "Explore destinations", service: "Leisure & holidays" },
-  { title: "Groups & MICE", line: "Somewhere to be — together.", text: "Team travel, exhibitions, conferences and events.", photo: "/images/library/conference.webp", alt: "Delegates attending an international conference in a modern hotel ballroom", position: "center", cta: "Groups & MICE", service: "Groups & MICE" },
+  { title: "Groups & MICE", line: "Somewhere to be — together.", text: "Team travel, exhibitions, conferences and events.", photo: "/images/library/services-event-planner.webp", alt: "An event planner coordinating with a colleague in a busy conference venue", position: "center", cta: "Groups & MICE", service: "Groups & MICE" },
   { title: "Africa", line: "Somewhere we’re particularly connected.", text: "Travel between the UAE, key African markets and beyond.", photo: "/images/library/cape-coast.webp", alt: "Ocean waves meeting the rocky South African coastline", position: "center", cta: "Explore Africa", service: "Africa travel" },
 ];
 
@@ -57,36 +58,21 @@ const pillars = [
   { icon: "globe", title: "Global reach", text: "International travel planning and coordination." },
 ] as const;
 
-function WhatsAppLink({ className }: { className: string }) {
-  return <a className={className} href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp our team</a>;
-}
-
 export default function ServicesPage() {
   return <ChapterMotion>
     <a className="skip-link" href="#approach">Skip to content</a>
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="approach" />
     <main>
-      <section className="j-hero s-hero" id="top" aria-labelledby="services-hero-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Travel services</span>
-            <h1 id="services-hero-heading"><span className="s-line"><span data-hero>Your journey</span></span><span className="s-line"><span data-hero>has many parts.</span></span><span className="s-hero-accent" data-hero>We bring them together.</span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>Flights, hotels, visas, transfers and holidays, coordinated around where you need to go.</p>
-            <div className="s-actions" data-hero>
-              <EnquiryButton className="j-button j-button-cream">Plan your journey</EnquiryButton>
-              <WhatsAppLink className="j-button j-button-outline-light" />
-            </div>
-          </div>
-        </div>
-        <a href="#approach" className="j-scroll-note">Every part, together <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="services-hero-heading"
+        eyebrow="Travel services"
+        lines={["Your journey", "has many parts."]}
+        sub="We bring them together."
+        text="Flights, hotels, visas, transfers and holidays, coordinated around where you need to go."
+        action={{ label: "Plan your journey", service: "General enquiry" }}
+        media={{ video: "/hero.mp4" }}
+      />
 
       <section className="s-approach j-torn-top" id="approach" aria-labelledby="approach-heading">
         <div className="j-shell">
@@ -137,7 +123,7 @@ export default function ServicesPage() {
             <p className="s-reason-line">{item.line}</p>
             <div className="s-reason-more"><div>
               <p>{item.text}</p>
-              <EnquiryButton className="j-button j-button-cream" service={item.service}>{item.cta}</EnquiryButton>
+              <PillCta light service={item.service}>{item.cta}</PillCta>
             </div></div>
           </div>
         </article>)}</div>
@@ -160,7 +146,8 @@ export default function ServicesPage() {
 
       <section className="s-principle j-torn-top" aria-labelledby="principle-heading">
         <div className="s-principle-frame">
-          <Image className="j-photo" src="/images/library/business-boarding.webp" alt="A business traveller approaching an aircraft on the apron" fill sizes="100vw" />
+          <Image className="j-photo s-principle-photo-desktop" src="/images/library/services-principle-v3-desktop.webp" alt="A travel advisor speaking with a traveller in an airport lounge" fill sizes="100vw" />
+          <Image className="j-photo s-principle-photo-mobile" src="/images/library/services-principle-v3-mobile.webp" alt="" fill sizes="100vw" />
           <div className="s-principle-shade" />
         </div>
         <div className="j-shell s-principle-copy">
@@ -168,7 +155,7 @@ export default function ServicesPage() {
           <h2 id="principle-heading" className="s-principle-title">The journey changes.<br />The principle doesn&apos;t.</h2>
           <span className="s-principle-rule" aria-hidden="true" />
           <p>One point of contact. One coordinated plan.</p>
-          <EnquiryButton className="j-button j-button-cream">Plan your journey</EnquiryButton>
+          <PillCta light>Plan your journey</PillCta>
         </div>
         <div className="j-shell s-principle-foot" aria-hidden="true"><span>Simple</span><span>Multi-destination</span><span>Group</span></div>
       </section>
@@ -197,7 +184,7 @@ export default function ServicesPage() {
             <span className="j-eyebrow s-eyebrow">06 / Our network</span>
             <h2 id="network-heading" className="s-title s-rows"><span>Local</span><span>connections.</span><span>Journeys that</span><span>go further.</span></h2>
             <p className="s-lead-body">Wings &amp; Wheels combines its UAE base with a growing network across key African markets and international destinations.</p>
-            <EnquiryButton className="j-button j-button-outline" service="Africa travel">Explore our Africa network</EnquiryButton>
+            <PillCta service="Africa travel">Explore our Africa network</PillCta>
           </div>
           <div className="s-network-map"><NetworkMap /></div>
         </div>

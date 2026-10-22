@@ -54,32 +54,41 @@
 .a-arrival-reasons { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px; }
 .a-arrival-reasons li { padding: 8px 12px; border: 1px solid var(--rule); border-radius: 30px; font: 300 clamp(13px, 1vw, 18px)/1.2 var(--body); }
 
-/* Delegates: a shared arrival plan and the services around the event. */
-.a-delegates { background: #ede3d2; }
-.a-hall { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; min-height: min(78svh, 760px); margin-top: calc(var(--u) * 2.5); overflow: clip; color: #fff8e9; }
-.a-hall > img { object-fit: cover; object-position: center 40%; }
-.a-hall-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #140e0ee6 0%, #140e0eb8 38%, #140e0e66 68%, #140e0e99), linear-gradient(0deg, #140e0ef2, #140e0e22 42%); }
-.a-hall-board { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(180px, 240px); align-items: center; gap: 8px; padding: calc(var(--u) * 2.5) calc(var(--u) * 2) 0; }
-.a-hall .a-plan-label { color: #ecd9ad; }
-.a-hall-cities ol { display: grid; gap: 4px; margin: calc(var(--u) * 1.2) 0 0; padding: 0; list-style: none; }
-.a-hall-cities button { display: flex; align-items: baseline; gap: 12px; width: 100%; padding: 6px 0; border: 0; background: transparent; cursor: pointer; text-align: left; font: 400 clamp(26px, 2.2vw, 40px)/1 var(--heading); letter-spacing: .02em; text-transform: uppercase; color: #fff8e980; transition: color .35s, translate .45s cubic-bezier(.22, 1, .36, 1); }
-.a-hall-cities button i { font: 400 .4em/1 var(--body); letter-spacing: .12em; font-style: normal; color: #ecd9ad; }
-.a-hall-cities button:hover, .a-hall-cities button.is-active { color: #fff8e9; translate: 10px 0; }
-.a-hall-routes { width: 100%; height: auto; overflow: visible; }
-.a-hall-routes path { fill: none; stroke: #fff8e933; stroke-width: 1.4; transition: stroke .4s, stroke-width .4s; }
-.a-hall-routes path.is-active { stroke: #ecd9ad; stroke-width: 2; }
-.a-hall-plane path { fill: #fff8e9; }
-.a-hall-event { display: grid; gap: 10px; justify-items: start; padding: calc(var(--u) * 1.4); border: 1px solid #ecd9ad88; background: #140e0e99; backdrop-filter: blur(8px); }
-.a-hall-event span { font: 400 calc(var(--u) * .7)/1.3 var(--body); letter-spacing: .14em; text-transform: uppercase; color: #ecd9ad; }
-.a-hall-event strong { font: 400 clamp(32px, 2.6vw, 48px)/.95 var(--heading); letter-spacing: .02em; text-transform: uppercase; }
-.a-hall-foot { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 18px 28px; padding: calc(var(--u) * 2); }
-.a-hall-foot ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.a-hall-foot li { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #fff8e940; border-radius: 100px; background: #140e0e55; font: 300 calc(var(--u) * .82)/1 var(--body); transition: background .3s, color .3s, border-color .3s; }
-.a-hall-foot li svg { color: #ecd9ad; }
-.a-hall-foot li:hover { background: #fff8e9; border-color: #fff8e9; color: #2b2119; }
-.a-hall-foot li:hover svg { color: #8a6f4e; }
-.a-hall-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; }
-.a-hall-actions .j-text-link { color: #ecd9ad; }
+/* Delegations: an exhibition photograph and a clear, practical travel brief. */
+.a-delegates { padding-block: clamp(64px, 6vw, 112px); border-top: 1px solid var(--line); background: #f0ece5; scroll-margin-top: 64px; }
+.a-delegate-header, .a-delegate-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 100px); }
+.a-delegate-header { align-items: end; margin-bottom: clamp(32px, 3.5vw, 60px); }
+.a-delegate-header .j-eyebrow { margin-bottom: 22px; color: #73634f; }
+.africa-page .a-delegate-header h2 { font: 400 clamp(38px, 4.2vw, 76px)/1.04 var(--heading); letter-spacing: -.025em; }
+.a-delegate-intro > p:first-child { font: 400 clamp(24px, 2vw, 34px)/1.2 var(--heading); letter-spacing: -.015em; color: var(--ink); }
+.a-delegate-intro > p + p { max-width: 37em; margin-top: 18px; font: 300 clamp(15px, 1.05vw, 19px)/1.6 var(--body); }
+.a-delegate-visual { min-width: 0; }
+.a-delegate-photo { position: relative; isolation: isolate; display: flex; align-items: end; aspect-ratio: 1.45; margin: 0; overflow: hidden; background: var(--night); }
+.a-delegate-photo img { z-index: 0; object-fit: cover; object-position: center; }
+.a-delegate-photo::after { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(0deg, #191812e6, #19181233 38%, transparent 65%); pointer-events: none; }
+.a-delegate-photo figcaption { position: relative; z-index: 2; padding: clamp(24px, 2.5vw, 46px); font: 400 clamp(28px, 2.5vw, 44px)/1.12 var(--heading); letter-spacing: -.015em; color: #fffaf2; }
+.a-delegate-route { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; padding-top: 24px; }
+.africa-page .a-delegate-label { display: block; font: 400 11px/1.4 var(--body); letter-spacing: .12em; text-transform: uppercase; color: #73634f; }
+.a-delegate-origins ul { display: flex; flex-wrap: wrap; gap: 8px 0; margin-top: 12px; padding: 0; list-style: none; }
+.a-delegate-origins li { font: 400 clamp(14px, 1vw, 18px)/1.4 var(--body); color: var(--ink); }
+.a-delegate-origins li:not(:last-child)::after { content: '/'; margin-inline: 10px; color: #a18d77; }
+.a-delegate-destination { padding-left: 28px; border-left: 1px solid #cfc5b7; }
+.a-delegate-destination p { margin-top: 9px; font: 400 30px/1.1 var(--heading); letter-spacing: -.015em; color: var(--ink); }
+.a-delegate-destination p > span { display: block; margin-top: 5px; font: 300 12px/1.4 var(--body); letter-spacing: 0; color: var(--text); }
+.a-delegate-details { display: flex; flex-direction: column; align-items: start; min-width: 0; padding-top: 2px; }
+.a-delegate-services { width: 100%; margin-top: 18px; border-top: 1px solid #bfb1a0; }
+.a-delegate-services > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: baseline; padding-block: clamp(21px, 2vw, 36px); border-bottom: 1px solid #d4cabe; }
+.a-delegate-services dt { font: 400 clamp(22px, 1.8vw, 30px)/1.15 var(--heading); letter-spacing: -.015em; color: var(--ink); }
+.a-delegate-services dd { margin: 0; }
+.a-delegate-services ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font: 300 clamp(14px, 1.05vw, 18px)/1.45 var(--body); }
+.a-delegate-support { display: flex; gap: 14px; align-items: start; margin-block: 26px 30px; }
+.a-delegate-support > svg { flex-shrink: 0; margin-top: 1px; color: #73634f; }
+.a-delegate-support h4 { font: 400 15px/1.4 var(--body); color: var(--ink); }
+.a-delegate-support p { margin-top: 5px; font: 300 14px/1.5 var(--body); }
+.a-delegate-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: auto; }
+.africa-page .a-delegate-actions .j-button { min-height: 48px; font-size: 11px; }
+.africa-page .a-delegate-actions .j-text-link { min-height: 44px; margin: 0; padding-block: 10px; gap: 12px; font-size: 13px; border-color: #b8a791; }
+.a-delegate-actions a:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
 
 /* Three complete journeys, each with its own route and reason to travel. */
 .a-journeys { background: #fffdf8; }
@@ -180,9 +189,11 @@
 }
 @media (max-width: 900px) {
   .a-arrival-grid, .a-expertise-grid, .a-enquiry-grid, .a-section-head { grid-template-columns: 1fr; gap: 32px; }
-  .a-hall-board { grid-template-columns: 1fr; }
-  .a-hall-routes { display: none; }
-  .a-hall { min-height: 0; }
+  .a-delegate-header, .a-delegate-layout { grid-template-columns: 1fr; gap: 32px; }
+  .a-delegate-intro { max-width: 620px; }
+  .a-delegate-photo { aspect-ratio: 1.65; }
+  .a-delegate-details { padding-top: 14px; }
+  .a-delegate-services > div { padding-block: 24px; }
   .a-arrival-photo { min-height: 440px; }
   .a-expertise-photo { min-height: 560px; }
   .a-expertise-photo img { object-position: center 65%; }
@@ -201,9 +212,17 @@
   .a-purpose-grid, .a-form-fields, .a-form-purposes, .a-support-grid { grid-template-columns: 1fr; }
   .a-purpose-tile { min-height: 440px; }
   .a-arrival-photo { min-height: 380px; }
-  .a-hall-cities button { font-size: 28px; }
-  .a-hall-event strong { font-size: 32px; }
-  .a-hall-foot { padding: 18px; }
+  .a-delegate-header .j-eyebrow { font-size: 10px; }
+  .a-delegate-photo { aspect-ratio: 1.18; }
+  .a-delegate-photo img { object-position: 55% center; }
+  .a-delegate-route { grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; }
+  .a-delegate-origins ul { gap: 6px 14px; }
+  .a-delegate-origins li:not(:last-child)::after { content: none; }
+  .a-delegate-destination { padding-left: 16px; }
+  .a-delegate-destination p > span { max-width: 9em; }
+  .a-delegate-services > div { grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); gap: 16px; }
+  .a-delegate-actions { flex-direction: column; align-items: stretch; width: 100%; gap: 12px; }
+  .a-delegate-actions .j-text-link { align-self: center; }
   .a-enquiry-form { padding: 22px 18px; }
   .a-enquiry-ready { padding: 18px 14px; }
   .a-operations-sheet { padding: 20px; }

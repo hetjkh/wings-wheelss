@@ -2,10 +2,10 @@
 .destinations-page .d-connections { z-index: 8; }
 .destinations-page .d-destination-plan { z-index: 9; }
 .destinations-page .d-final { z-index: 10; }
-.destinations-page .j-footer { z-index: 11; }
+.destinations-page .j-footer { z-index: 21; }
 .d-dubai-trips { margin-top: clamp(36px, 4vw, 72px); }
 .d-dubai-scene { position: relative; min-height: clamp(460px, 42vw, 760px); overflow: hidden; isolation: isolate; background: #514c3e; }
-.d-dubai-scene > img { object-fit: cover; object-position: center; z-index: -2; }
+.d-dubai-scene > img { object-fit: cover; object-position: center top; z-index: -2; }
 .d-dubai-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, #171b1dde, #171b1d08 75%); }
 .d-dubai-strips { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .d-dubai-strips button { position: relative; display: flex; flex-direction: column; justify-content: end; align-items: start; gap: 12px; padding: 32px clamp(14px, 2.5vw, 48px); border: 0; border-right: 1px solid #fff8e94d; color: #fff8e9; text-align: left; background: transparent; cursor: pointer; transition: background .3s; }

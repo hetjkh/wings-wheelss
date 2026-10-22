@@ -40,7 +40,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         const visible = (element: Element) => element.getBoundingClientRect().top < window.innerHeight * .9;
 
         // The opening lines rise into place once, as the page loads.
-        gsap.from(select(".s-hero [data-hero]"), {
+        const heroLines = select(".s-hero [data-hero]");
+        if (heroLines.length) gsap.from(heroLines, {
           yPercent: 40, opacity: 0, duration: 1.1, stagger: .09, delay: .1,
           ease: "power3.out", clearProps: "opacity,transform",
         });
@@ -52,6 +53,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         chapters.slice(0, -1).forEach((section, i) => {
           if (!stacked) return;
           const next = chapters[i + 1];
+          // The masked header pins itself while the map opens.
+          if (section.classList.contains("au-hero") || section.classList.contains("sv-final")) return;
           const hero = section.classList.contains("s-hero");
           if (hero && section.offsetHeight > window.innerHeight + 1) return;
           const tearIn = { "--top-tear-x": "-16px", "--top-tear-scale": 1.35 };
@@ -202,8 +205,10 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           });
         });
         select(".s-final").forEach((section: HTMLElement) => {
+          const photo = section.querySelector(".s-final-photo");
+          if (!photo) return;
           gsap.timeline({ scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: .8 } })
-            .fromTo(section.querySelector(".s-final-photo"), { clipPath: "inset(10% 6% 10% 6% round 24px)", scale: 1.25 }, { clipPath: "inset(0% 0% 0% 0% round 0px)", scale: 1, ease: "none" }, 0);
+            .fromTo(photo, { clipPath: "inset(10% 6% 10% 6% round 24px)", scale: 1.25 }, { clipPath: "inset(0% 0% 0% 0% round 0px)", scale: 1, ease: "none" }, 0);
         });
         select(".s-beyond-video").forEach((video: HTMLElement) => {
           gsap.fromTo(video, { scale: 1.08, yPercent: -2 }, {

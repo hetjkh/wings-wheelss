@@ -10,11 +10,11 @@ import "./home-services.css";
 
 const services = [
   { title: "Flights", phase: "Fly", photo: "/images/library/flight-wing.webp", alt: "An aircraft wing above white clouds and turquoise ocean", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
-  { title: "Hotels", phase: "Stay", photo: "/images/library/business-hotel.webp", alt: "A contemporary hotel room with a desk and wide windows overlooking Dubai", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
+  { title: "Hotels", phase: "Stay", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
   { title: "Visas & documentation", phase: "Arrive", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
   { title: "Airport & ground transfers", phase: "Move", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
   { title: "Holidays & experiences", phase: "Feel", photo: "/images/library/holiday-arrival.webp", alt: "Two holiday travellers with suitcases arriving beside turquoise water", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
-  { title: "Travel support", phase: "Return", photo: "/images/library/travel-support-v2.webp", alt: "Two travel consultants reviewing a world map and planning a route together", position: "center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
+  { title: "Travel support", phase: "Return", photo: "/images/library/home-personal-support.webp", alt: "A concierge helping a traveller review documents at a hotel desk", position: "56% center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
 ] as const;
 
 const total = services.length;

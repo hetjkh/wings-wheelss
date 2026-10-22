@@ -1,4 +1,40 @@
 {
+  "/images/library/corporate-partnership-hero-v2.webp": [
+    1672,
+    941
+  ],
+  "/images/library/services-flights-v3.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/services-hotels-v3.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/services-visas-v4.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/services-visas-v3.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/services-transfers-v3.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/services-holidays-v3.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/services-principle-v3-desktop.webp": [
+    1672,
+    941
+  ],
+  "/images/library/services-principle-v3-mobile.webp": [
+    1086,
+    1448
+  ],
   "/images/library/journey-above-clouds.webp": [
     1672,
     941
@@ -22,6 +58,10 @@
   "/images/library/paris-eiffel.webp": [
     3840,
     2560
+  ],
+  "/images/library/dubai-sunset-v2.webp": [
+    1672,
+    941
   ],
   "/images/library/dubai-panorama.webp": [
     3840,
@@ -251,6 +291,10 @@
     1024,
     1536
   ],
+  "/images/library/services-support-v4.webp": [
+    1536,
+    1024
+  ],
   "/images/library/travel-support-v2.webp": [
     1122,
     1402
@@ -354,5 +398,105 @@
   "/images/about/venice-v2.webp": [
     1536,
     1024
+  ],
+  "/images/library/home-corporate-team.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/home-palm-suite.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/services-event-planner.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/corporate-executive-view.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/corporate-boardroom.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/corporate-team-meeting.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/corporate-airport-lounge.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/partnership-rail-travel.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/partnership-boardroom.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/groups-meeting-room.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/groups-desert-incentive.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/groups-gala.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/groups-rooftop.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/franchise-travel-booking.webp": [
+    2048,
+    2048
+  ],
+  "/images/library/franchise-group-meeting.webp": [
+    2048,
+    2048
+  ],
+  "/images/library/franchise-business-lunch.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/africa-safari-lodge.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/africa-wildlife-drive.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/destinations-rome.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/destinations-spring-tulips.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/destinations-venice.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/europe-lake-como.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/dubai-waterfront.webp": [
+    2752,
+    1536
+  ],
+  "/images/library/about-business-traveller.webp": [
+    2048,
+    2048
+  ],
+  "/images/library/home-personal-support.webp": [
+    2752,
+    1536
   ]
 }

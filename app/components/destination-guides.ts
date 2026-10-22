@@ -75,7 +75,7 @@ export const destinationGuides: DestinationGuide[] = [
   },
   {
     slug: "dubai-uae", name: "Dubai & UAE", line: "Business. Lifestyle. Experiences.", region: "Middle East",
-    photo: "/images/library/dubai-panorama.webp", alt: "Dubai skyline and the Burj Khalifa in clear daylight",
+    photo: "/images/library/dubai-waterfront.webp", alt: "The Burj Khalifa and Dubai skyline reflecting in calm waterfront waters at dusk",
     intro: "A short stop between journeys, a week with family, or business with a little more time around it. Dubai and the UAE can be planned around a very different kind of day, even when the destination stays the same.",
     bestFor: ["City breaks", "Families", "Business", "Groups", "Stopovers"],
     experiences: [
@@ -119,7 +119,7 @@ export const destinationGuides: DestinationGuide[] = [
   },
   {
     slug: "europe", name: "Europe", line: "Cities. Culture. Escapes.", region: "Europe",
-    photo: "/images/library/florence.webp", alt: "Florence and its cathedral beneath the Tuscan hills",
+    photo: "/images/library/europe-lake-como.webp", alt: "A historic lakeside villa and gardens on Lake Como beneath mountain scenery",
     intro: "A single city, time in the countryside, or several places connected thoughtfully. Start with the feeling you want from the trip, then build a route that leaves time to experience each stop.",
     bestFor: ["Culture", "City breaks", "Couples", "Families", "Multi-destination"],
     experiences: [

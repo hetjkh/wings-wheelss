@@ -406,10 +406,10 @@ form .button { justify-self: start; }
 .nav-drop > a { display: inline-flex; align-items: center; gap: 6px; }
 .nav-drop-caret { width: 9px; height: 6px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: rotate .3s; }
 .nav-drop:hover .nav-drop-caret, .nav-drop:focus-within .nav-drop-caret { rotate: 180deg; }
-.nav-drop-menu { position: absolute; z-index: 60; top: 100%; left: 50%; padding-top: 10px; translate: -50% 8px; opacity: 0; visibility: hidden; transition: opacity .25s, translate .3s cubic-bezier(.2, .7, .2, 1), visibility 0s .3s; }
-.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { translate: -50% 0; opacity: 1; visibility: visible; transition-delay: 0s; }
-.nav-drop .nav-drop-panel { display: grid; width: 330px; min-width: 330px; text-transform: none; letter-spacing: 0; padding: 8px; border: 1px solid #3d2d201a; border-radius: 18px; background: #fffdf8; box-shadow: 0 24px 60px #2b211933, 0 2px 8px #2b21191a; color: #3d2d20; }
-.nav-drop-panel::before { content: ''; position: absolute; top: 4px; left: 50%; width: 12px; height: 12px; translate: -50% 0; rotate: 45deg; border-left: 1px solid #3d2d201a; border-top: 1px solid #3d2d201a; background: #fffdf8; }
+.nav-drop-menu { position: absolute; z-index: 60; top: 100%; left: 0; padding-top: 10px; translate: 0 8px; opacity: 0; visibility: hidden; transition: opacity .25s, translate .3s cubic-bezier(.2, .7, .2, 1), visibility 0s .3s; }
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { translate: 0 0; opacity: 1; visibility: visible; transition-delay: 0s; }
+.nav-drop .nav-drop-panel { position: relative; display: grid; width: min(330px, calc(100vw - 48px)); min-width: 260px; text-transform: none; letter-spacing: 0; padding: 8px; border: 1px solid #3d2d201a; border-radius: 18px; background: #fffdf8; box-shadow: 0 24px 60px #2b211933, 0 2px 8px #2b21191a; color: #3d2d20; }
+.nav-drop-panel::before { content: ''; position: absolute; top: -6px; left: 22px; width: 12px; height: 12px; rotate: 45deg; border-left: 1px solid #3d2d201a; border-top: 1px solid #3d2d201a; background: #fffdf8; }
 nav .nav-drop .nav-drop-panel a { position: relative; width: auto; height: auto; margin: 0; white-space: normal; display: grid; grid-template-columns: 28px 1fr; column-gap: 8px; row-gap: 4px; padding: 14px 14px 14px 12px; border-radius: 12px; font: 400 15px/1.15 var(--heading); letter-spacing: 0; text-transform: none; white-space: normal; text-decoration: none; transition: background .2s; }
 nav .nav-drop .nav-drop-panel a::after { display: none; }
 nav .nav-drop .nav-drop-panel a:hover, nav .nav-drop .nav-drop-panel a:focus-visible, nav .nav-drop .nav-drop-panel a[aria-current="page"] { background: #f3ead9; text-decoration: none; }

@@ -5,8 +5,9 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { MaskedHero } from "./masked-hero";
+import { ClosingScene } from "./services-final";
 import { CorporateServices } from "./corporate-services";
-import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -24,7 +25,7 @@ const services = [
   { icon: "bed" as const, title: "Hotels", photo: "/images/library/business-hotel.webp", alt: "A business hotel prepared for a corporate stay", position: "center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
   { icon: "document" as const, title: "Visas & documentation", photo: "/images/library/passport-preparation.webp", alt: "Travel documents laid out before a departure", position: "center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
   { icon: "car" as const, title: "Airport & ground transfers", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller into an airport transfer", position: "center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },
-  { icon: "people" as const, title: "Meetings & events travel", photo: "/images/library/conference.webp", alt: "Delegates gathered in a conference hall", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
+  { icon: "people" as const, title: "Meetings & events travel", photo: "/images/library/corporate-boardroom.webp", alt: "Business delegates in a modern boardroom meeting overlooking a city skyline", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
   { icon: "support" as const, title: "Travel support", photo: "/images/library/solo-consultant.webp", alt: "A travel consultant ready to help when plans change", position: "center", items: ["Changes & rebooking", "Emergency assistance", "Onward travel", "Dedicated support"], service: "Travel support" },
 ];
 
@@ -32,8 +33,8 @@ const day = [
   { time: "06:00", label: "Departure", photo: "/images/library/flight-wing.webp" },
   { time: "09:00", label: "Meeting", photo: "/images/library/business-conversation.webp" },
   { time: "12:30", label: "Client visit", photo: "/images/library/dubai-panorama.webp" },
-  { time: "15:00", label: "Team meeting", photo: "/images/library/travel-support-v2.webp" },
-  { time: "19:30", label: "Return flight", photo: "/images/library/executive-lounge.webp" },
+  { time: "15:00", label: "Team meeting", photo: "/images/library/corporate-team-meeting.webp" },
+  { time: "19:30", label: "Return flight", photo: "/images/library/corporate-airport-lounge.webp" },
 ];
 
 const companies = [
@@ -104,36 +105,21 @@ function Person() {
   return <svg viewBox="0 0 20 28" aria-hidden="true"><circle cx="10" cy="6" r="5" /><path d="M1 28v-6a9 9 0 0 1 18 0v6Z" /></svg>;
 }
 
-function WhatsAppLink({ className }: { className: string }) {
-  return <a className={className} href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={16} />WhatsApp us</a>;
-}
-
 export default function CorporatePage() {
   return <ChapterMotion className="corporate-page">
     <a className="skip-link" href="#people">Skip to content</a>
     <div className="s-progress" aria-hidden="true"><span /></div>
     <JourneyHeader introId="people" />
     <main>
-      <section className="j-hero s-hero k-hero" id="top" aria-labelledby="corporate-hero-heading">
-        <video className="j-photo j-hero-photo" src="/hero.mp4" poster="/images/journey/hero.webp" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
-        <div className="j-hero-shade" />
-        <div className="j-hero-cover-shade" aria-hidden="true" />
-        <div className="j-shell j-hero-content">
-          <div className="j-hero-title">
-            <span className="j-eyebrow" data-hero>Corporate travel</span>
-            <h1 id="corporate-hero-heading"><span className="s-line"><span data-hero>Business</span></span><span className="s-line"><span data-hero>moves fast.</span></span><span className="s-hero-accent" data-hero>So do we.</span></h1>
-          </div>
-          <div className="j-hero-aside">
-            <span className="j-small-rule" data-hero />
-            <p data-hero>From one executive trip to company-wide travel, we handle the details so your people keep moving.</p>
-            <div className="s-actions" data-hero>
-              <Link className="j-button j-button-cream" href="/corporate-partnerships">Become a corporate partner <Arrow /></Link>
-              <EnquiryButton className="j-button j-button-outline-light" service="Corporate travel">Talk to our corporate team</EnquiryButton>
-            </div>
-          </div>
-        </div>
-        <a href="#people" className="j-scroll-note">More than bookings <span>↓</span></a>
-      </section>
+      <MaskedHero
+        id="corporate-hero-heading"
+        eyebrow="Corporate travel"
+        lines={["Business", "moves fast."]}
+        sub="So do we."
+        text="From one executive trip to company-wide travel, we handle the details so your people keep moving."
+        action={{ label: "Become a corporate partner", href: "/corporate-partnerships" }}
+        media={{ image: "/images/library/corporate-executive-view.webp", alt: "An executive looking out over a city park from a high-rise office", position: "46% center" }}
+      />
 
       <section className="k-verbs j-torn-top" id="people" aria-labelledby="people-heading">
         <div className="j-shell k-verbs-grid">
@@ -335,20 +321,26 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="s-final k-final j-torn-top" aria-labelledby="final-heading">
-        <Image className="j-photo s-final-photo" src="/images/library/business-boarding.webp" alt="" fill sizes="100vw" />
-        <div className="s-final-shade" />
-        <div className="j-shell s-final-content">
-          <span className="j-eyebrow">Wings &amp; Wheels</span>
-          <h2 id="final-heading">Your people have<br />somewhere to be.</h2>
-          <p className="s-lead-body">Let us take care of what happens in between.</p>
-          <div className="s-actions">
-            <EnquiryButton className="j-button j-button-cream" service="Corporate travel">Talk to our corporate team</EnquiryButton>
-            <Link className="j-button j-button-outline-light" href="/corporate-partnerships">Become a corporate partner <Arrow /></Link>
-            <WhatsAppLink className="j-button j-button-outline-light" />
-          </div>
-        </div>
-      </section>
+      <ClosingScene
+        chapter="10 / Wings & Wheels"
+        ticket="Corporate travel"
+        left={<>Your people have<br />somewhere to be.</>}
+        right={<>Let us take care<br />of <em>what happens in between.</em></>}
+        photo="/images/library/business-boarding.webp"
+        photoPosition="center 60%"
+        pass={["Boarding pass", "Your team · Our plan"]}
+        from="Your office"
+        to="Their meeting"
+        text="Let us take care of what happens in between — flights, hotels, transfers and support, coordinated around your people."
+        chips={[
+          { icon: "plane", label: "Flights" },
+          { icon: "bed", label: "Hotels" },
+          { icon: "car", label: "Transfers" },
+          { icon: "briefcase", label: "Corporate" },
+          { icon: "support", label: "Support" },
+        ]}
+        action={{ label: "Talk to our corporate team", service: "Corporate travel" }}
+      />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

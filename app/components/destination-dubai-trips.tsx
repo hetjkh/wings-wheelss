@@ -16,7 +16,7 @@ export function DubaiTrips() {
   const [active, setActive] = useState(0);
   return <div className="d-dubai-trips">
     <div className="d-dubai-scene">
-      <Image src="/images/library/dubai-panorama.webp" alt="Dubai skyline and the Burj Khalifa, one city with many ways to experience it" fill sizes="100vw" />
+      <Image src="/images/library/dubai-sunset-v2.webp" alt="Sunset over Dubai, with the Burj Khalifa above an illuminated skyline and turquoise waterfront" fill sizes="100vw" />
       <div className="d-dubai-shade" aria-hidden="true" />
       <div className="d-dubai-strips" aria-label="Ways to experience Dubai">{trips.map((trip, index) => <button key={trip.kind} type="button" aria-pressed={active === index} onClick={() => setActive(index)}>
         <span className="d-dubai-number">0{index + 1}</span><span className="d-dubai-time">{trip.time}</span><strong>{trip.kind}</strong><span className="d-dubai-select" aria-hidden="true">↗</span>

@@ -1,5 +1,12 @@
 /* Closing scene for travel services: a cabin window that opens onto the destination. */
 .services-page .sv-final { z-index: 10; }
+.corporate-page .sv-final { z-index: 12; }
+.groups-page .sv-final { z-index: 14; }
+.partnership-page .sv-final { z-index: 9; }
+.franchise-page .sv-final { z-index: 11; }
+.africa-page .sv-final { z-index: 15; }
+.destinations-page .sv-final { z-index: 20; }
+.destinations-page .j-footer { z-index: 21; }
 .sv-final {
   --fg: #fff8e9; --fg-soft: #ecd9ad;
   --win-w: clamp(220px, 21vw, 400px);
@@ -64,15 +71,8 @@
 .sv-stub-label { display: inline-flex; align-items: center; gap: 8px; font: 400 calc(var(--u) * .68)/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: #8a7760; }
 .sv-stub-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #5d9b62; animation: sv-pulse 1.8s ease-out infinite; }
 @keyframes sv-pulse { 0% { box-shadow: 0 0 0 0 #5d9b6288; } 100% { box-shadow: 0 0 0 9px #5d9b6200; } }
-.sv-go {
-  position: relative; isolation: isolate; display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;
-  padding: 18px 18px 18px 24px; border: 0; border-radius: 100px; overflow: hidden; cursor: pointer;
-  background: var(--ink); color: #fff8e9; font: 400 calc(var(--u) * .8)/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
-}
-.sv-go::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #a18d77; transform: scaleX(0); transform-origin: right; transition: transform .6s var(--sv-ease); }
-.sv-go svg { width: 30px; height: 30px; padding: 7px; border-radius: 50%; background: #fff8e9; color: var(--ink); transition: transform .6s var(--sv-ease); }
-.sv-go:hover::before, .sv-go:focus-visible::before { transform: scaleX(1); transform-origin: left; }
-.sv-go:hover svg { transform: rotate(-45deg); }
+.sv-pass-stub .au-cta { width: 100%; justify-content: space-between; white-space: normal; text-align: left; }
+.sv-pass-stub .au-cta > span:first-child { flex: 1; }
 .sv-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 16px; border: 1px solid #3d2d2026; border-radius: 100px; color: var(--ink); text-decoration: none; font: 400 calc(var(--u) * .78)/1 var(--body); letter-spacing: .1em; text-transform: uppercase; transition: background .35s, border-color .35s, color .35s; }
 .sv-whatsapp:hover, .sv-whatsapp:focus-visible { background: #25d36614; border-color: #1f9d55; color: #1b7a43; }
 .sv-barcode { height: 30px; margin-top: 4px; opacity: .75; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, #0000 2px 4px, var(--ink) 4px 5px, #0000 5px 9px, var(--ink) 9px 12px, #0000 12px 14px, var(--ink) 14px 15px, #0000 15px 19px); }
@@ -96,7 +96,7 @@
   .sv-pass-head, .sv-route small, .sv-stub-label { font-size: 10px; }
   .sv-route strong { font-size: 18px; }
   .sv-pass-text { font-size: 15px; }
-  .sv-chip, .sv-whatsapp, .sv-go { font-size: 12px; }
+  .sv-chip, .sv-whatsapp, .sv-pass-stub .au-cta { font-size: 12px; }
   .sv-pass-stub { padding: 22px 20px; border-left: 0; border-top: 2px dashed #3d2d2026; }
 }
 @media (max-width: 560px) {
