@@ -114,7 +114,8 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
           const fromHero = element.getBoundingClientRect().left - xNow - section.getBoundingClientRect().left;
           return section.clientWidth - element.offsetWidth - inset - fromHero;
         };
-        gsap.timeline({ scrollTrigger: { trigger: section, start: "top top", end: "+=120%", pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true } })
+        // Measure the home hero's pin before the downstream services and travel pins.
+        gsap.timeline({ scrollTrigger: { trigger: section, start: "top top", end: "+=120%", pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: page.classList.contains("home-page") ? 4 : 0 } })
           .fromTo(q(".au-hero-photo, .au-hero-ghost"), { "--map": 1 }, { "--map": 34, ease: "power2.in", duration: 1 }, 0)
           .fromTo(page, { "--hero-fg": "#3d2d20" }, { "--hero-fg": "#fff8e9", ease: "none", duration: .25 }, .3)
           .fromTo(heroInner, { scale: 1.16 }, { scale: 1, ease: "none", duration: 1 }, 0)

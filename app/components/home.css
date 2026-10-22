@@ -31,6 +31,7 @@
   --travel-heading-height: clamp(420px, 37.5vw, 720px);
   --travel-tear-height: clamp(110px, 9vw, 175px);
 }
+.n-travel-chapter { position: relative; }
 .n-travel-heading {
   position: relative;
   z-index: 6;

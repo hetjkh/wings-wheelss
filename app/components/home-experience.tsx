@@ -27,7 +27,8 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
       }
       gsap.from(".n-travel-heading h2", { y: 35, ease: "none", scrollTrigger: { trigger: ".n-travel-heading", start: "top bottom", end: "center center", scrub: .6 } });
       if (desktop) {
-        const pair = gsap.timeline({ scrollTrigger: { id: "home-travel", trigger: ".n-travel", start: "top top", end: () => `+=${window.innerHeight * .75}`, pin: true, scrub: .65, invalidateOnRefresh: true, refreshPriority: 3 } });
+        // Let the heading and both panels enter before holding this taller-than-screen chapter.
+        const pair = gsap.timeline({ scrollTrigger: { id: "home-travel", trigger: ".n-travel-chapter", start: "bottom bottom", end: () => `+=${window.innerHeight * .75}`, pin: true, scrub: .65, invalidateOnRefresh: true, refreshPriority: 3 } });
         pair.fromTo(".n-travel-panel:first-child .n-panel-photo", { yPercent: -4, scale: 1.05 }, { yPercent: 4, scale: 1, ease: "none" }, 0)
           .fromTo(".n-travel-panel:last-child .n-panel-photo", { yPercent: 4, scale: 1.05 }, { yPercent: -4, scale: 1, ease: "none" }, 0)
           .from(".n-panel-copy", { y: 20, opacity: .55, stagger: .08 }, 0);
