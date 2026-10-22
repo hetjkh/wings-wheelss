@@ -7,6 +7,7 @@ import { JourneyFooter } from "./journey-footer";
 import { NetworkMap } from "./network-map";
 import { ChapterMotion } from "./chapter-motion";
 import { AfricaCorridor } from "./africa-corridor";
+import { AfricaDelegates } from "./africa-delegates";
 import { AfricaEnquiry } from "./africa-enquiry";
 import { AfricaLandscape } from "./africa-landscape";
 import { AfricaPurposeScene } from "./africa-purpose-scene";
@@ -46,11 +47,6 @@ const itinerary = [
 ];
 
 const dubaiReasons = ["Business", "Exhibitions", "Holidays", "Groups", "Onward international travel"];
-const delegateOrigins = ["Nairobi", "Kampala", "Juba", "Khartoum", "Tanzania"];
-const delegateServices: { icon: IconKind; label: string }[] = [
-  { icon: "plane", label: "Group flights" }, { icon: "document", label: "Visa assistance" }, { icon: "bed", label: "Hotels" },
-  { icon: "car", label: "Airport transfers" }, { icon: "route", label: "Venue transportation" }, { icon: "people", label: "Delegate travel" }, { icon: "support", label: "Changes & support" },
-];
 const journeys = [
   { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
   { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
@@ -193,14 +189,7 @@ export default function AfricaPage() {
       <section className="a-delegates j-torn-top" id="delegate-travel" aria-labelledby="delegates-heading">
         <div className="j-shell">
           <div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">08 / Exhibitions &amp; delegations</span><h2 id="delegates-heading" className="s-title a-editorial-title">Bringing your team<br />to Dubai?</h2></div><div><p className="a-subhead">We&apos;ll help coordinate what happens before the event starts.</p><p className="a-body">For organisations travelling from Africa to exhibitions, conferences and corporate events in the UAE, W&amp;W can coordinate:</p></div></div>
-          <div className="a-delegate-grid">
-            <div className="a-delegate-plan">
-              <span className="a-plan-label">Different departure points. One event.</span>
-              <div className="a-delegate-flow"><ul>{delegateOrigins.map(city => <li key={city}><TravelIcon kind="plane" size={16} />{city}</li>)}</ul><svg viewBox="0 0 100 250" preserveAspectRatio="none" aria-hidden="true"><path data-trace pathLength={1} d="M0 25H35V225H0M0 75H35M0 125H94M0 175H35M86 117L94 125L86 133" /></svg><div className="a-delegate-event"><TravelIcon kind="people" size={36} /><strong>Dubai<br />event</strong><span>One coordinated arrival</span></div></div>
-              <div className="s-actions"><a className="j-button j-button-cream" href="#africa-enquiry">Plan delegate travel<Arrow /></a><Link className="j-text-link" href="/groups-mice">Explore Groups &amp; MICE<Arrow /></Link></div>
-            </div>
-            <div className="a-delegate-services"><div className="a-delegate-photo"><Image src="/images/library/exhibition.webp" alt="Visitors meeting at a professional trade exhibition" fill sizes="(max-width: 900px) 92vw, 40vw" /></div><ul>{delegateServices.map(service => <li key={service.label}><TravelIcon kind={service.icon} size={20} />{service.label}</li>)}</ul></div>
-          </div>
+          <AfricaDelegates />
         </div>
       </section>
 

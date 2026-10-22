@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "./travel-image";
 import { Arrow } from "./icons";
 import "./home-testimonials.css";
@@ -50,96 +52,93 @@ const voices = [
 
 export function HomeTestimonials() {
   const [active, setActive] = useState(0);
+  const root = useRef<HTMLElement>(null);
   const current = voices[active];
   const total = voices.length;
 
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      const section = document.getElementById("testimonials");
-      if (!section) return;
-      const rect = section.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (!inView) return;
-      if (event.key === "ArrowRight") setActive(i => (i + 1) % total);
-      if (event.key === "ArrowLeft") setActive(i => (i + total - 1) % total);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [total]);
+    const section = root.current;
+    if (!section) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia(section);
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(section.querySelectorAll("[data-voice-reveal]"), {
+        y: 30, opacity: 0, stagger: .12, duration: 1, ease: "power3.out",
+        scrollTrigger: { trigger: section, start: "top 80%", once: true },
+      });
+    });
+    return () => media.revert();
+  }, []);
 
-  const go = (direction: -1 | 1) => setActive(i => (i + direction + total) % total);
+  const go = (direction: -1 | 1) => setActive(index => (index + direction + total) % total);
 
   return (
-    <section className="e-voices" id="testimonials" aria-labelledby="testimonials-title">
-      <div className="e-shell e-voices-head">
+    <section className="e-voices" id="testimonials" aria-labelledby="testimonials-title" ref={root}
+      onKeyDown={event => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          event.preventDefault();
+          go(event.key === "ArrowRight" ? 1 : -1);
+        }
+      }}>
+      <div className="e-shell">
         <div className="e-section-bar">
           <span className="e-label"><span>06</span><span>Voices from the journey</span></span>
           <span className="n-kicker">People before everything</span>
         </div>
-        <h2 id="testimonials-title" data-editorial-title>
-          <span className="e-line"><span>Heard along</span></span>
-          <span className="e-line"><span>the way.</span></span>
-        </h2>
-      </div>
-
-      <div className="e-voices-stage">
-        <div className="e-voices-visual" aria-hidden="true">
-          {voices.map((voice, index) => (
-            <figure key={voice.name} className={`e-voices-frame${index === active ? " is-active" : ""}`}>
-              <Image
-                src={voice.photo}
-                alt=""
-                fill
-                sizes="(max-width: 999px) 100vw, 48vw"
-                className="n-cover"
-                style={{ objectPosition: voice.position }}
-                priority={index === 0}
-              />
-            </figure>
-          ))}
-          <div className="e-voices-shade" />
-          <div className="e-voices-route">
-            <span>{current.kind}</span>
-            <span>{current.route}</span>
+        <div className="e-voices-spread">
+          <div className="e-voices-story">
+            <div className="e-voices-heading" data-voice-reveal>
+              <span className="e-voices-eyebrow">The journeys stay with us.</span>
+              <h2 id="testimonials-title" data-editorial-title>
+                <span className="e-line"><span>Heard along</span></span>
+                <span className="e-line"><span>the way.</span></span>
+              </h2>
+            </div>
+            <div className="e-voices-letter" data-voice-reveal>
+              <span className="e-voices-quote-mark" aria-hidden="true">“</span>
+              <div id="e-voices-current" aria-live="polite" aria-atomic="true">
+                <blockquote key={current.name} className="e-voices-quote"><p>{current.quote}</p></blockquote>
+                <div className="e-voices-person">
+                  <span className="e-voices-person-rule" aria-hidden="true" />
+                  <div><strong>{current.name}</strong><span>{current.role}</span></div>
+                </div>
+              </div>
+            </div>
+            <div className="e-voices-controls" data-voice-reveal>
+              <span className="e-voices-index"><b>{String(active + 1).padStart(2, "0")}</b> / {String(total).padStart(2, "0")}</span>
+              <div>
+                <button type="button" className="e-voices-nav" onClick={() => go(-1)} aria-label="Previous testimonial" aria-controls="e-voices-current"><Arrow back /></button>
+                <button type="button" className="e-voices-nav" onClick={() => go(1)} aria-label="Next testimonial" aria-controls="e-voices-current"><Arrow /></button>
+              </div>
+            </div>
+          </div>
+          <div className="e-voices-visual" data-voice-reveal>
+            {voices.map((voice, index) => (
+              <figure key={voice.name} className={`e-voices-frame${index === active ? " is-active" : ""}`} aria-hidden={index !== active}>
+                <Image src={voice.photo} alt={voice.alt} fill sizes="(max-width: 700px) 90vw, 48vw" className="n-cover" style={{ objectPosition: voice.position }} />
+              </figure>
+            ))}
+            <div className="e-voices-shade" />
+            <span className="e-voices-photo-note">Field notes / {String(active + 1).padStart(2, "0")}</span>
+            <div className="e-voices-destination" aria-hidden="true">
+              <span>{current.kind}</span><strong>{current.route.split(" → ").at(-1)}</strong>
+              <span className="e-voices-photo-route">{current.route}</span>
+            </div>
+            <span className="e-voices-photo-corner" aria-hidden="true">↗</span>
           </div>
         </div>
-
-        <div className="e-voices-copy">
-          <span className="e-voices-mark" aria-hidden="true">“</span>
-          <blockquote key={current.name} className="e-voices-quote">
-            <p>{current.quote}</p>
-          </blockquote>
-          <footer className="e-voices-person">
-            <div>
-              <strong>{current.name}</strong>
-              <span>{current.role}</span>
-            </div>
-            <span className="e-voices-index" aria-live="polite">
-              {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
-          </footer>
-
-          <div className="e-voices-controls">
-            <button type="button" className="e-voices-nav" onClick={() => go(-1)} aria-label="Previous testimonial">
-              <Arrow back />
-            </button>
-            <div className="e-voices-dots" role="tablist" aria-label="Choose a testimonial">
-              {voices.map((voice, index) => (
-                <button
-                  key={voice.name}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === active}
-                  aria-label={`Show testimonial from ${voice.name}`}
-                  className={index === active ? "is-active" : undefined}
-                  onClick={() => setActive(index)}
-                />
-              ))}
-            </div>
-            <button type="button" className="e-voices-nav" onClick={() => go(1)} aria-label="Next testimonial">
-              <Arrow />
-            </button>
-          </div>
+        <div className="e-voices-bottom">
+          <span className="e-voices-select-label">Every journey.<br /><em>A different story.</em></span>
+          <ol className="e-voices-rail" aria-label="Choose a testimonial">
+            {voices.map((voice, index) => <li key={voice.name}>
+              <button type="button" className={index === active ? "is-active" : ""} aria-pressed={index === active} aria-controls="e-voices-current" aria-label={`Read ${voice.name}'s testimonial: ${voice.route}`} onClick={() => setActive(index)}>
+                <span className="e-voices-tab-number">{String(index + 1).padStart(2, "0")}</span>
+                <span><b>{voice.kind}</b><i>{voice.route}</i></span>
+                <span className="e-voices-tab-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>)}
+          </ol>
         </div>
       </div>
     </section>

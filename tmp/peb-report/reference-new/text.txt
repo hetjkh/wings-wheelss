@@ -1,0 +1,2672 @@
+PAGE 1
+A
+INTERNSHIP REPORT
+ON
+STRUCTURAL DESIGN OF G+13 RESIDENTIAL CUM
+COMMERCIAL BUILDING “OM AKANT”, SARGASAN,
+GANDHINAGAR
+Submitted by
+PATANI BHAVESH VASANTBHAI
+Enrolment No.: 25014171013
+A Report Submitted to Ganpat University
+in Partial Fulfilment of the Requirements for
+Master of Technology in Civil Engineering
+(Structural Engineering)
+DEPARTMENT OF CIVIL ENGINEERING
+U.V. PATEL COLLEGE OF ENGINEERING
+GANPAT UNIVERSITY,
+KHERVA – MEHSANA, GUJARAT
+Academic Year 2026 – 27
+
+PAGE 2
+CERTIFICATE
+This is to certify that the internship report submitted along with the internship entitled
+“STRUCTURAL
+DESIGN
+OF
+G+13
+RESIDENTIAL
+CUM
+COMMERCIAL
+BUILDING – OM AKANT, SARGASAN, GANDHINAGAR” was carried out by the
+following student studying at U.V. Patel College of Engineering for partial fulfilment of
+Master of Technology in Civil Engineering (Structural Engineering). This work has been
+carried out under my supervision and is up to my satisfaction.
+PATANI BHAVESH VASANTBHAI
+Enrolment No.: __________________
+Date:
+Place: KHERVA
+_______________________
+Prof. [
+]
+
+PAGE 3
+ABSTRACT
+To meet the requirements of today’s competitive world, engineering students must have
+practical knowledge along with their theoretical knowledge. A postgraduate student of
+structural engineering learns the analysis and design of members in the class, but the
+exposure to a real project, where the loads, the architecture, the codes and the construction
+practice come together, is possible only through an internship.
+This report describes the four-week structural engineering training on “OM AKANT”, a
+Ground + 13 storeyed residential-cum-commercial RCC building with two basement levels,
+three blocks (A, B and C) and an estimated cost of Rs. 70 crore, located at Sargasan,
+Gandhinagar. The building has shops on the Ground and First floor, 3 BHK, 4 BHK and
+duplex apartments on the upper floors, a podium garden and a terrace amenity deck. The
+structure is a dual system of RCC frames and shear walls (lift and staircase cores).
+The first week deals with the preliminary information of the project, the type of structure, the
+design loads (dead, live, wind and seismic) and the load cases. The second week covers the
+analysis of the slab, beam, column, shear wall and staircase with shear force and bending
+moment diagrams. The third week covers the proportioning and design of the members as per
+IS 456:2000 and IS 13920:2016, and the fourth week covers the general notes for design and
+detailing and the detailed drawings. A separate chapter explains the three-dimensional model
+of the building prepared for analysis in ETABS and the deflection, drift and stability checks
+that will be made.
+
+PAGE 4
+TABLE OF CONTENTS
+CHAPTER 1: INTRODUCTION.......................................................................................................12
+1.1 General...................................................................................................................................... 12
+1.2 About the Project.......................................................................................................................12
+1.3 Location and Site Details...........................................................................................................13
+1.4 Type of Structure.......................................................................................................................14
+1.5 Concept of Residential cum Commercial Planning...................................................................15
+1.6 Site Photographs........................................................................................................................15
+1.7 Objectives and Scope of the Internship.....................................................................................18
+1.8 Methodology..............................................................................................................................19
+CHAPTER 2: DETAILED PROJECT DESCRIPTION................................................................. 20
+2.1 Architectural Overview............................................................................................................. 20
+2.2 Block-wise Details.....................................................................................................................22
+2.2.1 Unit types.........................................................................................................................22
+2.3 Floor-wise Planning...................................................................................................................26
+2.4 Basement and Parking...............................................................................................................28
+2.5 Amenities...................................................................................................................................29
+2.6 Specifications and Brands......................................................................................................... 30
+CHAPTER 3: STRUCTURAL ENGINEERING TRAINING – 1st WEEK..................................32
+3.1 Preliminary Information of the Project......................................................................................32
+3.2 Types of Structure..................................................................................................................... 32
+3.2.1 Classification of the structure.......................................................................................... 32
+3.2.2 Structural elements...........................................................................................................33
+3.2.3 Structural layout...............................................................................................................33
+3.3 Design Load Calculation...........................................................................................................35
+3.3.1 Dead load......................................................................................................................... 35
+3.3.2 Imposed (live) load.......................................................................................................... 36
+3.3.3 Wind load (IS 875 Part 3)................................................................................................36
+3.3.4 Earthquake load (IS 1893 Part 1: 2016)...........................................................................36
+3.4 Load Cases and Load Combinations.........................................................................................37
+CHAPTER 4: STRUCTURAL ENGINEERING TRAINING – 2nd WEEK................................39
+4.1 Method of Analysis................................................................................................................... 39
+4.2 Analysis of Slab.........................................................................................................................39
+4.3 Analysis of Beam – Shear Force and Bending Moment........................................................... 40
+4.4 Analysis of Columns – Load Build-up......................................................................................41
+4.5 Analysis of Shear Walls and Lift Cores.................................................................................... 43
+
+PAGE 5
+4.6 Analysis of Staircase................................................................................................................. 43
+CHAPTER 5: STRUCTURAL ENGINEERING TRAINING – 3rd WEEK................................ 44
+5.1 Proportioning of Structural Members........................................................................................44
+5.2 Design of Slab........................................................................................................................... 44
+5.3 Design of Beam.........................................................................................................................45
+5.4 Design of Column......................................................................................................................46
+5.5 Design of Shear Wall and Staircase.......................................................................................... 47
+5.6 Foundation.................................................................................................................................47
+CHAPTER 6: STRUCTURAL ENGINEERING TRAINING – 4th WEEK.................................49
+6.1 General Notes for Design and Detailing................................................................................... 49
+6.2 Detailing Requirements.............................................................................................................50
+6.3 Detailed Drawings of the Structural Members..........................................................................50
+CHAPTER 7: MODELLING AND ANALYSIS IN ETABS...........................................................58
+7.1 About ETABS........................................................................................................................... 58
+7.2 Modelling Steps.........................................................................................................................58
+7.3 Expected Results and Checks....................................................................................................61
+CHAPTER 8: CONCLUSION............................................................................................................65
+References....................................................................................................................................... 65
+
+PAGE 6
+LIST OF FIGURES
+Figure 1.1: Location map of OM AKANT (source: project brochure)..................................................14
+Figure 1.2: General view of the building from the road side.................................................................16
+Figure 1.3: View of the building along the side facade with scaffolding and safety net.......................17
+Figure 1.4: Close view of balcony slabs and railings............................................................................ 18
+Figure 2.1: Architectural view of OM AKANT (evening view, source: brochure)...............................20
+Figure 2.2: Aerial view of the three blocks, podium garden and terrace amenities...............................21
+Figure 2.3: Front elevation of OM AKANT showing Block A, B and C..............................................22
+Figure 2.4: 4 BHK unit plan of Block A (source: brochure)................................................................. 23
+Figure 2.5: 4 BHK unit plan of Block A – second type.........................................................................24
+Figure 2.6: 3 BHK unit plan of Block B................................................................................................24
+Figure 2.7: 3 BHK unit plan of Block C................................................................................................25
+Figure 2.8: 3 BHK unit plan of Block C (275 sq. yd.)...........................................................................25
+Figure 2.9: 3 BHK duplex unit plans of Block C (500 / 550 sq. yd.).................................................... 26
+Figure 2.10: 1st and 2nd floor plan (source: brochure)..........................................................................27
+Figure 2.11: 3rd to 13th floor plan and terrace plan (source: brochure)................................................27
+Figure 2.12: Ground floor plan with legends (source: brochure).......................................................... 28
+Figure 2.13: 1st and 2nd basement plan (source: brochure).................................................................. 29
+Figure 2.14: Amenities of OM AKANT (source: brochure)................................................................. 30
+Figure 2.15: Specifications and brands used (source: brochure)........................................................... 31
+Figure 3.1: Ground floor slab-beam grid working plan (FP-11, R01, 26.03.2026)...............................34
+Figure 3.2: Structural layout at 2nd to 10th floor slab level – Block B and Block C............................35
+Figure 4.1: Bending moment diagram of the two-way slab panel (to be inserted)................................40
+Figure 4.2: Shear force diagram of the typical beam (to be inserted)....................................................41
+Figure 4.3: Bending moment diagram of the typical beam (to be inserted).......................................... 41
+Figure 4.4: Axial force diagram of a typical column line (to be inserted).............................................42
+Figure 5.1: Reinforcement detail of the typical beam 230 × 600 (to be inserted)................................. 46
+Figure 5.2: Column schedule and reinforcement detail (to be inserted)................................................47
+Figure 6.1: Typical floor slab-beam layout – Block A.......................................................................... 51
+Figure 6.2: Beam reinforcement details at 2nd to 10th floor slab level – Block B and C (sheet 1)...... 52
+Figure 6.3: Beam reinforcement details at 2nd to 10th floor slab level – Block B and C (sheet 2)...... 53
+Figure 6.4: Column layout and column schedule (typical)....................................................................54
+Figure 6.5: Staircase ST1 and ST2 – plan and section...........................................................................55
+Figure 6.6: Shear wall / lift core reinforcement details..........................................................................56
+Figure 6.7: Cantilever balcony slab with balcony beam detail..............................................................57
+Figure 7.1: ETABS – 3D view of the model of OM AKANT (to be inserted)......................................59
+
+PAGE 7
+Figure 7.2: ETABS – typical floor plan view (to be inserted)...............................................................60
+Figure 7.3: ETABS – load assignment (dead, live, wall load) (to be inserted)..................................... 60
+Figure 7.4: ETABS – deformed shape under earthquake / wind load (to be inserted)..........................62
+Figure 7.5: ETABS – bending moment diagram of frame (to be inserted)........................................... 62
+Figure 7.6: ETABS – shear force diagram of frame (to be inserted).....................................................63
+Figure 7.7: ETABS – storey displacement and storey drift graphs (to be inserted).............................. 63
+Figure 7.8: ETABS – concrete frame design output (to be inserted).....................................................64
+
+PAGE 8
+LIST OF TABLES
+Table 1.1: Salient features of the project............................................................................................... 13
+Table 1.2: Codes and standards used..................................................................................................... 19
+Table 2.1: Block-wise summary of the building....................................................................................22
+Table 2.2: Apartment unit types as per the brochure.............................................................................22
+Table 2.3: Floor-wise use of the building.............................................................................................. 26
+Table 2.4: Specifications of the project as given in the brochure..........................................................30
+Table 3.1: Preliminary structural data of the project............................................................................. 32
+Table 3.2: Structural elements of OM AKANT.....................................................................................33
+Table 3.3: Unit weights of materials (IS 875 Part 1)............................................................................. 35
+Table 3.4: Dead load on a typical floor slab (D = 175 mm).................................................................. 35
+Table 3.5: Line loads of walls on beams................................................................................................35
+Table 3.6: Live loads adopted (IS 875 Part 2)....................................................................................... 36
+Table 3.7: Indicative wind pressure on the building..............................................................................36
+Table 3.8: Seismic parameters............................................................................................................... 37
+Table 3.9: Load combinations (IS 456 Table 18 and IS 1893 cl. 6.3.4)................................................37
+Table 4.1: Bending moments in the two-way slab panel (per metre width)..........................................39
+Table 4.2: Load on the beam (per metre length)....................................................................................40
+Table 4.3: Shear force and bending moment of the beam..................................................................... 40
+Table 4.4: Column axial load build-up (interior column, tributary area 25 m²).................................... 42
+Table 4.5: Summary of the analysis results of Week 2..........................................................................43
+Table 5.1: Preliminary proportioning of members.................................................................................44
+Table 5.2: Reinforcement of the two-way slab......................................................................................44
+Table 5.3: Flexural reinforcement of the beam......................................................................................45
+Table 5.4: Summary of column design (design basis)...........................................................................46
+Table 5.5: Dimensions of the structural members (design basis).......................................................... 47
+Table 6.1: Detailing requirements for ductile design (IS 13920:2016)................................................. 50
+Table 7.1: Serviceability and stability checks to be made in ETABS................................................... 61
+
+PAGE 9
+CHAPTER 1: INTRODUCTION
+1.1 General
+Structural engineering is the branch of civil engineering that deals with the planning, analysis and
+design of the load-carrying system of a building so that it remains safe, serviceable and economical
+throughout its life. For a postgraduate student of Structural Engineering, theoretical knowledge of the
+analysis and design of reinforced concrete members becomes meaningful only when it is applied to a
+real building, with real architectural constraints, real loads and real construction practice. The
+internship described in this report was carried out with this objective: to follow the complete
+structural design process of a multi-storeyed mixed-use building, from the first collection of project
+data up to the preparation of detailed structural drawings.
+The building studied during the internship is “OM AKANT”, a Ground + 13 storeyed residential-
+cum-commercial building with two basement levels, situated at Sargasan, Gandhinagar, Gujarat. The
+project is being developed by Om Buildcon. The building is a reinforced cement concrete (RCC)
+framed structure supported by shear walls / lift cores and is divided into three blocks, namely Block
+A, Block B and Block C. The lower floors (Ground and First floor) are planned as shops
+(commercial use), whereas the upper floors accommodate 3 BHK, 4 BHK and duplex apartments
+(residential use) together with a landscaped podium and a terrace-level amenity deck.
+This report presents the four weeks of structural training in a chapter-wise manner. Week 1 covers
+preliminary information of the project, types of structure, design load calculation and load case
+details. Week 2 covers analysis of structural members, shear force and bending moment of various
+structural elements. Week 3 covers proportioning and dimensions of structural members and design
+of the members. Week 4 covers the general notes for design and detailing and the detailed drawings
+of all structural members. A separate chapter explains the three-dimensional model that is to be
+prepared and run in ETABS for the complete building.
+1.2 About the Project
+OM AKANT is positioned as a premium residential address with ground-level retail. The
+development consists of 3 BHK and 4 BHK apartments and a small number of duplex units, a
+basement parking facility on two levels, shops on the Ground and First floors and a rich set of
+community amenities such as a party lawn, splash pool, amphitheatre, skating rink, multipurpose
+court, indoor games room, digital library and pergola sit-outs. The architectural theme of the building
+is the undulating, wave-like balcony edge which can clearly be seen on the elevation of the building
+(Figure 2.1 to Figure 2.3) and which also strongly influences the structural layout, because the
+balconies are formed by curved cantilever slabs and balcony beams.
+
+PAGE 10
+Table 1.1: Salient features of the project
+Sr.
+Particulars
+Details
+1
+Name of project
+OM AKANT
+2
+Developer
+Om Buildcon (Om Group)
+3
+Architect
+Space Edge Design Studio (SE.DS)
+4
+Structural consultant
+PCUBE Consultants
+5
+Site address
+FP-11, TP-26, Near Pramukh Abode, 36 m wide road, Near Kh-Road,
+Sargasan, Gandhinagar
+6
+Type of structure
+RCC framed structure with shear walls / lift cores; Residential +
+Commercial
+7
+Number of storeys
+Two basements + Ground + 13 upper floors (G+13) + terrace
+8
+Number of blocks
+Three – Block A, Block B and Block C
+9
+Apartment types
+3 BHK, 4 BHK and 3 BHK duplex
+10
+Commercial component
+Shops on Ground floor and First floor
+11
+Estimated project cost
+Rs. 70 Crore
+12
+Project start date
+17/01/2024
+13
+Project completion date
+03/03/2027
+1.3 Location and Site Details
+The project is located at Sargasan in Gandhinagar, on the S.G. Highway corridor, which is one of the
+fastest-growing residential and commercial belts between Ahmedabad and Gandhinagar. The plot is a
+Final Plot (FP-11) of Town Planning Scheme No. 26 and is surrounded by roads on two sides: a 36 m
+wide road on the east / north-east and an 18 m wide road on the south side, as shown on the ground
+floor plan of the brochure. The shops are therefore oriented towards the roads, while the residential
+entrance, drop-off zone and landscaped podium are arranged along the inner side of the plot.
+Gandhinagar lies in Seismic Zone III as per IS 1893 (Part 1): 2016, and the basic wind speed for the
+area is 39 m/s as per IS 875 (Part 3): 2015. The soil conditions in the region are generally of the
+medium soil type. These three data decide the lateral load effects on the building and are used in
+Chapter 3 and Chapter 7.
+
+PAGE 11
+Figure 1.1: Location map of OM AKANT (source: project brochure)
+The map shows the site near Pramukh Abode, Suryaa Circle and the S.G. Highway, with Sargasan Chowkdi
+towards the south-east.
+1.4 Type of Structure
+The building is a multi-storeyed RCC framed structure. The vertical load path is: slab →
+secondary / main beams →columns (and shear walls at the lift and staircase cores) →foundation.
+Lateral loads due to earthquake and wind are resisted by the combined action of the moment-resisting
+frames and the RCC core walls around the lifts and staircases, so the building behaves as a dual
+(frame + shear wall) system. The floor system consists of cast-in-situ two-way slabs of 150 mm and
+175 mm thickness (as written on the structural layout drawings) supported on beams, the stair cases
+are of the waist-slab type, and the curved balconies are cantilever slabs supported on balcony beams
+(marked BK1 / SBK1 on the drawings).
+Because the Ground and First floors are shops and the upper floors are apartments, the column grid of
+the lower floors has to give large clear spans for the shops and for the two-level basement parking,
+whereas on the upper floors the columns are fitted into the walls of the apartments. The structural
+consultant achieves this by keeping the columns on the same grid lines through all floors as far as
+possible, and by using deeper beams where the grid changes. The staircases and lift shafts are
+designed as RCC cores which also increase the lateral stiffness of the building.
+
+PAGE 12
+1.5 Concept of Residential cum Commercial Planning
+Residential-cum-commercial (mixed-use) buildings combine the revenue of retail space with the
+demand for apartments. In OM AKANT the following planning concept has been followed:
+•
+Basements (two levels): car and two-wheeler parking with ramp, driveways and lift /
+staircase lobbies of each block reaching the basement.
+•
+Ground floor: shops (Shop 01 to Shop 22, including sub-numbered shops) facing the roads,
+foyers of Block A, B and C, a security cabin, entrance gate, drop-off zone, and the landscaped
+podium with walkway, splash pool, party lawn, amphitheatre, skating rink, human-size ludo
+and multipurpose court.
+•
+First floor: shops (Shop 101 to Shop 114) with 7'2" wide passage, lifts and staircases
+continuing to the upper floors.
+•
+Second floor: first residential floor with units 201, 202 and 203 and large open terraces over
+the shop podium.
+•
+Third to Thirteenth floor: typical apartment floors – 4 BHK units in Block A and 3 BHK
+units in Block B and Block C; twelfth floor of Block C has duplex units (1201, 1202 and
+1203).
+•
+Terrace: common amenity deck with indoor game area, pergola sitting, yoga deck, gazebo,
+senior citizen sitting area, open air amphitheatre, central sitting plaza, Zula court, barbecue
+area and digital library.
+Separate entry foyers and lifts are provided for the residents of each block, and the commercial users
+enter directly from the road, so that the movement of shop customers and residents does not mix.
+1.6 Site Photographs
+The photographs below were taken during the visit to the site. The RCC frame has reached the terrace
+level, the curved balconies with MS railings are visible on the elevation, the brickwork / openings of
+the upper floors are under progress, and the facade is covered with safety net on scaffolding. The
+advertisement hoardings of the project are fixed above the shop podium.
+
+PAGE 13
+Figure 1.2: General view of the building from the road side
+The photograph shows the 14-level building with the shop podium at the base, the curved balcony slabs and
+the vertical service ducts on the face of the core.
+
+PAGE 14
+Figure 1.3: View of the building along the side facade with scaffolding and safety net
+Safety net and tubular scaffolding on the long facade of the building; the shop podium is visible at the base.
+
+PAGE 15
+Figure 1.4: Close view of balcony slabs and railings
+The balcony slabs follow a wavy plan shape; the MS railing (golden colour) is already fixed on many floors.
+1.7 Objectives and Scope of the Internship
+•
+To understand the complete structural design workflow of a multi-storeyed residential-cum-
+commercial building.
+•
+To study the architectural plans and prepare a structural layout (column, beam and slab grid)
+that follows the architectural centre lines.
+•
+To calculate dead, live, wind and seismic loads as per IS 875 and IS 1893 and prepare the
+load cases and load combinations.
+•
+To analyse slabs, beams, columns and shear walls and to draw shear force and bending
+moment diagrams.
+•
+To proportion and design the members as per IS 456:2000 and to detail them as per IS
+13920:2016 (ductile detailing).
+•
+To understand the general notes, structural drawings and reinforcement detailing, and to
+prepare a 3D analysis model in ETABS.
+
+PAGE 16
+1.8 Methodology
+The work was carried out in the following sequence: (i) collection of architectural drawings and the
+project brochure, (ii) study of the structural grid drawings issued by the consultant, (iii) calculation of
+loads and load combinations, (iv) analysis of members by manual methods and by the computer
+model, (v) proportioning and design of members, and (vi) preparation of the general notes and
+detailing. The codes and standards that were followed throughout are listed in Table 1.2.
+Table 1.2: Codes and standards used
+Sr.
+Code
+Used for
+1
+IS 456:2000
+Plain and reinforced concrete – design of members
+2
+IS 875 (Part 1): 1987
+Dead loads – unit weights of building materials
+3
+IS 875 (Part 2): 1987
+Imposed (live) loads
+4
+IS 875 (Part 3): 2015
+Wind loads
+5
+IS 1893 (Part 1): 2016
+Earthquake resistant design of structures
+6
+IS 13920:2016
+Ductile design and detailing of RC structures subjected to seismic
+forces
+7
+SP 16 and SP 34
+Design aids and handbook on concrete reinforcement and detailing
+8
+IS 1786:2008
+High strength deformed steel bars (Fe 500D)
+
+PAGE 17
+CHAPTER 2: DETAILED PROJECT DESCRIPTION
+2.1 Architectural Overview
+The building has a long rectangular footprint with a chamfered / curved corner at the junction of the
+two roads. The three blocks are joined above the shop podium and are separated by lift-and-staircase
+cores. Figure 2.1 and Figure 2.2 show the architectural view of the project and the aerial view of the
+three blocks with the podium garden.
+Figure 2.1: Architectural view of OM AKANT (evening view, source: brochure)
+The dark vertical bands are the end walls of Block A; the curved balcony edges run through all floors of the
+typical floors.
+
+PAGE 18
+Figure 2.2: Aerial view of the three blocks, podium garden and terrace amenities
+The podium garden contains the party lawn, splash pool, deck and children’s play area. The terrace of Block A
+/ B / C is connected by the amenity deck.
+Figure 2.3: Front elevation of OM AKANT showing Block A, B and C
+The three blocks are placed side-by-side. The shops with fascia boards are provided on Ground and First floor.
+
+PAGE 19
+2.2 Block-wise Details
+Table 2.1: Block-wise summary of the building
+Block
+Type of units
+Floors
+Units per
+typical floor
+Remarks
+A
+4 BHK (350 – 362 sq. yd.)
+2nd to 11th
+2
+Unit Nos. 301/302 … 1101/1102
+B
+3 BHK (290 sq. yd.)
+2nd to 13th
+2
+Unit Nos. 301/302 … 1301/1302
+C
+3 BHK (260 and 275 sq. yd.)
++ duplex
+2nd to 13th
+3
+Duplex units 1201, 1202 and 1203
+(500 – 550 sq. yd.)
+The residential floors begin from the second floor, over the shop podium (Ground and First floor).
+The total number of residential units, derived from the unit numbering of the brochure, is
+approximately 77 units (about 7 units on the 2nd floor, 7 units on each of the typical 3rd to 11th
+floors, 5 units on the 12th floor and 2 units on the 13th floor). This number should be confirmed with
+the developer before it is used in any document.
+2.2.1 Unit types
+Table 2.2: Apartment unit types as per the brochure
+Block
+Unit Nos.
+Type
+Area (sq. yd.)
+A
+301, 501, 701, 901, 1101
+4 BHK
+350
+A
+401, 601, 801, 1001
+4 BHK
+354
+A
+302, 502, 702, 902, 1102
+4 BHK
+350
+A
+402, 602, 802, 1002
+4 BHK
+362
+B
+301 to 1301 and 302 to 1302
+3 BHK
+290
+C
+301 to 1101 and 302 to 1102
+3 BHK
+260
+C
+303 to 1103
+3 BHK
+275
+C
+1201 and 1202
+3 BHK duplex
+500 / 520
+C
+1203
+3 BHK duplex
+550
+Typical room sizes of the 4 BHK unit of Block A are: living room 24'8" × 15'0", kitchen / dining
+16'0" × 14'11", bedroom I 14'0" × 11'0", bedroom II 15'0" × 12'0" and bedroom III 13'0" × 10'0",
+with a curved balcony of about 25'4" length. The 3 BHK units of Block B and Block C have a living /
+dining room of about 20'0" × 19'4" and a long wavy balcony of about 31'0" length. These room sizes
+decide the beam spans (generally 3.5 m to 6.0 m) and the cantilever length of the balcony slabs.
+
+PAGE 20
+Figure 2.4: 4 BHK unit plan of Block A (source: brochure)
+Unit Nos. 301, 501, 701, 901, 1101 (350 sq. yd.) and 401, 601, 801, 1001 (354 sq. yd.).
+Figure 2.5: 4 BHK unit plan of Block A – second type
+Unit Nos. 302, 502, 702, 902, 1102 (350 sq. yd.) and 402, 602, 802, 1002 (362 sq. yd.).
+
+PAGE 21
+Figure 2.6: 3 BHK unit plan of Block B
+Unit Nos. 301 to 1301 and 302 to 1302 (290 sq. yd.).
+Figure 2.7: 3 BHK unit plan of Block C
+Unit Nos. 301 to 1101 and 302 to 1102 (260 sq. yd.).
+
+PAGE 22
+Figure 2.8: 3 BHK unit plan of Block C (275 sq. yd.)
+Unit Nos. 303 to 1103 (275 sq. yd.).
+Figure 2.9: 3 BHK duplex unit plans of Block C (500 / 550 sq. yd.)
+Duplex units 1201 to 1203 spread over the twelfth and thirteenth floor levels; a double-height dining / living
+room is provided.
+
+PAGE 23
+2.3 Floor-wise Planning
+Table 2.3: Floor-wise use of the building
+Level
+Use
+Main structural features
+2nd Basement
+Parking
+Driveway 4.43 m to 6.0 m wide; retaining wall; ramp
+1st Basement
+Parking
+Driveway 4.43 m to 5.7 m wide; ramp to ground
+Ground floor
+Shops, foyers, podium
+garden
+Shops 01 to 22; 6'0" wide passage; entrance plaza; slab 150
+mm
+1st floor
+Shops
+Shops 101 to 114; 7'2" wide passage; lifts and staircases
+2nd floor
+Apartments + terraces
+Units 201, 202, 203; large terraces on podium
+3rd to 13th floor
+Apartments (typical)
+4 BHK in Block A; 3 BHK in Block B and C; slab 175 /
+150 mm; wavy balconies
+Terrace
+Amenity deck
+Pergola, gazebo, amphitheatre, indoor games, lower
+terraces
+Figure 2.10: 1st and 2nd floor plan (source: brochure)
+The first floor consists of shops with 7'2" wide passages; the second floor consists of the first residential units
+with terraces.
+
+PAGE 24
+Figure 2.11: 3rd to 13th floor plan and terrace plan (source: brochure)
+Typical floor: Block A (right), Block B (centre) and Block C (left); the terrace plan shows the amenity deck.
+Figure 2.12: Ground floor plan with legends (source: brochure)
+The legends are: 01 entrance gate, 02 security cabin, 03 drop off zone, 04 entrance plaza with water element,
+05 walkway with vertical garden, 06 splash pool, 07 wooden deck, 08 children play area, 09 amphitheatre, 10
+party lawn, 11 deck area, 12 jhula court, 13 skating rink, 14 human size ludo, 15 multipurpose court, 16
+seating area, 17 American basketball, 18 palm court and 19 multipurpose hall.
+
+PAGE 25
+2.4 Basement and Parking
+Two basement levels are provided for parking. The basement of each block is connected with the
+block lifts and staircase foyers. The driveways are 4.43 m, 5.1 m, 5.7 m and 6.0 m wide and the ramp
+connects the basements with each other and with the ground floor. The retaining walls of the
+basements are designed for earth pressure plus surcharge and the basement slabs are designed for car
+parking loads (live load 2.5 kN/m² as per IS 875 Part 2 for cars of light vehicles) and for the fire
+tender load on the podium.
+Figure 2.13: 1st and 2nd basement plan (source: brochure)
+Parking bays are arranged on both sides of the driveways with the foyers of Block A, B and C reaching the
+basement.
+2.5 Amenities
+The following amenities are provided to the residents: drop off zone, CCTV camera, entrance gate,
+senior citizen sit-out, party lawn, splash pool, amphitheatre, water body, 24 × 7 security, children
+play area, jogging track, landscape garden, skating rink, human size ludo, multipurpose court,
+multipurpose hall, indoor game area, digital library, barbecue area, gazebo and pergola sitting. The
+amenities that are located on the podium and on the terrace (pergolas, water body, deck and
+landscape) are important for the structural design because the podium slab has to carry the earth fill,
+planter walls, water body and a larger live load than the typical floor.
+
+PAGE 26
+Figure 2.14: Amenities of OM AKANT (source: brochure)
+2.6 Specifications and Brands
+Table 2.4: Specifications of the project as given in the brochure
+Item
+Specification
+Structure
+Earthquake resistant R.C.C. work
+Flooring
+Unique premium quality vitrified tiles; designer high density tiles for terrace
+Kitchen
+Granite top platform with S.S. sink; designer glazed tiles dado up to lintel level
+Door and windows
+Decorative main door with wooden frame; flush doors with wooden frame;
+aluminium sliding windows with heat reflective glass
+Electrification
+Concealed copper wiring with premium modular switches
+Wall finish
+Internal smooth cement plaster with putty finish; external double coat sand-face
+plaster; quality acrylic paint
+Treatment
+Anti-termite treatment
+Toilet / plumbing
+Designer glazed tiles up to lintel level; premium quality bath fittings and sanitary
+ware
+The brochure also lists the brands used for steel (ISI or equivalent), cement (UltraTech, Sanghi,
+Ambuja), flooring (Simpolo, Qutone, Leopard, Kajaria), bathroom fittings (Jaquar, Cera, Roca,
+Hindware), electrical (RR Kabel, Havells, Finolex, KEI), switches (Havells, Legrand, L&T),
+elevators (OTIS, KONE, Schindler), plumbing (Astral, Ashirvad, Truflo), glass (Modiguard, Saint-
+Gobain, ASI) and colour (Asian Paints, Berger, Netco).
+
+PAGE 27
+Figure 2.15: Specifications and brands used (source: brochure)
+
+PAGE 28
+CHAPTER 3: STRUCTURAL ENGINEERING TRAINING – 1st
+WEEK
+Preliminary information of project, types of structure, design load calculation and load case
+details
+3.1 Preliminary Information of the Project
+During the first week the architectural plans of all floors (Ground to Terrace), the sections and
+elevations, the brochure and the structural grid drawings were studied. The purpose of this study is to
+understand the use of every area, because the use of the area decides the live load, the finishes decide
+the dead load, and the location of lifts, staircases and shafts decides the position of the shear walls
+and the openings in the slabs.
+Table 3.1: Preliminary structural data of the project
+Sr.
+Parameter
+Value / description
+1
+Building height (approx.)
+14 levels × 3.15 m ≈44.1 m above ground level (assumed floor-to-
+floor height 3.15 m; to be confirmed from section drawing)
+2
+Number of basements
+Two (parking)
+3
+Structural system
+RCC dual system – moment resisting frames + shear walls / core
+walls
+4
+Floor system
+Two-way RCC slab on beams; slab thickness 150 mm / 175 mm;
+balcony cantilever slabs
+5
+Concrete grade (design basis)
+M40 for lower-level columns and walls, M30 for upper columns,
+beams and slabs
+6
+Reinforcement steel
+Fe 500D (IS 1786) – TMT bars
+7
+Clear cover (design basis)
+Slab 20 mm, beam 30 mm, column 40 mm, footing / raft 50 mm – 75
+mm
+8
+Seismic zone
+Zone III (Z = 0.16), IS 1893 (Part 1): 2016
+9
+Basic wind speed
+39 m/s, IS 875 (Part 3): 2015
+10
+Exposure condition
+Moderate (IS 456 Table 3)
+The design basis in Table 3.1 (concrete grade, cover and floor height) is taken as the usual practice
+for a building of this height. It has to be verified against the “General Notes” sheet of the structural
+drawing set before the final submission of the report.
+3.2 Types of Structure
+3.2.1 Classification of the structure
+Structures are broadly classified as load-bearing structures, framed structures, shear wall structures,
+dual systems, tube systems and so on. For a building of about 45 m height, a load-bearing system is
+not possible and a pure frame system is not sufficient to resist the lateral loads in Zone III. Therefore,
+
+PAGE 29
+OM AKANT is designed as a dual system, in which the RCC moment-resisting frames carry the
+gravity loads and share the lateral load with the RCC shear walls (lift and staircase cores).
+3.2.2 Structural elements
+Table 3.2: Structural elements of OM AKANT
+Element
+Function
+Remarks
+Slab
+Transfers floor load to beams
+Two-way slabs 150 mm / 175 mm; cantilever balcony
+slabs; staircase waist slabs
+Beam
+Carries slab load and wall load
+to columns
+Main beams, secondary beams, balcony beams (BK1,
+SBK1) and plinth / tie beams
+Column
+Carries gravity load and
+moments to foundation
+Rectangular columns, size reduces with height
+Shear wall / core
+Resists lateral load
+Lift core and staircase core of each block
+Staircase
+Vertical circulation
+Waist slab stairs ST1 and ST2 (dog-legged)
+Basement wall
+Retains earth, carries vertical
+load
+RCC retaining wall with earth pressure + surcharge
+Foundation
+Transfers load to soil
+Raft / pile / isolated footing as per soil investigation
+report
+3.2.3 Structural layout
+The structural layout of the building is available in the form of slab-beam grid drawings for each
+level. Every drawing shows the centre-line grid, the columns and shear walls (thick black hatch), the
+beams with their marks, the slab panels with their marks (S1, S2 …) and thickness, the staircase and
+lift openings, the cut-outs and the sunken slab portions. The layouts that were studied are listed below.
+•
+FP-11 Revised Ground Floor Slab Beam Grid Working Plan, R01, dated 26.03.2026 –
+A3 sheet by Space Edge Design Studio for OM Group. The note on the sheet states that all
+slab thicknesses are 150 mm unless otherwise specified and that slab portions marked as cut-
+out are openings.
+•
+Block BC – Structural layout at 2nd to 10th floor slab level, dated 30-11-2024 – A1 sheet
+showing Block B and Block C together; slab thickness 175 mm marked on panels S11 and
+S13 and 150 mm on S12; staircases ST1 and ST2; lift shafts; balcony beams BK1 and SBK1.
+•
+Block BC – Structural beam detail at 2nd to 10th floor slab level, dated 30-11-2024 – A1
+sheets giving the beam schedules and beam reinforcement.
+•
+All floor plan working drawings for MEP&F (18.09.2026) – architectural working plans
+used to locate shafts, sleeves and openings.
+3.3 Design Load Calculation
+The loads acting on the building are dead load (DL), imposed or live load (LL), wind load (WL) and
+earthquake load (EQ). They are calculated as per IS 875 (Parts 1, 2 and 3) and IS 1893 (Part 1).
+
+PAGE 30
+3.3.1 Dead load
+Table 3.3: Unit weights of materials (IS 875 Part 1)
+Material
+Unit weight
+Reinforced cement concrete
+25 kN/m³
+Brick masonry with plaster (considered)
+20 kN/m³
+Cement plaster
+20.4 kN/m³
+Floor finish (tiles + screed, 50 mm)
+1.5 kN/m²
+Ceiling plaster / putty
+0.3 kN/m²
+Terrace waterproofing + brick-bat coba
+2.0 kN/m²
+MS railing of balcony
+0.5 kN/m
+Table 3.4: Dead load on a typical floor slab (D = 175 mm)
+Component
+Calculation
+Load (kN/m²)
+Self weight of slab
+0.175 × 25
+4.38
+Floor finish
+50 mm tile + screed
+1.50
+Ceiling plaster
+—
+0.30
+Total dead load
+6.18
+Table 3.5: Line loads of walls on beams
+Wall
+Calculation
+Load (kN/m)
+230 mm external wall
+0.23 × 20 × (3.15 −0.60)
+11.73
+115 mm internal wall
+0.115 × 20 × (3.15 −0.60)
+5.87
+Parapet wall, 1.0 m high, 115 mm
+0.115 × 20 × 1.0
+2.30
+Balcony MS railing
+as per IS 875 Part 1
+0.50
+3.3.2 Imposed (live) load
+Table 3.6: Live loads adopted (IS 875 Part 2)
+Area
+Live load (kN/m²)
+Residential rooms, kitchen, toilets
+2.0
+Balconies and corridors (residential)
+3.0
+Staircase and lobbies (residential)
+3.0
+Shops (retail, Ground and First floor)
+4.0
+Common terrace / amenity deck
+3.0
+Accessible roof (non-assembly)
+1.5
+Basement parking (light vehicles)
+2.5
+Podium with fire tender access
+20 kN (wheel load) – as per fire department
+requirement
+Live load reduction on columns and foundations is permitted by IS 875 (Part 2) Clause 3.2: 0% for
+the roof, 10% for two floors, 20% for three floors, 30% for four floors, 40% for five to ten floors and
+
+PAGE 31
+50% for more than ten floors carried by the member. The reduction is used in the column load build-
+up in Chapter 4 but is not used for the design of slabs and beams.
+3.3.3 Wind load (IS 875 Part 3)
+The design wind speed is Vz = Vb × k1 × k2 × k3 × k4 and the design wind pressure is pz = 0.6 Vz².
+The values for OM AKANT are: Vb = 39 m/s (Gandhinagar), k1 = 1.0 (risk coefficient for 50 years
+life), k2 ≈1.06 (terrain category 3, building height about 44 m – to be taken from the ETABS wind
+definition), k3 = 1.0 (flat topography) and k4 = 1.0 (importance factor).
+Table 3.7: Indicative wind pressure on the building
+Parameter
+Value
+Basic wind speed Vb
+39 m/s
+k1 × k2 × k3 × k4
+1.06
+Design wind speed Vz
+41.3 m/s
+Design wind pressure pz = 0.6 Vz²
+1.03 kN/m²
+Force coefficient Cf
+As per IS 875 Part 3 Table 5, depends on h/w and l/w;
+taken in the ETABS model
+3.3.4 Earthquake load (IS 1893 Part 1: 2016)
+The design horizontal seismic coefficient is Ah = (Z / 2) × (I / R) × (Sa / g). For OM AKANT: zone
+factor Z = 0.16 (Zone III), importance factor I = 1.2 (large residential-cum-commercial building with
+more than 200 occupants), response reduction factor R = 5 (dual system with ductile shear walls and
+special moment-resisting frames, to be confirmed by the consultant) and medium soil (Type II).
+The approximate fundamental natural period of an RC building with brick infill walls is Ta = 0.09 h /
+√d. Taking h = 44.1 m and an assumed plan dimension d = 20 m, Ta = 0.89 s. For medium soil, Sa/g
+= 1.36 / T = 1.53, hence Ah = (0.16 / 2) × (1.2 / 5) × 1.53 = 0.0294. The design base shear is VB =
+Ah × W, where W is the seismic weight of the building (DL + percentage of LL). The vertical
+distribution is made by Qi = VB × Wi hi² / Σ Wj hj². The final period will be taken from the modal
+analysis in ETABS.
+Table 3.8: Seismic parameters
+Parameter
+Value
+Reference
+Zone factor Z
+0.16
+IS 1893 Table 3
+Importance factor I
+1.2
+IS 1893 Table 8
+Response reduction factor R
+5.0
+IS 1893 Table 9
+Soil type
+Medium (Type II)
+IS 1893 cl. 6.4.2
+Damping
+5%
+IS 1893 cl. 6.4.2
+Ta (0.09h/√d)
+0.89 s
+IS 1893 cl. 7.6.2
+Sa/g
+1.53
+IS 1893 Fig. 2
+Ah
+0.0294
+IS 1893 cl. 6.4.2
+
+PAGE 32
+Parameter
+Value
+Reference
+Seismic weight
+DL + 25% LL (LL ≤3 kN/m²), DL +
+50% LL (shops, LL > 3 kN/m²), no LL
+on roof
+IS 1893 Table 10
+3.4 Load Cases and Load Combinations
+The following load cases are defined in the analysis model: DL (self weight of the structure,
+calculated automatically), SDL (super-imposed dead load – floor finish, wall load), LL (live load),
+EQX and EQY (equivalent static or response spectrum earthquake in X and Y direction) and WX
+and WY (wind in X and Y direction). The earthquake load is applied with ±5% accidental
+eccentricity.
+Table 3.9: Load combinations (IS 456 Table 18 and IS 1893 cl. 6.3.4)
+Sr.
+Combination
+Type
+1
+1.5 (DL + LL)
+Gravity
+2
+1.2 (DL + LL ± EQX)
+Seismic
+3
+1.2 (DL + LL ± EQY)
+Seismic
+4
+1.5 (DL ± EQX)
+Seismic
+5
+1.5 (DL ± EQY)
+Seismic
+6
+0.9 DL ± 1.5 EQX
+Seismic (uplift check)
+7
+0.9 DL ± 1.5 EQY
+Seismic (uplift check)
+8
+1.2 (DL + LL ± WX)
+Wind
+9
+1.2 (DL + LL ± WY)
+Wind
+10
+1.5 (DL ± WX) and 1.5 (DL ± WY)
+Wind
+11
+0.9 DL ± 1.5 WX and 0.9 DL ± 1.5 WY
+Wind (uplift check)
+12
+DL + LL, DL + 0.8 LL ± 0.8 WL (service)
+Serviceability – deflection
+check
+In the ETABS model, the combination for orthogonal effects is taken as 100% of the load in one
+direction + 30% in the other direction. Wind and earthquake are never combined with each other.
+
+PAGE 33
+CHAPTER 4: STRUCTURAL ENGINEERING TRAINING – 2nd
+WEEK
+Analysis of structural members, shear force and bending moment of various structural
+elements
+4.1 Method of Analysis
+The analysis of the structure was understood in two levels. At the first level, each member is analysed
+manually using the code coefficients and the basic equations of statics, so that the engineer has a
+feeling for the expected size of the forces. At the second level, the complete three-dimensional model
+is analysed in ETABS (Chapter 7) and the software results are compared with the manual values. The
+load path assumed for the manual analysis is slab →beam →column →footing.
+4.2 Analysis of Slab
+A typical two-way slab panel of an apartment (interior panel, all edges continuous) is analysed with
+the moment coefficients of IS 456 Annex D Table 26. The panel dimensions are lx = 4.0 m and ly =
+4.4 m (ly / lx = 1.1), the thickness is 175 mm. The factored load is wu = 1.5 × (6.18 + 2.0) = 12.26
+kN/m².
+Table 4.1: Bending moments in the two-way slab panel (per metre width)
+Moment
+Coefficient α
+M = α wu lx² (kNm/m)
+Negative moment, short span (continuous edge)
+0.037
+7.26
+Positive moment, short span (mid-span)
+0.028
+5.49
+Negative moment, long span (continuous edge)
+0.032
+6.28
+Positive moment, long span (mid-span)
+0.024
+4.71
+The shear force at the edge of the slab is calculated approximately as Vu = wu lx / 2 = 24.53 kN/m,
+which is much less than the shear capacity of the slab; therefore, the slab is safe in shear without
+shear reinforcement.
+4.3 Analysis of Beam – Shear Force and Bending Moment
+A typical main beam of size 230 × 600 mm which supports a 230 mm brick wall and two-way slab
+panels on both sides is considered. The clear span of the beam is taken as 5.0 m and the beam is
+continuous over several supports.
+Table 4.2: Load on the beam (per metre length)
+Component
+Calculation
+Load (kN/m)
+Self weight of rib
+0.23 × (0.60 −0.175) × 25
+2.44
+Slab load (both sides, equivalent
+UDL)
+2 × (4.0 / 3) × (6.18 + 2.0)
+21.80
+
+PAGE 34
+Component
+Calculation
+Load (kN/m)
+230 mm wall
+0.23 × 20 × 2.55
+11.73
+Total working load w
+35.97
+Factored load wu = 1.5 w
+53.96
+Using the IS 456 (Table 12) moment and shear coefficients for continuous beams of equal spans:
+negative moment at the support = wu L² / 12 (interior) , positive moment at the mid-span = wu
+L² / 16 and shear at the end support = 0.6 wu L; for an internal support the shear is 0.6 wu L on the
+left and 0.55 wu L on the right (taken as 0.6 wu L for safety).
+Table 4.3: Shear force and bending moment of the beam
+Section
+Formula
+Value
+Support (hogging) moment
+wu L² / 12
+112.4 kNm
+Mid-span (sagging) moment
+wu L² / 16
+84.3 kNm
+Maximum shear at support
+0.6 wu L
+32.4 kN
+Shear at critical section (d from face)
+Vu −wu d
+2.7 kN
+4.4 Analysis of Columns – Load Build-up
+The axial load on a column is obtained by adding the loads of each floor from the terrace down to the
+foundation. For a typical interior column with a tributary area of 5.0 m × 5.0 m = 25 m², the dead
+load per floor is taken as: slab, finish and ceiling 6.18 kN/m² + beams 1.5 kN/m² + wall load 2.0
+kN/m² = 9.7 kN/m²; for the terrace 8.5 kN/m² with LL 1.5 kN/m²; typical floor LL 2.0 kN/m²
+(reduced as per IS 875 Part 2).
+Table 4.4: Column axial load build-up (interior column, tributary area 25 m²)
+Level
+Cum. DL
+(kN)
+Cum. LL
+(kN)
+P working
+(kN)
+Pu = 1.5 P
+(kN)
+Grade
+Ag req. at
+1.5% steel
+(cm²)
+Adopted min.
+size (mm)
+Terrace
+213
+38
+250
+375
+M30
+223
+450 × 450
+13th floor
+479
+79
+558
+836
+M30
+497
+450 × 450
+12th floor
+745
+110
+855
+1283
+M30
+761
+450 × 450
+11th floor
+1011
+131
+1143
+1714
+M30
+1018
+450 × 450
+10th floor
+1278
+143
+1420
+2130
+M30
+1265
+450 × 450
+9th floor
+1544
+173
+1717
+2575
+M30
+1529
+450 × 450
+8th floor
+1810
+203
+2013
+3019
+M30
+1792
+450 × 450
+7th floor
+2077
+233
+2309
+3464
+M30
+2056
+500 × 500
+6th floor
+2343
+263
+2606
+3908
+M30
+2320
+500 × 500
+5th floor
+2609
+293
+2902
+4353
+M30
+2584
+550 × 550
+4th floor
+2876
+269
+3144
+4717
+M30
+2800
+550 × 550
+3rd floor
+3142
+294
+3436
+5154
+M40
+2480
+550 × 550
+2nd floor
+3408
+319
+3727
+5591
+M40
+2690
+550 × 550
+1st floor
+3675
+344
+4018
+6028
+M40
+2900
+550 × 550
+Ground floor
+3941
+369
+4310
+6465
+M40
+3110
+600 × 600
+
+PAGE 35
+The sizes obtained from axial load alone are the minimum sizes. The actual sizes are larger because
+of the biaxial bending moments from lateral loads, the slenderness effect and the drift limits; for the
+upper floors, the minimum size of 450 mm is kept for ductile detailing and for house-keeping of the
+drawings. Columns near the shear walls and at the corners of the shop podium are checked separately
+in the ETABS model
+4.5 Analysis of Shear Walls and Lift Cores
+The lift and staircase cores of each block are RCC walls of 230 mm to 300 mm thickness. Under
+lateral load they behave as vertical cantilevers fixed at the foundation. The shear force and bending
+moment at the base are obtained from the lateral load diagram (VB and the overturning moment M =
+Σ Qi hi). Because the walls have openings for lift doors, the walls are analysed in ETABS as shell
+elements with pier and spandrel labels, and the design forces (Pu, Mu, Vu) are taken from the pier
+forces. The lateral load shared by the walls and the frames is checked, because IS 1893 requires the
+frames to resist at least 25% of the design base shear in a dual system.
+4.6 Analysis of Staircase
+The staircases ST1 and ST2 are dog-legged staircases with waist slab. The load on the waist slab is
+the self weight of the waist and steps, finish and live load of 3.0 kN/m². The flight is analysed as a
+simply supported slab spanning between the landing beams, and the landing slab is analysed as a one-
+way slab. The resulting bending moment is wu L² / 8 for the flight and wu L² / 10 – wu L² / 8 for the
+landing depending upon the continuity
+Table 4.5: Summary of the analysis results of Week 2
+Member
+Governing action
+Value (typical)
+Two-way slab 4.0 × 4.4 m
+Hogging moment (short span)
+7.26 kNm/m
+Two-way slab 4.0 × 4.4 m
+Sagging moment (short span)
+5.49 kNm/m
+Beam 230 × 600, L = 5.0 m
+Hogging moment at support
+112.4 kNm
+Beam 230 × 600, L = 5.0 m
+Sagging moment at mid-span
+84.3 kNm
+Beam 230 × 600, L = 5.0 m
+Shear force at support
+32.4 kN
+Ground floor column
+Axial load Pu
+6465 kN
+
+PAGE 36
+CHAPTER 5: STRUCTURAL ENGINEERING TRAINING – 3rd
+WEEK
+Proportioning of structural members, dimensions of structural members and design of all
+structural members
+5.1 Proportioning of Structural Members
+Proportioning means fixing the preliminary dimensions of the members so that the serviceability
+requirements of IS 456 (deflection and cracking) and the strength and ductility requirements are
+satisfied before the detailed analysis is made.
+Table 5.1: Preliminary proportioning of members
+Member
+Rule of thumb / code requirement
+Adopted size
+Slab (two-way,
+continuous)
+Effective depth ≥L / (26 × MF), MF ≈1.3 →d ≥
+4000 / 33.8 = 118 mm
+D = 150 mm / 175 mm (d = 125
+/ 150 mm)
+Cantilever balcony slab
+d ≥L / (7 × MF), L ≈1.5 m
+D = 150 mm tapering to 100
+mm
+Beam (continuous)
+d ≥L / (20 × MF); depth = L / 10 to L / 12
+230 × 600 mm (L = 5.0 m)
+Column
+Pu / (0.4 fck + 0.67 fy p) ; min. 300 mm (IS
+13920 b/D ≥0.4)
+450 × 450 to 750 × 750 and
+larger at shop level (design
+basis)
+Shear wall
+Thickness ≥150 mm, boundary elements for high
+compressive stress
+230 – 300 mm
+Staircase waist slab
+d ≥L / 25
+150 – 175 mm
+The beam depth of 600 mm for a clear span of 5.0 m is greater than the 417 mm obtained from L / 12
+because of the heavy brick wall below the beams and the requirement of IS 13920 that the beam
+width-to-depth ratio shall be at least 0.3 (230 / 600 = 0.38, satisfied) and the width shall not be less
+than 200 mm.
+5.2 Design of Slab
+Data: D = 175 mm, clear cover 20 mm, 10 mm bars, hence d = 175 −20 −5 = 150 mm; fck = 30
+N/mm², fy = 500 N/mm²; factored moments from Table 4.1.
+Area of steel: the required area is found from Mu = 0.87 fy Ast d (1 −Ast fy / (b d fck)); the
+minimum steel for Fe 500 is 0.12% of bD = 210 mm²/m.
+Table 5.2: Reinforcement of the two-way slab
+Location
+Mu (kNm/m)
+Ast req. (mm²/m)
+Provide
+Short span – support (top)
+7.26
+113
+10 mm @ 300 mm c/c
+Short span – mid-span (bottom)
+5.49
+85
+10 mm @ 300 mm c/c
+Long span – support (top)
+6.28
+104
+10 mm @ 300 mm c/c
+Long span – mid-span (bottom)
+4.71
+78
+10 mm @ 300 mm c/c
+
+PAGE 37
+Check for shear: τv = Vu / (b d) = 24.53 × 1000 / (1000 × 150) = 0.16 N/mm², which is less than τc
+for the slab (about 0.36 N/mm² for pt = 0.25%, increased by the factor k = 1.3 for D ≤150 – 175 mm);
+hence shear is safe. Check for deflection: the actual L / d = 4000 / 150 = 26.7 is less than 26 × 1.3 =
+33.8; safe. The slab is also provided with extra top steel (2 mm × 0.25 L bars) at corners and with
+distribution steel of 0.12% in the cantilever balcony.
+5.3 Design of Beam
+Data: b = 230 mm, D = 600 mm, clear cover 30 mm, stirrup 8 mm, main bars 20 mm, hence d = 600
+−30 −8 −10 = 552 mm. Mu,lim = 0.133 fck b d² = 279.6 kNm, which is greater than the maximum
+design moment of 112.4 kNm; the beam is designed as a singly reinforced section.
+Table 5.3: Flexural reinforcement of the beam
+Section
+Mu (kNm)
+Ast req. (mm²)
+Provided
+Support (top)
+112.4
+501
+2 – 20 φ (628 mm²)
+Mid-span (bottom)
+84.3
+369
+2 – 20 φ (628 mm²)
+Minimum steel 0.85 bd
+/ fy
+—
+216
+2 – 16 φ continuous top and bottom
+Shear design: Vu at d from the face of the support = 2.6 kN, τv = 0.02 N/mm² (less than τc,max =
+3.5 N/mm² for M30). For pt = 0.49% the design shear strength is τc = 0.49 N/mm². The shear to be
+resisted by stirrups is Vus = Vu −τc b d = -60.2 kN. For 2-legged 8 mm stirrups (Asv = 100.5 mm²),
+sv = 0.87 fy Asv d / Vus = 300 mm; the maximum permitted spacing is 300 mm. As per IS 13920 the
+spacing in the confining zone (length 2d = 1104 mm from the face of the column) is the smallest of
+d/4 = 138 mm, 8 × smallest main bar diameter and 100 mm; hence 2 L – 8 φ @ 100 mm c/c is
+provided in the end zones and 2 L – 8 φ @ 150 mm c/c in the middle zone.
+5.4 Design of Column
+The ground floor column is designed for the axial load Pu = 6465 kN obtained in Table 4.4 together
+with the biaxial bending moments from the ETABS analysis. Trial size = 750 × 750 mm (the same
+size is commonly used for shop-level columns), M40 concrete, Fe 500D. The minimum eccentricity
+ex = ey = max (L/500 + D/30, 20 mm) = max (31 mm, 20 mm) = 31 mm. Slenderness ratio lex / D =
+2520 / 750 = 3.4 < 12, so the column is short.
+Minimum steel for seismic columns is 0.8% of Ag (IS 13920) = 4500 mm². The axial capacity of the
+section with this minimum steel is Pu = 0.4 fck Ac + 0.67 fy Asc = 10436 kN, which is more than the
+demand Pu = 6465 kN. The steel is increased to the quantity required for biaxial bending by using the
+interaction curves of SP 16 with the ETABS moments. For design basis: 12 – 25 φ + 8 – 20 φ (about
+1.7%) or as given in the column schedule. Lateral ties are 10 φ @ 100 mm c/c in the confining length
+
+PAGE 38
+(the largest of the column dimension, one-sixth of the clear height or 450 mm) at the two ends and 10
+φ @ 150 mm c/c in the remaining length.
+Table 5.4: Summary of column design (design basis)
+Item
+Value
+Size
+750 × 750 mm
+Concrete / steel
+M40 / Fe 500D
+Pu (axial, ground floor)
+6465 kN
+Minimum steel (0.8%)
+4500 mm²
+Longitudinal bars
+12 – 25 φ + 8 – 20 φ (to be finalised by interaction check)
+Lateral ties
+10 φ @ 100 mm c/c (confining), 10 φ @ 150 mm c/c (middle)
+Clear cover
+40 mm
+Description: The column schedule shows the column mark, size, number and diameter of bars, tie spacing in
+the confining zone and the cover. A section of the column with the cross ties as per IS 13920 is shown.
+5.5 Design of Shear Wall and Staircase
+The wall is designed for the pier forces from ETABS: the shear stress τv = Vu / (tw × 0.8 lw) is
+checked against τc,max and the horizontal and vertical reinforcement (minimum 0.25% each in two
+layers for wall thickness more than 200 mm) is provided. Boundary elements are provided when the
+extreme fibre compressive stress exceeds 0.2 fck. For the staircase, the waist slab of 150 mm
+thickness is reinforced with 12 φ @ 125 mm c/c main bars and 8 φ @ 200 mm c/c distribution bars,
+to be confirmed by calculation of the flight moment.
+5.6 Foundation
+The foundation system (raft or pile with pile cap) and its depth depend on the geotechnical
+investigation report of the site. For a G+13 building with two basements, a raft foundation resting on
+the good strata or on piles is normally adopted; the raft is designed for the column loads of the
+ETABS support reactions and the soil bearing capacity. The foundation drawing is not part of the
+drawings studied in this internship.
+Table 5.5: Dimensions of the structural members (design basis)
+Member
+Size / thickness
+Grade
+Slab (typical)
+150 mm / 175 mm
+M30
+Cantilever balcony slab
+150 mm tapering to 100 mm
+M30
+Main beam
+230 × 600 mm
+M30
+Secondary beam
+230 × 450 mm
+M30
+Balcony beam (BK1, SBK1)
+230 × 450 mm
+M30
+Column (upper floors)
+450 × 450 mm to 600 × 600 mm
+M30
+Column (lower floors and shop level)
+600 × 600 mm to 750 × 750 mm
+M40
+Shear wall / lift core
+230 – 300 mm
+M40 / M30
+Staircase waist slab
+150 mm
+M30
+
+PAGE 39
+
+PAGE 40
+CHAPTER 6: STRUCTURAL ENGINEERING TRAINING – 4th
+WEEK
+General notes for design and detailing and detailed drawings of all structural members
+6.1 General Notes for Design and Detailing
+The general notes written on the structural drawings are the contract between the designer and the site
+engineer. The notes that are normally given on the structural drawings of a building like OM
+AKANT are summarised below.
+1. All dimensions are in millimetres and levels are in metres, unless otherwise stated. The
+structural drawings shall be read together with the architectural drawings; in case of
+discrepancy the structural consultant shall be informed.
+2. All the work shall be carried out as per IS 456:2000, IS 13920:2016, IS 875, IS 1893 and SP
+34.
+3. Concrete: M40 for columns and walls up to the level specified in the column schedule and
+M30 for the remaining members (to be confirmed with the drawing). Cement: PPC / OPC as
+per the specification, water-cement ratio as per IS 456 Table 5.
+4. Reinforcement: high yield strength deformed bars of Fe 500D conforming to IS 1786 shall be
+used. Binding wire of 18 gauge shall be used for tying.
+5. Clear cover to main reinforcement: slab 20 mm, beam 30 mm, column 40 mm, shear wall 25
+mm – 40 mm, footing and raft 50 mm – 75 mm, water retaining members 45 mm.
+6. Lap length of bars: tension lap 50 φ (for Fe 500, M30) and compression lap 40 φ; laps shall be
+staggered and shall not be provided in the confining zone of beams and columns.
+7. Development length Ld = 0.87 fy φ / (4 τbd) = 45 φ for M30 and Fe 500 (τbd = 2.4 N/mm²)
+and 38 φ for M40 (τbd = 3.04 N/mm²).
+8. Hooks: stirrups and ties shall have 135° hooks with a 10 φ (minimum 75 mm) extension into
+the core, as per IS 13920.
+9. Beams: stirrup spacing in the confining zone (2d at both ends) shall be the least of d/4, 8 ×
+smallest main bar and 100 mm; at least two bars shall be provided at top and bottom
+throughout.
+10. Columns: confining ties shall be provided for a length equal to the larger of the column
+dimension, one-sixth of clear height or 450 mm at each end; the spacing shall not exceed 100
+mm. Columns shall be provided with cross ties so that every longitudinal bar is supported at
+the corner of a tie or cross tie.
+11. Shuttering shall be made watertight and oiled; the shuttering of slab and beams shall be
+provided with a camber of 3 mm per metre span for spans more than 4 m. The shuttering shall
+
+PAGE 41
+be removed only after the time given in IS 456 Clause 11.3.1 (columns 16 – 24 h, slab soffit 3
+days with props, beam soffit 7 days with props).
+12. Curing of concrete shall be done for at least 7 days (PPC: 10 days), and the concrete cubes of
+150 mm size shall be tested at 7 and 28 days. Slump shall be 100 – 150 mm (pumpable
+concrete).
+13. Sleeves, pockets and chases for MEP&F services shall be provided only at the locations
+shown on the approved drawing; cutting of beams and columns afterwards is not allowed.
+14. Construction joints in slab shall be provided at the middle third of the span; the construction
+joint in beams shall be at the middle third of the span; the surface shall be roughened and
+cleaned before the next pour.
+6.2 Detailing Requirements
+Table 6.1: Detailing requirements for ductile design (IS 13920:2016)
+Member
+Requirement
+Beam
+b ≥200 mm; b / D ≥0.3; min 2 bars top and bottom; ρmin = 0.24 √fck / fy;
+ρmax = 2.5%; positive moment at face of joint ≥50% of negative moment
+Column
+Least dimension ≥300 mm; b / D ≥0.4; steel 0.8% to 4%; confining ties at 100
+mm c/c or less, 135° hooks
+Beam-column joint
+Beam bars anchored with development length from the face of the column plus
+10 φ hook; joint shear checked
+Shear wall
+Thickness ≥150 mm; minimum 0.25% steel in both directions; boundary
+element when compressive stress > 0.2 fck
+Slab
+Minimum steel 0.12% (Fe 500); maximum spacing 3d or 300 mm; extra top
+steel at corners and in the cantilever
+6.3 Detailed Drawings of the Structural Members
+The detailed drawings that are given in the following pages are the structural drawings issued for the
+project and the working drawings prepared by the intern during the training. Space has been kept for
+the drawings; the description below every drawing explains the information given on the drawing.
+
+PAGE 42
+CHAPTER 7: MODELLING AND ANALYSIS IN ETABS
+7.1 About ETABS
+ETABS (Extended Three-dimensional Analysis of Building Systems), developed by Computers and
+Structures Inc. (CSI), is a special-purpose software for the analysis and design of multi-storeyed
+buildings. It works on the finite element method: columns and beams are modelled as frame (line)
+elements and slabs, shear walls and ramps are modelled as shell (area) elements. The software has the
+facility of automatic generation of the wind and seismic loads as per Indian codes (IS 875 Part 3 and
+IS 1893 Part 1), of the load combinations as per IS 456, of the response spectrum and modal analysis,
+and of the concrete frame design as per IS 456 and IS 13920. The output includes member forces,
+storey displacements, storey drifts, base reactions, modal periods and the reinforcement required in
+beams, columns and walls.
+The complete structure of OM AKANT (Block A, Block B and Block C, with two basements,
+Ground to 13th floor and terrace) will be analysed in ETABS by the intern as a single three-
+dimensional model. The model is prepared and is to be run in ETABS; the screenshots of the
+model and the results are to be inserted at the places that are kept blank in this chapter.
+7.2 Modelling Steps
+1. Grid and storey data: the grid lines are created from the architectural centre-line drawing;
+the storey heights are defined from the basement to the terrace (assumed 3.15 m typical floor-
+to-floor height; basement and ground floor as per section).
+2. Material properties: concrete M30 and M40 (Ec = 5000 √fck), steel Fe 500D (fy = 500
+N/mm²), unit weight of concrete 25 kN/m³, Poisson’s ratio 0.2.
+3. Section properties: columns, beams, slabs (membrane / shell thin) and walls are defined with
+the sizes of Chapter 5; the cracked section modifiers are applied as per IS 1893 / IS 456
+(beams 0.35 Ig, columns 0.7 Ig, slab 0.25 Ig, walls 0.7 Ig for the seismic analysis).
+4. Drawing the elements: the columns, beams, slabs, shear walls, lift cores, staircase landings
+and the cantilever balcony slabs are drawn on each storey and replicated for similar floors.
+5. Supports: the base of the columns and walls is considered fixed at the foundation level (or
+springs for the raft if the soil stiffness is available); the basement retaining walls are modelled
+as walls with lateral spring supports or as fixed at the basement slab level.
+6. Diaphragms: a rigid diaphragm is assigned to every floor slab; semi-rigid diaphragm is used
+at the podium level where slab openings are large.
+7. Load patterns: DL (self weight multiplier = 1), SDL (floor finish and wall loads as per
+Chapter 3), LL, EQX, EQY (IS 1893:2016), WX and WY (IS 875 Part 3: 2015).
+8. Mass source: 100% DL + 25% LL (50% LL for the shops); no live load on the roof.
+
+PAGE 43
+9. Load combinations: the 12 combinations of Table 3.9 are defined (the envelope of all
+combinations is also created).
+10. Analysis options: modal analysis (at least 12 modes; mass participation of 90% in each
+direction), response spectrum analysis, P-Δ effect (considered as per IS 456 for slender
+members), and check of the model with “Analyze – Run”.
+11. Design: concrete frame design as per IS 456 + IS 13920 and shear wall design with pier
+labels; the results are compared with the manual design of Chapter 5.
+Figure 7.1: ETABS – 3D view of the model of OM AKANT (to be inserted)
+Description: Three-dimensional extruded view of the model with Block A, Block B and Block C; columns,
+beams, slabs and shear walls are shown in different colours.
+
+PAGE 44
+Figure 7.2: ETABS – typical floor plan view (to be inserted)
+Description: Plan view of a typical floor from the model showing the grid, the beams, the columns, the lift
+cores and the cantilever balcony slabs.
+Figure 7.3: ETABS – load assignment (, live, load) (to be inserted)
+Description: The uniform loads of the slab (floor finish and live load) and the line loads of the walls on the
+beams as assigned in the model.
+
+PAGE 45
+7.3 Expected Results and Checks
+After the analysis, the following checks will be made. These checks decide whether the preliminary
+sizes of Chapter 5 are acceptable or have to be revised. The deflection and drift limits are given in
+Table 7.1 for the building of height about 44.1 m.
+Table 7.1: Serviceability and stability checks to be made in ETABS
+Sr.
+Check
+Limit
+Reference
+1
+Maximum lateral displacement at
+the top due to wind
+H / 500 = 88.2 mm
+IS 456 cl. 20.5; IS 875 (Part 3)
+2
+Storey drift under earthquake
+(design load, unreduced by R)
+0.004 h = 12.6 mm for h = 3.15
+m
+IS 1893 cl. 7.11.1.1
+3
+Vertical deflection of beam, span
+5.0 m (total)
+span / 250 = 20 mm
+IS 456 cl. 23.2
+4
+Vertical deflection of beam after
+partitions / finishes
+span / 350 or 20 mm = 14.3 mm
+IS 456 cl. 23.2(e)
+5
+Cantilever balcony tip deflection,
+L = 1.5 m
+span / 250 = 6 mm
+IS 456 cl. 23.2
+6
+Fundamental time period T1 (X
+and Y)
+Ta from empirical formula;
+torsional mode not first
+IS 1893 cl. 7.6, 7.7
+7
+Mass participation in modes
+≥90% in each direction
+IS 1893 cl. 7.7.5.2
+8
+Base shear from response
+spectrum VB (RS) vs. VB bar
+from empirical Ta
+VB (RS) ≥VB bar; otherwise
+scale up
+IS 1893 cl. 7.7.3
+9
+Torsional irregularity (max drift /
+average drift)
+< 1.5 (IS 1893 Table 5)
+IS 1893 cl. 7.1
+10
+Soft storey check (stiffness of
+storey / storey above)
+≥70% of the storey above and ≥
+80% of the average of three
+storeys above
+IS 1893 Table 6
+11
+Stability index for P-Δ effect
+Q = P Δ / (V h) ≤0.1
+IS 1893 cl. 7.11.1.2
+12
+Column demand-capacity ratio
+≤1.0
+IS 456 / SP 16
+Deflections expected in the building: under the wind load the building will deflect as a vertical
+cantilever – the top storey displacement will be the largest and the storey drift will be the largest in
+the middle storeys of the building; the presence of the shear walls (lift cores) at both ends reduces this
+displacement. Under the gravity load the largest vertical deflection is expected at the cantilever
+balconies (curved edge) and at the long-span beams of the shop podium where the column grid is the
+largest. The beam depth of 600 mm and the cantilever depth of 150 mm in the preliminary size have
+been selected to keep these deflections within the span / 250 limit; if the ETABS result exceeds the
+limit, the depth of the member will be increased or the member will be made stiffer by providing a
+beam below the balcony slab.
+The base shear, the storey shears and the overturning moments from ETABS will be compared with
+the manual values calculated using Ah of Chapter 3. A difference up to 10% – 15% is normal
+because the manual calculation uses the empirical time period and the approximate seismic weight,
+whereas the software uses the actual modal period and the actual mass.
+
+PAGE 46
+Load Pattern Definitions
+Name
+Is Auto
+Load
+Type
+Self
+Weight
+Multiplier
+Auto Load
+~LLRF
+Yes
+Other
+0
+BLL
+No
+Live
+0
+Dead
+No
+Dead
+1
+EQX
+No
+Seismic
+0
+IS 1893:2016
+EQX(1/3)
+Yes
+Seismic
+0
+IS 1893:2016
+EQX(2/3)
+Yes
+Seismic
+0
+IS 1893:2016
+EQX(3/3)
+Yes
+Seismic
+0
+IS 1893:2016
+EQY
+No
+Seismic
+0
+IS 1893:2016
+EQY(1/3)
+Yes
+Seismic
+0
+IS 1893:2016
+EQY(2/3)
+Yes
+Seismic
+0
+IS 1893:2016
+EQY(3/3)
+Yes
+Seismic
+0
+IS 1893:2016
+SDL
+No
+Super Dead
+0
+SLL
+No
+Live
+0
+Auto seisemic loading
+Story
+Elevation
+X-Dir
+Y-Dir
+m
+kN
+kN
+Story4
+47.5
+0
+0
+12F SLAB
+44.5
+0
+0
+11F SLAB
+41.5
+0
+0
+10F SLAB
+38.5
+0
+0
+9F SLAB
+35.5
+0
+0
+8F SLAB
+32.5
+0
+0
+7F SLAB
+29.5
+0
+0
+6F SLAB
+26.5
+0
+0
+5F SLAB
+23.5
+0
+0
+4F SLAB
+20.5
+0
+0
+3F SLAB
+17.5
+0
+0
+2F SLAB
+14.5
+0
+0
+
+PAGE 47
+Story Forces (Part 2 of 2, continued)
+Story
+Location
+MX
+kN-m
+MY
+kN-m
+3F SLAB
+Bottom
+901935.0522
+-3258469
+3F SLAB
+Top
+866515.3606
+-3246498
+3F SLAB
+Bottom
+881127.0886
+-3299342
+3F SLAB
+Top
+894125.1662
+-3218477
+3F SLAB
+Bottom
+911724.7651
+-3268188
+3F SLAB
+Top
+857790.727
+-3238052
+3F SLAB
+Bottom
+871337.3757
+-3289623
+3F SLAB
+Top
+892893.6808
+-3221130
+3F SLAB
+Bottom
+908559.5206
+-3271628
+3F SLAB
+Top
+859022.2124
+-3235398
+3F SLAB
+Bottom
+874502.6202
+-3286183
+3F SLAB
+Top
+660914.9602
+-2362107
+3F SLAB
+Bottom
+677449.4798
+-2410546
+3F SLAB
+Top
+642029.7882
+-2398574
+3F SLAB
+Bottom
+656641.5162
+-2451418
+3F SLAB
+Top
+669639.5938
+-2370553
+3F SLAB
+Bottom
+687239.1927
+-2420265
+3F SLAB
+Top
+633305.1546
+-2390128
+3F SLAB
+Bottom
+646851.8033
+-2441699
+3F SLAB
+Top
+668408.1083
+-2373206
+3F SLAB
+Bottom
+684073.9482
+-2423705
+3F SLAB
+Top
+634536.64
+-2387475
+3F SLAB
+Bottom
+650017.0477
+-2438259
+2F SLAB
+Top
+528442.8602
+-1907583
+2F SLAB
+Bottom
+544015.984
+-1958224
+2F SLAB
+Top
+0
+0
+2F SLAB
+Bottom
+0
+0
+2F SLAB
+Top
+183670.0138
+-693755.8374
+2F SLAB
+Bottom
+183670.0138
+-693755.8374
+2F SLAB
+Top
+244893.3517
+-925007.7832
+2F SLAB
+Bottom
+244893.3517
+-925007.7832
+2F SLAB
+Top
+0
+0
+2F SLAB
+Bottom
+0
+0
+2F SLAB
+Top
+0
+0
+2F SLAB
+Bottom
+0
+0
+2F SLAB
+Top
+0
+0
+2F SLAB
+Bottom
+0
+0
+2F SLAB
+Top
+0
+0
+2F SLAB
+Bottom
+0
+0
+2F SLAB
+Top
+10404.7713
+20434.1653
+2F SLAB
+Bottom
+11484.7171
+22834.8656
+2F SLAB
+Top
+20195.437
+10718.4126
+2F SLAB
+Bottom
+22438.5422
+11761.412
+2F SLAB
+Top
+18119.4468
+7660.0628
+2F SLAB
+Bottom
+18223.6574
+7809.8661
+2F SLAB
+Top
+1068169.311
+-3902008
+2F SLAB
+Bottom
+1091528.9967
+-3977970
+2F SLAB
+Top
+1435509.3386
+-5289520
+
+PAGE 48
+- Story Drifts (continued)
+Story
+Output Case
+Case Type
+Step
+Type
+Direction
+Drift
+Drift/
+Label
+X
+m
+Y
+m
+Z
+m
+4F SLAB
+0.9DL+1.5EQX
+Combination
+Max
+X
+0.000169
+1/5917
+17
+0
+0
+20.5
+4F SLAB
+0.9DL+1.5EQX
+Combination
+Max
+Y
+0.000461
+1/2170
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL+1.5EQX
+Combination
+Min
+X
+0.000169
+1/5917
+17
+0
+0
+20.5
+4F SLAB
+0.9DL+1.5EQX
+Combination
+Min
+Y
+0.000461
+1/2170
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL-1.5EQX
+Combination
+Max
+X
+0.000213
+1/4694
+17
+0
+0
+20.5
+4F SLAB
+0.9DL-1.5EQX
+Combination
+Max
+Y
+0.000469
+1/2134
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL-1.5EQX
+Combination
+Min
+X
+0.000213
+1/4694
+17
+0
+0
+20.5
+4F SLAB
+0.9DL-1.5EQX
+Combination
+Min
+Y
+0.000469
+1/2134
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL+1.5EQY
+Combination
+Max
+X
+0.000193
+1/5171
+82
+41.44
+0
+20.5
+4F SLAB
+0.9DL+1.5EQY
+Combination
+Max
+Y
+0.000456
+1/2193
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL+1.5EQY
+Combination
+Min
+X
+0.000193
+1/5171
+82
+41.44
+0
+20.5
+4F SLAB
+0.9DL+1.5EQY
+Combination
+Min
+Y
+0.000456
+1/2193
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL-1.5EQY
+Combination
+Max
+X
+0.00019
+1/5271
+17
+0
+0
+20.5
+4F SLAB
+0.9DL-1.5EQY
+Combination
+Max
+Y
+0.000473
+1/2113
+12
+59.92
+0
+20.5
+4F SLAB
+0.9DL-1.5EQY
+Combination
+Min
+X
+0.00019
+1/5271
+17
+0
+0
+20.5
+4F SLAB
+0.9DL-1.5EQY
+Combination
+Min
+Y
+0.000473
+1/2113
+12
+59.92
+0
+20.5
+4F SLAB
+(DL+LL)
+Combination
+X
+0.000308
+1/3242
+17
+0
+0
+20.5
+4F SLAB
+(DL+LL)
+Combination
+Y
+0.000754
+1/1325
+12
+59.92
+0
+20.5
+4F SLAB
+DL-EQX
+Combination
+Max
+X
+0.000227
+1/4407
+17
+0
+0
+20.5
+4F SLAB
+DL-EQX
+Combination
+Max
+Y
+0.000519
+1/1927
+12
+59.92
+0
+20.5
+4F SLAB
+DL-EQX
+Combination
+Min
+X
+0.000227
+1/4407
+17
+0
+0
+20.5
+4F SLAB
+DL-EQX
+Combination
+Min
+Y
+0.000519
+1/1927
+12
+59.92
+0
+20.5
+4F SLAB
+DL+EQX
+Combination
+Max
+X
+0.000198
+1/5061
+17
+0
+0
+20.5
+4F SLAB
+DL+EQX
+Combination
+Max
+Y
+0.000514
+1/1947
+12
+59.92
+0
+20.5
+4F SLAB
+DL+EQX
+Combination
+Min
+X
+0.000198
+1/5061
+17
+0
+0
+20.5
+4F SLAB
+DL+EQX
+Combination
+Min
+Y
+0.000514
+1/1947
+12
+59.92
+0
+20.5
+
+PAGE 49
+Base Reactions (Part 1 of 2, continued)
+Output Case
+Case Type
+Step
+Type
+FX
+kN
+FY
+kN
+FZ
+kN
+MX
+kN-m
+MY
+kN-m
+MZ
+kN-m
+DL+EQY
+Combination
+Min
+0
+-670.7541
+124670.4762
+936348.8588
+-3391959
+-18168.9149
+(DL+LL+EQX)
+Combination
+Max
+-670.7541
+0
+168361.1299
+1238776.401
+-4551908
+4960.5537
+(DL+LL+EQX)
+Combination
+Min
+-670.7541
+0
+168361.1299
+1238776.401
+-4551908
+4960.5537
+(DL+LL-EQX)
+Combination
+Max
+670.7541
+0
+168361.1299
+1238776.401
+-4544530
+-4960.5537
+(DL+LL-EQX)
+Combination
+Min
+670.7541
+0
+168361.1299
+1238776.401
+-4544530
+-4960.5537
+(DL+LL+EQY)
+Combination
+Max
+0
+-670.7541
+168361.1299
+1242465.5484
+-4548219
+-18168.9149
+(DL+LL+EQY)
+Combination
+Min
+0
+-670.7541
+168361.1299
+1242465.5484
+-4548219
+-18168.9149
+(DL+LL-EQY)
+Combination
+Max
+0
+670.7541
+168361.1299
+1235087.2536
+-4548219
+18168.9149
+(DL+LL-EQY)
+Combination
+Min
+0
+670.7541
+168361.1299
+1235087.2536
+-4548219
+18168.9149
+0.9DL+1.5RSX
+Combination
+Max
+1959.8725
+1058.075
+112253.603
+865068.2385
+-3001431
+24806.1949
+0.9DL+1.5RSX
+Combination
+Min
+-1959.8725
+-1058.075
+112153.2542
+813719.242
+-3104096
+-24806.1949
+0.9DL+1.5RSY
+Combination
+Max
+1061.8463
+1958.0239
+112274.0075
+889611.5856
+-3026887
+71852.606
+0.9DL+1.5RSY
+Combination
+Min
+-1061.8463
+-1958.0239
+112132.8496
+789175.8948
+-3078640
+-71852.606
+0.9DL+1.5RSZ
+Combination
+Max
+280.9631
+356.2652
+114003.658
+871804.5231
+-3038489
+11829.9042
+0.9DL+1.5RSZ
+Combination
+Min
+-280.9631
+-356.2652
+110403.1992
+806982.9573
+-3067038
+-11829.9042
+1.2(DL+LL+RSX)
+Combination
+Max
+1567.898
+846.46
+202073.4954
+1507071.2798
+-5416797
+19844.9559
+1.2(DL+LL+RSX)
+Combination
+Min
+-1567.898
+-846.46
+201993.2164
+1465992.0826
+-5498929
+-19844.9559
+1.2(DL+LL+RSY)
+Combination
+Max
+849.4771
+1566.4191
+202089.819
+1526705.9575
+-5437162
+57482.0848
+1.2(DL+LL+RSY)
+Combination
+Min
+-849.4771
+-1566.4191
+201976.8927
+1446357.4049
+-5478564
+-57482.0848
+1.2(DL+LL+RSZ)
+Combination
+Max
+224.7705
+285.0121
+203473.5394
+1512460.3075
+-5446443
+9463.9233
+1.2(DL+LL+RSZ)
+Combination
+Min
+-224.7705
+-285.0121
+200593.1724
+1460603.0549
+-5469282
+-9463.9233
+1.5(DL+RSX)
+Combination
+Max
+1959.8725
+1058.075
+187055.8887
+1424664.0653
+-5036607
+24806.1949
+1.5(DL+RSX)
+Combination
+Min
+-1959.8725
+-1058.075
+186955.5399
+1373315.0688
+-5139271
+-24806.1949
+1.5(DL+RSY)
+Combination
+Max
+1061.8463
+1958.0239
+187076.2933
+1449207.4124
+-5062063
+71852.606
+1.5(DL+RSY)
+Combination
+Min
+-1061.8463
+-1958.0239
+186935.1353
+1348771.7216
+-5113815
+-71852.606
+1.5(DL+RSZ)
+Combination
+Max
+280.9631
+356.2652
+188805.9437
+1431400.35
+-5073665
+11829.9042
+1.5(DL+RSZ)
+Combination
+Min
+-280.9631
+-356.2652
+185205.4849
+1366578.7841
+-5102213
+-11829.9042
+(DL+LL+RSX)
+Combination
+Max
+1306.5817
+705.3833
+168394.5795
+1255892.7332
+-4513998
+16537.4632
+(DL+LL+RSX)
+Combination
+Min
+-1306.5817
+-705.3833
+168327.6803
+1221660.0688
+-4582441
+-16537.4632
+(DL+LL+RSY)
+Combination
+Max
+707.8976
+1305.3493
+168408.1825
+1272254.9646
+-4530968
+47901.7374
+(DL+LL+RSY)
+Combination
+Min
+-707.8976
+-1305.3493
+168314.0773
+1205297.8374
+-4565470
+-47901.7374
+(DL+LL+RSZ)
+Combination
+Max
+187.3087
+237.5101
+169561.2828
+1260383.5896
+-4538703
+7886.6028
+(DL+LL+RSZ)
+Combination
+Min
+-187.3087
+-237.5101
+167160.977
+1217169.2124
+-4557735
+-7886.6028
+DL+RSX
+Combination
+Max
+1306.5817
+705.3833
+124703.9258
+949776.0435
+-3357738
+16537.4632
+DL+RSX
+Combination
+Min
+-1306.5817
+-705.3833
+124637.0266
+915543.3792
+-3426181
+-16537.4632
+DL+RSY
+Combination
+Max
+707.8976
+1305.3493
+124717.5288
+966138.275
+-3374709
+47901.7374
+DL+RSY
+Combination
+Min
+-707.8976
+-1305.3493
+124623.4236
+899181.1478
+-3409210
+-47901.7374
+DL+RSZ
+Combination
+Max
+187.3087
+237.5101
+125870.6291
+954266.9
+-3382443
+7886.6028
+DL+RSZ
+Combination
+Min
+-187.3087
+-237.5101
+123470.3233
+911052.5227
+-3401476
+-7886.6028
+
+PAGE 50
+Internship Report – OM AKANT | Page 50
+
+PAGE 51
+Internship Report – OM AKANT | Page 51
+CHAPTER 8: CONCLUSION
+The four-week internship gave a complete view of the structural design of a real multi-
+storeyed building, OM AKANT, a Ground + 13 storeyed residential-cum-commercial RCC
+building with two basements at Sargasan, Gandhinagar. In the first week the architectural
+information, the type of structure and the design loads were studied. In the second week the
+slab, beam, column, shear wall and staircase were analysed and the shear force and bending
+moment diagrams were drawn. In the third week the members were proportioned and
+designed as per IS 456:2000 and IS 13920:2016, and in the fourth week the general notes, the
+detailing rules and the structural drawings were studied.
+The main learning outcomes of the internship are:
+•
+Reading and understanding of structural layout drawings (slab-beam grids, beam
+schedules, column schedules).
+•
+Calculation of dead, live, wind and seismic loads and preparation of the load
+combinations as per the Indian standards.
+•
+Understanding of the load path and of the importance of the lift cores / shear walls in
+a dual system.
+•
+Manual analysis and design of the slab, beam and column, and understanding of the
+ductile detailing requirements of IS 13920.
+•
+Understanding of the ETABS modelling procedure and of the serviceability checks of
+deflection and storey drift.
+•
+Understanding of the coordination between the architect, the structural consultant, the
+MEP consultant and the site team.
+The author is grateful for the opportunity to work on such a project, and the knowledge
+gained will be used in the dissertation work and in the future career in the field of structural
+engineering.
+
+PAGE 52
+Internship Report – OM AKANT | Page 52
+References
+1. IS 456:2000, Plain and Reinforced Concrete – Code of Practice, Bureau of Indian
+Standards, New Delhi.
+2. IS 875 (Part 1): 1987, Code of Practice for Design Loads (Other than Earthquake) –
+Dead Loads.
+3. IS 875 (Part 2): 1987, Code of Practice for Design Loads (Other than Earthquake) –
+Imposed Loads.
+4. IS 875 (Part 3): 2015, Design Loads (Other than Earthquake) for Buildings and
+Structures – Wind Loads.
+5. IS 1893 (Part 1): 2016, Criteria for Earthquake Resistant Design of Structures –
+General Provisions and Buildings.
+6. IS 13920:2016, Ductile Design and Detailing of Reinforced Concrete Structures
+Subjected to Seismic Forces – Code of Practice.
+7. IS 1786:2008, High Strength Deformed Steel Bars and Wires for Concrete
+Reinforcement.
+8. SP 16: 1980, Design Aids for Reinforced Concrete to IS 456:1978.
+9. SP 34: 1987, Handbook on Concrete Reinforcement and Detailing.
+10. Project brochure of OM AKANT, Om Buildcon, Sargasan, Gandhinagar.
+11. Structural layout and beam detail drawings of Block A, B and C, OM AKANT
+(Structural consultant and architect drawings), 2024 – 2026.
+12. ETABS user manual and tutorial, Computers and Structures Inc.
+13. Pillai, S. U. and Menon, D., Reinforced Concrete Design, McGraw Hill Education.
+14. Varghese, P. C., Limit State Design of Reinforced Concrete, PHI Learning.

@@ -5,6 +5,7 @@ import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
+import { CorporateServices } from "./corporate-services";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -18,13 +19,13 @@ const verbs = [
   { word: "Support", text: "Be there when plans change." },
 ];
 
-const services: { icon: IconKind; title: string; photo: string; position?: string; items: string[]; service: string }[] = [
-  { icon: "plane", title: "Business flights", photo: "/images/library/business-terminal-v2.webp", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
-  { icon: "bed", title: "Hotels", photo: "/images/library/business-hotel.webp", position: "center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
-  { icon: "document", title: "Visas & documentation", photo: "/images/library/passport-preparation.webp", position: "center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
-  { icon: "car", title: "Airport & ground transfers", photo: "/images/library/airport-transfer.webp", position: "center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },
-  { icon: "people", title: "Meetings & events travel", photo: "/images/library/conference.webp", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
-  { icon: "support", title: "Travel support", photo: "/images/library/solo-consultant.webp", position: "center", items: ["Changes & rebooking", "Emergency assistance", "Onward travel", "Dedicated support"], service: "Travel support" },
+const services = [
+  { icon: "plane" as const, title: "Business flights", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
+  { icon: "bed" as const, title: "Hotels", photo: "/images/library/business-hotel.webp", alt: "A business hotel prepared for a corporate stay", position: "center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
+  { icon: "document" as const, title: "Visas & documentation", photo: "/images/library/passport-preparation.webp", alt: "Travel documents laid out before a departure", position: "center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
+  { icon: "car" as const, title: "Airport & ground transfers", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller into an airport transfer", position: "center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },
+  { icon: "people" as const, title: "Meetings & events travel", photo: "/images/library/conference.webp", alt: "Delegates gathered in a conference hall", items: ["Conference travel", "Exhibitions & events", "Delegate movements", "Venue transportation"], service: "Groups & MICE" },
+  { icon: "support" as const, title: "Travel support", photo: "/images/library/solo-consultant.webp", alt: "A travel consultant ready to help when plans change", position: "center", items: ["Changes & rebooking", "Emergency assistance", "Onward travel", "Dedicated support"], service: "Travel support" },
 ];
 
 const day = [
@@ -158,22 +159,7 @@ export default function CorporatePage() {
               <EnquiryButton className="j-button j-button-cream" service="Corporate travel">Discuss your requirements</EnquiryButton>
             </div>
           </div>
-          <ul className="k-cards" data-stagger>{services.map((item, i) => <li key={item.title} className="k-card">
-            <Image src={item.photo} alt="" fill sizes="(max-width: 800px) 92vw, 30vw" style={{ objectPosition: item.position }} />
-            <span className="k-card-top">
-              <span className="k-card-icon"><TravelIcon kind={item.icon} size={20} /></span>
-              <span className="k-card-number">{String(i + 1).padStart(2, "0")}</span>
-            </span>
-            <div className="k-card-body">
-              <h3>{item.title}</h3>
-              <div className="k-card-more">
-                <div>
-                  <ul>{item.items.map((line, n) => <li key={line} style={{ "--n": n } as React.CSSProperties}>{line}</li>)}</ul>
-                  <EnquiryButton className="k-card-link" service={item.service}>Ask about this</EnquiryButton>
-                </div>
-              </div>
-            </div>
-          </li>)}</ul>
+          <CorporateServices services={services} />
         </div>
       </section>
 

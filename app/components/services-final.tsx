@@ -100,7 +100,7 @@ export function ServicesFinal() {
 
   return <section className="sv-final j-torn-top" ref={section} aria-labelledby="final-heading">
     <div className="sv-view">
-      <Image src="/images/library/maldives-aerial.webp" alt="" fill sizes="100vw" />
+      <Image src="/images/library/journey-above-clouds.webp" alt="" fill sizes="100vw" />
       <div className="sv-view-shade" />
       <div className="sv-blind" aria-hidden="true"><span className="sv-blind-handle" /></div>
     </div>

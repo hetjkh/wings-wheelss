@@ -1,4 +1,9 @@
 {
+  "journey-above-clouds": {
+    "source": "assets/generated/journey-above-clouds.png",
+    "alt": "Sunlit clouds surrounding alpine peaks beneath a blue and gold dawn sky",
+    "generated": true
+  },
   "flight-wing": {
     "source": "assets/1.jpg",
     "alt": "An aircraft wing above white clouds and turquoise ocean"

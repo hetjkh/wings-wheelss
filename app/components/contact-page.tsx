@@ -47,11 +47,56 @@ function useDubaiClock() {
   return clock;
 }
 
+const requestSteps = [
+  { n: "01", title: "You send the request" },
+  { n: "02", title: "A consultant reviews it" },
+  { n: "03", title: "We reply with options and a quote" },
+];
+
 export function ContactPage() {
   const clock = useDubaiClock();
   const [service, setService] = useState("");
   const [sent, setSent] = useState(false);
   const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [destination, setDestination] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [focus, setFocus] = useState(1);
+  const [hint, setHint] = useState("");
+
+  const detailsDone = name.trim().length >= 2 && email.includes("@") && phone.trim().length >= 7 && nationality !== "";
+  const serviceDone = service !== "";
+  const messageDone = message.trim().length >= 10;
+  const chosen = services.find(item => item.label === service);
+  const chapters = [
+    { n: "01", title: "Your details", done: detailsDone },
+    { n: "02", title: "Service", done: serviceDone },
+    { n: "03", title: "Message", done: messageDone },
+  ];
+
+  const go = (next: number) => {
+    if (next > 1 && !detailsDone) { setHint("Add your name, email, phone and nationality."); setFocus(1); return; }
+    if (next > 2 && !serviceDone) { setHint("Choose the service you need."); setFocus(2); return; }
+    setHint("");
+    setFocus(next);
+  };
+
+  const reset = () => {
+    setSent(false);
+    setMessage("");
+    setService("");
+    setName("");
+    setEmail("");
+    setPhone("");
+    setWhatsapp("");
+    setNationality("");
+    setDestination("");
+    setFocus(1);
+    setHint("");
+  };
 
   return <ChapterMotion className="contact-page">
     <a className="skip-link" href="#form">Skip to the form</a>
@@ -105,66 +150,93 @@ export function ContactPage() {
       </section>
 
       <section className="c-form j-torn-top" id="form" aria-labelledby="form-heading">
-        <div className="j-shell c-form-grid">
-          <aside className="c-form-aside">
-            <span className="j-eyebrow s-eyebrow">02 / Get in touch</span>
-            <h2 id="form-heading" className="s-title">Send us your<br />travel request.</h2>
-            <p className="s-lead-body c-body">Need flight options, visa help or a full holiday plan? Fill in the form and a consultant will reply with options and a quote.</p>
-            <ol className="c-next" data-stagger>
-              <li><span>01</span>You send the request</li>
-              <li><span>02</span>A consultant reviews it</li>
-              <li><span>03</span>We reply with options and a quote</li>
-            </ol>
+        <div className="j-shell">
+          <div className="s-split-head c-form-head">
+            <div>
+              <span className="j-eyebrow s-eyebrow">02 / Get in touch</span>
+              <h2 id="form-heading" className="s-title">Send us your<br />travel request.</h2>
+            </div>
+            <p className="s-lead">Need flight options, visa help or a full holiday plan? Fill in the form and a consultant will reply with options and a quote.</p>
+          </div>
+
+          <ol className="c-after">
+            {requestSteps.map(item => <li key={item.n}><span>{item.n}</span>{item.title}</li>)}
+          </ol>
+
+          <div className="c-ticket">
+            {sent ? <div className="c-done" role="status">
+              <TravelIcon kind="check" size={34} />
+              <h3>Thank you for contacting us</h3>
+              <p>This form is a preview, so your details haven&apos;t been sent or saved yet. For now, please call, email or WhatsApp our team directly.</p>
+              <button type="button" className="c-send" onClick={reset}>Send another request <Arrow /></button>
+            </div> : <form onSubmit={event => { event.preventDefault(); if (messageDone) setSent(true); else setHint("Tell us a little more about the trip — at least a sentence."); }}>
+              <div className="c-rail" role="tablist" aria-label="Request steps">
+                {chapters.map((item, index) => <button key={item.n} type="button" role="tab" aria-selected={focus === index + 1} className={focus === index + 1 ? "is-current" : item.done ? "is-done" : ""} onClick={() => go(index + 1)}>
+                  <span>{item.done ? "✓" : item.n}</span>{item.title}
+                </button>)}
+                <i aria-hidden="true" style={{ transform: `scaleX(${(focus - 1) / 2})` }} />
+              </div>
+
+              <div className="c-stage" key={focus}>
+                {focus === 1 && <fieldset>
+                  <legend>Your details</legend>
+                  <p className="c-required">Fields marked * are required</p>
+                  <div className="c-fields">
+                    <label>Full name *<input name="name" autoComplete="name" placeholder="As on your passport" value={name} onChange={event => setName(event.target.value)} /></label>
+                    <label>Email address *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" value={email} onChange={event => setEmail(event.target.value)} /></label>
+                    <label>Phone number *<input name="phone" type="tel" autoComplete="tel" placeholder="+971 50 000 0000" value={phone} onChange={event => setPhone(event.target.value)} /></label>
+                    <label>WhatsApp number (optional)<input name="whatsapp" type="tel" placeholder="+971 50 000 0000" value={whatsapp} onChange={event => setWhatsapp(event.target.value)} /></label>
+                    <label className="c-wide">Nationality *<select name="nationality" value={nationality} onChange={event => setNationality(event.target.value)}><option value="" disabled>Select your nationality</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
+                  </div>
+                </fieldset>}
+
+                {focus === 2 && <fieldset>
+                  <legend>Service required *</legend>
+                  <div className="c-services" role="radiogroup" aria-label="What service do you need?">
+                    {services.map(item => <label key={item.label} className={service === item.label ? "c-service is-active" : "c-service"}>
+                      <input type="radio" name="service" value={item.label} checked={service === item.label} onChange={() => { setService(item.label); setHint(""); }} />
+                      <TravelIcon kind={item.icon} size={22} /><span>{item.label}</span>
+                    </label>)}
+                  </div>
+                  <div className="c-fields">
+                    <label className="c-wide">Destination country<select name="destination" value={destination} onChange={event => setDestination(event.target.value)}><option value="">Select a country</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
+                  </div>
+                </fieldset>}
+
+                {focus === 3 && <fieldset>
+                  <legend>Your message</legend>
+                  <label className="c-message">Tell us about your requirements *
+                    <textarea name="message" rows={5} placeholder="Travel dates, number of travellers, budget, anything we should know" maxLength={1000} value={message} onChange={event => setMessage(event.target.value)} />
+                    <span className="c-meter" aria-hidden="true"><i style={{ transform: `scaleX(${message.length / 1000})` }} /></span>
+                    <span className="c-count">{message.length}/1000 characters</span>
+                  </label>
+                </fieldset>}
+              </div>
+
+              <div className="c-pass" aria-live="polite">
+                <span>{name.trim() || "Your name"}</span>
+                <span>{chosen?.label || "Service"}</span>
+                <span>{destination || "Destination"}</span>
+              </div>
+              {hint && <p className="c-hint" role="status">{hint}</p>}
+              <div className="c-submit">
+                <p>Preview form · Your details won&apos;t be sent or stored.</p>
+                <div className="c-nav">
+                  {focus > 1 && <button type="button" className="c-back" onClick={() => go(focus - 1)}>Back</button>}
+                  {focus < 3
+                    ? <button type="button" className="c-send" onClick={() => go(focus + 1)}>Continue <Arrow /></button>
+                    : <button type="submit" className="c-send">Send request <Arrow /></button>}
+                </div>
+              </div>
+            </form>}
+          </div>
+
+          <div className="c-office">
             <div className="c-company">
               <strong>{office.company}</strong>
               {office.address.map(line => <span key={line}>{line}</span>)}
             </div>
             <div className="c-social"><span>Follow us</span>{office.socials.map(social => <a key={social.label} href={social.href} target="_blank" rel="noreferrer">{social.label}</a>)}</div>
-          </aside>
-
-          <div className="c-sheet" data-enter>
-            <div className="c-sheet-head"><span>Travel request</span><span>Wings &amp; Wheels · Dubai</span></div>
-            {sent ? <div className="c-done" role="status">
-              <TravelIcon kind="check" size={34} />
-              <h3>Thank you for contacting us</h3>
-              <p>This form is a preview, so your details haven&apos;t been sent or saved yet. For now, please call, email or WhatsApp our team directly.</p>
-              <button type="button" className="j-button j-button-olive" onClick={() => { setSent(false); setMessage(""); setService(""); }}>Send another request <Arrow /></button>
-            </div> : <form onSubmit={event => { event.preventDefault(); setSent(true); }}>
-              <p className="c-required">Fields marked * are required</p>
-              <fieldset>
-                <legend><span>01</span>Your details</legend>
-                <div className="c-fields">
-                  <label>Full name *<input name="name" autoComplete="name" placeholder="As on your passport" required minLength={2} maxLength={100} /></label>
-                  <label>Email address *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
-                  <label>Phone number *<input name="phone" type="tel" autoComplete="tel" placeholder="+971 50 000 0000" required pattern="\+?[0-9 ()\-]{7,24}" title="7–20 digits, with your country code" /></label>
-                  <label>WhatsApp number (optional)<input name="whatsapp" type="tel" placeholder="+971 50 000 0000" pattern="\+?[0-9 ()\-]{7,24}" title="7–20 digits, with your country code" /></label>
-                  <label className="c-wide">Nationality *<select name="nationality" required defaultValue=""><option value="" disabled>Select your nationality</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend><span>02</span>Service required *</legend>
-                <div className="c-services" role="radiogroup" aria-label="What service do you need?">
-                  {services.map(item => <label key={item.label} className={service === item.label ? "c-service is-active" : "c-service"}>
-                    <input type="radio" name="service" value={item.label} checked={service === item.label} onChange={() => setService(item.label)} required />
-                    <TravelIcon kind={item.icon} size={20} /><span>{item.label}</span>
-                  </label>)}
-                </div>
-                <div className="c-fields">
-                  <label className="c-wide">Destination country<select name="destination" defaultValue=""><option value="">Select a country</option>{countries.map(country => <option key={country}>{country}</option>)}</select></label>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend><span>03</span>Your message</legend>
-                <label className="c-message">Tell us about your requirements *
-                  <textarea name="message" rows={4} placeholder="Travel dates, number of travellers, budget, anything we should know" required minLength={10} maxLength={1000} value={message} onChange={event => setMessage(event.target.value)} />
-                  <span className="c-count">{message.length}/1000 characters</span>
-                </label>
-              </fieldset>
-              <div className="c-submit">
-                <p>Preview form · Your details won&apos;t be sent or stored.</p>
-                <button type="submit" className="j-button j-button-olive">Send request <Arrow /></button>
-              </div>
-            </form>}
           </div>
         </div>
       </section>

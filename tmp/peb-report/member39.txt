@@ -1,0 +1,99 @@
+|  Member Number:     39                                                           |
+ |  Member Section:       TAP ERED        (AISC SECTIONS)                           |
+ |  Status: PASS  Ratio:   0.985  Critical Load Case:   116  Location:       0.00   |
+ |  Critical Condition: Sec. 8.4                                                    |
+ |  Critical Design Forces:  (Unit: KN    METE)                                     |
+ |      FX:    -148.547E+00 T     FY:    -201.748E+00      FZ:    -193.270E-03      |
+ |      MX:       1.657E-03       MY:     248.727E-03      MZ:    -781.111E+00      |
+ |----------------------------------------------------------------------------------|
+ |  Section Properties:    (Unit:  CM  )                                            |
+ |  AXX:     123.000E+00          IZZ:     195.575E+03          RZZ:      39.875E+00|
+ |  AYY:      57.000E+00          IYY:       4.161E+03          RYY:       5.816E+00|
+ |  AZZ:      66.000E+00          IXX:      38.520E+00           CW:       9.623E+06|
+ |  ZEZ:       4.016E+03          ZPZ:       4.528E+03                              |
+ |  ZEY:     302.624E+00          ZPY:     462.300E+00                              |
+ |----------------------------------------------------------------------------------|
+ |  Slenderness Check:    (Unit:  KN    METE)                                       |
+ |  Actual Length:        6.021E+00                                                 |
+ |  Parameters:     LZ:       15.360E+00  LY:        1.500E+00                      |
+ |                  KZ:            1.000  KY:            1.000                      |
+ |  Actual Ratio:  67.64 Allowable Ratio: 180.00  LOAD:   101 FX:     15.836E+00 C  |
+ |----------------------------------------------------------------------------------|
+ |  Section Class:      Slender; Flange Class: Semi-Compact; Web Class:      Slender|
+ |----------------------------------------------------------------------------------|
+     STAAD SPACE                                              -- PAGE NO.  136
+        
+
+                       STAAD.PRO CODE CHECKING - IS-800-2007-LSD (V2.1)
+                     ****************************************************
+
+ |----------------------------------------------------------------------------------|
+ |  Member Number:     39                                                           |
+ |  Member Section:       TAP ERED        (AISC SECTIONS)                           |
+ |----------------------------------------------------------------------------------|
+ |  Tension:    (Unit:  KN    METE)                                                 |
+ |  Parameters:     FYLD:      345.000E+03       FU:      490.000E+03               |
+ |                   NSF:            1.000    ALPHA:            0.800               |
+ |  Yielding   :  Design Force:      147.134E+00     LC:   116                      |
+ |                Capacity:            3.011E+03     As per:  Sec. 6.2              |
+ |  Rupture    :  Design Force:      147.134E+00     LC:   116                      |
+ |                Capacity:            3.011E+03     As per:  Sec. 6.3              |
+ |----------------------------------------------------------------------------------|
+ |  Compression:    (Unit:  KN    METE)                                             |
+ |  Buckling Class:   Major: b    Minor: c    As per:Cl. 7.1.2.2                    |
+ |  Major Axis:   Design Force:       59.004E+00    LC:   103  Loc:     6.021       |
+ |                Capacity:            2.023E+03    As per:  Sec. 7.1.2             |
+ |  Minor Axis:   Design Force:       59.004E+00    LC:   103  Loc:     6.021       |
+ |                Capacity:            2.862E+03    As per:  Sec. 7.1.2             |
+ |----------------------------------------------------------------------------------|
+ |  Shear:    (Unit:  KN  )                                                         |
+ |  Major Axis:   Design Force:     -193.270E-03    LC:   116  Loc:     0.000       |
+ |                Capacity:          237.242E+00    As per:  Sec. 8.4               |
+ |  Minor Axis:   Design Force:     -201.748E+00    LC:   116  Loc:     0.000       |
+ |                Capacity:          204.891E+00    As per:  Sec. 8.4               |
+ |----------------------------------------------------------------------------------|
+ |  Bending:    (Unit:  KN    METE)                                                 |
+ |  Parameters:   Laterally Unsupported    KX:   1.00  LX:   1.500E+00  General     |
+ |  Major Axis:   Design Force:     -781.111E+00    LC:   116  Loc:     0.000       |
+ |                Capacity:          982.925E+00    As per:  Sec. 9.2.2(b           |
+ |  Minor Axis:   Design Force:     -914.911E-03    LC:   116  Loc:     6.021       |
+ |                Capacity:           94.896E+00    As per:  Sec. 8.2.1.2           |
+ |----------------------------------------------------------------------------------|
+ |  Combined Interaction:                                                           |
+ |  Parameters:  PSI: 1.00   CMX:    0.900   CMY:    0.900   CMZ:    0.900          |
+ |  Section Strength:    Ratio:     0.836    As per:  Sec. 9.3.1.3                  |
+ |                       LC:          116    Loc:       0.000                       |
+ |  Overall Member Strength (Bending+Tension):                                      |
+ |  Equation 1(Z):       Ratio:     0.749    As per:  Sec. 9.3.2.1                  |
+ |                       LC:          114    Loc:       0.000                       |
+ |  Equation 2(Y):       Ratio:     0.001    As per:  Sec. 9.3.2.1                  |
+ |                       LC:          105    Loc:       6.021                       |
+ |  Overall Member Strength (Bending+Compression):                                  |
+ |  Equation 1:          Ratio:     0.584    As per:  Sec. 9.3.2.2                  |
+ |                       LC:          101    Loc:       0.000                       |
+ |  Equation 2:          Ratio:     0.527    As per:  Sec. 9.3.2.2                  |
+ |                       LC:          101    Loc:       0.000                       |
+ |----------------------------------------------------------------------------------|
+ |  Checks               Ratio   Load Case No.      Location from Start( METE)      |
+ |                                                                                  |
+ |  Tension                0.049     116                       6.021E+00            |
+ |  Compression            0.029     103                       6.021E+00            |
+ |  Shear Major            0.001     116                       0.000E+00            |
+ |  Shear Minor            0.985     116                       0.000E+00            |
+ |  Bend Major             0.795     116                       0.000E+00            |
+ |  Bend Minor             0.010     116                       6.021E+00            |
+ |  Sec. 9.3.1.3           0.836     116                       0.000E+00            |
+ |  Sec. 9.3.2.1 (Z)       0.749     114                       0.000E+00            |
+ |  Sec. 9.3.2.1 (Y)       0.001     105                       6.021E+00            |
+ |  Sec. 9.3.2.2 (i)       0.584     101                       0.000E+00            |
+ |  Sec. 9.3.2.2(ii)       0.527     101                       0.000E+00            |
+ |----------------------------------------------------------------------------------|
+ 
+     STAAD SPACE                                              -- PAGE NO.  137
+        
+
+                       STAAD.PRO CODE CHECKING - IS-800-2007-LSD (V2.1)
+                     ****************************************************
+
+ |----------------------------------------------------------------------------------|
+ 

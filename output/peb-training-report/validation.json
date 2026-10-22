@@ -1,0 +1,12 @@
+{
+  "pdf_pages": 20,
+  "pdf_words": 7209,
+  "word_manual_page_breaks": 19,
+  "member_checks": 251,
+  "recorded_passes": 249,
+  "recorded_failures": [
+    154,
+    161
+  ],
+  "checks": "Page count, extracted content, arithmetic, source counts, text bounds and DOCX package integrity passed. Word desktop pagination was not verified; PDF is the fixed 20-page version."
+}

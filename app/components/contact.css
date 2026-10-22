@@ -22,49 +22,68 @@
 .c-line-values a:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
 .c-line-note { font: 300 calc(var(--u) * .9375)/1.35 var(--body); text-align: right; color: inherit; opacity: .75; }
 
-/* 02 · The travel request, written on a sheet */
-.c-form { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #fff; }
-.c-form-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 6%; align-items: start; }
-.c-form-aside { position: sticky; top: 110px; }
-.c-next { margin-top: calc(var(--u) * 2.25); border-top: 1px solid var(--line); }
-.c-next li { display: flex; align-items: baseline; gap: var(--u); padding: calc(var(--u) * .9) 0; border-bottom: 1px solid var(--line); font: 400 calc(var(--u) * 1.125)/1.2 var(--heading); color: var(--ink); }
-.c-next span { font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .12em; color: var(--ochre); }
-.c-company { display: flex; flex-direction: column; gap: 4px; margin-top: calc(var(--u) * 2.25); font: 300 calc(var(--u) * .9375)/1.35 var(--body); color: var(--text); }
-.c-company strong { font: 400 calc(var(--u) * 1.0625)/1.3 var(--heading); color: var(--ink); }
-.c-social { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: calc(var(--u) * 1.5); font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .12em; text-transform: uppercase; }
-.c-social span { color: var(--ochre); }
-.c-social a { padding-bottom: 4px; border-bottom: 1px solid var(--rule); color: var(--ink); transition: border-color .25s; }
-.c-social a:hover { border-color: var(--ink); }
-.c-sheet { padding: calc(var(--u) * 2) calc(var(--u) * 2.25) calc(var(--u) * 2.25); border: 1px solid var(--line); background: var(--paper); box-shadow: 0 30px 60px -40px #3d2d2066; }
-.c-sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: var(--u); border-bottom: 2px solid var(--ink); font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--ochre); }
-.c-sheet-head span:first-child { font: 400 calc(var(--u) * 1.5)/1 var(--heading); letter-spacing: .08em; color: var(--ink); }
-.c-required { margin-top: var(--u); font: 300 calc(var(--u) * .8125)/1.3 var(--body); color: var(--ochre); }
-.c-sheet fieldset { min-width: 0; margin: 0; padding: calc(var(--u) * 1.5) 0; border: 0; border-bottom: 1px dashed var(--rule); }
-.c-sheet legend { float: left; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: var(--u); padding: 0; font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
-.c-sheet legend span { font: 400 calc(var(--u) * 1.125)/1 var(--heading); letter-spacing: 0; color: var(--ochre); }
-.c-fields { clear: both; display: grid; grid-template-columns: 1fr 1fr; gap: var(--u) calc(var(--u) * 1.5); }
-.c-fields label, .c-message { display: flex; flex-direction: column; gap: 6px; font: 400 calc(var(--u) * .6875)/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ochre); }
-.c-message { clear: both; }
+/* 02 · A travel-request ticket. The stub fills in as the form is completed. */
+.c-form { --ease: cubic-bezier(.22, 1, .36, 1); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #f3ead9; }
+.c-form-head { margin-top: 0; }
+.c-form .s-lead { color: var(--text); }
+.c-after { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: calc(var(--u) * 2.5) 0 0; padding: 0; list-style: none; }
+.c-after li { display: flex; align-items: baseline; gap: 12px; padding: calc(var(--u) * 1) 0; border-top: 1px solid #3d2d2024; font: 400 calc(var(--u) * 1.15)/1.25 var(--heading); color: var(--ink); }
+.c-after span { font: 400 calc(var(--u) * .72)/1 var(--body); letter-spacing: .14em; color: var(--ochre); }
+.c-ticket { margin-top: calc(var(--u) * 2.5); padding: calc(var(--u) * 1.6) calc(var(--u) * 2) calc(var(--u) * 1.75); border-radius: 28px; background: #fbf6ec; box-shadow: 0 40px 80px -48px #3d2d2080; }
+.c-rail { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding-bottom: calc(var(--u) * 1.1); border-bottom: 1px solid #3d2d2018; }
+.c-rail > i { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform-origin: left; transition: transform .45s var(--ease); }
+.c-rail button { display: flex; align-items: center; gap: 10px; padding: 0; border: 0; background: transparent; cursor: pointer; font: 400 calc(var(--u) * 1.05)/1 var(--heading); letter-spacing: .04em; text-transform: uppercase; color: #a8947c; text-align: left; }
+.c-rail button span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #3d2d2026; font: 400 calc(var(--u) * .7)/1 var(--body); letter-spacing: .04em; transition: background .3s, color .3s, border-color .3s; }
+.c-rail .is-current { color: var(--ink); }
+.c-rail .is-current span, .c-rail .is-done span { background: var(--ink); border-color: var(--ink); color: #fff8e9; }
+.c-stage { min-height: 280px; animation: c-rise .45s var(--ease); }
+@keyframes c-rise { from { opacity: 0; translate: 28px 0; } }
+.c-ticket fieldset { min-width: 0; margin: 0; padding: calc(var(--u) * 1.5) 0 0; border: 0; }
+.c-ticket legend { padding: 0; font: 400 calc(var(--u) * 2)/1 var(--heading); letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
+.c-required { margin-top: 8px; font: 300 calc(var(--u) * .8)/1.3 var(--body); color: var(--ochre); }
+.c-fields { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 1.25) calc(var(--u) * 1.75); margin-top: calc(var(--u) * 1.4); }
+.c-fields label, .c-message { display: flex; flex-direction: column; gap: 6px; font: 400 calc(var(--u) * .68)/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: #8a7760; }
+.c-fields label:focus-within, .c-message:focus-within { color: var(--ink); }
 .c-wide { grid-column: 1 / -1; }
-.c-sheet input:not([type="radio"]), .c-sheet select, .c-sheet textarea { width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: transparent; font: 400 calc(var(--u) * 1.0625)/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); outline: none; transition: border-color .25s; }
-.c-sheet input:focus, .c-sheet select:focus, .c-sheet textarea:focus { border-color: var(--ink); }
-.c-sheet textarea { resize: vertical; }
-.c-count { align-self: flex-end; letter-spacing: .08em; text-transform: none; }
-.c-services { clear: both; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: calc(var(--u) * 1.25); }
-.c-service { position: relative; display: flex; flex-direction: column; gap: 10px; min-height: calc(var(--u) * 5.5); padding: calc(var(--u) * .9); border: 1px solid var(--rule); background: #fff; font: 400 calc(var(--u) * .875)/1.2 var(--body); color: var(--ink); cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
-.c-service svg { color: var(--ochre); transition: color .25s; }
-.c-service span { margin-top: auto; }
-.c-service:hover { border-color: var(--ink); }
-.c-service.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
-.c-service.is-active svg { color: var(--sand); }
+.c-ticket input:not([type="radio"]), .c-ticket select, .c-ticket textarea { width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid #3d2d2026; border-radius: 0; background: transparent; font: 400 calc(var(--u) * 1.15)/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); outline: none; background-image: linear-gradient(var(--ink), var(--ink)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 2px; transition: background-size .4s var(--ease); }
+.c-ticket input:focus, .c-ticket select:focus, .c-ticket textarea:focus { background-size: 100% 2px; }
+.c-ticket textarea { min-height: 140px; resize: vertical; }
+.c-meter { display: block; height: 2px; margin-top: 10px; background: #3d2d2014; }
+.c-meter i { display: block; height: 100%; background: var(--ochre); transform-origin: left; }
+.c-count { align-self: flex-end; letter-spacing: .06em; text-transform: none; }
+.c-services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: calc(var(--u) * 1.4); }
+.c-service { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 118px; padding: 16px; border: 1px solid #3d2d2024; border-radius: 18px; background: #fff; cursor: pointer; font: 400 calc(var(--u) * .95)/1.2 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); transition: translate .45s var(--ease), background .3s, color .3s, border-color .3s; }
+.c-service svg { color: var(--ochre); transition: color .3s, rotate .5s var(--ease); }
+.c-service:hover { translate: 0 -4px; border-color: var(--ink); }
+.c-service.is-active { background: var(--ink); border-color: var(--ink); color: #fff8e9; }
+.c-service.is-active svg { color: #ecd9ad; rotate: -12deg; }
 .c-service input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-.c-service:has(input:focus-visible) { outline: 2px solid var(--ochre); outline-offset: 2px; }
-.c-submit { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: calc(var(--u) * 1.25); margin-top: calc(var(--u) * 1.75); }
-.c-submit p { font: 300 calc(var(--u) * .8125)/1.3 var(--body); color: var(--ochre); }
-.c-done { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: calc(var(--u) * 2); color: var(--ink); }
+.c-service:has(input:focus-visible) { outline: 2px solid var(--ochre); outline-offset: 3px; }
+.c-message { margin-top: calc(var(--u) * 1.2); }
+.c-pass { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: calc(var(--u) * 1.5); padding-top: calc(var(--u) * 1); border-top: 1px dashed #3d2d2024; font: 400 calc(var(--u) * .85)/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.c-pass span:not(:last-child)::after { content: '·'; margin-left: 18px; color: var(--ochre); }
+.c-hint { margin-top: 12px; font: 300 calc(var(--u) * .9)/1.3 var(--body); color: #8a4b32; }
+.c-submit { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: calc(var(--u) * 1.25); }
+.c-submit p { max-width: 28em; font: 300 calc(var(--u) * .8)/1.35 var(--body); color: #8a7760; }
+.c-nav { display: flex; gap: 10px; }
+.c-back { padding: 16px 22px; border: 1px solid #3d2d2026; border-radius: 100px; background: transparent; cursor: pointer; font: 400 calc(var(--u) * .78)/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.c-back:hover { border-color: var(--ink); }
+.c-send { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 12px; padding: 16px 18px 16px 24px; overflow: hidden; border: 0; border-radius: 100px; background: var(--ink); color: #fff8e9; cursor: pointer; font: 400 calc(var(--u) * .78)/1 var(--body); letter-spacing: .12em; text-transform: uppercase; }
+.c-send::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #a18d77; transform: scaleX(0); transform-origin: right; transition: transform .55s var(--ease); }
+.c-send svg { width: 16px; height: 16px; transition: transform .5s var(--ease); }
+.c-send:hover::before, .c-send:focus-visible::before { transform: scaleX(1); transform-origin: left; }
+.c-send:hover svg { transform: translateX(4px); }
+.c-done { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: calc(var(--u) * 2) 0; color: var(--ink); }
 .c-done svg { color: var(--ochre); }
 .services-page .c-done h3 { font: 400 calc(var(--u) * 2.5)/1 var(--heading); text-transform: uppercase; }
-.c-done p { max-width: 30em; font: 300 calc(var(--u) * 1.0625)/1.4 var(--body); }
+.c-done p { max-width: 32em; font: 300 calc(var(--u) * 1.05)/1.4 var(--body); }
+.c-office { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-top: calc(var(--u) * 2); }
+.c-company { display: flex; flex-direction: column; gap: 4px; font: 300 calc(var(--u) * .9)/1.4 var(--body); color: #6b5a48; }
+.c-company strong { font: 400 calc(var(--u) * 1.05)/1.3 var(--heading); color: var(--ink); }
+.c-social { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.c-social span { flex-basis: 100%; font: 400 calc(var(--u) * .68)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--ochre); text-align: right; }
+.c-social a { padding: 8px 14px; border: 1px solid #3d2d2026; border-radius: 100px; font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); text-decoration: none; transition: background .3s, color .3s, border-color .3s; }
+.c-social a:hover { background: var(--ink); border-color: var(--ink); color: #fff8e9; }
 
 /* 03 · A week of office hours, with today marked */
 .c-hours { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
@@ -98,16 +117,18 @@
 @media (max-width: 991px) {
   .c-line { grid-template-columns: 1fr; gap: 10px; }
   .c-line-note { text-align: left; }
-  .c-form-grid, .c-hours-head { grid-template-columns: 1fr; gap: 40px; }
-  .c-form-aside { position: relative; top: 0; }
-  .c-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .c-after, .c-services { grid-template-columns: 1fr 1fr; }
+  .c-hours-head { grid-template-columns: 1fr; gap: 40px; }
+  .c-social { justify-content: flex-start; }
+  .c-social span { text-align: left; }
 }
 @media (max-width: 600px) {
   .c-line { padding: 22px 6px; }
   .c-line-values a { font-size: 26px; }
-  .c-sheet { padding: 22px 18px; }
-  .c-fields { grid-template-columns: 1fr; }
-  .c-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .c-ticket { padding: 18px 16px 22px; }
+  .c-fields, .c-services, .c-after, .c-rail { grid-template-columns: 1fr; }
+  .c-rail button { padding: 8px 0; }
+  .services-page .c-ticket legend { font-size: 26px; }
   .c-week { --day: 64px; }
   .c-week-axis span:nth-child(odd) { display: none; }
   .c-day { flex-direction: column; gap: 4px; font-size: 16px; }
@@ -115,4 +136,6 @@
   .c-now b { font-size: 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .c-stage { animation: none; }
+  .c-service, .c-send, .c-rail > i { transition: none; }
 }
