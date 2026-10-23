@@ -2,21 +2,23 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Arrow, TravelIcon } from "./icons";
 import "./home-clientele.css";
 
 const clients = [
-  { src: "/brands/brand-1.webp", name: "Médecins Sans Frontières" },
-  { src: "/brands/brand-2.webp", name: "Oxfam" },
-  { src: "/brands/brand-3.webp", name: "Nonviolent Peaceforce" },
-  { src: "/brands/brand-4.webp", name: "Client partner" },
-  { src: "/brands/brand-5.webp", name: "Ayoki Fabricon" },
-  { src: "/brands/brand-6.webp", name: "Danish Refugee Council" },
-  { src: "/brands/brand-7.webp", name: "Craft Silicon" },
-  { src: "/brands/brand-8.webp", name: "Glenmark" },
-  { src: "/brands/brand-9.webp", name: "SUN" },
-  { src: "/brands/brand-10.webp", name: "Dar Petroleum Operating Company" },
+  { src: "/brands/clientele/brand-1.svg", name: "Médecins Sans Frontières" },
+  { src: "/brands/clientele/brand-2.svg", name: "Oxfam" },
+  { src: "/brands/clientele/brand-3.svg", name: "Nonviolent Peaceforce" },
+  { src: "/brands/clientele/brand-4.svg", name: "SPOC" },
+  { src: "/brands/clientele/brand-5.svg", name: "Ayoki Fabricon" },
+  { src: "/brands/clientele/brand-6.svg", name: "Danish Refugee Council" },
+  { src: "/brands/clientele/brand-7.svg", name: "Craft Silicon" },
+  { src: "/brands/clientele/brand-8.svg", name: "Glenmark" },
+  { src: "/brands/clientele/brand-9.svg", name: "SUN" },
+  { src: "/brands/clientele/brand-10.svg", name: "Dar Petroleum Operating Company" },
 ];
 
 export function HomeClientele() {
@@ -28,8 +30,8 @@ export function HomeClientele() {
     gsap.registerPlugin(ScrollTrigger);
     const context = gsap.context(() => {
       gsap.from(section.querySelectorAll(".e-clientele-card"), {
-        y: 24, opacity: 0, duration: .8, stagger: .055, ease: "power3.out",
-        scrollTrigger: { trigger: ".e-clientele-wall", start: "top 85%", once: true },
+        y: 26, opacity: 0, duration: .75, stagger: .05, ease: "power3.out", clearProps: "opacity,transform",
+        scrollTrigger: { trigger: section.querySelector(".e-clientele-grid"), start: "top 88%", once: true },
       });
     }, section);
     return () => context.revert();
@@ -44,24 +46,28 @@ export function HomeClientele() {
         </div>
         <div className="e-clientele-layout">
           <div className="e-clientele-heading">
-            <span className="e-clientele-overline">Good company. Every journey.</span>
-            <h2 id="clientele-title" data-editorial-title>
-              <span className="e-line"><span>Our</span></span>
-              <span className="e-line"><span>Clientele.</span></span>
-            </h2>
-            <p>We collaborate with the best in the industry to bring you exceptional travel experiences.</p>
-            <div className="e-clientele-note"><span aria-hidden="true">↗</span><p>Different organisations.<br />The same personal attention.</p></div>
+            <div className="e-clientele-title">
+              <span className="e-clientele-overline">Good company. Every journey.</span>
+              <h2 id="clientele-title" data-editorial-title>
+                <span className="e-line"><span>Our</span></span>{" "}
+                <span className="e-line"><span>Clientele.</span></span>
+              </h2>
+            </div>
+            <div className="e-clientele-intro">
+              <p>We collaborate with the best in the industry to bring you exceptional travel experiences.</p>
+              <div className="e-clientele-note"><TravelIcon kind="route" size={24} /><p>Different organisations.<br /><span>The same personal attention.</span></p></div>
+            </div>
           </div>
           <div className="e-clientele-wall">
-            <div className="e-clientele-wall-top"><span>A shared sense of direction</span><span>01 — 10</span></div>
+            <div className="e-clientele-wall-top"><span><TravelIcon kind="globe" size={17} /> A shared sense of direction</span><span><b>{String(clients.length).padStart(2, "0")}</b> organisations. One shared journey.</span></div>
             <ul className="e-clientele-grid" aria-label="Client organisations">
               {clients.map((client, index) => <li key={client.src} className="e-clientele-card">
                 <span className="e-clientele-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <Image src={client.src} alt={client.name} width={320} height={180} sizes="(max-width: 700px) 36vw, (max-width: 1100px) 23vw, 16vw" />
+                <div className="e-clientele-logo"><Image src={client.src} alt={client.name} fill sizes="(max-width: 540px) 39vw, (max-width: 760px) 40vw, (max-width: 1100px) 31vw, 18vw" /></div>
                 <span className="e-clientele-name" aria-hidden="true">{client.name}</span>
               </li>)}
             </ul>
-            <div className="e-clientele-wall-bottom"><span>Across industries. Across borders.</span><span aria-hidden="true">W&amp;W</span></div>
+            <div className="e-clientele-wall-bottom"><p>Across industries.<br /><span>Across borders.</span></p><Link href="/contact">Let’s talk travel <span><Arrow diagonal /></span></Link></div>
           </div>
         </div>
       </div>
