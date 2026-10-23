@@ -59,9 +59,9 @@ const principles: { title: string; text: string; icon: IconKind }[] = [
 ];
 
 const crew = [
-  { caption: "Coordinating the details", image: "/images/about/coordinator-v2.webp", alt: "A travel coordinator reviewing arrangements at a desk with two screens" },
-  { caption: "Communicating with travellers", image: "/images/about/consultation-v2.webp", alt: "A travel consultant listening to a client across a desk" },
-  { caption: "Keeping plans moving", image: "/images/about/support-v2.webp", alt: "A support specialist helping a traveller by phone" },
+  { caption: "Coordinating the details", image: "/images/about/coordinator-v3.webp", alt: "A travel coordinator in a light blue shirt reviewing an itinerary at a dual-screen workstation" },
+  { caption: "Communicating with travellers", image: "/images/about/consultation-v3.webp", alt: "A travel consultant in a tan blazer discussing a destination brochure with a client" },
+  { caption: "Keeping plans moving", image: "/images/about/support-v3.webp", alt: "A travel support specialist in a navy polo helping a traveller by phone and taking notes" },
 ];
 
 const values = ["Integrity", "Care", "Partnership", "Responsibility", "Continuous improvement"];
@@ -96,7 +96,7 @@ export function AboutPage() {
         sub="moving between them."
         text="Wings & Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide."
         action={{ label: "Discover our story", href: "#who" }}
-        media={{ image: "/images/about/hero-v2.webp", alt: "Travellers and consultants planning a journey together" }}
+        media={{ image: "/images/about/hero-v3.webp", alt: "Two male travel consultants and a woman planning a journey in a sunlit Dubai office" }}
         tags={tags}
       />
 
