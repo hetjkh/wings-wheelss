@@ -279,14 +279,6 @@
     1024,
     1536
   ],
-  "/images/lake.jpg": [
-    1400,
-    933
-  ],
-  "/images/kyoto.jpg": [
-    1000,
-    667
-  ],
   "/images/library/corporate-preferred-rates.webp": [
     1164,
     1351
@@ -474,5 +466,77 @@
   "/images/library/home-personal-support.webp": [
     2752,
     1536
+  ],
+  "/brands/brand-1.webp": [
+    600,
+    600
+  ],
+  "/brands/brand-10.webp": [
+    768,
+    768
+  ],
+  "/brands/brand-2.webp": [
+    500,
+    342
+  ],
+  "/brands/brand-3.webp": [
+    758,
+    378
+  ],
+  "/brands/brand-4.webp": [
+    768,
+    768
+  ],
+  "/brands/brand-5.webp": [
+    504,
+    136
+  ],
+  "/brands/brand-6.webp": [
+    1280,
+    720
+  ],
+  "/brands/brand-7.webp": [
+    792,
+    442
+  ],
+  "/brands/brand-8.webp": [
+    1280,
+    714
+  ],
+  "/brands/brand-9.webp": [
+    855,
+    570
+  ],
+  "/images/Tabby.webp": [
+    3046,
+    1214
+  ],
+  "/images/Tamara-En.webp": [
+    2825,
+    400
+  ],
+  "/images/about/story-walk.webp": [
+    1054,
+    1024
+  ],
+  "/images/dubai-terrace.webp": [
+    1536,
+    1024
+  ],
+  "/images/kyoto.webp": [
+    1000,
+    667
+  ],
+  "/images/lake.webp": [
+    1400,
+    933
+  ],
+  "/videos/dubai-city-panorama-poster.webp": [
+    1920,
+    1080
+  ],
+  "/videos/dubai-skyline-poster.webp": [
+    1280,
+    720
   ]
 }

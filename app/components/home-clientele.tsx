@@ -7,16 +7,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./home-clientele.css";
 
 const clients = [
-  { src: "/brands/brand-1.png", name: "Médecins Sans Frontières" },
-  { src: "/brands/brand-2.png", name: "Oxfam" },
-  { src: "/brands/brand-3.png", name: "Nonviolent Peaceforce" },
-  { src: "/brands/brand-4.png", name: "Client partner" },
-  { src: "/brands/brand-5.png", name: "Ayoki Fabricon" },
-  { src: "/brands/brand-6.png", name: "Danish Refugee Council" },
-  { src: "/brands/brand-7.png", name: "Craft Silicon" },
-  { src: "/brands/brand-8.png", name: "Glenmark" },
-  { src: "/brands/brand-9.png", name: "SUN" },
-  { src: "/brands/brand-10.png", name: "Dar Petroleum Operating Company" },
+  { src: "/brands/brand-1.webp", name: "Médecins Sans Frontières" },
+  { src: "/brands/brand-2.webp", name: "Oxfam" },
+  { src: "/brands/brand-3.webp", name: "Nonviolent Peaceforce" },
+  { src: "/brands/brand-4.webp", name: "Client partner" },
+  { src: "/brands/brand-5.webp", name: "Ayoki Fabricon" },
+  { src: "/brands/brand-6.webp", name: "Danish Refugee Council" },
+  { src: "/brands/brand-7.webp", name: "Craft Silicon" },
+  { src: "/brands/brand-8.webp", name: "Glenmark" },
+  { src: "/brands/brand-9.webp", name: "SUN" },
+  { src: "/brands/brand-10.webp", name: "Dar Petroleum Operating Company" },
 ];
 
 export function HomeClientele() {

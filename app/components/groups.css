@@ -268,58 +268,78 @@
 .g-brief-done p { max-width: 30em; font: 300 calc(var(--u) * 1.0625)/1.4 var(--body); }
 
 /* 11–12 · Two sides of group coordination, followed by a simple travel process. */
-.g-benefits, .g-process { padding: calc(var(--tear) + var(--u) * 3) 0 calc(var(--u) * 3.5); background: var(--paper); }
+.g-process { padding: calc(var(--tear) + var(--u) * 3) 0 calc(var(--u) * 3.5); background: var(--paper); }
 .groups-page .g-new-title { font-size: clamp(32px, 3.8vw, 72px); }
-.g-benefits { background: #f3eadb; }
-.g-benefits-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 2); margin-top: calc(var(--u) * 2.5); }
-.g-benefit { min-width: 0; border: 1px solid #d8cbb6; border-radius: 8px; background: #fffdf8; color: var(--ink); box-shadow: 0 18px 45px -30px #3d2d2066; }
-.g-benefit-traveller { border-color: var(--night); background: var(--night); color: var(--cream); }
-.g-benefit-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: calc(var(--u) * 1.25) calc(var(--u) * 1.75); }
-.g-benefit-audience { display: flex; align-items: center; gap: 10px; font: 400 calc(var(--u) * .75)/1.3 var(--body); letter-spacing: .12em; text-transform: uppercase; }
-.g-benefit-index { font: 400 calc(var(--u) * 1.5)/1 var(--heading); color: var(--ochre); }
-.g-benefit-copy { padding: calc(var(--u) * 1.75); }
-.groups-page .g-benefit h3 { max-width: 16em; min-height: 2.1em; font: 400 clamp(26px, 2.4vw, 46px)/1.05 var(--heading); text-transform: uppercase; color: inherit; }
-.g-benefit ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; margin-top: calc(var(--u) * 1.5); }
-.g-benefit li { display: flex; align-items: center; gap: 10px; font: 300 clamp(14px, 1.05vw, 20px)/1.35 var(--body); }
-.g-benefit-tick { flex: 0 0 32px; display: grid; place-items: center; height: 32px; border: 1px solid #a18d7759; border-radius: 50%; color: var(--ochre); }
-.g-benefit-traveller .g-benefit-tick, .g-benefit-traveller .g-benefit-audience { color: var(--sand); }
-.g-coordination-board, .g-itinerary-pass { height: clamp(340px, 24vw, 410px); margin: 0 calc(var(--u) * 1.75); border-radius: 6px; }
-.g-coordination-board { display: flex; flex-direction: column; padding: clamp(16px, 1.4vw, 28px); border: 1px solid #ded4c3; background: #f6f2e9; }
-.g-board-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #cdbda9; }
-.g-board-header > span { display: flex; gap: 8px; align-items: center; font: 400 clamp(10px, .8vw, 15px)/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; }
-.g-board-header .g-board-plan-label { font-size: clamp(9px, .65vw, 12px); letter-spacing: .02em; color: #6b7754; text-transform: none; }
-.g-board-labels { display: grid; grid-template-columns: 1fr .5fr 1fr; margin-top: 16px; font: 400 clamp(9px, .65vw, 12px)/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: #82725e; }
-.g-board-labels > span:last-child { grid-column: 3; text-align: center; }
-.g-board-header i, .g-process-route-label i { width: 7px; height: 7px; border-radius: 50%; background: #6b7754; box-shadow: 0 0 0 4px #6b775418; }
-.g-board-routes { display: grid; grid-template-columns: 1fr .5fr 1fr; align-items: center; flex: 1; min-height: 140px; padding-block: 12px; }
-.g-board-cities { display: grid; gap: 10px; }
-.g-board-cities span { display: flex; align-items: center; gap: 10px; min-height: 32px; padding: 8px 10px; border: 1px solid #ded4c3; border-radius: 4px; background: #fffdf8; font: 400 clamp(12px, 1vw, 18px)/1 var(--body); }
-.g-board-cities svg { flex-shrink: 0; color: var(--ochre); }
-.g-board-connectors { width: 100%; height: 126px; overflow: visible; }
-.g-board-connectors path { fill: none; stroke: #a18d77; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.g-board-event { display: grid; justify-items: center; align-content: center; gap: 9px; width: 100%; min-height: 126px; padding: 12px 6px; border: 1px solid #3d2d20; border-radius: 6px; background: var(--ink); color: var(--cream); }
-.g-board-event > svg { color: var(--sand); }
-.g-board-event strong { font: 400 clamp(20px, 1.7vw, 32px)/1 var(--heading); text-transform: uppercase; }
-.g-board-event > span { max-width: 12em; font: 300 clamp(10px, .75vw, 14px)/1.35 var(--body); text-align: center; color: #e7ddc9; }
-.g-board-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-.g-board-services > span { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 7px; padding: 12px 5px; border: 1px solid #ded4c3; border-radius: 4px; background: #fffdf8; font: 400 clamp(11px, .85vw, 16px)/1 var(--body); }
-.g-board-services > span > svg:last-child { color: #6b7754; }
-.g-board-note { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 14px; font: 400 clamp(10px, .75vw, 14px)/1.3 var(--body); color: #786852; text-align: center; }
-.g-board-note svg { flex-shrink: 0; }
-.g-itinerary-pass { display: grid; grid-template-rows: 1fr auto; background: #fff8e9; color: var(--ink); overflow: hidden; }
-.g-itinerary-photo { position: relative; min-height: 0; overflow: hidden; border-radius: 4px 4px 0 0; }
-.g-itinerary-photo img { object-fit: cover; object-position: center 45%; }
-.g-itinerary-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #20170ee6, #20170e22); }
-.g-itinerary-badge { position: absolute; z-index: 1; top: 14px; left: 18px; display: flex; align-items: center; gap: 8px; color: var(--cream); font: 400 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; }
-.g-itinerary-destination { position: absolute; z-index: 1; bottom: 18px; left: 18px; font: 400 clamp(28px, 2.5vw, 48px)/1 var(--heading); text-transform: uppercase; color: var(--cream); }
-.g-itinerary-destination em { font: italic 400 clamp(16px, 1.2vw, 24px)/1.2 var(--heading); text-transform: none; color: var(--sand); }
-.g-itinerary-stub { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px; border-top: 1px dashed var(--ochre); }
-.g-itinerary-stub::before, .g-itinerary-stub::after { content: ''; position: absolute; top: -8px; left: -8px; width: 16px; height: 16px; background: var(--night); border-radius: 50%; }
-.g-itinerary-stub::after { left: auto; right: -8px; }
-.g-itinerary-stops { display: flex; flex: 1; justify-content: space-between; align-items: center; gap: 6px; }
-.g-itinerary-stops > span { display: grid; justify-items: center; gap: 6px; font: 400 clamp(10px, .8vw, 15px)/1 var(--body); }
-.g-itinerary-stops > span + span::before { content: ''; position: absolute; width: 14px; height: 1px; margin-top: 11px; margin-left: -90px; background: #a18d7759; }
-.g-pass-barcode { flex: 0 0 16%; height: 44px; margin-left: 16px; background: repeating-linear-gradient(90deg, #3d2d20 0 2px, transparent 2px 4px, #3d2d20 4px 5px, transparent 5px 8px); opacity: .6; }
+/* ScrollTrigger wraps pinned sections, so this surface must not depend on main > section. */
+.groups-page.services-page .g-benefits {
+  margin-top: 0;
+  padding: clamp(56px, 6vw, 96px) 0 calc(clamp(56px, 6vw, 96px) + var(--tear));
+  border-top: 1px solid var(--line);
+  background: #faf9f6;
+}
+.g-benefits-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr);
+  align-items: end;
+  gap: clamp(32px, 6vw, 96px);
+}
+.g-benefits-eyebrow, .g-benefit-audience {
+  display: block;
+  font: 400 12px/1.4 var(--body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #78664f;
+}
+.groups-page .g-benefits h2 {
+  margin-top: 20px;
+  font-size: clamp(32px, 3.5vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+  text-transform: none;
+}
+.g-benefits-head > p, .g-benefit > p {
+  max-width: 34em;
+  font: 300 clamp(17px, 1.3vw, 20px)/1.5 var(--body);
+  color: var(--text);
+}
+.g-benefits-head > p { max-width: 25em; }
+.g-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(36px, 4vw, 60px);
+  padding-top: clamp(28px, 3vw, 44px);
+  border-top: 1px solid var(--line);
+}
+.g-benefit { min-width: 0; padding-right: clamp(28px, 5vw, 80px); }
+.g-benefit + .g-benefit {
+  padding-right: 0;
+  padding-left: clamp(28px, 5vw, 80px);
+  border-left: 1px solid var(--line);
+}
+.groups-page .g-benefit h3 {
+  margin-top: 14px;
+  font-size: clamp(26px, 2.3vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  text-transform: none;
+}
+.g-benefit > p { margin-top: 14px; }
+.g-benefit ul { margin-top: 28px; }
+.g-benefit li {
+  padding-block: 13px;
+  border-top: 1px solid var(--line);
+  font: 400 clamp(16px, 1.15vw, 18px)/1.4 var(--body);
+  color: var(--ink);
+}
+.g-benefit li:last-child { padding-bottom: 0; }
+@media (max-width: 767px) {
+  .g-benefits-head { grid-template-columns: 1fr; gap: 22px; }
+  .g-benefits-head > p { max-width: 34em; }
+  .g-benefits-grid { grid-template-columns: 1fr; padding-top: 30px; }
+  .g-benefit { padding-right: 0; }
+  .g-benefit + .g-benefit { margin-top: 36px; padding: 30px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+.g-process-route-label i { width: 7px; height: 7px; border-radius: 50%; background: #6b7754; box-shadow: 0 0 0 4px #6b775418; }
 .g-process { background: #efe6d8; overflow: clip; }
 .g-process-route-label { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: calc(var(--u) * 2); padding-block: 14px; border-block: 1px solid #cdbda9; font: 400 clamp(10px, .75vw, 14px)/1.3 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ochre); }
 .g-process-route-label > span { display: flex; align-items: center; gap: 10px; }
@@ -340,10 +360,6 @@
 .groups-page .g-process-grid h3 { margin-top: 10px; font: 400 clamp(24px, 2vw, 36px)/1.1 var(--heading); text-transform: uppercase; color: var(--ink); }
 .g-process-grid p { max-width: 25em; margin: 10px auto 0; font: 300 clamp(15px, 1.05vw, 20px)/1.45 var(--body); color: var(--text); }
 @media (max-width: 991px) {
-  .g-benefits-grid { gap: 16px; }
-  .g-benefit-top, .g-benefit-copy { padding: 20px; }
-  .g-coordination-board, .g-itinerary-pass { margin-inline: 20px; }
-  .g-benefit ul { grid-template-columns: 1fr; }
   .g-process-grid { display: block; margin-left: 4px; }
   .g-process-grid::before { left: 35px; top: 36px; bottom: 36px; width: 1px; height: auto; border: 0; border-left: 1px dashed #a18d7799; }
   .g-process-grid::after { display: none; }
@@ -355,24 +371,10 @@
   .g-process-route-label > span:nth-child(2) { display: none; }
 }
 @media (max-width: 600px) {
-  .g-benefits-grid { grid-template-columns: 1fr; gap: 24px; }
-  .g-benefit ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; }
-  .g-benefit li { font-size: 13px; gap: 8px; }
-  .g-benefit-tick { flex-basis: 26px; height: 26px; }
-  .groups-page .g-benefit h3 { min-height: 0; }
-  .g-coordination-board, .g-itinerary-pass { height: 340px; }
-  .g-board-event > span { font-size: 10px; }
   .g-process-grid > li { gap: 18px; }
   .g-process-route-label { font-size: 9px; letter-spacing: .04em; }
 }
-@media (max-width: 359px) {
-  .g-benefit ul { grid-template-columns: 1fr; }
-  .g-coordination-board { height: auto; min-height: 380px; }
-  .g-board-routes { min-height: 162px; }
-  .g-board-header .g-board-plan-label, .g-board-services > span > svg:last-child { display: none; }
-  .g-board-cities span { gap: 6px; padding-inline: 6px; font-size: 11px; }
-}
-@media (min-width: 601px) and (max-width: 991px) { .g-board-header .g-board-plan-label { display: none; } }
+
 
 /* Closing: everyone has arrived */
 .g-final .s-final-photo { object-position: center 55%; }

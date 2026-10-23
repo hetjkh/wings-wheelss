@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "./icons";
-import tabby from "../../public/images/Tabby.png";
-import tamara from "../../public/images/Tamara-En.png";
+import tabby from "../../public/images/Tabby.webp";
+import tamara from "../../public/images/Tamara-En.webp";
 import "./home-pay-later.css";
 
 const steps = [

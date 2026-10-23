@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:webp": "node scripts/convert-public-images.mjs"
   },
   "dependencies": {
     "cobe": "^2.0.1",

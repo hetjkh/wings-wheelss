@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
+import { preparePublicImages } from "./convert-public-images.mjs";
 
 // Keep original photographs in assets; publish only web-sized derivatives.
 const root = path.resolve(import.meta.dirname, "..");
@@ -15,9 +16,6 @@ for (const [name, image] of Object.entries(manifest)) {
     .toFile(path.join(root, `public/images/library/${name}.webp`));
   dimensions[`/images/library/${name}.webp`] = [result.width, result.height];
 }
-for (const source of ["/images/lake.jpg", "/images/kyoto.jpg"]) {
-  const result = await sharp(path.join(root, "public", source)).metadata();
-  dimensions[source] = [result.width, result.height];
-}
+Object.assign(dimensions, await preparePublicImages());
 await fs.writeFile(path.join(root, "app/components/image-dimensions.json"), `${JSON.stringify(dimensions, null, 2)}\n`);
 console.log(`Prepared ${Object.keys(manifest).length} optimized images.`);

@@ -16,7 +16,7 @@ function Marquee({ items, light = false }: { items: string[]; light?: boolean })
 
 export function Hero() {
   return <section className="hero" id="top" aria-labelledby="hero-heading">
-    <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/videos/dubai-skyline-poster.jpg" aria-hidden="true">
+    <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/videos/dubai-skyline-poster.webp" aria-hidden="true">
       <source src="/videos/dubai-skyline.mp4" type="video/mp4" />
     </video>
     <div className="hero-shade" />

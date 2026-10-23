@@ -93,8 +93,18 @@ const itinerary = [
 ];
 
 const coordinationBenefits = [
-  { audience: "For your organiser", title: "One less thing to coordinate.", items: ["Central travel contact", "Coordinated traveller information", "Arrival/departure planning", "Hotel coordination", "Transfer planning", "Travel updates"] },
-  { audience: "For your travellers", title: "A clearer journey.", items: ["Clear travel information", "Confirmed arrangements", "Coordinated airport transfers", "Hotel details", "Event movement information", "Support when something changes"] },
+  {
+    audience: "For organisers",
+    title: "One point of contact.",
+    description: "A coordinated plan for your whole group, from the first arrival to the final departure.",
+    items: ["Traveller details and requirements", "Coordinated arrivals and departures", "Hotel bookings and transfer schedules", "Travel updates in one place"],
+  },
+  {
+    audience: "For travellers",
+    title: "A clear itinerary.",
+    description: "Every traveller knows where to go, when to be there and who to contact.",
+    items: ["Confirmed flight and hotel details", "Clear airport pickup instructions", "Transport information for the event", "Support with delays or changes"],
+  },
 ];
 
 const travelProcess = [
@@ -105,32 +115,6 @@ const travelProcess = [
   { icon: "plane", phase: "The journey", title: "Move the group", text: "Arrival, accommodation and transportation plans come together." },
   { icon: "support", phase: "The support", title: "Stay supported", text: "Our team remains available as travel requirements evolve." },
 ] satisfies { icon: IconKind; phase: string; title: string; text: string }[];
-
-function GroupCoordinationVisual({ traveller = false }: { traveller?: boolean }) {
-  if (traveller) return <div className="g-itinerary-pass" aria-label="An illustrative traveller pass connecting the airport, hotel and event venue">
-    <div className="g-itinerary-photo">
-      <Image src="/images/library/airport-traveller.webp" alt="" fill sizes="(max-width: 600px) 85vw, 40vw" />
-      <span className="g-itinerary-badge"><TravelIcon kind="people" size={16} />Guest itinerary</span>
-      <span className="g-itinerary-destination">Your event.<br /><em>Your journey, in hand.</em></span>
-    </div>
-    <div className="g-itinerary-stub">
-      <div className="g-itinerary-stops">{([{ icon: "plane", label: "Airport" }, { icon: "bed", label: "Hotel" }, { icon: "pin", label: "Venue" }] as const).map(stop => <span key={stop.label}><TravelIcon kind={stop.icon} size={22} />{stop.label}</span>)}</div>
-      <span className="g-pass-barcode" aria-hidden="true" />
-    </div>
-  </div>;
-
-  return <div className="g-coordination-board" aria-label="An illustrative group movement plan bringing different departure cities into one event, with flights, hotels and transfers coordinated">
-    <div className="g-board-header"><span><i />Group movement plan</span><span className="g-board-plan-label">One shared plan</span></div>
-    <div className="g-board-labels"><span>Departure cities</span><span>Event destination</span></div>
-    <div className="g-board-routes">
-      <div className="g-board-cities">{["London", "Nairobi", "Riyadh"].map(city => <span key={city}><TravelIcon kind="plane" size={16} />{city}</span>)}</div>
-      <svg className="g-board-connectors" viewBox="0 0 120 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25H42V125H0M0 75H116M42 25V125M108 67L116 75L108 83" /></svg>
-      <div className="g-board-event"><TravelIcon kind="people" size={26} /><strong>One event</strong><span>All travellers connected</span></div>
-    </div>
-    <div className="g-board-services">{([{ icon: "plane", label: "Flights" }, { icon: "bed", label: "Hotels" }, { icon: "car", label: "Transfers" }] as const).map(service => <span key={service.label}><TravelIcon kind={service.icon} size={20} />{service.label}<TravelIcon kind="check" size={14} /></span>)}</div>
-    <span className="g-board-note"><TravelIcon kind="support" size={15} />One coordinator for the whole journey</span>
-  </div>;
-}
 
 export default function GroupsPage() {
   return <ChapterMotion className="groups-page">
@@ -377,16 +361,25 @@ export default function GroupsPage() {
         </div>
       </section>
 
-      <section className="g-benefits j-torn-top" id="coordination" aria-labelledby="coordination-heading">
+      <section className="g-benefits" id="coordination" aria-labelledby="coordination-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">11 / For the organiser. For the traveller.</span>
-          <h2 id="coordination-heading" className="s-title g-new-title">Better coordination<br />for everyone involved.</h2>
-          <div className="g-benefits-grid" data-stagger="0.1">{coordinationBenefits.map((benefit, i) => <article key={benefit.audience} className={`g-benefit g-benefit-${i === 0 ? "organiser" : "traveller"}`} aria-labelledby={`benefit-heading-${i}`}>
-            <div className="g-benefit-top"><span className="g-benefit-audience"><TravelIcon kind={i === 0 ? "briefcase" : "people"} size={20} />{benefit.audience}</span><span className="g-benefit-index">0{i + 1}</span></div>
-            <GroupCoordinationVisual traveller={i === 1} />
-            <div className="g-benefit-copy"><h3 id={`benefit-heading-${i}`}>{benefit.title}</h3>
-            <ul>{benefit.items.map((item, n) => <li key={item}><span className="g-benefit-tick"><TravelIcon kind={(["chat", "people", "plane", "bed", "car", "support"] as const)[n]} size={18} /></span>{item}</li>)}</ul></div>
-          </article>)}</div>
+          <header className="g-benefits-head">
+            <div>
+              <span className="g-benefits-eyebrow">11 / Group travel support</span>
+              <h2 id="coordination-heading">Well organised travel.<br />For everyone involved.</h2>
+            </div>
+            <p>We manage the travel arrangements and keep everyone informed, so your team can focus on the event.</p>
+          </header>
+          <div className="g-benefits-grid">
+            {coordinationBenefits.map((benefit, i) => (
+              <article key={benefit.audience} className="g-benefit" aria-labelledby={`benefit-heading-${i}`}>
+                <span className="g-benefit-audience">{benefit.audience}</span>
+                <h3 id={`benefit-heading-${i}`}>{benefit.title}</h3>
+                <p>{benefit.description}</p>
+                <ul>{benefit.items.map(item => <li key={item}>{item}</li>)}</ul>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

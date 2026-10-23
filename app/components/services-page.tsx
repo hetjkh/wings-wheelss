@@ -161,7 +161,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="s-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
-        <video className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.jpg" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+        <video className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.webp" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
         <div className="s-beyond-shade" />
         <div className="j-shell s-beyond-content">
           <div className="s-split-head">
