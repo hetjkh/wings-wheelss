@@ -43,3 +43,10 @@
   .e-pay-action { flex-direction: column; align-items: flex-start; margin-top: 35px; gap: 18px; }
   .e-pay-action p { max-width: 25em; }
 }
+@media (max-width: 700px) {
+  .e-pay-providers { grid-template-columns: 1fr 1fr; gap: 0; }
+  .e-pay-provider { padding: 12px; }
+  .e-pay-provider + .e-pay-provider { border-top: 0; border-left: 1px solid #cdbfa9; padding: 12px; }
+  .e-pay-steps { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 330px); gap: 16px; margin-inline: -20px; padding: 0 20px 18px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: thin; }
+  .e-pay-steps li { min-height: 175px; padding: 20px 18px; border: 1px solid #cdbfa9; scroll-snap-align: start; }
+}

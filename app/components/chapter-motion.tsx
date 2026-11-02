@@ -29,6 +29,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
 
       media.add({
         desktop: "(min-width: 801px)",
+        phone: "(max-width: 767px)",
         tall: "(min-height: 620px)",
         reduced: "(prefers-reduced-motion: reduce)",
       }, context => {
@@ -135,6 +136,140 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           cover.fromTo(next, tearIn, tearOut, 0);
         });
 
+        // Franchise phones use two short galleries, with native swiping on short screens.
+        if (page.classList.contains("franchise-page") && context.conditions?.phone) {
+          [".f-markets", ".f-build"].forEach(selector => {
+            const section = page.querySelector<HTMLElement>(selector);
+            const track = section?.querySelector<HTMLElement>(".f-market-grid, .f-build-grid");
+            if (!section || !track) return;
+            const count = track.children.length;
+            const maps = Array.from(track.querySelectorAll<SVGSVGElement>(".f-market-map"));
+            const originalViews = maps.map(map => map.getAttribute("viewBox") ?? "");
+            const fitMaps = () => maps.forEach(map => {
+              if (!map.clientWidth || !map.clientHeight) return;
+              const height = 230 * map.clientHeight / map.clientWidth;
+              map.setAttribute("viewBox", `450 ${150 - height / 2} 230 ${height}`);
+            });
+            const mapResize = maps.length ? new ResizeObserver(fitMaps) : null;
+            maps.forEach(map => mapResize?.observe(map));
+            const counter = section.querySelector<HTMLElement>("[data-gallery-count]");
+            const distance = () => Math.max(0, track.scrollWidth - track.clientWidth);
+            const paint = (progress: number) => {
+              section.style.setProperty("--gallery-progress", String(progress));
+              if (counter) counter.textContent = `${String(Math.round(progress * (count - 1)) + 1).padStart(2, "0")} / ${String(count).padStart(2, "0")}`;
+            };
+            const nativeScroll = () => paint(distance() ? track.scrollLeft / distance() : 0);
+            track.addEventListener("scroll", nativeScroll, { passive: true });
+            if (context.conditions?.tall) {
+              section.classList.add("f-mobile-pinned");
+              // Enlarged type can make a gallery too short; retain the native layout then.
+              if (track.clientHeight >= 270) {
+                gsap.to(track, {
+                  scrollLeft: distance, ease: "none",
+                  scrollTrigger: {
+                    id: `franchise-${section.id}`, trigger: section, start: "top top",
+                    end: () => `+=${Math.max(window.innerHeight * .8, distance())}`,
+                    pin: true, pinSpacing: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+                  },
+                });
+              } else section.classList.remove("f-mobile-pinned");
+            }
+            paint(0);
+            cleanups.push(() => {
+              track.removeEventListener("scroll", nativeScroll);
+              mapResize?.disconnect();
+              maps.forEach((map, index) => map.setAttribute("viewBox", originalViews[index]));
+              section.classList.remove("f-mobile-pinned");
+              section.style.removeProperty("--gallery-progress");
+              track.scrollLeft = 0;
+              if (counter) counter.textContent = `01 / ${String(count).padStart(2, "0")}`;
+            });
+          });
+          select(".f-beyond-photo img, .f-network-photo img").forEach((photo: HTMLElement) => {
+            gsap.fromTo(photo, { scale: 1.12 }, {
+              scale: 1, ease: "none",
+              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
+            });
+          });
+          select(".f-step-row li").forEach((step: HTMLElement) => {
+            gsap.from(step, {
+              opacity: .3, x: 18, duration: .65, ease: "power2.out",
+              scrollTrigger: { trigger: step, start: "top 78%", once: true },
+            });
+          });
+        }
+
+        // Phone scenes stay scoped to destinations and leave short screens swipeable.
+        if (page.classList.contains("destinations-page") && context.conditions?.phone) {
+          const section = page.querySelector<HTMLElement>(".d-featured");
+          const track = section?.querySelector<HTMLElement>("[data-hscroll-track]");
+          if (section && track && context.conditions?.tall) {
+            section.classList.add("d-phone-pinned");
+            if (section.scrollHeight <= window.innerHeight + 2) {
+              gsap.to(track, {
+                scrollLeft: () => Math.max(0, track.scrollWidth - track.clientWidth), ease: "none",
+                scrollTrigger: {
+                  trigger: section, start: "top top", end: () => `+=${track.scrollWidth - track.clientWidth}`,
+                  pin: true, pinSpacing: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+                  onRefresh: self => { track.dataset.scrollStart = String(self.start); track.dataset.scrollEnd = String(self.end); },
+                },
+              });
+            } else section.classList.remove("d-phone-pinned");
+            cleanups.push(() => {
+              section.classList.remove("d-phone-pinned");
+              delete track.dataset.scrollStart;
+              delete track.dataset.scrollEnd;
+              track.scrollLeft = 0;
+            });
+          }
+          select(".d-departure-board li").forEach((row: HTMLElement) => {
+            gsap.from(row, { x: 20, opacity: .25, duration: .65, clearProps: "opacity,transform",
+              scrollTrigger: { trigger: row, start: "top 85%", once: true } });
+          });
+          select(".d-dubai-scene > img, .d-planning-photo > img").forEach((photo: HTMLElement) => {
+            gsap.fromTo(photo, { scale: 1.12 }, { scale: 1, ease: "none",
+              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 } });
+          });
+          const season = page.querySelector<HTMLElement>(".d-seasons");
+          if (season && context.conditions?.tall) {
+            season.classList.add("d-phone-season");
+            if (season.scrollHeight <= window.innerHeight + 2) {
+              let current = -1;
+              ScrollTrigger.create({
+                trigger: season, start: "top top", end: () => `+=${window.innerHeight * 2.4}`,
+                pin: true, pinSpacing: true, anticipatePin: 1, invalidateOnRefresh: true,
+                onRefresh: self => { season.dataset.stepsStart = String(self.start); season.dataset.stepsEnd = String(self.end); },
+                onUpdate: self => {
+                  season.style.setProperty("--phone-season-progress", String(self.progress));
+                  const index = Math.min(3, Math.floor(self.progress * 4));
+                  if (index !== current) { current = index; season.dispatchEvent(new CustomEvent("chapter-step", { detail: index })); }
+                },
+              });
+            } else season.classList.remove("d-phone-season");
+            cleanups.push(() => {
+              season.classList.remove("d-phone-season");
+              delete season.dataset.stepsStart; delete season.dataset.stepsEnd;
+              season.style.removeProperty("--phone-season-progress");
+            });
+          }
+          const africa = page.querySelector<HTMLElement>(".d-africa");
+          if (africa) {
+            gsap.fromTo(africa.querySelector(".d-africa-photo"), { scale: 1.15 }, {
+              scale: 1, ease: "none", scrollTrigger: { trigger: africa, start: "top bottom", end: "bottom top", scrub: .8 },
+            });
+            gsap.from(africa.querySelector(".d-arcs"), {
+              y: 35, opacity: .15, ease: "none", scrollTrigger: { trigger: africa, start: "top 55%", end: "center center", scrub: .6 },
+            });
+          }
+          select(".d-mood-stage, .d-quiz, .dp-stops, .sv-pass").forEach((panel: HTMLElement) => {
+            gsap.from(panel, { y: 25, opacity: .3, duration: .8, clearProps: "opacity,transform",
+              scrollTrigger: { trigger: panel, start: "top 92%", once: true } });
+          });
+          const closing = page.querySelector<HTMLElement>(".sv-final .sv-view img");
+          if (closing) gsap.fromTo(closing, { scale: 1.12 }, { scale: 1, ease: "none",
+            scrollTrigger: { trigger: closing.closest(".sv-final"), start: "top bottom", end: "bottom top", scrub: .8 } });
+        }
+
         // Headings rise line by line out of a mask; lead paragraphs follow more softly.
         const splitText = (selector: string, vars: gsap.TweenVars) => select(selector).forEach((element: HTMLElement) => {
           if (visible(element)) return;
@@ -184,9 +319,10 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         select(".s-service-photo, [data-frame]").forEach((frame: HTMLElement) => {
           const photo = frame.querySelector("img");
           const badge = frame.querySelector(".s-service-icon");
+          const destinationPhone = page.classList.contains("destinations-page") && context.conditions?.phone;
           const timeline = gsap.timeline({ scrollTrigger: { trigger: frame, start: "top bottom", end: "top 35%", scrub: .8 } })
-            .fromTo(frame, { clipPath: "inset(18% 14% 18% 14% round 12px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none" }, 0);
-          if (photo) timeline.fromTo(photo, { scale: 1.35 }, { scale: 1.06, ease: "none" }, 0);
+            .fromTo(frame, { clipPath: destinationPhone ? "inset(6% 0% 6% 0%)" : "inset(18% 14% 18% 14% round 12px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none" }, 0);
+          if (photo) timeline.fromTo(photo, { scale: destinationPhone ? 1.12 : 1.35 }, { scale: 1.06, ease: "none" }, 0);
           if (badge) timeline.from(badge, { scale: 0, rotate: -90, ease: "back.out(2)", duration: .3 }, .6);
         });
         select(".s-reason-panels").forEach((panels: HTMLElement) => {
@@ -298,7 +434,11 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           details.addEventListener("toggle", refreshDetails);
           cleanups.push(() => details.removeEventListener("toggle", refreshDetails));
         });
-        document.fonts.ready.then(() => { if (active) ScrollTrigger.refresh(); });
+        document.fonts.ready.then(() => {
+          if (!active) return;
+          if (page.matches(".franchise-page, .destinations-page") && context.conditions?.phone) ScrollTrigger.sort();
+          ScrollTrigger.refresh();
+        });
         return () => {
           active = false;
           cleanups.forEach(cleanup => cleanup());

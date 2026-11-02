@@ -395,6 +395,8 @@ form .button { justify-self: start; }
   .page-banner { min-height: 300px; }
 }
 
+html.is-backgrounded *, html.is-backgrounded *::before, html.is-backgrounded *::after { animation-play-state: paused !important; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   [data-reveal] { opacity: 1; transform: none; }

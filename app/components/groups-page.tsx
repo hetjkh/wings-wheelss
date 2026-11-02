@@ -129,7 +129,7 @@ export default function GroupsPage() {
         sub="Every detail too."
         text="Meetings, exhibitions, incentives and large group travel, coordinated around your event."
         action={{ label: "Plan your group travel", service: "Groups & MICE" }}
-        media={{ image: "/images/library/groups-gala.webp", alt: "Guests gathering for a corporate gala dinner in an ornate ballroom" }}
+        media={{ video: "/videos/Corporate_gala_event_video_produ…_0636174d_1080p.mp4", poster: "/images/library/groups-gala.webp" }}
       />
 
       <section className="g-converge j-torn-top" id="people" aria-labelledby="people-heading">

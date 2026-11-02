@@ -1,4 +1,5 @@
 import Image from "./travel-image";
+import { MotionVideo } from "./motion-video";
 import Link from "next/link";
 import { office } from "./data";
 import { Arrow, TravelIcon } from "./icons";
@@ -16,9 +17,7 @@ function Marquee({ items, light = false }: { items: string[]; light?: boolean })
 
 export function Hero() {
   return <section className="hero" id="top" aria-labelledby="hero-heading">
-    <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/videos/dubai-skyline-poster.webp" aria-hidden="true">
-      <source src="/videos/dubai-skyline.mp4" type="video/mp4" />
-    </video>
+    <MotionVideo className="hero-video" src="/videos/dubai-skyline.mp4" poster="/videos/dubai-skyline-poster.webp" />
     <div className="hero-shade" />
     <div className="shell hero-inner">
       <div className="hero-copy">

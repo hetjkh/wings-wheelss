@@ -1,0 +1,108 @@
+﻿/* A panoramic travel diptych with a shared boarding pass. */
+.africa-page .a-corridor { background: #eee9dd; color: #283a32; padding: calc(var(--tear) + 55px) 0 65px; }
+.a-corridor .a-corridor-content { width: 100%; max-width: none; }
+.a-corridor .a-corridor-head { width: 90%; max-width: 1600px; margin: 0 auto 45px; display: grid; grid-template-columns: 1fr 340px; gap: 24px 40px; text-align: left; align-items: end; }
+.a-corridor .a-corridor-head > .s-eyebrow { grid-column: 1 / -1; color: #6b7465; margin: 0; font-size: 10px; letter-spacing: .16em; }
+.africa-page .a-corridor-head h2 { color: #283a32; font: 400 clamp(42px, 5.4vw, 88px)/.98 var(--heading); letter-spacing: -.035em; text-transform: none; }
+.a-corridor-head h2 br { display: none; }
+.a-corridor-head h2 em { display: block; font-family: Georgia, serif; font-weight: 400; color: #81714f; }
+.ac-intro { color: #5d6459; font: 300 17px/1.5 var(--body); padding-bottom: 5px; }
+.ac-atlas { position: relative; }
+.ac-atlas .ac-worlds { opacity: 0; transform: translateY(28px); }
+.ac-atlas .ac-boarding, .ac-atlas .ac-purposes { opacity: 0; transform: translateY(18px); }
+.ac-atlas[data-visible] .ac-worlds { opacity: 1; transform: none; transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+.ac-atlas[data-visible] .ac-boarding, .ac-atlas[data-visible] .ac-purposes { opacity: 1; transform: none; transition: opacity .7s .24s ease, transform .8s .24s cubic-bezier(.2,.8,.2,1); }
+.ac-worlds { position: relative; height: clamp(550px, 48vw, 800px); overflow: hidden; isolation: isolate; background: #283a32; cursor: crosshair; }
+.ac-worlds::after { content: ""; position: absolute; z-index: 3; inset: 0; pointer-events: none; background: radial-gradient(circle 220px at var(--pointer-x) var(--pointer-y), #fff8df1c, transparent 70%); opacity: 0; transition: opacity .35s; mix-blend-mode: screen; }
+.ac-worlds:hover::after { opacity: 1; }
+.ac-world { position: absolute; inset: 0; overflow: hidden; transition: clip-path 1s cubic-bezier(.22,.68,.2,1); }
+.ac-world-0 { clip-path: polygon(0 0, 69% 0, 49% 100%, 0 100%); z-index: 2; }
+.ac-world-1 { clip-path: polygon(69% 0, 100% 0, 100% 100%, 49% 100%); z-index: 1; }
+.ac-world > img { object-fit: cover; transition: transform 1.2s ease, filter 1s ease; translate: var(--drift-x) var(--drift-y); scale: 1.035; }
+.ac-world-0 > img { width: 77% !important; object-position: center 45%; }
+.ac-world-1 > img { left: auto !important; width: 73% !important; object-position: 62% center; filter: saturate(.65); }
+.ac-world-shade { position: absolute; inset: 0; background: linear-gradient(180deg, #14251a3b, transparent 40%, #14251aa6); }
+.ac-world-1 .ac-world-shade { background: linear-gradient(180deg, #11283c36, #11283c10 45%, #11283caa); }
+.ac-world-note { position: absolute; top: 30px; left: 5vw; font: 400 10px/1.4 var(--body); letter-spacing: .14em; text-transform: uppercase; color: #fff8e8; }
+.ac-world-1 .ac-world-note { left: auto; right: 5vw; }
+.ac-world-name { position: absolute; left: 3.8vw; bottom: 115px; color: #fff8e8; font: 400 clamp(90px, 15vw, 240px)/.85 var(--heading); letter-spacing: -.04em; transition: transform .8s cubic-bezier(.2,.8,.2,1), letter-spacing .8s; }
+.ac-world-1 .ac-world-name { left: auto; right: 4vw; }
+.ac-atlas[data-destination="uae"] .ac-world-0 { clip-path: polygon(0 0, 49% 0, 29% 100%, 0 100%); }
+.ac-atlas[data-destination="uae"] .ac-world-1 { clip-path: polygon(49% 0, 100% 0, 100% 100%, 29% 100%); }
+.ac-atlas[data-destination="uae"] .ac-world-0 > img { filter: saturate(.6); }
+.ac-atlas[data-destination="uae"] .ac-world-1 > img { filter: saturate(1); transform: scale(1.03); }
+.ac-atlas[data-destination="africa"] .ac-world-0 .ac-world-name, .ac-atlas[data-destination="uae"] .ac-world-1 .ac-world-name { transform: translateY(-9px); letter-spacing: -.055em; }
+.ac-flightpath { position: absolute; z-index: 3; inset: 0; width: 100%; height: 85%; pointer-events: none; color: #fff0d1; }
+.ac-flight-line-underlay { stroke: #17251dc4; stroke-width: 5; stroke-linecap: round; }
+.ac-flight-line { stroke: #fff3d6; stroke-width: 2.5; stroke-dasharray: 8 7; stroke-linecap: round; }
+.ac-route-label { fill: #fff3d6; stroke: #17251d; stroke-width: 3; paint-order: stroke; stroke-linejoin: round; font: 500 13px var(--body); letter-spacing: 3px; }
+.ac-route-aircraft { fill: #fff3d6; stroke: #253b30; stroke-width: 1.5; stroke-linejoin: round; filter: drop-shadow(0 3px 3px #07170dcc); }
+.ac-aircraft-detail { fill: none; stroke: #536251; stroke-width: 1; stroke-linecap: round; }
+.ac-flightpath circle { fill: #fff3d6; stroke: #253b30; stroke-width: 2; }
+.ac-selector { position: absolute; bottom: 45px; left: 5%; right: 5%; z-index: 5; display: flex; justify-content: space-between; }
+.ac-selector button { position: relative; overflow: hidden; display: flex; align-items: center; gap: 18px; padding: 14px 20px; border: 1px solid #fff9e580; color: #fff9e5; background: #172b2599; backdrop-filter: blur(12px); cursor: pointer; font: 400 15px/1.4 var(--body); transition: background .25s, color .25s, transform .25s, box-shadow .25s; }
+.ac-selector button::before { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 25%, #ffffff45 50%, transparent 75%); transform: translateX(-120%); transition: transform .55s; }
+.ac-selector button > span { font-size: 10px; opacity: .7; }
+.ac-selector button[aria-pressed="true"] { background: #f4eddb; border-color: #f4eddb; color: #283a32; }
+.ac-selector button:hover { background: #fff8e9; color: #283a32; transform: translateY(-4px); box-shadow: 0 12px 30px #07120d35; }
+.ac-selector button:hover::before { transform: translateX(120%); }
+.ac-boarding { position: relative; z-index: 6; display: grid; grid-template-columns: 1fr 1.45fr 190px; align-items: stretch; width: 90%; max-width: 1600px; margin: -1px auto 0; background: #faf5e9; color: #283a32; box-shadow: 0 15px 35px #27372d0a; }
+.ac-ticket-route { padding: 35px; border-right: 1px dashed #958c7455; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.ac-micro { font: 400 9px/1.5 var(--body); text-transform: uppercase; letter-spacing: .13em; color: #776b52; }
+.ac-ticket-route > div { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
+.ac-ticket-route strong { font: 400 clamp(26px, 3vw, 48px)/1 var(--heading); }
+.ac-ticket-route svg { flex-shrink: 0; color: #8e7950; }
+.ac-ticket-story { padding: 30px 35px; }
+.ac-ticket-story { animation: ac-story-in .6s cubic-bezier(.2,.8,.2,1) both; }
+.africa-page .ac-ticket-story h3 { font: 400 clamp(23px, 2.1vw, 34px)/1.1 var(--heading); text-transform: none; margin: 10px 0; color: #283a32; }
+.ac-ticket-story p { font: 300 15px/1.5 var(--body); color: #606657; max-width: 36em; }
+.ac-ticket-link { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 25px; background: #d6dfb6; padding: 30px; font: 400 15px/1.4 var(--body); color: #283a32; transition: background .25s; }
+.ac-ticket-link svg { width: 38px; height: 38px; align-self: flex-end; }
+.ac-ticket-link:hover { background: #c2d095; }
+.ac-ticket-link svg { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+.ac-ticket-link:hover svg { transform: translate(7px, -7px) rotate(8deg); }
+.ac-selector button:focus-visible, .ac-ticket-link:focus-visible { outline: 3px solid #a9823e; outline-offset: 5px; }
+.ac-purposes { display: flex; gap: 28px; width: 90%; max-width: 1600px; margin: 28px auto 0; align-items: baseline; font: 400 10px/1.7 var(--body); }
+.ac-purposes > span { text-transform: uppercase; letter-spacing: .1em; color: #776b52; flex-shrink: 0; }
+.ac-purposes ul { display: flex; flex-wrap: wrap; list-style: none; gap: 8px 22px; color: #465445; }
+.ac-purposes li { transition: color .25s, transform .25s; }
+.ac-purposes li::before { content: "+"; display: inline-block; margin-right: 8px; color: #958365; transition: transform .25s; }
+.ac-purposes li:hover { color: #172d23; transform: translateY(-2px); }
+.ac-purposes li:hover::before { transform: rotate(45deg) scale(1.2); }
+@keyframes ac-story-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (min-width: 1700px) { .ac-world-name { font-size: 230px; } }
+@media (max-width: 1000px) {
+  .a-corridor .a-corridor-head { grid-template-columns: 1fr 260px; }
+  .ac-boarding { grid-template-columns: 1fr 1.4fr; }
+  .ac-ticket-link { grid-column: 1 / -1; flex-direction: row; align-items: center; padding: 18px 30px; }
+  .ac-ticket-link svg { width: 24px; height: 24px; }
+  .ac-ticket-route, .ac-ticket-story { padding: 25px; }
+  .ac-purposes { flex-direction: column; gap: 10px; }
+}
+@media (max-width: 760px) {
+  .africa-page .a-corridor { padding-top: calc(var(--tear) + 30px); padding-bottom: 45px; }
+  .a-corridor .a-corridor-head { grid-template-columns: 1fr; margin-bottom: 30px; gap: 18px; }
+  .africa-page .a-corridor-head h2 { font-size: clamp(38px, 8.7vw, 64px); }
+  .ac-intro { max-width: 32em; font-size: 15px; }
+  .ac-worlds { height: 580px; }
+  .ac-world-0, .ac-atlas[data-destination="uae"] .ac-world-0 { clip-path: polygon(0 0, 100% 0, 100% 48%, 0 59%); }
+  .ac-world-1, .ac-atlas[data-destination="uae"] .ac-world-1 { clip-path: polygon(0 59%, 100% 48%, 100% 100%, 0 100%); }
+  .ac-world-0 > img { width: 100% !important; height: 60% !important; object-position: center 46%; }
+  .ac-world-1 > img { width: 100% !important; height: 60% !important; top: auto !important; object-position: center 42%; }
+  .ac-world-name { left: 5%; bottom: auto; top: 170px; font-size: 88px; }
+  .ac-world-1 .ac-world-name { top: auto; bottom: 85px; right: 5%; }
+  .ac-world-note { top: 20px; font-size: 8px; }
+  .ac-world-1 .ac-world-note { top: 350px; right: 5%; }
+  .ac-flightpath { display: none; }
+  .ac-selector { bottom: 20px; gap: 8px; }
+  .ac-selector button { padding: 12px; font-size: 12px; gap: 10px; }
+  .ac-selector button > span { display: none; }
+  .ac-boarding { grid-template-columns: 1fr; }
+  .ac-ticket-route { border-right: 0; border-bottom: 1px dashed #958c7455; padding: 22px; gap: 14px; }
+  .ac-ticket-route > div { justify-content: flex-start; gap: 28px; }
+  .ac-ticket-route strong { font-size: 36px; }
+  .ac-ticket-route > .ac-micro:last-child { display: none; }
+  .ac-ticket-story { padding: 22px; }
+  .ac-ticket-link { padding: 18px 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .ac-atlas .ac-worlds, .ac-atlas .ac-boarding, .ac-atlas .ac-purposes { opacity: 1; transform: none; } .ac-world, .ac-world > img, .ac-world-name, .ac-selector button, .ac-ticket-link { transition: none; animation: none; } .ac-flight-line, .ac-ticket-story { animation: none; } .ac-world > img { translate: none; scale: 1; } }

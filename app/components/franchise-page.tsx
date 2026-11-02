@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import Image from "./travel-image";
-import Link from "next/link";
-import { TravelIcon, type IconKind } from "./icons";
+import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
@@ -77,6 +77,17 @@ const faqs = [
   { question: "When can the franchise begin operating?", answer: "Launch timing will depend on due diligence, contractual agreements, local licences, regulatory requirements and operational readiness." },
 ];
 
+function FranchiseHeading({ id, children, mobile }: { id: string; children: ReactNode; mobile: ReactNode }) {
+  return <>
+    <h2 id={id} className="s-title s-rows f-desktop-copy">{children}</h2>
+    <h2 className="s-title f-mobile-copy">{mobile}</h2>
+  </>;
+}
+
+function GalleryProgress({ count }: { count: number }) {
+  return <div className="f-gallery-progress" aria-hidden="true"><span data-gallery-count>01 / {String(count).padStart(2, "0")}</span><i><b /></i><span>Scroll to explore <Arrow /></span></div>;
+}
+
 function MarketMap({ pin, city }: { pin: { x: number; y: number }; city: string }) {
   const mid = { x: (pin.x + dubai.x) / 2, y: Math.min(pin.y, dubai.y) - Math.abs(dubai.x - pin.x) * .32 - 8 };
   return <svg className="f-market-map" viewBox="450 92 230 120" aria-hidden="true">
@@ -114,8 +125,9 @@ export default function FranchisePage() {
         <div className="j-shell f-beyond-grid">
           <div className="f-beyond-copy">
             <span className="j-eyebrow s-eyebrow">01 / Growing beyond borders</span>
-            <h2 id="beyond-heading" className="s-title s-rows"><span>Great travel businesses</span><span>are built on local knowledge</span><span className="k-soft">and strong connections.</span></h2>
-            <p className="k-body">Every market has its own travellers, business communities, destinations and commercial opportunities. Wings &amp; Wheels combines local market understanding with international relationships, coordinated services and a consistent customer experience.</p>
+            <FranchiseHeading id="beyond-heading" mobile={<>Your local insight.<br /><em>A wider world.</em></>}><span>Great travel businesses</span><span>are built on local knowledge</span><span className="k-soft">and strong connections.</span></FranchiseHeading>
+            <p className="k-body f-desktop-copy">Every market has its own travellers, business communities, destinations and commercial opportunities. Wings &amp; Wheels combines local market understanding with international relationships, coordinated services and a consistent customer experience.</p>
+            <p className="k-body f-mobile-copy">You know your market. We bring the brand, travel connections and support to help you build it.</p>
             <ul className="f-beyond-pillars" data-stagger="0.1">
               <li><span>One</span>brand.</li>
               <li><span>Local</span>leadership.</li>
@@ -128,7 +140,7 @@ export default function FranchisePage() {
       <section className="f-markets j-torn-top" id="markets" aria-labelledby="markets-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / Where we&apos;re expanding</span><h2 id="markets-heading" className="s-title s-rows"><span>Three markets.</span><span className="k-soft">Three opportunities</span><span className="k-soft">to grow.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">02 / Where we&apos;re expanding</span><FranchiseHeading id="markets-heading" mobile={<>Three markets.<br /><em>Your next chapter.</em></>}><span>Three markets.</span><span className="k-soft">Three opportunities</span><span className="k-soft">to grow.</span></FranchiseHeading></div>
             <div className="f-markets-aside">
               <p className="k-body">Each market brings its own travellers and commercial strengths. We are inviting conversations with partners who know them well.</p>
               <EnquiryButton className="f-link" service="Franchise opportunity">Explore the markets</EnquiryButton>
@@ -144,13 +156,14 @@ export default function FranchisePage() {
               <EnquiryButton className="f-link" service={`Franchise opportunity: ${market.name}`}>Learn more</EnquiryButton>
             </div>
           </li>)}</ol>
+          <GalleryProgress count={markets.length} />
         </div>
       </section>
 
       <section className="f-advantage j-torn-top" id="advantage" aria-labelledby="advantage-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">03 / The partnership advantage</span><h2 id="advantage-heading" className="s-title s-rows"><span>Build locally.</span><span className="k-soft">Connect internationally.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">03 / The partnership advantage</span><FranchiseHeading id="advantage-heading" mobile={<>Local ambition.<br /><em>Shared strengths.</em></>}><span>Build locally.</span><span className="k-soft">Connect internationally.</span></FranchiseHeading></div>
             <p className="f-advantage-note">A proven brand.<br />A shared vision.<br /><em>A growing network.</em></p>
           </div>
           <ul className="f-advantage-grid" data-stagger="0.07">{advantages.map((item, i) => <li key={item.title}>
@@ -165,7 +178,7 @@ export default function FranchisePage() {
       <section className="f-build j-torn-top" id="build" aria-labelledby="build-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">04 / What you can build</span><h2 id="build-heading" className="s-title s-rows"><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">04 / What you can build</span><FranchiseHeading id="build-heading" mobile={<>One brand.<br /><em>Room to grow.</em></>}><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></FranchiseHeading></div>
           </div>
           <ul className="f-build-grid" data-stagger="0.1">{builds.map((item, i) => <li key={item.title} className="f-build-card">
             <div className="f-build-photo"><Image src={item.photo} alt={item.alt} fill sizes="(max-width: 767px) 92vw, (max-width: 1199px) 46vw, 23vw" style={{ objectPosition: item.position }} /></div>
@@ -176,6 +189,7 @@ export default function FranchisePage() {
               <p>{item.text}</p>
             </div>
           </li>)}</ul>
+          <GalleryProgress count={builds.length} />
         </div>
       </section>
 
@@ -185,8 +199,9 @@ export default function FranchisePage() {
           <div className="f-network-copy">
             <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
             <h2 id="network-heading" className="s-title s-rows"><span>Connecting more</span><span className="k-soft">than destinations.</span></h2>
-            <p className="k-body">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network.</p>
-            <p className="k-body">For potential franchise partners in Saudi Arabia, Egypt and Morocco, this creates opportunities to explore cross-market travel cooperation, including:</p>
+            <p className="k-body f-desktop-copy">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network.</p>
+            <p className="k-body f-desktop-copy">For potential franchise partners in Saudi Arabia, Egypt and Morocco, this creates opportunities to explore cross-market travel cooperation, including:</p>
+            <p className="k-body f-mobile-copy">From our Dubai base to our Africa network, explore travel opportunities across borders.</p>
             <ul className="f-network-list" data-stagger="0.08">{network.map(item => <li key={item}><TravelIcon kind="check" size={18} />{item}</li>)}</ul>
             <p className="f-network-note">A growing network. Local market opportunities. Shared international ambition.</p>
           </div>
@@ -200,8 +215,10 @@ export default function FranchisePage() {
               <span className="j-eyebrow s-eyebrow">06 / Who we&apos;re looking for</span>
               <p className="f-kicker">The right partner matters</p>
             </div>
-            <h2 id="partners-heading" className="f-partners-title"><span>We&apos;re not simply looking for <s>locations</s>.</span><span>We&apos;re looking for <em>people who can build businesses.</em></span></h2>
-            <p className="k-body">We are interested in discussing franchise opportunities with individuals and organisations that bring local market expertise, commercial ambition and a commitment to service quality.</p>
+            <h2 id="partners-heading" className="f-partners-title f-desktop-copy"><span>We&apos;re not simply looking for <s>locations</s>.</span><span>We&apos;re looking for <em>people who can build businesses.</em></span></h2>
+            <h2 className="s-title f-mobile-copy">Good businesses.<br /><em>Begin with people.</em></h2>
+            <p className="k-body f-desktop-copy">We are interested in discussing franchise opportunities with individuals and organisations that bring local market expertise, commercial ambition and a commitment to service quality.</p>
+            <p className="k-body f-mobile-copy">Local expertise. Commercial ambition. A commitment to looking after travellers.</p>
           </div>
           <h3 className="f-cast-label">Potential partners may include</h3>
           <ul className="f-cast" data-stagger="0.08">{partners.map((item, i) => <li key={item.label} tabIndex={0}>
@@ -220,7 +237,7 @@ export default function FranchisePage() {
       <section className="f-roles j-torn-top" id="standards" aria-labelledby="standards-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">07 / Local leadership. Shared standards.</span><h2 id="standards-heading" className="s-title s-rows"><span>Your market expertise.</span><span className="k-soft">Our shared vision.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">07 / Local leadership. Shared standards.</span><FranchiseHeading id="standards-heading" mobile={<>You know the market.<br /><em>We share the vision.</em></>}><span>Your market expertise.</span><span className="k-soft">Our shared vision.</span></FranchiseHeading></div>
             <p className="k-body">The proposed franchise approach is built around a balance between local ownership and consistent brand standards.</p>
           </div>
           <div className="f-roles-grid" data-stagger="0.12">{roles.map((role, i) => <div key={role.id} className={`f-role f-role-${role.id}`}>
@@ -237,7 +254,7 @@ export default function FranchisePage() {
       <section className="f-steps j-torn-top" id="how" aria-labelledby="how-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">08 / How it works</span><h2 id="how-heading" className="s-title s-rows"><span>From first conversation</span><span className="k-soft">to market launch.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">08 / How it works</span><FranchiseHeading id="how-heading" mobile={<>A conversation.<br /><em>Then a clear path.</em></>}><span>From first conversation</span><span className="k-soft">to market launch.</span></FranchiseHeading></div>
             <p className="k-body">A considered process for both sides, so every new market starts on solid ground.</p>
           </div>
           <ol className="f-step-row" data-progress="top 75%" data-progress-end="bottom 60%">{steps.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -266,8 +283,8 @@ export default function FranchisePage() {
         ticket="Franchise opportunities"
         left={<>Let&apos;s build the<br />next chapter.</>}
         right={<>Together, in<br /><em>three markets.</em></>}
-        photo="/images/library/franchise-three-markets.webp"
-        photoPosition="70% center"
+        photo="/images/library/franchise-partner-lounge-v2.webp"
+        photoPosition="center"
         pass={["Boarding pass", "Saudi · Egypt · Morocco"]}
         from="Your market"
         to="Our network"

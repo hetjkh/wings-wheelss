@@ -33,16 +33,16 @@ const business: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const destinations = [
-  { name: "Kenya", line: "Safari. City. Coast.", photo: "/images/library/nairobi-city.webp", alt: "Nairobi city centre and the Kenyatta International Convention Centre above the green urban canopy", position: "center" },
-  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", position: "center" },
-  { name: "Uganda", line: "Wildlife. Nature. Adventure.", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", position: "center" },
+  { name: "Kenya", line: "Safari. City. Coast.", photo: "/images/library/africa-card-kenya-v2.webp", alt: "Giraffes crossing Nairobi National Park with the city skyline beyond", position: "center" },
+  { name: "Tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", photo: "/images/library/africa-card-tanzania-v2.webp", alt: "Elephants crossing the Tanzanian plain beneath Mount Kilimanjaro", position: "center" },
+  { name: "Uganda", line: "Wildlife. Nature. Adventure.", photo: "/images/library/africa-card-uganda-v2.webp", alt: "Mountain gorillas resting in Uganda's misty Bwindi rainforest", position: "center" },
 ];
 const more = ["Rwanda", "Ethiopia", "Mauritius", "Seychelles", "South Africa"];
 
 const itinerary = [
   { name: "Dubai", role: "International hub", photo: "/images/library/dubai-panorama.webp" },
   { name: "Nairobi", role: "City", photo: "/images/library/nairobi-city.webp", position: "center" },
-  { name: "Maasai Mara", role: "Safari", photo: "/images/library/kenya-game-drive.webp", position: "center" },
+  { name: "Maasai Mara", role: "Safari", photo: "/images/library/maasai-mara-lioness-v2.webp", position: "center" },
   { name: "Zanzibar", role: "Beach", photo: "/images/library/zanzibar.webp" },
   { name: "Dubai", role: "Home", photo: "/images/library/dubai-clouds.webp", position: "center" },
 ];
@@ -52,14 +52,6 @@ const journeys = [
   { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
   { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
   { title: "City. Safari. Coast.", photo: "/images/library/kenya-game-drive.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Arrival" }, { from: "Nairobi", to: "Maasai Mara", why: "Safari" }, { from: "Maasai Mara", to: "Diani", why: "Beach" }, { from: "Diani", to: "Dubai", why: "Home" }] },
-];
-const africaPurposes = [
-  { title: "Business", text: "Meetings, projects and regional travel.", photo: "/images/library/business-terminal-v2.webp", href: "/corporate-travel", link: "Corporate travel" },
-  { title: "Safari", text: "Wildlife and extraordinary landscapes.", photo: "/images/library/africa-wildlife-drive.webp", href: "/destinations/kenya", link: "Discover Kenya" },
-  { title: "Family", text: "Visits, holidays and journeys together.", photo: "/images/library/family-lake.webp", href: "/destinations", link: "Find your destination" },
-  { title: "Groups", text: "Organised travel across multiple travellers.", photo: "/images/library/africa-safari-lodge.webp", href: "/groups-mice", link: "Plan group travel" },
-  { title: "MICE", text: "Meetings, incentives, conferences and exhibitions.", photo: "/images/library/conference.webp", href: "/groups-mice", link: "Explore Groups & MICE" },
-  { title: "Coast & islands", text: "Indian Ocean escapes and extensions.", photo: "/images/library/zanzibar.webp", href: "/destinations/tanzania", link: "Discover Tanzania & Zanzibar" },
 ];
 const supportServices: { icon: IconKind; title: string; text: string }[] = [
   { icon: "plane", title: "Flights", text: "Regional and international arrangements." },
@@ -103,7 +95,7 @@ export default function AfricaPage() {
         <div className="j-shell a-corridor-content">
           <div className="a-corridor-head">
             <span className="j-eyebrow s-eyebrow">03 / Two regions. One travel network.</span>
-            <h2 id="corridor-heading" className="s-title">UAE <span className="a-arrows" aria-label="to and from">↔</span> Africa</h2>
+            <h2 id="corridor-heading" className="s-title">Two regions.<br /><em>One travel network.</em></h2><p className="ac-intro">Across borders, a familiar welcome. Discover journeys between Africa and the UAE, connected by people who know the way.</p>
           </div>
           <AfricaCorridor />
         </div>
@@ -214,37 +206,18 @@ export default function AfricaPage() {
         </div>
       </section>
 
-      <section className="a-purposes j-torn-top" id="travel-purposes" aria-labelledby="purposes-heading">
-        <div className="j-shell"><span className="j-eyebrow s-eyebrow">10 / Africa, for different reasons</span><h2 id="purposes-heading" className="s-title a-editorial-title">What brings you to Africa?</h2>
-          <div className="a-purpose-grid">{africaPurposes.map((purpose, i) => <Link className="a-purpose-tile" href={purpose.href} key={purpose.title} aria-label={`${purpose.title}: ${purpose.text} ${purpose.link}`}>
-            <Image src={purpose.photo} alt="" fill sizes="(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 30vw" />
-            <span className="a-purpose-number">0{i + 1}</span><div><h3>{purpose.title}</h3><p>{purpose.text}</p><span className="a-purpose-link">{purpose.link}<Arrow /></span></div>
-          </Link>)}</div>
-        </div>
-      </section>
-
-      <section className="a-expertise j-torn-top" id="travel-expertise" aria-labelledby="expertise-heading">
-        <div className="j-shell a-expertise-grid">
-          <figure className="a-expertise-photo"><Image src="/images/library/corporate-account-manager.webp" alt="A professional travel coordinator reviewing routes, bookings and itineraries across multiple screens, with a phone and notebook on her desk" fill sizes="(max-width: 900px) 92vw, 48vw" /><figcaption>People who bring the details together.</figcaption></figure>
-          <div><span className="j-eyebrow s-eyebrow">11 / Behind every cross-border journey</span><h2 id="expertise-heading" className="s-title a-editorial-title">Different countries.<br />Different requirements.<br /><em>One team keeping track.</em></h2><p className="a-body">International and regional journeys can involve different flight arrangements, visa requirements, accommodation, transfers and schedules. Wings &amp; Wheels helps bring those details together before the traveller begins the journey.</p>
-            <div className="a-operations-sheet"><header><span>Journey coordination</span><span>Illustrative itinerary</span></header><div className="a-operations-route">Africa<Arrow />Dubai<Arrow />Beyond</div><dl><div><dt><TravelIcon kind="plane" size={18} />Flight schedules</dt><dd>International &amp; regional connections</dd></div><div><dt><TravelIcon kind="document" size={18} />Travel documents</dt><dd>Requirements checked for each stop</dd></div><div><dt><TravelIcon kind="bed" size={18} />Accommodation</dt><dd>Stays aligned with the itinerary</dd></div><div><dt><TravelIcon kind="car" size={18} />Ground transfers</dt><dd>Airport, hotel &amp; onward movements</dd></div></dl></div>
-            <p className="a-expertise-statement">There&apos;s expertise behind every booking.</p>
-          </div>
-        </div>
-      </section>
-
       <section className="a-support j-torn-top" id="africa-support" aria-labelledby="support-heading">
-        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">12 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
+        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">10 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
           <ol className="a-support-grid">{supportServices.map((service, i) => <li key={service.title}><span className="a-support-icon"><TravelIcon kind={service.icon} size={30} /></span><span className="a-support-index">0{i + 1}</span><h3>{service.title}</h3><p>{service.text}</p>{i < supportServices.length - 1 && <span className="a-support-arrow"><Arrow /></span>}</li>)}</ol>
         </div>
       </section>
 
       <section className="a-enquiry j-torn-top" id="africa-enquiry" aria-labelledby="enquiry-heading">
-        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">13 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
+        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">11 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
       <ClosingScene
-        chapter="14 / Wings & Wheels"
+        chapter="12 / Wings & Wheels"
         ticket="UAE ↔ Africa ↔ Worldwide"
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}

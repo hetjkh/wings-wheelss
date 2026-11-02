@@ -135,14 +135,15 @@
 .s-ticket-items svg { color: var(--ochre); }
 .s-ticket .au-cta { margin-top: auto; align-self: flex-start; }
 /* The principle: a cinematic frame that opens to full bleed as it arrives. */
-.services-page .s-principle { display: flex; flex-direction: column; justify-content: center; min-height: 100svh; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 3); overflow: clip; background: #fff; color: var(--cream); text-align: center; }
+.services-page .s-principle { display: flex; flex-direction: column; justify-content: center; min-height: 100svh; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--tear) + var(--u) * 3); overflow: clip; background: #fff; color: var(--cream); text-align: left; }
+.services-page main > section.s-principle { min-height: 100svh; }
 .s-principle-frame { position: absolute; inset: 0; overflow: clip; background: var(--night); }
 .s-principle-frame .s-principle-photo-desktop { object-position: 65% center; }
 .s-principle-frame .s-principle-photo-mobile { display: none; }
-.s-principle-shade { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, #1a130e8c, #1a130e33 70%), linear-gradient(0deg, #1a130ecc, transparent 45%), linear-gradient(180deg, #1a130e80, transparent 30%); }
-.s-principle-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; margin-block: auto; }
+.s-principle-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #15110d8f 0%, #15110d52 32%, transparent 58%), radial-gradient(ellipse 70% 60% at 50% 50%, #1a130e59, #1a130e1f 70%), linear-gradient(0deg, #1a130e99, transparent 42%), linear-gradient(180deg, #1a130e52, transparent 28%); }
+.s-principle-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; margin-block: auto; padding-right: 52%; }
 .s-principle-copy .j-eyebrow { color: var(--sand); }
-.journey-page .s-principle-title { margin-top: calc(var(--u) * 1.75); font-size: calc(var(--u) * 5); line-height: .9; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); text-shadow: 0 4px 40px #1a130e66; }
+.journey-page .s-principle-title { max-width: 14em; margin-top: calc(var(--u) * 1.25); font-size: clamp(42px, 2.9vw, 56px); line-height: .92; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); text-shadow: 0 4px 40px #1a130e66; }
 .s-principle-rule { display: block; width: 1px; height: calc(var(--u) * 3.5); margin: calc(var(--u) * 2) 0; background: var(--sand); transform-origin: top; }
 .s-principle-copy > p { font: 400 calc(var(--u) * 1.5)/1.2 var(--heading); color: #f3e7cf; }
 .s-principle-copy .au-cta { margin-top: calc(var(--u) * 2); }
@@ -219,6 +220,8 @@
 @media (max-width: 991px) {
   .s-principle-frame .s-principle-photo-desktop { display: none; }
   .s-principle-frame .s-principle-photo-mobile { display: block; object-position: center 42%; }
+  .services-page .s-principle { text-align: center; }
+  .s-principle-copy { align-items: center; padding-right: 0; }
   .s-strip { flex-direction: column; height: auto; min-height: 0; }
   .s-strip-panel { flex: none; height: 76px; }
   .s-strip-panel.is-active { flex: none; height: 440px; }
@@ -258,7 +261,7 @@
   .s-tickets { grid-template-columns: 1fr; }
   .s-reason { min-height: 400px; }
   .journey-page .s-principle-title { font-size: 38px; }
-  .services-page .s-principle { min-height: 0; padding: calc(var(--tear) + 24px) 0 40px; background: var(--night); }
+  .services-page main > section.s-principle { min-height: 0; padding: calc(var(--tear) + 24px) 0 40px; background: var(--night); }
   .s-principle-frame { position: relative; inset: auto; width: 100%; aspect-ratio: 1086 / 1448; flex: none; }
   .s-principle-frame .s-principle-photo-mobile { object-fit: contain; object-position: center; }
   .s-principle-copy { margin-block: 0; padding-block: 36px 48px; }

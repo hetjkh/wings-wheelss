@@ -1,4 +1,20 @@
 {
+  "/images/library/corporate-traveller-support-v2.webp": [
+    1161,
+    1355
+  ],
+  "/images/library/corporate-africa-network-v2.webp": [
+    1448,
+    1086
+  ],
+  "/images/library/corporate-day-departure-v2.webp": [
+    1672,
+    941
+  ],
+  "/images/library/corporate-day-client-visit-v2.webp": [
+    1672,
+    941
+  ],
   "/images/library/corporate-partnership-hero-v2.webp": [
     1672,
     941
@@ -31,6 +47,14 @@
     1086,
     1448
   ],
+  "/images/library/services-principle-v4-desktop.webp": [
+    1672,
+    941
+  ],
+  "/images/library/services-principle-v4-mobile.webp": [
+    1086,
+    1448
+  ],
   "/images/library/journey-above-clouds.webp": [
     1672,
     941
@@ -38,6 +62,10 @@
   "/images/library/flight-wing.webp": [
     2880,
     3840
+  ],
+  "/images/library/home-flights-wing-v2.webp": [
+    1402,
+    1122
   ],
   "/images/library/resort-bay.webp": [
     2902,
@@ -183,6 +211,14 @@
     3840,
     2560
   ],
+  "/images/library/destinations-family-holidays-v2.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/destinations-groups-experiences-v2.webp": [
+    1086,
+    1448
+  ],
   "/images/library/holiday-arrival.webp": [
     3840,
     2555
@@ -199,6 +235,26 @@
     1400,
     936
   ],
+  "/images/library/kenya-game-drive-v2.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/maasai-mara-lioness-v2.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/kenya-lamu-coast-v3.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/destinations-closing-coast-v2.webp": [
+    1672,
+    941
+  ],
+  "/images/library/home-kenya-amboseli-v2.webp": [
+    1448,
+    1086
+  ],
   "/images/library/tanzania-kilimanjaro.webp": [
     1536,
     1024
@@ -207,7 +263,23 @@
     1536,
     1024
   ],
+  "/images/library/africa-card-kenya-v2.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/africa-card-tanzania-v2.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/africa-card-uganda-v2.webp": [
+    1086,
+    1448
+  ],
   "/images/library/business-boarding.webp": [
+    1672,
+    941
+  ],
+  "/images/library/business-boarding-v2.webp": [
     1672,
     941
   ],
@@ -238,6 +310,14 @@
   "/images/library/airport-transfer.webp": [
     1536,
     1024
+  ],
+  "/images/library/africa-corridor-arrival-v2.webp": [
+    1448,
+    1086
+  ],
+  "/images/library/uae-corridor-arrival-v2.webp": [
+    1448,
+    1086
   ],
   "/images/library/conference.webp": [
     1536,
@@ -314,6 +394,10 @@
   "/images/library/franchise-three-markets.webp": [
     1911,
     823
+  ],
+  "/images/library/franchise-partner-lounge-v2.webp": [
+    1672,
+    941
   ],
   "/images/about/hero-v2.webp": [
     1672,

@@ -9,24 +9,26 @@ import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { FourThings, MoodIndex, PostcardRail, SeasonRibbon, type Mood, type Postcard, type Season } from "./destinations-interactive";
 import { DubaiTrips } from "./destination-dubai-trips";
-import { DestinationConnections, DestinationPlanning } from "./destination-additions";
+import { DestinationPlanning } from "./destination-additions";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./destinations.css";
 import "./destinations-additions.css";
+import "./destinations-mobile.css";
+import "./destinations-phone-scenes.css";
 
 const moods: Mood[] = [
   { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/library/dubai-marina.webp", alt: "Modern towers and waterfront buildings at Dubai Marina" },
   { title: "Beach & Escape", text: "Island stays, resorts and slower journeys.", icon: "sun", photo: "/images/library/maldives-reef.webp", alt: "Colourful fish and coral beneath the clear Maldivian sea" },
   { title: "Culture & Discovery", text: "Cities, heritage, food and local experiences.", icon: "compass", photo: "/images/library/destinations-rome.webp", alt: "The Colosseum in Rome in warm evening light" },
   { title: "Safari & Nature", text: "Wildlife, landscapes and extraordinary environments.", icon: "leaf", photo: "/images/library/south-africa-safari.webp", alt: "Safari guests watching lions from an open vehicle in South Africa", position: "center" },
-  { title: "Family Holidays", text: "Destinations and stays designed around travelling together.", icon: "heart", photo: "/images/library/family-lake.webp", alt: "A parent and child enjoying a lakeside mountain view", position: "center" },
-  { title: "Groups & Experiences", text: "Celebrations, incentive travel, friends and organised journeys.", icon: "people", photo: "/images/library/retreat-dinner.webp", alt: "A candlelit retreat dinner on a terrace overlooking the sea", position: "center" },
+  { title: "Family Holidays", text: "Destinations and stays designed around travelling together.", icon: "heart", photo: "/images/library/destinations-family-holidays-v2.webp", alt: "A family walking down a Mediterranean coastal path toward a clear blue cove", position: "center" },
+  { title: "Groups & Experiences", text: "Celebrations, incentive travel, friends and organised journeys.", icon: "people", photo: "/images/library/destinations-groups-experiences-v2.webp", alt: "A group of friends sharing tea and a meal during a UAE desert experience", position: "center" },
 ];
 
 const postcards: Postcard[] = [
-  { name: "Kenya", href: "/destinations/kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", position: "center", service: "Africa travel" },
+  { name: "Kenya", href: "/destinations/kenya", line: "Safari. City. Coast.", region: "East Africa", code: "KE", photo: "/images/library/kenya-lamu-coast-v3.webp", alt: "A traditional dhow sailing past Swahili architecture on Kenya's Lamu coast", position: "center", service: "Africa travel" },
   { name: "Tanzania", href: "/destinations/tanzania", line: "Serengeti. Zanzibar. Kilimanjaro.", region: "East Africa", code: "TZ", photo: "/images/library/tanzania-kilimanjaro.webp", alt: "A safari landscape beneath Mount Kilimanjaro in Tanzania", service: "Africa travel" },
   { name: "Uganda", href: "/destinations/uganda", line: "Wildlife. Nature. Adventure.", region: "East Africa", code: "UG", photo: "/images/library/uganda-gorilla.webp", alt: "A mountain gorilla in a green Ugandan forest landscape", service: "Africa travel" },
   { name: "Dubai & UAE", href: "/destinations/dubai-uae", line: "Business. Lifestyle. Experiences.", region: "Middle East", code: "AE", photo: "/images/library/dubai-clouds.webp", alt: "Dubai towers rising above a sea of morning clouds", position: "center", service: "Leisure & holidays" },
@@ -85,7 +87,7 @@ export default function DestinationsPage() {
         <div className="j-shell">
           <div className="j-section-label s-draw"><span>01 / Find your journey</span><span>Six ways to begin</span></div>
           <div className="s-split-head">
-            <h2 id="find-heading" className="s-title">Sometimes you know where.<br /><span className="d-title-soft">Sometimes you just know why.</span></h2>
+            <h2 id="find-heading" className="s-title"><span className="d-desktop-copy">Sometimes you know where.<br /><span className="d-title-soft">Sometimes you just know why.</span></span><span className="d-mobile-copy">Find your<br /><em>kind of escape.</em></span></h2>
             <div>
               <p className="s-lead">Different journeys. Extraordinary places.</p>
               <p className="s-lead-body d-body">Tell us what kind of experience you&apos;re looking for and we&apos;ll help you find the right destination.</p>
@@ -98,7 +100,7 @@ export default function DestinationsPage() {
       <section className="d-featured j-torn-top" id="featured" data-hscroll aria-labelledby="featured-heading">
         <div className="j-shell">
           <span className="j-eyebrow s-eyebrow">02 / Featured destinations</span>
-          <h2 id="featured-heading" className="s-title">Places worth<br />going further for.</h2>
+          <h2 id="featured-heading" className="s-title"><span className="d-desktop-copy">Places worth<br />going further for.</span><span className="d-mobile-copy">Your next<br /><em>somewhere.</em></span></h2>
         </div>
         <PostcardRail cards={postcards} />
       </section>
@@ -109,7 +111,7 @@ export default function DestinationsPage() {
         <div className="j-shell d-africa-grid">
           <div className="d-africa-copy">
             <span className="j-eyebrow s-eyebrow">03 / Closer to Africa</span>
-            <h2 id="africa-heading" className="s-title">Some of our strongest connections are here.</h2>
+            <h2 id="africa-heading" className="s-title"><span className="d-desktop-copy">Some of our strongest connections are here.</span><span className="d-mobile-copy">Africa.<br /><em>Closer than ever.</em></span></h2>
             <p className="s-lead-body d-body">Wings &amp; Wheels combines UAE-based travel expertise with an established network across key African markets, helping travellers move between the Middle East, Africa and beyond.</p>
             <Link className="j-button j-button-cream" href="/africa">Discover Africa <Arrow /></Link>
           </div>
@@ -144,7 +146,7 @@ export default function DestinationsPage() {
         <div className="j-shell">
           <div className="j-section-label s-draw"><span>05 / Where to go, and when</span><span>A travel year, from October</span></div>
           <div className="s-split-head">
-            <h2 id="seasons-heading" className="s-title">Seasonal<br />highlights.</h2>
+            <h2 id="seasons-heading" className="s-title"><span className="d-desktop-copy">Seasonal<br />highlights.</span><span className="d-mobile-copy">A year of <em>escapes.</em></span></h2>
             <div>
               <p className="s-lead">The right destination at the right time.</p>
               <p className="s-lead-body d-body">A quick guide to some of our favourite travel periods.</p>
@@ -166,7 +168,6 @@ export default function DestinationsPage() {
         </div>
       </section>
 
-      <DestinationConnections />
       <DestinationPlanning />
 
       <ClosingScene
@@ -174,7 +175,7 @@ export default function DestinationsPage() {
         ticket="Your next destination"
         left={<>Some journeys start<br />with a place.</>}
         right={<>Others start<br />with <em>an idea.</em></>}
-        photo="/images/library/algarve.webp"
+        photo="/images/library/destinations-closing-coast-v2.webp"
         photoPosition="center 60%"
         pass={["Boarding pass", "Place or idea"]}
         from="An idea"

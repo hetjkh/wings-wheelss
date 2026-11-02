@@ -62,17 +62,31 @@ export function AfricaGlobe() {
     resize.observe(canvas);
 
     let frame = 0;
+    let visible = false;
     const start = performance.now();
     const tick = (now: number) => {
+      frame = 0;
+      if (!visible || document.hidden) return;
       const sway = still ? 0 : Math.sin((now - start) / 4200) * 0.32;
       globe.update({ phi: basePhi + sway + offset.current });
       frame = requestAnimationFrame(tick);
     };
-    frame = requestAnimationFrame(tick);
+    const play = () => {
+      if (!frame && visible && !document.hidden && !still) frame = requestAnimationFrame(tick);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) play();
+      else if (frame) { cancelAnimationFrame(frame); frame = 0; }
+    });
+    observer.observe(canvas);
+    document.addEventListener("visibilitychange", play);
     const fade = window.setTimeout(() => canvas.classList.add("is-ready"), 60);
 
     return () => {
-      cancelAnimationFrame(frame);
+      if (frame) cancelAnimationFrame(frame);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", play);
       window.clearTimeout(fade);
       resize.disconnect();
       globe.destroy();

@@ -1,10 +1,9 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /** Called inside HomeExperience's scoped GSAP matchMedia context. */
 export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
   const cleanup: (() => void)[] = [];
-  const select = <T extends HTMLElement>(selector: string) => Array.from(root.querySelectorAll<T>(selector));
+  const select = <T extends HTMLElement>(selector: string) => Array.from(root.querySelectorAll<T>(selector)).filter(element => element.getClientRects().length > 0);
 
   select("[data-editorial-title]").forEach(title => {
     gsap.from(title.querySelectorAll(".e-line > span"), {
@@ -55,6 +54,39 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
       cover.to(section, { "--e-cover": .5, ease: "none" }, 0)
         .fromTo(next, { "--e-tear-x": "-16px" }, { "--e-tear-x": "16px", ease: "none" }, 0);
     });
+  } else if (window.matchMedia("(max-width: 767px) and (min-height: 640px)").matches) {
+    const gallery = root.querySelector<HTMLElement>(".e-destinations");
+    const track = gallery?.querySelector<HTMLElement>(".e-destination-track");
+    const viewport = gallery?.querySelector<HTMLElement>(".e-destination-window");
+    const galleryPin = gallery?.querySelector<HTMLElement>(".e-destinations-pin");
+    if (gallery && track && viewport && galleryPin) {
+      gallery.classList.add("is-mobile-rail");
+      const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+      const rail = gsap.timeline({ scrollTrigger: {
+        id: "home-destinations-mobile", trigger: galleryPin, start: "top 65px",
+        end: () => `+=${Math.max(window.innerHeight * .8, distance())}`,
+        pin: true, scrub: .7, invalidateOnRefresh: true, refreshPriority: 1,
+      } });
+      rail.to(track, { x: () => -distance(), ease: "none" }, 0)
+        .fromTo(gallery.querySelector(".e-destination-progress > span"), { scaleX: 0 }, { scaleX: 1, ease: "none" }, 0);
+      const focusCard = (event: FocusEvent) => {
+        const card = (event.target as HTMLElement).closest<HTMLElement>(".e-destination");
+        if (!card || !rail.scrollTrigger) return;
+        const progress = Math.max(0, Math.min(1, card.offsetLeft / (distance() || 1)));
+        const trigger = rail.scrollTrigger;
+        window.scrollTo({ top: trigger.start + progress * (trigger.end - trigger.start), behavior: "instant" });
+      };
+      track.addEventListener("focusin", focusCard);
+      cleanup.push(() => { track.removeEventListener("focusin", focusCard); gallery.classList.remove("is-mobile-rail"); viewport.scrollLeft = 0; });
+    }
+
+    const landscape = root.querySelector<HTMLElement>(".e-africa-landscape");
+    if (landscape && landscape.getClientRects().length > 0) {
+      gsap.fromTo(landscape.querySelector(".e-africa-title"), { yPercent: 12 }, { yPercent: -12, ease: "none", scrollTrigger: { trigger: landscape, start: "top bottom", end: "bottom top", scrub: .8 } });
+    }
+
+    const togetherPhoto = root.querySelector<HTMLElement>(".e-together-photo");
+    if (togetherPhoto) gsap.fromTo(togetherPhoto, { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".e-together-hero", start: "top bottom", end: "bottom top", scrub: .7 } });
   }
   return () => cleanup.forEach(fn => fn());
 }

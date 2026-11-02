@@ -62,7 +62,9 @@
 
 .k-day.is-stepped { --s: round(down, calc(var(--steps-progress, 0) * 4.999), 1); position: relative; display: grid; grid-template-rows: 1fr auto; min-height: 100svh; padding: calc(var(--tear) + 90px) 0 calc(var(--u) * 2.25); overflow: clip; background: var(--night); color: var(--cream); }
 .is-stepped .k-day-photos { position: absolute; inset: 0; display: block; width: auto; margin: 0; }
-.is-stepped .k-day-photos li { --on: clamp(0, calc(var(--s) - var(--i) + 1), 1); position: absolute; inset: 0; aspect-ratio: auto; clip-path: inset(calc((1 - var(--on)) * 100%) 0 0 0); transition: clip-path 1.2s cubic-bezier(.7, 0, .2, 1); }
+.is-stepped .k-day-photos li { --on: clamp(0, calc(var(--s) - var(--i) + 1), 1); position: absolute; inset: 0; aspect-ratio: auto; background: transparent; clip-path: inset(calc((1 - var(--on)) * 100%) 0 0 0); transition: clip-path 1.2s cubic-bezier(.7, 0, .2, 1); }
+/* An incoming layer opens only after decoding; the previous photo stays underneath. */
+.is-stepped .k-day-photos li[data-image-ready="false"]:not(:first-child) { clip-path: inset(100% 0 0 0); }
 .is-stepped .k-day-photos img { transform: scale(calc(1.16 - var(--on) * .1)); transition: transform 2s cubic-bezier(.2, .7, .2, 1); }
 .is-stepped .k-day-photos li::after, .is-stepped .k-day-caption { display: none; }
 .is-stepped .k-day-shade { display: block; position: absolute; inset: 0; background: linear-gradient(90deg, #140e0ae6, #140e0a99 42%, #140e0a26 72%), linear-gradient(0deg, #140e0ad9, transparent 38%); }

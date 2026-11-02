@@ -100,9 +100,24 @@ export function AboutPage() {
         tags={tags}
       />
 
-      <section className="au-who au-torn" id="who" aria-labelledby="who-title">
+      <section className="au-who au-torn" id="who" aria-labelledby="who-label">
         <div className="j-shell">
-          <div className="au-bar"><span>01 / Who we are</span><span>Every journey has a reason</span></div>
+          <div className="au-bar"><span id="who-label">01 / Who we are</span><span>Every journey has a reason</span></div>
+          <div className="au-who-mobile">
+            <h2 className="au-who-mobile-title" data-lines><Line>Your journey.</Line><Line><em>Made personal.</em></Line></h2>
+            <div className="au-who-collage">
+              <div className="au-who-landscape">
+                <Image src="/images/about/mountain-v2.webp" alt="A traveller overlooking a mountain lake" fill sizes="(max-width: 767px) 76vw, 1px" />
+              </div>
+              <div className="au-who-seal" aria-hidden="true"><TravelIcon kind="route" size={22} /><span>People<br />first.</span></div>
+              <figure className="au-who-postcard">
+                <div><Image src="/images/about/people-and-journeys.webp" alt="Travel specialists planning a journey together" fill sizes="(max-width: 767px) 45vw, 1px" /></div>
+                <figcaption>With you, all the way.</figcaption>
+              </figure>
+            </div>
+            <div className="au-who-mobile-note"><span aria-hidden="true"><TravelIcon kind="plane" size={21} /></span><p>You bring the reason to travel.<br />We bring the details together.</p></div>
+            <div className="au-who-mobile-categories"><span>However you travel</span><span aria-hidden="true">01 — 04</span></div>
+          </div>
           <div className="au-who-head">
             <h2 id="who-title" className="au-h2" data-lines><Line>More than</Line><Line><em>a booking.</em></Line></h2>
             <div className="au-who-copy">

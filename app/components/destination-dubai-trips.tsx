@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "./travel-image";
 import { Arrow } from "./icons";
 
@@ -14,11 +14,23 @@ const trips = [
 
 export function DubaiTrips() {
   const [active, setActive] = useState(0);
+  const strips = useRef<HTMLDivElement>(null);
   return <div className="d-dubai-trips">
     <div className="d-dubai-scene">
       <Image src="/images/library/dubai-sunset-v2.webp" alt="Sunset over Dubai, with the Burj Khalifa above an illuminated skyline and turquoise waterfront" fill sizes="100vw" />
       <div className="d-dubai-shade" aria-hidden="true" />
-      <div className="d-dubai-strips" aria-label="Ways to experience Dubai">{trips.map((trip, index) => <button key={trip.kind} type="button" aria-pressed={active === index} onClick={() => setActive(index)}>
+      <div className="d-dubai-strips" ref={strips} aria-label="Ways to experience Dubai" onScroll={event => {
+        if (!matchMedia("(max-width: 767px)").matches) return;
+        const track = event.currentTarget;
+        const width = track.firstElementChild?.getBoundingClientRect().width ?? 1;
+        setActive(Math.min(trips.length - 1, Math.round(track.scrollLeft / width)));
+      }}>{trips.map((trip, index) => <button key={trip.kind} type="button" aria-pressed={active === index} onClick={() => {
+        setActive(index);
+        if (matchMedia("(max-width: 767px)").matches && strips.current) {
+          const width = strips.current.firstElementChild?.getBoundingClientRect().width ?? 0;
+          strips.current.scrollTo({ left: index * width, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        }
+      }}>
         <span className="d-dubai-number">0{index + 1}</span><span className="d-dubai-time">{trip.time}</span><strong>{trip.kind}</strong><span className="d-dubai-select" aria-hidden="true">↗</span>
       </button>)}</div>
     </div>

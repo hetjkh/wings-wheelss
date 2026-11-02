@@ -53,6 +53,8 @@ const voices = [
 export function HomeTestimonials() {
   const [active, setActive] = useState(0);
   const root = useRef<HTMLElement>(null);
+  const rail = useRef<HTMLOListElement>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const current = voices[active];
   const total = voices.length;
 
@@ -69,6 +71,17 @@ export function HomeTestimonials() {
     });
     return () => media.revert();
   }, []);
+
+  useEffect(() => {
+    if (!matchMedia("(max-width: 767px)").matches) return;
+    const list = rail.current;
+    const item = list?.children[active];
+    if (!list || !item) return;
+    list.scrollTo({
+      left: list.scrollLeft + item.getBoundingClientRect().left - list.getBoundingClientRect().left,
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  }, [active]);
 
   const go = (direction: -1 | 1) => setActive(index => (index + direction + total) % total);
 
@@ -113,7 +126,16 @@ export function HomeTestimonials() {
               </div>
             </div>
           </div>
-          <div className="e-voices-visual" data-voice-reveal>
+          <div className="e-voices-visual" data-voice-reveal
+            onTouchStart={event => { touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }}
+            onTouchEnd={event => {
+              const start = touchStart.current;
+              touchStart.current = null;
+              if (!start) return;
+              const dx = event.changedTouches[0].clientX - start.x;
+              const dy = event.changedTouches[0].clientY - start.y;
+              if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) go(dx < 0 ? 1 : -1);
+            }}>
             {voices.map((voice, index) => (
               <figure key={voice.name} className={`e-voices-frame${index === active ? " is-active" : ""}`} aria-hidden={index !== active}>
                 <Image src={voice.photo} alt={voice.alt} fill sizes="(max-width: 700px) 90vw, 48vw" className="n-cover" style={{ objectPosition: voice.position }} />
@@ -130,7 +152,7 @@ export function HomeTestimonials() {
         </div>
         <div className="e-voices-bottom">
           <span className="e-voices-select-label">Every journey.<br /><em>A different story.</em></span>
-          <ol className="e-voices-rail" aria-label="Choose a testimonial">
+          <ol className="e-voices-rail" aria-label="Choose a testimonial" ref={rail}>
             {voices.map((voice, index) => <li key={voice.name}>
               <button type="button" className={index === active ? "is-active" : ""} aria-pressed={index === active} aria-controls="e-voices-current" aria-label={`Read ${voice.name}'s testimonial: ${voice.route}`} onClick={() => setActive(index)}>
                 <span className="e-voices-tab-number">{String(index + 1).padStart(2, "0")}</span>

@@ -147,7 +147,7 @@ export function SeasonRibbon({ seasons }: { seasons: Season[] }) {
     <div className="d-ribbon" role="tablist" aria-label="Travel periods">
       <ol className="d-months" aria-hidden="true">{travelYear.map((month, i) => <li key={month} className={Math.floor(i / 3) === active ? "is-on" : undefined}>{month}</li>)}</ol>
       <div className="d-quarters">{seasons.map((item, i) => <button key={item.months} type="button" role="tab" id={`season-tab-${i}`} aria-selected={i === active} aria-controls="season-panel" className={`d-quarter${i === active ? " is-active" : ""}${i < active ? " is-past" : ""}`} style={{ "--i": i } as React.CSSProperties} onClick={() => choose(i)}>
-        <span className="d-quarter-sun" aria-hidden="true"><TravelIcon kind="sun" size={16} /></span>{item.months}
+        <span className="d-quarter-sun" aria-hidden="true"><TravelIcon kind="sun" size={16} /></span><span className="d-desktop-copy">{item.months}</span><span className="d-mobile-copy">{item.short}</span>
       </button>)}</div>
     </div>
     <div className="d-season" role="tabpanel" id="season-panel" aria-labelledby={`season-tab-${active}`}>

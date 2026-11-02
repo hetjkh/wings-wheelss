@@ -2,6 +2,7 @@ import { Arrow, TravelIcon } from "./icons";
 import { DestinationEnquiry } from "./destination-enquiry";
 import Image from "./travel-image";
 import { destinationGuides } from "./destination-guides";
+import "./destination-planner.css";
 
 const journeys = [
   ["Dubai", "Nairobi", "City to safari"], ["Nairobi", "Zanzibar", "Safari to island time"],
@@ -32,16 +33,22 @@ export function DestinationPlanning({ destination, detail = false }: { destinati
   return <section className="d-destination-plan j-torn-top" id="destination-enquiry" aria-labelledby="destination-enquiry-heading">
     <div className="j-shell d-destination-plan-grid">
       <div className="d-destination-plan-copy">
+        <div className="dp-portrait">
+        <div className="dp-invitation">
         <span className="j-eyebrow s-eyebrow">{detail ? "Your journey starts here" : "08 / Destination enquiry"}</span>
         <h2 id="destination-enquiry-heading" className="s-title">{destination ? <>Thinking about<br />{destination}?</> : <>A place in mind.<br /><span>Or just an idea.</span></>}</h2>
         <p className="d-body">Tell us who you&apos;re travelling with and how you want the trip to feel. We&apos;ll help shape the journey around you.</p>
+        </div>
         <div className="d-planning-photo">
-          <Image src={guide?.photo ?? "/images/library/maldives-jetty.webp"} alt={guide?.alt ?? "A wooden jetty leading across turquoise water to a Maldivian island"} fill sizes="(max-width: 991px) 92vw, 38vw" />
+          <Image src={guide?.photo ?? "/images/library/maldives-jetty.webp"} alt={guide?.alt ?? "A wooden jetty leading across turquoise water to a Maldivian island"} fill sizes="100vw" />
           <div className="d-planning-photo-shade" />
           <span className="d-planning-photo-note">{destination ?? "Somewhere that feels like you"}</span>
           <div className="d-planning-photo-caption"><TravelIcon kind="compass" size={32} /><p>Not just a place.<br /><em>Your kind of journey.</em></p></div>
         </div>
+        <span className="dp-margin-note" aria-hidden="true">Wings &amp; Wheels / Journeys made personal</span>
+        </div>
         <div className="d-planning-assurance"><span><TravelIcon kind="people" size={18} />A real team, from the first hello</span><span>Dubai &amp; beyond <Arrow /></span></div>
+        <div className="dp-next"><span>What happens next</span><ol><li><b>01</b><p>Share your idea<small>A destination, a feeling, a first thought.</small></p></li><li><b>02</b><p>We connect the details<small>Our travel team helps shape your plans.</small></p></li><li><b>03</b><p>Make it your journey<small>Refine the details together, at your pace.</small></p></li></ol></div>
       </div>
       <DestinationEnquiry destination={destination} />
     </div>

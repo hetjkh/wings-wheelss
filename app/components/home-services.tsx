@@ -9,7 +9,7 @@ import { Arrow, TravelIcon } from "./icons";
 import "./home-services.css";
 
 const services = [
-  { title: "Flights", phase: "Fly", photo: "/images/library/flight-wing.webp", alt: "An aircraft wing above white clouds and turquoise ocean", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
+  { title: "Flights", phase: "Fly", photo: "/images/library/home-flights-wing-v2.webp", alt: "A silver aircraft wing above crisp white clouds and turquoise ocean reefs", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
   { title: "Hotels", phase: "Stay", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
   { title: "Visas & documentation", phase: "Arrive", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
   { title: "Airport & ground transfers", phase: "Move", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
@@ -30,18 +30,20 @@ export function HomeServices() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia(root);
-    media.add({ desktop: "(min-width: 1000px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
+    media.add({ desktop: "(min-width: 1000px)", mobileStory: "(max-width: 767px) and (min-height: 600px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
       const el = root.current;
       if (!el || !conditions?.motion) return;
       const cards = gsap.utils.toArray<HTMLElement>(".n-services-card", el);
 
-      if (!conditions.desktop) {
+      const mobileStory = Boolean(conditions.mobileStory);
+      if (!conditions.desktop && !mobileStory) {
         cards.forEach((card, i) => {
           gsap.from(card, { y: 40, opacity: 0, duration: .9, ease: "power2.out", delay: (i % 2) * .08, scrollTrigger: { trigger: card, start: "top 88%", once: true } });
         });
         return;
       }
 
+      if (mobileStory) el.classList.add("is-mobile-story");
       const pin = el.querySelector<HTMLElement>(".n-services-pin")!;
       const tl = gsap.timeline({
         defaults: { ease: "none" },
@@ -49,7 +51,7 @@ export function HomeServices() {
           id: "home-services",
           trigger: pin,
           start: "top top",
-          end: () => `+=${window.innerHeight * .85 * chapters}`,
+          end: () => `+=${window.innerHeight * (mobileStory ? .72 : .85) * chapters}`,
           pin: true,
           scrub: .6,
           invalidateOnRefresh: true,
@@ -73,7 +75,7 @@ export function HomeServices() {
       });
       tl.to({}, { duration: .6 });
 
-      return () => { trigger.current = null; };
+      return () => { trigger.current = null; el.classList.remove("is-mobile-story"); };
     });
     return () => media.revert();
   }, []);

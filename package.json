@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "images:webp": "node scripts/convert-public-images.mjs"
+    "images:webp": "node scripts/convert-public-images.mjs",
+    "videos:webm": "node scripts/convert-videos.mjs"
   },
   "dependencies": {
     "cobe": "^2.0.1",

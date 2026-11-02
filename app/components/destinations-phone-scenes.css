@@ -1,0 +1,124 @@
+/* Art direction exclusively for /destinations on phones. */
+@media (max-width: 767px) {
+  .destinations-page .d-desktop-copy { display: none; }
+  .destinations-page .d-mobile-copy { display: inline; }
+  .destinations-page .j-shell { width: calc(100% - 40px); }
+  .destinations-page .s-title { font-size: clamp(34px, 10vw, 48px); letter-spacing: -.025em; }
+  .destinations-page .s-title em { font-family: Georgia, serif; }
+  .destinations-page main > section { scroll-margin-top: 70px; }
+  .destinations-page .d-moods .s-title { font-size: clamp(38px, 11vw, 52px); }
+  .destinations-page .d-moods-body { position: relative; margin-top: 25px; }
+  .destinations-page .d-mood-stage { position: relative; }
+  .destinations-page .d-mood-frame { aspect-ratio: 4 / 4.7; max-height: 58svh; border-radius: 130px 130px 3px 3px; }
+  .destinations-page .d-mood-frame::after { content: ""; position: absolute; z-index: 2; inset: 55% 0 0; background: linear-gradient(transparent, #172b28d9); pointer-events: none; }
+  .destinations-page .d-mood-caption { position: absolute; z-index: 3; bottom: 0; inset-inline: 0; padding: 22px; color: #fff4dd; border: 0; align-items: end; }
+  .destinations-page .d-mood-count { font-size: 38px; }
+  .destinations-page .d-mood-caption .d-mood-count { color: #fff4dd; }
+  .destinations-page .d-mood-count > span { color: #e5d2ad; font-size: 13px; }
+  .destinations-page .d-mood-cta { color: #fff4dd; max-width: 165px; text-align: right; }
+  .destinations-page .d-mood-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 15px -20px 0; padding: 0 20px 8px; width: calc(100% + 40px); scrollbar-width: thin; scroll-padding-inline: 20px; }
+  .destinations-page .d-mood-list > li { flex: 0 0 43%; scroll-snap-align: start; }
+  .destinations-page .d-mood { padding: 16px 12px; min-height: 78px; border: 1px solid #c8baa1; background: #ece5d8; }
+  .destinations-page .d-mood.is-active { background: #2c4135; color: #fff4dd; border-color: #2c4135; }
+  .destinations-page .d-mood-title { font-size: 16px; text-transform: none; }
+  .destinations-page .d-mood-number { align-self: start; font-size: 9px; margin-top: 3px; }
+  .destinations-page .d-featured .s-title { font-size: 37px; }
+  .destinations-page .d-rail { align-items: stretch; gap: 14px; }
+  .destinations-page .d-postcard { position: relative; flex-basis: calc(100vw - 62px); overflow: hidden; background: #21392f; }
+  .destinations-page .d-postcard-photo { height: min(60svh, 490px); aspect-ratio: auto; }
+  .destinations-page .d-postcard-photo::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, #12261fe8); pointer-events: none; }
+  .destinations-page .d-postcard-copy { position: absolute; inset: auto 22px 20px; padding: 0; color: #fff4dd; z-index: 2; }
+  .destinations-page .d-postcard h3 { color: #fff4dd; font-size: 39px; }
+  .destinations-page .d-postcard-copy p { color: #eadcbe; font-size: 14px; }
+  .destinations-page .d-postcard-number, .destinations-page .d-postcard-link { color: #fff4dd; }
+  .destinations-page .d-postcard-link { justify-content: space-between; border-top: 1px solid #fff4dd44; padding-top: 12px; margin-top: 18px; }
+  .destinations-page .d-stamp { z-index: 2; width: 42px; height: 42px; }
+  .destinations-page .d-africa { position: relative; padding-bottom: 32px; }
+  .destinations-page .d-africa-photo { inset: 0; height: 100%; opacity: 1; }
+  .destinations-page .d-africa-shade { background: linear-gradient(180deg, #132b2780, #132b27d9 48%, #132b27f5); }
+  .destinations-page .d-africa-grid { gap: 18px; }
+  .destinations-page .d-africa-copy { padding-top: 30px; }
+  .destinations-page .d-africa-copy .s-title { font-size: 52px; }
+  .destinations-page .d-africa-copy .d-body { max-width: 30em; font-size: 14px; }
+  .destinations-page .d-arcs { margin: 0; padding: 12px; background: #f6edda0a; border: 1px solid #eee0bd33; }
+  .destinations-page .d-arcs svg { height: auto; width: 100%; max-height: 210px; }
+  .destinations-page .d-africa-reasons { display: flex; gap: 0; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+  .destinations-page .d-africa-reasons li { flex: 0 0 25%; scroll-snap-align: start; }
+  .destinations-page .d-many .s-split-head { margin-top: 20px; }
+  .destinations-page .d-many .s-title { font-size: 44px; }
+  .destinations-page .d-dubai-scene { min-height: 440px; height: 67svh; }
+  .destinations-page .d-dubai-strips { padding-right: 22vw; }
+  .destinations-page .d-dubai-strips button { flex-basis: 78vw; min-height: 155px; flex-direction: column; align-items: start; justify-content: end; }
+  .destinations-page .d-dubai-time { font-size: 47px; }
+  .destinations-page .d-dubai-strips strong { font-weight: 400; letter-spacing: .03em; }
+  .destinations-page .d-dubai-selected { display: block; padding: 24px; background: #eee6d5; }
+  .destinations-page .d-dubai-selected .j-text-link { display: inline-flex; margin-top: 15px; }
+  .destinations-page .d-dubai-close { display: none; }
+  .destinations-page .d-seasons .s-title { font-size: 43px; }
+  .destinations-page .d-quarters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; border: 0; }
+  .destinations-page .d-quarter { font-size: 9px; text-align: center; padding: 12px 6px; justify-content: center; background: #ece5d8; border: 0; }
+  .destinations-page .d-quarter.is-active { color: #fff4df; background: #2b4135; border: 0; }
+  .destinations-page .d-season { position: relative; min-height: 475px; overflow: hidden; }
+  .destinations-page .d-season-photo { position: absolute; inset: 0; height: 100%; min-height: 0; }
+  .destinations-page .d-season-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent, #182c25d9 65%, #182c25f5); }
+  .destinations-page .d-season-copy { position: relative; min-height: 475px; padding: 120px 22px 22px; display: flex; justify-content: end; color: #fff4df; }
+  .destinations-page .d-season-short { font-size: 35px; color: #fff4df; }
+  .destinations-page .d-picks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin: 22px 0; }
+  .destinations-page .d-picks li { display: block; border: 0; padding: 0; }
+  .destinations-page .d-pick-number { display: none; }
+  .destinations-page .d-picks h3 { color: #fff4df; font-size: 19px; }
+  .destinations-page .d-picks p { color: #dfd5bd; font-size: 11px; line-height: 1.4; margin-top: 4px; }
+  .destinations-page .d-season-copy > .j-button { background: #ede1c6; color: #243a2d; margin-top: 0; }
+  .destinations-page .d-four .s-title { font-size: 46px; }
+  .destinations-page .d-four-grid { gap: 25px; }
+  .destinations-page .d-four-copy .d-body { max-width: 28em; }
+  .destinations-page .d-quiz-step { align-items: center; padding: 12px 5px; }
+  .destinations-page .d-quiz-icon { display: none; }
+  .destinations-page .d-quiz-step.is-active { background: #fff3d711; }
+  .destinations-page .d-quiz-label { max-width: 70px; font-size: 9px; }
+  .destinations-page .d-quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .destinations-page .d-chip { min-height: 56px; text-align: left; border-color: #fff4df44; }
+  .destinations-page .d-chip:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .destinations-page #destination-enquiry .dp-portrait { min-height: 490px; }
+  .destinations-page #destination-enquiry .dp-invitation { padding: 40px 24px 160px; }
+  .destinations-page #destination-enquiry .dp-invitation h2 { font-size: clamp(38px, 10vw, 50px); }
+  .destinations-page #destination-enquiry .dp-invitation .d-body { font-size: 14px; }
+  .destinations-page #destination-enquiry .d-planning-assurance { font-size: 9px; }
+  .destinations-page #destination-enquiry .d-enquiry-form { width: calc(100% - 24px); --planner-inset: 20px; }
+  .destinations-page #destination-enquiry .dp-stops { position: sticky; top: 64px; z-index: 4; box-shadow: 0 6px 16px #293b2312; }
+  .destinations-page #destination-enquiry .d-enquiry-card-head h3 { font-size: 30px; }
+  .destinations-page #destination-enquiry .d-enquiry-fields input { font-size: 16px; }
+  .destinations-page #destination-enquiry .dp-navigation { gap: 12px; }
+  .destinations-page .sv-final { padding-top: 60px; gap: 25px; }
+  .destinations-page .sv-headline { gap: 18px; font-size: 37px; }
+  .destinations-page .sv-side-b { align-self: flex-end; text-align: right; max-width: 85%; }
+  .destinations-page .sv-pass-card { border-radius: 4px; }
+  .destinations-page .sv-route { grid-template-columns: 1fr 35px 1fr; gap: 8px; }
+  .destinations-page .sv-route > div:last-child { text-align: right; }
+  .destinations-page .sv-route-line { display: flex; }
+  .destinations-page .sv-route strong { font-size: 16px; }
+  .destinations-page .sv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+}
+@media (max-width: 767px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
+  .destinations-page .d-phone-pinned { height: 100svh; padding: 82px 0 20px; display: flex; flex-direction: column; }
+  .destinations-page .d-phone-pinned > .j-shell { flex: 0 0 auto; }
+  .destinations-page .d-phone-pinned .d-rail-wrap { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .destinations-page .d-phone-pinned .d-rail-controls { flex: 0 0 auto; }
+  .destinations-page .d-phone-pinned .d-rail { flex: 1; min-height: 0; padding-bottom: 0; }
+  .destinations-page .d-phone-pinned .d-postcard-photo { height: 100%; min-height: 0; }
+  .destinations-page .d-phone-pinned .d-postcard-copy { bottom: 20px; }
+  .destinations-page .d-phone-season { height: 100svh; padding: 82px 0 20px; }
+  .destinations-page .d-phone-season > .j-shell { height: 100%; display: flex; flex-direction: column; }
+  .destinations-page .d-phone-season .s-split-head { margin-top: 15px; }
+  .destinations-page .d-phone-season .s-title { font-size: 32px; }
+  .destinations-page .d-phone-season .d-year { margin-top: 16px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .destinations-page .d-phone-season .d-season { flex: 1; height: auto; min-height: 0; margin-top: 12px; }
+  .destinations-page .d-phone-season .d-season-copy { height: 100%; min-height: 0; padding: 25px 18px 18px; }
+  .destinations-page .d-phone-season .d-season-short { font-size: 30px; }
+  .destinations-page .d-phone-season .d-picks { margin-block: 16px; }
+  .destinations-page .d-phone-season::after { content: ""; position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: #9f8458; transform: scaleX(var(--phone-season-progress, 0)); transform-origin: left; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .destinations-page .d-season-short, .destinations-page .d-picks li, .destinations-page .d-quiz-question, .destinations-page .d-quiz-done { animation: none; }
+  .destinations-page .d-rail, .destinations-page .d-mood-list, .destinations-page .d-dubai-strips { scroll-behavior: auto; }
+}

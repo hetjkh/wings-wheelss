@@ -21,6 +21,7 @@
 .e-clientele-wall-top svg { color: var(--client-sand); }
 .e-clientele-wall-top b { font: 400 19px/1 var(--heading); letter-spacing: 0; color: var(--client-sand); }
 .e-clientele-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 13px; margin: 0; padding: 0; list-style: none; }
+.e-clientele-marquee { display: none; }
 .e-clientele-card { position: relative; display: flex; flex-direction: column; justify-content: center; min-width: 0; min-height: 210px; padding: 38px 25px 40px; border: 1px solid #f7f1e630; border-radius: 5px; background: transparent; color: #f7f1e6; transition: border-color .3s, translate .3s; }
 .e-clientele-card::after { content: ''; position: absolute; left: 25px; right: 25px; bottom: 32px; height: 1px; background: var(--client-sand); scale: 0 1; transform-origin: left; transition: scale .35s; }
 .e-clientele-logo { position: relative; width: 100%; height: 112px; }
@@ -101,6 +102,24 @@
   .e-clientele-name { font-size: 8px; }
   .e-clientele-wall-top { font-size: 8px; }
 }
+@media (max-width: 760px) {
+  .e-clientele-grid { display: none; }
+  .e-clientele-marquee { display: grid; gap: 10px; margin-inline: -20px; }
+  .e-clientele-marquee-row { overflow: hidden; }
+  .e-clientele-marquee-track { display: flex; width: max-content; animation: e-clientele-drift 32s linear infinite; will-change: transform; }
+  .e-clientele-marquee-row:nth-child(2) .e-clientele-marquee-track { animation-direction: reverse; animation-duration: 38s; }
+  .e-clientele-marquee-track ul { display: flex; flex: none; gap: 10px; margin: 0; padding: 0 10px 0 0; list-style: none; }
+  .e-clientele-marquee .e-clientele-card { flex: none; width: 142px; height: 118px; min-height: 0; padding: 12px 10px 24px; }
+  .e-clientele-marquee .e-clientele-card::after { display: none; }
+  .e-clientele-marquee .e-clientele-logo { height: 62px; }
+  .e-clientele-marquee .e-clientele-number { top: 8px; left: 9px; font-size: 7px; }
+  .e-clientele-marquee .e-clientele-name { left: 6px; right: 6px; bottom: 7px; font-size: 8px; line-height: 1.1; }
+  .e-clientele-marquee:hover .e-clientele-marquee-track, .e-clientele-marquee:focus-within .e-clientele-marquee-track { animation-play-state: paused; }
+}
+@keyframes e-clientele-drift { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .e-clientele-card, .e-clientele-logo img, .e-clientele-card::after, .e-clientele-wall-bottom > a > span { transition: none; }
+  .e-clientele-marquee-row { overflow-x: auto; scrollbar-width: thin; }
+  .e-clientele-marquee-track { animation: none; will-change: auto; }
+  .e-clientele-marquee-track ul[aria-hidden="true"] { display: none; }
 }

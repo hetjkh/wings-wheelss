@@ -17,32 +17,49 @@ export function AboutMotion({ children }: { children: ReactNode }) {
 
     media.add({
       desktop: "(min-width: 992px) and (min-height: 640px)",
+      mobile: "(max-width: 767px)",
+      mobilePin: "(max-width: 767px) and (min-height: 620px)",
       motion: "(prefers-reduced-motion: no-preference)",
     }, context => {
       if (!context.conditions?.motion) return;
       const desktop = Boolean(context.conditions.desktop);
+      const mobile = Boolean(context.conditions.mobile);
+      const mobilePin = Boolean(context.conditions.mobilePin);
       const cleanups: (() => void)[] = [];
 
-      q("[data-lines]").forEach(heading => gsap.from(heading.querySelectorAll(".au-line > span"), {
+      q("[data-lines]").filter(heading => heading.getClientRects().length > 0).forEach(heading => gsap.from(heading.querySelectorAll(".au-line > span"), {
         yPercent: 110, duration: 1.1, stagger: .1, ease: "power4.out",
         scrollTrigger: { trigger: heading, start: "top 88%", once: true },
       }));
-      q("[data-au-reveal]").forEach(element => gsap.from(element, {
+      q("[data-au-reveal]").filter(element => element.getClientRects().length > 0).forEach(element => gsap.from(element, {
         y: 34, opacity: 0, duration: .9, ease: "power3.out",
         scrollTrigger: { trigger: element, start: "top 92%", once: true },
       }));
 
       const ink = one(".au-who-ink");
-      if (ink) gsap.fromTo(ink.querySelectorAll(".au-ink"), { color: "#cdbfac" }, {
+      if (ink && !mobile) gsap.fromTo(ink.querySelectorAll(".au-ink"), { color: "#cdbfac" }, {
         color: "#3d2d20", stagger: .05, ease: "none",
         scrollTrigger: { trigger: ink, start: "top 80%", end: "bottom 45%", scrub: .5 },
       });
       gsap.from(q(".au-aud-row"), { y: 40, opacity: 0, duration: .8, stagger: .08, ease: "power3.out", scrollTrigger: { trigger: one(".au-aud"), start: "top 85%", once: true } });
 
+      const collage = one(".au-who-collage");
+      if (collage && mobile) {
+        gsap.fromTo(collage.querySelector(".au-who-landscape img"), { scale: 1.12 }, {
+          scale: 1, ease: "none",
+          scrollTrigger: { trigger: collage, start: "top 90%", end: "bottom 35%", scrub: .7 },
+        });
+        gsap.from(collage.querySelector(".au-who-postcard"), {
+          y: 28, rotate: 14, opacity: 0, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: collage, start: "top 72%", once: true },
+        });
+      }
+
       const process = one(".au-process");
       const track = one(".au-process-track");
-      if (process && track && desktop) {
+      if (process && track && (desktop || mobilePin)) {
         process.classList.add("is-pinned");
+        if (mobilePin) process.classList.add("is-mobile-pinned");
         const passes = q(".au-pass-wrap");
         const counter = one(".au-process-count");
         const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
@@ -64,7 +81,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
           scrollTrigger: { trigger: pass, containerAnimation: move, start: "left 100%", end: "center 62%", scrub: true },
         }));
         cleanups.push(() => {
-          process.classList.remove("is-pinned");
+          process.classList.remove("is-pinned", "is-mobile-pinned");
           process.style.removeProperty("--p");
           passes.forEach(pass => pass.classList.remove("is-current"));
         });
@@ -72,8 +89,9 @@ export function AboutMotion({ children }: { children: ReactNode }) {
 
       const story = one(".au-story");
       const stack = one(".au-story-stack");
-      if (story && stack && desktop) {
+      if (story && stack && (desktop || mobilePin)) {
         story.classList.add("is-pinned");
+        if (mobilePin) story.classList.add("is-mobile-pinned");
         const photos = Array.from(stack.querySelectorAll<HTMLElement>(".au-polaroid"));
         const chapters = q(".au-chapter");
         const timeline = gsap.timeline({
@@ -94,7 +112,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         });
         timeline.to({}, { duration: .4 });
         cleanups.push(() => {
-          story.classList.remove("is-pinned");
+          story.classList.remove("is-pinned", "is-mobile-pinned");
           chapters.forEach((chapter, index) => chapter.classList.toggle("is-active", index === 0));
         });
       } else if (stack) gsap.from(stack.querySelectorAll(".au-polaroid"), {
@@ -162,7 +180,18 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none",
         scrollTrigger: { trigger: stage, start: "top bottom", end: "top top", scrub: .6 },
       });
-      gsap.from(q(".au-split-copy > *"), { y: 40, opacity: 0, duration: .9, stagger: .08, ease: "power3.out", scrollTrigger: { trigger: stage, start: "top 45%", once: true } });
+      if (mobilePin) q(".au-split-panel").forEach(panel => {
+        gsap.from(panel.querySelectorAll(".au-split-copy > *"), {
+          y: 34, opacity: 0, duration: .8, stagger: .08, ease: "power3.out",
+          scrollTrigger: { trigger: panel, start: "top 55%", once: true },
+        });
+        const photo = panel.querySelector(".au-split-photo img");
+        if (photo) gsap.fromTo(photo, { scale: 1.12 }, {
+          scale: 1, ease: "none",
+          scrollTrigger: { trigger: panel, start: "top bottom", end: "bottom top", scrub: .8 },
+        });
+      });
+      else gsap.from(q(".au-split-copy > *"), { y: 40, opacity: 0, duration: .9, stagger: .08, ease: "power3.out", scrollTrigger: { trigger: stage, start: "top 45%", once: true } });
 
       q(".au-crew-photo").forEach((photo, index) => gsap.fromTo(photo, { clipPath: "inset(100% 0% 0% 0%)" }, {
         clipPath: "inset(0% 0% 0% 0%)", ease: "none",

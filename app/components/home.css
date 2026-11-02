@@ -108,3 +108,11 @@
   .n-travel-heading h2 { transform: none !important; }
 }
 @media print{.home-page *{transform:none!important;opacity:1!important}.n-header,.n-motion{display:none}.pin-spacer{height:auto!important;padding:0!important}.home-page section{height:auto;min-height:600px;position:relative!important}}
+
+@media (max-width: 767px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+  .n-travel { height: auto; min-height: 0; max-height: none; overflow: visible; }
+  .n-travel-pair { display: block; height: auto; }
+  .n-travel-panel { position: sticky; top: 0; z-index: 1; height: 100svh; min-height: 600px; max-height: none; }
+  .n-travel-panel:last-child { z-index: 2; }
+  .n-travel > .n-edge-bottom { z-index: 3; }
+}

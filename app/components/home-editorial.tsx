@@ -36,7 +36,7 @@ function AfricaChapter() {
 }
 
 const places = [
-  { name: "Kenya", line: "Answer the call of the wild.", region: "East Africa", photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset", href: "/africa", position: "center" },
+  { name: "Kenya", line: "Answer the call of the wild.", region: "East Africa", photo: "/images/library/home-kenya-amboseli-v2.webp", alt: "An elephant and calf in Kenya's golden Amboseli grasslands with Mount Kilimanjaro in the distance", href: "/africa", position: "center" },
   { name: "Maldives", line: "Make room for absolutely nothing.", region: "Indian Ocean", photo: "/images/library/maldives-villas.webp", alt: "Overwater villa decks and pools above a clear Maldivian lagoon", href: "/destinations", position: "center" },
   { name: "Europe", line: "Take the beautiful way around.", region: "The Mediterranean", photo: "/images/library/amalfi-coast.webp", alt: "Colourful houses climbing the cliffs above the Amalfi Coast", href: "/destinations", position: "center" },
   { name: "Japan", line: "Find wonder in the little things.", region: "East Asia", photo: "/images/library/kyoto-golden-pavilion.webp", alt: "The Golden Pavilion reflecting in a still garden pond in Kyoto", href: "/destinations", position: "center" },

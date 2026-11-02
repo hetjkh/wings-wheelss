@@ -57,7 +57,7 @@ export function AboutAudiences({ items }: { items: Audience[] }) {
     </div>
     <ul>
       {items.map((item, index) => <li key={item.title} className={`au-aud-row${index === active ? " is-active" : ""}`} onPointerEnter={() => setActive(index)} onFocus={() => setActive(index)} onBlur={() => setActive(null)}>
-        <span className="au-aud-thumb"><Image src={item.image} alt={item.alt} fill sizes="(max-width: 991px) 30vw, 1px" /></span>
+        <span className="au-aud-thumb"><Image src={item.image} alt={item.alt} fill sizes="(max-width: 767px) 45vw, (max-width: 991px) 76px, 1px" /></span>
         <span className="au-aud-no">{String(index + 1).padStart(2, "0")}</span>
         <h3 className="au-aud-title"><span data-text={item.title}>{item.title}</span></h3>
         <p>{item.text}</p>

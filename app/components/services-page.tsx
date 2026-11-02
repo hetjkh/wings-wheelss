@@ -1,4 +1,5 @@
 import Image from "./travel-image";
+import { MotionVideo } from "./motion-video";
 import { TravelIcon, type IconKind } from "./icons";
 import { JourneyHeader } from "./journey-header";
 import { PillCta } from "./about-cta";
@@ -146,8 +147,8 @@ export default function ServicesPage() {
 
       <section className="s-principle j-torn-top" aria-labelledby="principle-heading">
         <div className="s-principle-frame">
-          <Image className="j-photo s-principle-photo-desktop" src="/images/library/services-principle-v3-desktop.webp" alt="A travel advisor speaking with a traveller in an airport lounge" fill sizes="100vw" />
-          <Image className="j-photo s-principle-photo-mobile" src="/images/library/services-principle-v3-mobile.webp" alt="" fill sizes="100vw" />
+          <Image className="j-photo s-principle-photo-desktop" src="/images/library/services-principle-v4-desktop.webp" alt="A travel advisor speaking with a business traveller in a bright airport lounge overlooking Dubai" fill sizes="100vw" />
+          <Image className="j-photo s-principle-photo-mobile" src="/images/library/services-principle-v4-mobile.webp" alt="" fill sizes="100vw" />
           <div className="s-principle-shade" />
         </div>
         <div className="j-shell s-principle-copy">
@@ -161,7 +162,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="s-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
-        <video className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.webp" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+        <MotionVideo className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.webp" />
         <div className="s-beyond-shade" />
         <div className="j-shell s-beyond-content">
           <div className="s-split-head">

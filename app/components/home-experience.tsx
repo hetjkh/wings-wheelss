@@ -15,7 +15,7 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia(root);
-    media.add({ desktop: "(min-width: 1000px) and (min-height: 760px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
+    media.add({ desktop: "(min-width: 1000px) and (min-height: 760px)", mobileStory: "(max-width: 767px) and (min-height: 600px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
       const animate = conditions?.motion && !paused;
       const video = root.current?.querySelector("video");
       if (animate) video?.play().catch(() => {}); else video?.pause();
@@ -32,6 +32,13 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
         pair.fromTo(".n-travel-panel:first-child .n-panel-photo", { yPercent: -4, scale: 1.05 }, { yPercent: 4, scale: 1, ease: "none" }, 0)
           .fromTo(".n-travel-panel:last-child .n-panel-photo", { yPercent: 4, scale: 1.05 }, { yPercent: -4, scale: 1, ease: "none" }, 0)
           .from(".n-panel-copy", { y: 20, opacity: .55, stagger: .08 }, 0);
+      } else if (conditions?.mobileStory) {
+        gsap.utils.toArray<HTMLElement>(".n-travel-panel", root.current).forEach(panel => {
+          const photo = panel.querySelector<HTMLElement>(".n-panel-photo");
+          const copy = panel.querySelector<HTMLElement>(".n-panel-copy");
+          if (photo) gsap.fromTo(photo, { yPercent: -5, scale: 1.08 }, { yPercent: 5, scale: 1, ease: "none", scrollTrigger: { trigger: panel, start: "top bottom", end: "bottom top", scrub: .7 } });
+          if (copy) gsap.from(copy, { y: 35, opacity: .35, ease: "none", scrollTrigger: { trigger: panel, start: "top 85%", end: "top 35%", scrub: .6 } });
+        });
       }
       const cleanupEditorial = animateHomeEditorial(root.current!, !!desktop);
       gsap.utils.toArray<HTMLElement>("[data-home-reveal]").forEach(el => gsap.from(el, { y: 35, opacity: .15, duration: .85, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 93%", once: true } }));
@@ -54,7 +61,7 @@ export function HomeHeader() {
   useEffect(() => {
     const update = () => {
       const masked = document.querySelector(".home-page .au-hero");
-      setScrolled(window.scrollY > (masked ? window.innerHeight * 1.2 : 80));
+      setScrolled(masked ? masked.getBoundingClientRect().bottom <= 80 : window.scrollY > 80);
     };
     update(); window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);

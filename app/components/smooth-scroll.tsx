@@ -11,6 +11,10 @@ export function SmoothScroll() {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ limitCallbacks: true, ignoreMobileResize: true });
+    const pauseBackground = () => document.documentElement.classList.toggle("is-backgrounded", document.hidden);
+    pauseBackground();
+    document.addEventListener("visibilitychange", pauseBackground);
     const lenis = new Lenis({
       lerp: .1,
       wheelMultiplier: 1,
@@ -23,6 +27,8 @@ export function SmoothScroll() {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
     return () => {
+      document.removeEventListener("visibilitychange", pauseBackground);
+      document.documentElement.classList.remove("is-backgrounded");
       gsap.ticker.remove(tick);
       lenis.destroy();
     };

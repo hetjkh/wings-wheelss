@@ -90,7 +90,8 @@ export default function PartnershipPage() {
         sub="A corporate travel partnership."
         text="Your business deserves more than standard travel rates. We build an arrangement around how your company really travels."
         action={{ label: "Become a corporate partner", service: "Corporate travel" }}
-        media={{ image: "/images/library/corporate-partnership-hero-v2.webp", alt: "Two business partners meeting in a warmly lit lounge overlooking the Dubai skyline at dusk", position: "82% center" }}
+        settle="bottom"
+        media={{ video: "/videos/Businessmen_discussing_partnersh…_83486b7b_1080p.mp4", poster: "/images/library/corporate-partnership-hero-v2.webp" }}
       />
 
       <section className="p-why j-torn-top" id="why" aria-labelledby="why-heading">

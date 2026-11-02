@@ -270,11 +270,11 @@
   .home-page .e-destination-heading h2 { font-size: clamp(34px, 8.8vw, 56px); }
   .e-destination-heading > div + div { margin-top: 23px; }
   .e-destination-heading p { font-size: 15px; }
-  .e-destination-window { overflow: visible; padding-bottom: 0; }
-  .e-destination-track { display: grid; width: auto; gap: 36px; padding-inline: 20px; }
-  .e-destination { width: 100%; max-width: none; }
+  .e-destination-window { overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; padding-bottom: 8px; }
+  .e-destination-track { display: flex; width: max-content; gap: 14px; padding-inline: 20px; }
+  .e-destination { width: min(78vw, 440px); max-width: none; scroll-snap-align: start; }
   .e-destination-photo { height: auto; aspect-ratio: 4 / 4.3; }
-  .e-destination:nth-child(even) { width: 88%; margin-left: auto; }
+  .e-destination:nth-child(even) { width: min(78vw, 440px); margin-left: 0; }
   .e-destination:nth-child(even) .e-destination-photo { aspect-ratio: 4 / 4.6; }
   .e-destination-caption { flex-direction: row; align-items: center; }
   .home-page .e-destination-caption h3 { font-size: 28px; }
@@ -319,6 +319,26 @@
   .e-contact-heading > span { width: 48px; height: 48px; flex-shrink: 0; font-size: 30px; }
   .e-contact-bottom { align-items: start; flex-direction: column; gap: 25px; }
   .e-contact-bottom p { font-size: 16px; }
+}
+@media (max-width: 767px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .e-together-hero { position: sticky; top: 0; height: 100svh; min-height: 640px; }
+  .e-together-details { z-index: 2; }
+  .e-destinations.is-mobile-rail .e-destinations-pin { height: calc(100svh - 65px); display: flex; flex-direction: column; padding: 30px 0 24px; }
+  .e-destinations.is-mobile-rail .e-destination-heading { flex: none; margin-bottom: 20px; }
+  .e-destinations.is-mobile-rail .e-destination-heading .e-label { margin-bottom: 10px; }
+  .e-destinations.is-mobile-rail .e-destination-heading h2 { font-size: clamp(29px, 8vw, 42px); }
+  .e-destinations.is-mobile-rail .e-destination-heading > div + div { display: none; }
+  .e-destinations.is-mobile-rail .e-destination-window { flex: 1; min-height: 0; width: 100%; overflow: hidden; }
+  .e-destinations.is-mobile-rail .e-destination-track { display: flex; width: max-content; height: 100%; gap: 14px; padding-inline: 20px; }
+  .e-destinations.is-mobile-rail .e-destination, .e-destinations.is-mobile-rail .e-destination:nth-child(even) { width: min(78vw, 440px); height: 100%; margin: 0; }
+  .e-destinations.is-mobile-rail .e-destination-photo, .e-destinations.is-mobile-rail .e-destination:nth-child(even) .e-destination-photo { height: calc(100% - 63px); aspect-ratio: auto; }
+  .e-destinations.is-mobile-rail .e-destination-caption { min-height: 63px; padding-top: 9px; }
+  .e-destinations.is-mobile-rail .e-destination-footer { flex: none; margin-top: 12px; }
+  .e-destinations.is-mobile-rail .e-destination-progress { display: block; margin-left: auto; }
+  .e-destinations.is-mobile-rail .e-drag-note { display: none; }
+}
+@media (max-width: 767px) {
+  .home-page .e-africa { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-page .e-link svg, .e-destination-photo img, .e-destination-arrow, .e-contact-heading > span, .e-partner-links svg, .e-stages i::after { transition: none; }

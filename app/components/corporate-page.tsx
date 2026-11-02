@@ -8,6 +8,7 @@ import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { CorporateServices } from "./corporate-services";
+import { CorporateDayPhotos } from "./corporate-day-photos";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -30,9 +31,9 @@ const services = [
 ];
 
 const day = [
-  { time: "06:00", label: "Departure", photo: "/images/library/flight-wing.webp" },
+  { time: "06:00", label: "Departure", photo: "/images/library/corporate-day-departure-v2.webp" },
   { time: "09:00", label: "Meeting", photo: "/images/library/business-conversation.webp" },
-  { time: "12:30", label: "Client visit", photo: "/images/library/dubai-panorama.webp" },
+  { time: "12:30", label: "Client visit", photo: "/images/library/corporate-day-client-visit-v2.webp" },
   { time: "15:00", label: "Team meeting", photo: "/images/library/corporate-team-meeting.webp" },
   { time: "19:30", label: "Return flight", photo: "/images/library/corporate-airport-lounge.webp" },
 ];
@@ -54,9 +55,9 @@ const teamList: { icon: IconKind; label: string }[] = [
 ];
 
 const rings = [
-  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/library/dubai-marina.webp" },
-  { title: "Africa network", scope: "Where we know the ground", text: "Local knowledge and on-ground connections.", photo: "/images/library/kenya-game-drive.webp" },
-  { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/library/sydney-harbour.webp" },
+  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/library/dubai-marina.webp", position: "center" },
+  { title: "Africa network", scope: "Where we know the ground", text: "Local knowledge and on-ground connections.", photo: "/images/library/corporate-africa-network-v2.webp", position: "85% center" },
+  { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/library/sydney-harbour.webp", position: "center" },
 ];
 
 const statuses: { label: string; note: string; icon: IconKind }[] = [
@@ -118,7 +119,8 @@ export default function CorporatePage() {
         sub="So do we."
         text="From one executive trip to company-wide travel, we handle the details so your people keep moving."
         action={{ label: "Become a corporate partner", href: "/corporate-partnerships" }}
-        media={{ image: "/images/library/corporate-executive-view.webp", alt: "An executive looking out over a city park from a high-rise office", position: "46% center" }}
+        settle="bottom"
+        media={{ video: "/videos/Corporate_travel_commercial_vide…_4494ac5c_1080p.mp4", poster: "/images/library/corporate-executive-view.webp" }}
       />
 
       <section className="k-verbs j-torn-top" id="people" aria-labelledby="people-heading">
@@ -150,10 +152,7 @@ export default function CorporatePage() {
       </section>
 
       <section className="k-day j-torn-top" id="day" data-steps={day.length} aria-labelledby="day-heading">
-        <ol className="j-shell k-day-photos" data-stagger="0.1">{day.map((stop, i) => <li key={stop.time} style={{ "--i": i } as React.CSSProperties}>
-          <Image src={stop.photo} alt="" fill sizes="(max-width: 800px) 92vw, 100vw" />
-          <span className="k-day-caption"><b>{stop.time}</b>{stop.label}</span>
-        </li>)}</ol>
+        <CorporateDayPhotos stops={day} />
         <div className="k-day-shade" aria-hidden="true" />
         <div className="j-shell k-day-grid">
           <div className="k-day-copy">
@@ -233,7 +232,7 @@ export default function CorporatePage() {
             </div>
           </div>
           <ol className="k-reach" data-progress="top 85%" data-progress-end="top 25%">{rings.map((ring, i) => <li key={ring.title} style={{ "--i": i } as React.CSSProperties}>
-            <Image src={ring.photo} alt="" fill sizes="(max-width: 991px) 92vw, 40vw" />
+            <Image src={ring.photo} alt="" fill sizes="(max-width: 991px) 92vw, 40vw" style={{ objectPosition: ring.position }} />
             <span className="k-reach-number">{String(i + 1).padStart(2, "0")}</span>
             <div className="k-reach-copy">
               <span className="k-reach-scope">{ring.scope}</span>
@@ -272,7 +271,7 @@ export default function CorporatePage() {
         </div>
         <div className="k-sides-grid">
           <article className="k-side k-side-travellers">
-            <div className="k-side-photo"><Image src="/images/library/airport-traveller.webp" alt="A traveller with a rolling suitcase inside an airport terminal" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="k-side-photo"><Image src="/images/library/corporate-traveller-support-v2.webp" alt="A business traveller with a suitcase and phone walking through a sunlit airport terminal" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
             <div className="k-side-shade" aria-hidden="true" />
             <span className="k-side-note">01 / Support at every step</span>
             <div className="k-side-copy">
@@ -326,7 +325,7 @@ export default function CorporatePage() {
         ticket="Corporate travel"
         left={<>Your people have<br />somewhere to be.</>}
         right={<>Let us take care<br />of <em>what happens in between.</em></>}
-        photo="/images/library/business-boarding.webp"
+        photo="/images/library/business-boarding-v2.webp"
         photoPosition="center 60%"
         pass={["Boarding pass", "Your team · Our plan"]}
         from="Your office"

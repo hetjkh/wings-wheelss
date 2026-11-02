@@ -21,6 +21,14 @@ const clients = [
   { src: "/brands/clientele/brand-10.svg", name: "Dar Petroleum Operating Company" },
 ];
 
+function ClientCard({ client, index, decorative = false }: { client: (typeof clients)[number]; index: number; decorative?: boolean }) {
+  return <li className="e-clientele-card">
+    <span className="e-clientele-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+    <div className="e-clientele-logo"><Image src={client.src} alt={decorative ? "" : client.name} fill sizes="(max-width: 760px) 142px, (max-width: 1100px) 31vw, 18vw" /></div>
+    <span className="e-clientele-name" aria-hidden="true">{client.name}</span>
+  </li>;
+}
+
 export function HomeClientele() {
   const root = useRef<HTMLElement>(null);
 
@@ -29,9 +37,11 @@ export function HomeClientele() {
     if (!section || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.registerPlugin(ScrollTrigger);
     const context = gsap.context(() => {
-      gsap.from(section.querySelectorAll(".e-clientele-card"), {
+      const grid = section.querySelector<HTMLElement>(".e-clientele-grid");
+      if (!grid || getComputedStyle(grid).display === "none") return;
+      gsap.from(grid.querySelectorAll(".e-clientele-card"), {
         y: 26, opacity: 0, duration: .75, stagger: .05, ease: "power3.out", clearProps: "opacity,transform",
-        scrollTrigger: { trigger: section.querySelector(".e-clientele-grid"), start: "top 88%", once: true },
+        scrollTrigger: { trigger: grid, start: "top 88%", once: true },
       });
     }, section);
     return () => context.revert();
@@ -61,12 +71,17 @@ export function HomeClientele() {
           <div className="e-clientele-wall">
             <div className="e-clientele-wall-top"><span><TravelIcon kind="globe" size={17} /> A shared sense of direction</span><span><b>{String(clients.length).padStart(2, "0")}</b> organisations. One shared journey.</span></div>
             <ul className="e-clientele-grid" aria-label="Client organisations">
-              {clients.map((client, index) => <li key={client.src} className="e-clientele-card">
-                <span className="e-clientele-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <div className="e-clientele-logo"><Image src={client.src} alt={client.name} fill sizes="(max-width: 540px) 39vw, (max-width: 760px) 40vw, (max-width: 1100px) 31vw, 18vw" /></div>
-                <span className="e-clientele-name" aria-hidden="true">{client.name}</span>
-              </li>)}
+              {clients.map((client, index) => <ClientCard key={client.src} client={client} index={index} />)}
             </ul>
+            <div className="e-clientele-marquee" role="group" aria-label="Client organisations">
+              {[clients.slice(0, 5), clients.slice(5)].map((row, rowIndex) => <div className="e-clientele-marquee-row" key={rowIndex}>
+                <div className="e-clientele-marquee-track">
+                  {[false, true].map(decorative => <ul key={String(decorative)} aria-hidden={decorative}>
+                    {row.map((client, index) => <ClientCard key={client.src} client={client} index={rowIndex * 5 + index} decorative={decorative} />)}
+                  </ul>)}
+                </div>
+              </div>)}
+            </div>
             <div className="e-clientele-wall-bottom"><p>Across industries.<br /><span>Across borders.</span></p><Link href="/contact">Let’s talk travel <span><Arrow diagonal /></span></Link></div>
           </div>
         </div>
