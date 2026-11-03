@@ -8,6 +8,7 @@ import { Arrow } from "./icons";
 import { pageLinks, siteLinks } from "./data";
 import { NavDropdown } from "./nav-dropdown";
 import { animateHomeEditorial } from "./home-editorial-motion";
+import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 export function HomeExperience({ children }: { children: React.ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
@@ -17,8 +18,6 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
     const media = gsap.matchMedia(root);
     media.add({ desktop: "(min-width: 1000px) and (min-height: 760px)", mobileStory: "(max-width: 767px) and (min-height: 600px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
       const animate = conditions?.motion && !paused;
-      const video = root.current?.querySelector("video");
-      if (animate) video?.play().catch(() => {}); else video?.pause();
       if (!animate) return;
       const desktop = conditions?.desktop;
       if (root.current?.querySelector(".n-hero")) {
@@ -59,12 +58,11 @@ export function HomeHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const update = () => {
-      const masked = document.querySelector(".home-page .au-hero");
-      setScrolled(masked ? masked.getBoundingClientRect().bottom <= 80 : window.scrollY > 80);
-    };
-    update(); window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    const masked = document.querySelector(".home-page .au-hero");
+    return observeScrollThreshold(
+      () => masked ? masked.getBoundingClientRect().bottom <= 80 : window.scrollY > 80,
+      setScrolled,
+    );
   }, []);
   useEffect(() => {
     if (!open) return;

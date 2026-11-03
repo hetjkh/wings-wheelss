@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { office, pageLinks as navLinks } from "./data";
 import { Arrow, TravelIcon } from "./icons";
+import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 const serviceOptions = ["General enquiry", "Flights", "Hotels", "Visa assistance", "Airport & ground transfers", "Corporate travel", "Leisure & holidays", "Groups & MICE", "Africa travel", "Travel support"];
 
@@ -54,10 +55,7 @@ function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return observeScrollThreshold(() => window.scrollY > 40, setScrolled);
   }, []);
 
   const close = () => menu.current?.close();

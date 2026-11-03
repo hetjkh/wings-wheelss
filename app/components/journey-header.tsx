@@ -7,6 +7,7 @@ import { EnquiryButton } from "./site-controls";
 import { pageLinks, siteLinks } from "./data";
 import { NavDropdown } from "./nav-dropdown";
 import { Arrow, TravelIcon } from "./icons";
+import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 export type JourneyLink = { label: string; href: string };
 
@@ -19,17 +20,11 @@ export function JourneyHeader({ introId = "about" }: { introId?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menu = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    const update = () => {
-      const intro = document.getElementById(introId);
-      setScrolled(intro ? intro.getBoundingClientRect().top <= 88 : window.scrollY > 48);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
+    const intro = document.getElementById(introId);
+    return observeScrollThreshold(
+      () => intro ? intro.getBoundingClientRect().top <= 88 : window.scrollY > 48,
+      setScrolled,
+    );
   }, [introId]);
   useEffect(() => {
     if (!menuOpen) return;

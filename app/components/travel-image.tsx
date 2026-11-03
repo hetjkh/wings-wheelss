@@ -18,17 +18,19 @@ export default function TravelImage({ sizes, quality, ...props }: ImageProps) {
     const element = image.current;
     if (!element || !props.fill || !aspect) return;
 
-    const measure = () => {
-      const box = element.getBoundingClientRect();
-      if (!box.width || !box.height) return;
+    const measure = (width: number, height: number) => {
+      if (!width || !height) return;
       // A landscape photo in a tall card is scaled by its height, not its box width.
       // Leave a little headroom for the site's parallax and hover zoom effects.
-      const width = Math.ceil(Math.max(box.width, box.height * aspect) * 1.12);
-      setCoverWidth(previous => previous === width ? previous : width);
+      const cover = Math.ceil(Math.max(width, height * aspect) * 1.12);
+      setCoverWidth(previous => previous === cover ? previous : cover);
     };
 
-    measure();
-    const observer = new ResizeObserver(measure);
+    // Use layout dimensions, not the transformed bounding box. Scroll/hover
+    // transforms must not trigger larger downloads or synchronous layout reads.
+    const observer = new ResizeObserver(([entry]) => {
+      measure(entry.contentRect.width, entry.contentRect.height);
+    });
     observer.observe(element);
     return () => observer.disconnect();
   }, [source, props.fill, aspect]);
