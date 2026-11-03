@@ -199,6 +199,203 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           });
         }
 
+        // The group arrival scene opens with the scroll; its controls remain native.
+        if (page.classList.contains("groups-page") && context.conditions?.phone) {
+          const scene = page.querySelector<HTMLElement>(".gm-arrival");
+          if (scene) {
+            gsap.fromTo(scene.querySelector(".gm-arrival-photo img"), { scale: 1.08, yPercent: -2 }, {
+              scale: 1.08, yPercent: 2, ease: "none",
+              scrollTrigger: { trigger: scene, start: "top bottom", end: "bottom top", scrub: .7 },
+            });
+            gsap.fromTo(scene.querySelector(".gm-arrival-wave-top"), { scaleY: .88, transformOrigin: "100% 0%" }, {
+              scaleY: 1, ease: "none",
+              scrollTrigger: { trigger: scene, start: "top 90%", end: "top 25%", scrub: .65 },
+            });
+            gsap.fromTo(scene.querySelector(".gm-arrival-wave-bottom"), { y: 18 }, {
+              y: 0, ease: "none",
+              scrollTrigger: { trigger: scene.querySelector(".gm-arrival-finale"), start: "top 65%", end: "bottom 85%", scrub: .65 },
+            });
+            const headline = scene.querySelector(".gm-arrival-finale em");
+            gsap.fromTo(headline, { y: 26, opacity: .4 }, {
+              y: 0, opacity: 1, ease: "none",
+              scrollTrigger: { trigger: headline, start: "top 94%", end: "top 65%", scrub: .5 },
+            });
+            const caption = scene.querySelector("figcaption");
+            const captionReveal = gsap.fromTo(scene.querySelectorAll(".gm-arrival-summary, .gm-arrival-cta"), { y: 18, opacity: .25 }, {
+              y: 0, opacity: 1, duration: .8, stagger: .12, ease: "power2.out", clearProps: "opacity,transform",
+              scrollTrigger: { trigger: caption, start: "top 92%", once: true },
+            });
+            const showCaption = () => { captionReveal.progress(1); };
+            caption?.addEventListener("focusin", showCaption);
+            cleanups.push(() => caption?.removeEventListener("focusin", showCaption));
+          }
+        }
+
+        // ── Corporate travel: rich mobile scroll choreography ──────────────────
+        if (page.classList.contains("corporate-page") && context.conditions?.phone) {
+
+          // 01 · Verb list: ink-fill cards slide up one by one.
+          select(".k-verb-list li").forEach((item: HTMLElement, i: number) => {
+            gsap.from(item, {
+              opacity: 0, y: 28, duration: .75, ease: "power3.out",
+              scrollTrigger: { trigger: item, start: "top 88%", once: true },
+              delay: i * .06,
+            });
+          });
+
+          // 02 · Services strip: swipeable dot indicator driven by native scroll.
+          (() => {
+            const strip = page.querySelector<HTMLElement>(".k-strip");
+            if (!strip) return;
+            const panels = Array.from(strip.querySelectorAll<HTMLElement>(".k-panel"));
+            // Inject dot bar below the strip
+            const dotsWrap = document.createElement("div");
+            dotsWrap.className = "k-strip-dots";
+            panels.forEach(() => dotsWrap.appendChild(Object.assign(document.createElement("span"), {})));
+            strip.insertAdjacentElement("afterend", dotsWrap);
+            const dots = Array.from(dotsWrap.children) as HTMLElement[];
+            const paint = () => {
+              const w = strip.clientWidth;
+              const index = Math.round(strip.scrollLeft / w);
+              dots.forEach((d, i) => d.classList.toggle("is-on", i === index));
+            };
+            strip.addEventListener("scroll", paint, { passive: true });
+            paint();
+            cleanups.push(() => { strip.removeEventListener("scroll", paint); dotsWrap.remove(); });
+          })();
+
+          // 03 · Day photos: subtle scale parallax on each card as it scrolls into view.
+          select(".k-day-photos li").forEach((card: HTMLElement) => {
+            const img = card.querySelector("img");
+            if (!img) return;
+            gsap.fromTo(img, { scale: 1.1 }, {
+              scale: 1.02, ease: "none",
+              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: .6 },
+            });
+          });
+
+          // 04 · Companies carousel: progress track bar driven by native scroll.
+          (() => {
+            const track = page.querySelector<HTMLElement>(".k-scale");
+            if (!track) return;
+            const bar = document.createElement("div");
+            bar.className = "k-scale-track";
+            bar.appendChild(document.createElement("span"));
+            track.insertAdjacentElement("afterend", bar);
+            const fill = bar.firstElementChild as HTMLElement;
+            const count = track.children.length;
+            const paint = () => {
+              const max = track.scrollWidth - track.clientWidth;
+              const p = max > 0 ? track.scrollLeft / max : 0;
+              fill.style.transform = `scaleX(${count}) translateX(${p * (count - 1) / count * 100}%)`;
+            };
+            track.addEventListener("scroll", paint, { passive: true });
+            paint();
+            cleanups.push(() => { track.removeEventListener("scroll", paint); bar.remove(); });
+          })();
+
+          // Crowd icons hover entrance on companies.
+          select(".k-crowd").forEach((crowd: HTMLElement) => {
+            gsap.from(crowd.querySelectorAll("svg:not(.k-rotate)"), {
+              opacity: 0, scale: .4, stagger: .04, duration: .5, ease: "back.out(1.8)",
+              scrollTrigger: { trigger: crowd, start: "top 85%", once: true },
+            });
+          });
+
+          // 05 · Team map: gentle scale-in parallax on the SVG.
+          const mapFig = page.querySelector<HTMLElement>(".k-team-map");
+          if (mapFig) {
+            gsap.fromTo(mapFig, { scale: 1.06, opacity: .7 }, {
+              scale: 1, opacity: 1, ease: "none",
+              scrollTrigger: { trigger: mapFig, start: "top 90%", end: "top 35%", scrub: .7 },
+            });
+          }
+
+          // 06 · Network reach cards: staggered clip-path reveal from bottom.
+          select(".k-reach li").forEach((card: HTMLElement, i: number) => {
+            gsap.from(card, {
+              clipPath: "inset(100% 0 0 0)", opacity: .4,
+              duration: .9, ease: "power3.out",
+              scrollTrigger: { trigger: card, start: "top 92%", once: true },
+              delay: i * .08,
+            });
+            const img = card.querySelector("img");
+            if (img) gsap.fromTo(img, { scale: 1.18 }, {
+              scale: 1.04, ease: "none",
+              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: .6 },
+            });
+          });
+
+          // 07 · Support flow: vertical progress line driven by scroll.
+          (() => {
+            const flow = page.querySelector<HTMLElement>(".k-flow");
+            if (!flow) return;
+            gsap.fromTo(flow, { "--progress": 0 }, {
+              "--progress": 1, ease: "none",
+              scrollTrigger: {
+                trigger: flow, start: "top 80%", end: "bottom 65%", scrub: .5,
+              },
+            });
+            // Each step card slides in.
+            Array.from(flow.querySelectorAll<HTMLElement>("li")).forEach((li, i) => {
+              gsap.from(li, {
+                x: -22, opacity: .2, duration: .7, ease: "power3.out",
+                scrollTrigger: { trigger: li, start: "top 88%", once: true },
+                delay: i * .07,
+              });
+            });
+          })();
+
+          // 08 · Sides: parallax on each hero photo.
+          select(".k-side-photo img").forEach((photo: HTMLElement) => {
+            gsap.fromTo(photo, { yPercent: -6 }, {
+              yPercent: 6, ease: "none",
+              scrollTrigger: {
+                trigger: photo.closest(".k-side"),
+                start: "top bottom", end: "bottom top", scrub: .8,
+              },
+            });
+          });
+
+          // 09 · Steps carousel: dot indicator.
+          (() => {
+            const stairs = page.querySelector<HTMLElement>(".k-stairs");
+            if (!stairs) return;
+            const items = Array.from(stairs.querySelectorAll<HTMLElement>("li"));
+            const dotsWrap = document.createElement("div");
+            dotsWrap.className = "k-stairs-dots";
+            items.forEach(() => dotsWrap.appendChild(document.createElement("span")));
+            stairs.insertAdjacentElement("afterend", dotsWrap);
+            const dots = Array.from(dotsWrap.children) as HTMLElement[];
+            const paint = () => {
+              const w = stairs.clientWidth;
+              const index = Math.round(stairs.scrollLeft / w);
+              dots.forEach((d, i) => d.classList.toggle("is-on", i === index));
+            };
+            stairs.addEventListener("scroll", paint, { passive: true });
+            paint();
+            cleanups.push(() => { stairs.removeEventListener("scroll", paint); dotsWrap.remove(); });
+          })();
+
+          // Stair cards: entrance animation as each card snaps into scroll view.
+          select(".k-stair").forEach((card: HTMLElement, i: number) => {
+            gsap.from(card, {
+              opacity: 0, y: 20, duration: .65, ease: "power3.out",
+              scrollTrigger: { trigger: card, start: "top 95%", once: true },
+              delay: i * .05,
+            });
+          });
+
+          // Partner section: subtle entrance.
+          const partner = page.querySelector<HTMLElement>(".k-partner");
+          if (partner) {
+            gsap.from(partner.querySelector(".k-partner-grid"), {
+              y: 28, opacity: .3, duration: .9, ease: "power3.out",
+              scrollTrigger: { trigger: partner, start: "top 88%", once: true },
+            });
+          }
+        }
+
         // Phone scenes stay scoped to destinations and leave short screens swipeable.
         if (page.classList.contains("destinations-page") && context.conditions?.phone) {
           const section = page.querySelector<HTMLElement>(".d-featured");

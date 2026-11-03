@@ -7,11 +7,13 @@ import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { EventBrief } from "./event-brief";
+import { MobileGroupChanges, MobileGroupProcess, MobileGroupServices } from "./groups-mobile";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./groups.css";
+import "./groups-mobile.css";
 
 const origins = [
   { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M250 70 C 340 70, 330 180, 372 180" },
@@ -92,21 +94,6 @@ const itinerary = [
   { time: "19:30", item: "Welcome dinner", detail: "With the event team", note: "Still on schedule", phase: 3 },
 ];
 
-const coordinationBenefits = [
-  {
-    audience: "For organisers",
-    title: "One point of contact.",
-    description: "A coordinated plan for your whole group, from the first arrival to the final departure.",
-    items: ["Traveller details and requirements", "Coordinated arrivals and departures", "Hotel bookings and transfer schedules", "Travel updates in one place"],
-  },
-  {
-    audience: "For travellers",
-    title: "A clear itinerary.",
-    description: "Every traveller knows where to go, when to be there and who to contact.",
-    items: ["Confirmed flight and hotel details", "Clear airport pickup instructions", "Transport information for the event", "Support with delays or changes"],
-  },
-];
-
 const travelProcess = [
   { icon: "calendar", phase: "The brief", title: "Share the event", text: "Dates, destination, expected traveller numbers and requirements." },
   { icon: "route", phase: "The plan", title: "Build the travel plan", text: "Flights, hotels, transfers and traveller movements are structured around the programme." },
@@ -137,7 +124,7 @@ export default function GroupsPage() {
           <div className="g-converge-head">
             <div>
               <span className="j-eyebrow s-eyebrow">01 / Many cities, one venue</span>
-              <h2 id="people-heading" className="s-title s-rows"><span>The event may be in one place.</span><span className="g-soft">Your people may not be.</span></h2>
+              <h2 id="people-heading" className="s-title s-rows"><span className="g-desktop-copy">The event may be in one place.</span><span className="g-soft g-desktop-copy">Your people may not be.</span><span className="g-mobile-only">Different cities.<br /><em>One destination.</em></span></h2>
             </div>
             <div className="g-converge-copy">
               <p className="g-body">A Dubai conference can bring executives from London, delegates from Nairobi, a sales team from Riyadh and suppliers from India.</p>
@@ -164,6 +151,31 @@ export default function GroupsPage() {
               <div className="g-venue-copy"><span>The venue</span><strong>Dubai</strong><em>One event.</em></div>
             </div>
           </figure>
+          <figure className="gm-arrival g-mobile-only">
+            <span className="gm-arrival-kicker">01 / Many cities, one venue</span>
+            <h2 className="gm-arrival-title">
+              <span className="gm-arrival-lead">Different cities.</span>
+              <span className="gm-arrival-finale">
+                <span className="gm-arrival-photo" aria-hidden="true"><Image src="/images/library/dubai-waterfront.webp" alt="" fill sizes="(max-width: 767px) 100vw, 1px" /></span>
+                <svg className="gm-arrival-wave gm-arrival-wave-top" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
+                  <path fill="#f6f0e6" d="M0 0H390C335 15 310 55 240 85S80 102 0 170Z" />
+                  <path fill="#e8d7be" opacity=".45" d="M0 170C80 102 160 115 220 94C125 87 66 100 0 151Z" />
+                  <path fill="none" stroke="#c39a5c" strokeWidth="1" d="M0 170C80 102 170 115 240 85S335 15 390 0" />
+                  <path fill="none" stroke="#fffaf1" strokeWidth=".8" d="M0 151C66 100 125 87 220 94" />
+                </svg>
+                <em>One shared<br />arrival.</em>
+                <svg className="gm-arrival-wave gm-arrival-wave-bottom" viewBox="0 0 390 100" preserveAspectRatio="none" aria-hidden="true">
+                  <path fill="#f6f0e6" d="M0 90C85 23 165 28 252 42S343 39 390 14V100H0Z" />
+                  <path fill="#ebddc8" d="M180 35C257 21 319 37 390 9V14C343 39 302 53 252 42Z" />
+                  <path fill="none" stroke="#fffaf1" strokeWidth="1" d="M0 90C85 23 165 28 252 42S343 39 390 14" />
+                </svg>
+              </span>
+            </h2>
+            <figcaption>
+              <span className="gm-arrival-summary">Flights, stays and arrivals — coordinated around your event.</span>
+              <EnquiryButton className="gm-arrival-cta" service="Groups & MICE" destination="Dubai" message="We would like to coordinate flights, stays and arrivals for our group event.">Coordinate arrival</EnquiryButton>
+            </figcaption>
+          </figure>
           <div className="g-route" data-progress="top 95%" data-progress-end="top 70%">
             <p>We bring every movement into one plan</p>
             <ol>{sequence.map((step, i) => <li key={step.label} style={{ "--i": i } as React.CSSProperties}><TravelIcon kind={step.icon} size={16} />{step.label}</li>)}</ol>
@@ -173,9 +185,10 @@ export default function GroupsPage() {
       </section>
 
       <section className="g-manage j-torn-top" id="manage" aria-labelledby="manage-heading">
+        <div className="gm-manage-art g-mobile-only" aria-hidden="true"><Image src="/images/library/groups-manage-cabin-mobile-v1.webp" alt="" fill sizes="(max-width: 767px) 100vw, 1px" /></div>
         <div className="j-shell">
           <div className="s-split-head g-manage-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span>From the first arrival</span><span>to the final departure.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span className="g-desktop-copy">From the first arrival</span><span className="g-desktop-copy">to the final departure.</span><span className="g-mobile-only">Every detail.<br /><em>Taken care of.</em></span></h2></div>
             <p className="g-runsheet-tag"><span>Run sheet</span><span>8 items · All coordinated</span></p>
           </div>
           <ol className="g-runsheet">{managed.map((item, i) => <li key={item.title}>
@@ -183,6 +196,7 @@ export default function GroupsPage() {
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
             <svg className="g-tick" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" /><path data-trace pathLength={1} d="M12 20.5 18 26.5 29 14" /></svg>
           </li>)}</ol>
+          <MobileGroupServices />
         </div>
       </section>
 
@@ -294,6 +308,11 @@ export default function GroupsPage() {
             <svg className="g-region-arrow" viewBox="0 0 120 20" aria-hidden="true"><path data-trace pathLength={1} d="M2 10h112" /><path data-trace pathLength={1} d="M104 2l10 8-10 8" /></svg>
             <span className="g-region"><span className="g-region-word">Worldwide</span><small>Wherever the event is</small></span>
           </h2>
+          <div className="gm-regional g-mobile-only">
+            <h3>Across regions.<br /><em>Closer together.</em></h3>
+            <p>From Africa to the UAE and beyond. Local knowledge and global connections, built around your event.</p>
+            <span className="gm-regional-rule" aria-hidden="true" />
+          </div>
         </div>
       </section>
 
@@ -322,7 +341,7 @@ export default function GroupsPage() {
         <div className="j-shell g-change-grid" data-progress="top 60%" data-progress-end="bottom 85%">
           <div className="g-change-copy">
             <span className="j-eyebrow s-eyebrow">09 / When plans change</span>
-            <h2 id="change-heading" className="s-title">The plan needs<br />to move too.</h2>
+            <h2 id="change-heading" className="s-title"><span className="g-desktop-copy">The plan needs<br />to move too.</span><span className="g-mobile-only">Plans change.<br /><em>We stay with you.</em></span></h2>
             <p className="s-lead-body g-body">Group travel rarely remains perfectly static. Wings &amp; Wheels stays involved when requirements change.</p>
             <ol className="g-steps">{steps.map((item, i) => <li key={item.step} style={{ "--ph": `var(--p${i})` } as React.CSSProperties}>
               <span className="g-step-number">{String(i + 1).padStart(2, "0")}</span>
@@ -342,6 +361,7 @@ export default function GroupsPage() {
             </li>)}</ol>
             <span className="g-sheet-stamp" aria-hidden="true">Plan updated<small>Shared with the group &amp; event team</small></span>
           </figure>
+          <MobileGroupChanges />
         </div>
       </section>
 
@@ -361,42 +381,21 @@ export default function GroupsPage() {
         </div>
       </section>
 
-      <section className="g-benefits" id="coordination" aria-labelledby="coordination-heading">
-        <div className="j-shell">
-          <header className="g-benefits-head">
-            <div>
-              <span className="g-benefits-eyebrow">11 / Group travel support</span>
-              <h2 id="coordination-heading">Well organised travel.<br />For everyone involved.</h2>
-            </div>
-            <p>We manage the travel arrangements and keep everyone informed, so your team can focus on the event.</p>
-          </header>
-          <div className="g-benefits-grid">
-            {coordinationBenefits.map((benefit, i) => (
-              <article key={benefit.audience} className="g-benefit" aria-labelledby={`benefit-heading-${i}`}>
-                <span className="g-benefit-audience">{benefit.audience}</span>
-                <h3 id={`benefit-heading-${i}`}>{benefit.title}</h3>
-                <p>{benefit.description}</p>
-                <ul>{benefit.items.map(item => <li key={item}>{item}</li>)}</ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="g-process j-torn-top" id="how-it-works" aria-labelledby="process-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">12 / How Group &amp; MICE travel works</span>
+          <span className="j-eyebrow s-eyebrow">11 / How Group &amp; MICE travel works</span>
           <h2 id="process-heading" className="s-title g-new-title">From brief to arrival.</h2>
           <div className="g-process-route-label" aria-hidden="true"><span><i />Your event brief</span><span>One connected travel plan</span><span>Ongoing support<TravelIcon kind="check" size={16} /></span></div>
           <ol className="g-process-grid" data-progress="top 85%" data-progress-end="bottom 75%">{travelProcess.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
             <div className="g-process-marker"><TravelIcon kind={step.icon} size={30} /><span>{String(i + 1).padStart(2, "0")}</span></div>
             <div className="g-process-copy"><span className="g-process-phase">{step.phase}</span><h3>{step.title}</h3><p>{step.text}</p></div>
           </li>)}</ol>
+          <MobileGroupProcess steps={travelProcess} />
         </div>
       </section>
 
       <ClosingScene
-        chapter="13 / Wings & Wheels"
+        chapter="12 / Wings & Wheels"
         ticket="Groups & MICE"
         left={<>Everyone has<br />arrived.</>}
         right={<>Now the event<br /><em>can begin.</em></>}

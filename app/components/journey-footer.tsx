@@ -167,7 +167,9 @@ export function JourneyFooter() {
       <svg className="ft-route" viewBox="0 0 1200 260" aria-hidden="true">
         <path className="ft-route-base" d={route} />
         <path className="ft-route-draw" d={route} />
-        <g className="ft-plane"><path d="M-14 -6 L16 0 L-14 6 L-8 0 Z" /></g>
+        <g className="ft-plane">
+          <path d="M18 0 Q16 -2.5 10 -2.5 H3 L-6 -15 H-10 L-5 -2.5 H-12 L-16 -7 H-19 L-16 0 L-19 7 H-16 L-12 2.5 H-5 L-10 15 H-6 L3 2.5 H10 Q16 2.5 18 0 Z" />
+        </g>
       </svg>
       <Link href="/" className="ft-mark" aria-label="Wings & Wheels home">
         {lines.map((text, index) => <Letters key={text} text={text} line={index} />)}
