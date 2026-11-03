@@ -106,16 +106,20 @@ export default function DestinationsPage() {
       </section>
 
       <section className="d-africa j-torn-top" id="africa" aria-labelledby="africa-heading">
-        <div className="d-africa-photo" data-frame><Image src="/images/library/africa-dawn.webp" alt="" fill sizes="60vw" /></div>
+        <div className="d-africa-photo" data-frame>
+          <Image className="d-africa-desktop-photo" src="/images/library/africa-dawn.webp" alt="" fill sizes="60vw" />
+          <Image className="d-africa-mobile-photo" src="/images/library/destinations-africa-mobile-v2.webp" alt="" fill sizes="100vw" />
+        </div>
         <div className="d-africa-shade" />
         <div className="j-shell d-africa-grid">
           <div className="d-africa-copy">
             <span className="j-eyebrow s-eyebrow">03 / Closer to Africa</span>
             <h2 id="africa-heading" className="s-title"><span className="d-desktop-copy">Some of our strongest connections are here.</span><span className="d-mobile-copy">Africa.<br /><em>Closer than ever.</em></span></h2>
-            <p className="s-lead-body d-body">Wings &amp; Wheels combines UAE-based travel expertise with an established network across key African markets, helping travellers move between the Middle East, Africa and beyond.</p>
+            <p className="s-lead-body d-body"><span className="d-desktop-copy">Wings &amp; Wheels combines UAE-based travel expertise with an established network across key African markets, helping travellers move between the Middle East, Africa and beyond.</span><span className="d-mobile-copy">From the UAE to Africa, our people and partners keep every journey beautifully connected.</span></p>
             <Link className="j-button j-button-cream" href="/africa">Discover Africa <Arrow /></Link>
           </div>
           <figure className="d-arcs">
+            <figcaption><span>Our regional network</span><strong>Africa <i aria-hidden="true">↔</i> Dubai</strong></figcaption>
             <svg viewBox="0 0 560 372" role="img" aria-label="Routes from Khartoum, Juba, Kampala, Nairobi and Tanzania to Dubai">
               {cities.map(city => <path key={city.name} data-trace pathLength={1} className="d-arc" d={`M118 ${city.y} C 300 ${city.y}, 360 186, 494 186`} />)}
               {cities.map(city => <g key={`${city.name}-node`} className="d-arc-city">

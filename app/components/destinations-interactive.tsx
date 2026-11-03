@@ -11,16 +11,32 @@ export type Mood = { title: string; text: string; icon: IconKind; photo: string;
 /** Six reasons to travel; the photograph follows whichever reason is in focus. */
 export function MoodIndex({ moods }: { moods: Mood[] }) {
   const [active, setActive] = useState(0);
+  const swipe = useRef<{ x: number; y: number } | null>(null);
+  const change = (direction: number) => setActive(index => (index + direction + moods.length) % moods.length);
   const mood = moods[active];
   return <div className="d-moods-body">
-    <div className="d-mood-stage">
+    <div className="d-mood-stage" onPointerDown={event => {
+      if (event.pointerType === "touch" && matchMedia("(max-width: 767px)").matches) swipe.current = { x: event.clientX, y: event.clientY };
+    }} onPointerUp={event => {
+      const start = swipe.current;
+      swipe.current = null;
+      if (!start) return;
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) change(dx < 0 ? 1 : -1);
+    }} onPointerCancel={() => { swipe.current = null; }}>
       <div className="d-mood-frame" data-frame>
         {moods.map((item, i) => <Image key={item.title} src={item.photo} alt={item.alt} fill sizes="(max-width: 991px) 92vw, 44vw" className={i === active ? "is-active" : undefined} style={item.position ? { objectPosition: item.position } : undefined} />)}
       </div>
+      <div className="d-mood-phone d-mood-story" aria-live="polite"><span>Your journey, your way</span><h3 key={mood.title}>{mood.title}</h3><p>{mood.text}</p></div>
       <div className="d-mood-caption">
         <span className="d-mood-count">{String(active + 1).padStart(2, "0")} <span>/ {String(moods.length).padStart(2, "0")}</span></span>
         <EnquiryButton className="d-mood-cta" service="Leisure & holidays" message={`I'm interested in a ${mood.title.toLowerCase()} trip.`}>Find a {mood.title.toLowerCase()} trip</EnquiryButton>
       </div>
+    </div>
+    <div className="d-mood-phone d-mood-navigation">
+      <div className="d-mood-pagination" role="group" aria-label="Choose a journey style">{moods.map((item, index) => <button type="button" key={item.title} aria-label={item.title} aria-pressed={index === active} onClick={() => setActive(index)}>{String(index + 1).padStart(2, "0")}</button>)}</div>
+      <div className="d-mood-arrows"><button type="button" onClick={() => change(-1)} aria-label="Previous journey style"><Arrow back /></button><button type="button" onClick={() => change(1)} aria-label="Next journey style"><Arrow /></button></div>
     </div>
     <ol className="d-mood-list" data-draw-group>{moods.map((item, i) => <li key={item.title} className="s-draw">
       <button type="button" className={`d-mood${i === active ? " is-active" : ""}`} aria-pressed={i === active} onPointerEnter={() => setActive(i)} onFocus={() => setActive(i)} onClick={() => setActive(i)}>

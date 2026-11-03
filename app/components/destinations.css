@@ -83,6 +83,7 @@
 .d-africa { display: flex; flex-direction: column; justify-content: center; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); overflow: clip; background: var(--night); color: #eadfcb; }
 .d-africa-photo { position: absolute; inset: 0 0 0 38%; overflow: clip; }
 .d-africa-photo img { object-fit: cover; object-position: 60% center; }
+.d-africa-mobile-photo, .d-arcs figcaption { display: none; }
 .d-africa-shade { position: absolute; inset: 0; background: linear-gradient(90deg, var(--night) 38%, #2b2119d9 52%, #2b211966 80%, #2b211940), linear-gradient(0deg, #2b2119f2, transparent 40%); }
 .d-africa-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 6%; align-items: center; }
 .d-africa .s-title { color: var(--cream); }
