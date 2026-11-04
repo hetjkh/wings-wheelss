@@ -1,7 +1,6 @@
 import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon } from "./icons";
-import { office } from "./data";
 import { HomeStories } from "./home-stories";
 import { HomeClientele } from "./home-clientele";
 import { HomeTestimonials } from "./home-testimonials";
@@ -68,10 +67,6 @@ function GroupsChapter() {
   </section>;
 }
 
-function ContactChapter() {
-  return <section className="e-contact" aria-labelledby="e-contact-title"><div className="e-contact-photo" data-editorial-parallax="6"><Image src="/images/library/norway-fjord.webp" alt="A broad Norwegian fjord winding between mountains in evening light" fill sizes="100vw" className="n-cover" /></div><div className="e-contact-shade" /><div className="e-shell e-contact-inner"><span className="n-kicker">Every great journey starts with a conversation.</span><Link href="/contact" className="e-contact-heading"><h2 id="e-contact-title" data-editorial-title><Lines lines={["Where do we", "go from here?"]} /></h2><span aria-hidden="true">↗</span></Link><div className="e-contact-bottom"><p>A destination in mind? A possibility taking shape?<br />Tell us your story. We’ll help with the journey.</p><a href={office.whatsapp} target="_blank" rel="noreferrer" className="n-button n-button-white"><TravelIcon kind="chat" size={18} />Let’s talk on WhatsApp</a></div></div></section>;
-}
-
 export function HomeEditorial() {
-  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><HomeClientele /><HomeTestimonials /><HomePayLater /><HomeFaq /><ContactChapter /></>;
+  return <><AfricaChapter /><DestinationChapter /><HomeStories /><GroupsChapter /><HomeClientele /><HomeTestimonials /><HomePayLater /><HomeFaq /></>;
 }

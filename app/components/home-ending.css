@@ -1,0 +1,7 @@
+/* Shared closing scene and footer retain the same type treatment as inner pages. */
+.home-page .home-ending .sv-headline { margin-inline: auto; color: var(--fg); font: 400 calc(var(--u) * 3.6)/.94 var(--heading); }
+.home-page .home-ending .ft-title { font: 400 calc(var(--fu) * 3.8)/.95 var(--heading); color: #fff8e9; }
+.home-page .home-ending .ft h3 { color: var(--ft-text); }
+@media (max-width: 767px) {
+  .home-page .home-ending .sv-headline { font-size: clamp(30px, 7vw, 48px); }
+}

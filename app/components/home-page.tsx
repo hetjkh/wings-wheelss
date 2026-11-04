@@ -1,12 +1,17 @@
 import Image from "./travel-image";
 import Link from "next/link";
-import { office, pageLinks } from "./data";
+import { JourneyFooter } from "./journey-footer";
+import { ServicesFinal } from "./services-final";
 import { HomeExperience, HomeHeader } from "./home-experience";
 import { MaskedHero } from "./masked-hero";
 import { HomeServices } from "./home-services";
 import { HomeEditorial } from "./home-editorial";
 import "./home.css";
 import "./home-editorial.css";
+import "./journey.css";
+import "./journey-explorer.css";
+import "./services.css";
+import "./home-ending.css";
 
 function PaperEdge({ position = "bottom", variant = "default", className = "" }: { position?: "top" | "bottom"; variant?: "default" | "travel"; className?: string }) {
   return <div className={`n-edge n-edge-${position} n-edge-${variant} ${className}`} aria-hidden="true" />;
@@ -56,7 +61,8 @@ export default function HomePage() {
       </div>
 
       <HomeEditorial />
+      <div className="journey-page services-page home-ending"><ServicesFinal /></div>
     </main>
-    <footer className="n-footer"><div className="n-shell"><div className="n-footer-main"><Link href="/" className="n-brand">Wings & Wheels</Link><nav aria-label="Footer navigation">{pageLinks.map(l=><Link key={l.href} href={l.href}>{l.label}</Link>)}</nav><div><a href={`mailto:${office.email}`}>{office.email}</a><a href={office.phones[0].href}>{office.phones[0].label}</a></div></div><div className="n-footer-bottom"><span>© {new Date().getFullYear()} Wings & Wheels Travel and Tourism LLC</span><span>Dubai, UAE</span><a href="#top">Back to top ↑</a></div></div></footer>
+    <div className="journey-page home-ending"><JourneyFooter /></div>
   </HomeExperience>;
 }
