@@ -291,8 +291,8 @@
 
 /* ─────────────────────────────────────────────────────────────────────────────
    CORPORATE MOBILE REDESIGN  (max-width: 767px)
-   Visual language: oversized numbers, cinematic edge-to-edge imagery, swipeable
-   card tracks, scroll-driven parallax and pinned scenes — layered over existing
+   Visual language: oversized numbers, a photo mosaic, illustrated rows,
+   a service swipe track and a vertical itinerary — layered over existing
    desktop rules with zero desktop side-effects.
 ───────────────────────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
@@ -362,60 +362,52 @@
   }
   .k-strip-dots span.is-on { background: var(--sand); transform: scale(1.35); }
 
-  /* ── 03 · Day — horizontal photo scroll strip ── */
+  /* ── 03 · Day — a lead photograph followed by a compact photo journal ── */
   .k-day { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 3); }
-  .k-day-grid { margin-bottom: calc(var(--u) * 2.5); }
+  .k-day-grid { grid-template-columns: minmax(0, 1fr); margin-bottom: calc(var(--u) * 2.5); }
+  .k-day-copy { min-width: 0; }
+  .journey-page .k-day .s-title { font-size: clamp(28px, 8vw, 38px); overflow-wrap: anywhere; }
   .k-clock, .k-dayline-shell, .k-day-shade { display: none !important; }
   .k-day-photos {
-    display: flex; flex-direction: row; flex-wrap: nowrap;
-    width: 100%; overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; gap: 8px;
-    padding: 0 calc(var(--u) * .5) calc(var(--u) * .5);
-    margin-top: 0; grid-template-columns: none;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px; padding: 0; margin-top: 0;
   }
-  .k-day-photos::-webkit-scrollbar { display: none; }
   .k-day-photos li {
-    flex: none; width: 72vw; aspect-ratio: 3 / 4;
-    scroll-snap-align: center; border-radius: 6px; overflow: clip;
-    grid-column: auto !important;
+    min-width: 0; aspect-ratio: 4 / 5;
+    border-radius: 3px; overflow: clip;
   }
-  .k-day-photos li::after { background: linear-gradient(0deg, #140e0acc, transparent 50%); }
-  .k-day-caption { left: calc(var(--u) * 1.1); bottom: calc(var(--u) * 1.1); }
-  .k-day-caption b { font-size: calc(var(--u) * 1.5); }
+  .k-day-photos li:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+  .k-day-photos li::after { background: linear-gradient(0deg, #140e0ae6, transparent 65%); }
+  .k-day-caption { left: 12px; right: 10px; bottom: 14px; font-size: 10px; line-height: 1.3; letter-spacing: .08em; }
+  .k-day-caption b { font-size: 26px; }
+  .k-day-photos li:first-child .k-day-caption { left: 20px; bottom: 20px; }
+  .k-day-photos li:first-child .k-day-caption b { font-size: 38px; }
 
-  /* ── 04 · Companies — horizontal scroll carousel ── */
-  .k-companies { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 1); }
+  /* ── 04 · Companies — illustrated editorial rows, all visible on arrival ── */
+  .k-companies { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 3.5); }
   .k-scale {
-    display: flex; flex-direction: row; grid-template-columns: none;
-    overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; gap: 0;
+    display: grid; grid-template-columns: minmax(0, 1fr);
     margin-top: calc(var(--u) * 2.5);
     border-top: 1px solid var(--rule);
   }
-  .k-scale::-webkit-scrollbar { display: none; }
   .k-scale > li {
-    flex: none; width: 74vw;
-    scroll-snap-align: start;
-    padding: calc(var(--u) * 2) calc(var(--u) * 1.75);
-    border-right: 1px solid var(--rule); border-top: none;
+    display: grid; grid-template-columns: minmax(0, 1fr) 88px;
+    column-gap: 18px; align-items: center;
+    padding: 24px 0; border: 0; border-bottom: 1px solid var(--rule);
   }
   .k-scale > li:nth-child(n + 3) { border-top: none; }
-  .k-scale > li:last-child { border-right: 0; }
-  .k-scale > li:first-child { padding-left: calc(var(--u) * 1.75); }
-  .k-crowd { height: calc(var(--u) * 7); }
-  .services-page .k-scale h3 { font-size: calc(var(--u) * 1.4); margin-top: calc(var(--u) * 1.25); }
-  /* Track progress bar for carousel */
-  .k-scale-track {
-    display: block; height: 2px; background: var(--rule);
-    margin: calc(var(--u) * 1.25) var(--u) 0;
+  .k-scale > li:first-child { padding-left: 0; }
+  .k-crowd {
+    grid-column: 2; grid-row: 1 / 3; align-content: center;
+    justify-content: center; gap: 4px; height: auto; min-height: 88px; margin: 0;
   }
-  .k-scale-track span {
-    display: block; height: 100%; background: var(--ochre);
-    width: 25%; transform-origin: left center;
-    transition: transform .4s cubic-bezier(.22, 1, .36, 1);
-  }
+  .k-crowd[data-size="one"] svg { width: 32px; height: 45px; }
+  .k-crowd[data-size="some"] svg { width: 18px; height: 25px; }
+  .k-crowd[data-size="many"] svg { width: 9px; height: 13px; }
+  .k-crowd.is-rotating { padding: 15px; }
+  .k-crowd.is-rotating .k-rotate { inset: 0; width: 88px; height: 88px; }
+  .services-page .k-scale h3 { grid-column: 1; margin: 0; font-size: 23px; }
+  .k-scale p { grid-column: 1; margin-top: 8px; font-size: 15px; }
 
   /* ── 05 · Team map — full-bleed with floating badge ── */
   .k-team { min-height: 0; padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 3.5); }
@@ -494,39 +486,31 @@
   .corporate-page .k-side-copy h3 { font-size: clamp(36px, 10vw, 56px); }
   .k-side li { font-size: clamp(15px, 4.2vw, 20px); }
 
-  /* ── 09 · Steps (stairs) — horizontal swipe cards ── */
-  .k-steps { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 1); }
+  /* ── 09 · Steps — a numbered itinerary with a continuous vertical route ── */
+  .k-steps { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 3.5); }
   .k-stairs {
-    display: flex; flex-direction: row; align-items: stretch;
-    overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; gap: 6px;
-    margin-top: calc(var(--u) * 2.5);
-    padding-inline: calc(var(--u) * .5);
-    grid-template-columns: none;
+    position: relative; display: grid; grid-template-columns: minmax(0, 1fr);
+    gap: 0; margin-top: calc(var(--u) * 2.5); padding: 0;
   }
-  .k-stairs::-webkit-scrollbar { display: none; }
-  .k-stairs li {
-    flex: none; width: 72vw;
-    scroll-snap-align: center; border-radius: 6px;
+  .k-stairs::before {
+    content: ""; position: absolute; left: 23px; top: 24px; bottom: 30px;
+    width: 1px; background: var(--rule);
   }
+  .k-stairs li { position: relative; min-width: 0; padding-bottom: 28px; }
+  .k-stairs li:last-child { padding-bottom: 0; }
   .k-stair {
-    height: auto; min-height: 52vw;
-    display: flex; flex-direction: column;
-    grid-template-columns: none; padding: calc(var(--u) * 1.75);
+    display: grid; grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 18px; align-items: start; height: auto; min-height: 0;
+    padding: 0; background: transparent; color: var(--ink);
   }
-  .k-stair-number { grid-row: auto; font-size: calc(var(--u) * 3.5); }
-  .services-page .k-stair h3 { margin-top: auto; font-size: calc(var(--u) * 1.2); }
-  /* Scroll indicator dots */
-  .k-stairs-dots {
-    display: flex; justify-content: center; gap: 7px;
-    margin-top: calc(var(--u) * 1.25); padding-bottom: calc(var(--u) * 2.5);
+  .k-stair-number {
+    grid-row: 1 / 3; display: grid; place-items: center;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--bg); color: var(--fg, var(--ink));
+    border: 4px solid var(--paper); font-size: 24px;
   }
-  .k-stairs-dots span {
-    display: block; width: 7px; height: 7px; border-radius: 50%;
-    background: #3d2d1026; transition: background .3s, transform .3s;
-  }
-  .k-stairs-dots span.is-on { background: var(--ochre); transform: scale(1.35); }
+  .services-page .k-stair h3 { margin-top: 6px; font-size: 23px; }
+  .k-stair p { grid-column: 2; margin-top: 8px; font-size: 15px; line-height: 1.45; opacity: .85; }
 
   /* ── Partner band ── */
   .k-partner { padding: calc(var(--tear) + var(--u) * 3.5) 0 calc(var(--u) * 3.5); }

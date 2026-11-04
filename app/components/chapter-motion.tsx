@@ -255,8 +255,11 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             strip.insertAdjacentElement("afterend", dotsWrap);
             const dots = Array.from(dotsWrap.children) as HTMLElement[];
             const paint = () => {
-              const w = strip.clientWidth;
-              const index = Math.round(strip.scrollLeft / w);
+              const center = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+              const index = panels.reduce((closest, panel, i) => {
+                const distance = (item: HTMLElement) => Math.abs(item.getBoundingClientRect().left + item.offsetWidth / 2 - center);
+                return distance(panel) < distance(panels[closest]) ? i : closest;
+              }, 0);
               dots.forEach((d, i) => d.classList.toggle("is-on", i === index));
             };
             strip.addEventListener("scroll", paint, { passive: true });
@@ -273,26 +276,6 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: .6 },
             });
           });
-
-          // 04 · Companies carousel: progress track bar driven by native scroll.
-          (() => {
-            const track = page.querySelector<HTMLElement>(".k-scale");
-            if (!track) return;
-            const bar = document.createElement("div");
-            bar.className = "k-scale-track";
-            bar.appendChild(document.createElement("span"));
-            track.insertAdjacentElement("afterend", bar);
-            const fill = bar.firstElementChild as HTMLElement;
-            const count = track.children.length;
-            const paint = () => {
-              const max = track.scrollWidth - track.clientWidth;
-              const p = max > 0 ? track.scrollLeft / max : 0;
-              fill.style.transform = `scaleX(${count}) translateX(${p * (count - 1) / count * 100}%)`;
-            };
-            track.addEventListener("scroll", paint, { passive: true });
-            paint();
-            cleanups.push(() => { track.removeEventListener("scroll", paint); bar.remove(); });
-          })();
 
           // Crowd icons hover entrance on companies.
           select(".k-crowd").forEach((crowd: HTMLElement) => {
@@ -357,27 +340,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             });
           });
 
-          // 09 · Steps carousel: dot indicator.
-          (() => {
-            const stairs = page.querySelector<HTMLElement>(".k-stairs");
-            if (!stairs) return;
-            const items = Array.from(stairs.querySelectorAll<HTMLElement>("li"));
-            const dotsWrap = document.createElement("div");
-            dotsWrap.className = "k-stairs-dots";
-            items.forEach(() => dotsWrap.appendChild(document.createElement("span")));
-            stairs.insertAdjacentElement("afterend", dotsWrap);
-            const dots = Array.from(dotsWrap.children) as HTMLElement[];
-            const paint = () => {
-              const w = stairs.clientWidth;
-              const index = Math.round(stairs.scrollLeft / w);
-              dots.forEach((d, i) => d.classList.toggle("is-on", i === index));
-            };
-            stairs.addEventListener("scroll", paint, { passive: true });
-            paint();
-            cleanups.push(() => { stairs.removeEventListener("scroll", paint); dotsWrap.remove(); });
-          })();
-
-          // Stair cards: entrance animation as each card snaps into scroll view.
+          // Itinerary steps appear as the reader reaches them.
           select(".k-stair").forEach((card: HTMLElement, i: number) => {
             gsap.from(card, {
               opacity: 0, y: 20, duration: .65, ease: "power3.out",
