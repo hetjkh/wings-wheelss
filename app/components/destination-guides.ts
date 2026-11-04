@@ -8,7 +8,7 @@ export type DestinationGuide = {
 export const destinationGuides: DestinationGuide[] = [
   {
     slug: "kenya", name: "Kenya", line: "Safari. City. Coast.", region: "East Africa",
-    photo: "/images/library/kenya-game-drive.webp", alt: "A safari vehicle crossing Kenyan grasslands at sunset",
+    photo: "/images/library/blog-east-africa-v2.webp", alt: "Giraffes walking through Kenya's Maasai Mara in morning light",
     intro: "Start with Nairobi, make room for the open plains, or take the journey towards the coast. Kenya brings city time, wildlife and the Indian Ocean into a trip shaped around the people travelling.",
     bestFor: ["Safari", "Couples", "Families", "Groups", "Business + leisure"],
     experiences: [

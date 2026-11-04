@@ -23,7 +23,8 @@ export default function HomePage() {
         lines={["Every journey.", "A world of", "possibilities."]}
         text="Business, leisure and everything in between. Thoughtfully planned. Personally supported."
         action={{ label: "Plan your journey", href: "/contact" }}
-        media={{ video: "/hero.mp4" }}
+        settle="bottom"
+        media={{ video: "/hero-v4-continuous.mp4" }}
       />
 
       <HomeServices />

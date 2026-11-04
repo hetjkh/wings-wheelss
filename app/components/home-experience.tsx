@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Arrow } from "./icons";
-import { pageLinks, siteLinks } from "./data";
-import { NavDropdown } from "./nav-dropdown";
+import { SiteNavigation } from "./site-navigation";
 import { animateHomeEditorial } from "./home-editorial-motion";
 import { observeScrollThreshold } from "./observe-scroll-threshold";
 
@@ -54,8 +51,6 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
 }
 
 export function HomeHeader() {
-  const menu = useRef<HTMLDialogElement>(null);
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const masked = document.querySelector(".home-page .au-hero");
@@ -64,11 +59,5 @@ export function HomeHeader() {
       setScrolled,
     );
   }, []);
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previous; };
-  }, [open]);
-  return <><header className={`n-header${scrolled ? " is-scrolled" : ""}`}><div className="n-shell n-header-inner"><nav aria-label="Main navigation" className="n-nav">{siteLinks.filter(link => link.href !== "/contact").map(l=>l.children?<NavDropdown key={l.href} link={l} />:<Link href={l.href} key={l.href}>{l.label}</Link>)}</nav><Link href="/" className="n-brand" aria-label="Wings and Wheels home">Wings & Wheels</Link><Link className="n-button n-header-contact" href="/contact">Contact <Arrow /></Link><button type="button" className="n-menu-button" onClick={() => { menu.current?.showModal(); setOpen(true); }} aria-expanded={open} aria-controls="home-menu" aria-haspopup="dialog" aria-label="Open navigation"><span /><span /></button></div></header><dialog ref={menu} id="home-menu" className="n-menu" aria-label="Site navigation" onClose={() => setOpen(false)} onClick={e=>{if(e.target===e.currentTarget)menu.current?.close();}}><div><span className="n-brand">Wings & Wheels</span><button type="button" onClick={()=>menu.current?.close()} aria-label="Close navigation">×</button></div><nav>{pageLinks.map(l=><Link href={l.href} key={l.href} onClick={()=>menu.current?.close()}>{l.label}<Arrow /></Link>)}</nav><p>People. Places. Further together.</p></dialog></>;
+  return <SiteNavigation scrolled={scrolled} />;
 }

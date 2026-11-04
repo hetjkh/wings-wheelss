@@ -25,7 +25,7 @@ export default function BlogPage() {
         lines={["Stories from", "the places", { text: "we travel.", accent: true }]}
         text="Planning notes, destination timing and the weeks we arrange for people travelling together."
         action={{ label: "Read the journal", href: "#journal" }}
-        media={{ video: "/hero.mp4" }}
+        media={{ video: "/hero-v4-continuous.mp4" }}
         tags={["Destinations", "Planning", "Business travel", "Groups", "Africa"]}
       />
       <section className="b-opening b-shell" aria-labelledby="blog-heading">
@@ -48,7 +48,7 @@ export default function BlogPage() {
       </section>
       <section className="b-journal b-shell" id="journal" aria-labelledby="journal-heading"><BlogJournal /></section>
       <section className="b-spotlight" aria-labelledby="spotlight-heading">
-        <div className="b-spotlight-photo"><Image src="/images/library/kenya-game-drive.webp" alt="A safari vehicle in the wide open Kenyan grasslands at sunset" fill sizes="(max-width: 800px) 100vw, 57vw" /><span className="b-photo-coordinate b-small"><TravelIcon kind="pin" size={14} /> Maasai Mara, Kenya</span></div>
+        <div className="b-spotlight-photo"><Image src="/images/library/blog-east-africa-v2.webp" alt="Giraffes roaming the Maasai Mara's green and golden grasslands in morning light" fill sizes="(max-width: 800px) 100vw, 57vw" /><span className="b-photo-coordinate b-small"><TravelIcon kind="pin" size={14} /> Maasai Mara, Kenya</span></div>
         <div className="b-spotlight-copy"><span className="b-small">The destination edit / 01</span><TravelIcon kind="sun" size={52} /><h2 id="spotlight-heading">Less rush.<br />More <em>wild.</em></h2><p>Some places deserve more than a pin on a map. From Nairobi mornings to the open plains, make a little more room for East Africa.</p><Link className="b-text-link" href="/blog/east-africa-seasons">Find your moment in East Africa <Arrow diagonal /></Link><div className="b-spotlight-foot b-small"><span>City. Safari. Coast.</span><span>Africa, at your pace.</span></div></div>
       </section>
       <BlogClosing />

@@ -114,7 +114,7 @@ export default function FranchisePage() {
         sub="Global reach."
         text="Partnerships in Saudi Arabia, Egypt and Morocco."
         action={{ label: "Explore the markets", href: "#markets" }}
-        media={{ video: "/hero.mp4" }}
+        media={{ video: "/hero-v4-continuous.mp4" }}
       />
 
       <section className="f-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">

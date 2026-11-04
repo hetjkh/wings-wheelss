@@ -80,7 +80,7 @@ export default function DestinationsPage() {
         lines={["Where will", "your next", "journey", { text: "take you?", accent: true }]}
         text="Business cities to island escapes, across the Middle East, Africa and beyond."
         action={{ label: "Explore destinations", href: "#featured" }}
-        media={{ video: "/hero.mp4" }}
+        media={{ video: "/hero-v4-continuous.mp4" }}
       />
 
       <section className="d-moods j-torn-top" id="find" aria-labelledby="find-heading">

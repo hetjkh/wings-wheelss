@@ -44,3 +44,7 @@ next-env.d.ts
 
 .rea-numa/
 
+# Local review artifacts and raw editing footage (keep out of GitHub).
+/tmp/
+/public/dubai.mp4
+

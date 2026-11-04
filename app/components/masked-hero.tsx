@@ -65,7 +65,7 @@ function HeroCopy({ id, eyebrow, lines, sub, text, action, back, ghost }: {
 }
 
 /** About-style header: the picture or video opens out of the map, and the pill button fills on hover. */
-export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags, back, settle }: {
+export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags, back, settle = "bottom" }: {
   id: string;
   eyebrow: string;
   lines: MaskedHeroLine[];

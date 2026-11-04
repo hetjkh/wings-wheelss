@@ -93,10 +93,17 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           // A stepped chapter holds the page and announces each step as the scroll reaches it.
           const steps = Number(section.dataset.steps ?? 0);
           if (steps > 1) {
+            const stepAnchor = section.dataset.stepAnchor ? section.querySelector<HTMLElement>(section.dataset.stepAnchor) : null;
+            // Let the larger heading scroll away, then hold the tabs below the navbar.
+            // Short viewports keep native scrolling so the full film and controls remain reachable.
+            if (stepAnchor && stepAnchor.offsetHeight + (section.querySelector<HTMLElement>(".sb-stage")?.offsetHeight ?? 0) + 160 > window.innerHeight) return;
+            const stepStart = stepAnchor
+              ? () => `top+=${stepAnchor.getBoundingClientRect().top - section.getBoundingClientRect().top - 108} top`
+              : pinStart;
             let current = -1;
             section.classList.add("is-stepped");
             ScrollTrigger.create({
-              trigger: section, start: pinStart, end: () => `+=${window.innerHeight * .75 * steps}`, pin: section, pinSpacing: true,
+              trigger: section, start: stepStart, end: () => `+=${window.innerHeight * .75 * steps}`, pin: section, pinSpacing: true,
               anticipatePin: 1, invalidateOnRefresh: true,
               onRefresh: self => { section.dataset.stepsStart = String(self.start); section.dataset.stepsEnd = String(self.end); },
               onUpdate: self => {

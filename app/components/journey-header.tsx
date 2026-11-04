@@ -1,24 +1,14 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { EnquiryButton } from "./site-controls";
-import { pageLinks, siteLinks } from "./data";
-import { NavDropdown } from "./nav-dropdown";
-import { Arrow, TravelIcon } from "./icons";
+import { useEffect, useState } from "react";
+import { SiteNavigation } from "./site-navigation";
 import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 export type JourneyLink = { label: string; href: string };
 
-/** `introId` is the first section after the hero; the header turns solid once it reaches the top. */
+/** The header settles into its compact state as the intro reaches the top. */
 export function JourneyHeader({ introId = "about" }: { introId?: string }) {
-  const pathname = usePathname();
-  const links = siteLinks;
-  const current = (href: string) => pathname === href ? "page" as const : undefined;
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menu = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const intro = document.getElementById(introId);
     return observeScrollThreshold(
@@ -26,27 +16,5 @@ export function JourneyHeader({ introId = "about" }: { introId?: string }) {
       setScrolled,
     );
   }, [introId]);
-  useEffect(() => {
-    if (!menuOpen) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previous; };
-  }, [menuOpen]);
-  const close = () => menu.current?.close();
-  return <>
-    <header className={`j-header${scrolled ? " j-header-scrolled" : ""}`}>
-      <div className="j-shell j-header-inner">
-        <Link className="j-brand" href="/" aria-label="Wings and Wheels home">Wings &amp; Wheels</Link>
-        <nav className="j-desktop-nav" aria-label="Main navigation">{links.map(link => link.children ? <NavDropdown key={link.href} link={link} current={pathname} /> : <a key={link.href} href={link.href} aria-current={current(link.href)}>{link.label}</a>)}</nav>
-        <EnquiryButton className="j-button j-header-cta">Plan Your Journey</EnquiryButton>
-        <button className="j-menu-toggle" aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="journey-menu" aria-haspopup="dialog" onClick={() => { menu.current?.showModal(); setMenuOpen(true); }}><TravelIcon kind="menu" /></button>
-      </div>
-    </header>
-    <dialog ref={menu} id="journey-menu" className="j-menu" aria-label="Navigation" onClose={() => setMenuOpen(false)} onClick={event => { if (event.target === event.currentTarget) close(); }}>
-      <div className="j-menu-heading"><span className="j-brand">Wings &amp; Wheels</span><button onClick={close} aria-label="Close navigation">×</button></div>
-      <nav aria-label="Mobile navigation">{pageLinks.map(link => <a href={link.href} key={link.href} onClick={close} aria-current={current(link.href)}>{link.label}<Arrow /></a>)}</nav>
-      <Link href="/contact" className="j-button j-button-olive" onClick={close}>Talk to our team <Arrow /></Link>
-      <p>People. Places. Further together.</p>
-    </dialog>
-  </>;
+  return <SiteNavigation scrolled={scrolled} enquiry />;
 }

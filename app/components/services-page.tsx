@@ -1,11 +1,11 @@
 import Image from "./travel-image";
-import { MotionVideo } from "./motion-video";
+import { ServicesJourney } from "./services-journey";
 import { TravelIcon, type IconKind } from "./icons";
 import { JourneyHeader } from "./journey-header";
 import { PillCta } from "./about-cta";
 import { JourneyFooter } from "./journey-footer";
 import { JourneyPlanner } from "./journey-planner";
-import { NetworkMap } from "./network-map";
+import { ServicesNetwork } from "./services-network";
 import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ServicesIndex, type IndexedService } from "./services-index";
@@ -47,18 +47,6 @@ const examples: { type: string; route: string[]; items: { icon: IconKind; label:
   { type: "Group", route: ["4 cities", "Dubai event", "Return"], items: [{ icon: "people", label: "32 travellers" }, { icon: "plane", label: "Multiple flights" }, { icon: "document", label: "Visa support" }, { icon: "bed", label: "Hotel rooms" }, { icon: "car", label: "Airport transfers" }, { icon: "route", label: "Venue movements" }] },
 ];
 
-const phases: { icon: IconKind; when: string; title: string; items: string[] }[] = [
-  { icon: "calendar", when: "Before", title: "Get ready.", items: ["Flights", "Accommodation", "Visa support", "Transfers", "Travel documentation", "Itinerary coordination"] },
-  { icon: "route", when: "During", title: "Keep moving.", items: ["Travel information", "Arrival coordination", "Transfers", "Changes", "Onward arrangements", "Support"] },
-  { icon: "return", when: "After", title: "What comes next.", items: ["Return travel", "Future bookings", "Travel records", "Ongoing requirements", "Next journey"] },
-];
-
-const pillars = [
-  { icon: "pin", title: "UAE base", text: "Regional coordination and international access." },
-  { icon: "people", title: "Africa network", text: "Local knowledge and on-ground connections." },
-  { icon: "globe", title: "Global reach", text: "International travel planning and coordination." },
-] as const;
-
 export default function ServicesPage() {
   return <ChapterMotion>
     <a className="skip-link" href="#approach">Skip to content</a>
@@ -72,7 +60,7 @@ export default function ServicesPage() {
         sub="We bring them together."
         text="Flights, hotels, visas, transfers and holidays, coordinated around where you need to go."
         action={{ label: "Plan your journey", service: "General enquiry" }}
-        media={{ video: "/hero.mp4" }}
+        media={{ video: "/hero-v4-continuous.mp4" }}
       />
 
       <section className="s-approach j-torn-top" id="approach" aria-labelledby="approach-heading">
@@ -161,36 +149,9 @@ export default function ServicesPage() {
         <div className="j-shell s-principle-foot" aria-hidden="true"><span>Simple</span><span>Multi-destination</span><span>Group</span></div>
       </section>
 
-      <section className="s-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
-        <MotionVideo className="j-photo s-beyond-video" src="/videos/dubai-city-panorama.mp4" poster="/videos/dubai-city-panorama-poster.webp" />
-        <div className="s-beyond-shade" />
-        <div className="j-shell s-beyond-content">
-          <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">05 / Before. During. After.</span><h2 id="beyond-heading" className="s-title">We think<br />beyond departure.</h2></div>
-            <p className="s-lead s-quote">Good travel support doesn&apos;t begin at take-off or end at landing.</p>
-          </div>
-          <div className="s-phase-line" aria-hidden="true"><span /></div>
-          <ol className="s-phases">{phases.map(phase => <li key={phase.when} className="s-phase">
-            <span className="s-phase-icon"><TravelIcon kind={phase.icon} size={26} /></span>
-            <span className="j-eyebrow">{phase.when}</span>
-            <h3>{phase.title}</h3>
-            <ul>{phase.items.map(item => <li key={item} className="s-draw">{item}</li>)}</ul>
-          </li>)}</ol>
-        </div>
-      </section>
+      <ServicesJourney />
 
-      <section className="s-network j-torn-top" id="network" aria-labelledby="network-heading">
-        <div className="j-shell s-network-grid">
-          <div className="s-network-copy">
-            <span className="j-eyebrow s-eyebrow">06 / Our network</span>
-            <h2 id="network-heading" className="s-title s-rows"><span>Local</span><span>connections.</span><span>Journeys that</span><span>go further.</span></h2>
-            <p className="s-lead-body">Wings &amp; Wheels combines its UAE base with a growing network across key African markets and international destinations.</p>
-            <PillCta service="Africa travel">Explore our Africa network</PillCta>
-          </div>
-          <div className="s-network-map"><NetworkMap /></div>
-        </div>
-        <ul className="j-shell j-pillars">{pillars.map(pillar => <li key={pillar.title}><TravelIcon kind={pillar.icon} size={35} /><div><h3>{pillar.title}</h3><p>{pillar.text}</p></div></li>)}</ul>
-      </section>
+      <ServicesNetwork />
 
       <section className="s-plan j-torn-top" id="plan" aria-labelledby="plan-heading">
         <div className="j-shell s-plan-grid">

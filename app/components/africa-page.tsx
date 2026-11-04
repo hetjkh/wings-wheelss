@@ -51,7 +51,7 @@ const dubaiReasons = ["Business", "Exhibitions", "Holidays", "Groups", "Onward i
 const journeys = [
   { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
   { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
-  { title: "City. Safari. Coast.", photo: "/images/library/kenya-game-drive.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Arrival" }, { from: "Nairobi", to: "Maasai Mara", why: "Safari" }, { from: "Maasai Mara", to: "Diani", why: "Beach" }, { from: "Diani", to: "Dubai", why: "Home" }] },
+  { title: "City. Safari. Coast.", photo: "/images/library/kenya-city-safari-coast-v2.webp", alt: "An editorial triptych of Nairobi's skyline, elephants in the Maasai Mara and Diani's white-sand coast", stops: [{ from: "Dubai", to: "Nairobi", why: "Arrival" }, { from: "Nairobi", to: "Maasai Mara", why: "Safari" }, { from: "Maasai Mara", to: "Diani", why: "Beach" }, { from: "Diani", to: "Dubai", why: "Home" }] },
 ];
 const supportServices: { icon: IconKind; title: string; text: string }[] = [
   { icon: "plane", title: "Flights", text: "Regional and international arrangements." },
@@ -78,17 +78,15 @@ export default function AfricaPage() {
         <AfricaPurposeScene />
       </section>
 
-      <section className="a-network j-torn-top" id="network" aria-labelledby="network-heading">
-        <div className="j-shell s-network-grid">
-          <div className="s-network-copy">
-            <span className="j-eyebrow s-eyebrow">02 / Our Africa network</span>
-            <h2 id="network-heading" className="s-title s-rows"><span>Local</span><span>connections.</span><span>International reach.</span></h2>
-            <p className="s-lead-body">With offices and partners across key African markets, W&amp;W provides on-ground support, regional expertise and seamless coordination between the UAE, Africa and worldwide.</p>
-            <Link className="j-button j-button-outline" href="/contact">Our Africa offices <Arrow /></Link>
-          </div>
-          <div className="s-network-map"><NetworkMap /></div>
+      <section className="a-network sn-network j-torn-top" id="network" aria-labelledby="network-heading">
+        <div className="sn-shell">
+          <header className="sn-heading">
+            <div><span className="j-eyebrow">02 / Our Africa network</span><h2 id="network-heading">Local connections.<br /><em>Dubai to Africa.</em></h2></div>
+            <p>Offices, partners and people who know the way. Explore our African connections, coordinated through Dubai.</p>
+          </header>
+          <NetworkMap />
+          <ul className="sn-pillars">{pillars.map(pillar => <li key={pillar.title}><TravelIcon kind={pillar.icon} size={26} /><div><h3>{pillar.title}</h3><p>{pillar.text}</p></div></li>)}</ul>
         </div>
-        <ul className="j-shell j-pillars">{pillars.map(pillar => <li key={pillar.title}><TravelIcon kind={pillar.icon} size={35} /><div><h3>{pillar.title}</h3><p>{pillar.text}</p></div></li>)}</ul>
       </section>
 
       <section className="a-corridor j-torn-top" id="corridor" aria-labelledby="corridor-heading">
@@ -199,7 +197,7 @@ export default function AfricaPage() {
         <div className="j-shell">
           <span className="j-eyebrow s-eyebrow">09 / People don&apos;t always travel one way</span><h2 id="journeys-heading" className="s-title a-editorial-title">The journey continues.</h2>
           <div className="a-journey-grid">{journeys.map((journey, i) => <article className="a-journey-card" key={journey.title}>
-            <div className="a-journey-photo"><Image src={journey.photo} alt="" fill sizes="(max-width: 700px) 92vw, 30vw" /><span>0{i + 1} / Journey example</span></div>
+            <div className="a-journey-photo"><Image src={journey.photo} alt={journey.alt ?? ""} fill sizes="(max-width: 700px) 92vw, 30vw" quality={90} /><span>0{i + 1} / Journey example</span></div>
             <div className="a-journey-copy"><h3>{journey.title}</h3><ol>{journey.stops.map(stop => <li key={`${stop.from}-${stop.to}`}><div><span>{stop.from}</span><Arrow /><strong>{stop.to}</strong></div><p>{stop.why}</p></li>)}</ol></div>
           </article>)}</div>
           <p className="a-journey-statement">We don&apos;t just book the flight.<br /><span>We help connect the journey.</span></p>
