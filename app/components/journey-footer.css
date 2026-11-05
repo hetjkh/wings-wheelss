@@ -70,10 +70,10 @@
 .ft-route-base { stroke: #efe5d31f; stroke-dasharray: 4 8; }
 .ft-route-draw { stroke: var(--ft-accent); }
 .ft-plane path { fill: #fff8e9; stroke: none; }
-.ft-mark { position: relative; z-index: 1; display: grid; color: #f3e8d3; user-select: none; }
-.ft-line { display: block; width: 100%; clip-path: inset(-60% -3% 0 -3%); }
+.ft-mark { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); color: #f3e8d3; user-select: none; }
+.ft-line { display: block; min-width: 0; width: 100%; clip-path: inset(-60% -3% 0 -3%); }
 .ft-line[data-line="1"] { margin-top: -.06em; }
-.ft-line-fit { display: inline-flex; white-space: nowrap; font: 400 100px/.86 var(--heading); letter-spacing: -.01em; text-transform: uppercase; }
+.ft-line-fit { display: inline-flex; width: max-content; white-space: nowrap; font: 400 100px/.86 var(--heading); letter-spacing: -.01em; text-transform: uppercase; }
 .ft-line[data-line="1"] .ft-line-fit { color: var(--ft-accent); }
 .ft-l { display: inline-block; transform-origin: 50% 100%; }
 .ft-l-in { --pull: 0; display: inline-block; transform-origin: 50% 100%; transform: translateY(calc(var(--pull) * -10%)) scaleY(calc(1 + var(--pull) * .14)); color: color-mix(in srgb, #fff8e9 calc(var(--pull) * 100%), currentColor); transition: transform .5s var(--ft-ease), color .4s; }

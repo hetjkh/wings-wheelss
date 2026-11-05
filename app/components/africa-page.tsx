@@ -219,10 +219,12 @@ export default function AfricaPage() {
         ticket="UAE ↔ Africa ↔ Worldwide"
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}
+        mobileHeadline={<>Many countries.<br /><em>One journey.</em></>}
         photo="/images/library/cape-town.webp"
         pass={["Boarding pass", "UAE · Africa · Worldwide"]}
         from="UAE"
         to="Africa"
+        mobileText="Africa, the UAE and beyond — thoughtfully connected."
         text="Whether you're travelling for business, bringing a team to Dubai, discovering Africa or continuing somewhere beyond, Wings & Wheels helps connect what happens in between."
         chips={[
           { icon: "globe", label: "Africa" },

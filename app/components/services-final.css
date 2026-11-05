@@ -37,6 +37,7 @@
 .sv-side { display: block; }
 .sv-side-b { text-align: right; }
 .sv-side em { font-style: normal; color: var(--fg-soft); }
+.sv-headline-mobile, .sv-pass-text-mobile { display: none; }
 
 .sv-pass { position: relative; z-index: 4; perspective: 1400px; filter: drop-shadow(0 34px 44px #1a130e8c); }
 .sv-pass-card {
@@ -91,16 +92,36 @@
   .sv-top { font-size: 10px; }
   .sv-headline { flex-direction: column; align-items: flex-start; gap: 6px; font-size: clamp(36px, 9vw, 60px); }
   .sv-side-b { text-align: left; }
+  .sv-headline.has-mobile-copy .sv-side { display: none; }
+  .sv-headline-mobile { text-align: left; }
+  .sv-headline.has-mobile-copy .sv-headline-mobile { display: block; }
+  .sv-headline-mobile em { font-style: normal; color: var(--fg-soft); }
   .sv-pass-card { grid-template-columns: 1fr; mask: none; }
-  .sv-pass-main { padding: 22px 20px; }
+  .sv-pass-main { padding: 16px; }
   .sv-pass-head, .sv-route small, .sv-stub-label { font-size: 10px; }
-  .sv-route strong { font-size: 18px; }
-  .sv-pass-text { font-size: 15px; }
-  .sv-chip, .sv-whatsapp, .sv-pass-stub .au-cta { font-size: 12px; }
-  .sv-pass-stub { padding: 22px 20px; border-left: 0; border-top: 2px dashed #3d2d2026; }
+  .sv-pass-head { padding-bottom: 8px; }
+  .sv-route { gap: 12px; margin-top: 10px; }
+  .sv-route strong { font-size: 17px; }
+  .sv-pass-text { margin-top: 10px; font-size: 14px; line-height: 1.4; }
+  .sv-pass-text.has-mobile-text .sv-pass-text-wide { display: none; }
+  .sv-pass-text.has-mobile-text .sv-pass-text-mobile { display: inline; }
+  .sv-chips { gap: 6px; margin-top: 10px; }
+  .sv-chip { gap: 6px; padding: 6px 10px 6px 8px; }
+  .sv-chip, .sv-whatsapp, .sv-pass-stub .au-cta { font-size: 11px; }
+  .sv-pass-stub { gap: 10px; padding: 14px 16px; border-left: 0; border-top: 2px dashed #3d2d2026; }
+  .sv-whatsapp { padding-block: 11px; }
+  .sv-barcode { display: none; }
+
+  .sv-final.is-scene {
+    --win-w: min(52vw, 220px); --win-h: min(46svh, calc(var(--win-w) * 1.55));
+    height: 100svh; min-height: 640px; gap: 0; padding-block: calc(var(--tear) + 18px) 12px;
+  }
+  .sv-final.is-scene .sv-blind { display: block; }
+  .sv-final.is-scene .sv-headline { position: absolute; left: 0; right: 0; top: 25%; font-size: clamp(30px, 8vw, 44px); }
+  .sv-final.is-scene .sv-pass { position: absolute; left: 0; right: 0; bottom: 12px; }
 }
 @media (max-width: 560px) {
-  .sv-route { grid-template-columns: 1fr; gap: 10px; }
+  .sv-route { grid-template-columns: 1fr 1fr; gap: 12px; }
   .sv-route > div:last-child { text-align: left; }
   .sv-route-line { display: none; }
 }

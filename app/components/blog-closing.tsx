@@ -6,11 +6,13 @@ export function BlogClosing() {
     ticket="From a story"
     left={<>Some trips start<br />with a place.</>}
     right={<>Others start<br />with <em>a question.</em></>}
+    mobileHeadline={<>A story.<br /><em>Your next journey.</em></>}
     photo="/images/library/journey-above-clouds.webp"
     photoPosition="center"
     pass={["Boarding pass", "Journal"]}
     from="A story"
     to="A journey"
+    mobileText="Share your dates and travellers. We will take it from there."
     text="If a note here sounds like the trip you have in mind, tell us the dates and who is going. We will take it from there."
     chips={[
       { icon: "compass", label: "Destinations" },

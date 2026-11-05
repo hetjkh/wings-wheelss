@@ -16,7 +16,7 @@ type ClosingAction = { label: string; href?: string; service?: string };
 /** The closing scene: a cabin window opens onto the destination, then the boarding pass arrives. */
 export function ClosingScene({
   chapter, ticket, left, right, photo, photoPosition, pass = ["Boarding pass", "One journey · Every part"],
-  from, to, text, chips, action, whatsapp = "WhatsApp our team",
+  from, to, text, mobileHeadline, mobileText, chips, action, whatsapp = "WhatsApp our team",
 }: {
   chapter: string;
   ticket: string;
@@ -28,6 +28,8 @@ export function ClosingScene({
   from: string;
   to: string;
   text: string;
+  mobileHeadline?: ReactNode;
+  mobileText?: string;
   chips: ClosingChip[];
   action: ClosingAction;
   whatsapp?: string | false;
@@ -40,7 +42,12 @@ export function ClosingScene({
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia(root);
 
-    media.add("(min-width: 992px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)", () => {
+    media.add({
+      scene: "(min-height: 640px) and (prefers-reduced-motion: no-preference)",
+      mobile: "(max-width: 991px)",
+    }, context => {
+      if (!context.conditions?.scene) return;
+      const mobile = !!context.conditions.mobile;
       const view = root.querySelector<HTMLElement>(".sv-view");
       const bezel = root.querySelector<HTMLElement>(".sv-bezel");
       const photoEl = root.querySelector<HTMLElement>(".sv-view img");
@@ -64,7 +71,7 @@ export function ClosingScene({
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
-          trigger: root, start: "top top", end: "+=170%", pin: true, scrub: .8,
+          trigger: root, start: "top top", end: mobile ? "+=145%" : "+=170%", pin: true, scrub: .8,
           anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: -1,
         },
       });
@@ -75,9 +82,9 @@ export function ClosingScene({
         .fromTo(bezel, { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.6, duration: .2 }, .3)
         .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: .3 }, .4)
         .fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42)
-        .fromTo(sideA, { x: 0 }, { x: () => -window.innerWidth * .04, duration: .42 }, .3)
-        .fromTo(sideB, { x: 0 }, { x: () => window.innerWidth * .04, duration: .42 }, .3)
-        .fromTo(headline, { y: 0 }, { y: () => -window.innerHeight * .13, duration: .25, ease: "power2.inOut" }, .72)
+        .fromTo(sideA, { x: 0 }, { x: () => -window.innerWidth * (mobile ? .02 : .04), duration: .42 }, .3)
+        .fromTo(sideB, { x: 0 }, { x: () => window.innerWidth * (mobile ? .02 : .04), duration: .42 }, .3)
+        .fromTo(headline, { y: 0 }, { y: () => -window.innerHeight * (mobile ? .08 : .13), duration: .25, ease: "power2.inOut" }, .72)
         .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
         .fromTo(chipEls, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
         .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
@@ -122,9 +129,10 @@ export function ClosingScene({
       <span>{ticket}</span>
     </div>
 
-    <h2 id="final-heading" className="sv-headline j-shell">
+    <h2 id="final-heading" className={`sv-headline j-shell${mobileHeadline ? " has-mobile-copy" : ""}`}>
       <span className="sv-side sv-side-a">{left}</span>
       <span className="sv-side sv-side-b">{right}</span>
+      {mobileHeadline ? <span className="sv-headline-mobile">{mobileHeadline}</span> : null}
     </h2>
 
     <div className="sv-pass j-shell">
@@ -142,7 +150,10 @@ export function ClosingScene({
             </span>
             <div><small>To</small><strong>{to}</strong></div>
           </div>
-          <p className="sv-pass-text">{text}</p>
+          <p className={`sv-pass-text${mobileText ? " has-mobile-text" : ""}`}>
+            <span className="sv-pass-text-wide">{text}</span>
+            {mobileText ? <span className="sv-pass-text-mobile">{mobileText}</span> : null}
+          </p>
           <ul className="sv-chips">{chips.map((item, index) => <li key={item.label} className="sv-chip" style={{ "--i": index } as CSSProperties}>
             <TravelIcon kind={item.icon} size={16} />{item.label}
           </li>)}</ul>
@@ -166,9 +177,11 @@ export function ServicesFinal() {
     ticket="Window seat · Row 01"
     left={<>Where you&apos;re<br />going matters.</>}
     right={<>So does<br />everything <em>in between.</em></>}
+    mobileHeadline={<>One journey.<br /><em>Every detail.</em></>}
     photo="/images/library/journey-above-clouds.webp"
     from="Where you are"
     to="Where you're going"
+    mobileText="Flights, stays and support — thoughtfully connected."
     text="Flights, hotels, visas, transfers, experiences and support — brought together around one journey."
     chips={[
       { icon: "plane", label: "Flights" },

@@ -179,11 +179,13 @@ export default function DestinationsPage() {
         ticket="Your next destination"
         left={<>Some journeys start<br />with a place.</>}
         right={<>Others start<br />with <em>an idea.</em></>}
+        mobileHeadline={<>A place or idea.<br /><em>Your next journey.</em></>}
         photo="/images/library/destinations-closing-coast-v2.webp"
         photoPosition="center 60%"
         pass={["Boarding pass", "Place or idea"]}
         from="An idea"
         to="A destination"
+        mobileText="Tell us what you want, and we'll help find the place."
         text="Tell us where you're thinking of going — or simply what you're looking for — and we'll help take it from there."
         chips={[
           { icon: "globe", label: "Cities" },

@@ -325,11 +325,13 @@ export default function CorporatePage() {
         ticket="Corporate travel"
         left={<>Your people have<br />somewhere to be.</>}
         right={<>Let us take care<br />of <em>what happens in between.</em></>}
+        mobileHeadline={<>Your people.<br /><em>Our plan.</em></>}
         photo="/images/library/business-boarding-v2.webp"
         photoPosition="center 60%"
         pass={["Boarding pass", "Your team · Our plan"]}
         from="Your office"
         to="Their meeting"
+        mobileText="Flights, stays and support, coordinated for your team."
         text="Let us take care of what happens in between — flights, hotels, transfers and support, coordinated around your people."
         chips={[
           { icon: "plane", label: "Flights" },

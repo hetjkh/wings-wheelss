@@ -399,11 +399,13 @@ export default function GroupsPage() {
         ticket="Groups & MICE"
         left={<>Everyone has<br />arrived.</>}
         right={<>Now the event<br /><em>can begin.</em></>}
+        mobileHeadline={<>Everyone arrived.<br /><em>Let it begin.</em></>}
         photo="/images/library/groups-rooftop.webp"
         photoPosition="center 55%"
         pass={["Boarding pass", "40 of 40 arrived"]}
         from="First flight"
         to="Final transfer"
+        mobileText="Flights, stays and transfers, coordinated around your event."
         text="From the first flight to the final transfer, Wings & Wheels helps coordinate the journey that happens around your event."
         chips={[
           { icon: "plane", label: "Flights" },

@@ -60,8 +60,9 @@ export function JourneyFooter() {
       const fit = line.querySelector<HTMLElement>(".ft-line-fit");
       if (!fit) return;
       fit.style.fontSize = "100px";
-      const natural = fit.scrollWidth;
-      if (natural) fit.style.fontSize = `${100 * line.clientWidth / natural}px`;
+      // Measure the layout width so animated letters cannot distort the fit.
+      const natural = fit.offsetWidth;
+      if (natural) fit.style.fontSize = `${100 * Math.max(0, line.clientWidth - 2) / natural}px`;
     });
     fitLines();
     document.fonts?.ready.then(fitLines);

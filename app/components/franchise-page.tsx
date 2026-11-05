@@ -283,11 +283,13 @@ export default function FranchisePage() {
         ticket="Franchise opportunities"
         left={<>Let&apos;s build the<br />next chapter.</>}
         right={<>Together, in<br /><em>three markets.</em></>}
+        mobileHeadline={<>Your market.<br /><em>Our next chapter.</em></>}
         photo="/images/library/franchise-partner-lounge-v2.webp"
         photoPosition="center"
         pass={["Boarding pass", "Saudi · Egypt · Morocco"]}
         from="Your market"
         to="Our network"
+        mobileText="Local ambition, international support and one shared plan."
         text="We are looking to connect with ambitious partners who share our belief in thoughtful travel management, strong local relationships and international collaboration."
         chips={[
           { icon: "handshake", label: "Partners" },
