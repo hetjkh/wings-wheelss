@@ -11,7 +11,7 @@ const chapters = [
   { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", detail: "Shared ambitions. Connected journeys.", photo: "/images/africa-purposes/groups-background-v2.webp", subject: "/images/africa-purposes/groups-delegates-v2.webp", foreground: null, alt: "A spacious conference hotel foyer with warm timber and tropical gardens", position: "50% 50%", href: "/groups-mice", link: "Plan a group journey" },
 ];
 
-const mobileSubjects = ["business", "safari", "family", "groups"].map(name => `/images/africa-mobile/${name}-subject-mobile-v2.webp`);
+const mobilePhotos = ["business", "safari", "family", "groups"].map(name => `/images/africa-mobile/${name}-mobile-v1.webp`);
 
 export function AfricaPurposeScene() {
   const root = useRef<HTMLDivElement>(null);
@@ -98,13 +98,13 @@ export function AfricaPurposeScene() {
   return <div ref={root} className={`a-purpose-scene${enhanced ? " is-interactive" : ""}`} role="region" aria-label="Four ways to travel Africa">
     <div className="a-purpose-stage">
       {chapters.map((chapter, index) => <article key={chapter.title} className={`a-purpose-slide a-purpose-slide-${index}`} data-active={active === index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`africa-purpose-${index}`} style={{ "--purpose-position": chapter.position } as CSSProperties}>
-        <div className="a-purpose-background"><Image src={chapter.photo} alt={chapter.alt} fill sizes="100vw" quality={90} loading="eager" /></div>
+        <div className="a-purpose-background"><picture><source media="(max-width: 700px)" srcSet={mobilePhotos[index]} /><Image src={chapter.photo} alt={chapter.alt} fill sizes="100vw" quality={90} loading="eager" /></picture></div>
         <div className="a-purpose-shade" aria-hidden="true" />
         <div className="a-purpose-heading">
           <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>
           <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
         </div>
-        <div className="a-purpose-subject" aria-hidden="true"><picture><source media="(max-width: 700px)" srcSet={mobileSubjects[index]} /><Image src={chapter.subject} alt="" fill sizes="(max-width: 700px) 118vw, 110vw" quality={90} loading="eager" /></picture></div>
+        <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="110vw" quality={90} loading="eager" /></div>
         {chapter.foreground && <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" loading="eager" /></div>}
         <div className="a-purpose-description">
           <span>{chapter.detail}</span>

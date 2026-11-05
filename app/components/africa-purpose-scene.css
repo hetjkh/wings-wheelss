@@ -50,22 +50,14 @@
 .a-purpose-scroll > span { font-size: 20px; }
 
 @media (max-width: 700px) {
-  .a-purpose-background { inset: -7%; }
+  .a-purpose-background, .is-interactive .a-purpose-background { inset: 0; transform: none; will-change: auto; }
   .a-purpose-background img { object-position: center; }
   .a-purpose-heading, .a-purpose-slide-3 .a-purpose-heading { z-index: 2; }
   .a-purpose-description { z-index: 6; }
   .a-purpose-scene.is-interactive { height: 400svh; }
   .is-interactive .a-purpose-stage { min-height: 500px; }
   .a-purpose-heading { top: 22%; left: 4%; right: 4%; }
-  .a-purpose-slide .a-purpose-subject { display: block; inset: auto auto 7% -9%; width: 118%; height: 100%; transform: translate3d(calc(var(--purpose-x) * 1.2), calc(var(--purpose-y) * .7 + var(--purpose-drift) * .75), 0); }
-  .a-purpose-subject img { object-fit: contain; object-position: center bottom; }
-  .a-purpose-slide-1 .a-purpose-subject { width: 150%; left: -25%; bottom: -9%; }
-  .a-purpose-slide-2 .a-purpose-subject { width: 108%; left: -4%; bottom: -1%; }
-  .a-purpose-depth { display: block; z-index: 5; opacity: .7; }
-  .a-purpose-slide-0 .a-purpose-depth { inset: auto -6% -5%; height: 30%; mask-image: linear-gradient(transparent, #000 75%); }
-  .a-purpose-slide-1 .a-purpose-depth { height: 32%; bottom: -9%; opacity: .8; }
-  .a-purpose-slide-2 .a-purpose-depth { opacity: .55; }
-  .a-purpose-slide-2 .a-purpose-depth img { object-fit: cover; }
+  .a-purpose-subject, .a-purpose-depth { display: none; }
   .africa-page .a-purpose-heading h3 { font-size: 21vw; margin-top: 14px; }
   .africa-page .a-purpose-slide-3 h3 { font-size: 10.2vw; }
   .a-purpose-slide-3 .a-purpose-heading { top: 18%; }
