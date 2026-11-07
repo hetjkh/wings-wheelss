@@ -3,6 +3,7 @@
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getImageProps } from "next/image";
 import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
 import { PillCta } from "./about-cta";
@@ -15,7 +16,7 @@ type ClosingAction = { label: string; href?: string; service?: string };
 
 /** The closing scene: a cabin window opens onto the destination, then the boarding pass arrives. */
 export function ClosingScene({
-  chapter, ticket, left, right, photo, photoPosition, pass = ["Boarding pass", "One journey · Every part"],
+  chapter, ticket, left, right, photo, photoMobile, photoPosition, pass = ["Boarding pass", "One journey · Every part"],
   from, to, text, mobileHeadline, mobileText, chips, action, whatsapp = "WhatsApp our team",
 }: {
   chapter: string;
@@ -23,6 +24,7 @@ export function ClosingScene({
   left: ReactNode;
   right: ReactNode;
   photo: string;
+  photoMobile?: string;
   photoPosition?: string;
   pass?: [string, string];
   from: string;
@@ -35,6 +37,7 @@ export function ClosingScene({
   whatsapp?: string | false;
 }) {
   const section = useRef<HTMLElement>(null);
+  const mobileImage = photoMobile ? getImageProps({ src: photoMobile, alt: "", fill: true, sizes: "100vw", quality: 90 }).props : null;
 
   useEffect(() => {
     const root = section.current;
@@ -120,7 +123,10 @@ export function ClosingScene({
 
   return <section className="sv-final j-torn-top" ref={section} aria-labelledby="final-heading">
     <div className="sv-view">
-      <Image src={photo} alt="" fill sizes="100vw" style={photoPosition ? { objectPosition: photoPosition } : undefined} />
+      <picture>
+        {mobileImage ? <source media="(max-width: 991px)" srcSet={mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
+        <Image src={photo} alt="" fill sizes="100vw" quality={photoMobile ? 90 : undefined} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
+      </picture>
       <div className="sv-view-shade" />
       <div className="sv-blind" aria-hidden="true"><span className="sv-blind-handle" /></div>
     </div>
@@ -176,11 +182,12 @@ export function ClosingScene({
 export function ServicesFinal() {
   return <ClosingScene
     chapter="08 / Wings & Wheels"
-    ticket="Window seat · Row 01"
+    ticket="The departure lounge · Your next chapter"
     left={<>Where you&apos;re<br />going matters.</>}
     right={<>So does<br />the journey.</>}
     mobileHeadline={<>Where you&apos;re going matters.<br /><em>So does the journey.</em></>}
-    photo="/images/library/journey-above-clouds.webp"
+    photo="/images/home/departure-lounge-desktop-v1.webp"
+    photoMobile="/images/home/departure-lounge-mobile-v1.webp"
     from="Where you are"
     to="Where you're going"
     mobileText="Flights, stays and support — thoughtfully connected."

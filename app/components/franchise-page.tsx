@@ -2,23 +2,31 @@ import type { ReactNode } from "react";
 import Image from "./travel-image";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
+import { PillCta } from "./about-cta";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
+import { FranchiseGlobe } from "./franchise-globe";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./corporate.css";
 import "./franchise.css";
 
-const dubai = { x: 653.6, y: 162.2 };
+// Same equirectangular projection as /images/world-map.svg (1000 × 440).
+const mapPoint = (longitude: number, latitude: number) => ({
+  x: (longitude + 180) / .36,
+  y: (85 - latitude) / 145 * 440,
+});
+
+const dubai = mapPoint(55.27, 25.2);
 
 const markets = [
-  { id: "saudi", name: "Saudi Arabia", city: "Riyadh", pin: { x: 629.7, y: 163.6 }, title: "A market of business, tourism and opportunity.", text: "Opportunities across corporate travel, domestic and international tourism, events, exhibitions and group travel." },
-  { id: "egypt", name: "Egypt", city: "Cairo", pin: { x: 586.7, y: 148.9 }, title: "Connecting a major travel market with regional and international demand.", text: "Inbound tourism, outbound holidays, corporate travel and regional group movements." },
-  { id: "morocco", name: "Morocco", city: "Casablanca", pin: { x: 478.9, y: 138.9 }, title: "A gateway connecting North Africa with international travellers.", text: "Opportunities across leisure travel, destination experiences, corporate travel and international partnerships." },
+  { id: "saudi", name: "Saudi Arabia", city: "Riyadh", pin: mapPoint(46.68, 24.71), title: "A market of business, tourism and opportunity.", text: "Opportunities across corporate travel, domestic and international tourism, events, exhibitions and group travel." },
+  { id: "egypt", name: "Egypt", city: "Cairo", pin: mapPoint(31.24, 30.04), title: "Connecting a major travel market with regional and international demand.", text: "Inbound tourism, outbound holidays, corporate travel and regional group movements." },
+  { id: "morocco", name: "Morocco", city: "Casablanca", pin: mapPoint(-7.59, 33.57), title: "A gateway connecting North Africa with international travellers.", text: "Opportunities across leisure travel, destination experiences, corporate travel and international partnerships." },
 ];
 
 const advantages: { icon: IconKind; title: string; text: string }[] = [
@@ -31,10 +39,10 @@ const advantages: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const builds = [
-  { title: "Corporate travel", text: "Business flights, hotels, transfers, corporate accounts and recurring travel requirements.", photo: "/images/library/franchise-travel-booking.webp", alt: "A professional reviewing travel arrangements on a tablet in a lounge", position: "center" },
-  { title: "Holidays & leisure", text: "International holidays, family travel, customised itineraries and unique destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
-  { title: "Groups & MICE", text: "Exhibitions, conferences, incentives, delegations and coordinated group movements.", photo: "/images/library/franchise-group-meeting.webp", alt: "Business colleagues meeting around a table in a sunlit hotel room", position: "center" },
-  { title: "Travel services", text: "Flights, accommodation, visa assistance (where permitted), airport transfers and traveller support.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
+  { title: "Corporate travel", text: "Serve companies, executives and organisations.", photo: "/images/library/franchise-travel-booking.webp", alt: "A professional reviewing travel arrangements on a tablet in a lounge", position: "center" },
+  { title: "Holidays & leisure", text: "Personalised holidays and destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
+  { title: "Groups & MICE", text: "Events, conferences and coordinated group travel.", photo: "/images/library/franchise-group-meeting.webp", alt: "Business colleagues meeting around a table in a sunlit hotel room", position: "center" },
+  { title: "Travel services", text: "Flights, hotels, visas and transfers.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
 ];
 
 const network = [
@@ -122,17 +130,17 @@ export default function FranchisePage() {
           <Image src="/images/library/franchise-local-connections.webp" alt="Two business partners reviewing plans together in an office overlooking Dubai" fill sizes="(max-width: 991px) 100vw, 46vw" />
           <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
         </figure>
-        <div className="j-shell f-beyond-grid">
+        <div className="f-beyond-grid">
           <div className="f-beyond-copy">
             <span className="j-eyebrow s-eyebrow">01 / Growing beyond borders</span>
-            <FranchiseHeading id="beyond-heading" mobile={<>Your local insight.<br /><em>A wider world.</em></>}><span>Great travel businesses</span><span>are built on local knowledge</span><span className="k-soft">and strong connections.</span></FranchiseHeading>
-            <p className="k-body f-desktop-copy">Every market has its own travellers, business communities, destinations and commercial opportunities. Wings &amp; Wheels combines local market understanding with international relationships, coordinated services and a consistent customer experience.</p>
-            <p className="k-body f-mobile-copy">You know your market. We bring the brand, travel connections and support to help you build it.</p>
+            <FranchiseHeading id="beyond-heading" mobile={<>Global vision.<br /><em>Local connections.</em></>}><span>Global vision.</span><span className="k-soft">Local connections.</span></FranchiseHeading>
+            <p className="k-body">We bring global travel expertise together with local insight, strong partnerships, and consistently exceptional service.</p>
             <ul className="f-beyond-pillars" data-stagger="0.1">
               <li><span>One</span>brand.</li>
               <li><span>Local</span>leadership.</li>
               <li><span>Connected</span>markets.</li>
             </ul>
+            <PillCta service="Franchise opportunity">Explore franchise opportunities</PillCta>
           </div>
         </div>
       </section>
@@ -176,35 +184,35 @@ export default function FranchisePage() {
       </section>
 
       <section className="f-build j-torn-top" id="build" aria-labelledby="build-heading">
-        <div className="j-shell">
+        <div className="j-shell f-build-head">
           <div className="s-split-head">
             <div><span className="j-eyebrow s-eyebrow">04 / What you can build</span><FranchiseHeading id="build-heading" mobile={<>One brand.<br /><em>Room to grow.</em></>}><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></FranchiseHeading></div>
           </div>
-          <ul className="f-build-grid" data-stagger="0.1">{builds.map((item, i) => <li key={item.title} className="f-build-card">
-            <div className="f-build-photo"><Image src={item.photo} alt={item.alt} fill sizes="(max-width: 767px) 92vw, (max-width: 1199px) 46vw, 23vw" style={{ objectPosition: item.position }} /></div>
-            <div className="f-build-shade" aria-hidden="true" />
-            <div className="f-build-copy">
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          </li>)}</ul>
-          <GalleryProgress count={builds.length} />
         </div>
+        <ul className="f-build-grid" data-stagger="0.1">{builds.map((item, i) => <li key={item.title} className="f-build-card">
+          <div className="f-build-photo"><Image src={item.photo} alt={item.alt} fill sizes="(max-width: 767px) 92vw, (max-width: 1199px) 46vw, 25vw" style={{ objectPosition: item.position }} /></div>
+          <div className="f-build-shade" aria-hidden="true" />
+          <div className="f-build-copy">
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        </li>)}</ul>
+        <div className="j-shell"><GalleryProgress count={builds.length} /></div>
       </section>
 
       <section className="f-network j-torn-top" id="network" aria-labelledby="network-heading">
-        <div className="f-network-photo"><Image src="/images/library/franchise-africa-network.webp" alt="An illuminated globe showing travel connections across Africa and the Middle East" fill sizes="(max-width: 991px) 100vw, 62vw" /></div>
         <div className="j-shell f-network-grid">
           <div className="f-network-copy">
             <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
-            <h2 id="network-heading" className="s-title s-rows"><span>Connecting more</span><span className="k-soft">than destinations.</span></h2>
+            <h2 id="network-heading" className="f-network-heading">Connecting<br /><em>more than<br />destinations.</em></h2>
             <p className="k-body f-desktop-copy">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network.</p>
             <p className="k-body f-desktop-copy">For potential franchise partners in Saudi Arabia, Egypt and Morocco, this creates opportunities to explore cross-market travel cooperation, including:</p>
             <p className="k-body f-mobile-copy">From our Dubai base to our Africa network, explore travel opportunities across borders.</p>
             <ul className="f-network-list" data-stagger="0.08">{network.map(item => <li key={item}><TravelIcon kind="check" size={18} />{item}</li>)}</ul>
             <p className="f-network-note">A growing network. Local market opportunities. Shared international ambition.</p>
           </div>
+          <FranchiseGlobe />
         </div>
       </section>
 
@@ -262,6 +270,17 @@ export default function FranchisePage() {
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </li>)}</ol>
+          <div className="f-step-action">
+            <EnquiryButton
+              className="f-step-cta"
+              service="General enquiry"
+              message="I’m interested in becoming a Wings & Wheels travel partner."
+              icon={false}
+            >
+              <span>Become a travel partner</span>
+              <span className="f-step-cta-dot"><Arrow /></span>
+            </EnquiryButton>
+          </div>
           <p className="f-legal"><TravelIcon kind="document" size={16} />This page is an invitation to discuss prospective franchise opportunities. It is not an offer, and no territory or exclusivity is promised. Each market is subject to its own franchise, licensing, ownership and disclosure requirements, and a confidential franchise prospectus is shared only with qualified applicants.</p>
         </div>
       </section>

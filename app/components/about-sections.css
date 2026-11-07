@@ -80,7 +80,7 @@
 .ab-ticker-photo img { object-fit: cover; }
 @keyframes ab-ticker { to { transform: translateX(-50%); } }
 
-.journey-page .ab-net { position: relative; z-index: 1; display: block; margin-top: calc(-1 * var(--tear)); padding: calc(var(--tear) + var(--type-unit) * 4.5) 0 calc(var(--tear) + var(--type-unit) * 4.5); background: #fffdf8; color: var(--text); }
+.journey-page .ab-net { position: relative; z-index: 1; display: block; padding: calc(var(--tear) + var(--type-unit) * 4.5) 0 calc(var(--tear) + var(--type-unit) * 4.5); background: #fffdf8; color: var(--text); }
 .ab-net-top { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; padding-bottom: calc(var(--type-unit) * 1.25); border-bottom: 1px solid var(--line); }
 .journey-page .ab-net-top .j-eyebrow { color: #77684f; font-size: calc(var(--type-unit) * .75); }
 .journey-page .ab-net-top p { max-width: 27em; font: 300 calc(var(--type-unit) * 1.0625)/1.45 var(--body); text-align: right; }

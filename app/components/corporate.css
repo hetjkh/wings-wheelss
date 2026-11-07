@@ -8,7 +8,13 @@
 .journey-page .k-soft { display: block; color: var(--ochre); }
 
 /* 01 · Four verbs that fill with ink as you read */
-.k-verbs { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--paper); }
+.k-verbs { --tear-face: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--paper); }
+@media (min-width: 992px) {
+  .journey-page .k-verbs {
+    padding-top: calc(var(--tear) + clamp(72px, 8vh, 120px)) !important;
+    padding-bottom: calc(var(--tear-clear) + clamp(64px, 8vh, 120px)) !important;
+  }
+}
 .k-verbs-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 7%; align-items: center; }
 .journey-page .k-verbs .s-title { font-size: calc(var(--u) * 3.25); }
 .k-verb-list { border-top: 1px solid var(--rule); }
@@ -18,7 +24,7 @@
 .k-verb-text { grid-column: 2; font: 300 var(--u)/1.3 var(--body); color: var(--text); opacity: calc(.4 + var(--f) * .6); }
 
 /* 02 · One itinerary strip: the active service opens, the rest stay as a numbered rail. */
-.k-services { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
+.k-services { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
 .k-services .s-title, .k-network .s-title { color: var(--cream); }
 .k-services .s-eyebrow, .k-network .s-eyebrow { color: #c9b28a; }
 .k-services-head { align-items: end; margin-top: 0; }
@@ -60,7 +66,7 @@
 .k-day-caption { position: absolute; left: var(--u); bottom: var(--u); z-index: 1; display: flex; flex-direction: column; gap: 6px; font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--cream); }
 .k-day-caption b { font: 400 calc(var(--u) * 1.5)/1 var(--heading); letter-spacing: .04em; }
 
-.k-day.is-stepped { --s: round(down, calc(var(--steps-progress, 0) * 4.999), 1); position: relative; display: grid; grid-template-rows: 1fr auto; min-height: 100svh; padding: calc(var(--tear) + 90px) 0 calc(var(--u) * 2.25); overflow: clip; background: var(--night); color: var(--cream); }
+.k-day.is-stepped { --tear-face: var(--night); --s: round(down, calc(var(--steps-progress, 0) * 4.999), 1); position: relative; display: grid; grid-template-rows: 1fr auto; min-height: 100svh; padding: calc(var(--tear) + 90px) 0 calc(var(--u) * 2.25); overflow: clip; background: var(--night); color: var(--cream); }
 .is-stepped .k-day-photos { position: absolute; inset: 0; display: block; width: auto; margin: 0; }
 .is-stepped .k-day-photos li { --on: clamp(0, calc(var(--s) - var(--i) + 1), 1); position: absolute; inset: 0; aspect-ratio: auto; background: transparent; clip-path: inset(calc((1 - var(--on)) * 100%) 0 0 0); transition: clip-path 1.2s cubic-bezier(.7, 0, .2, 1); }
 /* An incoming layer opens only after decoding; the previous photo stays underneath. */
@@ -139,7 +145,10 @@
 .k-team-count span { display: inline-flex; align-items: baseline; }
 .k-team-count svg { width: 18px; height: 18px; color: #b5462a; }
 /* 06 · Three widening horizons: each panel opens as the reach grows, and the one you point at opens wider */
-.k-network { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
+.k-network { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
+@media (min-width: 992px) {
+  .journey-page .k-network { padding-bottom: calc(var(--tear-clear) + clamp(160px, 24vh, 280px)) !important; }
+}
 .k-network-head { align-items: end; margin-top: 0; }
 .journey-page .k-network .s-title { font-size: calc(var(--u) * 3.25); }
 .k-network .k-body { margin-top: 0; color: #eadfcbd9; }

@@ -58,11 +58,7 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
 export function HomeHeader() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const masked = document.querySelector(".home-page .au-hero");
-    return observeScrollThreshold(
-      () => masked ? masked.getBoundingClientRect().bottom <= 80 : window.scrollY > 80,
-      setScrolled,
-    );
+    return observeScrollThreshold(() => window.scrollY > 24, setScrolled);
   }, []);
   return <SiteNavigation scrolled={scrolled} />;
 }

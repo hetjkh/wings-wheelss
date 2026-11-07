@@ -58,8 +58,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (section.classList.contains("au-hero") || section.classList.contains("sv-final")) return;
           const hero = section.classList.contains("s-hero");
           if (hero && section.offsetHeight > window.innerHeight + 1) return;
-          const tearIn = { "--top-tear-x": "-16px", "--top-tear-scale": 1.35 };
-          const tearOut = { "--top-tear-x": "16px", "--top-tear-scale": 1, ease: "none" };
+          const tearIn = { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 };
+          const tearOut = { "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none" };
           const pinStart = () => section.offsetHeight > window.innerHeight ? "bottom bottom" : "top top";
           // Chapters that hold the page for their own scene are covered once the scene is done.
           const coverAfter = () => {
@@ -67,6 +67,12 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               .to(section, { "--cover": .62, ease: "none" }, 0)
               .fromTo(next, tearIn, tearOut, 0);
           };
+
+          // Interactive chapters keep scrolling; the next tear only begins after they leave.
+          if (section.dataset.cover === "after") {
+            coverAfter();
+            return;
+          }
 
           // A sideways chapter holds the page while its track travels.
           const track = section.hasAttribute("data-hscroll") ? section.querySelector<HTMLElement>("[data-hscroll-track]") : null;
@@ -97,17 +103,34 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             // Let the larger heading scroll away, then hold the tabs below the navbar.
             // Short viewports keep native scrolling so the full film and controls remain reachable.
             if (stepAnchor && stepAnchor.offsetHeight + (section.querySelector<HTMLElement>(".sb-stage")?.offsetHeight ?? 0) + 160 > window.innerHeight) return;
+            // Hold from the top so taller close copy below the stage does not delay the pin.
             const stepStart = stepAnchor
               ? () => `top+=${stepAnchor.getBoundingClientRect().top - section.getBoundingClientRect().top - 108} top`
-              : pinStart;
+              : "top top";
             let current = -1;
             section.classList.add("is-stepped");
+            const route = section.querySelector<HTMLElement>(".s-route");
+            const stops = route ? Array.from(route.querySelectorAll<HTMLElement>(".s-stop")) : [];
+            if (route) {
+              route.classList.add("is-live");
+              route.style.setProperty("--route-progress", "0");
+              // Measure and pin as a single viewport; reveal the close once the route finishes.
+              section.classList.add("is-pin-active");
+            }
             ScrollTrigger.create({
-              trigger: section, start: stepStart, end: () => `+=${window.innerHeight * .75 * steps}`, pin: section, pinSpacing: true,
+              trigger: section, start: stepStart, end: () => `+=${window.innerHeight * .9 * steps}`, pin: section, pinSpacing: true,
               anticipatePin: 1, invalidateOnRefresh: true,
               onRefresh: self => { section.dataset.stepsStart = String(self.start); section.dataset.stepsEnd = String(self.end); },
+              onToggle: self => {
+                if (!route) return;
+                section.classList.toggle("is-pin-active", self.isActive);
+              },
               onUpdate: self => {
                 section.style.setProperty("--steps-progress", String(self.progress));
+                if (route && stops.length) {
+                  route.style.setProperty("--route-progress", String(self.progress));
+                  stops.forEach((stop, i) => stop.classList.toggle("is-reached", self.progress >= i / (stops.length - 1) - .001));
+                }
                 const index = Math.min(steps - 1, Math.floor(self.progress * steps));
                 if (index === current) return;
                 current = index;
@@ -116,10 +139,15 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             });
             coverAfter();
             cleanups.push(() => {
-              section.classList.remove("is-stepped");
+              section.classList.remove("is-stepped", "is-pin-active");
               section.style.removeProperty("--steps-progress");
               delete section.dataset.stepsStart;
               delete section.dataset.stepsEnd;
+              if (route) {
+                route.classList.remove("is-live");
+                route.style.removeProperty("--route-progress");
+                stops.forEach(stop => stop.classList.remove("is-reached"));
+              }
             });
             return;
           }
@@ -520,9 +548,11 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           });
         });
 
-        // A plane follows the six stops; each stop lights up as it is reached.
+        // Route progress is driven by the stepped pin when data-steps is set on .s-approach.
+        // Fallback scrub for pages that show the route without a pin.
         const route = page.querySelector<HTMLElement>(".s-route");
-        if (route && desktop) {
+        const approach = route?.closest<HTMLElement>(".s-approach");
+        if (route && desktop && !(approach && Number(approach.dataset.steps ?? 0) > 1)) {
           const stops = Array.from(route.querySelectorAll<HTMLElement>(".s-stop"));
           route.classList.add("is-live");
           const state = { p: 0 };

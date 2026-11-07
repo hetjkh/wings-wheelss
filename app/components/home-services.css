@@ -1,10 +1,12 @@
-/* A cream, pinned chapter: the six services are dealt out one card at a time as you scroll. */
+/* A cream, pinned chapter: the six services are dealt out one card at a time as you scroll.
+   Tear lips only — full-section mask + drop-shadow made this pin laggy. */
 .n-services {
-  --n-services-tear: 45px;
+  --n-services-tear: var(--tear-size, clamp(52px, 5vw, 84px));
   --n-services-radius: 32px;
   --n-services-progress: 0;
   --n-services-muted: #8d7b64;
   --n-services-rule: #3d2d2026;
+  --n-services-paper: var(--paper);
   position: relative;
   z-index: 7;
   margin-block: calc(-1 * var(--n-services-tear));
@@ -12,15 +14,40 @@
   background:
     radial-gradient(ellipse 60% 45% at 85% 20%, #efe2cf 0, transparent 60%),
     radial-gradient(ellipse 50% 40% at 10% 90%, #f3eadb 0, transparent 60%),
-    var(--paper);
-  -webkit-mask:
-    url("/images/journey/torn-edge.svg") calc(var(--n-services-tear-x, 0px) - 32px) 0 / calc(100% + 64px) calc(var(--n-services-tear) + 1px) no-repeat,
-    linear-gradient(#000 0 0) 0 var(--n-services-tear) / 100% calc(100% - (var(--n-services-tear) * 2)) no-repeat,
-    url("/images/journey/torn-edge-bottom.svg") calc(var(--n-services-tear-x, 18px) - 32px) 100% / calc(100% + 64px) calc(var(--n-services-tear) + 1px) no-repeat;
-  mask:
-    url("/images/journey/torn-edge.svg") calc(var(--n-services-tear-x, 0px) - 32px) 0 / calc(100% + 64px) calc(var(--n-services-tear) + 1px) no-repeat,
-    linear-gradient(#000 0 0) 0 var(--n-services-tear) / 100% calc(100% - (var(--n-services-tear) * 2)) no-repeat,
-    url("/images/journey/torn-edge-bottom.svg") calc(var(--n-services-tear-x, 18px) - 32px) 100% / calc(100% + 64px) calc(var(--n-services-tear) + 1px) no-repeat;
+    var(--n-services-paper);
+  isolation: isolate;
+}
+.n-services::before,
+.n-services::after {
+  content: "";
+  position: absolute;
+  left: -48px;
+  z-index: 4;
+  width: calc(100% + 96px);
+  height: var(--n-services-tear);
+  background: var(--n-services-paper);
+  transform-origin: center;
+  pointer-events: none;
+}
+.n-services::before {
+  top: calc(-1 * var(--n-services-tear) + 1px);
+  -webkit-mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  transform-origin: center bottom;
+  filter:
+    drop-shadow(0 -1px 0 color-mix(in srgb, var(--n-services-paper) 78%, #2a2118))
+    drop-shadow(-2px -3px 0 color-mix(in srgb, var(--n-services-paper) 88%, #fff8e9))
+    drop-shadow(0 -10px 18px #120e0a33);
+}
+.n-services::after {
+  bottom: calc(-1 * var(--n-services-tear) + 1px);
+  -webkit-mask: url("/images/journey/torn-edge-bottom.svg") center / 100% 100% no-repeat;
+  mask: url("/images/journey/torn-edge-bottom.svg") center / 100% 100% no-repeat;
+  transform-origin: center top;
+  filter:
+    drop-shadow(0 1px 0 color-mix(in srgb, var(--n-services-paper) 78%, #2a2118))
+    drop-shadow(2px 3px 0 color-mix(in srgb, var(--n-services-paper) 88%, #fff8e9))
+    drop-shadow(0 10px 18px #120e0a33);
 }
 
 .n-services-pin {
@@ -322,7 +349,7 @@
 
 /* Below the pin breakpoint the deck becomes a stacked list and the copy stays put. */
 @media (max-width: 999px) {
-  .n-services { --n-services-tear: 32px; --n-services-radius: 24px; }
+  .n-services { --n-services-tear: 48px; --n-services-radius: 24px; }
   .n-services-pin { min-height: 0; padding-top: calc(var(--n-services-tear) + 54px); }
   .n-services-stage {
     grid-template-columns: 1fr;
@@ -352,7 +379,7 @@
 }
 
 @media (max-width: 700px) {
-  .n-services { --n-services-tear: 28px; --n-services-radius: 20px; }
+  .n-services { --n-services-tear: 40px; --n-services-radius: 20px; }
   .n-services-card { aspect-ratio: 4 / 5; }
   .n-services-card-caption strong { font-size: 24px; }
   .n-services-card-line { font-size: 15px; }

@@ -18,6 +18,23 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
     const amount = Number(photo.dataset.editorialParallax) * (desktop ? 1 : .4);
     gsap.fromTo(photo, { yPercent: -amount }, { yPercent: amount, ease: "none", scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .8 } });
   });
+  // Bottom-anchored paper layers stay joined to the surface as the edge lifts and settles.
+  select(".e-clientele").forEach(section => {
+    const under = section.querySelector(".e-clientele-tear-under");
+    const fibre = section.querySelector(".e-clientele-tear-fibre");
+    const face = section.querySelector(".e-clientele-tear-face");
+    if (!under || !fibre || !face) return;
+    const drift = desktop ? 1 : .5;
+    const paper = gsap.timeline({ scrollTrigger: {
+      trigger: section, start: "top bottom", end: "top 22%", scrub: .7,
+    } });
+    paper.fromTo(under, { x: -5 * drift, scaleY: 1.01 }, { x: 3 * drift, scaleY: 1.07, duration: .45, ease: "sine.out" }, 0)
+      .to(under, { x: -2, scaleY: 1.025, duration: .55, ease: "sine.inOut" }, .45)
+      .fromTo(fibre, { x: 3 * drift, scaleY: 1 }, { x: -2 * drift, scaleY: 1.05, duration: .5, ease: "sine.out" }, 0)
+      .to(fibre, { x: 1, scaleY: 1.012, duration: .5, ease: "sine.inOut" }, .5)
+      .fromTo(face, { x: -3 * drift, scaleY: .98 }, { x: 2 * drift, scaleY: 1.025, duration: .55, ease: "sine.out" }, 0)
+      .to(face, { x: 0, scaleY: 1, duration: .45, ease: "sine.inOut" }, .55);
+  });
   if (desktop) {
     const gallery = root.querySelector<HTMLElement>(".e-destinations")!;
     const track = gallery.querySelector<HTMLElement>(".e-destination-track")!;

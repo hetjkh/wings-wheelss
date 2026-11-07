@@ -10,6 +10,11 @@ const clients = [
 
 export function HomeClientele() {
   return <section className="e-clientele" id="clientele" aria-labelledby="clientele-title">
+    <div className="e-clientele-tear" aria-hidden="true">
+      <span className="e-clientele-tear-layer e-clientele-tear-under" />
+      <span className="e-clientele-tear-layer e-clientele-tear-fibre" />
+      <span className="e-clientele-tear-layer e-clientele-tear-face" />
+    </div>
     <div className="e-shell">
       <div className="e-section-bar">
         <span className="e-label"><span>06</span><span>Organisations we travel with</span></span>

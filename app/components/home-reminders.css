@@ -1,20 +1,30 @@
 .e-reminders {
   position: relative;
   z-index: 9;
+  --e-surface: #f3ebe0;
   color: var(--ink);
   background: #f3ebe0;
   overflow: visible;
+  margin-top: calc(-1 * var(--e-tear, var(--tear-size)));
+  padding-top: calc(var(--tear, 58px));
 }
 
 .e-reminders::before {
   content: "";
   position: absolute;
-  top: calc(-1 * var(--e-tear) + 1px);
-  left: 0;
-  width: 100%;
-  height: var(--e-tear);
-  background: #f3ebe0;
-  mask: url("/images/journey/torn-edge.svg") calc(var(--e-tear-x, 0px) - 32px) 0 / calc(100% + 64px) 100% no-repeat;
+  top: calc(-1 * var(--e-tear, var(--tear-size)) + 1px);
+  left: calc(-48px + var(--e-tear-x, 0px));
+  z-index: 2;
+  width: calc(100% + 96px);
+  height: var(--e-tear, var(--tear-size));
+  background: var(--e-surface);
+  -webkit-mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  transform-origin: center bottom;
+  filter: var(--e-tear-face-shadow,
+    drop-shadow(0 -1px 0 color-mix(in srgb, var(--e-surface) 78%, #2a2118))
+    drop-shadow(-2px -3px 0 color-mix(in srgb, var(--e-surface) 88%, #fff8e9))
+    drop-shadow(0 -10px 18px #120e0a33));
   pointer-events: none;
 }
 

@@ -10,12 +10,7 @@
 .about-page main > section, .about-page .pin-spacer > section { position: relative; }
 .about-page .j-footer { z-index: 12; }
 
-.au-torn {
-  margin-top: calc(-1 * var(--tear));
-  mask:
-    url('/images/journey/torn-edge.svg') -32px 0 / calc(100% + 64px) calc(var(--tear) + 1px) no-repeat,
-    linear-gradient(#000 0 0) 0 var(--tear) / 100% calc(100% - var(--tear)) no-repeat;
-}
+/* .au-torn lip styles live with .j-torn-top in journey.css (clientele paper tear). */
 
 /* Shared type */
 .about-page .au-h2 { font: 400 calc(var(--u) * 4)/.94 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--ink); }
@@ -54,6 +49,7 @@
 
 /* 1. Hero: the photo starts inside a map of Africa and the Gulf, then the map grows past the frame. */
 .au-hero { z-index: 1; height: 100svh; min-height: 640px; overflow: clip; isolation: isolate; background: #f7f1e6; color: var(--ink); }
+.about-page .au-hero.is-pinned { z-index: 8; }
 /* The photo and the cream copy share one mask so their map edges always line up. */
 .au-hero-photo, .au-hero-ghost {
   --map: 1;
@@ -65,7 +61,14 @@
 .au-hero-ghost { z-index: 3; color: var(--cream); }
 .au-hero-photo-inner { position: absolute; inset: -3%; scale: 1; }
 .au-hero-photo img { object-fit: cover; }
-.au-hero-shade { position: absolute; inset: 0; opacity: .35; background: linear-gradient(90deg, #1a120cb8 0%, #1a120c70 42%, #1a120c14 78%), linear-gradient(0deg, #1a120c80, transparent 45%); }
+.au-hero-shade {
+  position: absolute;
+  inset: 0;
+  opacity: .35;
+  background:
+    linear-gradient(90deg, #1a120cb8 0%, #1a120c70 42%, #1a120c14 78%),
+    linear-gradient(0deg, #0f0b08f2 0%, #0f0b08cc 22%, #0f0b0880 48%, #0f0b0826 72%, transparent 88%);
+}
 .au-hero-inner { position: relative; z-index: 1; height: 100%; display: grid; grid-template-rows: auto 1fr auto; padding: calc(64px + var(--u) * 3) 0 calc(var(--u) * 5.5); }
 .au-hero-inner > *, .au-hero-title .au-line { width: fit-content; margin-inline: auto; }
 .about-page .au-hero-eyebrow { padding: 9px 18px; border-radius: 100px; background: #f7f1e6; color: var(--ink); font-size: calc(var(--u) * .75); letter-spacing: .24em; box-shadow: 0 10px 30px -18px #3d2d2080; }
@@ -95,7 +98,7 @@
 .au-ribbon li::after { content: '✦'; color: var(--ochre); font-size: .8em; }
 
 /* 2. Who we are */
-.au-who { z-index: 2; background: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6.5); }
+.au-who { z-index: 2; background: var(--paper); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
 .au-who-head { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 8%; margin-top: calc(var(--u) * 4); align-items: start; }
 .au-who-ink { font: 400 calc(var(--u) * 1.75)/1.28 var(--heading); color: var(--ink); letter-spacing: .005em; }
 .au-who-lead { max-width: 30em; margin-top: var(--u); padding-left: calc(var(--u) * 1.3); border-left: 1px solid var(--ochre); font: 300 calc(var(--u) * 1.15)/1.5 var(--body); color: var(--text); }
@@ -126,24 +129,27 @@
 .au-aud-cursor-photo img, .au-aud-thumb img { object-fit: cover; }
 
 /* 3. What we do: boarding passes travel past on a pinned horizontal route. */
-.au-process { z-index: 3; background: var(--night); color: var(--cream); padding: calc(var(--tear) + var(--u) * 4.5) 0 calc(var(--u) * 4); }
-.au-process-pin { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(var(--u) * 2.5); }
-.au-process.is-pinned { height: 100svh; padding-bottom: calc(var(--u) * 2); }
-.au-process.is-pinned .au-process-pin { height: 100%; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: calc(var(--u) * 1.6); }
-.au-process-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-.about-page .au-process .au-h2 { color: var(--cream); font-size: min(calc(var(--u) * 3.6), 7.4svh); }
+.au-process { z-index: 3; --tear-face: var(--night); background: var(--night); color: var(--cream); padding: calc(var(--tear) + var(--u) * 2.25) 0 var(--tear-clear); }
+.au-process-pin { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(var(--u) * 2); min-height: 0; }
+.au-process.is-pinned { height: 100svh; padding: calc(var(--tear) + var(--u) * 1.75) 0 calc(var(--u) * 1.5); }
+.au-process.is-pinned .au-process-pin { height: 100%; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: clamp(10px, 1.4svh, 18px); min-height: 0; }
+.au-process-head { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-shrink: 0; }
+.about-page .au-process .au-h2 { color: var(--cream); font-size: min(calc(var(--u) * 3.2), 6.2svh); }
+.about-page .au-process.is-pinned .au-h2 { font-size: min(calc(var(--u) * 2.7), 5.2svh); }
 .about-page .au-process .au-h2 em { color: var(--sand); }
 .au-process .au-kicker { color: var(--sand); }
-.au-process-sub { display: grid; text-align: right; font: 400 calc(var(--u) * 1.4)/1.25 var(--heading); color: #b9a888; }
+.au-process-sub { display: grid; text-align: right; font: 400 calc(var(--u) * 1.2)/1.25 var(--heading); color: #b9a888; }
+.au-process.is-pinned .au-process-sub { font-size: calc(var(--u) * 1.05); }
 .au-process-sub span { color: var(--cream); }
 .au-process-window { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .au-process-window::-webkit-scrollbar { display: none; }
-.au-process.is-pinned .au-process-window { overflow: visible; display: flex; align-items: center; }
-.au-process-track { display: flex; gap: calc(var(--u) * 1.75); width: max-content; margin: 0; padding: calc(var(--u) * 1.5) calc(var(--u) * 2.5); list-style: none; will-change: transform; }
+.au-process.is-pinned .au-process-window { overflow: hidden; display: flex; align-items: center; }
+.au-process-track { display: flex; gap: calc(var(--u) * 1.75); width: max-content; margin: 0; padding: calc(var(--u) * .75) calc(var(--u) * 2.5); list-style: none; will-change: transform; }
 .au-pass-wrap { scroll-snap-align: center; transform-origin: 50% 100%; }
+.au-process.is-pinned .au-process-window { min-height: 0; align-self: stretch; }
 .au-pass {
   display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.1fr) calc(var(--u) * 4.5);
-  width: min(calc(var(--u) * 50), 58vw); height: min(calc(var(--u) * 25), 46svh);
+  width: min(calc(var(--u) * 50), 58vw); height: min(calc(var(--u) * 22), 36svh);
   overflow: hidden; border-radius: 22px; background: #fbf5ea; color: var(--ink);
   box-shadow: 0 40px 70px -40px #000; transition: transform .7s var(--ease), box-shadow .7s;
 }
@@ -181,8 +187,8 @@
 
 /* 4. Our story */
 /* Our story: three chapters on the left, each one deals a photograph onto the pile. */
-.au-story { z-index: 4; background: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); }
-.au-story.is-pinned { height: 100svh; display: flex; align-items: center; padding: calc(var(--tear) + 74px) 0 calc(var(--u) * 2); }
+.au-story { z-index: 4; background: var(--paper); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
+.au-story.is-pinned { height: 100svh; display: flex; align-items: center; padding: calc(var(--tear) + 40px) 0 calc(var(--u) * 2); }
 .au-story-stage { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 6%; align-items: center; }
 .au-chapters { margin: calc(var(--u) * 2.6) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
 .au-chapter { position: relative; display: grid; grid-template-columns: calc(var(--u) * 3.2) minmax(0, 1fr); gap: calc(var(--u) * 1); padding: calc(var(--u) * 1.3) 0; border-bottom: 1px solid var(--rule); color: var(--ink); transition: color .6s var(--ease); }
@@ -224,7 +230,7 @@
 .au-words li:hover .au-word-pill { width: calc(var(--u) * 14); }
 
 /* 5. Network */
-.au-network { z-index: 5; background: #f3ead9; color: var(--ink); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); }
+.au-network { z-index: 5; --tear-face: #f3ead9; background: #f3ead9; color: var(--ink); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
 .au-network .au-bar { border-color: #d6c7ae; }
 .about-page .au-net-title { display: grid; gap: calc(var(--u) * .4); margin-top: calc(var(--u) * 3.5); color: var(--ink); font-weight: 400; }
 .au-net-row { display: flex; align-items: center; gap: calc(var(--u) * 1.8); }
@@ -274,7 +280,7 @@
 .au-advantages p { align-self: start; font: 300 calc(var(--u) * .95)/1.4 var(--body); color: var(--text); }
 
 /* 6. What guides us: principle cards stack on top of each other. */
-.au-values { z-index: 6; background: var(--paper); padding: calc(var(--tear) + var(--u) * 5.5) 0 calc(var(--u) * 5); }
+.au-values { z-index: 6; background: var(--paper); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
 .au-values-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 6%; align-items: start; }
 .au-values-side { position: sticky; top: calc(74px + var(--u) * 3); }
 .au-values-steps { display: grid; margin: calc(var(--u) * 3) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
@@ -311,8 +317,18 @@
 .au-core-row-reverse li { color: transparent; -webkit-text-stroke: 1px #b9a78f; }
 .au-core-row li:hover { color: var(--ochre); -webkit-text-stroke-color: var(--ochre); }
 
-/* 7. Business & leisure: the divider follows the pointer. */
-.au-split { z-index: 7; height: 100svh; min-height: 640px; background: var(--paper); }
+/* 7. Business & leisure: the divider follows the pointer.
+   Taller than one viewport so CTAs aren’t sharing the frame with the next chapter. */
+.au-split {
+  z-index: 7;
+  --tear-face: var(--paper);
+  --split-hold: clamp(96px, 14vh, 180px);
+  height: calc(100svh + var(--tear-size) + var(--split-hold));
+  min-height: calc(640px + var(--tear-size) + var(--split-hold));
+  background: var(--paper);
+}
+/* Full-bleed photo stage — no cream band; copy clears the next lip instead. */
+.journey-page .au-split.au-torn { padding-top: 0 !important; padding-bottom: 0 !important; }
 .au-split-stage { --split: .5; position: relative; height: 100%; overflow: hidden; background: var(--night); }
 .au-split-panel { position: absolute; inset: 0; color: var(--cream); }
 .au-split-business { clip-path: inset(0 calc((1 - var(--split)) * 100%) 0 0); }
@@ -320,7 +336,7 @@
 .au-split-photo { position: absolute; inset: 0 -4%; transform: translateX(calc((var(--split) - .5) * 10%)); }
 .au-split-photo img { object-fit: cover; }
 .au-split-shade { position: absolute; inset: 0; background: linear-gradient(0deg, #1a120cd9 0%, #1a120c40 55%, #1a120c26 100%); }
-.au-split-copy { position: absolute; bottom: calc(var(--u) * 4); left: calc(var(--u) * 2.5); display: grid; justify-items: start; gap: calc(var(--u) * 1.4); max-width: 30%; }
+.au-split-copy { position: absolute; bottom: calc(var(--tear-size) + var(--tear-breath) + var(--split-hold)); left: calc(var(--u) * 2.5); display: grid; justify-items: start; gap: calc(var(--u) * 1.4); max-width: 30%; }
 .au-split-leisure .au-split-copy { left: auto; right: calc(var(--u) * 2.5); justify-items: end; text-align: right; }
 .au-split-kicker { font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--sand); }
 .about-page .au-split h2 { display: grid; font: 400 calc(var(--u) * 5.2)/.9 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
@@ -333,8 +349,8 @@
 .au-split-badge p span { font-size: 1.5em; color: var(--ink); }
 @keyframes au-spin { to { transform: rotate(360deg); } }
 
-/* 8. People */
-.au-people { z-index: 8; background: #f3ecdf; padding: calc(var(--tear) + var(--u) * 6) 0 0; }
+/* 8. People — lip face must match this fill (no white strip over cream). */
+.au-people { z-index: 8; --tear-face: #f3ecdf; background: #f3ecdf; padding: calc(var(--tear) + var(--u) * 2.75) 0 var(--tear-clear); }
 .au-people-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 6%; align-items: end; }
 .au-people-intro { display: grid; justify-items: start; gap: calc(var(--u) * 1.6); }
 .au-people-intro p { max-width: 30em; font: 300 calc(var(--u) * 1.15)/1.55 var(--body); color: var(--text); }
@@ -370,7 +386,7 @@
 @media (min-width: 992px) and (max-height: 820px) {
   .au-pass { height: min(calc(var(--u) * 22), 42svh); }
   .au-services li { font-size: calc(var(--u) * 1.2); }
-  .au-process.is-pinned { padding-top: calc(var(--tear) + var(--u) * 3); }
+  .au-process.is-pinned { padding-top: calc(var(--tear) + var(--u) * 1.5); }
 }
 
 @media (max-width: 1199px) {
@@ -436,7 +452,7 @@
   .au-split-photo { inset: 0; transform: none; }
   .au-split-business .au-split-photo img { object-position: 25% center; }
   .au-split-leisure .au-split-photo img { object-position: 75% center; }
-  .au-split-copy, .au-split-leisure .au-split-copy { left: 20px; right: 20px; bottom: 36px; max-width: none; justify-items: start; text-align: left; }
+  .au-split-copy, .au-split-leisure .au-split-copy { left: 20px; right: 20px; bottom: calc(var(--tear-size) + clamp(48px, 10vh, 96px)); max-width: none; justify-items: start; text-align: left; }
   .about-page .au-split h2 { font-size: clamp(44px, 12vw, 72px); }
   .au-split h2 span { font-size: 18px; }
   .au-split-divider { display: none; }
@@ -463,7 +479,7 @@
 /* Phone layout: editorial cards, a readable route map, and full-screen story beats. */
 @media (max-width: 767px) {
   .about-page .au-h2 { font-size: clamp(32px, 8.2vw, 48px); }
-  .au-who { padding: calc(var(--tear) + 32px) 0 48px; }
+  .au-who { padding-top: calc(var(--tear) + 20px); padding-bottom: var(--tear-clear); }
   .au-who-head { display: none; }
   .au-who-mobile { display: block; }
   .about-page .au-who-mobile-title { margin: 26px 0 24px; font: 400 clamp(32px, 9vw, 46px)/1.02 var(--heading); letter-spacing: -.025em; text-transform: none; color: var(--ink); }
@@ -508,11 +524,11 @@
   .au-principle-card { padding: 20px; }
   .au-split-badge { display: none; }
   .au-split-stage { display: grid; overflow: hidden; }
-  .au-split-panel { position: relative; top: auto; height: min(78svh, 680px); min-height: 520px; }
+  .au-split-panel { position: relative; top: auto; height: min(88svh, 760px); min-height: 560px; }
 }
 
 @media (max-width: 767px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
-  .au-process.is-mobile-pinned { height: 100svh; padding: calc(var(--tear) + 68px) 0 18px; }
+  .au-process.is-mobile-pinned { height: 100svh; padding: calc(var(--tear) + 36px) 0 18px; }
   .au-process.is-mobile-pinned .au-process-pin { grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; }
   .au-process.is-mobile-pinned .au-process-head { gap: 0; }
   .au-process.is-mobile-pinned .au-kicker, .au-story.is-mobile-pinned .au-kicker { margin-bottom: 8px; }
@@ -531,7 +547,7 @@
   .au-process.is-mobile-pinned .au-process-count { min-width: 5em; font-size: 9px; }
   .au-process.is-mobile-pinned .au-process-plane { width: 28px; height: 28px; }
 
-  .au-story.is-mobile-pinned { height: 100svh; padding: calc(var(--tear) + 68px) 0 18px; align-items: stretch; }
+  .au-story.is-mobile-pinned { height: 100svh; padding: calc(var(--tear) + 36px) 0 18px; align-items: stretch; }
   .au-story.is-mobile-pinned .au-story-stage { height: 100%; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 10px; align-items: start; }
   .about-page .au-story.is-mobile-pinned .au-h2 { font-size: clamp(28px, 7vw, 39px); }
   .au-story.is-mobile-pinned .au-chapters { position: relative; height: clamp(148px, 22svh, 178px); margin-top: 12px; border: 0; }

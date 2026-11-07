@@ -55,7 +55,7 @@
 .a-arrival-reasons li { padding: 8px 12px; border: 1px solid var(--rule); border-radius: 30px; font: 300 clamp(13px, 1vw, 18px)/1.2 var(--body); }
 
 /* Delegations: an exhibition photograph and a clear, practical travel brief. */
-.a-delegates { padding-block: clamp(64px, 6vw, 112px); border-top: 1px solid var(--line); background: #f0ece5; scroll-margin-top: 64px; }
+.a-delegates { padding: calc(var(--tear) + clamp(48px, 5vw, 88px)) 0 clamp(64px, 6vw, 112px); background: #f0ece5; scroll-margin-top: 64px; }
 .a-delegate-header, .a-delegate-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 100px); }
 .a-delegate-header { align-items: end; margin-bottom: clamp(32px, 3.5vw, 60px); }
 .a-delegate-header .j-eyebrow { margin-bottom: 22px; color: #73634f; }
@@ -111,7 +111,7 @@
 .a-journey-statement span { color: var(--ochre); }
 
 /* Editorial purpose tiles lead to the relevant destinations and travel services. */
-.a-purposes { background: var(--night); color: var(--cream); }
+.a-purposes { --tear-face: var(--night); background: var(--night); color: var(--cream); }
 .africa-page .a-purposes .s-title { color: var(--cream); }
 .a-purposes .s-eyebrow { color: var(--sand); }
 .a-purpose-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }

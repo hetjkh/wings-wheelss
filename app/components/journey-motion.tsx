@@ -57,8 +57,8 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
             }, 0)
             .to(select(".j-hero-content"), { y: -30, opacity: .25, ease: "none" }, 0)
             .to(select(".j-scroll-note"), { opacity: 0, duration: .2, ease: "none" }, 0)
-            .fromTo(intro, { "--top-tear-x": "-16px", "--top-tear-scale": 1.3 }, {
-              "--top-tear-x": "16px", "--top-tear-scale": 1, ease: "none",
+            .fromTo(intro, { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 }, {
+              "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
             }, 0);
         }
 
@@ -146,8 +146,8 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           })
             .to(values, { "--values-shade": .16, ease: "none" }, 0)
             .to(select(".j-values > .j-shell"), { y: -20, opacity: .6, ease: "none" }, 0)
-            .fromTo(split, { "--top-tear-x": "-14px", "--top-tear-scale": 1.3 }, {
-              "--top-tear-x": "14px", "--top-tear-scale": 1, ease: "none",
+            .fromTo(split, { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 }, {
+              "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
             }, 0);
         }
 
@@ -163,8 +163,8 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
             },
           })
             .to(split, { "--split-shade": .35, ease: "none" }, 0)
-            .fromTo(team, { "--top-tear-x": "-14px", "--top-tear-scale": 1.3 }, {
-              "--top-tear-x": "14px", "--top-tear-scale": 1, ease: "none",
+            .fromTo(team, { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 }, {
+              "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
             }, 0);
         }
 

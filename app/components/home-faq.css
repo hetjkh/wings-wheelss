@@ -1,22 +1,30 @@
 .e-faq {
   position: relative;
   z-index: 9;
-  padding: 70px 0 100px;
+  --e-surface: #f7f4eb;
+  margin-top: calc(-1 * var(--e-tear, var(--tear-size)));
+  padding: calc(var(--tear, 70px)) 0 100px;
   color: var(--ink);
   background:
     linear-gradient(180deg, #f7f4ebf2 0%, #f7f4ebe8 55%, #f7f4ebcc 100%),
     url("/images/journey/mountains.webp") center 70% / cover no-repeat;
 }
-
 .e-faq::before {
   content: "";
   position: absolute;
-  top: calc(-1 * var(--e-tear) + 1px);
-  left: 0;
-  width: 100%;
-  height: var(--e-tear);
-  background: #f7f4eb;
-  mask: url("/images/journey/torn-edge.svg") calc(var(--e-tear-x, 12px) - 32px) 0 / calc(100% + 64px) 100% no-repeat;
+  top: calc(-1 * var(--e-tear, var(--tear-size)) + 1px);
+  left: calc(-48px + var(--e-tear-x, 12px));
+  z-index: 2;
+  width: calc(100% + 96px);
+  height: var(--e-tear, var(--tear-size));
+  background: var(--e-surface);
+  -webkit-mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  mask: url("/images/home/clientele-paper-tear.svg") center / 100% 100% no-repeat;
+  transform-origin: center bottom;
+  filter: var(--e-tear-face-shadow,
+    drop-shadow(0 -1px 0 color-mix(in srgb, var(--e-surface) 78%, #2a2118))
+    drop-shadow(-2px -3px 0 color-mix(in srgb, var(--e-surface) 88%, #fff8e9))
+    drop-shadow(0 -10px 18px #120e0a33));
   pointer-events: none;
 }
 

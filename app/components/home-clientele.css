@@ -1,22 +1,37 @@
 .e-clientele {
   position: relative;
   z-index: 8;
-  padding: 58px 0 105px;
+  margin-top: calc(-1 * var(--e-tear, var(--tear-size, clamp(72px, 7.2vw, 118px))));
+  padding: calc(var(--tear, 58px)) 0 105px;
   background: #eeeae2;
   color: #403b32;
   scroll-margin-top: 90px;
 }
-.e-clientele::before {
-  content: '';
+.e-clientele-tear {
+  --clientele-tear-height: var(--e-tear, var(--tear-size, clamp(72px, 7.2vw, 118px)));
   position: absolute;
-  top: calc(-1 * var(--e-tear) + 1px);
-  left: 0;
-  width: 100%;
-  height: var(--e-tear);
-  background: #eeeae2;
-  mask: url('/images/journey/torn-edge.svg') calc(var(--e-tear-x, 0px) - 32px) 0 / calc(100% + 64px) 100% no-repeat;
+  inset: auto 0 calc(100% - 1px);
+  height: calc(var(--clientele-tear-height) + 20px);
+  overflow: hidden;
+  filter: drop-shadow(0 -10px 18px #120e0a33);
+  clip-path: inset(-12px 0 0);
   pointer-events: none;
 }
+.e-clientele-tear-layer {
+  position: absolute;
+  bottom: 0;
+  left: -48px;
+  width: calc(100% + 96px);
+  height: var(--clientele-tear-height);
+  mask: url('/images/home/clientele-paper-tear.svg') center / 100% 100% no-repeat;
+  transform-origin: center bottom;
+}
+.e-clientele-tear-under { background: #ddd4c3; transform: translateX(-2px) scaleY(1.025); }
+.e-clientele-tear-fibre {
+  background: #f5f0e6;
+  transform: translateX(1px) scaleY(1.012);
+}
+.e-clientele-tear-face { background: #eeeae2; }
 .e-clientele .e-section-bar { color: #736c60; border-color: #403b3226; }
 .e-clientele .e-label { gap: 16px; }
 .e-clientele-heading { display: flex; align-items: end; justify-content: space-between; gap: 50px; padding: 62px 0 48px; }

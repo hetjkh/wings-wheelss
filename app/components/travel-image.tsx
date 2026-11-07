@@ -6,8 +6,13 @@ import dimensions from "./image-dimensions.json";
 
 const photos: Record<string, number[]> = dimensions;
 
+type TravelImageProps = ImageProps & {
+  /** Keep the given sizes; expanding hover panels must not re-resolve srcset mid-animation. */
+  lockSizes?: boolean;
+};
+
 /** Match the downloaded resolution to the photograph after object-fit: cover crops it. */
-export default function TravelImage({ sizes, quality, ...props }: ImageProps) {
+export default function TravelImage({ sizes, quality, lockSizes = false, ...props }: TravelImageProps) {
   const image = useRef<HTMLImageElement>(null);
   const [coverWidth, setCoverWidth] = useState<number>();
   const source = typeof props.src === "string" ? props.src : "";
@@ -16,7 +21,7 @@ export default function TravelImage({ sizes, quality, ...props }: ImageProps) {
 
   useEffect(() => {
     const element = image.current;
-    if (!element || !props.fill || !aspect) return;
+    if (!element || !props.fill || !aspect || lockSizes) return;
 
     const measure = (width: number, height: number) => {
       if (!width || !height) return;
@@ -33,7 +38,7 @@ export default function TravelImage({ sizes, quality, ...props }: ImageProps) {
     });
     observer.observe(element);
     return () => observer.disconnect();
-  }, [source, props.fill, aspect]);
+  }, [source, props.fill, aspect, lockSizes]);
 
-  return <NextImage {...props} ref={image} sizes={props.fill && photo && coverWidth ? `${coverWidth}px` : sizes} quality={quality ?? (photo ? 90 : undefined)} />;
+  return <NextImage {...props} ref={image} sizes={props.fill && photo && coverWidth && !lockSizes ? `${coverWidth}px` : sizes} quality={quality ?? (photo ? 90 : undefined)} />;
 }

@@ -6,13 +6,13 @@ import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 export type JourneyLink = { label: string; href: string };
 
-/** The header settles into its compact state as the intro reaches the top. */
+/** Compact floating nav as soon as the page starts to move. */
 export function JourneyHeader({ introId = "about" }: { introId?: string }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const intro = document.getElementById(introId);
     return observeScrollThreshold(
-      () => intro ? intro.getBoundingClientRect().top <= 88 : window.scrollY > 48,
+      () => window.scrollY > 24 || (intro ? intro.getBoundingClientRect().top <= 96 : false),
       setScrolled,
     );
   }, [introId]);

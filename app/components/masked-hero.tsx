@@ -139,8 +139,20 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
           const fromHero = aside.getBoundingClientRect().left - xNow - section.getBoundingClientRect().left;
           return section.clientWidth - aside.offsetWidth - inset - fromHero;
         };
-        // Measure the home hero's pin before the downstream services and travel pins.
-        const timeline = gsap.timeline({ scrollTrigger: { trigger: section, start: "top top", end: "+=120%", pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: page.classList.contains("home-page") ? 4 : 0 } })
+        // Reveal finishes first, then hold — next chapter must not tear over mid-animation.
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=240%",
+            pin: true,
+            scrub: 1.2,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            refreshPriority: page.classList.contains("home-page") ? 4 : 0,
+            onToggle: self => section.classList.toggle("is-pinned", self.isActive),
+          },
+        })
           .fromTo(q(".au-hero-photo, .au-hero-ghost"), { "--map": 1 }, { "--map": 34, ease: "power2.in", duration: 1 }, 0)
           .fromTo(page, { "--hero-fg": "#3d2d20" }, { "--hero-fg": "#fff8e9", ease: "none", duration: .25 }, .3)
           .fromTo(heroInner, { scale: 1.16 }, { scale: 1, ease: "none", duration: 1 }, 0)
@@ -169,6 +181,8 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             .set(q(".au-hero-aside p"), { textAlign: "right" }, .9)
             .fromTo(one(".au-hero-rise"), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "power2.out", duration: .65 }, .35);
         }
+
+        timeline.to({}, { duration: .7 });
 
         const xTo = gsap.quickTo(heroInner, "x", { duration: 1, ease: "power3" });
         const yTo = gsap.quickTo(heroInner, "y", { duration: 1, ease: "power3" });

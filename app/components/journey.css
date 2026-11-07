@@ -24,20 +24,92 @@
 .j-button-outline:hover { background: #eae3d4; }
 .j-button-outline-light { border-color: #b5a784; color: #fff8e8; }
 .j-eyebrow { display: block; text-transform: uppercase; font-family: var(--body); font-size: 10px; letter-spacing: .2em; line-height: 1.5; }
-/* Tears cut through the element itself, so whatever lies beneath shows through unaltered. */
-.journey-page { --tear: 34px; }
-.j-torn-top, .j-torn-bottom {
-  --top-tear: 0px; --bottom-tear: 0px;
-  mask:
-    url('/images/journey/torn-edge.svg') calc(var(--top-tear-x, 0px) - 32px) 0 / calc(100% + 64px) calc(var(--top-tear) + 1px) no-repeat,
-    linear-gradient(#000 0 0) 0 var(--top-tear) / 100% calc(100% - var(--top-tear) - var(--bottom-tear)) no-repeat,
-    url('/images/journey/torn-edge-bottom.svg') calc(var(--tear-drift, 0px) - 32px) 100% / calc(100% + 64px) calc(var(--bottom-tear) + 1px) no-repeat;
+/* Clientele-style paper tear: thick layered lip over the previous chapter (not a thin section mask).
+   --tear-size = jagged lip height / overlap (lip sits above the section)
+   --tear = modest top padding under that lip — do NOT re-add tear-size here
+   --tear-clear = bottom padding so prior copy stays above the next lip
+   --tear-face = this section’s paper colour for the lip */
+.journey-page {
+  --tear-size: clamp(52px, 5vw, 84px);
+  --tear-breath: 12px;
+  --tear: var(--tear-breath);
+  --tear-clear: calc(var(--tear-size) + clamp(36px, 3.5vw, 56px));
+  --tear-face: var(--paper);
+  --tear-under: color-mix(in srgb, var(--tear-face) 78%, #2a2118);
+  /* Mix toward paper fibre, not near-white — a white fringe reads as the wrong lip colour. */
+  --tear-fibre: color-mix(in srgb, var(--tear-face) 90%, #b7a68c);
+  --tear-mask: url("/images/home/clientele-paper-tear.svg");
+  --tear-mask-bottom: url("/images/journey/torn-edge-bottom.svg");
 }
-.j-torn-top { --top-tear: calc(var(--tear) * var(--top-tear-scale, 1)); }
-.j-torn-bottom { --bottom-tear: calc(var(--tear) * var(--tear-stretch, 1)); }
-/* Full-width tears overlap the neighbouring section so it fills the cut. */
-.j-intro.j-torn-top, .j-process.j-torn-top, .j-values.j-torn-top, .j-split.j-torn-top, .j-team.j-torn-top { margin-top: calc(-1 * var(--tear)); }
-.j-process.j-torn-bottom { margin-bottom: calc(-1 * var(--tear)); }
+.j-torn-top, .j-torn-bottom, .au-torn {
+  --top-tear: 0px;
+  --bottom-tear: 0px;
+  position: relative;
+  isolation: isolate;
+}
+.j-torn-top, .au-torn {
+  --top-tear: calc(var(--tear-size) * var(--top-tear-scale, 1));
+  margin-top: calc(-1 * var(--top-tear));
+}
+/* Sitewide: keep copy clear of the next lip, and stop double-counting tear height at the top.
+   !important beats per-page padding shorthand that still used the old oversized top gap. */
+.journey-page :is(.j-torn-top, .au-torn) {
+  padding-top: calc(var(--tear) + clamp(24px, 2.5vw, 40px)) !important;
+  padding-bottom: var(--tear-clear) !important;
+}
+.journey-page :is(.j-torn-top, .au-torn).is-pinned,
+.journey-page :is(.j-torn-top, .au-torn).is-mobile-pinned {
+  padding-top: calc(var(--tear) + clamp(16px, 2svh, 28px)) !important;
+  padding-bottom: calc(var(--u, 16px) * 1.5) !important;
+}
+.j-torn-bottom {
+  --bottom-tear: calc(var(--tear-size) * var(--tear-stretch, 1));
+  margin-bottom: calc(-1 * var(--bottom-tear));
+}
+/* Face lip — same SVG + layered shadows as the clientele section.
+   --tear-face must match this section’s background fill. */
+.j-torn-top::before, .au-torn::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--top-tear) + 1px);
+  left: calc(-48px + var(--top-tear-x, 0px));
+  z-index: 6;
+  width: calc(100% + 96px);
+  height: var(--top-tear);
+  background-color: var(--tear-face);
+  -webkit-mask: var(--tear-mask) center / 100% 100% no-repeat;
+  mask: var(--tear-mask) center / 100% 100% no-repeat;
+  transform-origin: center bottom;
+  filter:
+    drop-shadow(0 -1px 0 var(--tear-under))
+    drop-shadow(-2px -3px 0 var(--tear-fibre))
+    drop-shadow(0 -10px 18px #120e0a33);
+  pointer-events: none;
+}
+.j-torn-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: calc(-1 * var(--bottom-tear) + 1px);
+  left: calc(-48px + var(--tear-drift, 0px));
+  z-index: 6;
+  width: calc(100% + 96px);
+  height: var(--bottom-tear);
+  background-color: var(--tear-face);
+  -webkit-mask: var(--tear-mask-bottom) center / 100% 100% no-repeat;
+  mask: var(--tear-mask-bottom) center / 100% 100% no-repeat;
+  transform-origin: center top;
+  filter:
+    drop-shadow(0 1px 0 var(--tear-under))
+    drop-shadow(2px 3px 0 var(--tear-fibre))
+    drop-shadow(0 10px 18px #120e0a33);
+  pointer-events: none;
+}
+/* Keep hero type above the next chapter’s overlapping tear. */
+.au-hero:has(+ .j-torn-top) .au-hero-inner,
+.au-hero:has(+ .au-torn) .au-hero-inner,
+.au-hero:has(+ .n-services) .au-hero-inner {
+  padding-bottom: calc(var(--tear-size) + var(--tear-breath) + var(--u, 16px) * 4);
+}
 /* A quiet masthead sits directly on the photograph. */
 .j-header { position: fixed; z-index: 40; inset: 0 0 auto; color: #fff9ec; transition: background .25s, color .25s, box-shadow .25s; }
 .j-header-inner { min-height: 88px; display: flex; align-items: center; gap: 30px; }
@@ -109,8 +181,8 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
 .j-network-landscape {
   mask:
     linear-gradient(var(--fade-dir), #000 55%, transparent) 0 0 / 100% 100% no-repeat,
-    linear-gradient(0deg, #000 72%, transparent) 0 0 / 100% calc(100% - var(--tear)) no-repeat,
-    url('/images/journey/torn-edge-bottom.svg') 0 100% / 100% calc(var(--tear) + 1px) no-repeat;
+    linear-gradient(0deg, #000 72%, transparent) 0 0 / 100% calc(100% - var(--tear-size)) no-repeat,
+    url('/images/journey/torn-edge-bottom.svg') 0 100% / 100% calc(var(--tear-size) + 1px) no-repeat;
   mask-composite: intersect, add, add;
 }
 .j-network-africa { left: 0; width: 36%; --fade-dir: 90deg; }
@@ -316,7 +388,12 @@ video.j-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; ob
   .j-faq-list { border-left: 0; padding-left: 0; }
   .j-faq-list summary { font-size: 17px; padding-block: 18px; }
   .j-faq-list details > p { font-size: 16px; padding-right: 8px; }
-  .journey-page { --tear: 22px; }
+  .journey-page {
+    --tear-size: clamp(44px, 10vw, 64px);
+    --tear-breath: 10px;
+    --tear: var(--tear-breath);
+    --tear-clear: calc(var(--tear-size) + 28px);
+  }
 }
 @media (prefers-reduced-motion: reduce) { .journey-page *, .journey-page *::before, .journey-page *::after { transition: none !important; animation: none !important; } }
 

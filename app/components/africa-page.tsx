@@ -177,7 +177,7 @@ export default function AfricaPage() {
         </div>
       </section>
 
-      <section className="a-delegates" id="delegate-travel" aria-labelledby="delegates-heading">
+      <section className="a-delegates j-torn-top" id="delegate-travel" aria-labelledby="delegates-heading">
         <div className="j-shell">
           <div className="a-delegate-header">
             <div>

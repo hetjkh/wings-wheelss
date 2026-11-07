@@ -63,21 +63,23 @@ export default function ServicesPage() {
         media={{ video: "/hero-v4-continuous.mp4" }}
       />
 
-      <section className="s-approach j-torn-top" id="approach" aria-labelledby="approach-heading">
+      <section className="s-approach j-torn-top" id="approach" aria-labelledby="approach-heading" data-steps="6">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>01 / How we think about travel</span><span>One journey. Every part.</span></div>
-          <div className="s-split-head">
-            <h2 id="approach-heading" className="s-title">A flight is only<br />one part of<br />the journey.</h2>
-            <p className="s-lead">You need to get to the airport. You may need a visa. You need somewhere to stay. Someone may need to meet you when you arrive. And sometimes plans change.</p>
-          </div>
-          <div className="s-route">
-            <div className="s-route-track" aria-hidden="true"><span className="s-route-fill" /><span className="s-route-plane"><TravelIcon kind="plane" size={22} /></span></div>
-            <ol className="s-stops">{stops.map((stop, i) => <li key={stop.title} className="s-stop">
-              <span className="s-stop-icon"><TravelIcon kind={stop.icon} size={26} /></span>
-              <span className="s-stop-number">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{stop.title}</h3>
-              <p>{stop.text}</p>
-            </li>)}</ol>
+          <div className="s-approach-stage">
+            <div className="j-section-label s-draw"><span>01 / How we think about travel</span><span>One journey. Every part.</span></div>
+            <div className="s-split-head">
+              <h2 id="approach-heading" className="s-title">A flight is only<br />one part of<br />the journey.</h2>
+              <p className="s-lead">You need to get to the airport. You may need a visa. You need somewhere to stay. Someone may need to meet you when you arrive. And sometimes plans change.</p>
+            </div>
+            <div className="s-route">
+              <div className="s-route-track" aria-hidden="true"><span className="s-route-fill" /><span className="s-route-plane"><TravelIcon kind="plane" size={22} /></span></div>
+              <ol className="s-stops">{stops.map((stop, i) => <li key={stop.title} className="s-stop">
+                <span className="s-stop-icon"><TravelIcon kind={stop.icon} size={26} /></span>
+                <span className="s-stop-number">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{stop.title}</h3>
+                <p>{stop.text}</p>
+              </li>)}</ol>
+            </div>
           </div>
           <div className="s-approach-close s-draw">
             <p className="s-statement">One journey.<br />Everything around it.</p>
@@ -86,7 +88,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="s-services j-torn-top" id="services" aria-labelledby="services-heading">
+      <section className="s-services j-torn-top" id="services" aria-labelledby="services-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head">
             <div><span className="j-eyebrow s-eyebrow">02 / Our travel services</span><h2 id="services-heading" className="s-title">Whatever the<br />journey needs.</h2></div>
@@ -96,7 +98,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="s-reasons j-torn-top" id="reasons" aria-labelledby="reasons-heading">
+      <section className="s-reasons j-torn-top" id="reasons" aria-labelledby="reasons-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head">
             <div><span className="j-eyebrow s-eyebrow">03 / Travel for different reasons</span><h2 id="reasons-heading" className="s-title">Not every journey<br />looks the same.</h2></div>

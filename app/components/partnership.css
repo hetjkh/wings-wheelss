@@ -104,7 +104,7 @@
 .p-levels-note svg { flex-shrink: 0; color: var(--ochre); }
 
 /* 04 · UAE, Africa and the world in one line, over a faint map. */
-.p-regions { position: relative; padding: calc(var(--tear) + var(--u) * 6) 0 calc(var(--u) * 6); overflow: clip; background: var(--night); color: var(--cream); }
+.p-regions { --tear-face: var(--night); position: relative; padding: calc(var(--tear) + var(--u) * 6) 0 calc(var(--u) * 6); overflow: clip; background: var(--night); color: var(--cream); }
 .p-regions-map { object-fit: cover; opacity: .1; filter: invert(1) sepia(1); }
 .p-regions .j-shell { position: relative; z-index: 2; }
 .p-regions .s-title { color: var(--cream); }
@@ -137,10 +137,10 @@
 .p-bento-item p { margin-top: calc(var(--u) * .5); font: 300 calc(var(--u) * .875)/1.4 var(--body); opacity: .8; }
 
 /* 06 · Four steps along a line that fills as you read. */
-.p-steps { --photo-tear: calc(var(--tear) * 1.6); position: relative; display: grid; align-items: center; min-height: 100svh; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--photo-tear) + var(--u) * 4); background: #efe4cf; }
+.p-steps { --photo-tear: calc(var(--tear-size) * 1.15); position: relative; display: grid; align-items: center; min-height: 100svh; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--photo-tear) + var(--u) * 4); background: #efe4cf; }
 .partnership-page .p-steps .s-title { font-size: calc(var(--u) * 2.6); }
 .p-steps .p-steps-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(var(--u) * 2.5); width: auto; max-width: 760px; margin: 0 40px 0 calc(46% + var(--u) * 4); }
-.p-steps-photo { position: absolute; top: 0; bottom: 0; left: 0; width: 46%; overflow: hidden; mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--photo-tear)) no-repeat, url('/images/journey/torn-edge-bottom.svg') -32px 100% / calc(100% + 64px) calc(var(--photo-tear) + 1px) no-repeat; }
+.p-steps-photo { position: absolute; top: 0; bottom: 0; left: 0; width: 46%; overflow: hidden; mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--photo-tear)) no-repeat, url('/images/journey/torn-edge-bottom.svg') center 100% / calc(100% + 96px) calc(var(--photo-tear) + 1px) no-repeat; }
 .p-steps-photo img { object-fit: cover; }
 .p-step-list { position: relative; display: grid; gap: calc(var(--u) * 2.25); padding-left: calc(var(--u) * 1); }
 .p-step-list::before, .p-step-list::after { content: ''; position: absolute; left: calc(var(--u) * 2.75); top: calc(var(--u) * 1.75); bottom: calc(var(--u) * 1.75); width: 1px; background: #c9b597; }

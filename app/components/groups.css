@@ -59,7 +59,7 @@
 .g-route li:not(:last-child)::after { content: ''; width: var(--u); height: 1px; margin: 0 calc(var(--u) * .6); background: var(--rule); }
 .g-route .g-route-close { padding: 9px 16px; border-radius: 999px; background: var(--ink); color: var(--cream); }
 /* 02 · A run sheet that ticks itself off */
-.g-manage { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
+.g-manage { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
 .g-manage .s-title, .g-regions .s-title { color: var(--cream); }
 .g-manage .s-eyebrow, .g-regions .s-eyebrow { color: #c9b28a; }
 .g-runsheet-tag { justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font: 400 calc(var(--u) * .75)/1.2 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
@@ -178,7 +178,7 @@
 .g-plan figcaption { position: absolute; left: var(--u); bottom: var(--u); z-index: 3; padding: 7px 12px; background: var(--ink); font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--paper); }
 
 /* 07 · Three regions in giant type */
-.g-regions { padding: calc(var(--tear) + var(--u) * 6) 0 calc(var(--u) * 6); overflow: clip; background: var(--night); color: var(--cream); }
+.g-regions { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 6) 0 calc(var(--u) * 6); overflow: clip; background: var(--night); color: var(--cream); }
 .g-regions-map { object-fit: cover; opacity: .1; filter: invert(1) sepia(1); }
 .g-regions .j-shell { position: relative; z-index: 2; }
 .g-regions-title { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--u) * 2); margin-top: calc(var(--u) * 2.5); font-weight: 400; }
@@ -203,7 +203,7 @@
 .g-metro-shuttle path { fill: #fff; stroke: #fff; stroke-width: 1.5; }
 
 /* 09 · An itinerary, marked up in pen as the plan changes */
-.g-change { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 9); background: var(--night); color: #eadfcb; }
+.g-change { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 9); background: var(--night); color: #eadfcb; }
 .g-change .s-title { color: var(--cream); }
 .g-change .s-eyebrow { color: #c9b28a; }
 .g-change .g-body { color: #eadfcbcc; }

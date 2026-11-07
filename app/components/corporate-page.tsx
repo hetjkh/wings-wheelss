@@ -222,7 +222,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="k-network j-torn-top" id="network" aria-labelledby="network-heading">
+      <section className="k-network j-torn-top" id="network" aria-labelledby="network-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head k-network-head">
             <div><span className="j-eyebrow s-eyebrow">06 / UAE → Africa → Worldwide</span><h2 id="network-heading" className="s-title">A connected network<br />for a global business.</h2></div>
