@@ -29,7 +29,7 @@
 /* A single dark paper sheet bridges the landscape and the two travel photographs. */
 .home-page {
   --travel-heading-height: clamp(420px, 37.5vw, 720px);
-  --travel-tear-height: clamp(110px, 9vw, 175px);
+  --travel-tear-height: clamp(40px, 3.5vw, 65px);
 }
 .n-travel-chapter { position: relative; }
 .n-travel-heading {
@@ -75,15 +75,85 @@
   letter-spacing: .005em;
 }
 .n-travel {
-  margin-top: calc(var(--travel-heading-height) * -.32);
+  --travel-overlap: calc(var(--travel-heading-height) * .26);
+  margin-top: calc(var(--travel-overlap) * -1);
   z-index: 2;
 }
 .n-travel > .n-edge-travel {
   height: var(--travel-tear-height);
   mask-image: url('/images/home/travel-bottom-tear.svg');
 }
-.n-travel .n-panel-copy { bottom: calc(var(--travel-tear-height) + 25px); }
-.n-travel .n-panel-note { top: 180px; }
+.n-travel .n-panel-copy {
+  bottom: calc(var(--travel-tear-height) + 25px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  grid-template-columns: unset;
+  color: #fff9ee;
+  text-shadow: 0 2px 12px #0006;
+}
+.n-travel .n-panel-shade {
+  background: linear-gradient(180deg, transparent 0%, transparent 48%, #15171055 72%, #151710cc 100%);
+}
+.n-travel .n-panel-copy h3 {
+  margin: 0;
+  white-space: nowrap;
+  font-size: clamp(34px, 3.5vw, 64px);
+  line-height: .95;
+  text-shadow: none;
+}
+.n-panel-cta {
+  --cta-ink: #fff9ee;
+  --cta-fill: #1a1610;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 56px;
+  padding: 6px 6px 6px 24px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--cta-ink);
+  font: 400 14px/1 var(--body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: none;
+  transition: color .45s var(--ease);
+}
+.n-panel-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--cta-ink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .6s var(--ease);
+}
+.n-panel-cta-dot {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--cta-ink);
+  color: var(--cta-fill);
+  transition: transform .6s var(--ease), background .45s, color .45s;
+}
+.n-panel-cta-dot svg { width: 18px; height: 18px; }
+.n-panel-cta:hover, .n-panel-cta:focus-visible { color: var(--cta-fill); }
+.n-panel-cta:hover::before, .n-panel-cta:focus-visible::before { transform: scaleX(1); transform-origin: left; }
+.n-panel-cta:hover .n-panel-cta-dot, .n-panel-cta:focus-visible .n-panel-cta-dot {
+  transform: rotate(-45deg);
+  background: var(--cta-fill);
+  color: var(--cta-ink);
+}
+.n-panel-cta-dark { --cta-ink: #1a1610; --cta-fill: #fff9ee; }
 .n-support-inner { padding-top: 80px; }
 @supports not (-webkit-text-stroke: 1px #fff) {
   .home-page .n-travel-heading h2 { color: #c0c1bc; }
@@ -93,16 +163,15 @@
   .n-travel-heading-map { width: 42%; right: -13%; opacity: .55; }
 }
 @media (max-width: 767px) {
-  .home-page { --travel-heading-height: 360px; --travel-tear-height: 90px; }
+  .home-page { --travel-heading-height: 360px; --travel-tear-height: 40px; }
   .n-travel-heading-surface { padding: 0 18px 15px; }
   .home-page .n-travel-heading h2 { font-size: clamp(27px, 7.1vw, 49px); line-height: 1.06; -webkit-text-stroke-width: .7px; }
   .n-travel-heading-map { width: 65%; right: -30%; opacity: .45; }
   .n-travel-heading-grid { background-size: 50% 100%, 100% 50%; }
-  .n-travel .n-panel-copy { bottom: 55px; }
+  .n-travel .n-panel-copy { bottom: 55px; gap: 18px; }
   .n-travel .n-travel-panel:last-child .n-panel-copy { bottom: calc(var(--travel-tear-height) + 25px); }
+  .n-travel .n-panel-copy h3 { white-space: normal; font-size: clamp(32px, 9vw, 48px); }
   .n-support-inner { padding-top: 40px; }
-  .n-travel .n-panel-note { top: 150px; }
-  .n-travel .n-travel-panel:last-child .n-panel-note { top: 35px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .n-travel-heading h2 { transform: none !important; }

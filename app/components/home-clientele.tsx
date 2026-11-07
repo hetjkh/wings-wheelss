@@ -19,9 +19,9 @@ export function HomeClientele() {
       <header className="e-clientele-heading">
         <div>
           <span className="e-clientele-eyebrow">Good company. Every journey.</span>
-          <h2 id="clientele-title">Our <em>Clientele.</em></h2>
+          <h2 id="clientele-title" data-motion-text>Our <em>Clientele.</em></h2>
         </div>
-        <p>Different organisations. Different destinations. The same personal attention, wherever work takes you.</p>
+        <p data-editorial-reveal>Different organisations. Different destinations. The same personal attention, wherever work takes you.</p>
       </header>
 
       <div className="e-clientele-board">
@@ -36,7 +36,7 @@ export function HomeClientele() {
           </div>
         </div>
 
-        <ul className="e-clientele-logos" aria-label="Our client organisations">
+        <ul className="e-clientele-logos" aria-label="Our client organisations" data-motion-stagger>
           {clients.map((client, index) => <li className="e-clientele-client" key={client.src}>
             <span className="e-clientele-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
             <div className="e-clientele-logo">

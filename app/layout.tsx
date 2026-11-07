@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SmoothScroll } from "./components/smooth-scroll";
+import { SiteCursor } from "./components/site-cursor";
 import "./globals.css";
 
 const heading = localFont({
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
-      <body><SmoothScroll />{children}</body>
+      <body><SmoothScroll />{children}<SiteCursor /></body>
     </html>
   );
 }

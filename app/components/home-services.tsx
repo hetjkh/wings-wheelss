@@ -5,13 +5,13 @@ import Image from "./travel-image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Arrow, TravelIcon } from "./icons";
+import { Arrow } from "./icons";
 import "./home-services.css";
 
 const services = [
   { title: "Flights", phase: "Fly", photo: "/images/library/home-flights-wing-v2.webp", alt: "A silver aircraft wing above crisp white clouds and turquoise ocean reefs", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
-  { title: "Hotels", phase: "Stay", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
   { title: "Visas & documentation", phase: "Arrive", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
+  { title: "Hotels", phase: "Stay", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
   { title: "Airport & ground transfers", phase: "Move", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
   { title: "Holidays & experiences", phase: "Feel", photo: "/images/library/holiday-arrival.webp", alt: "Two holiday travellers with suitcases arriving beside turquoise water", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
   { title: "Travel support", phase: "Return", photo: "/images/library/home-personal-support.webp", alt: "A concierge helping a traveller review documents at a hotel desk", position: "56% center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
@@ -44,23 +44,51 @@ export function HomeServices() {
       }
 
       if (mobileStory) el.classList.add("is-mobile-story");
+      el.classList.add("is-scroll-deck");
       const pin = el.querySelector<HTMLElement>(".n-services-pin")!;
+      const rail = el.querySelector<HTMLElement>(".n-services-rail")!;
+      const fill = el.querySelector<HTMLElement>(".n-services-track-fill")!;
+      const plane = el.querySelector<HTMLElement>(".n-services-plane")!;
+      let railWidth = rail.clientWidth;
+      let activeIndex = -1;
+      gsap.set(fill, { scaleX: 0, transformOrigin: "left center" });
+      gsap.set(plane, { x: 0, y: 0, xPercent: -50, yPercent: -50 });
+      const setFill = gsap.quickSetter(fill, "scaleX");
+      const setPlane = gsap.quickSetter(plane, "x", "px");
+      const setAltitude = gsap.quickSetter(plane, "y", "px");
+      const setBank = gsap.quickSetter(plane, "rotation", "deg");
+      // Static overflow clips translated layers; no per-frame clip-path or filter paints.
+      gsap.set(cards.slice(1), { autoAlpha: 0 });
       const tl = gsap.timeline({
         defaults: { ease: "none" },
+        onUpdate() {
+          const t = this.time();
+          const progress = Math.min(1, Math.max(0, (t + .3) / chapters));
+          setFill(progress);
+          setPlane(progress * railWidth);
+          // Lift off between stops, then touch down at the next chapter.
+          const flight = progress * total;
+          const arc = (flight % 1) * Math.PI;
+          const altitude = mobileStory ? 9 : 18;
+          setAltitude(-Math.sin(arc) * altitude);
+          setBank(Math.atan2(-Math.cos(arc) * altitude * Math.PI * total, railWidth) * 180 / Math.PI);
+          const next = Math.min(total - 1, Math.max(0, Math.floor(t + .3)));
+          if (next !== activeIndex) {
+            activeIndex = next;
+            setActive(next);
+          }
+        },
         scrollTrigger: {
           id: "home-services",
           trigger: pin,
           start: "top top",
           end: () => `+=${window.innerHeight * (mobileStory ? .72 : .85) * chapters}`,
           pin: true,
-          scrub: .6,
+          // Lenis already eases wheel input. Follow it directly rather than lagging again.
+          scrub: true,
           invalidateOnRefresh: true,
           refreshPriority: 3.5,
-          onUpdate: self => {
-            const t = self.progress * chapters;
-            el.style.setProperty("--n-services-progress", String(Math.min(1, Math.max(0, (t + .3) / (total - 1 + .6)))));
-            setActive(Math.min(total - 1, Math.max(0, Math.floor(t + .3))));
-          },
+          onRefresh: () => { railWidth = rail.clientWidth; },
         },
       });
       trigger.current = tl.scrollTrigger ?? null;
@@ -68,14 +96,26 @@ export function HomeServices() {
       cards.forEach((card, i) => {
         if (i === 0) return;
         const at = i - .6;
-        tl.fromTo(card, { clipPath: "inset(100% 0 0 0 round var(--n-services-radius))", y: 40 }, { clipPath: "inset(0% 0 0 0 round var(--n-services-radius))", y: 0, duration: .6 }, at)
-          .fromTo(card.querySelector(".n-services-card-photo"), { scale: 1.12 }, { scale: 1, duration: .6 }, at)
-          .to(cards[i - 1], { scale: .94, y: -28, filter: "brightness(.72)", duration: .6 }, at)
-          .to(cards[i - 1].querySelector(".n-services-card-caption"), { opacity: 0, y: -10, duration: .3 }, at);
+        tl.set(card, { autoAlpha: 1 }, at)
+          .fromTo(card, { y: () => card.offsetHeight }, { y: 0, duration: .6 }, at)
+          .fromTo(card.querySelector(".n-services-card-photo"), { y: () => -card.offsetHeight }, { y: 0, duration: .6 }, at)
+          .to(cards[i - 1].querySelector(".n-services-card-caption"), { opacity: 0, y: -10, duration: .3 }, at)
+          .set(cards[i - 1], { autoAlpha: 0 }, at + .6);
       });
       tl.to({}, { duration: .6 });
 
-      return () => { trigger.current = null; el.classList.remove("is-mobile-story"); };
+      // Decode the deck as it approaches, so the first reveal doesn't pay that cost.
+      const warmImages = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        el.querySelectorAll<HTMLImageElement>(".n-services-card img").forEach(image => {
+          image.loading = "eager";
+          void image.decode().catch(() => {});
+        });
+        warmImages.disconnect();
+      }, { rootMargin: "100% 0px" });
+      warmImages.observe(el);
+
+      return () => { warmImages.disconnect(); trigger.current = null; el.classList.remove("is-mobile-story", "is-scroll-deck"); };
     });
     return () => media.revert();
   }, []);
@@ -86,7 +126,8 @@ export function HomeServices() {
       setActive(index);
       return;
     }
-    const progress = Math.min(1, index / chapters);
+    // Land just inside the hold so whole-pixel scroll rounding can't leave a sliver of the previous card.
+    const progress = Math.min(1, (index === 0 ? 0 : index + .02) / chapters);
     window.scrollTo({ top: st.start + progress * (st.end - st.start), behavior: "instant" });
   };
 
@@ -143,7 +184,14 @@ export function HomeServices() {
         <div className="n-services-rail n-shell" role="list" aria-label="Travel services in the order of a journey">
           <div className="n-services-track" aria-hidden="true">
             <span className="n-services-track-fill" />
-            <span className="n-services-plane"><TravelIcon kind="plane" size={18} /></span>
+            <span className="n-services-plane">
+              <span className="n-services-plane-flight">
+                <span className="n-services-plane-trail" />
+                <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+                  <path d="M43 22.3 30 20l-12-15h-5l7 15-10 1-5-6H2l3 9-3 9h3l5-6 10 1-7 15h5l12-15 13-2.3c4-.7 4-2.7 0-3.4Z" />
+                </svg>
+              </span>
+            </span>
           </div>
           {services.map((item, index) => (
             <button

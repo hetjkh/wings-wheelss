@@ -32,9 +32,13 @@
 
 .sv-top { position: relative; z-index: 3; display: flex; justify-content: space-between; gap: 20px; font: 400 calc(var(--u) * .72)/1.3 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--fg-soft); }
 
-.sv-headline { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; gap: calc(var(--win-w) + var(--u) * 4); margin: 0; font: 400 calc(var(--u) * 3.6)/.94 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--fg); }
+.sv-headline {
+  position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: start;
+  gap: clamp(28px, 5vw, 80px); margin: 0;
+  font: 400 clamp(28px, calc(var(--u) * 3.1), 56px)/.96 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--fg);
+}
 .services-page .sv-headline { margin-inline: auto; color: var(--fg); }
-.sv-side { display: block; }
+.sv-side { display: block; max-width: 42%; }
 .sv-side-b { text-align: right; }
 .sv-side em { font-style: normal; color: var(--fg-soft); }
 .sv-headline-mobile, .sv-pass-text-mobile { display: none; }
@@ -90,7 +94,8 @@
 @media (max-width: 991px) {
   .sv-final { --win-w: 0px; gap: 28px; min-height: 0; padding-block: calc(var(--tear) + 28px) 40px; }
   .sv-top { font-size: 10px; }
-  .sv-headline { flex-direction: column; align-items: flex-start; gap: 6px; font-size: clamp(36px, 9vw, 60px); }
+  .sv-headline { flex-direction: column; align-items: flex-start; gap: 6px; font-size: clamp(32px, 8.4vw, 52px); }
+  .sv-side { max-width: none; }
   .sv-side-b { text-align: left; }
   .sv-headline.has-mobile-copy .sv-side { display: none; }
   .sv-headline-mobile { text-align: left; }

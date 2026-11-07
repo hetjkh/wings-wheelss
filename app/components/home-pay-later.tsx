@@ -24,7 +24,7 @@ export function HomePayLater() {
             <span className="e-line"><span>Pay later.</span></span>
             <span className="e-line"><span>Fly sooner.</span></span>
           </h2>
-          <p>Book your flight tickets today and spread the cost over easy, interest-free installments with Tabby and Tamara. No waiting—secure your seat now and pay at your own pace.</p>
+          <p data-editorial-reveal>Book your flight tickets today and spread the cost over easy, interest-free installments with Tabby and Tamara. No waiting—secure your seat now and pay at your own pace.</p>
         </div>
         <div className="e-pay-providers" aria-label="Payment options">
           <div className="e-pay-provider" data-editorial-reveal>
@@ -44,7 +44,7 @@ export function HomePayLater() {
           ))}
         </ol>
         <div className="e-pay-action">
-          <Link href="/contact" className="n-button e-pay-button">Book your tickets<Arrow /></Link>
+          <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-cursor="Let's plan"><span>Book your tickets</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
           <p>Ask us about paying with Tabby or Tamara when you book.</p>
         </div>
       </div>

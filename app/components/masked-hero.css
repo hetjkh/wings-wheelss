@@ -61,8 +61,8 @@
 .au-hero-settle-bottom .au-hero-shade { background: linear-gradient(to top, #120d0a0d, transparent 45%); }
 .au-hero-settle-bottom .au-hero-rise { z-index: 2; height: 80%; background: linear-gradient(to top, #120d0a80 0%, #120d0a56 40%, #120d0a1a 75%, transparent 100%); }
 .corporate-page .au-hero-settle-bottom .au-hero-shade { background: linear-gradient(to top, #10110bc2 0%, #10110b91 42%, #10110b3d 72%, transparent 100%); }
-.au-hero-settle-bottom .au-hero-aside { flex-direction: column; align-items: flex-end; gap: calc(var(--u) * 1.1); }
-.au-hero-settle-bottom .au-hero-aside p { text-align: right; }
+.au-hero-settle-bottom .au-hero-aside { flex-direction: column; align-items: center; gap: calc(var(--u) * 1.1); }
+.au-hero-settle-bottom .au-hero-aside p { text-align: center; }
 .au-hero-settle-bottom .au-hero-ghost .au-hero-aside p { text-shadow: 0 2px 16px #120d0aa6; }
 .au-hero-top { display: grid; justify-items: center; gap: 16px; }
 .au-hero-back { display: inline-flex; align-items: center; gap: 8px; font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }

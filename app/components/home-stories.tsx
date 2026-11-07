@@ -66,8 +66,8 @@ export function HomeStories() {
     <section className={`h-stories${open ? " is-open" : ""}`} aria-labelledby="stories-title">
       <div className="h-stories-intro">
         <span className="n-kicker">Wings &amp; Wheels stories</span>
-        <h2 id="stories-title">Discover <em>stories</em><br />from every corner.</h2>
-        <p>Every journey we plan becomes a story. Choose a region to see where our travellers have been.</p>
+        <h2 id="stories-title" data-motion-text>Discover <em>stories</em><br />from every corner.</h2>
+        <p data-editorial-reveal>Every journey we plan becomes a story. Choose a region to see where our travellers have been.</p>
       </div>
 
       <svg className="h-stories-map" viewBox="0 0 1000 440" aria-hidden="true">
@@ -77,14 +77,14 @@ export function HomeStories() {
         {zones.map((item, index) => {
           const [x, y, w, h] = storyRegions[item.id].box;
           return (
-            <g key={item.id} className={`h-zone${index === active ? " is-active" : ""}`} onMouseEnter={() => setActive(index)} onClick={() => openZone(index)}>
+            <g key={item.id} data-cursor="View story" className={`h-zone${index === active ? " is-active" : ""}`} onMouseEnter={() => setActive(index)} onClick={() => openZone(index)}>
               <image className="h-zone-photo" href={optimized(item.photo)} x={x} y={y} width={w} height={h} preserveAspectRatio="xMidYMid slice" clipPath={`url(#h-clip-${item.id})`} />
               <path className="h-zone-shape" d={storyRegions[item.id].d} />
             </g>
           );
         })}
         {zones.map((item, index) => (
-          <g key={item.id} className={`h-pin${index === active ? " is-active" : ""}`} transform={`translate(${item.pin[0]} ${item.pin[1]})`} onMouseEnter={() => setActive(index)} onClick={() => openZone(index)}>
+          <g key={item.id} data-cursor="View story" className={`h-pin${index === active ? " is-active" : ""}`} transform={`translate(${item.pin[0]} ${item.pin[1]})`} onMouseEnter={() => setActive(index)} onClick={() => openZone(index)}>
             <circle className="h-pin-dot" r="7" />
             <g className="h-pin-ring">
               <path id={`h-ring-${item.id}`} d="M -27 0 a 27 27 0 1 1 54 0 a 27 27 0 1 1 -54 0" fill="none" />

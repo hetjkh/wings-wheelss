@@ -47,7 +47,7 @@
   color: #6f6254;
 }
 
-.e-faq-intro .e-link { margin-top: 28px; }
+.e-faq-intro .e-link, .e-faq-intro .n-panel-cta { margin-top: 28px; }
 
 .e-faq-list {
   border-left: 1px solid #d5c7b66b;

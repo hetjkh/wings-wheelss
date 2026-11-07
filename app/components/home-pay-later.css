@@ -16,8 +16,6 @@
 .home-page .e-pay-steps h3 { font-size: clamp(23px, 2.2vw, 38px); line-height: 1.05; letter-spacing: -.01em; }
 .e-pay-steps p { max-width: 24em; margin-top: 15px; font-size: 17px; line-height: 1.45; color: #706354; }
 .e-pay-action { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 50px; }
-.e-pay-button { min-height: 50px; padding-inline: 25px; background: var(--ink); color: #fff8e9; border-color: var(--ink); }
-.e-pay-button:hover { background: transparent; color: var(--ink); }
 .e-pay-action p { font-size: 14px; line-height: 1.4; color: #706354; }
 
 @media (max-width: 999px) {

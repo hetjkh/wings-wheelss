@@ -14,7 +14,7 @@ export function HomeFaq() {
             <span className="e-line"><span>FAQs</span></span>
           </h2>
           <p data-editorial-reveal>A few things you might be wondering before you travel with us.</p>
-          <Link href="/contact" className="e-link" data-editorial-reveal>Let’s talk<Arrow /></Link>
+          <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-editorial-reveal><span>Let’s talk</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
         </div>
 
         <div className="e-faq-list">

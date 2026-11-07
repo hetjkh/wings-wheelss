@@ -1,0 +1,21 @@
+.site-cursor, .site-cursor-dot { position: fixed; inset: 0 auto auto 0; z-index: 10000; pointer-events: none; opacity: 0; transition: opacity .2s; will-change: transform; }
+.site-cursor { mix-blend-mode: difference; }
+.site-cursor-face { display: flex; align-items: center; justify-content: center; gap: 5px; width: 32px; height: 32px; margin: -16px; border: 1px solid #f7efdf99; border-radius: 50%; color: #f7efdf; transition: width .45s var(--ease), height .45s var(--ease), margin .45s var(--ease), background .35s, border-color .35s, scale .25s; }
+.site-cursor-face span { max-width: 58px; font: 400 12px/1.15 var(--body); letter-spacing: .02em; text-align: center; }
+.site-cursor-face span, .site-cursor-face svg { opacity: 0; transition: opacity .18s; }
+.site-cursor-face svg { display: none; width: 13px; height: 13px; }
+.site-cursor-dot { width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: #fff5e0; mix-blend-mode: difference; }
+.site-cursor[data-visible="true"], .site-cursor-dot[data-visible="true"] { opacity: 1; }
+.site-cursor[data-mode="link"] .site-cursor-face { width: 46px; height: 46px; margin: -23px; background: #f7efdf20; border-color: #f7efdf; }
+.site-cursor[data-mode="label"] { mix-blend-mode: normal; }
+.site-cursor[data-mode="label"] .site-cursor-face { width: 88px; height: 88px; margin: -44px; background: #ebdfc6f2; color: #302b22; border-color: #ffffff70; box-shadow: 0 4px 24px #19150e12; }
+.site-cursor[data-mode="label"] .site-cursor-face span, .site-cursor[data-mode="label"] .site-cursor-face svg { opacity: 1; }
+.site-cursor[data-mode="label"] .site-cursor-face svg { display: block; }
+.site-cursor[data-mode="label"] + .site-cursor-dot { opacity: 0; }
+.site-cursor[data-pressed="true"] .site-cursor-face { scale: .9; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-art-cursor, html.has-art-cursor * { cursor: none !important; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .site-cursor, .site-cursor-dot { display: none; }
+}

@@ -1,5 +1,6 @@
 import Image from "./travel-image";
 import Link from "next/link";
+import { Arrow } from "./icons";
 import { JourneyFooter } from "./journey-footer";
 import { ServicesFinal } from "./services-final";
 import { HomeExperience, HomeHeader } from "./home-experience";
@@ -47,13 +48,19 @@ export default function HomePage() {
           <div className="n-travel-pair">
             <article className="n-travel-panel">
               <div className="n-panel-photo"><Image src="/images/library/palm-beach.webp" alt="Palm trees along a white Maldivian beach beside pale blue water" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
-              <div className="n-panel-shade" /><span className="n-panel-note">01 / Make time for yourself</span>
-              <div className="n-panel-copy"><div><Link href="/destinations" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Private<br />travel</h3></div><p>Unhurried escapes for individuals and families. Your kind of places, your own pace, every detail considered.</p></div>
+              <div className="n-panel-shade" />
+              <div className="n-panel-copy">
+                <Link href="/destinations" className="n-panel-cta"><span>Explore</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
+                <h3>Private travel</h3>
+              </div>
             </article>
             <article className="n-travel-panel">
               <div className="n-panel-photo"><Image src="/images/library/home-corporate-team.webp" alt="Business colleagues walking through a bright hotel lobby" fill sizes="(max-width: 767px) 100vw, 50vw" className="n-cover" /></div>
-              <div className="n-panel-shade" /><span className="n-panel-note">02 / Focus on what brings you here</span>
-              <div className="n-panel-copy"><div><Link href="/corporate-travel" className="n-button n-button-white">Explore <span>↗</span></Link><h3>Corporate<br />travel</h3></div><p>Well-connected travel for businesses and their people. From the first meeting to the journey home.</p></div>
+              <div className="n-panel-shade" />
+              <div className="n-panel-copy">
+                <Link href="/corporate-travel" className="n-panel-cta"><span>Explore</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
+                <h3>Corporate travel</h3>
+              </div>
             </article>
           </div>
           <PaperEdge variant="travel" />

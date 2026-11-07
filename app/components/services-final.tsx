@@ -75,6 +75,7 @@ export function ClosingScene({
           anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: -1,
         },
       });
+
       timeline
         .fromTo(blind, { yPercent: 0 }, { yPercent: -100, duration: .26, ease: "power1.inOut" }, .02)
         .fromTo(photoEl, { scale: 1.35 }, { scale: 1, duration: .8 }, 0)
@@ -82,13 +83,14 @@ export function ClosingScene({
         .fromTo(bezel, { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.6, duration: .2 }, .3)
         .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: .3 }, .4)
         .fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42)
-        .fromTo(sideA, { x: 0 }, { x: () => -window.innerWidth * (mobile ? .02 : .04), duration: .42 }, .3)
-        .fromTo(sideB, { x: 0 }, { x: () => window.innerWidth * (mobile ? .02 : .04), duration: .42 }, .3)
+        .fromTo(sideA, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .32)
+        .fromTo(sideB, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .36)
         .fromTo(headline, { y: 0 }, { y: () => -window.innerHeight * (mobile ? .08 : .13), duration: .25, ease: "power2.inOut" }, .72)
         .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
         .fromTo(chipEls, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
         .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
         .to({}, { duration: .06 });
+
       requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => root.classList.remove("is-scene");
     });
@@ -176,8 +178,8 @@ export function ServicesFinal() {
     chapter="08 / Wings & Wheels"
     ticket="Window seat · Row 01"
     left={<>Where you&apos;re<br />going matters.</>}
-    right={<>So does<br />everything <em>in between.</em></>}
-    mobileHeadline={<>One journey.<br /><em>Every detail.</em></>}
+    right={<>So does<br />the journey.</>}
+    mobileHeadline={<>Where you&apos;re going matters.<br /><em>So does the journey.</em></>}
     photo="/images/library/journey-above-clouds.webp"
     from="Where you are"
     to="Where you're going"
