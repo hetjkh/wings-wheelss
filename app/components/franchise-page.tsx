@@ -57,8 +57,8 @@ const partners = [
   { label: "Travel agencies", text: "Established travel agencies seeking to expand or diversify.", photo: "/images/library/franchise-travel-agencies.webp", position: "center" },
   { label: "Entrepreneurs", text: "Entrepreneurs with relevant tourism or hospitality experience.", photo: "/images/library/franchise-business-lunch.webp", position: "center" },
   { label: "Investors", text: "Investors with capable local operating teams.", photo: "/images/library/business-boarding.webp", position: "center" },
-  { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/library/business-terminal-v2.webp", position: "center" },
-  { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/library/cape-town.webp", position: "center" },
+  { label: "Corporate specialists", text: "Corporate travel specialists with strong business networks.", photo: "/images/library/franchise-corporate-specialists-v2.webp", position: "center top", fullFrame: true },
+  { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/library/franchise-destination-partners-v2.webp", position: "center top", fullFrame: true },
 ];
 
 const matters = ["Local market knowledge", "Financial capability", "Operational commitment", "Regulatory compliance", "A long-term approach to developing the Wings & Wheels brand"];
@@ -229,8 +229,9 @@ export default function FranchisePage() {
             <p className="k-body f-mobile-copy">Local expertise. Commercial ambition. A commitment to looking after travellers.</p>
           </div>
           <h3 className="f-cast-label">Potential partners may include</h3>
-          <ul className="f-cast" data-stagger="0.08">{partners.map((item, i) => <li key={item.label} tabIndex={0}>
-            <Image src={item.photo} alt="" fill sizes="(max-width: 991px) 92vw, 46vw" style={{ objectPosition: item.position }} />
+          <ul className="f-cast" data-stagger="0.08">{partners.map((item, i) => <li key={item.label} tabIndex={0} className={item.fullFrame ? "f-cast-full-frame" : undefined}>
+            {item.fullFrame && <span className="f-cast-backdrop" aria-hidden="true" style={{ backgroundImage: `url(${item.photo})` }} />}
+            <Image src={item.photo} alt="" fill lockSizes quality={90} sizes="(max-width: 991px) 92vw, 60vw" style={{ objectPosition: item.position }} />
             <span className="f-cast-number">{String(i + 1).padStart(2, "0")}</span>
             <span className="f-cast-name">{item.label}</span>
             <p>{item.text}</p>

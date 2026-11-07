@@ -9,12 +9,6 @@
 
 /* 01 · Four verbs that fill with ink as you read */
 .k-verbs { --tear-face: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--paper); }
-@media (min-width: 992px) {
-  .journey-page .k-verbs {
-    padding-top: calc(var(--tear) + clamp(72px, 8vh, 120px)) !important;
-    padding-bottom: calc(var(--tear-clear) + clamp(64px, 8vh, 120px)) !important;
-  }
-}
 .k-verbs-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 7%; align-items: center; }
 .journey-page .k-verbs .s-title { font-size: calc(var(--u) * 3.25); }
 .k-verb-list { border-top: 1px solid var(--rule); }
@@ -146,9 +140,6 @@
 .k-team-count svg { width: 18px; height: 18px; color: #b5462a; }
 /* 06 · Three widening horizons: each panel opens as the reach grows, and the one you point at opens wider */
 .k-network { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
-@media (min-width: 992px) {
-  .journey-page .k-network { padding-bottom: calc(var(--tear-clear) + clamp(160px, 24vh, 280px)) !important; }
-}
 .k-network-head { align-items: end; margin-top: 0; }
 .journey-page .k-network .s-title { font-size: calc(var(--u) * 3.25); }
 .k-network .k-body { margin-top: 0; color: #eadfcbd9; }
@@ -183,7 +174,7 @@
 .k-flow strong { font: 400 calc(var(--u) * 1.5)/1.1 var(--heading); letter-spacing: .04em; text-transform: uppercase; color: var(--tone); }
 .k-flow-note { font: 300 calc(var(--u) * .9375)/1.35 var(--body); color: var(--text); }
 /* 08 · Two sides of the same journey */
-.k-sides { --sides-heading-height: clamp(420px, 37.5vw, 720px); padding: 0 0 var(--tear); background: var(--paper); }
+.k-sides { --sides-heading-height: clamp(420px, 37.5vw, 720px); padding: 0 0 var(--tear); background: #161311; }
 .k-sides-heading { position: relative; z-index: 2; height: var(--sides-heading-height); isolation: isolate; overflow: clip; pointer-events: none; }
 .k-sides-heading-surface { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 40px 18px; background: #1d2326; mask: url('/images/home/travel-heading-mask.svg') center / 100% 100% no-repeat; }
 .k-sides-heading-grid { position: absolute; inset: 0 3.5%; border-inline: 1px solid #f4eee21c; background-image: linear-gradient(90deg, #f4eee21c 1px, transparent 1px), linear-gradient(#f4eee21c 1px, transparent 1px); background-size: 25% 100%, 100% 50%; }
@@ -292,7 +283,7 @@
 
 /* Partnership band: the way into the corporate partnerships page. */
 .corporate-page .k-partner { z-index: 10; }
-.k-partner { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #efe4cf; }
+.k-partner { --tear-face: #efe4cf; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #efe4cf; }
 .k-partner-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 8%; align-items: end; }
 .journey-page .k-partner .s-title { font-size: calc(var(--u) * 3); }
 .k-partner-aside .j-button { margin-top: calc(var(--u) * 1.75); }

@@ -92,7 +92,8 @@ export function ClosingScene({
         .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
         .fromTo(chipEls, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
         .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
-        .to({}, { duration: .06 });
+        // Leave the completed pass readable before the following section enters.
+        .to({}, { duration: .35 });
 
       requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => root.classList.remove("is-scene");

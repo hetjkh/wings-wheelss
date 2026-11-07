@@ -205,6 +205,7 @@
 /* 09 · An itinerary, marked up in pen as the plan changes */
 .g-change { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 9); background: var(--night); color: #eadfcb; }
 .g-change .s-title { color: var(--cream); }
+.journey-page .g-change { padding-bottom: calc(var(--tear-clear) + var(--u) * 3) !important; }
 .g-change .s-eyebrow { color: #c9b28a; }
 .g-change .g-body { color: #eadfcbcc; }
 .g-change-grid { --pen: #b5462a; --p0: clamp(0, calc(var(--progress, 1) * 4.4), 1); --p1: clamp(0, calc(var(--progress, 1) * 4.4 - 1.1), 1); --p2: clamp(0, calc(var(--progress, 1) * 4.4 - 2.2), 1); --p3: clamp(0, calc(var(--progress, 1) * 4.4 - 3.3), 1); display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 7%; align-items: center; }

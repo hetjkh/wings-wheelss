@@ -1,4 +1,13 @@
-.services-page .sn-network { --sn-cream: #f3ead8; --sn-gold: #f2d7a0; padding: 120px 0 85px; background: radial-gradient(ellipse at 35% 40%, #2d4033, transparent 65%), #1d2a22; color: var(--sn-cream); overflow: clip; }
+.services-page .sn-network {
+  --sn-cream: #f3ead8;
+  --sn-gold: #f2d7a0;
+  --tear-face: #1d2a22;
+  padding: 120px 0 85px;
+  background: radial-gradient(ellipse at 35% 40%, #2d4033, transparent 65%), #1d2a22;
+  color: var(--sn-cream);
+  /* Keep x clipped for the map; leave y open so the paper tear can sit above the green face. */
+  overflow-x: clip;
+}
 .sn-shell { width: calc(100% - var(--u) * 5); max-width: 2000px; margin-inline: auto; }
 .sn-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 50px; }
 .sn-heading .j-eyebrow { margin-bottom: 24px; color: #b4c4a7; }

@@ -9,7 +9,7 @@
   --n-services-paper: var(--paper);
   position: relative;
   z-index: 7;
-  margin-block: calc(-1 * var(--n-services-tear));
+  margin-block: 0;
   color: var(--ink);
   background:
     radial-gradient(ellipse 60% 45% at 85% 20%, #efe2cf 0, transparent 60%),

@@ -114,6 +114,7 @@
 
 /* Clientele paper tear across home chapters — thick layered lip, not a thin section mask. */
 .home-page {
+  overflow: clip;
   --tear-size: clamp(52px, 5vw, 84px);
   --tear-breath: 12px;
   --tear: var(--tear-breath);
@@ -125,9 +126,10 @@
     drop-shadow(-2px -3px 0 color-mix(in srgb, var(--e-surface, var(--paper)) 88%, #fff8e9))
     drop-shadow(0 -10px 18px #120e0a33);
 }
+.home-page main > .pin-spacer:has(+ .n-services) { margin-bottom: var(--tear-size) !important; }
 .e-africa, .e-together, .e-contact, .e-destinations, .e-people, .e-partners {
   position: relative;
-  margin-top: calc(-1 * var(--e-tear));
+  margin-top: 0;
 }
 .e-africa { z-index: 6; --e-surface: #eee9dd; }
 .e-destinations { z-index: 5; --e-surface: #f4efe5; }

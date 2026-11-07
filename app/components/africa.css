@@ -10,7 +10,9 @@
 .a-corridor-tag span { margin: 0 10px; color: var(--sand); }
 
 /* 01 · Four reasons, staggered like an itinerary */
-.a-connections { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #fff; }
+.a-connections { --tear-face: #1c2729; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #1c2729; color: #efe6d2; }
+.a-connections .j-section-label { border-color: #efe6d233; color: #efe6d2; }
+.a-connections .s-draw { --draw-color: #efe6d244; }
 .a-reasons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: calc(var(--u) * 2.5); margin-top: calc(var(--u) * 4); align-items: start; }
 .a-reason:nth-child(even) { margin-top: calc(var(--u) * 4); }
 .a-reason-photo { position: relative; aspect-ratio: 4 / 5; overflow: clip; background: var(--line); }
@@ -20,8 +22,8 @@
 .services-page .a-reason h3 { margin-top: calc(var(--u) * .5); font: 500 calc(var(--u) * 1.5)/1.1 var(--heading); letter-spacing: .05em; text-transform: uppercase; }
 .a-reason p { max-width: 16em; margin-top: calc(var(--u) * .5); font: 300 calc(var(--u) * 1.0625)/1.3 var(--body); }
 
-/* 02 · Network */
-.a-network { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); background: var(--paper); }
+/* 02 · Network — green face must match the tear lip (see .sn-network). */
+.a-network { --tear-face: #1d2a22; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); background: #1d2a22; }
 .africa-page .a-network .j-pillars { margin-top: calc(var(--u) * 3.5); }
 
 /* 03 · Two sides of one corridor */

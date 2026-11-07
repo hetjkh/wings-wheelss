@@ -44,12 +44,20 @@
 .j-torn-top, .j-torn-bottom, .au-torn {
   --top-tear: 0px;
   --bottom-tear: 0px;
+  --tear-under: color-mix(in srgb, var(--tear-face) 78%, #2a2118);
+  --tear-fibre: color-mix(in srgb, var(--tear-face) 90%, #b7a68c);
   position: relative;
   isolation: isolate;
 }
 .j-torn-top, .au-torn {
-  --top-tear: calc(var(--tear-size) * var(--top-tear-scale, 1));
-  margin-top: calc(-1 * var(--top-tear));
+  --top-tear: var(--tear-size);
+  margin-top: 0;
+}
+/* A full-screen scene owns its viewport through the end of its pin.
+   Reserve the following lip outside that viewport, rather than over its controls. */
+.journey-page main > .pin-spacer:has(+ :is(.j-torn-top, .au-torn)),
+.journey-page main > .pin-spacer:has(+ .pin-spacer > :is(.j-torn-top, .au-torn)) {
+  margin-bottom: var(--tear-size) !important;
 }
 /* Sitewide: keep copy clear of the next lip, and stop double-counting tear height at the top.
    !important beats per-page padding shorthand that still used the old oversized top gap. */
@@ -63,11 +71,11 @@
   padding-bottom: calc(var(--u, 16px) * 1.5) !important;
 }
 .j-torn-bottom {
-  --bottom-tear: calc(var(--tear-size) * var(--tear-stretch, 1));
-  margin-bottom: calc(-1 * var(--bottom-tear));
+  --bottom-tear: var(--tear-size);
+  margin-bottom: 0;
 }
-/* Face lip — same SVG + layered shadows as the clientele section.
-   --tear-face must match this section’s background fill. */
+/* Inherit the actual surface colour, including white and page-specific panels.
+   Animate only the decorative transform, never the section's layout height. */
 .j-torn-top::before, .au-torn::before {
   content: "";
   position: absolute;
@@ -76,10 +84,11 @@
   z-index: 6;
   width: calc(100% + 96px);
   height: var(--top-tear);
-  background-color: var(--tear-face);
+  background-color: inherit;
   -webkit-mask: var(--tear-mask) center / 100% 100% no-repeat;
   mask: var(--tear-mask) center / 100% 100% no-repeat;
   transform-origin: center bottom;
+  transform: scaleY(var(--top-tear-scale, 1));
   filter:
     drop-shadow(0 -1px 0 var(--tear-under))
     drop-shadow(-2px -3px 0 var(--tear-fibre))
@@ -94,10 +103,11 @@
   z-index: 6;
   width: calc(100% + 96px);
   height: var(--bottom-tear);
-  background-color: var(--tear-face);
+  background-color: inherit;
   -webkit-mask: var(--tear-mask-bottom) center / 100% 100% no-repeat;
   mask: var(--tear-mask-bottom) center / 100% 100% no-repeat;
   transform-origin: center top;
+  transform: scaleY(var(--tear-stretch, 1));
   filter:
     drop-shadow(0 1px 0 var(--tear-under))
     drop-shadow(2px 3px 0 var(--tear-fibre))

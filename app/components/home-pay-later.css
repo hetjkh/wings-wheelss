@@ -5,7 +5,7 @@
   padding: calc(var(--tear, 65px)) 0 100px;
   background: #f5f1e8;
   color: var(--ink);
-  margin-top: calc(-1 * var(--e-tear, var(--tear-size)));
+  margin-top: 0;
 }
 .e-pay-later::before {
   content: "";

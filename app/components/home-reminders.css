@@ -5,7 +5,7 @@
   color: var(--ink);
   background: #f3ebe0;
   overflow: visible;
-  margin-top: calc(-1 * var(--e-tear, var(--tear-size)));
+  margin-top: 0;
   padding-top: calc(var(--tear, 58px));
 }
 

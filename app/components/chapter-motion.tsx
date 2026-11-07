@@ -39,6 +39,23 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         const select = gsap.utils.selector(page);
         const cleanups: Array<() => void> = [];
         const visible = (element: Element) => element.getBoundingClientRect().top < window.innerHeight * .9;
+        // Finish illustrations before the next paper edge enters the viewport.
+        // Measure in document coordinates on every refresh, including after pin spacing changes.
+        const readingRange = (scene: Element, start: string, end: string) => {
+          const position = (spec: string) => {
+            const [edge, viewport] = spec.split(" ");
+            const box = scene.getBoundingClientRect();
+            const offset = edge === "bottom" ? box.height : edge === "center" ? box.height / 2 : 0;
+            return box.top + window.scrollY + offset - window.innerHeight * parseFloat(viewport) / 100;
+          };
+          const finish = () => {
+            const section = scene.closest("section");
+            if (!section || section.parentElement?.classList.contains("pin-spacer")) return position(end);
+            const lip = parseFloat(getComputedStyle(section, "::before").height) || 0;
+            return Math.min(position(end), section.getBoundingClientRect().bottom + window.scrollY - window.innerHeight - lip - 24);
+          };
+          return { start: () => Math.min(position(start), finish() - window.innerHeight * .25), end: finish, invalidateOnRefresh: true };
+        };
 
         // The opening lines rise into place once, as the page loads.
         const heroLines = select(".s-hero [data-hero]");
@@ -49,7 +66,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         const heroPhotos = select(".s-hero .j-hero-photo");
         if (heroPhotos.length) gsap.fromTo(heroPhotos, { scale: 1.14 }, { scale: 1.06, duration: 2.4, ease: "power2.out" });
 
-        // Every chapter holds still and darkens while the next one tears over it.
+        // Only interactive scenes pin. Ordinary chapters stay in document flow so
+        // their final rows and scroll-driven illustrations can finish before the next tear.
         const chapters = select("main > section") as HTMLElement[];
         chapters.slice(0, -1).forEach((section, i) => {
           if (!stacked) return;
@@ -58,14 +76,14 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (section.classList.contains("au-hero") || section.classList.contains("sv-final")) return;
           const hero = section.classList.contains("s-hero");
           if (hero && section.offsetHeight > window.innerHeight + 1) return;
-          const tearIn = { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 };
+          const tearIn = { "--top-tear-x": "-12px", "--top-tear-scale": .92 };
           const tearOut = { "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none" };
           const pinStart = () => section.offsetHeight > window.innerHeight ? "bottom bottom" : "top top";
           // Chapters that hold the page for their own scene are covered once the scene is done.
           const coverAfter = () => {
-            gsap.timeline({ scrollTrigger: { trigger: next, start: "top bottom", end: "top top", scrub: true } })
-              .to(section, { "--cover": .62, ease: "none" }, 0)
-              .fromTo(next, tearIn, tearOut, 0);
+            gsap.fromTo(next, tearIn, { ...tearOut,
+              scrollTrigger: { trigger: next, start: "top 75%", end: "top 25%", scrub: true },
+            });
           };
 
           // Interactive chapters keep scrolling; the next tear only begins after they leave.
@@ -110,28 +128,30 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             let current = -1;
             section.classList.add("is-stepped");
             const route = section.querySelector<HTMLElement>(".s-route");
+            if (route && route.offsetHeight > window.innerHeight - 140) {
+              section.classList.remove("is-stepped");
+              return;
+            }
+            const routeStage = route?.closest<HTMLElement>(".s-approach-stage");
+            const routePin = routeStage && routeStage.offsetHeight <= window.innerHeight - 140 ? routeStage : route;
             const stops = route ? Array.from(route.querySelectorAll<HTMLElement>(".s-stop")) : [];
             if (route) {
               route.classList.add("is-live");
               route.style.setProperty("--route-progress", "0");
-              // Measure and pin as a single viewport; reveal the close once the route finishes.
-              section.classList.add("is-pin-active");
             }
             ScrollTrigger.create({
-              trigger: section, start: stepStart, end: () => `+=${window.innerHeight * .9 * steps}`, pin: section, pinSpacing: true,
+              trigger: routePin ?? section, start: route ? "top 100px" : stepStart,
+              end: () => `+=${window.innerHeight * .9 * steps}`, pin: routePin ?? section, pinSpacing: true,
               anticipatePin: 1, invalidateOnRefresh: true,
               onRefresh: self => { section.dataset.stepsStart = String(self.start); section.dataset.stepsEnd = String(self.end); },
-              onToggle: self => {
-                if (!route) return;
-                section.classList.toggle("is-pin-active", self.isActive);
-              },
               onUpdate: self => {
-                section.style.setProperty("--steps-progress", String(self.progress));
+                const progress = Math.min(1, self.progress / .9);
+                section.style.setProperty("--steps-progress", String(progress));
                 if (route && stops.length) {
-                  route.style.setProperty("--route-progress", String(self.progress));
-                  stops.forEach((stop, i) => stop.classList.toggle("is-reached", self.progress >= i / (stops.length - 1) - .001));
+                  route.style.setProperty("--route-progress", String(progress));
+                  stops.forEach((stop, i) => stop.classList.toggle("is-reached", progress >= i / (stops.length - 1) - .001));
                 }
-                const index = Math.min(steps - 1, Math.floor(self.progress * steps));
+                const index = Math.min(steps - 1, Math.floor(progress * steps));
                 if (index === current) return;
                 current = index;
                 section.dispatchEvent(new CustomEvent("chapter-step", { detail: index }));
@@ -152,23 +172,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             return;
           }
 
-          const cover = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: () => section.offsetHeight > window.innerHeight ? "bottom bottom" : "top top",
-              endTrigger: next, end: "top top", pin: section, pinSpacing: false,
-              scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
-            },
-          });
-          if (hero) {
-            cover.to(section.querySelector(".j-hero-cover-shade"), { opacity: .6, ease: "none" }, 0)
-              .to(section.querySelector(".j-hero-content"), { y: -40, opacity: .2, ease: "none" }, 0)
-              .to(section.querySelector(".j-scroll-note"), { opacity: 0, duration: .2, ease: "none" }, 0);
-          } else {
-            cover.to(section, { "--cover": .62, ease: "none" }, 0)
-              .to(section.querySelectorAll(":scope > .j-shell"), { y: -60, scale: .97, transformOrigin: "50% 0%", ease: "none" }, 0);
-          }
-          cover.fromTo(next, tearIn, tearOut, 0);
+          coverAfter();
         });
 
         // Franchise phones use two short galleries, with native swiping on short screens.
@@ -602,13 +606,15 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         select("[data-progress]").forEach((scene: HTMLElement) => {
           gsap.fromTo(scene, { "--progress": 0 }, {
             "--progress": 1, ease: "none",
-            scrollTrigger: { trigger: scene, start: scene.dataset.progress || "top 75%", end: scene.dataset.progressEnd || "bottom 55%", scrub: .6 },
+            scrollTrigger: { trigger: scene, ...readingRange(scene, scene.dataset.progress || "top 75%", scene.dataset.progressEnd || "bottom 55%"), scrub: .6 },
           });
         });
         select("[data-trace]").forEach((path: Element) => {
+          const drawing = path.closest("svg");
+          if (!drawing) return;
           gsap.fromTo(path, { "--trace-offset": 1 }, {
             "--trace-offset": 0, ease: "none",
-            scrollTrigger: { trigger: path.closest("svg"), start: "top 85%", end: "center 45%", scrub: .8 },
+            scrollTrigger: { trigger: drawing, ...readingRange(drawing, "top 85%", "center 45%"), scrub: .8 },
           });
         });
         select(".j-map").forEach((map: Element) => {

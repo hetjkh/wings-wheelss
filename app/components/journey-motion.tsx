@@ -116,57 +116,13 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           }
         }
 
-        const process = page.querySelector<HTMLElement>(".j-process");
-        // The story waits behind the services chapter and is uncovered as it lifts away.
-        // Sections overlap by the tear height, so the story starts that much higher.
-        const tear = () => parseFloat(getComputedStyle(page).getPropertyValue("--tear")) || 0;
-        const story = page.querySelector<HTMLElement>(".j-story");
-        if (process && story) {
-          gsap.fromTo(story, { y: () => tear() - window.innerHeight }, {
-            y: 0, ease: "none",
-            scrollTrigger: {
-              id: "journey-story-reveal", trigger: process,
-              start: "bottom bottom", end: () => `bottom top+=${tear()}`,
-              scrub: true, invalidateOnRefresh: true,
-            },
+        // Keep reading sections in flow; only their paper edges drift on entry.
+        select(".j-story, .j-split, .j-team").forEach((section: HTMLElement) => {
+          gsap.fromTo(section, { "--top-tear-x": "-12px", "--top-tear-scale": .92 }, {
+            "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
+            scrollTrigger: { trigger: section, start: "top 75%", end: "top 25%", scrub: .7 },
           });
-        }
-
-        // Business and leisure slide over the values, which hold still and dim beneath.
-        const values = page.querySelector<HTMLElement>(".j-values");
-        const split = page.querySelector<HTMLElement>(".j-split");
-        if (values && split) {
-          gsap.timeline({
-            scrollTrigger: {
-              id: "journey-values-cover", trigger: values,
-              start: () => values.offsetHeight > window.innerHeight ? "bottom bottom" : "top top",
-              endTrigger: split, end: "top top", pin: values, pinSpacing: false,
-              scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
-            },
-          })
-            .to(values, { "--values-shade": .16, ease: "none" }, 0)
-            .to(select(".j-values > .j-shell"), { y: -20, opacity: .6, ease: "none" }, 0)
-            .fromTo(split, { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 }, {
-              "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
-            }, 0);
-        }
-
-        // The team scene then slides over business and leisure in the same way.
-        const team = page.querySelector<HTMLElement>(".j-team");
-        if (split && team) {
-          gsap.timeline({
-            scrollTrigger: {
-              id: "journey-split-cover", trigger: split,
-              start: () => split.offsetHeight > window.innerHeight ? "bottom bottom" : "top top",
-              endTrigger: team, end: "top top", pin: split, pinSpacing: false,
-              scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
-            },
-          })
-            .to(split, { "--split-shade": .35, ease: "none" }, 0)
-            .fromTo(team, { "--top-tear-x": "-12px", "--top-tear-scale": 1.08 }, {
-              "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
-            }, 0);
-        }
+        });
 
         // Short, one-time entrances. Anything already on screen stays visible.
         const reveal = (elements: HTMLElement[], trigger: Element) => {

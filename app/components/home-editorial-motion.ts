@@ -58,18 +58,14 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
 
     gsap.fromTo(".e-africa-title", { y: 0 }, { y: 90, ease: "none", scrollTrigger: { trigger: ".e-africa-landscape", start: "top top", end: "bottom top", scrub: .8 } });
 
-    // Like the inner pages, the next torn surface travels over the held chapter.
+    // Drift the decorative edge without freezing the preceding chapter underneath it.
     select("[data-home-cover]").forEach(section => {
       const next = section.nextElementSibling as HTMLElement | null;
       if (!next) return;
-      const cover = gsap.timeline({ scrollTrigger: {
-        trigger: section,
-        start: () => section.offsetHeight > window.innerHeight - 70 ? "bottom bottom" : "top 70px",
-        endTrigger: next, end: "top 70px", pin: section, pinSpacing: false,
-        scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
-      } });
-      cover.to(section, { "--e-cover": .5, ease: "none" }, 0)
-        .fromTo(next, { "--e-tear-x": "-16px" }, { "--e-tear-x": "16px", ease: "none" }, 0);
+      gsap.fromTo(next, { "--e-tear-x": "-16px" }, {
+        "--e-tear-x": "16px", ease: "none",
+        scrollTrigger: { trigger: next, start: "top 75%", end: "top 25%", scrub: true },
+      });
     });
   } else if (window.matchMedia("(max-width: 767px) and (min-height: 640px)").matches) {
     const gallery = root.querySelector<HTMLElement>(".e-destinations");

@@ -1,7 +1,7 @@
 .e-clientele {
   position: relative;
   z-index: 8;
-  margin-top: calc(-1 * var(--e-tear, var(--tear-size, clamp(72px, 7.2vw, 118px))));
+  margin-top: 0;
   padding: calc(var(--tear, 58px)) 0 105px;
   background: #eeeae2;
   color: #403b32;

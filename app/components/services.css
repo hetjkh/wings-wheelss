@@ -8,6 +8,7 @@
 .services-page .s-eyebrow { color: var(--ochre); margin-bottom: calc(var(--u) * 1.5); }
 .s-lead { font: 400 calc(var(--u) * 1.5)/1.2 var(--heading); color: var(--ink); max-width: 24em; }
 .s-split-head { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 10%; align-items: end; margin-top: calc(var(--u) * 3); }
+.j-shell > .s-split-head:first-child { margin-top: 0; }
 .s-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .services-page .j-button-outline-light { background: transparent; }
 .services-page .j-button-outline-light:hover { background: #fff8e91a; }
@@ -41,23 +42,7 @@
 /* 01 · Six stops on one route */
 .s-approach { --tear-face: #fff; background: #fff; }
 .s-approach .s-split-head { margin-bottom: calc(var(--u) * 5); }
-/* While pinned, only the stage fills the viewport; the close waits below and keeps tear clearance. */
-@media (min-width: 992px) and (min-height: 700px) {
-  .s-approach.is-pin-active {
-    height: 100svh;
-    overflow: clip;
-    padding-top: calc(var(--tear) + clamp(16px, 2svh, 28px)) !important;
-    padding-bottom: calc(var(--u) * 1.5) !important;
-  }
-  .s-approach.is-pin-active .j-shell {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .s-approach.is-pin-active .s-split-head { margin-bottom: calc(var(--u) * 3); }
-  .s-approach.is-pin-active .s-approach-close { display: none; }
-}
+/* The route pins independently; its heading and closing copy keep their natural height. */
 .s-route { --route-progress: 1; position: relative; }
 .s-route-track { position: absolute; left: calc(100% / 12); right: calc(100% / 12); top: calc(var(--u) * 2.25); height: 1px; background: repeating-linear-gradient(90deg, var(--rule) 0 6px, transparent 6px 12px); }
 .s-route-fill { position: absolute; inset: 0; background: var(--ink); transform-origin: left; transform: scaleX(var(--route-progress)); }
@@ -80,7 +65,7 @@
 .s-approach-note .au-cta { margin-top: calc(var(--u) * 1.75); }
 
 /* 02 · One strip: the active service opens, the rest stay as a numbered rail. */
-.s-services { --tear-face: var(--paper); background: var(--paper); padding-bottom: calc(var(--tear-clear) + clamp(96px, 18vh, 220px)) !important; }
+.s-services { --tear-face: var(--paper); background: var(--paper); }
 .s-strip { --ease: cubic-bezier(.22, 1, .36, 1); display: flex; gap: 8px; height: min(68vh, 680px); min-height: 460px; margin-top: calc(var(--u) * 3.5); }
 .s-strip-panel { position: relative; isolation: isolate; overflow: clip; flex: .62 1 0; min-width: 0; background: #17212a; color: var(--cream); cursor: pointer; outline: none; transition: flex-grow .7s var(--ease); }
 .s-strip-panel.is-active { flex-grow: 5.4; cursor: default; }
@@ -105,7 +90,7 @@
 .s-strip-copy .au-cta { margin-top: calc(var(--u) * 1.15); }
 
 /* 03 · Four reasons; the chosen one opens wider */
-.s-reasons { --tear-face: var(--night); padding-top: calc(var(--tear) + var(--u) * 5); padding-bottom: calc(var(--tear-clear) + clamp(72px, 12vh, 160px)) !important; background: var(--night); color: #eadfcb; }
+.s-reasons { --tear-face: var(--night); padding-top: calc(var(--tear) + var(--u) * 5); background: var(--night); color: #eadfcb; }
 .s-reasons .s-title, .s-beyond .s-title { color: var(--cream); }
 .s-reasons .s-lead, .s-beyond .s-lead { color: var(--sand); }
 .s-reasons .s-eyebrow, .s-beyond .s-eyebrow { color: #c9b28a; }
@@ -185,7 +170,7 @@
 .s-beyond-content > .au-cta { margin-top: calc(var(--u) * 3); }
 
 /* 06 · Network */
-.s-network { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); background: var(--paper); }
+.s-network { --tear-face: #1d2a22; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); background: #1d2a22; }
 .s-network-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 6%; align-items: center; }
 .s-network-copy > p { max-width: 26em; margin: calc(var(--u) * 1.75) 0 calc(var(--u) * 2); font: 300 calc(var(--u) * 1.25)/1.35 var(--body); }
 .s-network-copy .au-cta { margin-top: 0; }

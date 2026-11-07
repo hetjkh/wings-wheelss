@@ -2,7 +2,7 @@
   position: relative;
   z-index: 9;
   --e-surface: #f7f4eb;
-  margin-top: calc(-1 * var(--e-tear, var(--tear-size)));
+  margin-top: 0;
   padding: calc(var(--tear, 70px)) 0 100px;
   color: var(--ink);
   background:

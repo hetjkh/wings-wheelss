@@ -2,10 +2,10 @@
 .franchise-page {
   --night: #13222a; --sand: #dcc391; --brass: #b8914f; --terra: #a87a3c; --paper: #f5efe3; --rule: #d6cab4;
   --ease: cubic-bezier(.22, 1, .36, 1);
-  /* Room under the lip before copy, and a longer hold so the next chapter doesn’t share the frame. */
+  /* Use the shared reading clearance; scroll scenes provide their own hold. */
   --tear-breath: clamp(18px, 2.5vh, 32px);
   --tear: var(--tear-breath);
-  --tear-clear: calc(var(--tear-size) + clamp(72px, 10vh, 140px));
+  --tear-clear: calc(var(--tear-size) + clamp(36px, 3.5vw, 56px));
   --tear-fibre: color-mix(in srgb, var(--tear-face) 90%, #b7a68c);
 }
 .franchise-page .f-beyond { z-index: 2; } .franchise-page .f-markets { z-index: 3; } .franchise-page .f-advantage { z-index: 4; }
@@ -29,10 +29,9 @@
 /* 01 · Growing beyond borders — tall hold so markets doesn’t share this viewport. */
 .f-beyond {
   --tear-face: #fff;
-  --tear-clear: calc(var(--tear-size) + clamp(140px, 22vh, 260px));
   --photo-tear: calc(var(--tear-size) * 1.15);
   position: relative;
-  min-height: calc(100svh + var(--tear-size) + clamp(80px, 12vh, 160px));
+  min-height: 100svh;
   padding: calc(var(--tear) + var(--u) * 7) 0 calc(var(--photo-tear) + var(--u) * 6);
   background: #fff;
 }
@@ -43,10 +42,9 @@
   /* Fill the column beside the photo — no unused strip on the right. */
   width: calc(54% - clamp(40px, 4vw, 72px));
   max-width: none;
-  min-height: calc(100svh - var(--tear-size) - clamp(48px, 6vh, 96px));
+  min-height: min(680px, 70svh);
   margin: 0 clamp(28px, 3.5vw, 56px) 0 calc(46% + clamp(28px, 3vw, 48px));
-  padding-top: clamp(72px, 12vh, 160px);
-  padding-bottom: clamp(64px, 10vh, 140px);
+  padding-block: clamp(24px, 3vw, 48px);
 }
 .f-beyond-photo { position: absolute; top: 0; bottom: 0; left: 0; width: 46%; margin: 0; overflow: hidden; mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--photo-tear)) no-repeat, url('/images/journey/torn-edge-bottom.svg') center 100% / calc(100% + 96px) calc(var(--photo-tear) + 1px) no-repeat; }
 .f-beyond-photo img { object-fit: cover; object-position: 35% center; }
@@ -96,17 +94,9 @@
   color: var(--ink);
 }
 .f-beyond-copy .au-cta { margin-top: calc(var(--u) * .5); }
-/* Keep the global tear padding, but never collapse the beyond hold. */
-.journey-page .f-beyond.j-torn-top {
-  padding-top: calc(var(--tear) + clamp(40px, 5vw, 72px)) !important;
-  padding-bottom: var(--tear-clear) !important;
-}
 
 /* 02 · Three markets, each a crop of the same regional map with its route from Dubai. */
 .f-markets { --tear-face: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: var(--paper); }
-.journey-page .f-markets.j-torn-top {
-  padding-top: calc(var(--tear) + clamp(40px, 5vw, 72px)) !important;
-}
 .f-markets-aside { display: grid; justify-items: start; gap: calc(var(--u) * 1.5); max-width: 26em; }
 .f-market-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: calc(var(--u) * 1.5); }
 .f-market { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e3d8c4; border-radius: 18px; background: #fffdf8; transition: translate .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s; }
@@ -258,6 +248,11 @@
 .f-cast:has(li:is(:hover, :focus)) li:first-child:not(:hover, :focus) { flex: 1; }
 .f-cast li:first-child img, .f-cast li:is(:hover, :focus) img { filter: none; scale: 1.04; }
 .f-cast:has(li:is(:hover, :focus)) li:first-child:not(:hover, :focus) img { filter: grayscale(.85) brightness(.75); scale: 1; }
+.f-cast-backdrop { position: absolute; inset: -20px; z-index: -3; background-position: center; background-size: cover; filter: blur(18px) brightness(.55); }
+.f-cast li.f-cast-full-frame:is(:hover, :focus) img { object-fit: contain; scale: 1; }
+@media (max-width: 991px) {
+  .franchise-page .f-cast li.f-cast-full-frame img { object-fit: contain; scale: 1; }
+}
 .f-cast-number { position: absolute; top: calc(var(--u) * 1.5); left: calc(var(--u) * 1.5); font: 400 calc(var(--u) * .75)/1 var(--body); letter-spacing: .16em; color: var(--sand); }
 .f-cast-name { position: absolute; left: calc(var(--u) * 1.5); bottom: calc(var(--u) * 1.5); font: 400 calc(var(--u) * 1.5)/1 var(--heading); letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; writing-mode: vertical-rl; rotate: 180deg; transition: opacity .4s; }
 .f-cast p { position: absolute; left: calc(var(--u) * 2); right: calc(var(--u) * 2); bottom: calc(var(--u) * 2); max-width: 16em; font: 400 calc(var(--u) * 2)/1.1 var(--heading); color: #fff9ee; opacity: 0; translate: 0 20px; transition: opacity .3s, translate .3s; }
