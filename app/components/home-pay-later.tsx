@@ -15,7 +15,7 @@ export function HomePayLater() {
   return (
     <section className="e-pay-later" id="pay-later" aria-labelledby="pay-later-title">
       <div className="e-shell">
-        <div className="e-section-bar">
+        <div className="e-section-bar" data-motion-reveal>
           <span className="e-label"><span>07</span><span>A little more freedom to fly</span></span>
           <span className="n-kicker">Your journey. Your pace.</span>
         </div>
@@ -43,7 +43,7 @@ export function HomePayLater() {
             </li>
           ))}
         </ol>
-        <div className="e-pay-action">
+        <div className="e-pay-action" data-motion-stagger>
           <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-cursor="Let's plan"><span>Book your tickets</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
           <p>Ask us about paying with Tabby or Tamara when you book.</p>
         </div>

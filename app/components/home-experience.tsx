@@ -38,11 +38,11 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
         });
       }
       const cleanupEditorial = animateHomeEditorial(root.current!, !!desktop);
-      const cleanupReveals = animateHomeReveals(root.current!);
-      gsap.utils.toArray<HTMLElement>("[data-home-reveal]").forEach(el => gsap.from(el, { y: 28, opacity: 0, duration: .95, ease: "power3.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 93%", once: true } }));
       gsap.utils.toArray<HTMLElement>("[data-home-parallax]").forEach(el => gsap.fromTo(el, { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: .6 } }));
       ScrollTrigger.sort();
       ScrollTrigger.refresh();
+      // Measure entrances after pinned scenes have settled their layout.
+      const cleanupReveals = animateHomeReveals(root.current!);
       return () => { cleanupReveals(); cleanupEditorial(); };
     });
     let live = true;

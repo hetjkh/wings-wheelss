@@ -5,15 +5,6 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
   const cleanup: (() => void)[] = [];
   const select = <T extends HTMLElement>(selector: string) => Array.from(root.querySelectorAll<T>(selector)).filter(element => element.getClientRects().length > 0);
 
-  select("[data-editorial-title]").forEach(title => {
-    gsap.from(title.querySelectorAll(".e-line > span"), {
-      yPercent: 110, duration: 1.15, stagger: .12, ease: "power3.out",
-      scrollTrigger: { trigger: title, start: "top 92%", once: true },
-    });
-  });
-  select("[data-editorial-reveal]").forEach(item => {
-    gsap.from(item, { y: 30, opacity: .2, duration: .8, ease: "power2.out", scrollTrigger: { trigger: item, start: "top 94%", once: true } });
-  });
   select("[data-editorial-parallax]").forEach(photo => {
     const amount = Number(photo.dataset.editorialParallax) * (desktop ? 1 : .4);
     gsap.fromTo(photo, { yPercent: -amount }, { yPercent: amount, ease: "none", scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .8 } });

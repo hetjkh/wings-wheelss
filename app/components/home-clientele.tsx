@@ -16,21 +16,21 @@ export function HomeClientele() {
       <span className="e-clientele-tear-layer e-clientele-tear-face" />
     </div>
     <div className="e-shell">
-      <div className="e-section-bar">
+      <div className="e-section-bar" data-motion-reveal>
         <span className="e-label"><span>06</span><span>Organisations we travel with</span></span>
         <span className="n-kicker">Trusted across industries</span>
       </div>
 
       <header className="e-clientele-heading">
         <div>
-          <span className="e-clientele-eyebrow">Good company. Every journey.</span>
+          <span className="e-clientele-eyebrow" data-motion-reveal>Good company. Every journey.</span>
           <h2 id="clientele-title" data-motion-text>Our <em>Clientele.</em></h2>
         </div>
         <p data-editorial-reveal>Different organisations. Different destinations. The same personal attention, wherever work takes you.</p>
       </header>
 
       <div className="e-clientele-board">
-        <div className="e-clientele-board-head">
+        <div className="e-clientele-board-head" data-motion-reveal>
           <div>
             <span>Selected organisations</span>
             <strong>Across industries. Across borders.</strong>
@@ -51,7 +51,7 @@ export function HomeClientele() {
           </li>)}
         </ul>
 
-        <div className="e-clientele-board-foot">
+        <div className="e-clientele-board-foot" data-motion-stagger>
           <p>Your people. <em>Our priority.</em></p>
           <Link href="/contact" className="e-clientele-contact">Let’s talk travel <span><Arrow diagonal /></span></Link>
         </div>

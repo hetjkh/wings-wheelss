@@ -141,7 +141,7 @@ export function HomeServices() {
 
         <div className="n-services-stage n-shell">
           <div className="n-services-copy">
-            <h2 id="home-services-title" data-home-reveal>
+            <h2 id="home-services-title" data-motion-text>
               Whatever the<br />journey needs.
             </h2>
             <p className="n-services-lead" data-home-reveal>
@@ -168,7 +168,7 @@ export function HomeServices() {
             {services.map((item, index) => (
               <figure key={item.title} className={`n-services-card${index === active ? " is-active" : ""}`} style={{ zIndex: index + 1 }}>
                 <div className="n-services-card-photo">
-                  <Image src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 92vw, 44vw" className="n-cover" style={{ objectPosition: item.position }} priority={index === 0} />
+                  <Image reveal src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 92vw, 44vw" className="n-cover" style={{ objectPosition: item.position }} priority={index === 0} />
                 </div>
                 <div className="n-services-card-shade" aria-hidden="true" />
                 <figcaption className="n-services-card-caption">

@@ -73,7 +73,7 @@ export function HomeStories() {
   return (
     <section className={`h-stories${open ? " is-open" : ""}`} aria-labelledby="stories-title" data-active-region={zone.id}>
       <div className="h-stories-intro">
-        <span className="n-kicker">Wings &amp; Wheels stories</span>
+        <span className="n-kicker" data-motion-reveal>Wings &amp; Wheels stories</span>
         <h2 id="stories-title" data-motion-text>Discover <em>stories</em><br />from every corner.</h2>
         <p data-editorial-reveal>Every journey we plan becomes a story. Choose a region to see where our travellers have been.</p>
       </div>
@@ -111,7 +111,7 @@ export function HomeStories() {
 
       <nav className="h-stories-zones" aria-label="Choose a region">
         <span>Choose a region</span>
-        <ul>
+        <ul data-motion-stagger>
           {zones.map((item, index) => (
             <li key={item.id}>
               <button type="button" aria-pressed={index === active} className={index === active ? "is-active" : ""} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)} onClick={() => openZone(index)}>{item.name}</button>
