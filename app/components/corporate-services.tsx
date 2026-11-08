@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import Image from "./travel-image";
+import { getImageProps } from "next/image";
 import { TravelIcon, type IconKind } from "./icons";
 import { EnquiryButton } from "./site-controls";
 
-export type CorporateService = { icon: IconKind; title: string; photo: string; alt: string; position?: string; items: string[]; service: string };
+export type CorporateService = { icon: IconKind; title: string; photo: string; photoMobile?: string; originalQuality?: boolean; alt: string; position?: string; items: string[]; service: string };
 
 /** Six services as one expanding strip: hover, click or arrow keys open a panel. */
 export function CorporateServices({ services }: { services: CorporateService[] }) {
@@ -30,6 +31,7 @@ export function CorporateServices({ services }: { services: CorporateService[] }
   return <div className="k-strip" role="tablist" aria-label="Corporate travel services" onKeyDown={move} style={{ "--open": active } as CSSProperties}>
     {services.map((item, index) => {
       const open = index === active;
+      const mobileImage = item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 90 }).props : null;
       return <div
         key={item.title}
         ref={node => { panels.current[index] = node; }}
@@ -41,7 +43,10 @@ export function CorporateServices({ services }: { services: CorporateService[] }
         onPointerEnter={() => { if (fine.current) setActive(index); }}
         onClick={() => setActive(index)}
       >
-        <Image src={item.photo} alt="" fill sizes="(max-width: 991px) 92vw, 60vw" style={item.position ? { objectPosition: item.position } : undefined} />
+        <picture>
+          {mobileImage ? <source media="(max-width: 767px)" srcSet={item.originalQuality ? item.photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
+          <Image src={item.photo} alt="" fill unoptimized={item.originalQuality} lockSizes={item.originalQuality} sizes="(max-width: 991px) 92vw, 60vw" style={item.position ? { objectPosition: item.position } : undefined} />
+        </picture>
         <span className="k-panel-shade" aria-hidden="true" />
         <span className="k-panel-index">{String(index + 1).padStart(2, "0")}</span>
         <span className="k-panel-rail" aria-hidden={open}>

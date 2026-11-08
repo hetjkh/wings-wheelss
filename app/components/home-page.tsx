@@ -14,10 +14,6 @@ import "./journey-explorer.css";
 import "./services.css";
 import "./home-ending.css";
 
-function PaperEdge({ position = "bottom", variant = "default", className = "" }: { position?: "top" | "bottom"; variant?: "default" | "travel"; className?: string }) {
-  return <div className={`n-edge n-edge-${position} n-edge-${variant} ${className}`} aria-hidden="true" />;
-}
-
 export default function HomePage() {
   return <HomeExperience>
     <a className="skip-link" href="#home-services">Skip to content</a>
@@ -63,7 +59,6 @@ export default function HomePage() {
               </div>
             </article>
           </div>
-          <PaperEdge variant="travel" />
         </section>
       </div>
 

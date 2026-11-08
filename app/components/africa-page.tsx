@@ -220,7 +220,10 @@ export default function AfricaPage() {
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}
         mobileHeadline={<>Many countries.<br /><em>One journey.</em></>}
-        photo="/images/library/cape-town.webp"
+        photo="/images/library/africa-closing-cape-town-wide-v1.png"
+        photoMobile="/images/library/africa-closing-cape-town-mobile-v1.png"
+        photoPosition="center 25%"
+        originalQuality
         pass={["Boarding pass", "UAE · Africa · Worldwide"]}
         from="UAE"
         to="Africa"

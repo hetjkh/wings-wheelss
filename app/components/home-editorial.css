@@ -126,7 +126,7 @@
     drop-shadow(-2px -3px 0 color-mix(in srgb, var(--e-surface, var(--paper)) 88%, #fff8e9))
     drop-shadow(0 -10px 18px #120e0a33);
 }
-.home-page main > .pin-spacer:has(+ .n-services) { margin-bottom: var(--tear-size) !important; }
+.home-page main > .pin-spacer:not(:has(> .au-hero)):has(+ .n-services) { margin-bottom: var(--tear-size) !important; }
 .e-africa, .e-together, .e-contact, .e-destinations, .e-people, .e-partners {
   position: relative;
   margin-top: 0;

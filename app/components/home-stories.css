@@ -11,7 +11,8 @@
 .h-zone-shape { fill: #f3ead800; stroke: #f3ead8; stroke-opacity: .5; stroke-width: .7px; vector-effect: non-scaling-stroke; stroke-linejoin: round; transition: fill .4s, stroke-opacity .4s; }
 .h-zone:hover .h-zone-shape { fill: #f3ead80d; }
 .h-zone.is-active .h-zone-shape { stroke-opacity: 1; stroke-width: 1px; fill: #f3ead800; }
-.h-zone-photo { opacity: 0; transition: opacity .55s ease; }
+.h-zone-photo { opacity: 0; transition: opacity .55s ease; pointer-events: none; }
+.h-zone-ocean-hit { fill: transparent; stroke: none; pointer-events: fill; }
 .h-zone.is-active .h-zone-photo { opacity: 1; }
 
 .h-pin { cursor: pointer; }

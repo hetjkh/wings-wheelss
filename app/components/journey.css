@@ -53,10 +53,9 @@
   --top-tear: var(--tear-size);
   margin-top: 0;
 }
-/* A full-screen scene owns its viewport through the end of its pin.
-   Reserve the following lip outside that viewport, rather than over its controls. */
-.journey-page main > .pin-spacer:has(+ :is(.j-torn-top, .au-torn)),
-.journey-page main > .pin-spacer:has(+ .pin-spacer > :is(.j-torn-top, .au-torn)) {
+/* Interactive scenes reserve room for the following lip; masked headers meet it directly. */
+.journey-page main > .pin-spacer:not(:has(> .au-hero)):has(+ :is(.j-torn-top, .au-torn)),
+.journey-page main > .pin-spacer:not(:has(> .au-hero)):has(+ .pin-spacer > :is(.j-torn-top, .au-torn)) {
   margin-bottom: var(--tear-size) !important;
 }
 /* Sitewide: keep copy clear of the next lip, and stop double-counting tear height at the top.

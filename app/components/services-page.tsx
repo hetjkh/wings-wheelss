@@ -171,7 +171,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <ServicesFinal />
+      <ServicesFinal variant="coastal" />
     </main>
     <JourneyFooter />
   </ChapterMotion>;

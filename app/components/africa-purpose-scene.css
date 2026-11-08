@@ -1,4 +1,4 @@
-.africa-page .a-connections { padding-bottom: 0; }
+.journey-page.africa-page .a-connections { padding-bottom: 0 !important; }
 .a-purpose-scene { --purpose-x: 0px; --purpose-y: 0px; --purpose-drift: 0px; --purpose-progress: 0; --purpose-reveal: 1; position: relative; color: #fff9ed; background: #1c2729; }
 .a-purpose-stage { position: relative; }
 .a-purpose-stage::after { content: ''; position: absolute; z-index: 5; inset: auto 0 0; height: 18%; pointer-events: none; background: linear-gradient(transparent, #0d171eaa); }
@@ -39,7 +39,7 @@
 .is-interactive .a-purpose-slide[data-active="true"] .a-purpose-heading { opacity: 1; translate: 0 0; }
 .is-interactive .a-purpose-slide[data-active="true"] .a-purpose-description { opacity: var(--purpose-reveal); translate: 0 calc((1 - var(--purpose-reveal)) * 35px); }
 .is-interactive .a-purpose-slide[data-active="true"] .a-purpose-description:focus-within { opacity: 1; translate: none; }
-.is-interactive .a-purpose-navigation { position: absolute; z-index: 6; left: 6%; right: 6%; bottom: 35px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
+.is-interactive .a-purpose-navigation { position: absolute; z-index: 6; left: 6%; right: 6%; bottom: calc(35px + var(--tear-size) * .7); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
 .a-purpose-navigation > button { position: relative; display: flex; align-items: center; gap: 14px; padding: 13px 0 20px; border: 0; background: none; color: #fff9edbb; text-align: left; font: 400 clamp(14px, 1.25vw, 22px)/1.3 var(--body); cursor: pointer; transition: color .25s; }
 .a-purpose-navigation > button[aria-current], .a-purpose-navigation > button:hover { color: #fff9ed; }
 .a-purpose-nav-number { font-size: 12px; letter-spacing: .12em; }
@@ -65,7 +65,7 @@
   .a-purpose-description > span { font-size: 15px; }
   .a-purpose-description > p { font-size: 28px; }
   .a-purpose-description > a { font-size: 12px; margin-top: 16px; }
-  .is-interactive .a-purpose-navigation { left: 5%; right: 5%; bottom: 26px; gap: 12px; }
+  .is-interactive .a-purpose-navigation { left: 5%; right: 5%; bottom: calc(26px + var(--tear-size) * .7); gap: 12px; }
   .a-purpose-navigation > button { align-items: start; flex-direction: column; gap: 8px; font-size: 12px; min-height: 76px; }
   .is-interactive .a-purpose-scroll { top: 88px; right: 5%; font-size: 8px; }
 }

@@ -22,7 +22,7 @@ const verbs = [
 ];
 
 const services = [
-  { icon: "plane" as const, title: "Business flights", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
+  { icon: "plane" as const, title: "Business flights", photo: "/images/library/business-terminal-wide-v4.png", photoMobile: "/images/library/business-terminal-mobile-v4.png", originalQuality: true, alt: "Two business travellers with carry-on luggage walking through a spacious sunlit airport terminal", position: "center 30%", items: ["Domestic & international", "Multi-city itineraries", "Flexible tickets & fares", "Group bookings"], service: "Flights" },
   { icon: "bed" as const, title: "Hotels", photo: "/images/library/business-hotel.webp", alt: "A business hotel prepared for a corporate stay", position: "center", items: ["Business hotels", "Extended stays", "Corporate rates", "Group accommodation"], service: "Hotels" },
   { icon: "document" as const, title: "Visas & documentation", photo: "/images/library/passport-preparation.webp", alt: "Travel documents laid out before a departure", position: "center", items: ["Visa assistance", "Travel documentation", "Travel insurance support", "Pre-departure checks"], service: "Visa assistance" },
   { icon: "car" as const, title: "Airport & ground transfers", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller into an airport transfer", position: "center", items: ["Airport transfers", "Chauffeur services", "Group transportation", "Hotel & venue transfers"], service: "Airport & ground transfers" },

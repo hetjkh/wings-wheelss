@@ -24,6 +24,7 @@
 
 /* 02 · Network — green face must match the tear lip (see .sn-network). */
 .a-network { --tear-face: #1d2a22; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4); background: #1d2a22; }
+.africa-page .a-network::before { background-color: #1d2a22; }
 .africa-page .a-network .j-pillars { margin-top: calc(var(--u) * 3.5); }
 
 /* 03 · Two sides of one corridor */

@@ -16,7 +16,7 @@ type ClosingAction = { label: string; href?: string; service?: string };
 
 /** The closing scene: a cabin window opens onto the destination, then the boarding pass arrives. */
 export function ClosingScene({
-  chapter, ticket, left, right, photo, photoMobile, photoPosition, pass = ["Boarding pass", "One journey · Every part"],
+  chapter, ticket, left, right, photo, photoMobile, photoPosition, originalQuality = false, pass = ["Boarding pass", "One journey · Every part"],
   from, to, text, mobileHeadline, mobileText, chips, action, whatsapp = "WhatsApp our team",
 }: {
   chapter: string;
@@ -26,6 +26,7 @@ export function ClosingScene({
   photo: string;
   photoMobile?: string;
   photoPosition?: string;
+  originalQuality?: boolean;
   pass?: [string, string];
   from: string;
   to: string;
@@ -125,8 +126,8 @@ export function ClosingScene({
   return <section className="sv-final j-torn-top" ref={section} aria-labelledby="final-heading">
     <div className="sv-view">
       <picture>
-        {mobileImage ? <source media="(max-width: 991px)" srcSet={mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
-        <Image src={photo} alt="" fill sizes="100vw" quality={photoMobile ? 90 : undefined} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
+        {mobileImage ? <source media="(max-width: 991px)" srcSet={originalQuality ? photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
+        <Image src={photo} alt="" fill unoptimized={originalQuality} lockSizes={originalQuality} sizes="100vw" quality={photoMobile ? 90 : undefined} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
       </picture>
       <div className="sv-view-shade" />
       <div className="sv-blind" aria-hidden="true"><span className="sv-blind-handle" /></div>
@@ -180,15 +181,17 @@ export function ClosingScene({
   </section>;
 }
 
-export function ServicesFinal() {
+export function ServicesFinal({ variant = "lounge" }: { variant?: "lounge" | "coastal" }) {
+  const coastal = variant === "coastal";
   return <ClosingScene
     chapter="08 / Wings & Wheels"
-    ticket="The departure lounge · Your next chapter"
+    ticket={coastal ? "The scenic route · Your next chapter" : "The departure lounge · Your next chapter"}
     left={<>Where you&apos;re<br />going matters.</>}
     right={<>So does<br />the journey.</>}
     mobileHeadline={<>Where you&apos;re going matters.<br /><em>So does the journey.</em></>}
-    photo="/images/home/departure-lounge-desktop-v1.webp"
-    photoMobile="/images/home/departure-lounge-mobile-v1.webp"
+    photo={coastal ? "/images/services/coastal-journey-desktop-v1.webp" : "/images/home/departure-lounge-desktop-v2.webp"}
+    photoMobile={coastal ? "/images/services/coastal-journey-mobile-v1.webp" : "/images/home/departure-lounge-mobile-v2.webp"}
+    photoPosition={coastal ? "center center" : "65% bottom"}
     from="Where you are"
     to="Where you're going"
     mobileText="Flights, stays and support — thoughtfully connected."

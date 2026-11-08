@@ -180,8 +180,10 @@ export default function DestinationsPage() {
         left={<>Some journeys start<br />with a place.</>}
         right={<>Others start<br />with <em>an idea.</em></>}
         mobileHeadline={<>A place or idea.<br /><em>Your next journey.</em></>}
-        photo="/images/library/destinations-closing-coast-v2.webp"
-        photoPosition="center 60%"
+        photo="/images/library/destinations-closing-coast-wide-v3.png"
+        photoMobile="/images/library/destinations-closing-coast-mobile-v3.png"
+        photoPosition="center 35%"
+        originalQuality
         pass={["Boarding pass", "Place or idea"]}
         from="An idea"
         to="A destination"

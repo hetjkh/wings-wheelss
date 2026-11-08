@@ -84,11 +84,6 @@
   -webkit-mask: url('/images/journey/torn-edge-bottom.svg') center / 100% 100% no-repeat;
   mask: url('/images/journey/torn-edge-bottom.svg') center / 100% 100% no-repeat;
 }
-/* Africa owns the tear into the travel photos — hide the cream travel lip so it doesn't clip Africa. */
-.n-travel-chapter:has(+ .e-africa) .n-travel > .n-edge-bottom,
-.n-travel-chapter:has(+ .e-africa) .n-travel > .n-edge-travel {
-  display: none;
-}
 .n-travel .n-panel-copy {
   bottom: calc(var(--travel-tear-height) + 25px);
   display: flex;
