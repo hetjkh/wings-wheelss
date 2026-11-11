@@ -28,11 +28,11 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       const cleanups: (() => void)[] = [];
 
       q("[data-lines]").filter(heading => heading.getClientRects().length > 0).forEach(heading => gsap.from(heading.querySelectorAll(".au-line > span"), {
-        yPercent: 110, duration: 1.1, stagger: .1, ease: "power4.out",
+        yPercent: 105, duration: .85, stagger: .06, ease: "power4.out",
         scrollTrigger: { trigger: heading, start: "top 88%", once: true },
       }));
       q("[data-au-reveal]").filter(element => element.getClientRects().length > 0).forEach(element => gsap.from(element, {
-        y: 34, opacity: 0, duration: .9, ease: "power3.out",
+        y: 24, opacity: 0, duration: .7, ease: "power3.out",
         scrollTrigger: { trigger: element, start: "top 92%", once: true },
       }));
 

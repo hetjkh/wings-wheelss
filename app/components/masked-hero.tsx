@@ -121,8 +121,8 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
         }
       }
 
-      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 110, duration: 1.15, stagger: index => (index % lineCount) * .08, ease: "power4.out", delay: .1 });
-      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 24, opacity: 0, duration: .9, stagger: index => (index % 3) * .1, ease: "power3.out", delay: .45 });
+      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .85, stagger: index => (index % lineCount) * .06, ease: "power4.out", delay: .05 });
+      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 20, opacity: 0, duration: .7, stagger: index => (index % 3) * .06, ease: "power3.out", delay: .2 });
       gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
 
       const heroInner = one(".au-hero-photo-inner");

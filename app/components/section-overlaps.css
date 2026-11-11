@@ -1,0 +1,18 @@
+/* Keep the hold separate from transforms owned by each page's pinned scenes. */
+.section-cover-under {
+  position: relative;
+  z-index: var(--section-cover-under-layer, 0) !important;
+  isolation: isolate;
+  translate: 0 var(--section-cover-y, 0px) !important;
+}
+
+.section-cover-over {
+  position: relative;
+  z-index: var(--section-cover-layer, 2) !important;
+  box-shadow: 0 -22px 48px #1b211918;
+}
+
+@media (max-width: 999px), (max-height: 699px), (prefers-reduced-motion: reduce), print {
+  .section-cover-under { translate: none !important; }
+  .section-cover-over { box-shadow: none; }
+}

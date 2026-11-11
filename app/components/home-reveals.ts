@@ -34,14 +34,14 @@ export function animateHomeReveals(root: HTMLElement) {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       targets.get(entry.target)?.forEach(element => {
-        if (!revealed.has(element)) reveal(element, Math.min(order++ * .055, .22));
+        if (!revealed.has(element)) reveal(element, Math.min(order++ * .035, .1));
       });
       source.unobserve(entry.target);
     });
   };
   // Text begins inside the viewport, where visitors can actually see the lines.
   const observer = new IntersectionObserver(onIntersection, {
-    rootMargin: `0px 0px -${Math.round(window.innerHeight * .22)}px 0px`, threshold: 0,
+    rootMargin: `0px 0px -${Math.round(window.innerHeight * .16)}px 0px`, threshold: 0,
   });
   const imageObserver = new IntersectionObserver(onIntersection, { threshold: 0 });
   const observe = (element: HTMLElement, target: HTMLElement = element, image = false) => {
@@ -57,7 +57,7 @@ export function animateHomeReveals(root: HTMLElement) {
 
   select("[data-editorial-title]").filter(pending).forEach(title => {
     watch(title, gsap.from(title.querySelectorAll(".e-line > span"), {
-      yPercent: 105, opacity: 0, duration: 1.55, stagger: .16, ease: "power2.out", paused: true,
+      yPercent: 105, opacity: 0, duration: .85, stagger: .07, ease: "power2.out", paused: true,
     }));
   });
 
@@ -70,7 +70,7 @@ export function animateHomeReveals(root: HTMLElement) {
           (mask as HTMLElement).style.marginBottom = "-.14em";
         });
         const tween = gsap.from(self.lines, {
-          yPercent: 105, opacity: 0, duration: 1.55, stagger: .16, ease: "power2.out", paused: true,
+          yPercent: 105, opacity: 0, duration: .85, stagger: .07, ease: "power2.out", paused: true,
           onComplete: () => { completed.add(element); },
         });
         animations.set(element, tween);
@@ -93,7 +93,7 @@ export function animateHomeReveals(root: HTMLElement) {
   });
   Array.from(content).filter(pending).forEach(element => {
     watch(element, gsap.from(element, {
-      y: 28, opacity: 0, duration: 1.15, ease: "power2.out", paused: true,
+      y: 20, opacity: 0, duration: .65, ease: "power2.out", paused: true,
       clearProps: "transform,opacity",
     }));
   });

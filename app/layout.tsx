@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { SiteCursor } from "./components/site-cursor";
+import { SectionOverlaps } from "./components/section-overlaps";
 import "./globals.css";
 
 const heading = localFont({
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
-      <body><SmoothScroll />{children}<SiteCursor /></body>
+      <body><SmoothScroll />{children}<SectionOverlaps /><SiteCursor /></body>
     </html>
   );
 }

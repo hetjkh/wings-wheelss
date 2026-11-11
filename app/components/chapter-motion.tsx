@@ -480,14 +480,14 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             },
           });
         });
-        splitText(".s-title, .s-statement, .s-principle-title, .s-final h2", { yPercent: 115, duration: 1.15, stagger: .11, ease: "power4.out" });
-        splitText(".s-lead, .s-lead-body", { yPercent: 100, opacity: 0, duration: .9, stagger: .07, delay: .15, ease: "power3.out" });
+        splitText(".s-title, .s-statement, .s-principle-title, .s-final h2", { yPercent: 105, duration: .85, stagger: .06, ease: "power4.out" });
+        splitText(".s-lead, .s-lead-body", { yPercent: 100, opacity: 0, duration: .65, stagger: { amount: .12 }, delay: .05, ease: "power3.out" });
 
         // Short, one-time entrances. Anything already on screen stays visible.
         const reveal = (elements: Element[], trigger: Element, options: gsap.TweenVars = {}) => {
           if (!elements.length || visible(trigger)) return;
           const tween = gsap.from(elements, {
-            opacity: 0, y: desktop ? 32 : 16, duration: .9, stagger: .08, ease: "power3.out",
+            opacity: 0, y: desktop ? 24 : 16, duration: .7, stagger: .05, ease: "power3.out",
             clearProps: "opacity,transform", scrollTrigger: { trigger, start: "top 90%", once: true }, ...options,
           });
           const show = () => { tween.progress(1); };
