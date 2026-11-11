@@ -13,10 +13,27 @@ export function CorporateServices({ services }: { services: CorporateService[] }
   const [active, setActive] = useState(0);
   const fine = useRef(false);
   const panels = useRef<Array<HTMLDivElement | null>>([]);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     fine.current = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    return () => {
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    };
   }, []);
+
+  const open = (index: number, immediate = false) => {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+    if (immediate) {
+      setActive(index);
+      return;
+    }
+    // Brief pause so sweeping the cursor doesn't thrash mid-animation.
+    hoverTimer.current = setTimeout(() => setActive(index), 90);
+  };
 
   const move = (event: KeyboardEvent<HTMLDivElement>) => {
     const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
@@ -24,24 +41,31 @@ export function CorporateServices({ services }: { services: CorporateService[] }
     if (!forward && !back) return;
     event.preventDefault();
     const next = (active + (forward ? 1 : -1) + services.length) % services.length;
-    setActive(next);
+    open(next, true);
     panels.current[next]?.focus();
   };
 
-  return <div className="k-strip" role="tablist" aria-label="Corporate travel services" onKeyDown={move} style={{ "--open": active } as CSSProperties}>
+  return <div
+    className="k-strip"
+    role="tablist"
+    aria-label="Corporate travel services"
+    onKeyDown={move}
+    style={{ "--open": active, "--count": services.length } as CSSProperties}
+  >
     {services.map((item, index) => {
-      const open = index === active;
+      const isOpen = index === active;
       const mobileImage = item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 90 }).props : null;
       return <div
         key={item.title}
         ref={node => { panels.current[index] = node; }}
-        className={`k-panel${open ? " is-active" : ""}`}
+        className={`k-panel${isOpen ? " is-active" : ""}`}
         role="tab"
-        aria-selected={open}
+        aria-selected={isOpen}
         aria-label={item.title}
-        tabIndex={open ? 0 : -1}
-        onPointerEnter={() => { if (fine.current) setActive(index); }}
-        onClick={() => setActive(index)}
+        tabIndex={isOpen ? 0 : -1}
+        onPointerEnter={() => { if (fine.current) open(index); }}
+        onFocus={() => open(index, true)}
+        onClick={() => open(index, true)}
       >
         <picture>
           {mobileImage ? <source media="(max-width: 767px)" srcSet={item.originalQuality ? item.photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
@@ -49,11 +73,11 @@ export function CorporateServices({ services }: { services: CorporateService[] }
         </picture>
         <span className="k-panel-shade" aria-hidden="true" />
         <span className="k-panel-index">{String(index + 1).padStart(2, "0")}</span>
-        <span className="k-panel-rail" aria-hidden={open}>
+        <span className="k-panel-rail" aria-hidden={isOpen}>
           <TravelIcon kind={item.icon} size={18} />
           {item.title}
         </span>
-        <div className="k-panel-copy" inert={!open}>
+        <div className="k-panel-copy" inert={!isOpen}>
           <span className="k-panel-kicker"><TravelIcon kind={item.icon} size={16} />{String(index + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</span>
           <h3>{item.title}</h3>
           <ul>{item.items.map((line, n) => <li key={line} style={{ "--n": n } as CSSProperties}>{line}</li>)}</ul>

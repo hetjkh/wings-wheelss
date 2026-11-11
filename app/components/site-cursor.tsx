@@ -108,7 +108,22 @@ export function SiteCursor() {
 
   return <>
     <div ref={cursor} className="site-cursor" aria-hidden="true" data-mode="idle" data-visible="false">
-      <div className="site-cursor-face"><span ref={label} /><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" strokeWidth="1.25" /></svg></div>
+      <div className="site-cursor-face">
+        <span ref={label} />
+        <svg className="site-cursor-arrow" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" strokeWidth="1.25" /></svg>
+        <svg className="site-cursor-orbit" viewBox="0 0 140 140" aria-hidden="true">
+          <defs>
+            <path id="site-cursor-orbit-path" d="M70 70 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0" />
+          </defs>
+          <g className="site-cursor-spin">
+            <text>
+              <textPath href="#site-cursor-orbit-path">Explore · Explore · Explore · Explore ·</textPath>
+            </text>
+          </g>
+          <circle cx="70" cy="70" r="30" />
+          <path d="M62 78 78 62M64 62h16v16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
     </div>
     <div ref={dot} className="site-cursor-dot" aria-hidden="true" data-visible="false" />
   </>;

@@ -175,11 +175,11 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           coverAfter();
         });
 
-        // Franchise phones use two short galleries, with native swiping on short screens.
+        // Franchise phones: markets gallery can pin; build uses a tap accordion instead.
         if (page.classList.contains("franchise-page") && context.conditions?.phone) {
-          [".f-markets", ".f-build"].forEach(selector => {
+          [".f-markets"].forEach(selector => {
             const section = page.querySelector<HTMLElement>(selector);
-            const track = section?.querySelector<HTMLElement>(".f-market-grid, .f-build-grid");
+            const track = section?.querySelector<HTMLElement>(".f-market-grid");
             if (!section || !track) return;
             const count = track.children.length;
             const maps = Array.from(track.querySelectorAll<SVGSVGElement>(".f-market-map"));
@@ -224,7 +224,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               if (counter) counter.textContent = `01 / ${String(count).padStart(2, "0")}`;
             });
           });
-          select(".f-beyond-photo img, .f-network-photo img").forEach((photo: HTMLElement) => {
+          select(".f-beyond-tile img, .f-network-photo img").forEach((photo: HTMLElement) => {
             gsap.fromTo(photo, { scale: 1.12 }, {
               scale: 1, ease: "none",
               scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
@@ -348,27 +348,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             });
           });
 
-          // 07 · Support flow: vertical progress line driven by scroll.
-          (() => {
-            const flow = page.querySelector<HTMLElement>(".k-flow");
-            if (!flow) return;
-            gsap.fromTo(flow, { "--progress": 0 }, {
-              "--progress": 1, ease: "none",
-              scrollTrigger: {
-                trigger: flow, start: "top 80%", end: "bottom 65%", scrub: .5,
-              },
-            });
-            // Each step card slides in.
-            Array.from(flow.querySelectorAll<HTMLElement>("li")).forEach((li, i) => {
-              gsap.from(li, {
-                x: -22, opacity: .2, duration: .7, ease: "power3.out",
-                scrollTrigger: { trigger: li, start: "top 88%", once: true },
-                delay: i * .07,
-              });
-            });
-          })();
-
-          // 08 · Sides: parallax on each hero photo.
+          // 07 · Sides: parallax on each hero photo.
           select(".k-side-photo img").forEach((photo: HTMLElement) => {
             gsap.fromTo(photo, { yPercent: -6 }, {
               yPercent: 6, ease: "none",

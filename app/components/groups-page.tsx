@@ -7,6 +7,7 @@ import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { EventBrief } from "./event-brief";
+import { GroupsConverge } from "./groups-converge";
 import { MobileGroupChanges, MobileGroupProcess, MobileGroupServices } from "./groups-mobile";
 import { office } from "./data";
 import "./journey.css";
@@ -16,10 +17,10 @@ import "./groups.css";
 import "./groups-mobile.css";
 
 const origins = [
-  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M250 70 C 340 70, 330 180, 372 180" },
-  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M250 290 C 340 290, 330 180, 372 180" },
-  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M750 70 C 660 70, 670 180, 628 180" },
-  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M750 290 C 660 290, 670 180, 628 180" },
+  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M220 90 C 340 90, 360 310, 430 310", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal" },
+  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M220 530 C 340 530, 360 310, 430 310", photo: "/images/library/nairobi-city.webp", alt: "Nairobi city centre surrounded by a green urban canopy" },
+  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M780 90 C 660 90, 640 310, 570 310", photo: "/images/library/corporate-executive-view.webp", alt: "An executive looking out over a modern city skyline" },
+  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M780 530 C 660 530, 640 310, 570 310", photo: "/images/library/global-connections.webp", alt: "Travellers connecting through a busy international airport" },
 ];
 const sequence: { icon: IconKind; label: string }[] = [
   { icon: "plane", label: "Flights" }, { icon: "pin", label: "Arrivals" }, { icon: "bed", label: "Hotels" },
@@ -124,33 +125,16 @@ export default function GroupsPage() {
           <div className="g-converge-head">
             <div>
               <span className="j-eyebrow s-eyebrow">01 / Many cities, one venue</span>
-              <h2 id="people-heading" className="s-title s-rows"><span className="g-desktop-copy">The event may be in one place.</span><span className="g-soft g-desktop-copy">Your people may not be.</span><span className="g-mobile-only">Different cities.<br /><em>One destination.</em></span></h2>
+              <h2 id="people-heading" className="s-title s-rows"><span className="g-desktop-copy">Many cities.</span><span className="g-soft g-desktop-copy">One event.</span><span className="g-mobile-only">Many cities.<br /><em>One event.</em></span></h2>
             </div>
             <div className="g-converge-copy">
               <p className="g-body">A Dubai conference can bring executives from London, delegates from Nairobi, a sales team from Riyadh and suppliers from India.</p>
               <p className="g-staccato" data-stagger><span>Different flights.</span><span>Different arrival times.</span><span>Different hotels.</span></p>
             </div>
           </div>
-          <figure className="g-stage" data-progress="top 85%" data-progress-end="top 30%" aria-label="Executives from London, a sales team from Riyadh, delegates from Nairobi and suppliers from Mumbai, all travelling to one event in Dubai">
-            <svg className="g-stage-lines" viewBox="0 0 1000 360" aria-hidden="true">
-              <circle className="g-orbit" cx="500" cy="180" r="128" />
-              <circle className="g-orbit g-orbit-outer" cx="500" cy="180" r="158" />
-              {origins.map((origin, i) => <g key={origin.city} data-city={i}>
-                <path className="g-stage-track" d={origin.path} />
-                <path className="g-stage-route" data-trace pathLength={1} d={origin.path} />
-                <circle className="g-stage-light" r="5"><animateMotion dur="3.6s" begin={`${i * .9}s`} repeatCount="indefinite" path={origin.path} keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1" /></circle>
-              </g>)}
-            </svg>
-            <ul className="g-passes">{origins.map((origin, i) => <li key={origin.city} className="g-pass" data-city={i} style={{ "--i": i } as React.CSSProperties}>
-              <span className="g-pass-route">{origin.code} <TravelIcon kind="plane" size={13} /> DXB</span>
-              <strong>{origin.city}</strong>
-              <span className="g-pass-foot"><span>{origin.who}</span><span>Arr {origin.arrives}</span></span>
-            </li>)}</ul>
-            <div className="g-venue">
-              <Image src="/images/library/dubai-panorama.webp" alt="" fill sizes="(max-width: 991px) 60vw, 22vw" />
-              <div className="g-venue-copy"><span>The venue</span><strong>Dubai</strong><em>One event.</em></div>
-            </div>
-          </figure>
+          <div className="g-desktop-copy">
+            <GroupsConverge origins={origins} sequence={sequence} />
+          </div>
           <figure className="gm-arrival g-mobile-only">
             <span className="gm-arrival-kicker">01 / Many cities, one venue</span>
             <h2 className="gm-arrival-title">
@@ -176,11 +160,6 @@ export default function GroupsPage() {
               <EnquiryButton className="gm-arrival-cta" service="Groups & MICE" destination="Dubai" message="We would like to coordinate flights, stays and arrivals for our group event.">Coordinate arrival</EnquiryButton>
             </figcaption>
           </figure>
-          <div className="g-route" data-progress="top 95%" data-progress-end="top 70%">
-            <p>We bring every movement into one plan</p>
-            <ol>{sequence.map((step, i) => <li key={step.label} style={{ "--i": i } as React.CSSProperties}><TravelIcon kind={step.icon} size={16} />{step.label}</li>)}</ol>
-            <p className="g-route-close">One coordinated journey.</p>
-          </div>
         </div>
       </section>
 
@@ -219,7 +198,7 @@ export default function GroupsPage() {
       <section className="g-day j-torn-top" id="timeline" aria-labelledby="day-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <h2 id="day-heading" className="s-title s-rows"><span>The exhibition starts at 10:00&nbsp;AM.</span><span className="g-soft">Our work starts long before</span><span className="g-soft">the doors open.</span></h2>
+            <h2 id="day-heading" className="s-title s-rows"><span>Ready before</span><span className="g-soft">doors open.</span></h2>
             <span className="j-eyebrow s-eyebrow g-day-eyebrow">04 / Exhibition day</span>
           </div>
           <div className="g-day-grid" data-progress="top 70%" data-progress-end="bottom 70%">
@@ -249,7 +228,7 @@ export default function GroupsPage() {
       <section className="g-forty j-torn-top" id="journeys" aria-labelledby="forty-heading">
         <div className="j-shell">
           <span className="j-eyebrow s-eyebrow">05 / One group. Different journeys.</span>
-          <h2 id="forty-heading" className="s-title">40 people don&apos;t always mean<br />40 identical trips.</h2>
+          <h2 id="forty-heading" className="s-title">40 people.<br />One plan.</h2>
           <div className="g-forty-grid">
             <div className="g-crowd">
               <ol className="g-dots" data-stagger="0.025" aria-label="40 delegates from six departure cities">{travellers.map((city, i) => <li key={i} className="g-dot" data-city={city}><TravelIcon kind="people" size={18} /></li>)}</ol>

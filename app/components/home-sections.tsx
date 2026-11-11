@@ -22,7 +22,7 @@ export function Hero() {
     <div className="shell hero-inner">
       <div className="hero-copy">
         <span className="ww-kicker">Wings & Wheels · Dubai</span>
-        <h1 id="hero-heading">Travel is about places.<span>We&apos;re about people.</span></h1>
+        <h1 id="hero-heading">About the people<span>who travel.</span></h1>
       </div>
       <div className="hero-card">
         <p>Business, leisure and group travel across the UAE, Africa and worldwide.</p>

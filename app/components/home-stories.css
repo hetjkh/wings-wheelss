@@ -29,10 +29,14 @@
 .h-stories-zones { position: absolute; left: 4vw; bottom: clamp(40px, 4vw, 70px); z-index: 2; }
 .h-stories-zones > span { display: block; margin-bottom: 14px; font: 400 10px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: #f3ead880; }
 .h-stories-zones ul { display: grid; gap: 2px; padding-left: 16px; border-left: 1px solid #f3ead833; }
-.h-stories-zones button { position: relative; padding: 6px 0; border: 0; background: none; color: #f3ead880; font: 400 clamp(18px, 1.5vw, 26px)/1.1 var(--heading); text-align: left; cursor: pointer; transition: color .3s, translate .3s; }
+.h-stories-zones button { position: relative; display: inline-flex; align-items: baseline; gap: .45em; padding: 6px 0; border: 0; background: none; color: #f3ead880; font: 400 clamp(18px, 1.5vw, 26px)/1.1 var(--heading); text-align: left; cursor: pointer; transition: color .3s, translate .3s; }
 .h-stories-zones button::before { content: ''; position: absolute; left: -17px; top: 50%; width: 1px; height: 0; translate: 0 -50%; background: var(--butter); transition: height .3s; }
+.h-zone-index { font: 400 11px/1 var(--body); letter-spacing: .14em; color: #f3ead866; }
 .h-stories-zones button.is-active { color: var(--cream); translate: 6px 0; }
 .h-stories-zones button.is-active::before { height: 70%; }
+.h-stories-zones button.is-active .h-zone-index { color: var(--butter); }
+.h-stories-countries { max-width: 18rem; margin: 14px 0 0; font: 300 12px/1.45 var(--body); color: #f3ead899; }
+.h-story-countries { margin: 0; font: 300 13px/1.45 var(--body); color: #f3ead8b8; }
 
 /* The opened story. */
 .h-story { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
@@ -86,7 +90,10 @@
   .h-stories-zones ul { display: flex; gap: 8px; padding: 0; border: 0; overflow-x: auto; scrollbar-width: none; }
   .h-stories-zones button { padding: 9px 14px; border: 1px solid #f3ead840; border-radius: 99px; font: 400 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
   .h-stories-zones button::before { display: none; }
+  .h-zone-index { font-size: 10px; }
   .h-stories-zones button.is-active { translate: none; border-color: var(--butter); background: var(--butter); color: var(--forest); }
+  .h-stories-zones button.is-active .h-zone-index { color: var(--forest); }
+  .h-stories-countries { max-width: none; margin-top: 16px; }
   .h-story-backdrop { display: none; }
   .h-story-panel { inset: 0; width: auto; padding-top: 80px; translate: 100% 0; }
 }

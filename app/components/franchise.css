@@ -26,36 +26,108 @@
 .f-hero-focus span { flex-basis: 100%; color: var(--sand); font-size: calc(var(--u) * .625); }
 .f-hero-focus i { width: 4px; height: 4px; border-radius: 50%; background: var(--sand); }
 
-/* 01 · Growing beyond borders — tall hold so markets doesn’t share this viewport. */
+/* 01 · Growing beyond borders — Yachtlux-style image collage + copy */
 .f-beyond {
   --tear-face: #fff;
-  --photo-tear: calc(var(--tear-size) * 1.15);
+  --beyond-ease: cubic-bezier(.22, 1, .36, 1);
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(36px, 3.8vw, 56px);
   min-height: 100svh;
-  padding: calc(var(--tear) + var(--u) * 7) 0 calc(var(--photo-tear) + var(--u) * 6);
+  padding: calc(var(--tear) + var(--u) * 5) clamp(28px, 3.5vw, 56px) calc(var(--u) * 5);
   background: #fff;
 }
+.f-beyond-visual {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+}
+/* Staggered collage: left tile starts lower; right column starts higher and its bottom tile is shorter and narrower. */
+.f-beyond-collage {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1.22 / 1;
+}
+.f-beyond-tile {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: #d9cfc0;
+  box-shadow: 0 16px 40px #13222a16;
+}
+.f-beyond-tile img {
+  object-fit: cover;
+  transition: scale 1.1s var(--beyond-ease);
+}
+.f-beyond-tile:hover img { scale: 1.05; }
+.f-beyond-tile-main {
+  left: 0;
+  bottom: 0;
+  width: 53%;
+  height: 85%;
+  isolation: isolate;
+}
+.f-beyond-tile-main img { object-position: 35% center; }
+.f-beyond-tile-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #0d171cd4 0%, #0d171c33 42%, transparent 68%);
+  pointer-events: none;
+}
+.f-beyond-tile-main figcaption {
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--u) * 1.5);
+  right: calc(var(--u) * 1.25);
+  bottom: calc(var(--u) * 1.5);
+  display: grid;
+  gap: 4px;
+  font: 400 calc(var(--u) * .6875)/1.3 var(--body);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.f-beyond-tile-main figcaption strong {
+  font: 400 calc(var(--u) * 1.75)/1.05 var(--heading);
+  letter-spacing: .02em;
+  color: var(--cream);
+}
+.f-beyond-tile-top {
+  top: 0;
+  left: 55.5%;
+  width: 44.5%;
+  height: 46%;
+}
+.f-beyond-tile-top img { object-position: center 40%; }
+.f-beyond-tile-bottom {
+  top: 48.7%;
+  left: 55.5%;
+  width: 38.3%;
+  height: 43.3%;
+}
+.f-beyond-tile-bottom img { object-position: center 30%; }
 .f-beyond .f-beyond-grid {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   box-sizing: border-box;
-  /* Fill the column beside the photo — no unused strip on the right. */
-  width: calc(54% - clamp(40px, 4vw, 72px));
+  width: 100%;
   max-width: none;
-  min-height: min(680px, 70svh);
-  margin: 0 clamp(28px, 3.5vw, 56px) 0 calc(46% + clamp(28px, 3vw, 48px));
-  padding-block: clamp(24px, 3vw, 48px);
+  min-height: 0;
+  margin: 0;
+  padding-block: clamp(12px, 2vw, 28px);
 }
-.f-beyond-photo { position: absolute; top: 0; bottom: 0; left: 0; width: 46%; margin: 0; overflow: hidden; mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--photo-tear)) no-repeat, url('/images/journey/torn-edge-bottom.svg') center 100% / calc(100% + 96px) calc(var(--photo-tear) + 1px) no-repeat; }
-.f-beyond-photo img { object-fit: cover; object-position: 35% center; }
-.f-beyond-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0d171cd9, transparent 45%); }
-.f-beyond-photo figcaption { position: absolute; z-index: 1; left: calc(var(--u) * 2.5); right: calc(var(--u) * 2); bottom: calc(var(--photo-tear) + var(--u) * 2); display: grid; gap: 4px; font: 400 calc(var(--u) * .75)/1.3 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--sand); }
-.f-beyond-photo figcaption strong { font: 400 calc(var(--u) * 2)/1 var(--heading); letter-spacing: .02em; color: var(--cream); }
-.f-beyond-copy { display: grid; justify-items: start; gap: calc(var(--u) * 1.75); width: 100%; min-width: 0; }
+.f-beyond-copy { display: grid; justify-items: start; gap: calc(var(--u) * 1.5); width: 100%; min-width: 0; }
 .f-beyond-copy .s-eyebrow { margin-bottom: 0; }
 .franchise-page .f-beyond .s-title {
   max-width: 100%;
-  font-size: calc(var(--u) * 3.25);
+  font-size: calc(var(--u) * 3.1);
   line-height: .98;
   letter-spacing: .01em;
 }
@@ -64,9 +136,9 @@
   white-space: normal;
 }
 .f-beyond-copy .k-body {
-  max-width: 36em;
-  margin-top: calc(var(--u) * .35);
-  font-size: calc(var(--u) * 1.125);
+  max-width: 34em;
+  margin-top: calc(var(--u) * .2);
+  font-size: calc(var(--u) * 1.0625);
   line-height: 1.5;
 }
 .f-beyond-pillars {
@@ -74,26 +146,29 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   max-width: 100%;
-  margin-top: calc(var(--u) * 1.25);
+  margin-top: calc(var(--u) * .75);
   border-top: 1px solid var(--rule);
 }
 .f-beyond-pillars li {
   display: grid;
   gap: 8px;
   min-width: 0;
-  padding: calc(var(--u) * 1.6) clamp(10px, 1.4vw, 20px) 0;
+  padding: calc(var(--u) * 1.35) clamp(10px, 1.4vw, 18px) 0;
   border-left: 1px solid var(--rule);
-  font: 300 calc(var(--u) * 1)/1.3 var(--body);
+  font: 300 calc(var(--u) * .9375)/1.3 var(--body);
   color: #7a6c5a;
 }
 .f-beyond-pillars li:first-child { padding-left: 0; border-left: 0; }
 .f-beyond-pillars span {
-  font: 400 calc(var(--u) * 1.75)/1.05 var(--heading);
+  font: 400 calc(var(--u) * 1.6)/1.05 var(--heading);
   letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--ink);
 }
-.f-beyond-copy .au-cta { margin-top: calc(var(--u) * .5); }
+.f-beyond-copy .au-cta { margin-top: calc(var(--u) * .35); }
+@media (prefers-reduced-motion: reduce) {
+  .f-beyond-tile img { transition: none; }
+}
 
 /* 02 · Three markets, each a crop of the same regional map with its route from Dubai. */
 .f-markets { --tear-face: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: var(--paper); }
@@ -143,8 +218,13 @@
 .services-page .f-advantage-grid h3 { margin-top: calc(var(--u) * .5); font: 400 calc(var(--u) * 1.5)/1.05 var(--heading); letter-spacing: .03em; text-transform: uppercase; color: var(--cream); }
 .f-advantage-grid p { margin-top: calc(var(--u) * .625); font: 300 calc(var(--u) * .9375)/1.45 var(--body); color: #e8dcc4cc; }
 
-/* 04 · What you can build */
-.f-build { --tear-face: #fff; padding: calc(var(--tear) + var(--u) * 5) 0 0; background: #fff; }
+/* 04 · What you can build — Yachtlux-style expand accordion */
+.f-build {
+  --tear-face: #fff;
+  --build-ease: cubic-bezier(.22, 1, .36, 1);
+  padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 4);
+  background: #fff;
+}
 .franchise-page .f-build .s-split-head {
   grid-template-columns: minmax(0, 1fr);
   margin-bottom: calc(var(--u) * 1.75);
@@ -154,38 +234,256 @@
   max-width: none;
   margin-inline: auto;
 }
-.f-build-grid {
-  --card-tear: calc(var(--tear-size) * .85);
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
+.f-build-wrap {
   width: calc(100% - clamp(24px, 2.5vw, 40px) * 2);
   max-width: none;
   margin-inline: auto;
-  overflow: hidden;
-  mask: url('/images/home/clientele-paper-tear.svg') center 0 / calc(100% + 96px) calc(var(--card-tear) + 1px) no-repeat,
-    linear-gradient(#000 0 0) 0 var(--card-tear) / 100% calc(100% - var(--card-tear)) no-repeat;
 }
-.f-build-card { position: relative; display: flex; align-items: flex-end; min-height: clamp(460px, 64svh, 680px); overflow: hidden; color: var(--cream); isolation: isolate; }
-.f-build-card + .f-build-card::before {
-  content: '';
+.f-build-stage { display: grid; gap: calc(var(--u) * 1.25); }
+.f-build-strip {
+  display: flex;
+  gap: 10px;
+  height: clamp(480px, 68svh, 720px);
+  min-height: 440px;
+}
+.f-build-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: #f7f1e6;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  container-type: inline-size;
+  transition: flex-grow .85s var(--build-ease), background .55s var(--build-ease);
+}
+.f-build-panel.is-active {
+  flex-grow: 3.8;
+  cursor: default;
+  background: #0d171c;
+  color: var(--cream);
+}
+.f-build-panel:focus-visible { box-shadow: inset 0 0 0 2px var(--terra); }
+.f-build-photo {
   position: absolute;
-  inset: 0 auto 0 0;
+  inset: 0;
   z-index: 0;
-  width: clamp(24px, 2.2vw, 42px);
-  translate: -50% 0;
-  background: linear-gradient(90deg, #0d171c66, #0d171c2b 45%, transparent);
+  opacity: 0;
+  transition: opacity .55s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-photo { opacity: 1; }
+.f-build-photo img {
+  object-fit: cover;
+  scale: 1.1;
+  filter: saturate(.75) brightness(.7);
+  transition: scale 1.15s var(--build-ease), filter .7s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-photo img {
+  scale: 1;
+  filter: none;
+}
+.f-build-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  background: linear-gradient(180deg, #0d171c55, transparent 38%, #0d171c88 62%, #0d171cf2);
+  transition: opacity .55s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-shade { opacity: 1; }
+.f-build-rest {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 1.1);
+  text-align: center;
+  transition: opacity .35s var(--build-ease), translate .45s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-rest {
+  opacity: 0;
+  translate: 0 -12px;
   pointer-events: none;
 }
-.f-build-photo { position: absolute; inset: 0; z-index: -2; }
-.f-build-photo img { object-fit: cover; transition: scale 1.2s cubic-bezier(.2, .7, .2, 1); }
-.f-build-card:hover .f-build-photo img { scale: 1.06; }
-.f-build-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #0d171c33, transparent 30%, #0d171c80 58%, #0d171cf0); transition: opacity .5s; }
-.f-build-copy { padding: 0 calc(var(--u) * 1.75) calc(var(--tear) + var(--u) * 2.25); }
-.f-build-copy span { font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .16em; color: var(--sand); }
-.services-page .f-build-copy h3 { margin-top: calc(var(--u) * .625); font: 400 calc(var(--u) * 1.75)/1.02 var(--heading); letter-spacing: .03em; text-transform: uppercase; color: var(--cream); }
-.f-build-copy p { margin-top: calc(var(--u) * .75); font: 300 calc(var(--u) * .9375)/1.45 var(--body); color: #f3e7cfe0; }
+.f-build-rest-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #c9b59766;
+  border-radius: 50%;
+  color: var(--terra);
+}
+.f-build-rest-index {
+  font: 400 calc(var(--u) * .6875)/1 var(--body);
+  letter-spacing: .18em;
+  color: #a08a6a;
+}
+.services-page .f-build-rest h3,
+.franchise-page .f-build-rest h3 {
+  margin: 0;
+  max-width: 8.5em;
+  font: 400 calc(var(--u) * 1.35)/1.05 var(--heading);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.f-build-rest p {
+  margin: 0;
+  max-width: 16em;
+  font: 300 calc(var(--u) * .875)/1.45 var(--body);
+  color: #6d6250;
+}
+@container (max-width: 200px) {
+  .f-build-rest p { display: none; }
+  .services-page .f-build-rest h3,
+  .franchise-page .f-build-rest h3 { font-size: calc(var(--u) * 1.15); }
+}
+@container (max-width: 132px) {
+  .f-build-rest {
+    gap: 18px;
+    padding-block: calc(var(--u) * 1.75);
+  }
+  .f-build-rest-index { writing-mode: vertical-rl; rotate: 180deg; }
+  .services-page .f-build-rest h3,
+  .franchise-page .f-build-rest h3 {
+    writing-mode: vertical-rl;
+    rotate: 180deg;
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+.f-build-open {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  display: grid;
+  gap: 10px;
+  padding: calc(var(--u) * 1.75);
+  opacity: 0;
+  translate: 0 22px;
+  pointer-events: none;
+  transition: opacity .45s var(--build-ease), translate .6s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-open {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: .12s;
+}
+.f-build-open-index {
+  font: 400 calc(var(--u) * .6875)/1 var(--body);
+  letter-spacing: .18em;
+  color: var(--sand);
+}
+.services-page .f-build-open h3,
+.franchise-page .f-build-open h3 {
+  margin: 0;
+  max-width: 10em;
+  font: 400 clamp(34px, 3.2vw, 56px)/.95 var(--heading);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #fff8e9;
+}
+.f-build-open p {
+  margin: 0;
+  max-width: 22em;
+  font: 300 calc(var(--u) * 1)/1.45 var(--body);
+  color: #f3e7cfe0;
+}
+.f-build-orb {
+  position: absolute;
+  top: calc(var(--u) * 1.5);
+  left: calc(var(--u) * 1.5);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #fff8e9;
+  color: var(--night);
+  opacity: 0;
+  scale: .72;
+  transition: opacity .45s var(--build-ease), scale .65s var(--build-ease);
+}
+.f-build-panel.is-active .f-build-orb {
+  opacity: 1;
+  scale: 1;
+  transition-delay: .18s;
+}
+.f-build-orb svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: f-build-spin 14s linear infinite;
+}
+.f-build-orb text {
+  fill: var(--night);
+  font: 600 9px var(--body);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+.f-build-orb i {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--night);
+  color: #fff8e9;
+}
+.f-build-orb svg:not(:root) { overflow: visible; }
+@keyframes f-build-spin { to { rotate: 360deg; } }
+.f-build-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline: 2px;
+}
+.f-build-dot {
+  width: 28px;
+  height: 3px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #c9b59755;
+  cursor: pointer;
+  transition: background .35s, width .45s var(--build-ease);
+}
+.f-build-dot.is-active {
+  width: 48px;
+  background: var(--terra);
+}
+.f-build-nav-label {
+  margin-left: auto;
+  font: 400 calc(var(--u) * .6875)/1 var(--body);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #a08a6a;
+}
+@media (prefers-reduced-motion: reduce) {
+  .f-build-panel,
+  .f-build-photo,
+  .f-build-photo img,
+  .f-build-shade,
+  .f-build-rest,
+  .f-build-open,
+  .f-build-orb,
+  .f-build-dot { transition: none !important; }
+  .f-build-orb svg { animation: none; }
+}
 
 /* 05 · The network — cream field with a larger labelled globe. */
 .f-network {
@@ -371,25 +669,30 @@
 .f-final-markets strong { display: block; font-weight: 500; color: var(--cream); }
 
 @media (max-width: 1199px) {
-  .f-build-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .f-build-card:nth-child(n + 3)::after {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto;
-    z-index: 0;
-    height: clamp(24px, 4vw, 44px);
-    background: linear-gradient(180deg, #0d171c66, transparent);
-    pointer-events: none;
-  }
+  .f-build-strip { height: clamp(420px, 62svh, 620px); }
+  .f-build-panel.is-active { flex-grow: 3.6; }
+  .services-page .f-build-open h3,
+  .franchise-page .f-build-open h3 { font-size: clamp(28px, 3.4vw, 44px); }
   .f-advantage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .f-step-row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: calc(var(--u) * 2.5); }
   .f-step-row::before, .f-step-row::after { display: none; }
 }
 @media (max-width: 991px) {
   .franchise-page .s-title { font-size: 44px; }
-  .f-beyond { min-height: 0; padding-top: 0; padding-bottom: calc(var(--u) * 5); }
-  .f-beyond-photo { position: relative; width: 100%; height: 70svh; max-height: 560px; margin-bottom: calc(var(--u) * 3); }
-  .f-beyond .f-beyond-grid { display: block; align-items: stretch; min-height: 0; width: calc(100% - 40px); margin: 0 auto; padding-top: 0; padding-bottom: calc(var(--u) * 3); }
+  .f-beyond {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    min-height: 0;
+    padding: calc(var(--tear) + var(--u) * 4) 20px calc(var(--u) * 4);
+  }
+  .f-beyond-visual { max-width: none; }
+  .f-beyond .f-beyond-grid {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
   .f-market-grid { grid-template-columns: 1fr; max-width: 560px; }
   .f-advantage-note { text-align: left; }
   .f-roles-grid { grid-template-columns: 1fr; gap: 8px; }
@@ -403,13 +706,35 @@
   .f-cast .f-cast-name { display: none; }
   .f-network { padding-top: var(--tear); padding-bottom: calc(var(--u) * 3); }
   .f-network-grid { margin-top: var(--u); grid-template-columns: 1fr; gap: 30px; width: calc(100% - 40px); }
+  .f-build-strip { flex-direction: column; height: auto; min-height: 0; gap: 8px; }
+  .f-build-panel { flex: none; min-height: 88px; height: 88px; }
+  .f-build-panel.is-active { flex: none; height: min(58svh, 460px); }
+  .f-build-rest {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    justify-items: start;
+    gap: 12px 14px;
+    padding: 0 18px;
+    text-align: left;
+  }
+  .f-build-rest-icon { width: 42px; height: 42px; }
+  .f-build-rest-icon svg { width: 20px; height: 20px; }
+  .f-build-rest-index { grid-column: 2; }
+  .services-page .f-build-rest h3,
+  .franchise-page .f-build-rest h3 { grid-column: 3; max-width: none; font-size: 22px; }
+  .f-build-rest p { display: none; }
+  .f-build-panel.is-active .f-build-rest { display: none; }
+  .f-build-orb { width: 76px; height: 76px; top: 18px; left: 18px; }
+  .f-build-open { padding: 22px; }
+  .services-page .f-build-open h3,
+  .franchise-page .f-build-open h3 { font-size: 32px; }
 }
 @media (max-width: 767px) {
   .franchise-page .s-title { font-size: 34px; }
   .franchise-page .f-hero h1 { font-size: 10.5vw; }
   .franchise-page .f-hero .f-hero-focus { font-size: 13px; letter-spacing: .1em; }
   .f-beyond-pillars span { font-size: 22px; }
-  .f-advantage-grid, .f-build-grid, .f-step-row { grid-template-columns: 1fr; }
+  .f-advantage-grid, .f-step-row { grid-template-columns: 1fr; }
   .f-advantage-grid li { padding: 24px 20px; }
   .f-role { padding: 28px 22px; }
   .f-role ul { grid-template-columns: 1fr; }
@@ -421,7 +746,6 @@
   .f-step-number { grid-row: span 2; width: 52px; height: 52px; }
   .services-page .f-step-row h3 { margin-top: 12px; }
 }
-
 /* Phone chapters: compact copy, galleries, and room for touch interactions. */
 @media (max-width: 767px) {
   .franchise-page { --u: 14px; }
@@ -436,23 +760,20 @@
   .franchise-page :is(.f-markets, .f-advantage, .f-build, .f-partners, .f-roles, .f-steps, .f-faq) { padding: calc(var(--tear) + 40px) 0 48px; }
   .franchise-page .f-link { min-height: 40px; font-size: 10px; letter-spacing: .1em; }
 
-  .franchise-page .f-beyond { padding: 0 0 40px; }
-  .f-beyond-photo { height: 54svh; min-height: 320px; max-height: 460px; margin-bottom: 0; }
-  .f-beyond-photo img { object-position: 40% center; }
-  .f-beyond-photo figcaption { left: 22px; bottom: 76px; font-size: 9px; }
-  .f-beyond-photo figcaption strong { font-size: 25px; }
-  .f-beyond .f-beyond-grid { position: relative; z-index: 1; margin-top: -46px; padding: 28px 20px 32px; border-radius: 20px 20px 0 0; background: #fff; }
-  .f-beyond-copy { gap: 18px; }
-  .f-beyond-pillars { margin-top: 8px; }
+  .franchise-page .f-beyond { padding: calc(var(--tear) + 28px) 20px 40px; gap: 22px; }
+  .f-beyond-tile-main figcaption { left: 16px; right: 14px; bottom: 16px; font-size: 9px; }
+  .f-beyond-tile-main figcaption strong { font-size: 22px; }
+  .f-beyond .f-beyond-grid { margin: 0; padding: 0; }
+  .f-beyond-copy { gap: 16px; }
+  .f-beyond-pillars { margin-top: 4px; }
   .f-beyond-copy .au-cta { margin-top: 2px; }
   .f-beyond-pillars li { padding: 14px 8px 0; font-size: 11px; }
   .f-beyond-pillars span { font-size: clamp(18px, 5vw, 26px); letter-spacing: 0; }
 
   .f-markets-aside { gap: 8px; }
   .f-markets-aside .k-body { margin-top: 0; }
-  .f-market-grid, .f-build-grid { display: flex; gap: 12px; max-width: none; margin: 0 -20px; padding: 0 20px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; overscroll-behavior-x: contain; scrollbar-width: none; }
-  .f-build-grid { mask: none; }
-  .f-market-grid::-webkit-scrollbar, .f-build-grid::-webkit-scrollbar, .f-cast::-webkit-scrollbar { display: none; }
+  .f-market-grid { display: flex; gap: 12px; max-width: none; margin: 0 -20px; padding: 0 20px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .f-market-grid::-webkit-scrollbar, .f-cast::-webkit-scrollbar { display: none; }
   .f-market { flex: 0 0 calc(100vw - 56px); scroll-snap-align: start; }
   .f-market:hover { translate: none; }
   .f-market-map { flex: 0 0 auto; height: clamp(145px, 25svh, 220px); aspect-ratio: auto; }
@@ -467,6 +788,17 @@
   .f-gallery-progress > span:last-child { display: flex; align-items: center; gap: 6px; }
   .f-gallery-progress svg { width: 13px; height: 13px; }
 
+  .franchise-page .f-build-wrap { width: calc(100% - 40px); }
+  .f-build-panel { min-height: 78px; height: 78px; border-radius: 12px; }
+  .f-build-panel.is-active { height: min(52svh, 420px); }
+  .services-page .f-build-rest h3,
+  .franchise-page .f-build-rest h3 { font-size: 18px; }
+  .f-build-orb { display: none; }
+  .services-page .f-build-open h3,
+  .franchise-page .f-build-open h3 { font-size: 28px; }
+  .f-build-open p { font-size: 13px; }
+  .f-build-nav { gap: 8px; }
+
   .f-advantage-note { display: none; }
   .franchise-page .f-advantage .s-title em { color: var(--sand); }
   .f-advantage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -476,13 +808,6 @@
   .f-advantage-number { align-self: center; font-size: 9px; }
   .services-page .f-advantage-grid h3 { grid-column: 1 / -1; margin: 0; font-size: clamp(17px, 4.8vw, 23px); letter-spacing: 0; }
   .f-advantage-grid p { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.45; }
-
-  .f-build-card { flex: 0 0 calc(100vw - 56px); min-height: 0; height: min(58svh, 480px); mask: none; border-radius: 14px; scroll-snap-align: start; }
-  .f-build-card + .f-build-card::before { display: none; }
-  .f-build-card:nth-child(n + 3)::after { display: none; }
-  .f-build-copy { padding: 22px; }
-  .services-page .f-build-copy h3 { font-size: 29px; }
-  .f-build-copy p { font-size: 13px; line-height: 1.5; }
 
   .franchise-page .f-network { padding: calc(var(--tear) + 40px) 0 40px; }
   .f-network-grid { width: calc(100% - 40px); padding-top: 0; margin-top: 0; }
@@ -534,17 +859,14 @@
   .f-faq-item p { padding-right: 12px; font-size: 14px; line-height: 1.6; }
 }
 
-/* Pin only when the viewport can fit the complete gallery and its heading. */
+/* Pin only when the viewport can fit the markets gallery and its heading. */
 @media (max-width: 767px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
   .franchise-page main > .f-mobile-pinned { height: 100svh; min-height: 100svh; padding: 94px 0 28px; }
   .f-mobile-pinned > .j-shell { height: 100%; display: flex; flex-direction: column; }
-  .franchise-page main > .f-build.f-mobile-pinned { display: flex; flex-direction: column; }
-  .f-build.f-mobile-pinned .f-build-head { flex-shrink: 0; width: min(1200px, 84%); margin-inline: auto; }
   .franchise-page .f-mobile-pinned .s-split-head { flex-shrink: 0; margin-bottom: 18px; }
   .f-mobile-pinned .f-markets-aside { display: none; }
-  .f-mobile-pinned :is(.f-market-grid, .f-build-grid) { flex: 1; min-height: 0; padding-bottom: 0; scroll-snap-type: none; }
-  .f-build.f-mobile-pinned .f-build-grid { width: auto; margin-inline: -20px; }
-  .f-mobile-pinned :is(.f-market, .f-build-card) { height: 100%; min-height: 0; }
+  .f-mobile-pinned .f-market-grid { flex: 1; min-height: 0; padding-bottom: 0; scroll-snap-type: none; }
+  .f-mobile-pinned .f-market { height: 100%; min-height: 0; }
   .f-mobile-pinned .f-market-map { height: calc(100% - 210px); max-height: none; }
   .f-mobile-pinned .f-market-copy { justify-content: flex-start; padding: 14px 18px; }
   .f-mobile-pinned .f-market p { font-size: 12px; line-height: 1.4; }

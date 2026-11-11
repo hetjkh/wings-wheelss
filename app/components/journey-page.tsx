@@ -49,7 +49,7 @@ export default function JourneyPage() {
         <div className="j-shell j-hero-content">
           <div className="j-hero-title">
             <span className="j-eyebrow">About Wings &amp; Wheels</span>
-            <h1 id="journey-heading"><span>Travel is about</span>{" "}<span>places.</span>{" "}<span>We&apos;re about</span>{" "}<span><em>the people</em></span>{" "}<span>moving between them.</span></h1>
+            <h1 id="journey-heading"><span>About the people</span>{" "}<span><em>who travel.</em></span></h1>
           </div>
           <div className="j-hero-aside">
             <p>Wings &amp; Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide.</p>

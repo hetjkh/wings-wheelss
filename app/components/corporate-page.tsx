@@ -60,13 +60,6 @@ const rings = [
   { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/library/sydney-harbour.webp", position: "center" },
 ];
 
-const statuses: { label: string; note: string; icon: IconKind }[] = [
-  { label: "Flight delayed", note: "We are alerted and get in touch with the traveller.", icon: "plane" },
-  { label: "Options reviewed", note: "Alternative flights and connections are checked.", icon: "search" },
-  { label: "Itinerary updated", note: "New bookings, hotels and transfers are confirmed.", icon: "calendar" },
-  { label: "Journey continues", note: "Your traveller carries on with an updated plan.", icon: "check" },
-];
-
 type Point = { x: number; y: number };
 /** Positions on world-map.svg: longitude is linear across 1000 units, latitude roughly 3.03 units per degree. */
 const at = (lon: number, lat: number): Point => ({ x: +((lon + 180) / .36).toFixed(1), y: +(4.1 + (83.6 - lat) * 3.03).toFixed(1) });
@@ -243,24 +236,6 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="k-support j-torn-top" id="support" aria-labelledby="support-heading">
-        <div className="j-shell">
-          <div className="s-split-head k-support-head">
-            <div><span className="j-eyebrow s-eyebrow">07 / Travel support</span><h2 id="support-heading" className="s-title">Plans change.<br />Your business still needs to move.</h2></div>
-            <div className="k-support-intro">
-              <p className="k-body">When flights are delayed, meetings move or plans change, our team can help review available options and coordinate the next steps.</p>
-              <EnquiryButton className="j-button j-button-olive" service="Travel support">Contact travel support</EnquiryButton>
-            </div>
-          </div>
-          <ol className="k-flow" data-progress="top 85%" data-progress-end="top 35%">{statuses.map((status, i) => <li key={status.label} style={{ "--i": i } as React.CSSProperties}>
-            <span className="k-flow-dot" aria-hidden="true"><TravelIcon kind={status.icon} size={20} /></span>
-            <span className="k-flow-step">Step {String(i + 1).padStart(2, "0")}</span>
-            <strong>{status.label}</strong>
-            <span className="k-flow-note">{status.note}</span>
-          </li>)}</ol>
-        </div>
-      </section>
-
       <section className="k-sides" id="benefits" aria-labelledby="sides-heading">
         <div className="k-sides-heading">
           <div className="k-sides-heading-surface">
@@ -307,7 +282,7 @@ export default function CorporatePage() {
       <section className="k-steps j-torn-top" id="how" aria-labelledby="how-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">09 / How it works</span><h2 id="how-heading" className="s-title s-rows"><span>Simple for your team.</span><span>Managed by ours.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">07 / How it works</span><h2 id="how-heading" className="s-title s-rows"><span>Simple for your team.</span><span>Managed by ours.</span></h2></div>
             <p className="s-lead">Five steps from the first message to the journey home.</p>
           </div>
           <ol className="k-stairs" data-stagger="0.12">{steps.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -321,7 +296,7 @@ export default function CorporatePage() {
       </section>
 
       <ClosingScene
-        chapter="10 / Wings & Wheels"
+        chapter="08 / Wings & Wheels"
         ticket="Corporate travel"
         left={<>Your people have<br />somewhere to be.</>}
         right={<>Let us take care<br />of <em>what happens in between.</em></>}

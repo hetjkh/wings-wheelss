@@ -98,7 +98,7 @@ export default function PartnershipPage() {
         <div className="j-shell p-why-grid">
           <div className="p-why-copy">
             <span className="j-eyebrow s-eyebrow">01 / Why a partnership</span>
-            <h2 id="why-heading" className="s-title s-rows"><span>Not just another</span><span>travel provider.</span><span className="k-soft">A partner in how</span><span className="k-soft">your business moves.</span></h2>
+            <h2 id="why-heading" className="s-title s-rows"><span>A partner in</span><span className="k-soft">how you move.</span></h2>
             <p className="k-body">A company sending people across the region and beyond needs more than individual bookings. It needs someone who understands its travellers, its policy and its priorities, and who is accountable for getting every journey right.</p>
             <p className="p-why-note">Your travel shapes the arrangement. Not the other way around.</p>
           </div>

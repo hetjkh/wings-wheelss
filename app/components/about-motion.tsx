@@ -41,7 +41,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         color: "#3d2d20", stagger: .05, ease: "none",
         scrollTrigger: { trigger: ink, start: "top 80%", end: "bottom 45%", scrub: .5 },
       });
-      gsap.from(q(".au-aud-row"), { y: 40, opacity: 0, duration: .8, stagger: .08, ease: "power3.out", scrollTrigger: { trigger: one(".au-aud"), start: "top 85%", once: true } });
+      gsap.from(q(".au-aud-col"), { y: 28, opacity: 0, duration: .75, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: one(".au-aud"), start: "top 85%", once: true } });
 
       const collage = one(".au-who-collage");
       if (collage && mobile) {

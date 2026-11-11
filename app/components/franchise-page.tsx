@@ -9,6 +9,7 @@ import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { FranchiseGlobe } from "./franchise-globe";
+import { FranchiseBuild } from "./franchise-build";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -39,10 +40,10 @@ const advantages: { icon: IconKind; title: string; text: string }[] = [
 ];
 
 const builds = [
-  { title: "Corporate travel", text: "Serve companies, executives and organisations.", photo: "/images/library/franchise-travel-booking.webp", alt: "A professional reviewing travel arrangements on a tablet in a lounge", position: "center" },
-  { title: "Holidays & leisure", text: "Personalised holidays and destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
-  { title: "Groups & MICE", text: "Events, conferences and coordinated group travel.", photo: "/images/library/franchise-group-meeting.webp", alt: "Business colleagues meeting around a table in a sunlit hotel room", position: "center" },
-  { title: "Travel services", text: "Flights, hotels, visas and transfers.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
+  { icon: "briefcase" as const, title: "Corporate travel", text: "Serve companies, executives and organisations.", photo: "/images/library/franchise-travel-booking.webp", alt: "A professional reviewing travel arrangements on a tablet in a lounge", position: "center" },
+  { icon: "sun" as const, title: "Holidays & leisure", text: "Personalised holidays and destination experiences.", photo: "/images/library/bali-temple.webp", alt: "A lakeside Balinese temple beneath a pink sunset sky", position: "center" },
+  { icon: "people" as const, title: "Groups & MICE", text: "Events, conferences and coordinated group travel.", photo: "/images/library/franchise-group-meeting.webp", alt: "Business colleagues meeting around a table in a sunlit hotel room", position: "center" },
+  { icon: "plane" as const, title: "Travel services", text: "Flights, hotels, visas and transfers.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
 ];
 
 const network = [
@@ -122,14 +123,24 @@ export default function FranchisePage() {
         sub="Global reach."
         text="Partnerships in Saudi Arabia, Egypt and Morocco."
         action={{ label: "Explore the markets", href: "#markets" }}
-        media={{ video: "/hero-v4-continuous.mp4" }}
+        media={{ video: "/franchise-hero-markets.mp4" }}
       />
 
       <section className="f-beyond j-torn-top" id="beyond" aria-labelledby="beyond-heading">
-        <figure className="f-beyond-photo">
-          <Image src="/images/library/franchise-local-connections.webp" alt="Two business partners reviewing plans together in an office overlooking Dubai" fill sizes="(max-width: 991px) 100vw, 46vw" />
-          <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
-        </figure>
+        <div className="f-beyond-visual" aria-hidden="false">
+          <div className="f-beyond-collage">
+            <figure className="f-beyond-tile f-beyond-tile-main">
+              <Image src="/images/library/franchise-local-connections.webp" alt="Two business partners reviewing plans together in an office overlooking Dubai" fill sizes="(max-width: 991px) 92vw, 32vw" />
+              <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
+            </figure>
+            <figure className="f-beyond-tile f-beyond-tile-top">
+              <Image src="/images/library/dubai-marina.webp" alt="Dubai Marina waterfront under a clear sky" fill sizes="(max-width: 991px) 45vw, 18vw" />
+            </figure>
+            <figure className="f-beyond-tile f-beyond-tile-bottom">
+              <Image src="/images/library/franchise-partner-lounge-v2.webp" alt="Partners meeting in a sunlit lounge" fill sizes="(max-width: 991px) 45vw, 18vw" />
+            </figure>
+          </div>
+        </div>
         <div className="f-beyond-grid">
           <div className="f-beyond-copy">
             <span className="j-eyebrow s-eyebrow">01 / Growing beyond borders</span>
@@ -189,16 +200,9 @@ export default function FranchisePage() {
             <div><span className="j-eyebrow s-eyebrow">04 / What you can build</span><FranchiseHeading id="build-heading" mobile={<>One brand.<br /><em>Room to grow.</em></>}><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></FranchiseHeading></div>
           </div>
         </div>
-        <ul className="f-build-grid" data-stagger="0.1">{builds.map((item, i) => <li key={item.title} className="f-build-card">
-          <div className="f-build-photo"><Image src={item.photo} alt={item.alt} fill sizes="(max-width: 767px) 92vw, (max-width: 1199px) 46vw, 25vw" style={{ objectPosition: item.position }} /></div>
-          <div className="f-build-shade" aria-hidden="true" />
-          <div className="f-build-copy">
-            <span>{String(i + 1).padStart(2, "0")}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </div>
-        </li>)}</ul>
-        <div className="j-shell"><GalleryProgress count={builds.length} /></div>
+        <div className="j-shell f-build-wrap">
+          <FranchiseBuild items={builds} />
+        </div>
       </section>
 
       <section className="f-network j-torn-top" id="network" aria-labelledby="network-heading">
@@ -223,8 +227,8 @@ export default function FranchisePage() {
               <span className="j-eyebrow s-eyebrow">06 / Who we&apos;re looking for</span>
               <p className="f-kicker">The right partner matters</p>
             </div>
-            <h2 id="partners-heading" className="f-partners-title f-desktop-copy"><span>We&apos;re not simply looking for <s>locations</s>.</span><span>We&apos;re looking for <em>people who can build businesses.</em></span></h2>
-            <h2 className="s-title f-mobile-copy">Good businesses.<br /><em>Begin with people.</em></h2>
+            <h2 id="partners-heading" className="f-partners-title f-desktop-copy"><span>Partners</span><span><em>who build.</em></span></h2>
+            <h2 className="s-title f-mobile-copy">Partners<br /><em>who build.</em></h2>
             <p className="k-body f-desktop-copy">We are interested in discussing franchise opportunities with individuals and organisations that bring local market expertise, commercial ambition and a commitment to service quality.</p>
             <p className="k-body f-mobile-copy">Local expertise. Commercial ambition. A commitment to looking after travellers.</p>
           </div>

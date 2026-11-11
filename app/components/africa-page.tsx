@@ -104,7 +104,7 @@ export default function AfricaPage() {
           <div className="a-business-photo" data-frame><Image src="/images/library/executive-lounge.webp" alt="A traveller waiting in a quiet airport lounge overlooking the city" fill sizes="(max-width: 991px) 100vw, 42vw" /></div>
           <div className="a-business-copy">
             <span className="j-eyebrow s-eyebrow">04 / Business across borders</span>
-            <h2 id="business-heading" className="s-title a-title-md">When business moves across Africa, travel has to move with it.</h2>
+            <h2 id="business-heading" className="s-title a-title-md">Business that crosses borders.</h2>
             <p className="s-lead-body a-body">From executives travelling between Dubai and Nairobi to project teams moving across regional markets, W&amp;W can coordinate business journeys across multiple locations.</p>
             <EnquiryButton className="j-button j-button-olive" service="Corporate travel">Explore corporate travel</EnquiryButton>
             <ul className="a-business-list" data-stagger>{business.map(item => <li key={item.title}>
@@ -118,7 +118,7 @@ export default function AfricaPage() {
       <section className="a-destinations j-torn-top" id="destinations" aria-labelledby="destinations-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">05 / Experience Africa</span><h2 id="destinations-heading" className="s-title">And then there&apos;s<br />the Africa you came<br />to experience.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">05 / Experience Africa</span><h2 id="destinations-heading" className="s-title">The Africa<br />you came for.</h2></div>
             <p className="s-lead">Wide horizons, wild places and warm coasts, planned with the same care as every other part of the journey.</p>
           </div>
           <div className="a-destination-grid">
