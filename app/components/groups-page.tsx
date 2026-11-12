@@ -17,10 +17,10 @@ import "./groups.css";
 import "./groups-mobile.css";
 
 const origins = [
-  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M220 90 C 340 90, 360 310, 430 310", photo: "/images/library/business-terminal-v2.webp", alt: "Business travellers walking through a bright airport terminal" },
-  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M220 530 C 340 530, 360 310, 430 310", photo: "/images/library/nairobi-city.webp", alt: "Nairobi city centre surrounded by a green urban canopy" },
-  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M780 90 C 660 90, 640 310, 570 310", photo: "/images/library/corporate-executive-view.webp", alt: "An executive looking out over a modern city skyline" },
-  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M780 530 C 660 530, 640 310, 570 310", photo: "/images/library/global-connections.webp", alt: "Travellers connecting through a busy international airport" },
+  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M220 90 C 340 90, 360 310, 430 310", photo: "/images/library/groups-origin-london-v1.webp", alt: "Tower Bridge and London's riverside skyline in warm morning light" },
+  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M220 530 C 340 530, 360 310, 430 310", photo: "/images/library/groups-origin-nairobi-v1.webp", alt: "Nairobi's KICC tower above green parkland and the city skyline" },
+  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M780 90 C 660 90, 640 310, 570 310", photo: "/images/library/groups-origin-riyadh-v1.webp", alt: "Riyadh's Kingdom Centre and financial district at sunset" },
+  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M780 530 C 660 530, 640 310, 570 310", photo: "/images/library/groups-origin-mumbai-v1.webp", alt: "The Gateway of India and Taj Mahal Palace beside Mumbai's waterfront" },
 ];
 const sequence: { icon: IconKind; label: string }[] = [
   { icon: "plane", label: "Flights" }, { icon: "pin", label: "Arrivals" }, { icon: "bed", label: "Hotels" },
@@ -128,8 +128,7 @@ export default function GroupsPage() {
               <h2 id="people-heading" className="s-title s-rows"><span className="g-desktop-copy">Many cities.</span><span className="g-soft g-desktop-copy">One event.</span><span className="g-mobile-only">Many cities.<br /><em>One event.</em></span></h2>
             </div>
             <div className="g-converge-copy">
-              <p className="g-body">A Dubai conference can bring executives from London, delegates from Nairobi, a sales team from Riyadh and suppliers from India.</p>
-              <p className="g-staccato" data-stagger><span>Different flights.</span><span>Different arrival times.</span><span>Different hotels.</span></p>
+              <p className="g-body">Flights, stays and arrivals, brought together for your Dubai event.</p>
             </div>
           </div>
           <div className="g-desktop-copy">

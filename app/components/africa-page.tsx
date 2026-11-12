@@ -47,7 +47,6 @@ const itinerary = [
   { name: "Dubai", role: "Home", photo: "/images/library/dubai-clouds.webp", position: "center" },
 ];
 
-const dubaiReasons = ["Business", "Exhibitions", "Holidays", "Groups", "Onward international travel"];
 const journeys = [
   { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
   { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
@@ -162,40 +161,15 @@ export default function AfricaPage() {
         </div>
       </section>
 
-      <section className="a-arrival j-torn-top" id="dubai-arrival" aria-labelledby="arrival-heading">
-        <div className="j-shell a-arrival-grid">
-          <figure className="a-arrival-photo"><Image src="/images/library/airport-transfer.webp" alt="A driver welcoming a business traveller with luggage outside a contemporary airport terminal" fill sizes="(max-width: 900px) 92vw, 48vw" /><figcaption><TravelIcon kind="pin" size={16} />Your Dubai arrival, coordinated.</figcaption></figure>
-          <div className="a-arrival-copy">
-            <span className="j-eyebrow s-eyebrow">07 / Africa → Dubai</span>
-            <span className="a-small-title">Travelling to the UAE</span>
-            <h2 id="arrival-heading" className="s-title a-editorial-title">Dubai may be<br />the destination.<br /><em>Or just the beginning.</em></h2>
-            <p className="a-body">Wings &amp; Wheels can assist travellers, companies and groups travelling from African markets into Dubai and onward internationally.</p>
-            <div className="a-arrival-route" aria-label="From Africa to Dubai, then business, exhibitions, holidays, groups or onward international travel"><span>Africa</span><Arrow /><strong>Dubai</strong><Arrow /></div>
-            <ul className="a-arrival-reasons">{dubaiReasons.map(reason => <li key={reason}>{reason}</li>)}</ul>
-            <a className="j-button j-button-olive" href="#africa-enquiry">Plan travel to Dubai<Arrow /></a>
-          </div>
-        </div>
-      </section>
-
       <section className="a-delegates j-torn-top" id="delegate-travel" aria-labelledby="delegates-heading">
         <div className="j-shell">
-          <div className="a-delegate-header">
-            <div>
-              <span className="j-eyebrow">08 / Exhibitions &amp; delegations</span>
-              <h2 id="delegates-heading">Bringing your team<br />to Dubai?</h2>
-            </div>
-            <div className="a-delegate-intro">
-              <p>We&apos;ll coordinate the travel.<br />You focus on the event.</p>
-              <p>For organisations travelling from Africa to exhibitions, conferences and corporate events in the UAE, W&amp;W brings the travel arrangements together.</p>
-            </div>
-          </div>
           <AfricaDelegates />
         </div>
       </section>
 
       <section className="a-journeys j-torn-top" id="journey-continues" aria-labelledby="journeys-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">09 / People don&apos;t always travel one way</span><h2 id="journeys-heading" className="s-title a-editorial-title">The journey continues.</h2>
+          <span className="j-eyebrow s-eyebrow">08 / People don&apos;t always travel one way</span><h2 id="journeys-heading" className="s-title a-editorial-title">The journey continues.</h2>
           <div className="a-journey-grid">{journeys.map((journey, i) => <article className="a-journey-card" key={journey.title}>
             <div className="a-journey-photo"><Image src={journey.photo} alt={journey.alt ?? ""} fill sizes="(max-width: 700px) 92vw, 30vw" quality={90} /><span>0{i + 1} / Journey example</span></div>
             <div className="a-journey-copy"><h3>{journey.title}</h3><ol>{journey.stops.map(stop => <li key={`${stop.from}-${stop.to}`}><div><span>{stop.from}</span><Arrow /><strong>{stop.to}</strong></div><p>{stop.why}</p></li>)}</ol></div>
@@ -205,17 +179,17 @@ export default function AfricaPage() {
       </section>
 
       <section className="a-support j-torn-top" id="africa-support" aria-labelledby="support-heading">
-        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">10 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
+        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">09 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
           <ol className="a-support-grid">{supportServices.map((service, i) => <li key={service.title}><span className="a-support-icon"><TravelIcon kind={service.icon} size={30} /></span><span className="a-support-index">0{i + 1}</span><h3>{service.title}</h3><p>{service.text}</p>{i < supportServices.length - 1 && <span className="a-support-arrow"><Arrow /></span>}</li>)}</ol>
         </div>
       </section>
 
       <section className="a-enquiry j-torn-top" id="africa-enquiry" aria-labelledby="enquiry-heading">
-        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">11 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
+        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">10 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
       <ClosingScene
-        chapter="12 / Wings & Wheels"
+        chapter="11 / Wings & Wheels"
         ticket="UAE ↔ Africa ↔ Worldwide"
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}

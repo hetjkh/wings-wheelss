@@ -7,7 +7,7 @@ import "./africa-corridor.css";
 
 const journeys = [
   { region: "Africa", from: "UAE", to: "AFRICA", caption: "A different rhythm. A warmer welcome.", description: "From boardrooms in Nairobi to the wide-open savannah. Arrive with every connection considered.", photo: "/images/library/africa-corridor-arrival-v2.webp", alt: "Travellers being welcomed after arriving by regional aircraft in East Africa", items: ["Business travel", "Safari & leisure", "Family travel", "Groups", "Projects", "Regional travel"], cta: "Explore Africa", href: "#destinations" },
-  { region: "the UAE", from: "AFRICA", to: "UAE", caption: "New horizons. Familiar care.", description: "Business, family, or your next international connection. Your Dubai arrival is just the beginning.", photo: "/images/library/uae-corridor-arrival-v2.webp", alt: "A business traveller being welcomed by a chauffeur outside a Dubai airport terminal", items: ["Business meetings", "Exhibitions & conferences", "Family travel", "Medical / personal travel", "Groups", "International connections"], cta: "Explore the UAE", href: "#dubai-arrival" },
+  { region: "the UAE", from: "AFRICA", to: "UAE", caption: "New horizons. Familiar care.", description: "Business, family, or your next international connection. Your Dubai arrival is just the beginning.", photo: "/images/library/uae-corridor-arrival-v2.webp", alt: "A business traveller being welcomed by a chauffeur outside a Dubai airport terminal", items: ["Business meetings", "Exhibitions & conferences", "Family travel", "Medical / personal travel", "Groups", "International connections"], cta: "Plan UAE travel", href: "#africa-enquiry" },
 ];
 
 export function AfricaCorridor() {
