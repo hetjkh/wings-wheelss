@@ -1,3 +1,4 @@
+import { SectionEdges } from "./section-edges";
 import type { CSSProperties, ReactNode } from "react";
 import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
@@ -190,6 +191,7 @@ export function AboutPage() {
       </section>
 
       <section className="au-wordsec" aria-label="What our story is built on">
+        <SectionEdges />
         <ul className="au-words">
           {words.map((item, index) => <li key={item.word}>
             <div className="j-shell au-words-row">

@@ -1,6 +1,6 @@
 .site-cursor, .site-cursor-dot { position: fixed; inset: 0 auto auto 0; z-index: 10000; pointer-events: none; opacity: 0; transition: opacity .2s; will-change: transform; }
 /* Pure white + difference stays readable on cream paper and dark panels alike. */
-.site-cursor { mix-blend-mode: difference; }
+.site-cursor { --cursor-ease: cubic-bezier(.22, 1, .36, 1); mix-blend-mode: difference; }
 .site-cursor-face {
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   border: 1px solid #ffffffb3;
   border-radius: 50%;
   color: #fff;
-  transition: width .45s var(--ease), height .45s var(--ease), margin .45s var(--ease), background .35s, border-color .35s, scale .25s, box-shadow .35s;
+  transition: width .55s var(--cursor-ease), height .55s var(--cursor-ease), margin .55s var(--cursor-ease), background .35s, border-color .35s, scale .3s var(--cursor-ease), box-shadow .35s;
 }
 .site-cursor-face > span { max-width: 58px; font: 400 12px/1.15 var(--body); letter-spacing: .02em; text-align: center; }
 .site-cursor-face > span, .site-cursor-arrow { opacity: 0; transition: opacity .18s; }

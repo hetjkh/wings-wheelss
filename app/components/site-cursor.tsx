@@ -22,7 +22,7 @@ export function SiteCursor() {
     let frame = 0;
     let visible = false;
     let inside = false;
-    let x = 0, y = 0, trailingX = 0, trailingY = 0, lastTime = 0;
+    let x = 0, y = 0, trailingX = 0, trailingY = 0, pointX = 0, pointY = 0, lastTime = 0;
     let previousTarget: Element | null = null;
     let previousMessage = "";
 
@@ -33,6 +33,8 @@ export function SiteCursor() {
       html.classList.remove("has-art-cursor");
       cancelAnimationFrame(frame);
       frame = 0;
+      lastTime = 0;
+      ring.dataset.pressed = "false";
     };
     const permitted = () => media.matches && !document.hidden && !document.querySelector('[data-motion-paused="true"]');
     const targetAtPointer = () => {
@@ -43,6 +45,7 @@ export function SiteCursor() {
       }
       if (!visible) {
         trailingX = x; trailingY = y;
+        pointX = x; pointY = y;
         visible = true;
         ring.dataset.visible = point.dataset.visible = "true";
         html.classList.add("has-art-cursor");
@@ -67,16 +70,27 @@ export function SiteCursor() {
       if (!inside || !permitted()) { hide(); return; }
       targetAtPointer();
       if (!visible) return;
-      const delta = Math.min(time - lastTime || 16.67, 64);
+      const delta = Math.min(time - lastTime || 16.67, 48);
       lastTime = time;
-      const ease = 1 - Math.exp(-delta / 75);
+      // Time-based damping feels consistent on both 60 Hz and high-refresh screens.
+      // The point stays responsive while the outer ring has a softer glide.
+      const ease = 1 - Math.exp(-delta / 105);
+      const pointEase = 1 - Math.exp(-delta / 24);
       trailingX += (x - trailingX) * ease;
       trailingY += (y - trailingY) * ease;
+      pointX += (x - pointX) * pointEase;
+      pointY += (y - pointY) * pointEase;
       ring.style.transform = `translate3d(${trailingX}px, ${trailingY}px, 0)`;
-      point.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      if (Math.abs(x - trailingX) + Math.abs(y - trailingY) > .08) frame = requestAnimationFrame(draw);
+      point.style.transform = `translate3d(${pointX}px, ${pointY}px, 0)`;
+      if (Math.abs(x - trailingX) + Math.abs(y - trailingY) + Math.abs(x - pointX) + Math.abs(y - pointY) > .08) frame = requestAnimationFrame(draw);
     };
-    const schedule = () => { if (!frame && inside) frame = requestAnimationFrame(draw); };
+    const schedule = () => {
+      if (!frame && inside) {
+        // Restart the clock after resting; idle time must not cause a first-frame jump.
+        lastTime = performance.now();
+        frame = requestAnimationFrame(draw);
+      }
+    };
     const move = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") { inside = false; hide(); return; }
       inside = true;

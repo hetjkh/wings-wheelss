@@ -4,6 +4,7 @@ import { SmoothScroll } from "./components/smooth-scroll";
 import { SiteCursor } from "./components/site-cursor";
 import { SectionOverlaps } from "./components/section-overlaps";
 import "./globals.css";
+import "./components/section-edges.css";
 
 const heading = localFont({
   src: [

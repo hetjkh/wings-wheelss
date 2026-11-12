@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionEdges } from "./section-edges";
 import { useEffect, useRef, useState } from "react";
 import Image from "./travel-image";
 import Link from "next/link";
@@ -83,6 +84,7 @@ export function HomeStories() {
 
   return (
     <section className={`h-stories${open ? " is-open" : ""}`} aria-labelledby="stories-title" data-active-region={zone.id}>
+      <SectionEdges />
       <div className="h-stories-intro">
         <span className="n-kicker" data-motion-reveal>Wings &amp; Wheels stories</span>
         <h2 id="stories-title" data-motion-text>Discover <em>stories</em><br />from every corner.</h2>

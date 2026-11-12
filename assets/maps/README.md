@@ -4,4 +4,4 @@
 
 Regenerate with `node scripts/generate-story-regions.mjs` to download the public sources, or pass local Natural Earth and world-map GeoJSON files as the first two arguments.
 
-The six UI regions are Middle East, Africa, Europe, Asia & Pacific, Indian Ocean, and The Americas. Russia is divided at 60°E for this decorative regional map. France's overseas polygons are placed geographically. Indian Ocean stories use their own island group and an open-water highlight; mainland country shapes remain above its hover target, and its photo is masked away from mainland Africa, Asia, and Australia.
+The five UI regions are Middle East, Africa, Europe, Asia & Pacific, and The Americas. Country outlines remain intact, including Russia; these are story groupings rather than a physical Europe–Asia boundary map. France's overseas polygons are placed geographically. Indian Ocean islands are grouped with Africa or Asia according to their location.

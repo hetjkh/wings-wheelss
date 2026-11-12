@@ -1,5 +1,8 @@
 /* Shared footer. Scales from the journey type unit (16px at 1440px). */
+/* Its incoming lip must stay above every page's final photographic scene. */
+body .journey-page .ft { z-index: 30; }
 .ft {
+  --ft-tear-height: clamp(36px, 3vw, 56px);
   --fu: var(--type-unit, clamp(12px, 1.111111vw, 24px));
   --ft-bg: #1f1712; --ft-text: #efe5d3; --ft-muted: #b4a68e; --ft-accent: #d8c29a; --ft-rule: #efe5d31f;
   --ft-pad: calc(var(--fu) * 2.5);
@@ -9,7 +12,19 @@
   background: var(--ft-bg); color: var(--ft-text);
   font: 300 var(--fu)/1.5 var(--body);
 }
-.ft::before { content: ''; position: absolute; left: 0; top: -56px; height: 60px; width: 100%; background: var(--ft-bg); clip-path: polygon(0 38%,2% 42%,4% 30%,6% 37%,8% 36%,11% 25%,14% 36%,18% 45%,23% 58%,27% 53%,30% 59%,33% 55%,37% 66%,42% 62%,46% 74%,49% 69%,54% 62%,57% 65%,61% 52%,65% 57%,68% 48%,71% 44%,75% 30%,79% 39%,82% 24%,85% 32%,89% 15%,92% 21%,96% 10%,100% 0,100% 100%,0 100%); }
+.ft::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--ft-tear-height) + 1px);
+  left: -48px;
+  z-index: 6;
+  width: calc(100% + 96px);
+  height: var(--ft-tear-height);
+  background: var(--ft-bg);
+  -webkit-mask: url('/images/home/clientele-paper-tear.svg') center / 100% 100% no-repeat;
+  mask: url('/images/home/clientele-paper-tear.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
 .ft a { color: inherit; text-decoration: none; }
 .ft button { font: inherit; color: inherit; }
 

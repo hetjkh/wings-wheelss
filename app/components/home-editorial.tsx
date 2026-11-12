@@ -1,3 +1,4 @@
+import { SectionEdges } from "./section-edges";
 import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow, TravelIcon } from "./icons";
@@ -58,6 +59,7 @@ function DestinationChapter() {
 
 function GroupsChapter() {
   return <section className="e-together" aria-labelledby="e-together-title" data-home-cover>
+    <SectionEdges />
     <div className="e-together-hero">
       <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/retreat-dinner.webp"} alt="A candlelit retreat dinner on a terrace overlooking the sea" fill sizes="100vw" className="n-cover" /></div>
       <div className="e-together-shade" />

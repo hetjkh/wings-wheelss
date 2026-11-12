@@ -25,16 +25,6 @@ const features = outlines.features.map(feature => {
 for (const feature of data.features) if ((africaIslands.has(feature.properties.ADMIN) || asiaIslands.has(feature.properties.ADMIN) || middleEast.has(feature.properties.ADMIN) || feature.properties.ADMIN === "Singapore") && !features.some(f => f.properties.ADMIN === feature.properties.ADMIN)) features.push(feature);
 // Same equirectangular projection as public/images/world-map.svg.
 const project = ([lon, lat]) => [(lon + 180) * 1000 / 360, (85 - lat) * 440 / 145];
-const clipLongitude = (ring, west) => {
-  const output = [];
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const a = ring[j], b = ring[i], insideA = west ? a[0] <= 60 : a[0] >= 60, insideB = west ? b[0] <= 60 : b[0] >= 60;
-    if (insideA !== insideB) output.push([60, a[1] + (b[1] - a[1]) * (60 - a[0]) / (b[0] - a[0])]);
-    if (insideB) output.push(b);
-  }
-  if (output.length > 2) output.push(output[0]);
-  return output;
-};
 const simplify = points => {
   if (points.length < 5) return points;
   const first = points[0], last = points.at(-1), dx = last[0] - first[0], dy = last[1] - first[1];
@@ -66,11 +56,6 @@ for (const feature of features) {
     land.push(render(polygon));
     const lon = polygon[0].reduce((s, point) => s + point[0], 0) / polygon[0].length;
     const lat = polygon[0].reduce((s, point) => s + point[1], 0) / polygon[0].length;
-    if (name === "Russia") {
-      if (lon < -100) add("asia", name, polygon);
-      else for (const west of [true, false]) add(west ? "europe" : "asia", name, polygon.map(ring => clipLongitude(ring, west)));
-      continue;
-    }
     if (africaIslands.has(name) || africaIslands.has(p.NAME)) { add("africa", name, polygon); continue; }
     if (asiaIslands.has(name) || asiaIslands.has(p.NAME)) { add("asia", name, polygon); continue; }
     if (middleEast.has(name) || middleEast.has(p.NAME)) { add("gulf", name, polygon); continue; }
@@ -79,6 +64,8 @@ for (const feature of features) {
       add(lon < -25 ? "americas" : lon > 100 ? "asia" : "africa", name, polygon);
       continue;
     }
+    // Keep country outlines intact, including transcontinental countries.
+    // A longitude cut creates a visible artificial border through the landmass.
     const continent = p.CONTINENT;
     const key = continent === "Africa" ? "africa" : continent === "Europe" ? "europe"
       : continent === "North America" || continent === "South America" ? "americas"

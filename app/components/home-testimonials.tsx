@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionEdges } from "./section-edges";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -94,6 +95,7 @@ export function HomeTestimonials() {
           go(event.key === "ArrowRight" ? 1 : -1);
         }
       }}>
+      <SectionEdges />
       <div className="e-shell">
         <div className="e-section-bar">
           <span className="e-label"><span>06</span><span>Voices from the journey</span></span>

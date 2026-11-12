@@ -1,0 +1,44 @@
+/* Chromium rejects calc()/clamp() for overflow-clip-margin. This fixed allowance
+   covers the largest responsive tear and keeps it visible during hero pins. */
+body main :is(.j-torn-top, .au-torn),
+body main section:has(> .section-paper-edges) {
+  overflow: clip;
+  overflow-clip-margin: 140px;
+}
+
+body main section:has(> .section-paper-edges) {
+  position: relative;
+}
+
+/* Only sections without an existing tear need this lip. Inherit the section's
+   actual surface instead of painting a generic cream strip over photographs. */
+.section-paper-edges {
+  position: absolute;
+  top: calc(-1 * var(--tear-size, 84px) + 1px);
+  left: -48px;
+  z-index: 30;
+  display: block;
+  width: calc(100% + 96px);
+  height: var(--tear-size, 84px);
+  background: inherit;
+  -webkit-mask: url('/images/home/clientele-paper-tear.svg') center / 100% 100% no-repeat;
+  mask: url('/images/home/clientele-paper-tear.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The home footer's separate wrapper must also let its lip overlap the photo. */
+.home-ending:has(> .ft) {
+  position: relative;
+  z-index: 30;
+  overflow: visible;
+}
+
+/* Keep the final boarding pass above the footer's overlapping paper lip. */
+body .sv-final.is-scene .sv-pass {
+  bottom: max(calc(var(--u) * 2.5), calc(clamp(36px, 3vw, 56px) + 16px));
+}
+
+@media print {
+  .section-paper-edges { display: none; }
+}

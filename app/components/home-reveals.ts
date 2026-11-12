@@ -62,6 +62,7 @@ export function animateHomeReveals(root: HTMLElement) {
   });
 
   select("[data-motion-text]").filter(pending).forEach(element => {
+    const travelPanel = element.closest<HTMLElement>(".n-travel-panel");
     const split = SplitText.create(element, {
       type: "lines", mask: "lines", autoSplit: true,
       onSplit(self) {
@@ -70,7 +71,7 @@ export function animateHomeReveals(root: HTMLElement) {
           (mask as HTMLElement).style.marginBottom = "-.14em";
         });
         const tween = gsap.from(self.lines, {
-          yPercent: 105, opacity: 0, duration: .85, stagger: .07, ease: "power2.out", paused: true,
+          yPercent: 105, opacity: 0, duration: travelPanel ? .55 : .85, stagger: .07, ease: "power2.out", paused: true,
           onComplete: () => { completed.add(element); },
         });
         animations.set(element, tween);
@@ -81,7 +82,9 @@ export function animateHomeReveals(root: HTMLElement) {
         return tween;
       },
     });
-    observe(element);
+    // Bottom-aligned captions should be ready as their photograph enters,
+    // rather than waiting for the caption itself to reach the reveal threshold.
+    observe(element, travelPanel ?? element);
     cleanups.push(() => split.revert());
   });
 
