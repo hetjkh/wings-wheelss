@@ -649,9 +649,12 @@
   }
   .au-aud-col:focus-visible { outline-offset: 3px; }
   .about-page main > .au-wordsec { min-height: 0; }
-  .au-wordsec { padding-bottom: 0; }
+  .au-wordsec { padding-bottom: var(--tear-clear); }
   .au-words-row { min-height: 0; padding-block: 9px; }
   .au-word { font-size: clamp(35px, 10.5vw, 64px); }
+  .au-net-row { gap: 10px 12px; }
+  .au-net-row b { font-size: clamp(36px, 11vw, 64px); }
+  .au-net-row > span { font-size: 13px; }
   .au-map { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .au-map-canvas { max-height: 68vw; }
   .au-map-panel { gap: 14px; }
