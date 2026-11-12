@@ -61,7 +61,7 @@ function GroupsChapter() {
   return <section className="e-together" aria-labelledby="e-together-title" data-home-cover>
     <SectionEdges />
     <div className="e-together-hero">
-      <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/retreat-dinner.webp"} alt="A candlelit retreat dinner on a terrace overlooking the sea" fill sizes="100vw" className="n-cover" /></div>
+      <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/home-better-together-retreat-v1.webp"} alt="Colleagues sharing a candlelit retreat dinner on a coastal terrace at sunset" fill sizes="100vw" className="n-cover" /></div>
       <div className="e-together-shade" />
       <div className="e-shell e-together-content"><ChapterLabel number="03">Groups, meetings & shared moments</ChapterLabel><h2 id="e-together-title" data-editorial-title><Lines lines={["Better", "together."]} /></h2><div className="e-together-caption" data-motion-stagger><span>One shared experience.<br />A thousand reasons to remember.</span><Link href="/groups-mice" className="n-panel-cta"><span>Bring your people</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div>
     </div>

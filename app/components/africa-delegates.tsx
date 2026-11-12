@@ -15,9 +15,9 @@ const origins = [
 ];
 
 const acts = [
-  { stage: "Before departure", services: ["Group flights", "Visa assistance"], photo: "/images/library/flight-wing.webp", position: "center" },
-  { stage: "On arrival", services: ["Hotels", "Airport transfers"], photo: "/images/library/business-hotel.webp", position: "center" },
-  { stage: "At the event", services: ["Venue transportation", "Delegate travel"], photo: "/images/library/conference.webp", position: "center" },
+  { stage: "Before departure", services: ["Group flights", "Visa assistance"], photo: "/images/library/africa-delegates-flight-v1.webp", position: "62% center" },
+  { stage: "On arrival", services: ["Hotels", "Airport transfers"], photo: "/images/library/africa-delegates-hotel-v1.webp", position: "62% center" },
+  { stage: "At the event", services: ["Venue transportation", "Delegate travel"], photo: "/images/library/africa-delegates-conference-v1.webp", position: "65% center" },
 ];
 
 // Route geometry lives in a 1000×400 box stretched over the map.
@@ -57,7 +57,7 @@ export function AfricaDelegates() {
       </header>
 
       <figure ref={map} className={`dl-map${live ? " is-live" : ""}`} aria-label="Delegates departing from Nairobi, Kampala, Juba, Khartoum and Tanzania, all arriving in Dubai">
-        <Image className="dl-map-photo" src="/images/library/exhibition.webp" alt="" fill sizes="(max-width: 800px) 100vw, 92vw" />
+        <Image className="dl-map-photo" src="/images/library/africa-delegates-arrival-v1.webp" alt="" fill sizes="(max-width: 800px) 100vw, 92vw" />
         <div className="dl-map-shade" aria-hidden="true" />
 
         <svg className="dl-routes" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
