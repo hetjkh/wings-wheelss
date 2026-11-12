@@ -119,6 +119,21 @@
   .a-reasons, .a-destination-grid, .a-business-list { grid-template-columns: 1fr; }
   .a-reason:nth-child(even) { margin-top: 0; }
   .a-destination { min-height: 420px; }
-  .a-route .s-stops { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a-route .s-stops {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
+    width: 100%;
+  }
+  /* Five stops in two columns left an empty cell — centre the last one. */
+  .a-route .s-stop:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(46%, 160px);
+    justify-self: center;
+  }
+  .services-page .a-stop-photo {
+    width: min(30vw, 120px);
+    height: min(30vw, 120px);
+  }
+  .africa-page .a-route .s-stop h3 { font-size: clamp(15px, 4.4vw, 20px); }
 }
 @media (prefers-reduced-motion: reduce) { .a-hub-plane { animation: none; left: 50%; } }

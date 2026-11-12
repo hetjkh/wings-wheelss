@@ -455,8 +455,9 @@
 /* 08 · A metro line from airport to airport */
 .g-ground { padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: var(--paper); }
 .g-metro { margin: calc(var(--u) * 3.5) 0 0; }
+.g-metro-stack { display: none; }
 @media (min-width: 992px) { .g-ground .s-split-head { grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr); gap: 6%; } }
-.g-metro svg { display: block; width: 100%; height: auto; overflow: visible; }
+.g-metro svg, .g-metro-map { display: block; width: 100%; height: auto; overflow: visible; }
 .g-metro-shadow { fill: none; stroke: var(--line); stroke-width: 16; stroke-linecap: round; }
 .g-metro-line { fill: none; stroke: var(--ink); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: var(--trace-offset, 0); }
 .g-metro-station circle { fill: #fff; stroke: var(--ink); stroke-width: 4; }
@@ -719,8 +720,37 @@
   .g-card-link { margin-top: 18px; }
 }
 @media (max-width: 700px) {
-  .g-metro { overflow-x: auto; margin-inline: calc(var(--u) * -2.5); padding-inline: calc(var(--u) * 2.5); scrollbar-width: none; }
-  .g-metro svg { min-width: 760px; }
+  /* Desktop map stays as-is; on phones use a full-width stack so nothing is clipped. */
+  .g-metro { overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .g-metro svg.g-metro-map { display: none; }
+  .g-metro-stack {
+    display: grid;
+    gap: 0;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .g-metro-stack li {
+    display: grid;
+    grid-template-columns: 2.6em minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .g-metro-stack span {
+    font: 400 11px/1 var(--body);
+    letter-spacing: .14em;
+    color: var(--ochre);
+  }
+  .g-metro-stack strong {
+    font: 400 clamp(18px, 5.2vw, 24px)/1.15 var(--heading);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
 }
 @media (max-width: 600px) {
   .journey-page .g-hero h1 { font-size: clamp(36px, 10vw, 50px); }

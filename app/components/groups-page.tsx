@@ -301,7 +301,7 @@ export default function GroupsPage() {
             <p className="s-lead">One movement plan. Fewer things for your team to manage.</p>
           </div>
           <figure className="g-metro">
-            <svg viewBox="0 0 1000 250" role="img" aria-label="Airport, hotel, exhibition or conference, dinner or event, hotel, airport">
+            <svg className="g-metro-map" viewBox="0 0 1000 250" role="img" aria-label="Airport, hotel, exhibition or conference, dinner or event, hotel, airport">
               <path className="g-metro-shadow" d={line} />
               <path className="g-metro-line" data-trace pathLength={1} d={line} />
               <g className="g-metro-shuttle"><circle r="13" /><path d="M-6 -3h12v6h-12z M-4 3v2 M4 3v2" /><animateMotion dur="9s" repeatCount="indefinite" rotate="0" path={line} /></g>
@@ -311,6 +311,12 @@ export default function GroupsPage() {
                 <text x={s.x} y={s.below ? s.y + 58 : s.y - 26} textAnchor="middle">{s.label}</text>
               </g>)}
             </svg>
+            <ol className="g-metro-stack">
+              {stations.map((s, i) => <li key={`stack-${s.label}-${i}`}>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <strong>{s.label}</strong>
+              </li>)}
+            </ol>
           </figure>
         </div>
       </section>
