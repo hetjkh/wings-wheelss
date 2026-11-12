@@ -24,9 +24,12 @@ export function SmoothScroll() {
         lenis?.destroy();
         lenis = null;
       } else if (!lenis) {
+        // Lenis alone eases the scroll. Keep ScrollTrigger scrub:true so
+        // chapter motion rides that same glide instead of lagging behind it.
         lenis = new Lenis({
-          lerp: .075,
-          wheelMultiplier: 1,
+          lerp: .1,
+          wheelMultiplier: .9,
+          touchMultiplier: 1,
           anchors: { offset: -100 },
           allowNestedScroll: true,
           autoRaf: false,
@@ -35,6 +38,7 @@ export function SmoothScroll() {
         });
         lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.add(tick);
+        gsap.ticker.fps(60);
       }
     };
     const pauseBackground = () => document.documentElement.classList.toggle("is-backgrounded", document.hidden);

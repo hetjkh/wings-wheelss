@@ -81,11 +81,11 @@ export function JourneyFooter() {
       root.querySelectorAll<HTMLElement>(".ft-line").forEach((line, index) => {
         gsap.fromTo(line.querySelectorAll(".ft-l"), { y: 0, yPercent: 105, rotate: index ? -6 : 6 }, {
           y: 0, yPercent: 0, rotate: 0, ease: "none", stagger: .06,
-          scrollTrigger: { trigger: stage, start: "top 95%", end: "bottom bottom", scrub: .8, refreshPriority: -1 },
+          scrollTrigger: { trigger: stage, start: "top 95%", end: "bottom bottom", scrub: true, refreshPriority: -1 },
         });
         gsap.fromTo(line, { xPercent: index ? 12 : -12 }, {
           xPercent: 0, ease: "none",
-          scrollTrigger: { trigger: stage, start: "top bottom", end: "bottom bottom", scrub: .8, refreshPriority: -1 },
+          scrollTrigger: { trigger: stage, start: "top bottom", end: "bottom bottom", scrub: true, refreshPriority: -1 },
         });
       });
 
@@ -95,7 +95,7 @@ export function JourneyFooter() {
         const length = path.getTotalLength();
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
         ScrollTrigger.create({
-          trigger: stage, start: "top 90%", end: "bottom bottom", scrub: .8, refreshPriority: -1,
+          trigger: stage, start: "top 90%", end: "bottom bottom", scrub: true, refreshPriority: -1,
           onUpdate: self => {
             const at = length * self.progress;
             const point = path.getPointAtLength(at);

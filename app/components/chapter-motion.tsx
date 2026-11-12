@@ -101,7 +101,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               scrollLeft: distance, ease: "none",
               scrollTrigger: {
                 trigger: section, start: pinStart, end: () => `+=${distance()}`, pin: section, pinSpacing: true,
-                scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+                scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
                 onRefresh: self => { track.dataset.scrollStart = String(self.start); track.dataset.scrollEnd = String(self.end); },
               },
             });
@@ -261,7 +261,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
                   scrollTrigger: {
                     id: `franchise-${section.id}`, trigger: section, start: "top top",
                     end: () => `+=${Math.max(window.innerHeight * .8, distance())}`,
-                    pin: true, pinSpacing: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+                    pin: true, pinSpacing: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
                   },
                 });
               } else section.classList.remove("f-mobile-pinned");
@@ -280,7 +280,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           select(".f-network-photo img").forEach((photo: HTMLElement) => {
             gsap.fromTo(photo, { scale: 1.12 }, {
               scale: 1, ease: "none",
-              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
+              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: true },
             });
           });
           select(".f-step-row li").forEach((step: HTMLElement) => {
@@ -297,20 +297,20 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (scene) {
             gsap.fromTo(scene.querySelector(".gm-arrival-photo img"), { scale: 1.08, yPercent: -2 }, {
               scale: 1.08, yPercent: 2, ease: "none",
-              scrollTrigger: { trigger: scene, start: "top bottom", end: "bottom top", scrub: .7 },
+              scrollTrigger: { trigger: scene, start: "top bottom", end: "bottom top", scrub: true },
             });
             gsap.fromTo(scene.querySelector(".gm-arrival-wave-top"), { scaleY: .88, transformOrigin: "100% 0%" }, {
               scaleY: 1, ease: "none",
-              scrollTrigger: { trigger: scene, start: "top 90%", end: "top 25%", scrub: .65 },
+              scrollTrigger: { trigger: scene, start: "top 90%", end: "top 25%", scrub: true },
             });
             gsap.fromTo(scene.querySelector(".gm-arrival-wave-bottom"), { y: 18 }, {
               y: 0, ease: "none",
-              scrollTrigger: { trigger: scene.querySelector(".gm-arrival-finale"), start: "top 65%", end: "bottom 85%", scrub: .65 },
+              scrollTrigger: { trigger: scene.querySelector(".gm-arrival-finale"), start: "top 65%", end: "bottom 85%", scrub: true },
             });
             const headline = scene.querySelector(".gm-arrival-finale em");
             gsap.fromTo(headline, { y: 26, opacity: .4 }, {
               y: 0, opacity: 1, ease: "none",
-              scrollTrigger: { trigger: headline, start: "top 94%", end: "top 65%", scrub: .5 },
+              scrollTrigger: { trigger: headline, start: "top 94%", end: "top 65%", scrub: true },
             });
             const caption = scene.querySelector("figcaption");
             const captionReveal = gsap.fromTo(scene.querySelectorAll(".gm-arrival-summary, .gm-arrival-cta"), { y: 18, opacity: .25 }, {
@@ -365,7 +365,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             if (!img) return;
             gsap.fromTo(img, { scale: 1.1 }, {
               scale: 1.02, ease: "none",
-              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: .6 },
+              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true },
             });
           });
 
@@ -382,7 +382,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (mapFig) {
             gsap.fromTo(mapFig, { scale: 1.06, opacity: .7 }, {
               scale: 1, opacity: 1, ease: "none",
-              scrollTrigger: { trigger: mapFig, start: "top 90%", end: "top 35%", scrub: .7 },
+              scrollTrigger: { trigger: mapFig, start: "top 90%", end: "top 35%", scrub: true },
             });
           }
 
@@ -397,7 +397,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             const img = card.querySelector("img");
             if (img) gsap.fromTo(img, { scale: 1.18 }, {
               scale: 1.04, ease: "none",
-              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: .6 },
+              scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true },
             });
           });
 
@@ -407,7 +407,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               yPercent: 4, ease: "none",
               scrollTrigger: {
                 trigger: photo.closest(".k-side"),
-                start: "top bottom", end: "bottom top", scrub: .8,
+                start: "top bottom", end: "bottom top", scrub: true,
               },
             });
           });
@@ -442,7 +442,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
                 scrollLeft: () => Math.max(0, track.scrollWidth - track.clientWidth), ease: "none",
                 scrollTrigger: {
                   trigger: section, start: "top top", end: () => `+=${track.scrollWidth - track.clientWidth}`,
-                  pin: true, pinSpacing: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+                  pin: true, pinSpacing: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
                   onRefresh: self => { track.dataset.scrollStart = String(self.start); track.dataset.scrollEnd = String(self.end); },
                 },
               });
@@ -460,7 +460,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           });
           select(".d-dubai-scene > img, .d-planning-photo > img").forEach((photo: HTMLElement) => {
             gsap.fromTo(photo, { scale: 1.12 }, { scale: 1, ease: "none",
-              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 } });
+              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
           });
           const season = page.querySelector<HTMLElement>(".d-seasons");
           if (season && context.conditions?.tall) {
@@ -487,10 +487,10 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           const africa = page.querySelector<HTMLElement>(".d-africa");
           if (africa) {
             gsap.fromTo(africa.querySelector(".d-africa-photo"), { scale: 1.15 }, {
-              scale: 1, ease: "none", scrollTrigger: { trigger: africa, start: "top bottom", end: "bottom top", scrub: .8 },
+              scale: 1, ease: "none", scrollTrigger: { trigger: africa, start: "top bottom", end: "bottom top", scrub: true },
             });
             gsap.from(africa.querySelector(".d-arcs"), {
-              y: 35, opacity: .15, ease: "none", scrollTrigger: { trigger: africa, start: "top 55%", end: "center center", scrub: .6 },
+              y: 35, opacity: .15, ease: "none", scrollTrigger: { trigger: africa, start: "top 55%", end: "center center", scrub: true },
             });
           }
           select(".d-mood-stage, .d-quiz, .dp-stops, .sv-pass").forEach((panel: HTMLElement) => {
@@ -499,7 +499,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           });
           const closing = page.querySelector<HTMLElement>(".sv-final .sv-view img");
           if (closing) gsap.fromTo(closing, { scale: 1.12 }, { scale: 1, ease: "none",
-            scrollTrigger: { trigger: closing.closest(".sv-final"), start: "top bottom", end: "bottom top", scrub: .8 } });
+            scrollTrigger: { trigger: closing.closest(".sv-final"), start: "top bottom", end: "bottom top", scrub: true } });
         }
 
         // Headings rise line by line out of a mask; lead paragraphs follow more softly.
@@ -513,14 +513,14 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             },
           });
         });
-        splitText(".s-title, .s-statement, .s-principle-title, .s-final h2", { yPercent: 105, duration: .85, stagger: .06, ease: "power4.out" });
-        splitText(".s-lead, .s-lead-body", { yPercent: 100, opacity: 0, duration: .65, stagger: { amount: .12 }, delay: .05, ease: "power3.out" });
+        splitText(".s-title, .s-statement, .s-principle-title, .s-final h2", { yPercent: 105, duration: .9, stagger: .05, ease: "power3.out", force3D: true });
+        splitText(".s-lead, .s-lead-body", { yPercent: 100, opacity: 0, duration: .7, stagger: { amount: .12 }, delay: .04, ease: "power2.out", force3D: true });
 
         // Short, one-time entrances. Anything already on screen stays visible.
         const reveal = (elements: Element[], trigger: Element, options: gsap.TweenVars = {}) => {
           if (!elements.length || visible(trigger)) return;
           const tween = gsap.from(elements, {
-            opacity: 0, y: desktop ? 24 : 16, duration: .7, stagger: .05, ease: "power3.out",
+            opacity: 0, y: desktop ? 22 : 14, duration: .75, stagger: .045, ease: "power2.out", force3D: true,
             clearProps: "opacity,transform", scrollTrigger: { trigger, start: "top 90%", once: true }, ...options,
           });
           const show = () => { tween.progress(1); };
@@ -556,19 +556,19 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           const photo = frame.querySelector("img");
           const badge = frame.querySelector(".s-service-icon");
           const destinationPhone = page.classList.contains("destinations-page") && context.conditions?.phone;
-          const timeline = gsap.timeline({ scrollTrigger: { trigger: frame, start: "top bottom", end: "top 35%", scrub: .8 } })
+          const timeline = gsap.timeline({ scrollTrigger: { trigger: frame, start: "top bottom", end: "top 35%", scrub: true } })
             .fromTo(frame, { clipPath: destinationPhone ? "inset(6% 0% 6% 0%)" : "inset(18% 14% 18% 14% round 12px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none" }, 0);
           if (photo) timeline.fromTo(photo, { scale: destinationPhone ? 1.12 : 1.35 }, { scale: 1.06, ease: "none" }, 0);
           if (badge) timeline.from(badge, { scale: 0, rotate: -90, ease: "back.out(2)", duration: .3 }, .6);
         });
         select(".s-reason-panels").forEach((panels: HTMLElement) => {
-          gsap.timeline({ scrollTrigger: { trigger: panels, start: "top bottom", end: "top 25%", scrub: .8 } })
+          gsap.timeline({ scrollTrigger: { trigger: panels, start: "top bottom", end: "top 25%", scrub: true } })
             .fromTo(panels.children, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", stagger: .15, ease: "none" }, 0)
             .fromTo(panels.querySelectorAll(".s-reason-photo"), { scale: 1.3 }, { scale: 1, stagger: .15, ease: "none" }, 0);
         });
         select(".s-principle").forEach((section: HTMLElement) => {
           const frame = section.querySelector(".s-principle-frame");
-          gsap.timeline({ scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: .8 } })
+          gsap.timeline({ scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: true } })
             .fromTo(frame, { clipPath: desktop ? "inset(16% 26% 16% 26% round 240px)" : "inset(14% 8% 14% 8% round 120px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none" }, 0)
             .fromTo(frame?.querySelector("img") ?? [], { scale: 1.3 }, { scale: 1, ease: "none" }, 0);
           gsap.from(section.querySelector(".s-principle-rule"), {
@@ -579,13 +579,13 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         select(".s-final").forEach((section: HTMLElement) => {
           const photo = section.querySelector(".s-final-photo");
           if (!photo) return;
-          gsap.timeline({ scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: .8 } })
+          gsap.timeline({ scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: true } })
             .fromTo(photo, { clipPath: "inset(10% 6% 10% 6% round 24px)", scale: 1.25 }, { clipPath: "inset(0% 0% 0% 0% round 0px)", scale: 1, ease: "none" }, 0);
         });
         select(".s-beyond-video").forEach((video: HTMLElement) => {
           gsap.fromTo(video, { scale: 1.08, yPercent: -2 }, {
             scale: 1.04, yPercent: 2, ease: "none",
-            scrollTrigger: { trigger: video.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
+            scrollTrigger: { trigger: video.parentElement, start: "top bottom", end: "bottom top", scrub: true },
           });
         });
 
@@ -600,7 +600,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           route.style.setProperty("--route-progress", "0");
           gsap.to(state, {
             p: 1, ease: "none",
-            scrollTrigger: { trigger: route, start: "top 80%", end: "bottom 62%", scrub: .6 },
+            scrollTrigger: { trigger: route, start: "top 80%", end: "bottom 62%", scrub: true },
             onUpdate: () => {
               route.style.setProperty("--route-progress", String(state.p));
               stops.forEach((stop, i) => stop.classList.toggle("is-reached", state.p >= i / (stops.length - 1) - .001));
@@ -618,7 +618,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (!line) return;
           gsap.fromTo(line, { scaleX: 0 }, {
             scaleX: 1, ease: "none",
-            scrollTrigger: { trigger: phases, start: "top 85%", end: "bottom 60%", scrub: .6 },
+            scrollTrigger: { trigger: phases, start: "top 85%", end: "bottom 60%", scrub: true },
           });
         });
         select(".s-ticket-route").forEach((ticket: HTMLElement) => {
@@ -643,7 +643,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
         select("[data-progress]").forEach((scene: HTMLElement) => {
           gsap.fromTo(scene, { "--progress": 0 }, {
             "--progress": 1, ease: "none",
-            scrollTrigger: { trigger: scene, ...readingRange(scene, scene.dataset.progress || "top 75%", scene.dataset.progressEnd || "bottom 55%"), scrub: .6 },
+            scrollTrigger: { trigger: scene, ...readingRange(scene, scene.dataset.progress || "top 75%", scene.dataset.progressEnd || "bottom 55%"), scrub: true },
           });
         });
         select("[data-trace]").forEach((path: Element) => {
@@ -651,20 +651,20 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           if (!drawing) return;
           gsap.fromTo(path, { "--trace-offset": 1 }, {
             "--trace-offset": 0, ease: "none",
-            scrollTrigger: { trigger: drawing, ...readingRange(drawing, "top 85%", "center 45%"), scrub: .8 },
+            scrollTrigger: { trigger: drawing, ...readingRange(drawing, "top 85%", "center 45%"), scrub: true },
           });
         });
         select(".j-map").forEach((map: Element) => {
           gsap.to(map.querySelectorAll(".j-map-route"), {
             strokeDashoffset: -35, ease: "none",
-            scrollTrigger: { trigger: map, start: "top 85%", end: "bottom 15%", scrub: 1 },
+            scrollTrigger: { trigger: map, start: "top 85%", end: "bottom 15%", scrub: true },
           });
         });
 
         // The reading line along the page edge.
         gsap.fromTo(page, { "--page-progress": 0 }, {
           "--page-progress": 1, ease: "none",
-          scrollTrigger: { trigger: page, start: "top top", end: "bottom bottom", scrub: .4 },
+          scrollTrigger: { trigger: page, start: "top top", end: "bottom bottom", scrub: true },
         });
 
         let active = true;

@@ -82,7 +82,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
               scrollTrigger: {
                 id: "journey-explorer", trigger: intro, start: "top top",
                 end: () => `+=${Math.max(distance(), window.innerHeight)}`,
-                pin: true, pinSpacing: true, scrub: .6,
+                pin: true, pinSpacing: true, scrub: true,
                 anticipatePin: 1, invalidateOnRefresh: true,
               },
             });
@@ -120,7 +120,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
         select(".j-story, .j-split, .j-team").forEach((section: HTMLElement) => {
           gsap.fromTo(section, { "--top-tear-x": "-12px", "--top-tear-scale": .92 }, {
             "--top-tear-x": "12px", "--top-tear-scale": 1, ease: "none",
-            scrollTrigger: { trigger: section, start: "top 75%", end: "top 25%", scrub: .7 },
+            scrollTrigger: { trigger: section, start: "top 75%", end: "top 25%", scrub: true },
           });
         });
 
@@ -156,7 +156,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
             dots.forEach(dot => dot.classList.toggle("is-reached", point.x >= Number(dot.getAttribute("cx")) - 1));
           };
           fly();
-          gsap.to(state, { p: 1, ease: "none", onUpdate: fly, scrollTrigger: { trigger: route, start: "top 85%", end: "bottom 65%", scrub: .8 } });
+          gsap.to(state, { p: 1, ease: "none", onUpdate: fly, scrollTrigger: { trigger: route, start: "top 85%", end: "bottom 65%", scrub: true } });
           focusCleanups.push(() => {
             route.style.removeProperty("--route");
             plane.setAttribute("transform", "translate(1200 70)");
@@ -164,7 +164,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           });
         });        // The photographs set into the story heading open up as it scrolls into view.
         select(".ab-pill").forEach((pill: HTMLElement) => {
-          gsap.from(pill, { width: 0, ease: "none", scrollTrigger: { trigger: pill, start: "top 92%", end: "top 50%", scrub: .8 } });
+          gsap.from(pill, { width: 0, ease: "none", scrollTrigger: { trigger: pill, start: "top 92%", end: "top 50%", scrub: true } });
         });
         if (!intro?.classList.contains("is-exploring")) {
           select(".j-journey-card").forEach((item: HTMLElement) => reveal([item], item));
@@ -179,7 +179,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           gsap.fromTo(photo,
             { yPercent: hero ? 0 : (desktop ? -3 : -1.5), scale: desktop ? 1.09 : 1.05 },
             { yPercent: desktop ? 3 : 1.5, ease: "none", scrollTrigger: {
-              trigger: frame, start: hero ? "top top" : "top bottom", end: "bottom top", scrub: .7,
+              trigger: frame, start: hero ? "top top" : "top bottom", end: "bottom top", scrub: true,
             } },
           );
         });
@@ -189,7 +189,7 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           // Stretch stays at or below 1 so a tear never reaches past its overlap.
           gsap.fromTo(section, { "--tear-drift": "-12px", "--tear-stretch": .8 }, {
             "--tear-drift": "12px", "--tear-stretch": 1, ease: "none",
-            scrollTrigger: { trigger: section, start: "bottom bottom", end: "bottom top", scrub: .8 },
+            scrollTrigger: { trigger: section, start: "bottom bottom", end: "bottom top", scrub: true },
           });
         });
 
@@ -197,11 +197,11 @@ export function JourneyMotion({ children }: { children: ReactNode }) {
           select(".j-network-landscape").forEach((landscape: HTMLElement, i: number) => {
             gsap.fromTo(landscape, { y: i ? 16 : -16 }, {
               y: i ? -16 : 16, ease: "none",
-              scrollTrigger: { trigger: ".j-network", start: "top bottom", end: "bottom top", scrub: 1 },
+              scrollTrigger: { trigger: ".j-network", start: "top bottom", end: "bottom top", scrub: true },
             });
           });
           gsap.to(select(".j-map-route"), { strokeDashoffset: -35, ease: "none",
-            scrollTrigger: { trigger: ".j-network", start: "top 70%", end: "bottom 30%", scrub: 1 },
+            scrollTrigger: { trigger: ".j-network", start: "top 70%", end: "bottom 30%", scrub: true },
           });
         }
 

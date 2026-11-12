@@ -111,7 +111,7 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
               trigger: section,
               start: "top top",
               end: () => `+=${section.clientHeight * .7}`,
-              scrub: .7,
+              scrub: true,
               invalidateOnRefresh: true,
             },
           });
@@ -121,8 +121,8 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
         }
       }
 
-      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .85, stagger: index => (index % lineCount) * .06, ease: "power4.out", delay: .05 });
-      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 20, opacity: 0, duration: .7, stagger: index => (index % 3) * .06, ease: "power3.out", delay: .2 });
+      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .9, stagger: index => (index % lineCount) * .05, ease: "power3.out", force3D: true, delay: .05 });
+      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 18, opacity: 0, duration: .75, stagger: index => (index % 3) * .05, ease: "power2.out", force3D: true, delay: .18 });
       gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
 
       const heroInner = one(".au-hero-photo-inner");
@@ -146,7 +146,7 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             start: "top top",
             end: "+=240%",
             pin: true,
-            scrub: 1.2,
+            scrub: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             refreshPriority: page.classList.contains("home-page") ? 4 : 0,

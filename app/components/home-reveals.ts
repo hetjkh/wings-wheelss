@@ -57,7 +57,7 @@ export function animateHomeReveals(root: HTMLElement) {
 
   select("[data-editorial-title]").filter(pending).forEach(title => {
     watch(title, gsap.from(title.querySelectorAll(".e-line > span"), {
-      yPercent: 105, opacity: 0, duration: .85, stagger: .07, ease: "power2.out", paused: true,
+      yPercent: 105, opacity: 0, duration: .9, stagger: .05, ease: "power2.out", force3D: true, paused: true,
     }));
   });
 
@@ -71,7 +71,7 @@ export function animateHomeReveals(root: HTMLElement) {
           (mask as HTMLElement).style.marginBottom = "-.14em";
         });
         const tween = gsap.from(self.lines, {
-          yPercent: 105, opacity: 0, duration: travelPanel ? .55 : .85, stagger: .07, ease: "power2.out", paused: true,
+          yPercent: 105, opacity: 0, duration: travelPanel ? .6 : .9, stagger: .05, ease: "power2.out", force3D: true, paused: true,
           onComplete: () => { completed.add(element); },
         });
         animations.set(element, tween);

@@ -75,7 +75,7 @@ export function ClosingScene({
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
-          trigger: root, start: "top top", end: mobile ? "+=145%" : "+=170%", pin: true, scrub: .8,
+          trigger: root, start: "top top", end: mobile ? "+=145%" : "+=170%", pin: true, scrub: true,
           anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: -1,
         },
       });

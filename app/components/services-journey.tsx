@@ -44,7 +44,7 @@ export function ServicesJourney() {
     motion.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.fromTo(root.querySelector(".sb-stage"), { y: 45, clipPath: "inset(5% 2% 5% 2% round 24px)" }, {
         y: 0, clipPath: "inset(0% 0% 0% 0% round 16px)", ease: "none",
-        scrollTrigger: { trigger: root, start: "top 85%", end: "top 15%", scrub: .7 },
+        scrollTrigger: { trigger: root, start: "top 85%", end: "top 15%", scrub: true },
       });
     });
     return () => {

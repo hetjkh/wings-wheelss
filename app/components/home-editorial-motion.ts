@@ -7,7 +7,7 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
 
   select("[data-editorial-parallax]").forEach(photo => {
     const amount = Number(photo.dataset.editorialParallax) * (desktop ? 1 : .4);
-    gsap.fromTo(photo, { yPercent: -amount }, { yPercent: amount, ease: "none", scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .8 } });
+    gsap.fromTo(photo, { yPercent: -amount }, { yPercent: amount, ease: "none", scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
   });
   // Bottom-anchored paper layers stay joined to the surface as the edge lifts and settles.
   select(".e-clientele").forEach(section => {
@@ -17,7 +17,7 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
     if (!under || !fibre || !face) return;
     const drift = desktop ? 1 : .5;
     const paper = gsap.timeline({ scrollTrigger: {
-      trigger: section, start: "top bottom", end: "top 22%", scrub: .7,
+      trigger: section, start: "top bottom", end: "top 22%", scrub: true,
     } });
     paper.fromTo(under, { x: -5 * drift, scaleY: 1.01 }, { x: 3 * drift, scaleY: 1.07, duration: .45, ease: "sine.out" }, 0)
       .to(under, { x: -2, scaleY: 1.025, duration: .55, ease: "sine.inOut" }, .45)
@@ -32,7 +32,7 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
     const viewport = gallery.querySelector<HTMLElement>(".e-destination-window")!;
     gallery.classList.add("is-enhanced");
     const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-    const rail = gsap.timeline({ scrollTrigger: { id: "home-destinations", trigger: gallery.querySelector(".e-destinations-pin"), start: "top 70px", end: () => `+=${distance()}`, pin: true, scrub: .7, invalidateOnRefresh: true, refreshPriority: 1 } });
+    const rail = gsap.timeline({ scrollTrigger: { id: "home-destinations", trigger: gallery.querySelector(".e-destinations-pin"), start: "top 70px", end: () => `+=${distance()}`, pin: true, scrub: true, invalidateOnRefresh: true, refreshPriority: 1 } });
     rail.to(track, { x: () => -distance(), ease: "none" }, 0)
       .fromTo(".e-destination-progress > span", { scaleX: 0 }, { scaleX: 1, ease: "none" }, 0);
     const focusCard = (event: FocusEvent) => {
@@ -47,7 +47,7 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
     track.addEventListener("focusin", focusCard);
     cleanup.push(() => { track.removeEventListener("focusin", focusCard); gallery.classList.remove("is-enhanced"); viewport.scrollLeft = 0; });
 
-    gsap.fromTo(".e-africa-title", { y: 0 }, { y: 90, ease: "none", scrollTrigger: { trigger: ".e-africa-landscape", start: "top top", end: "bottom top", scrub: .8 } });
+    gsap.fromTo(".e-africa-title", { y: 0 }, { y: 90, ease: "none", scrollTrigger: { trigger: ".e-africa-landscape", start: "top top", end: "bottom top", scrub: true } });
 
     // Drift the decorative edge without freezing the preceding chapter underneath it.
     select("[data-home-cover]").forEach(section => {
@@ -69,7 +69,7 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
       const rail = gsap.timeline({ scrollTrigger: {
         id: "home-destinations-mobile", trigger: galleryPin, start: "top 65px",
         end: () => `+=${Math.max(window.innerHeight * .8, distance())}`,
-        pin: true, scrub: .7, invalidateOnRefresh: true, refreshPriority: 1,
+        pin: true, scrub: true, invalidateOnRefresh: true, refreshPriority: 1,
       } });
       rail.to(track, { x: () => -distance(), ease: "none" }, 0)
         .fromTo(gallery.querySelector(".e-destination-progress > span"), { scaleX: 0 }, { scaleX: 1, ease: "none" }, 0);
@@ -86,11 +86,11 @@ export function animateHomeEditorial(root: HTMLElement, desktop: boolean) {
 
     const landscape = root.querySelector<HTMLElement>(".e-africa-landscape");
     if (landscape && landscape.getClientRects().length > 0) {
-      gsap.fromTo(landscape.querySelector(".e-africa-title"), { yPercent: 12 }, { yPercent: -12, ease: "none", scrollTrigger: { trigger: landscape, start: "top bottom", end: "bottom top", scrub: .8 } });
+      gsap.fromTo(landscape.querySelector(".e-africa-title"), { yPercent: 12 }, { yPercent: -12, ease: "none", scrollTrigger: { trigger: landscape, start: "top bottom", end: "bottom top", scrub: true } });
     }
 
     const togetherPhoto = root.querySelector<HTMLElement>(".e-together-photo");
-    if (togetherPhoto) gsap.fromTo(togetherPhoto, { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".e-together-hero", start: "top bottom", end: "bottom top", scrub: .7 } });
+    if (togetherPhoto) gsap.fromTo(togetherPhoto, { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".e-together-hero", start: "top bottom", end: "bottom top", scrub: true } });
   }
   return () => cleanup.forEach(fn => fn());
 }
