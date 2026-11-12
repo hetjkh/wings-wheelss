@@ -175,6 +175,59 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           coverAfter();
         });
 
+        // Growing beyond borders: editorial clip reveals — tiles stay framed, open bottom→top.
+        if (page.classList.contains("franchise-page")) {
+          const beyond = page.querySelector<HTMLElement>(".f-beyond");
+          if (beyond && !visible(beyond)) {
+            const tiles = [
+              beyond.querySelector<HTMLElement>(".f-beyond-tile-main"),
+              beyond.querySelector<HTMLElement>(".f-beyond-tile-top"),
+              beyond.querySelector<HTMLElement>(".f-beyond-tile-bottom"),
+            ].filter((tile): tile is HTMLElement => !!tile);
+            const copyBits = Array.from(beyond.querySelectorAll<HTMLElement>(".f-beyond-copy > :not(h2)"));
+            const caption = beyond.querySelector<HTMLElement>(".f-beyond-tile-main figcaption");
+            const entrance = gsap.timeline({
+              defaults: { ease: "expo.out" },
+              scrollTrigger: { trigger: beyond, start: "top 75%", once: true },
+            });
+            tiles.forEach((tile, index) => {
+              const photo = tile.querySelector("img");
+              const at = index * .16;
+              entrance.fromTo(tile, { clipPath: "inset(100% 0 0 0)" }, {
+                clipPath: "inset(0% 0 0 0)",
+                duration: desktop ? 1.35 : 1.05,
+                clearProps: "clipPath",
+              }, at);
+              if (photo) {
+                entrance.fromTo(photo, { scale: 1.14, yPercent: 8 }, {
+                  scale: 1,
+                  yPercent: 0,
+                  duration: desktop ? 1.55 : 1.2,
+                  ease: "power2.out",
+                }, at);
+              }
+            });
+            if (caption) {
+              entrance.from(caption, {
+                y: 18,
+                opacity: 0,
+                duration: .85,
+                clearProps: "opacity,transform",
+              }, .55);
+            }
+            if (copyBits.length) {
+              entrance.from(copyBits, {
+                y: desktop ? 22 : 16,
+                opacity: 0,
+                duration: .9,
+                stagger: .07,
+                ease: "power3.out",
+                clearProps: "opacity,transform",
+              }, .28);
+            }
+          }
+        }
+
         // Franchise phones: markets gallery can pin; build uses a tap accordion instead.
         if (page.classList.contains("franchise-page") && context.conditions?.phone) {
           [".f-markets"].forEach(selector => {
@@ -224,7 +277,7 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               if (counter) counter.textContent = `01 / ${String(count).padStart(2, "0")}`;
             });
           });
-          select(".f-beyond-tile img, .f-network-photo img").forEach((photo: HTMLElement) => {
+          select(".f-network-photo img").forEach((photo: HTMLElement) => {
             gsap.fromTo(photo, { scale: 1.12 }, {
               scale: 1, ease: "none",
               scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: .7 },
@@ -348,10 +401,10 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
             });
           });
 
-          // 07 · Sides: parallax on each hero photo.
-          select(".k-side-photo img").forEach((photo: HTMLElement) => {
-            gsap.fromTo(photo, { yPercent: -6 }, {
-              yPercent: 6, ease: "none",
+          // 07 · Sides: parallax travellers only — business framing uses a fixed top offset for the face.
+          select(".k-side-travellers .k-side-photo").forEach((photo: HTMLElement) => {
+            gsap.fromTo(photo, { yPercent: -4 }, {
+              yPercent: 4, ease: "none",
               scrollTrigger: {
                 trigger: photo.closest(".k-side"),
                 start: "top bottom", end: "bottom top", scrub: .8,
@@ -475,8 +528,12 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           cleanups.push(() => trigger.removeEventListener("focusin", show));
         };
         select("[data-enter]").forEach((item: HTMLElement) => reveal([item], item));
-        select(".s-eyebrow, .s-section-label > span, .j-section-label > span").forEach((item: HTMLElement) => reveal([item], item, { y: 12 }));
+        select(".s-eyebrow, .s-section-label > span, .j-section-label > span").forEach((item: HTMLElement) => {
+          if (item.closest(".f-beyond")) return;
+          reveal([item], item, { y: 12 });
+        });
         select(".s-stops, .s-tickets, .s-phases, .j-pillars, .s-principle-copy, [data-stagger]").forEach((group: HTMLElement) => {
+          if (group.closest(".f-beyond")) return;
           reveal(Array.from(group.children).filter(child => !child.matches("h2, .s-principle-rule")), group, { stagger: Number(group.dataset.stagger) || .08 });
         });
         select(".s-service-body, .s-reason-copy, .s-network-copy > :not(h2, p, .s-eyebrow), .s-final-content > :not(h2, p)").forEach((item: HTMLElement) => reveal([item], item));

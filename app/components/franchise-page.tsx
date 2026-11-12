@@ -46,12 +46,12 @@ const builds = [
   { icon: "plane" as const, title: "Travel services", text: "Flights, hotels, visas and transfers.", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center" },
 ];
 
-const network = [
-  "Business travel between GCC and African markets",
-  "International group movements and exhibitions",
-  "Regional leisure packages and destination experiences",
-  "Corporate referrals and multi-country itineraries",
-  "Collaboration with participating travel partners",
+const network: { icon: IconKind; label: string; lead: string }[] = [
+  { icon: "briefcase", label: "Business travel between GCC and African markets", lead: "Corridors" },
+  { icon: "people", label: "International group movements and exhibitions", lead: "Groups" },
+  { icon: "sun", label: "Regional leisure packages and destination experiences", lead: "Leisure" },
+  { icon: "route", label: "Corporate referrals and multi-country itineraries", lead: "Itineraries" },
+  { icon: "handshake", label: "Collaboration with participating travel partners", lead: "Partners" },
 ];
 
 const partners = [
@@ -209,14 +209,31 @@ export default function FranchisePage() {
         <div className="j-shell f-network-grid">
           <div className="f-network-copy">
             <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
-            <h2 id="network-heading" className="f-network-heading">Connecting<br /><em>more than<br />destinations.</em></h2>
-            <p className="k-body f-desktop-copy">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network.</p>
-            <p className="k-body f-desktop-copy">For potential franchise partners in Saudi Arabia, Egypt and Morocco, this creates opportunities to explore cross-market travel cooperation, including:</p>
-            <p className="k-body f-mobile-copy">From our Dubai base to our Africa network, explore travel opportunities across borders.</p>
-            <ul className="f-network-list" data-stagger="0.08">{network.map(item => <li key={item}><TravelIcon kind="check" size={18} />{item}</li>)}</ul>
-            <p className="f-network-note">A growing network. Local market opportunities. Shared international ambition.</p>
+            <h2 id="network-heading" className="f-network-heading">
+              <span>Connecting</span>
+              <em>more than</em>
+              <span>destinations.</span>
+            </h2>
+            <p className="f-network-lead f-desktop-copy">Wings &amp; Wheels operates from Dubai and has relationships through its Africa travel network — opening cross-market cooperation for partners in Saudi Arabia, Egypt and Morocco.</p>
+            <p className="f-network-lead f-mobile-copy">From our Dubai base to our Africa network, explore travel opportunities across borders.</p>
+            <p className="f-network-note"><span>A growing network.</span> <span>Local market opportunities.</span> <em>Shared international ambition.</em></p>
           </div>
           <FranchiseGlobe />
+        </div>
+        <div className="j-shell f-network-route">
+          <p className="f-network-route-label"><span>Cross-market cooperation, including</span></p>
+          <ol className="f-network-stops" data-stagger="0.1">
+            {network.map((item, index) => (
+              <li key={item.label}>
+                <span className="f-network-node">
+                  <TravelIcon kind={item.icon} size={26} />
+                  <b>{String(index + 1).padStart(2, "0")}</b>
+                </span>
+                <span className="f-network-stop-lead">{item.lead}</span>
+                <p>{item.label}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

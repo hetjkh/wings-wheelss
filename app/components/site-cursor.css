@@ -1,4 +1,5 @@
 .site-cursor, .site-cursor-dot { position: fixed; inset: 0 auto auto 0; z-index: 10000; pointer-events: none; opacity: 0; transition: opacity .2s; will-change: transform; }
+/* Pure white + difference stays readable on cream paper and dark panels alike. */
 .site-cursor { mix-blend-mode: difference; }
 .site-cursor-face {
   display: flex;
@@ -8,16 +9,16 @@
   width: 32px;
   height: 32px;
   margin: -16px;
-  border: 1px solid #f7efdf99;
+  border: 1px solid #ffffffb3;
   border-radius: 50%;
-  color: #f7efdf;
+  color: #fff;
   transition: width .45s var(--ease), height .45s var(--ease), margin .45s var(--ease), background .35s, border-color .35s, scale .25s, box-shadow .35s;
 }
 .site-cursor-face > span { max-width: 58px; font: 400 12px/1.15 var(--body); letter-spacing: .02em; text-align: center; }
 .site-cursor-face > span, .site-cursor-arrow { opacity: 0; transition: opacity .18s; }
 .site-cursor-arrow { display: none; width: 13px; height: 13px; }
-.site-cursor-orbit { display: none; width: 100%; height: 100%; overflow: visible; color: #2b241c; }
-.site-cursor-orbit circle { fill: #fff8e9; }
+.site-cursor-orbit { display: none; width: 100%; height: 100%; overflow: visible; color: #fff8e9; }
+.site-cursor-orbit circle { fill: #1c1814; stroke: #fff8e94d; stroke-width: 1; }
 .site-cursor-orbit text {
   fill: #fff8e9;
   font: 500 11px/1 var(--body);
@@ -25,17 +26,18 @@
   text-transform: uppercase;
 }
 .site-cursor-spin { transform-origin: 70px 70px; animation: site-cursor-spin 12s linear infinite; }
-.site-cursor-dot { width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: #fff5e0; mix-blend-mode: difference; }
+.site-cursor-dot { width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: #fff; mix-blend-mode: difference; }
 .site-cursor[data-visible="true"], .site-cursor-dot[data-visible="true"] { opacity: 1; }
-.site-cursor[data-mode="link"] .site-cursor-face { width: 46px; height: 46px; margin: -23px; background: #f7efdf20; border-color: #f7efdf; }
+.site-cursor[data-mode="link"] .site-cursor-face { width: 46px; height: 46px; margin: -23px; background: #ffffff24; border-color: #fff; }
+/* Solid dark disc so hover labels stay visible on white, cream, and photo backgrounds. */
 .site-cursor[data-mode="label"] { mix-blend-mode: normal; }
 .site-cursor[data-mode="label"] .site-cursor-face {
   width: 176px;
   height: 176px;
   margin: -88px;
   border-color: transparent;
-  background: transparent;
-  box-shadow: none;
+  background: #1c1814f2;
+  box-shadow: 0 0 0 1px #fff8e933, 0 18px 48px #00000059;
 }
 .site-cursor[data-mode="label"] .site-cursor-face > span,
 .site-cursor[data-mode="label"] .site-cursor-arrow { display: none; opacity: 0; }

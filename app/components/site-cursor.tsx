@@ -9,12 +9,14 @@ export function SiteCursor() {
   const cursor = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
   const label = useRef<HTMLSpanElement>(null);
+  const orbit = useRef<SVGTextPathElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const ring = cursor.current!;
     const point = dot.current!;
     const text = label.current!;
+    const orbitText = orbit.current!;
     const html = document.documentElement;
     const media = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
     let frame = 0;
@@ -22,6 +24,7 @@ export function SiteCursor() {
     let inside = false;
     let x = 0, y = 0, trailingX = 0, trailingY = 0, lastTime = 0;
     let previousTarget: Element | null = null;
+    let previousMessage = "";
 
     const hide = () => {
       visible = false;
@@ -52,6 +55,11 @@ export function SiteCursor() {
       const href = action?.getAttribute("href") ?? "";
       const message = disabled ? "" : explicit ?? (action?.matches("a") && action.querySelector("img") ? (href.startsWith("/blog/") ? "Read story" : "View") : "");
       text.textContent = message;
+      if (message !== previousMessage) {
+        previousMessage = message;
+        const unit = `${(message || "Explore").trim()} · `;
+        orbitText.textContent = unit.repeat(Math.max(3, Math.ceil(28 / Math.max(unit.length, 1))));
+      }
       ring.dataset.mode = message ? "label" : action && !disabled ? "link" : "idle";
     };
     const draw = (time: number) => {
@@ -117,7 +125,7 @@ export function SiteCursor() {
           </defs>
           <g className="site-cursor-spin">
             <text>
-              <textPath href="#site-cursor-orbit-path">Explore · Explore · Explore · Explore ·</textPath>
+              <textPath ref={orbit} href="#site-cursor-orbit-path">Explore · Explore · Explore · Explore ·</textPath>
             </text>
           </g>
           <circle cx="70" cy="70" r="30" />

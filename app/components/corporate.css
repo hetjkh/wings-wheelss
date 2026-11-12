@@ -204,7 +204,14 @@
 .k-day-caption b { font: 400 calc(var(--u) * 1.5)/1 var(--heading); letter-spacing: .04em; }
 
 .k-day.is-stepped { --tear-face: var(--night); --s: round(down, calc(var(--steps-progress, 0) * 4.999), 1); position: relative; display: grid; grid-template-rows: 1fr auto; min-height: 100svh; padding: calc(var(--tear) + 90px) 0 calc(var(--u) * 2.25); overflow: clip; background: var(--night); color: var(--cream); }
-.is-stepped .k-day-photos { position: absolute; inset: 0; display: block; width: auto; margin: 0; }
+.is-stepped .k-day-photos {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
 .is-stepped .k-day-photos li { --on: clamp(0, calc(var(--s) - var(--i) + 1), 1); position: absolute; inset: 0; aspect-ratio: auto; background: transparent; clip-path: inset(calc((1 - var(--on)) * 100%) 0 0 0); transition: clip-path 1.2s cubic-bezier(.7, 0, .2, 1); }
 /* An incoming layer opens only after decoding; the previous photo stays underneath. */
 .is-stepped .k-day-photos li[data-image-ready="false"]:not(:first-child) { clip-path: inset(100% 0 0 0); }
@@ -283,6 +290,25 @@
 .k-team-count svg { width: 18px; height: 18px; color: #b5462a; }
 /* 06 · Three widening horizons: each panel opens as the reach grows, and the one you point at opens wider */
 .k-network { --tear-face: var(--night); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: var(--night); color: #eadfcb; }
+/* Home travel-heading join: flush end + cream paper lip over the blue mask (no black gap). */
+.journey-page .k-network { padding-bottom: 0 !important; }
+.k-network::after {
+  content: "";
+  position: absolute;
+  left: -48px;
+  bottom: calc(-1 * var(--tear-size) + 1px);
+  z-index: 6;
+  width: calc(100% + 96px);
+  height: var(--tear-size);
+  background: var(--paper);
+  -webkit-mask: url("/images/journey/torn-edge-bottom.svg") center / 100% 100% no-repeat;
+  mask: url("/images/journey/torn-edge-bottom.svg") center / 100% 100% no-repeat;
+  filter:
+    drop-shadow(0 1px 0 color-mix(in srgb, var(--paper) 78%, #2a2118))
+    drop-shadow(2px 3px 0 color-mix(in srgb, var(--paper) 88%, #fff8e9))
+    drop-shadow(0 10px 18px #120e0a33);
+  pointer-events: none;
+}
 .k-network-head { align-items: end; margin-top: 0; }
 .journey-page .k-network .s-title { font-size: calc(var(--u) * 3.25); }
 .k-network .k-body { margin-top: 0; color: #eadfcbd9; }
@@ -300,31 +326,47 @@
 .k-reach p { margin-top: 10px; font: 300 calc(var(--u) * .9375)/1.35 var(--body); color: #fff8e9d9; }
 
 /* 07 · Two sides of the same journey */
-.k-sides { --sides-heading-height: clamp(420px, 37.5vw, 720px); padding: 0 0 var(--tear); background: #161311; }
-.k-sides-heading { position: relative; z-index: 2; height: var(--sides-heading-height); isolation: isolate; overflow: clip; pointer-events: none; }
+/* Photographs continue behind the heading's torn edge and into the next paper lip. */
+.k-sides {
+  --sides-heading-height: clamp(420px, 37.5vw, 720px);
+  padding: 0;
+  background: var(--paper);
+}
+.k-sides-heading { position: relative; z-index: 2; height: var(--sides-heading-height); isolation: isolate; overflow: clip; pointer-events: none; background: transparent; }
 .k-sides-heading-surface { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 40px 18px; background: #1d2326; mask: url('/images/home/travel-heading-mask.svg') center / 100% 100% no-repeat; }
 .k-sides-heading-grid { position: absolute; inset: 0 3.5%; border-inline: 1px solid #f4eee21c; background-image: linear-gradient(90deg, #f4eee21c 1px, transparent 1px), linear-gradient(#f4eee21c 1px, transparent 1px); background-size: 25% 100%, 100% 50%; }
 .k-sides-heading-map { position: absolute; inset: -15% -5% -20% auto; width: 34%; background: url('/images/home/travel-map-outline.svg') center / 100% 100% no-repeat; opacity: .8; }
 .corporate-page .k-sides-title { position: relative; margin: 0; font: 400 clamp(52px, 5.45vw, 105px)/.99 var(--heading); letter-spacing: .005em; text-align: center; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px #c0c1bc; }
-.k-sides-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-top: calc(var(--sides-heading-height) * -.32); }
-.k-side { position: relative; display: flex; align-items: end; min-height: clamp(720px, 90svh, 1050px); padding: 160px 40px 100px; overflow: clip; isolation: isolate; color: #fff9ee; background: var(--night); }
-.k-side-photo { position: absolute; inset: 0; z-index: -3; }
-.k-side-photo img { object-fit: cover; object-position: center top; }
-@media (min-width: 801px) {
-  .k-side-business .k-side-photo { top: calc(var(--sides-heading-height) * .08); }
+.k-sides-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-top: calc(var(--sides-heading-height) * -.3); }
+.k-side { position: relative; display: flex; align-items: end; min-height: 100svh; padding: calc(var(--sides-heading-height) * .3 + 110px) 40px calc(var(--tear-size) + 40px); overflow: clip; isolation: isolate; color: #fff9ee; background: var(--night); }
+/* Extra inset so parallax can move without clipping against the panel edge. */
+.k-side-photo { position: absolute; inset: -8% 0; z-index: -3; }
+.k-side-travellers .k-side-photo img { object-fit: cover; object-position: center 28%; }
+/* Fill the entire business panel without a solid band above the photograph. */
+.k-side-business .k-side-photo {
+  inset: 0;
+  overflow: clip;
 }
-.k-side-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, #181d1b33, transparent 30%, #1e190f66 55%, #1c170df2); }
-.k-side-note { position: absolute; top: calc(var(--sides-heading-height) * .32 + 35px); left: 40px; right: 40px; font: 400 10px/1.5 var(--body); letter-spacing: .1em; text-transform: uppercase; }
-.k-side-copy { display: grid; grid-template-columns: 1.1fr 1fr; gap: 25px; align-items: end; width: 100%; }
-.corporate-page .k-side-copy h3 { margin: 25px 0 0; font: 400 clamp(36px, 3.5vw, 70px)/.94 var(--heading); letter-spacing: .015em; text-transform: uppercase; color: #fff9ee; }
-.k-side-explore { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 38px; padding: 10px 18px; border: 1px solid #fff9ee; border-radius: 32px; background: #fff9ee; color: #33291e; font: 400 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.k-side-business .k-side-photo-frame {
+  position: absolute;
+  inset: 0 0 -12%;
+}
+.k-side-business .k-side-photo img {
+  object-fit: cover;
+  object-position: center top;
+}
+.k-side-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, #181d1b18, transparent 26%, #1e190f66 52%, #1c170df7); }
+.k-side-note { position: absolute; top: calc(var(--sides-heading-height) * .3 + 32px); left: 40px; right: 40px; font: 400 10px/1.5 var(--body); letter-spacing: .1em; text-transform: uppercase; }
+.k-side-copy { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px 36px; align-items: end; width: 100%; }
+.corporate-page .k-side-copy h3 { margin: 22px 0 0; font: 400 clamp(32px, 3vw, 58px)/1.05 var(--heading); letter-spacing: .015em; text-transform: uppercase; color: #fff9ee; }
+.k-side-explore { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 36px; padding: 9px 16px; border: 1px solid #fff9ee; border-radius: 32px; background: #fff9ee; color: #33291e; font: 400 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .k-side-explore:hover { background: #ecd9ad; border-color: #ecd9ad; }
 .k-side-explore:focus-visible { outline: 2px solid #fff9ee; outline-offset: 4px; }
 .k-side ul { margin: 0; padding: 0; list-style: none; }
-.k-side li { display: flex; align-items: start; gap: 10px; padding: 9px 0; border-bottom: 1px solid #fff9ee33; font: 400 clamp(16px, 1.3vw, 22px)/1.3 var(--body); }
-.k-side li svg { flex-shrink: 0; width: 18px; height: 22px; fill: none; stroke: var(--sand); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.k-side li { display: flex; align-items: start; gap: 14px; padding: 11px 0; border-bottom: 1px solid #fff9ee33; font: 400 clamp(14px, 1.1vw, 18px)/1.5 var(--body); }
+.k-side li svg { flex-shrink: 0; width: 16px; height: 20px; fill: none; stroke: var(--sand); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .k-side li svg path { stroke-dasharray: 1; stroke-dashoffset: var(--trace-offset, 0); }
-@media (min-width: 801px) and (max-width: 1200px) {
+@media (min-width: 801px) and (max-width: 1100px) {
   .k-side { padding-inline: 28px; }
   .k-side-copy { grid-template-columns: 1fr; gap: 28px; }
 }
@@ -388,10 +430,11 @@
   .k-day-photos { grid-template-columns: 1fr 1fr; }
   .k-day-photos li:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
   .k-sides-grid { grid-template-columns: 1fr; }
-  .k-side { min-height: 760px; padding: 140px 25px 80px; }
-  .k-side-copy { grid-template-columns: 1fr; gap: 28px; }
-  .k-side-note { top: 150px; left: 25px; right: 25px; }
-  .k-side-business .k-side-note { top: 35px; }
+  .k-side { min-height: 760px; padding-inline: 25px; }
+  .k-side-copy { grid-template-columns: 1fr; gap: 32px; }
+  .k-side-note { left: 25px; right: 25px; }
+  .k-side + .k-side { padding-top: 110px; }
+  .k-side + .k-side .k-side-note { top: 32px; }
   .corporate-page .k-side-copy h3 { font-size: clamp(42px, 10vw, 64px); }
 }
 @media (max-width: 600px) {
@@ -572,10 +615,9 @@
   .k-sides { --sides-heading-height: 280px; }
   .k-sides-heading-surface { padding: 0 14px 12px; }
   .corporate-page .k-sides-title { font-size: clamp(22px, 7.1vw, 42px); }
-  .k-sides-grid { gap: 6px; margin-top: calc(var(--sides-heading-height) * -.25); }
-  .k-side { min-height: 660px; padding: 110px 22px 70px; }
-  .k-side-note { top: 120px; left: 22px; right: 22px; font-size: 9px; }
-  .k-side-business .k-side-note { top: 28px; }
+  .k-sides-grid { gap: 6px; }
+  .k-side { min-height: 660px; padding-inline: 22px; }
+  .k-side-note { left: 22px; right: 22px; font-size: 9px; }
   .corporate-page .k-side-copy h3 { font-size: clamp(36px, 10vw, 56px); }
   .k-side li { font-size: clamp(15px, 4.2vw, 20px); }
 

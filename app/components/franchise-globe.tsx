@@ -30,24 +30,36 @@ const hub = places[0];
 const focusMarkets = places.filter(place => !place.hub && !place.connective);
 const networkPlaces = places.filter(place => !place.hub);
 const longitudeToPhi = (longitude: number) => Math.PI * 1.5 - longitude * Math.PI / 180;
-type GlobePalette = { ink: [number, number, number]; ochre: [number, number, number]; brown: [number, number, number]; paper: [number, number, number] };
 
-// Read the same six-digit hex tokens used by the surrounding page.
+type GlobePalette = {
+  sea: [number, number, number];
+  hub: [number, number, number];
+  market: [number, number, number];
+  link: [number, number, number];
+  glow: [number, number, number];
+};
+
 function readPalette(canvas: HTMLCanvasElement): GlobePalette {
   const styles = getComputedStyle(canvas);
-  const rgb = (name: string): [number, number, number] => {
-    const hex = styles.getPropertyValue(name).trim().replace("#", "");
-    return [0, 2, 4].map(offset => parseInt(hex.slice(offset, offset + 2), 16) / 255) as [number, number, number];
+  const rgb = (name: string, fallback: string): [number, number, number] => {
+    const raw = (styles.getPropertyValue(name).trim() || fallback).replace("#", "");
+    return [0, 2, 4].map(offset => parseInt(raw.slice(offset, offset + 2), 16) / 255) as [number, number, number];
   };
-  return { ink: rgb("--ink"), ochre: rgb("--ochre"), brown: rgb("--brown"), paper: rgb("--paper") };
+  return {
+    sea: rgb("--globe-sea", "#f4ebe0"),
+    hub: rgb("--globe-hub", "#8b5a2b"),
+    market: rgb("--globe-market", "#b8914f"),
+    link: rgb("--globe-link", "#6f8578"),
+    glow: rgb("--globe-glow", "#d7c09a"),
+  };
 }
 
 function buildMarkers(activeId: string, palette: GlobePalette): Marker[] {
   return places.map(place => ({
     id: place.id,
     location: place.location,
-    size: place.hub ? .06 : place.id === activeId ? .05 : place.connective ? .032 : .042,
-    color: place.hub || place.id === activeId ? palette.ink : palette.ochre,
+    size: place.hub ? .065 : place.id === activeId ? .052 : place.connective ? .03 : .044,
+    color: place.hub ? palette.hub : place.id === activeId ? palette.hub : place.connective ? palette.link : palette.market,
   }));
 }
 
@@ -56,7 +68,7 @@ function buildArcs(activeId: string, palette: GlobePalette): Arc[] {
     id: `arc-${place.id}`,
     from: hub.location,
     to: place.location,
-    color: place.id === activeId ? palette.ink : place.connective ? palette.ochre : palette.brown,
+    color: place.id === activeId ? palette.hub : place.connective ? palette.link : palette.market,
   }));
 }
 
@@ -70,7 +82,7 @@ function anchorStyle(id: string): CSSProperties {
 export function FranchiseGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const globeRef = useRef<Globe | null>(null);
-  const rotation = useRef({ phi: longitudeToPhi(40), theta: .2 });
+  const rotation = useRef({ phi: longitudeToPhi(40), theta: .18 });
   const drag = useRef<{ x: number; y: number; phi: number; theta: number } | null>(null);
   const activeRef = useRef(focusMarkets[0].id);
   const [selected, setSelected] = useState(focusMarkets[0].id);
@@ -89,20 +101,20 @@ export function FranchiseGlobe() {
         height: canvas.clientWidth * dpr,
         ...rotation.current,
         dark: 0,
-        diffuse: 1.2,
-        mapSamples: 18000,
-        mapBrightness: .85,
-        mapBaseBrightness: 0,
-        baseColor: palette.paper,
-        markerColor: palette.ink,
-        glowColor: palette.paper.map((channel, index) => channel * .85 + palette.brown[index] * .15) as [number, number, number],
-        scale: 1.12,
-        markerElevation: .025,
+        diffuse: 1.25,
+        mapSamples: 20000,
+        mapBrightness: 1.15,
+        mapBaseBrightness: .08,
+        baseColor: palette.sea,
+        markerColor: palette.hub,
+        glowColor: palette.glow.map(channel => channel * .75 + .2) as [number, number, number],
+        scale: 1.1,
+        markerElevation: .028,
         markers: buildMarkers(activeRef.current, palette),
         arcs: buildArcs(activeRef.current, palette),
-        arcColor: palette.brown,
-        arcWidth: .85,
-        arcHeight: .32,
+        arcColor: palette.market,
+        arcWidth: .9,
+        arcHeight: .34,
         context: { alpha: true, antialias: true },
       });
     } catch {
@@ -128,7 +140,7 @@ export function FranchiseGlobe() {
       last = now;
 
       if (!drag.current && !reduced.matches) {
-        rotation.current.phi += dt * .045;
+        rotation.current.phi += dt * .04;
         cycle += dt;
         if (cycle > 3.2) {
           cycle = 0;
@@ -180,7 +192,11 @@ export function FranchiseGlobe() {
     canvasRef.current?.classList.remove("is-grabbing");
   };
 
+  const active = places.find(place => place.id === selected) ?? focusMarkets[0];
+
   return <div className="f-globe">
+    <div className="f-globe-orbit" aria-hidden="true" />
+    <div className="f-globe-orbit f-globe-orbit-slow" aria-hidden="true" />
     <div className="f-globe-stage">
       <canvas
         ref={canvasRef}
@@ -228,5 +244,15 @@ export function FranchiseGlobe() {
       ))}
       <div className="f-globe-fallback"><TravelIcon kind="globe" size={100} /><span>Drag to explore the network</span></div>
     </div>
+    <div className="f-globe-legend" aria-live="polite">
+      <span className="f-globe-legend-kicker">Live route</span>
+      <strong>{active.code}</strong>
+      <span>{active.city}, {active.country}</span>
+    </div>
+    <ul className="f-globe-keys" aria-label="Map key">
+      <li><i className="is-hub" /> Dubai hub</li>
+      <li><i className="is-market" /> Focus markets</li>
+      <li><i className="is-link" /> Network links</li>
+    </ul>
   </div>;
 }

@@ -255,7 +255,7 @@ export default function CorporatePage() {
             </div>
           </article>
           <article className="k-side k-side-business">
-            <div className="k-side-photo"><Image src="/images/library/travel-planning-v2.webp" alt="A travel coordinator reviewing a printed itinerary beside a laptop" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="k-side-photo"><div className="k-side-photo-frame"><Image src="/images/library/travel-planning-v2.webp" alt="A travel coordinator reviewing a printed itinerary beside a laptop" fill sizes="(max-width: 800px) 100vw, 50vw" /></div></div>
             <div className="k-side-shade" aria-hidden="true" />
             <span className="k-side-note">02 / Keep your business moving</span>
             <div className="k-side-copy">
