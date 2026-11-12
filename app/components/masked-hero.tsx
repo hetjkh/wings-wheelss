@@ -131,13 +131,14 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
         const settledTitleScale = page.classList.contains("corporate-page") ? 1.04 : .86;
         const travellers = q(settleBottom ? ".au-hero-top, .au-hero-title .au-line" : ".au-hero-top, .au-hero-title .au-line, .au-hero-aside p");
         const ctas = q(".au-hero-aside .au-cta");
-        const asideShift = (element: HTMLElement) => {
+        const copyBits = q(".au-hero-aside p");
+        // Align each piece to the hero’s right edge — using the aside width left
+        // narrower CTAs centred under the copy instead of flush right.
+        const edgeShift = (element: HTMLElement) => {
           const inset = Math.max(32, section.clientWidth * 0.04);
-          const aside = element.closest<HTMLElement>(".au-hero-aside");
-          if (!aside) return 0;
           const xNow = Number(gsap.getProperty(element, "x")) || 0;
-          const fromHero = aside.getBoundingClientRect().left - xNow - section.getBoundingClientRect().left;
-          return section.clientWidth - aside.offsetWidth - inset - fromHero;
+          const fromHero = element.getBoundingClientRect().left - xNow - section.getBoundingClientRect().left;
+          return section.clientWidth - element.offsetWidth - inset - fromHero;
         };
         // Reveal finishes first, then hold — next chapter must not tear over mid-animation.
         const timeline = gsap.timeline({
@@ -164,7 +165,7 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             duration: .7,
             stagger: .03,
           }, .28)
-          .fromTo(ctas, { x: 0 }, { x: (_, element: HTMLElement) => asideShift(element), ease: "power2.inOut", duration: .75 }, .32)
+          .fromTo(ctas, { x: 0 }, { x: (_, element: HTMLElement) => edgeShift(element), ease: "power2.inOut", duration: .75 }, .32)
           .to(one(".au-hero-scroll"), { opacity: 0, duration: .15 }, 0);
 
         if (settleBottom) {
@@ -174,11 +175,11 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             y: (_, element: HTMLElement) => section.clientHeight - bottomInset() - element.offsetTop - element.offsetHeight * (1 + settledTitleScale) / 2,
             ease: "power2.inOut", duration: .7,
           }, .28)
-            .fromTo(q(".au-hero-aside p"), { x: 0, y: 0 }, {
-              x: (_, element: HTMLElement) => asideShift(element),
+            .fromTo(copyBits, { x: 0, y: 0 }, {
+              x: (_, element: HTMLElement) => edgeShift(element),
               y: -12, ease: "power2.inOut", duration: .75,
             }, .32)
-            .set(q(".au-hero-aside p"), { textAlign: "right" }, .9)
+            .set(copyBits, { textAlign: "right" }, .9)
             .fromTo(one(".au-hero-rise"), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "power2.out", duration: .65 }, .35);
         }
 

@@ -117,14 +117,19 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
           // A stepped chapter holds the page and announces each step as the scroll reaches it.
           const steps = Number(section.dataset.steps ?? 0);
           if (steps > 1) {
+            const valueStage = section.classList.contains("p-value") ? section.querySelector<HTMLElement>(".p-panels-wrap") : null;
+            // The benefits heading scrolls away; only the photo pair holds below
+            // navigation. Short screens keep the full cards in normal flow.
+            if (valueStage && window.innerHeight < 760) { coverAfter(); return; }
             const stepAnchor = section.dataset.stepAnchor ? section.querySelector<HTMLElement>(section.dataset.stepAnchor) : null;
             // Let the larger heading scroll away, then hold the tabs below the navbar.
             // Short viewports keep native scrolling so the full film and controls remain reachable.
             if (stepAnchor && stepAnchor.offsetHeight + (section.querySelector<HTMLElement>(".sb-stage")?.offsetHeight ?? 0) + 160 > window.innerHeight) return;
-            // Hold from the top so taller close copy below the stage does not delay the pin.
+            // Hold below the navbar so taller close copy does not delay the pin,
+            // and preceding settle text is not trapped under a flush top pin.
             const stepStart = stepAnchor
               ? () => `top+=${stepAnchor.getBoundingClientRect().top - section.getBoundingClientRect().top - 108} top`
-              : "top top";
+              : "top 100px";
             let current = -1;
             section.classList.add("is-stepped");
             const route = section.querySelector<HTMLElement>(".s-route");
@@ -140,8 +145,8 @@ export function ChapterMotion({ children, className = "" }: { children: ReactNod
               route.style.setProperty("--route-progress", "0");
             }
             ScrollTrigger.create({
-              trigger: routePin ?? section, start: route ? "top 100px" : stepStart,
-              end: () => `+=${window.innerHeight * .9 * steps}`, pin: routePin ?? section, pinSpacing: true,
+              trigger: routePin ?? valueStage ?? section, start: route || valueStage ? "top 100px" : stepStart,
+              end: () => `+=${window.innerHeight * .9 * steps}`, pin: routePin ?? valueStage ?? section, pinSpacing: true,
               anticipatePin: 1, invalidateOnRefresh: true,
               onRefresh: self => { section.dataset.stepsStart = String(self.start); section.dataset.stepsEnd = String(self.end); },
               onUpdate: self => {

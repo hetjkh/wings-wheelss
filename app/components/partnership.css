@@ -49,7 +49,7 @@
 .p-panel:nth-child(n + 3) .p-panel-copy { bottom: calc(var(--edge) + 25px); }
 
 /* Pinned: one pair at a time. The second pair wipes up over the first while the copy hands over. */
-.p-value.is-stepped .p-panel, .p-value.is-stepped .p-panel:nth-child(-n + 2) { grid-row: 1; height: 100svh; }
+.p-value.is-stepped .p-panel, .p-value.is-stepped .p-panel:nth-child(-n + 2) { grid-row: 1; height: calc(100svh - 100px); }
 .p-value.is-stepped .p-panel:nth-child(odd) { grid-column: 1; }
 .p-value.is-stepped .p-panel:nth-child(even) { grid-column: 2; }
 .p-value.is-stepped .p-panel { --t: clamp(0, (var(--steps-progress, 0) - .16) / .5, 1); }

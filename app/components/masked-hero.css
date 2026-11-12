@@ -6,9 +6,11 @@
   height: 100svh; min-height: max(640px, 100svh); overflow: clip; isolation: isolate;
   background: #f7f1e6; color: var(--ink);
 }
-/* GSAP writes an inline z-index on the spacer. Keep it stable through pin release
-   so the incoming tear overlaps gradually instead of appearing in one frame. */
+/* GSAP writes an inline z-index on the spacer. While the hero is held, keep the
+   spacer above following chapters so settle copy stays readable; after release,
+   drop to 0 so the next tear can overlap gradually instead of popping in. */
 .pin-spacer:has(> .au-hero) { z-index: 0 !important; }
+.pin-spacer:has(> .au-hero.is-pinned) { z-index: 8 !important; }
 .au-hero.is-pinned { z-index: 8; }
 .au-hero .au-line { display: block; overflow: clip; padding-block: .04em; margin-block: -.04em; }
 .au-hero .au-line > span { display: block; }
