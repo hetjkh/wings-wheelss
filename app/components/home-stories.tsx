@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "./travel-image";
 import Link from "next/link";
 import { storyRegions } from "./story-regions";
+import { travelRegions } from "./travel-regions";
 import "./home-stories.css";
 
 type ZoneId = keyof typeof storyRegions;
@@ -25,35 +26,60 @@ const zones: {
   cta: string;
 }[] = [
   {
-    id: "africa", name: "Africa", pin: [602, 262], kicker: "Closer than you think", title: "Kenya & Tanzania",
+    ...travelRegions.africa,
+    id: "africa",
+    kicker: "Closer than you think",
+    title: "Kenya & Tanzania",
     text: "Safari mornings, city weeks and island time. South Africa, Kenya, Tanzania, Morocco, Egypt, Mauritius and Seychelles — planned by people who know the roads.",
-    countries: ["South Africa", "Kenya", "Tanzania", "Morocco", "Egypt", "Mauritius", "Seychelles"],
-    photo: "/images/library/nairobi-city.webp", photoAlt: "Nairobi city centre above a green urban canopy", inset: "/images/library/zanzibar.webp", insetAlt: "A dhow sailing off a palm-lined Zanzibar beach", href: "/africa", cta: "Explore our Africa network",
+    inset: "/images/library/zanzibar.webp",
+    insetAlt: "A dhow sailing off a palm-lined Zanzibar beach",
+    href: "/africa",
+    cta: "Explore our Africa network",
   },
   {
-    id: "europe", name: "Europe", pin: [566, 143], kicker: "Slow summers", title: "The Mediterranean",
+    ...travelRegions.europe,
+    id: "europe",
+    kicker: "Slow summers",
+    title: "The Mediterranean",
     text: "Island light, coastal drives and long lunches by the water. France, Italy, Switzerland, Greece, Spain and the United Kingdom — every connection timed so the holiday starts the moment you land.",
-    countries: ["France", "Italy", "Switzerland", "Greece", "Spain", "United Kingdom"],
-    photo: "/images/library/santorini-blue.webp", photoAlt: "Blue-domed churches and whitewashed houses above the Aegean in Santorini", inset: "/images/library/greek-waterfront.webp", insetAlt: "A sunlit waterfront dining terrace beside a Greek island beach", href: "/destinations", cta: "Find your summer",
+    inset: "/images/library/greek-waterfront.webp",
+    insetAlt: "A sunlit waterfront dining terrace beside a Greek island beach",
+    href: "/destinations",
+    cta: "Find your summer",
   },
   {
-    id: "gulf", name: "Middle East", pin: [654, 181], kicker: "Where every journey starts", title: "Dubai",
+    ...travelRegions.gulf,
+    id: "gulf",
+    kicker: "Where every journey starts",
+    title: "Dubai",
     text: "Our home, and the place most journeys begin. UAE, Oman, Qatar, Saudi Arabia and Jordan — skyline stays, desert evenings and a team that knows every arrival gate by heart.",
-    countries: ["UAE", "Oman", "Qatar", "Saudi Arabia", "Jordan"],
-    photo: "/images/library/dubai-panorama.webp", photoAlt: "Dubai skyline and the Burj Khalifa in clear daylight", inset: "/images/library/dubai-marina.webp", insetAlt: "Modern towers and waterfront buildings at Dubai Marina", href: "/destinations", cta: "Plan a Dubai stay",
+    inset: "/images/library/dubai-marina.webp",
+    insetAlt: "Modern towers and waterfront buildings at Dubai Marina",
+    href: "/destinations",
+    cta: "Plan a Dubai stay",
   },
   {
-    id: "asia", name: "Asia & Pacific", pin: [877, 152], kicker: "Far, made simple", title: "Kyoto & beyond",
+    ...travelRegions.asia,
+    id: "asia",
+    kicker: "Far, made simple",
+    title: "Kyoto & beyond",
     text: "Lantern-lit streets, tropical islands and southern coastlines. Japan, Thailand, Singapore, Indonesia, Maldives, Australia and New Zealand — long-haul made easy.",
-    countries: ["Japan", "Thailand", "Singapore", "Indonesia", "Maldives", "Australia", "New Zealand"],
-    photo: "/images/library/kyoto-garden.webp", photoAlt: "Kyoto Golden Pavilion among green trees beside its garden pond", inset: "/images/library/sydney-harbour.webp", insetAlt: "Sydney Harbour and its waterfront landmarks", href: "/destinations", cta: "Discover Asia & the Pacific",
+    inset: "/images/library/sydney-harbour.webp",
+    insetAlt: "Sydney Harbour and its waterfront landmarks",
+    href: "/destinations",
+    cta: "Discover Asia & the Pacific",
   },
   {
-    id: "americas", name: "The Americas", pin: [222, 116], kicker: "Across the Atlantic", title: "Mountains & cities",
+    ...travelRegions.americas,
+    id: "americas",
+    kicker: "Across the Atlantic",
+    title: "Mountains & cities",
     text: "Wild national parks, city weeks and journeys further south. USA, Canada, Mexico, Brazil, Peru and Argentina — planned from Dubai, looked after end to end.",
-    countries: ["USA", "Canada", "Mexico", "Brazil", "Peru", "Argentina"],
-    photo: "/images/library/canada-lake.webp", photoAlt: "Turquoise water and pine forest beneath rugged Canadian mountain peaks", inset: "/images/library/city-taxi.webp", insetAlt: "A yellow taxi on a tree-lined city street", href: "/destinations", cta: "Plan the long haul",
-  },
+    inset: "/images/library/city-taxi.webp",
+    insetAlt: "A yellow taxi on a tree-lined city street",
+    href: "/destinations",
+    cta: "Plan the long haul",
+  }
 ];
 
 const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=2048&q=90`;
