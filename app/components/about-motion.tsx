@@ -25,6 +25,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       const desktop = Boolean(context.conditions.desktop);
       const mobile = Boolean(context.conditions.mobile);
       const mobilePin = Boolean(context.conditions.mobilePin);
+      const scrub = mobile ? .3 : true;
       const cleanups: (() => void)[] = [];
 
       q("[data-lines]").filter(heading => heading.getClientRects().length > 0).forEach(heading => gsap.from(heading.querySelectorAll(".au-line > span"), {
@@ -47,7 +48,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       if (collage && mobile) {
         gsap.fromTo(collage.querySelector(".au-who-landscape img"), { scale: 1.12 }, {
           scale: 1, ease: "none",
-          scrollTrigger: { trigger: collage, start: "top 90%", end: "bottom 35%", scrub: true },
+          scrollTrigger: { trigger: collage, start: "top 90%", end: "bottom 35%", scrub },
         });
         gsap.from(collage.querySelector(".au-who-postcard"), {
           y: 28, rotate: 14, opacity: 0, duration: 1, ease: "power3.out",
@@ -62,27 +63,33 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         if (mobilePin) process.classList.add("is-mobile-pinned");
         const passes = q(".au-pass-wrap");
         const counter = one(".au-process-count");
+        const progressTarget = mobile ? one(".au-process-route") : process;
+        let previousPass = -1;
         const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
         const move = gsap.to(track, {
           x: () => -distance(), ease: "none",
           scrollTrigger: {
             id: "about-process", trigger: process, start: "top top", end: () => `+=${distance()}`,
-            pin: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
+            pin: true, scrub, anticipatePin: 1, invalidateOnRefresh: true,
             onUpdate: self => {
-              process.style.setProperty("--p", self.progress.toFixed(4));
+              progressTarget?.style.setProperty("--p", self.progress.toFixed(4));
               const current = Math.min(passes.length - 1, Math.round(self.progress * (passes.length - 1)));
+              if (mobile && current === previousPass) return;
+              previousPass = current;
               if (counter) counter.textContent = `0${current + 1} / 0${passes.length}`;
               passes.forEach((pass, index) => pass.classList.toggle("is-current", index === current));
             },
           },
         });
-        passes.forEach((pass, index) => gsap.fromTo(pass, { rotate: index % 2 ? 4 : -4, y: 60, scale: .9 }, {
+        if (mobile) gsap.set(passes, { rotate: 0, y: 0, scale: 1 });
+        else passes.forEach((pass, index) => gsap.fromTo(pass, { rotate: index % 2 ? 4 : -4, y: 60, scale: .9 }, {
           rotate: 0, y: 0, scale: 1, ease: "none",
           scrollTrigger: { trigger: pass, containerAnimation: move, start: "left 100%", end: "center 62%", scrub: true },
         }));
         cleanups.push(() => {
           process.classList.remove("is-pinned", "is-mobile-pinned");
           process.style.removeProperty("--p");
+          if (mobile) progressTarget?.style.removeProperty("--p");
           passes.forEach(pass => pass.classList.remove("is-current"));
         });
       }
@@ -94,11 +101,14 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         if (mobilePin) story.classList.add("is-mobile-pinned");
         const photos = Array.from(stack.querySelectorAll<HTMLElement>(".au-polaroid"));
         const chapters = q(".au-chapter");
+        let previousChapter = -1;
         const timeline = gsap.timeline({
           scrollTrigger: {
-            id: "about-story", trigger: story, start: "top top", end: "+=180%", pin: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
+            id: "about-story", trigger: story, start: "top top", end: "+=180%", pin: true, scrub, anticipatePin: 1, invalidateOnRefresh: true,
             onUpdate: self => {
               const current = Math.min(chapters.length - 1, Math.floor(self.progress * chapters.length * .999));
+              if (mobile && current === previousChapter) return;
+              previousChapter = current;
               chapters.forEach((chapter, index) => chapter.classList.toggle("is-active", index === current));
             },
           },
@@ -118,9 +128,13 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       } else if (stack) gsap.from(stack.querySelectorAll(".au-polaroid"), {
         xPercent: index => [70, 0, -70][index] ?? 0, yPercent: index => [26, 40, 18][index] ?? 0,
         rotate: index => [12, -8, -14][index] ?? 0, opacity: 0, stagger: .1, ease: "none",
-        scrollTrigger: { trigger: stack, start: "top 88%", end: "center 52%", scrub: true },
+        scrollTrigger: { trigger: stack, start: "top 88%", end: "center 52%", scrub },
       });
-      q(".au-words li").forEach(row => gsap.fromTo(row, { "--f": 0 }, {
+      if (mobile) q(".au-words li").forEach(row => gsap.from(row, {
+        y: 14, opacity: 0, duration: .55, ease: "power2.out", clearProps: "transform,opacity",
+        scrollTrigger: { trigger: row, start: "top 90%", once: true },
+      }));
+      else q(".au-words li").forEach(row => gsap.fromTo(row, { "--f": 0 }, {
         "--f": 1, ease: "none",
         scrollTrigger: { trigger: row, start: "top 90%", end: "top 48%", scrub: true },
       }));
@@ -128,15 +142,32 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       const map = one(".au-map");
       if (map) gsap.fromTo(map.querySelectorAll(".au-map-draw"), { strokeDashoffset: 1 }, {
         strokeDashoffset: 0, stagger: .14, ease: "none",
-        scrollTrigger: { trigger: map, start: "top 82%", end: "center 48%", scrub: true },
+        scrollTrigger: { trigger: map, start: "top 82%", end: "center 48%", scrub },
       });
       q(".au-net-row").forEach((row, index) => gsap.fromTo(row, { xPercent: index ? 14 : -14 }, {
         xPercent: 0, ease: "none",
-        scrollTrigger: { trigger: row, start: "top bottom", end: "top 50%", scrub: true },
+        scrollTrigger: { trigger: row, start: "top bottom", end: "top 50%", scrub },
       }));
 
       const principles = one(".au-principles");
-      if (principles) {
+      if (principles && mobile) {
+        const items = q(".au-principle");
+        const steps = q(".au-values-steps li");
+        items.forEach((item, index) => {
+          const next = items[index + 1];
+          const card = item.querySelector(".au-principle-card");
+          if (next && card) gsap.to(card, {
+            scale: .92, opacity: .82, ease: "none",
+            scrollTrigger: {
+              trigger: next, start: "top bottom", end: () => `top ${86 + index * 10}px`,
+              scrub, invalidateOnRefresh: true,
+            },
+          });
+          const activate = () => steps.forEach((step, stepIndex) => step.classList.toggle("is-active", stepIndex === index));
+          ScrollTrigger.create({ trigger: item, start: "top 60%", end: "bottom 60%", onEnter: activate, onEnterBack: activate });
+        });
+        cleanups.push(() => steps.forEach((step, index) => step.classList.toggle("is-active", index === 0)));
+      } else if (principles) {
         const items = q(".au-principle");
         const cards = items.map(item => item.querySelector<HTMLElement>(".au-principle-card"));
         const steps = q(".au-values-steps li");
@@ -163,7 +194,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       }
 
       const core = one(".au-core");
-      if (core) {
+      if (core && !mobile) {
         const skew = { value: 0 };
         const paint = () => core.style.setProperty("--skew", `${skew.value.toFixed(2)}deg`);
         ScrollTrigger.create({
@@ -189,12 +220,16 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         const photo = panel.querySelector(".au-split-photo img");
         if (photo) gsap.fromTo(photo, { scale: 1.12 }, {
           scale: 1, ease: "none",
-          scrollTrigger: { trigger: panel, start: "top bottom", end: "bottom top", scrub: true },
+          scrollTrigger: { trigger: panel, start: "top bottom", end: "bottom top", scrub },
         });
       });
       else gsap.from(q(".au-split-copy > *"), { y: 40, opacity: 0, duration: .9, stagger: .08, ease: "power3.out", scrollTrigger: { trigger: stage, start: "top 45%", once: true } });
 
-      q(".au-crew-photo").forEach((photo, index) => gsap.fromTo(photo, { clipPath: "inset(100% 0% 0% 0%)" }, {
+      if (mobile) q(".au-crew-photo").forEach(photo => gsap.from(photo, {
+        y: 18, opacity: 0, duration: .65, ease: "power2.out", clearProps: "transform,opacity",
+        scrollTrigger: { trigger: photo, start: "top 92%", once: true },
+      }));
+      else q(".au-crew-photo").forEach((photo, index) => gsap.fromTo(photo, { clipPath: "inset(100% 0% 0% 0%)" }, {
         clipPath: "inset(0% 0% 0% 0%)", ease: "none",
         scrollTrigger: { trigger: photo, start: `top ${96 - index * 4}%`, end: "top 45%", scrub: true },
       }));
@@ -209,10 +244,16 @@ export function AboutMotion({ children }: { children: ReactNode }) {
         const end = Number(element.dataset.count);
         const suffix = element.dataset.suffix ?? "";
         const counter = { value: 0 };
+        let previousCount = -1;
         element.textContent = `0${suffix}`;
         gsap.to(counter, {
           value: end, duration: 1.8, ease: "power2.out",
-          onUpdate: () => { element.textContent = `${Math.round(counter.value)}${suffix}`; },
+          onUpdate: () => {
+            const value = Math.round(counter.value);
+            if (mobile && value === previousCount) return;
+            previousCount = value;
+            element.textContent = `${value}${suffix}`;
+          },
           scrollTrigger: { trigger: element, start: "top 92%", once: true },
         });
         cleanups.push(() => { element.textContent = `${end}${suffix}`; });
@@ -221,7 +262,7 @@ export function AboutMotion({ children }: { children: ReactNode }) {
       const closing = one(".au-closing");
       if (closing) q(".au-closing-line").forEach((line, index) => gsap.fromTo(line, { xPercent: index ? 22 : -22 }, {
         xPercent: 0, ease: "none",
-        scrollTrigger: { trigger: closing, start: "top bottom", end: "bottom 75%", scrub: true },
+        scrollTrigger: { trigger: closing, start: "top bottom", end: "bottom 75%", scrub },
       }));
 
       // Triggers below the pins were created first; sort so pin spacing is applied before their starts are measured.
