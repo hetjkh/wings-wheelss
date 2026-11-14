@@ -10,11 +10,8 @@ export type JourneyLink = { label: string; href: string };
 export function JourneyHeader({ introId = "about" }: { introId?: string }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const intro = document.getElementById(introId);
-    return observeScrollThreshold(
-      () => window.scrollY > 24 || (intro ? intro.getBoundingClientRect().top <= 96 : false),
-      setScrolled,
-    );
+    // scrollY only — getBoundingClientRect on every frame was janking mobile scroll.
+    return observeScrollThreshold(() => window.scrollY > 24, setScrolled);
   }, [introId]);
   return <SiteNavigation scrolled={scrolled} enquiry />;
 }

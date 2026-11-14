@@ -64,8 +64,17 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
 
   useEffect(() => {
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.fromTo(header.current, { y: -16, opacity: 0 }, { y: 0, opacity: 1, duration: .65, ease: "power3.out", clearProps: "transform,opacity" });
+    media.add({
+      reduce: "(prefers-reduced-motion: reduce)",
+      desktop: "(prefers-reduced-motion: no-preference) and (min-width: 1200px)",
+      mobile: "(prefers-reduced-motion: no-preference) and (max-width: 1199px)",
+    }, context => {
+      if (context.conditions?.reduce || !header.current) return;
+      const mobile = Boolean(context.conditions?.mobile);
+      gsap.fromTo(header.current, { y: mobile ? -8 : -16, opacity: 0 }, {
+        y: 0, opacity: 1, duration: mobile ? .35 : .65, ease: "power3.out",
+        clearProps: "transform,opacity",
+      });
     });
     return () => media.revert();
   }, []);
