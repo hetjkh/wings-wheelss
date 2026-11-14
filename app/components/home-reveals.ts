@@ -95,10 +95,13 @@ export function animateHomeReveals(root: HTMLElement) {
     });
   });
   Array.from(content).filter(pending).forEach(element => {
+    // Destination captions should start with their card photo, not after the
+    // image entrance finishes and the caption itself crosses the text threshold.
+    const destination = element.closest<HTMLElement>(".e-destination");
     watch(element, gsap.from(element, {
-      y: 20, opacity: 0, duration: .65, ease: "power2.out", paused: true,
+      y: destination ? 14 : 20, opacity: 0, duration: destination ? .45 : .65, ease: "power2.out", paused: true,
       clearProps: "transform,opacity",
-    }));
+    }), destination ?? element, Boolean(destination));
   });
 
   select("[data-motion-image]").filter(pending).forEach(frame => {

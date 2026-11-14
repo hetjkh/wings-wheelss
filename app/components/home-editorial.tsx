@@ -48,7 +48,10 @@ function DestinationChapter() {
       <div className="e-shell e-destination-heading"><div><h2 id="e-destinations-title" data-editorial-title><Lines lines={["Somewhere new."]} /></h2></div><div><p data-motion-reveal>A different view. A slower morning.<br />A story you’ll tell for years.</p><Link href="/destinations" className="n-panel-cta n-panel-cta-dark e-destination-cta" data-motion-reveal><span>All destinations</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div>
       <div className="e-destination-window"><div className="e-destination-track">
         {places.map((place, index) => <Link className="e-destination" key={place.name} href={place.href} data-cursor="Explore">
-          <div className="e-destination-photo" data-motion-image><Image reveal src={place.photo} alt={place.alt} fill sizes="(max-width: 800px) 90vw, 43vw" className="n-cover" style={{ objectPosition: place.position }} /><span className="e-destination-number">0{index + 1}</span><span className="e-destination-arrow" aria-hidden="true">↗</span><span className="e-destination-region">{place.region}</span></div>
+          <div className="e-destination-frame">
+            <div className="e-destination-photo" data-motion-image><Image reveal src={place.photo} alt={place.alt} fill sizes="(max-width: 800px) 90vw, 43vw" className="n-cover" style={{ objectPosition: place.position }} /></div>
+            <span className="e-destination-number">0{index + 1}</span><span className="e-destination-arrow" aria-hidden="true">↗</span><span className="e-destination-region">{place.region}</span>
+          </div>
           <div className="e-destination-caption" data-motion-stagger><h3>{place.name}</h3><p>{place.line}</p></div>
         </Link>)}
       </div></div>

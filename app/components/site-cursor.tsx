@@ -43,6 +43,30 @@ export function SiteCursor() {
         hide();
         return;
       }
+      if (target !== previousTarget) {
+        previousTarget = target;
+        const action = target.closest<HTMLElement>('a, button, summary, [role="button"], [data-cursor]');
+        const disabled = action?.matches(':disabled, [aria-disabled="true"]');
+        const explicit = action?.getAttribute("data-cursor");
+        const href = action?.getAttribute("href") ?? "";
+        const message = disabled ? "" : explicit ?? (action?.matches("a") && action.querySelector("img") ? (href.startsWith("/blog/") ? "Read story" : "View") : "");
+        text.textContent = message;
+        if (message !== previousMessage) {
+          previousMessage = message;
+          const unit = `${(message || "Explore").trim()} · `;
+          orbitText.textContent = unit.repeat(Math.max(3, Math.ceil(28 / Math.max(unit.length, 1))));
+        }
+        ring.dataset.mode = message ? "label" : action && !disabled ? "link" : "idle";
+      }
+      // Idle uses the system arrow; custom cursor only appears on interactive hover.
+      if (ring.dataset.mode === "idle") {
+        if (visible) {
+          visible = false;
+          ring.dataset.visible = point.dataset.visible = "false";
+          html.classList.remove("has-art-cursor");
+        }
+        return;
+      }
       if (!visible) {
         trailingX = x; trailingY = y;
         pointX = x; pointY = y;
@@ -50,20 +74,6 @@ export function SiteCursor() {
         ring.dataset.visible = point.dataset.visible = "true";
         html.classList.add("has-art-cursor");
       }
-      if (target === previousTarget) return;
-      previousTarget = target;
-      const action = target.closest<HTMLElement>('a, button, summary, [role="button"], [data-cursor]');
-      const disabled = action?.matches(':disabled, [aria-disabled="true"]');
-      const explicit = action?.getAttribute("data-cursor");
-      const href = action?.getAttribute("href") ?? "";
-      const message = disabled ? "" : explicit ?? (action?.matches("a") && action.querySelector("img") ? (href.startsWith("/blog/") ? "Read story" : "View") : "");
-      text.textContent = message;
-      if (message !== previousMessage) {
-        previousMessage = message;
-        const unit = `${(message || "Explore").trim()} · `;
-        orbitText.textContent = unit.repeat(Math.max(3, Math.ceil(28 / Math.max(unit.length, 1))));
-      }
-      ring.dataset.mode = message ? "label" : action && !disabled ? "link" : "idle";
     };
     const draw = (time: number) => {
       frame = 0;

@@ -48,12 +48,13 @@
 .e-destination-window { overflow-x: auto; scrollbar-width: thin; scrollbar-color: #aa8e6e #e7dfd2; padding-bottom: 12px; }
 .e-destination-track { display: flex; gap: 28px; width: max-content; padding-inline: max(56px, calc((100vw - 1600px) / 2)); }
 .e-destination { display: block; flex-shrink: 0; width: 43vw; max-width: 720px; }
-.e-destination-photo { position: relative; height: clamp(310px, 47svh, 610px); overflow: hidden; background: #80795d; }
+.e-destination-frame { position: relative; height: clamp(310px, 47svh, 610px); }
+.e-destination-photo { position: absolute; inset: 0; overflow: hidden; background: #80795d; }
 .e-destination-photo::after { content: ''; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, #171d1755); pointer-events: none; }
 .e-destination-photo img { transition: scale .8s cubic-bezier(.2,.7,.2,1); }
 .e-destination:hover img { scale: 1.045; }
-.e-destination-number { position: absolute; top: 20px; left: 24px; font: 400 25px var(--heading); color: white; text-shadow: 0 1px 12px #25271866; }
-.e-destination-arrow { position: absolute; right: 20px; top: 20px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #f4efe5; font-size: 27px; transition: rotate .3s; }
+.e-destination-number { position: absolute; z-index: 1; top: 20px; left: 24px; font: 400 25px var(--heading); color: white; text-shadow: 0 1px 12px #25271866; }
+.e-destination-arrow { position: absolute; z-index: 1; right: 20px; top: 20px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #f4efe5; font-size: 27px; transition: rotate .3s; }
 .e-destination:hover .e-destination-arrow { rotate: 45deg; }
 .e-destination-region { position: absolute; z-index: 1; bottom: 24px; left: 24px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #fff9ed; }
 .e-destination-caption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 19px; }
@@ -232,7 +233,7 @@
   .e-destinations.is-enhanced .e-destination-heading { margin-bottom: 30px; }
   .e-destinations.is-enhanced .e-destination-heading h2 { font-size: clamp(42px, 4.6vw, 80px); }
   .e-destinations.is-enhanced .e-destination-window { overflow: hidden; }
-  .e-destinations.is-enhanced .e-destination-photo { height: calc(100svh - 445px); min-height: 280px; max-height: 650px; }
+  .e-destinations.is-enhanced .e-destination-frame { height: calc(100svh - 445px); min-height: 280px; max-height: 650px; }
   .e-destinations.is-enhanced .e-destination-footer { margin-top: 24px; }
 }
 @media (max-width: 999px) {
@@ -307,9 +308,9 @@
   .e-destination-window { overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; padding-bottom: 8px; }
   .e-destination-track { display: flex; width: max-content; gap: 14px; padding-inline: 20px; }
   .e-destination { width: min(78vw, 440px); max-width: none; scroll-snap-align: start; }
-  .e-destination-photo { height: auto; aspect-ratio: 4 / 4.3; }
+  .e-destination-frame { height: auto; aspect-ratio: 4 / 4.3; }
   .e-destination:nth-child(even) { width: min(78vw, 440px); margin-left: 0; }
-  .e-destination:nth-child(even) .e-destination-photo { aspect-ratio: 4 / 4.6; }
+  .e-destination:nth-child(even) .e-destination-frame { aspect-ratio: 4 / 4.6; }
   .e-destination-caption { flex-direction: row; align-items: center; }
   .home-page .e-destination-caption h3 { font-size: 28px; }
   .e-destination-caption p { max-width: 12em; font-size: 12px; text-align: right; }
@@ -365,7 +366,7 @@
   .e-destinations.is-mobile-rail .e-destination-window { flex: 1; min-height: 0; width: 100%; overflow: hidden; }
   .e-destinations.is-mobile-rail .e-destination-track { display: flex; width: max-content; height: 100%; gap: 14px; padding-inline: 20px; }
   .e-destinations.is-mobile-rail .e-destination, .e-destinations.is-mobile-rail .e-destination:nth-child(even) { width: min(78vw, 440px); height: 100%; margin: 0; }
-  .e-destinations.is-mobile-rail .e-destination-photo, .e-destinations.is-mobile-rail .e-destination:nth-child(even) .e-destination-photo { height: calc(100% - 63px); aspect-ratio: auto; }
+  .e-destinations.is-mobile-rail .e-destination-frame, .e-destinations.is-mobile-rail .e-destination:nth-child(even) .e-destination-frame { height: calc(100% - 63px); aspect-ratio: auto; }
   .e-destinations.is-mobile-rail .e-destination-caption { min-height: 63px; padding-top: 9px; }
   .e-destinations.is-mobile-rail .e-destination-footer { flex: none; margin-top: 12px; }
   .e-destinations.is-mobile-rail .e-destination-progress { display: block; margin-left: auto; }
