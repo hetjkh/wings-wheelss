@@ -53,6 +53,7 @@ export function warmVideoCache(urls: string[]) {
     }
   };
   // Wait until the visible player has started fetching so we don't double bandwidth.
-  if ("requestIdleCallback" in window) window.requestIdleCallback(() => { void run(); }, { timeout: 4000 });
-  else window.setTimeout(() => { void run(); }, 2500);
+  const idle = (window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
+  if (idle) idle(() => { void run(); }, { timeout: 4000 });
+  else setTimeout(() => { void run(); }, 2500);
 }
