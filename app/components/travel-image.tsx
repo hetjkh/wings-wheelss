@@ -45,5 +45,5 @@ export default function TravelImage({ sizes, quality, lockSizes = false, reveal 
     return () => observer.disconnect();
   }, [source, props.fill, aspect, lockSizes]);
 
-  return <NextImage {...props} ref={image} placeholder={props.placeholder ?? (preview ? "blur" : "empty")} blurDataURL={props.blurDataURL ?? preview} sizes={props.fill && photo && coverWidth && !lockSizes ? `${coverWidth}px` : sizes} quality={quality ?? (photo ? 90 : undefined)} />;
+  return <NextImage {...props} ref={image} placeholder={props.placeholder ?? (preview ? "blur" : "empty")} blurDataURL={props.blurDataURL ?? preview} sizes={props.fill && photo && coverWidth && !lockSizes ? `${coverWidth}px` : sizes} quality={quality ?? (photo ? 75 : undefined)} />;
 }

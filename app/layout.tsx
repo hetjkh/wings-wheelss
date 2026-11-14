@@ -22,6 +22,7 @@ const body = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wings-wheelss.vercel.app"),
   title: "Wings & Wheels Travel and Tourism | Corporate, Leisure & Group Travel from Dubai",
   description: "Wings & Wheels Travel and Tourism coordinates flights, hotels, visas, transfers and on-ground support for business, leisure and group travellers from Dubai to Africa and worldwide.",
 };

@@ -1,26 +1,76 @@
 {
-  "/images/library/africa-closing-cape-town-wide-v1.png": [1672, 941],
-  "/images/library/africa-closing-cape-town-mobile-v1.png": [941, 1672],
-  "/images/library/destinations-closing-coast-wide-v3.png": [1672, 941],
-  "/images/library/destinations-closing-coast-mobile-v3.png": [941, 1672],
-  "/images/library/business-terminal-wide-v4.png": [1536, 1024],
-  "/images/library/business-terminal-mobile-v4.png": [1086, 1448],
-  "/images/library/business-terminal-wide-v3.webp": [3840, 2160],
-  "/images/library/business-terminal-mobile-v3.webp": [2160, 2880],
-  "/images/services/coastal-journey-desktop-v1.webp": [3840, 2160],
-  "/images/services/coastal-journey-mobile-v1.webp": [2160, 3840],
-  "/images/home/departure-lounge-desktop-v2.webp": [3840, 2160],
-  "/images/home/departure-lounge-mobile-v2.webp": [2160, 3840],
-  "/images/library/franchise-corporate-specialists-v2.webp": [1536, 1024],
-  "/images/library/franchise-destination-partners-v2.webp": [1536, 1024],
-  "/images/home/departure-lounge-desktop-v1.webp": [3840, 2160],
-  "/images/home/departure-lounge-mobile-v1.webp": [2160, 3840],
-  "/images/library/blog-exhibition-team-v2.webp": [1536, 1024],
-  "/images/library/blog-maldives-quiet-v2.webp": [1536, 1024],
-  "/images/library/blog-corporate-week-v2.webp": [1536, 1024],
-  "/images/library/blog-east-africa-v2.webp": [1536, 1024],
-  "/images/library/blog-slow-europe-v2.webp": [1536, 1024],
-  "/images/library/blog-nairobi-dubai-planning-v2.webp": [1536, 1024],
+  "/images/library/africa-closing-cape-town-wide-v1.png": [
+    1672,
+    941
+  ],
+  "/images/library/africa-closing-cape-town-mobile-v1.png": [
+    941,
+    1672
+  ],
+  "/images/library/destinations-closing-coast-wide-v3.png": [
+    1672,
+    941
+  ],
+  "/images/library/destinations-closing-coast-mobile-v3.png": [
+    941,
+    1672
+  ],
+  "/images/library/business-terminal-wide-v4.png": [
+    1536,
+    1024
+  ],
+  "/images/library/business-terminal-mobile-v4.png": [
+    1086,
+    1448
+  ],
+  "/images/services/coastal-journey-desktop-v1.webp": [
+    3840,
+    2160
+  ],
+  "/images/services/coastal-journey-mobile-v1.webp": [
+    2160,
+    3840
+  ],
+  "/images/home/departure-lounge-desktop-v2.webp": [
+    3840,
+    2160
+  ],
+  "/images/home/departure-lounge-mobile-v2.webp": [
+    2160,
+    3840
+  ],
+  "/images/library/franchise-corporate-specialists-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/franchise-destination-partners-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-exhibition-team-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-maldives-quiet-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-corporate-week-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-east-africa-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-slow-europe-v2.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/blog-nairobi-dubai-planning-v2.webp": [
+    1536,
+    1024
+  ],
   "/images/library/kenya-city-safari-coast-v2.webp": [
     1774,
     887
@@ -69,14 +119,6 @@
     1254,
     1254
   ],
-  "/images/library/services-principle-v3-desktop.webp": [
-    1672,
-    941
-  ],
-  "/images/library/services-principle-v3-mobile.webp": [
-    1086,
-    1448
-  ],
   "/images/library/services-principle-v4-desktop.webp": [
     1672,
     941
@@ -88,10 +130,6 @@
   "/images/library/journey-above-clouds.webp": [
     1672,
     941
-  ],
-  "/images/library/flight-wing.webp": [
-    2880,
-    3840
   ],
   "/images/library/home-flights-wing-v2.webp": [
     1402,
@@ -153,10 +191,6 @@
     1400,
     1116
   ],
-  "/images/library/florence.webp": [
-    3840,
-    2563
-  ],
   "/images/library/venice.webp": [
     2200,
     1238
@@ -176,10 +210,6 @@
   "/images/library/maldives-jetty.webp": [
     1400,
     1200
-  ],
-  "/images/library/maldives-aerial.webp": [
-    1080,
-    675
   ],
   "/images/library/auckland.webp": [
     1600,
@@ -201,10 +231,6 @@
     1200,
     800
   ],
-  "/images/library/cape-town.webp": [
-    1767,
-    1177
-  ],
   "/images/library/finland-village.webp": [
     2560,
     1376
@@ -220,10 +246,6 @@
   "/images/library/fuji-blossoms.webp": [
     1920,
     1281
-  ],
-  "/images/library/norway-fjord.webp": [
-    2560,
-    1707
   ],
   "/images/library/swiss-valley.webp": [
     3000,
@@ -265,10 +287,6 @@
     2560,
     3840
   ],
-  "/images/library/kenya-game-drive-v2.webp": [
-    1086,
-    1448
-  ],
   "/images/library/maasai-mara-lioness-v2.webp": [
     1254,
     1254
@@ -276,10 +294,6 @@
   "/images/library/kenya-lamu-coast-v3.webp": [
     1086,
     1448
-  ],
-  "/images/library/destinations-closing-coast-v2.webp": [
-    1672,
-    941
   ],
   "/images/library/home-kenya-amboseli-v2.webp": [
     1448,
@@ -322,10 +336,6 @@
     887
   ],
   "/images/library/africa-dawn.webp": [
-    1536,
-    1024
-  ],
-  "/images/library/retreat-dinner.webp": [
     1536,
     1024
   ],
@@ -409,21 +419,9 @@
     2158,
     729
   ],
-  "/images/library/franchise-local-connections.webp": [
-    1304,
-    1206
-  ],
-  "/images/library/franchise-africa-network.webp": [
-    1639,
-    959
-  ],
   "/images/library/franchise-travel-agencies.webp": [
     1318,
     1193
-  ],
-  "/images/library/franchise-three-markets.webp": [
-    1911,
-    823
   ],
   "/images/library/franchise-partner-lounge-v2.webp": [
     1672,
@@ -561,14 +559,6 @@
     2752,
     1536
   ],
-  "/images/library/africa-safari-lodge.webp": [
-    2752,
-    1536
-  ],
-  "/images/library/africa-wildlife-drive.webp": [
-    2752,
-    1536
-  ],
   "/images/library/destinations-rome.webp": [
     2752,
     1536
@@ -645,14 +635,6 @@
     2825,
     400
   ],
-  "/images/about/story-walk.webp": [
-    1054,
-    1024
-  ],
-  "/images/dubai-terrace.webp": [
-    1536,
-    1024
-  ],
   "/images/kyoto.webp": [
     1000,
     667
@@ -661,24 +643,56 @@
     1400,
     933
   ],
-  "/videos/dubai-city-panorama-poster.webp": [
-    1920,
-    1080
-  ],
   "/videos/dubai-skyline-poster.webp": [
     1280,
     720
   ],
-  "/images/library/groups-origin-london-v1.webp": [1254, 1254],
-  "/images/library/groups-origin-mumbai-v1.webp": [1254, 1254],
-  "/images/library/groups-origin-nairobi-v1.webp": [1254, 1254],
-  "/images/library/groups-origin-riyadh-v1.webp": [1254, 1254],
-  "/images/library/africa-delegates-arrival-v1.webp": [1536, 1024],
-  "/images/library/africa-delegates-flight-v1.webp": [1086, 1448],
-  "/images/library/africa-delegates-hotel-v1.webp": [1086, 1448],
-  "/images/library/africa-delegates-conference-v1.webp": [1086, 1448],
-  "/images/library/home-better-together-retreat-v1.webp": [1536, 1024],
-  "/images/library/franchise-local-connections-v3.webp": [1086,1448],
-  "/images/library/franchise-dubai-marina-v2.webp": [1374,1145],
-  "/images/library/franchise-partner-lounge-v3.webp": [1254,1254]
+  "/images/library/groups-origin-london-v1.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/groups-origin-mumbai-v1.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/groups-origin-nairobi-v1.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/groups-origin-riyadh-v1.webp": [
+    1254,
+    1254
+  ],
+  "/images/library/africa-delegates-arrival-v1.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/africa-delegates-flight-v1.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/africa-delegates-hotel-v1.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/africa-delegates-conference-v1.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/home-better-together-retreat-v1.webp": [
+    1536,
+    1024
+  ],
+  "/images/library/franchise-local-connections-v3.webp": [
+    1086,
+    1448
+  ],
+  "/images/library/franchise-dubai-marina-v2.webp": [
+    1374,
+    1145
+  ],
+  "/images/library/franchise-partner-lounge-v3.webp": [
+    1254,
+    1254
+  ]
 }
