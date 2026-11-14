@@ -1,51 +1,73 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
 import "./site-cursor.css";
 
-/** A quiet pointer companion; delegated targets also work in dynamic galleries. */
+/** Tweak these two values. Fluid wake lives in fluid-cursor.tsx. */
+const PLANE_SIZE = 42;
+const FOLLOW_LAG = .22;
+
+/** Plane + expanding hover ring. The fluid wake renders behind this. */
 export function SiteCursor() {
   const cursor = useRef<HTMLDivElement>(null);
-  const dot = useRef<HTMLDivElement>(null);
+  const plane = useRef<HTMLDivElement>(null);
   const label = useRef<HTMLSpanElement>(null);
   const orbit = useRef<SVGTextPathElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const ring = cursor.current!;
-    const point = dot.current!;
+    const craft = plane.current!;
     const text = label.current!;
     const orbitText = orbit.current!;
     const html = document.documentElement;
-    const media = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const fine = matchMedia("(hover: hover) and (pointer: fine)");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+
     let frame = 0;
-    let visible = false;
+    let ringOn = false;
+    let planeOn = false;
     let inside = false;
-    let x = 0, y = 0, trailingX = 0, trailingY = 0, pointX = 0, pointY = 0, lastTime = 0;
+    let x = 0, y = 0;
+    let planeX = 0, planeY = 0;
+    let angle = 0, targetAngle = 0;
+    let lastX = 0, lastY = 0;
     let previousTarget: Element | null = null;
     let previousMessage = "";
 
-    const hide = () => {
-      visible = false;
+    const hideRing = () => {
+      ringOn = false;
       previousTarget = null;
-      ring.dataset.visible = point.dataset.visible = "false";
+      ring.dataset.visible = "false";
+      ring.dataset.mode = "idle";
+      ring.dataset.pressed = "false";
+    };
+    const hidePlane = () => {
+      planeOn = false;
+      craft.dataset.visible = "false";
+    };
+    const hideAll = () => {
+      hideRing();
+      hidePlane();
       html.classList.remove("has-art-cursor");
       cancelAnimationFrame(frame);
       frame = 0;
-      lastTime = 0;
-      ring.dataset.pressed = "false";
     };
-    const permitted = () => media.matches && !document.hidden && !document.querySelector('[data-motion-paused="true"]');
+    const permitted = () => fine.matches && !document.hidden && !document.querySelector('[data-motion-paused="true"]');
+    const overNative = (target: Element | null) =>
+      !target || !!target.closest('input, textarea, select, [contenteditable="true"], iframe, video[controls], dialog[open], [data-cursor="native"]');
+
     const targetAtPointer = () => {
       const target = document.elementFromPoint(x, y);
-      if (!target || target.closest('input, textarea, select, [contenteditable="true"], iframe, video[controls], dialog[open], [data-cursor="native"]')) {
-        hide();
-        return;
+      if (overNative(target)) {
+        hideAll();
+        return false;
       }
+
       if (target !== previousTarget) {
         previousTarget = target;
-        const action = target.closest<HTMLElement>('a, button, summary, [role="button"], [data-cursor]');
+        const action = target?.closest<HTMLElement>('a, button, summary, [role="button"], [data-cursor]');
         const disabled = action?.matches(':disabled, [aria-disabled="true"]');
         const explicit = action?.getAttribute("data-cursor");
         const href = action?.getAttribute("href") ?? "";
@@ -58,60 +80,70 @@ export function SiteCursor() {
         }
         ring.dataset.mode = message ? "label" : action && !disabled ? "link" : "idle";
       }
-      // Idle uses the system arrow; custom cursor only appears on interactive hover.
-      if (ring.dataset.mode === "idle") {
-        if (visible) {
-          visible = false;
-          ring.dataset.visible = point.dataset.visible = "false";
-          html.classList.remove("has-art-cursor");
+
+      const interactive = ring.dataset.mode !== "idle";
+      if (interactive) {
+        if (!ringOn) {
+          ringOn = true;
+          ring.dataset.visible = "true";
         }
-        return;
+      } else if (ringOn) hideRing();
+
+      if (!planeOn) {
+        planeX = x;
+        planeY = y;
+        lastX = x;
+        lastY = y;
+        planeOn = true;
+        craft.dataset.visible = "true";
       }
-      if (!visible) {
-        trailingX = x; trailingY = y;
-        pointX = x; pointY = y;
-        visible = true;
-        ring.dataset.visible = point.dataset.visible = "true";
-        html.classList.add("has-art-cursor");
-      }
+      html.classList.add("has-art-cursor");
+      craft.dataset.boost = interactive && ring.dataset.mode === "link" ? "true" : "false";
+      craft.dataset.hidden = ring.dataset.mode === "label" ? "true" : "false";
+      return true;
     };
-    const draw = (time: number) => {
+
+    const draw = () => {
       frame = 0;
-      if (!inside || !permitted()) { hide(); return; }
-      targetAtPointer();
-      if (!visible) return;
-      const delta = Math.min(time - lastTime || 16.67, 48);
-      lastTime = time;
-      // Time-based damping feels consistent on both 60 Hz and high-refresh screens.
-      // The point stays responsive while the outer ring has a softer glide.
-      const ease = 1 - Math.exp(-delta / 105);
-      const pointEase = 1 - Math.exp(-delta / 24);
-      trailingX += (x - trailingX) * ease;
-      trailingY += (y - trailingY) * ease;
-      pointX += (x - pointX) * pointEase;
-      pointY += (y - pointY) * pointEase;
-      ring.style.transform = `translate3d(${trailingX}px, ${trailingY}px, 0)`;
-      point.style.transform = `translate3d(${pointX}px, ${pointY}px, 0)`;
-      if (Math.abs(x - trailingX) + Math.abs(y - trailingY) + Math.abs(x - pointX) + Math.abs(y - pointY) > .08) frame = requestAnimationFrame(draw);
-    };
-    const schedule = () => {
-      if (!frame && inside) {
-        // Restart the clock after resting; idle time must not cause a first-frame jump.
-        lastTime = performance.now();
-        frame = requestAnimationFrame(draw);
+      if (!inside || !permitted()) { hideAll(); return; }
+      if (!targetAtPointer()) return;
+
+      const dx = x - lastX;
+      const dy = y - lastY;
+      if (dx * dx + dy * dy >= 4) {
+        targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+        lastX = x;
+        lastY = y;
       }
+
+      planeX += (x - planeX) * FOLLOW_LAG;
+      planeY += (y - planeY) * FOLLOW_LAG;
+
+      let delta = ((targetAngle - angle + 540) % 360) - 180;
+      angle += delta * .25;
+
+      craft.style.transform = `translate3d(${planeX}px, ${planeY}px, 0) rotate(${angle}deg)`;
+      if (ringOn) ring.style.transform = `translate3d(${planeX}px, ${planeY}px, 0)`;
+
+      frame = requestAnimationFrame(draw);
+    };
+
+    const schedule = () => {
+      if (!frame && inside && permitted()) frame = requestAnimationFrame(draw);
     };
     const move = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") { inside = false; hide(); return; }
+      if (event.pointerType !== "mouse") { inside = false; hideAll(); return; }
       inside = true;
-      x = event.clientX; y = event.clientY;
+      x = event.clientX;
+      y = event.clientY;
       schedule();
     };
-    const leave = () => { inside = false; hide(); };
+    const leave = () => { inside = false; hideAll(); };
     const keyboard = (event: KeyboardEvent) => { if (event.key === "Tab") leave(); };
     const press = () => { ring.dataset.pressed = "true"; };
     const release = () => { ring.dataset.pressed = "false"; };
-    const sync = () => { if (!permitted()) hide(); else schedule(); };
+    const sync = () => { if (!permitted()) hideAll(); else schedule(); };
+
     const observer = new MutationObserver(sync);
     observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["data-motion-paused"] });
     document.addEventListener("pointermove", move, { passive: true });
@@ -119,26 +151,46 @@ export function SiteCursor() {
     document.addEventListener("pointerdown", press, { passive: true });
     document.addEventListener("pointerup", release, { passive: true });
     document.addEventListener("keydown", keyboard);
-    document.addEventListener("scroll", schedule, { passive: true, capture: true });
     document.addEventListener("visibilitychange", sync);
     window.addEventListener("blur", leave);
-    media.addEventListener("change", sync);
+    fine.addEventListener("change", sync);
+    reduced.addEventListener("change", sync);
+
     return () => {
-      hide();
+      hideAll();
       observer.disconnect();
       document.removeEventListener("pointermove", move);
       document.documentElement.removeEventListener("pointerleave", leave);
       document.removeEventListener("pointerdown", press);
       document.removeEventListener("pointerup", release);
       document.removeEventListener("keydown", keyboard);
-      document.removeEventListener("scroll", schedule, true);
       document.removeEventListener("visibilitychange", sync);
       window.removeEventListener("blur", leave);
-      media.removeEventListener("change", sync);
+      fine.removeEventListener("change", sync);
+      reduced.removeEventListener("change", sync);
     };
   }, [pathname]);
 
   return <>
+    <div
+      ref={plane}
+      className="site-cursor-plane"
+      aria-hidden="true"
+      data-visible="false"
+      data-hidden="false"
+      data-boost="false"
+      style={{ "--plane-size": `${PLANE_SIZE}px` } as CSSProperties}
+    >
+      <svg className="site-cursor-jet" viewBox="0 0 48 48" width={PLANE_SIZE} height={PLANE_SIZE} aria-hidden="true">
+        <path
+          d="M47 24C47 25.2 44.5 26 42 26.2L27 26.2L16 41L11 41L16 26.2L8 26.2L5 31L2 31L4 24L2 17L5 17L8 21.8L16 21.8L11 7L16 7L27 21.8L42 21.8C44.5 22 47 22.8 47 24Z"
+          fill="#fff"
+          stroke="rgba(18,48,74,.6)"
+          strokeWidth="1.2"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
     <div ref={cursor} className="site-cursor" aria-hidden="true" data-mode="idle" data-visible="false">
       <div className="site-cursor-face">
         <span ref={label} />
@@ -157,6 +209,5 @@ export function SiteCursor() {
         </svg>
       </div>
     </div>
-    <div ref={dot} className="site-cursor-dot" aria-hidden="true" data-visible="false" />
   </>;
 }

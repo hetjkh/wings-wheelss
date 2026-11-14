@@ -175,23 +175,42 @@
 }
 
 @media (max-width: 760px) {
-  .so-ticket { grid-template-columns: 1fr; overflow-y: auto; -webkit-mask: none; mask: none; }
-  .so-stub { min-height: 210px; }
+  .so { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
+  .so-ticket { grid-template-columns: 1fr; max-height: calc(100dvh - 20px); overflow: hidden; -webkit-mask: none; mask: none; }
+  .so-stub { min-height: 0; height: 108px; }
   .so-stub::after { inset: auto var(--notch) 0; border-right: 0; border-bottom: 2px dashed rgba(201, 164, 108, .55); }
-  .so-stub-copy { padding: 28px 24px; gap: 14px; }
-  .so-stub-big { font-size: 38px; }
-  .so-stub-route { display: none; }
-  .so-body { padding: 44px 22px 28px; overflow: visible; }
-  .so-close { top: 14px; right: 14px; }
-  .so-seal { top: 210px; left: auto; right: 22px; width: 84px; height: 84px; margin: -42px 0 0; }
-  .so-seal b { font-size: 24px; }
+  .so-stub-copy { padding: 16px 18px; gap: 6px; }
+  .so-stub-big { font-size: 28px; }
+  .so-stub-route, .so-stamp { display: none; }
+  .so-body { padding: 18px 16px 16px; overflow: visible; }
+  .so-close { top: 10px; right: 10px; width: 36px; height: 36px; }
+  .so-close svg { width: 15px; height: 15px; }
+  .so-seal { top: 108px; left: auto; right: 14px; width: 56px; height: 56px; margin: -28px 0 0; box-shadow: 0 0 0 4px #fbf7f0, 0 10px 22px -12px rgba(0, 0, 0, .45); }
+  .so-seal b { font-size: 18px; }
+  .so-seal text { font-size: 7px; }
   .so-watermark { display: none; }
-  .so-title { margin-top: 14px; font-size: clamp(26px, 7vw, 34px); }
-  .so-channels { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
-  .so-channels li { flex: 0 0 calc((100% - 16px) / 3); }
-  .so-progress { margin-top: 22px; }
-  .so-actions { margin-top: 22px; }
-  .so-claim { width: 100%; }
+  .so-badge { padding: 5px 10px; font-size: 10px; letter-spacing: .14em; }
+  .so-title { margin-top: 10px; padding-right: 48px; font-size: 22px; }
+  .so-title-lead { font-size: .7em; }
+  .so-title em { margin-top: 2px; font-size: 1.05em; }
+  .so-swoosh { width: 68%; height: 10px; margin-top: 0; }
+  .so-steps { gap: 6px; margin-top: 12px; }
+  .so-steps li { padding: 4px 10px 4px 4px; font-size: 11px; }
+  .so-steps i { width: 18px; height: 18px; font-size: 10px; }
+  .so-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+  .so-channels li { flex: none; }
+  .so-channel { flex-direction: row; align-items: center; gap: 8px; padding: 10px 10px; text-align: left; border-radius: 12px; }
+  .so-channel { --origin: 28px 50%; }
+  .so-channel-icon { width: 34px; height: 34px; }
+  .so-channel-icon svg { width: 16px; height: 16px; }
+  .so-channel-text b { font-size: 13px; }
+  .so-channel-tag { margin-top: 0; margin-left: auto; padding: 4px 8px; font-size: 10px; }
+  .so-progress { gap: 2px; margin-top: 12px; }
+  .so-route { display: none; }
+  .so-progress-label { font-size: 12px; }
+  .so-actions { gap: 10px 14px; margin-top: 12px; }
+  .so-claim { width: 100%; min-height: 44px; padding: 0 18px; font-size: 13px; }
+  .so-later { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
