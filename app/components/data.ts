@@ -36,9 +36,11 @@ export const office = {
   hours: "Mon – Sat: 9:00 AM – 7:00 PM",
   map: "https://www.google.com/maps/search/?api=1&query=Al+Khaimah+Building+Port+Saeed+Deira+Dubai",
   socials: [
-    { label: "Facebook", href: "https://www.facebook.com/search/top?q=Wings%20%26%20Wheels%20Travel%20and%20Tourism" },
+    { label: "Facebook", href: "https://www.facebook.com/people/Wings-Wheels/61579511346391/" },
     { label: "Instagram", href: "https://www.instagram.com/wingsandwheels.travel" },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/wingsandwheels" },
+    { label: "TikTok", href: "https://www.tiktok.com/@wingswheels.travel" },
+    { label: "X", href: "https://x.com/wingswheels1978" },
   ],
 };
 

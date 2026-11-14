@@ -175,42 +175,42 @@
 }
 
 @media (max-width: 760px) {
-  .so { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
-  .so-ticket { grid-template-columns: 1fr; max-height: calc(100dvh - 20px); overflow: hidden; -webkit-mask: none; mask: none; }
-  .so-stub { min-height: 0; height: 108px; }
+  .so { width: calc(100% - 16px); max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); overflow: hidden; }
+  .so-ticket { grid-template-columns: minmax(0, 1fr); width: 100%; max-width: 100%; max-height: calc(100dvh - 16px); overflow-x: hidden; overflow-y: auto; -webkit-mask: none; mask: none; }
+  .so-stub { min-height: 0; height: 96px; min-width: 0; }
   .so-stub::after { inset: auto var(--notch) 0; border-right: 0; border-bottom: 2px dashed rgba(201, 164, 108, .55); }
-  .so-stub-copy { padding: 16px 18px; gap: 6px; }
-  .so-stub-big { font-size: 28px; }
+  .so-stub-copy { padding: 14px 16px; gap: 4px; min-width: 0; }
+  .so-stub-big { font-size: 24px; white-space: normal; }
   .so-stub-route, .so-stamp { display: none; }
-  .so-body { padding: 18px 16px 16px; overflow: visible; }
-  .so-close { top: 10px; right: 10px; width: 36px; height: 36px; }
-  .so-close svg { width: 15px; height: 15px; }
-  .so-seal { top: 108px; left: auto; right: 14px; width: 56px; height: 56px; margin: -28px 0 0; box-shadow: 0 0 0 4px #fbf7f0, 0 10px 22px -12px rgba(0, 0, 0, .45); }
-  .so-seal b { font-size: 18px; }
-  .so-seal text { font-size: 7px; }
+  .so-body { padding: 20px 14px 14px; overflow: visible; min-width: 0; max-width: 100%; }
+  .so-close { top: 10px; right: 10px; width: 34px; height: 34px; }
+  .so-close svg { width: 14px; height: 14px; }
+  .so-seal { top: 96px; left: auto; right: 12px; width: 48px; height: 48px; margin: -24px 0 0; box-shadow: 0 0 0 3px #fbf7f0, 0 8px 18px -10px rgba(0, 0, 0, .45); }
+  .so-seal b { font-size: 16px; }
+  .so-seal text { font-size: 6.5px; }
   .so-watermark { display: none; }
-  .so-badge { padding: 5px 10px; font-size: 10px; letter-spacing: .14em; }
-  .so-title { margin-top: 10px; padding-right: 48px; font-size: 22px; }
-  .so-title-lead { font-size: .7em; }
+  .so-badge { max-width: 100%; padding: 5px 10px; font-size: 9px; letter-spacing: .12em; }
+  .so-title { margin-top: 10px; padding-right: 40px; max-width: 100%; font-size: 20px; }
+  .so-title-lead { font-size: .72em; }
   .so-title em { margin-top: 2px; font-size: 1.05em; }
-  .so-swoosh { width: 68%; height: 10px; margin-top: 0; }
-  .so-steps { gap: 6px; margin-top: 12px; }
-  .so-steps li { padding: 4px 10px 4px 4px; font-size: 11px; }
-  .so-steps i { width: 18px; height: 18px; font-size: 10px; }
-  .so-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-  .so-channels li { flex: none; }
-  .so-channel { flex-direction: row; align-items: center; gap: 8px; padding: 10px 10px; text-align: left; border-radius: 12px; }
-  .so-channel { --origin: 28px 50%; }
-  .so-channel-icon { width: 34px; height: 34px; }
-  .so-channel-icon svg { width: 16px; height: 16px; }
-  .so-channel-text b { font-size: 13px; }
-  .so-channel-tag { margin-top: 0; margin-left: auto; padding: 4px 8px; font-size: 10px; }
-  .so-progress { gap: 2px; margin-top: 12px; }
+  .so-swoosh { width: 70%; height: 9px; margin-top: 0; }
+  .so-steps { display: none; }
+  .so-channels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-top: 14px; width: 100%; max-width: 100%; }
+  .so-channels li { min-width: 0; max-width: 100%; }
+  .so-channels li:last-child { grid-column: 1 / -1; }
+  .so-channel { flex-direction: row; align-items: center; gap: 8px; width: 100%; max-width: 100%; min-width: 0; padding: 10px 8px; text-align: left; border-radius: 12px; }
+  .so-channel { --origin: 26px 50%; }
+  .so-channel-icon { width: 30px; height: 30px; }
+  .so-channel-icon svg { width: 15px; height: 15px; }
+  .so-channel-text { min-width: 0; flex: 1; }
+  .so-channel-text b { display: block; overflow: hidden; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+  .so-channel-tag { flex: none; margin-top: 0; margin-left: 0; padding: 4px 7px; font-size: 9px; }
+  .so-progress { gap: 2px; margin-top: 12px; max-width: 100%; }
   .so-route { display: none; }
   .so-progress-label { font-size: 12px; }
-  .so-actions { gap: 10px 14px; margin-top: 12px; }
-  .so-claim { width: 100%; min-height: 44px; padding: 0 18px; font-size: 13px; }
-  .so-later { font-size: 13px; }
+  .so-actions { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 12px; width: 100%; }
+  .so-claim { width: 100%; min-height: 44px; padding: 0 16px; font-size: 13px; }
+  .so-later { align-self: center; font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

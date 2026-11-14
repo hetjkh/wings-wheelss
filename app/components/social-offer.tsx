@@ -7,7 +7,6 @@ import "./social-offer.css";
 
 const SEEN_KEY = "ww-social-offer-seen";
 
-// TikTok and X are placeholders until the real profiles exist.
 const channels: { label: string; handle: string; href: string; icon: ReactNode }[] = [
   {
     label: "Instagram", handle: "@wingsandwheels.travel",
@@ -20,18 +19,18 @@ const channels: { label: string; handle: string; href: string; icon: ReactNode }
     icon: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></>,
   },
   {
-    label: "TikTok", handle: "@wingsandwheels",
-    href: "https://www.tiktok.com/@wingsandwheels",
+    label: "TikTok", handle: "@wingswheels.travel",
+    href: office.socials.find(social => social.label === "TikTok")!.href,
     icon: <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2.2 4.4 5 4.6" />,
   },
   {
-    label: "Facebook", handle: "Wings & Wheels Travel",
+    label: "Facebook", handle: "Wings & Wheels",
     href: office.socials.find(social => social.label === "Facebook")!.href,
     icon: <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5Z" />,
   },
   {
-    label: "X", handle: "@wingsandwheels",
-    href: "https://x.com/wingsandwheels",
+    label: "X", handle: "@wingswheels1978",
+    href: office.socials.find(social => social.label === "X")!.href,
     icon: <path d="M4 4l7.2 9.2L4.5 20H7l5.1-5.9L16.8 20H20l-7.4-9.5L19.3 4H16.8l-4.7 5.4L7.5 4H4Z" fill="currentColor" stroke="none" />,
   },
 ];
