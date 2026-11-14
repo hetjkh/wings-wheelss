@@ -82,7 +82,7 @@ const zones: {
   }
 ];
 
-const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=2048&q=90`;
+const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=960&q=70`;
 
 export function HomeStories() {
   const [active, setActive] = useState(0);

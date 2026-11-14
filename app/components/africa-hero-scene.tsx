@@ -73,13 +73,13 @@ export function AfricaHeroScene() {
 
   return <>
     <div className="a-hero-scene" ref={backdrop} aria-hidden="true">
-      <Image src="/images/africa-hero/waterhole-master.webp" alt="" fill sizes="100vw" preload quality={90} />
+      <Image src="/images/africa-hero/waterhole-master.webp" alt="" fill sizes="100vw" preload quality={75} />
     </div>
     <div className="a-hero-waterhole-ground" aria-hidden="true">
-      <Image src="/images/africa-hero/waterhole-ground.webp" alt="" fill sizes="100vw" quality={90} loading="eager" />
+      <Image src="/images/africa-hero/waterhole-ground.webp" alt="" fill sizes="100vw" quality={75} />
     </div>
     <div className="a-hero-reeds" aria-hidden="true">
-      <Image src="/images/africa-hero/waterhole-reeds.webp" alt="" fill sizes="100vw" loading="eager" />
+      <Image src="/images/africa-hero/waterhole-reeds.webp" alt="" fill sizes="100vw" />
     </div>
   </>;
 }

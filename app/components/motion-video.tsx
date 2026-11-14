@@ -1,14 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  resolveVideoSources,
+  shouldDeferHeavyVideo,
+  warmVideoCache,
+  type VideoSources,
+} from "./video-sources";
 
-/** Background video: WebM first, MP4 fallback, and playback only while the frame is on screen. */
+/** Shared looping background video — mobile gets `.mobile` encodes; Cache Storage warms repeats. */
 export function MotionVideo({ src, poster, className, priority = false }: { src: string; poster?: string; className?: string; priority?: boolean }) {
   const video = useRef<HTMLVideoElement>(null);
+  const [sources, setSources] = useState<VideoSources | null>(null);
+
+  useEffect(() => {
+    if (shouldDeferHeavyVideo()) return;
+    const resolved = resolveVideoSources(src);
+    setSources(resolved);
+    warmVideoCache([resolved.webm, resolved.mp4].filter(Boolean) as string[]);
+  }, [src]);
 
   useEffect(() => {
     const element = video.current;
-    if (!element) return;
+    if (!element || !sources) return;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     let onScreen = false;
     const motionRoot = element.closest("[data-motion-paused]");
@@ -37,11 +51,12 @@ export function MotionVideo({ src, poster, className, priority = false }: { src:
       document.removeEventListener("visibilitychange", sync);
       reduced.removeEventListener("change", sync);
     };
-  }, [src]);
+  }, [src, sources]);
 
-  const webm = src.replace(/\.mp4$/i, ".webm");
+  if (!sources) return null;
+
   return <video ref={video} className={className} {...(poster ? { poster } : {})} muted loop playsInline preload={priority ? "metadata" : "none"} aria-hidden="true">
-    {webm !== src ? <source src={webm} type="video/webm" /> : null}
-    <source src={src} type={src.endsWith(".webm") ? "video/webm" : "video/mp4"} />
+    {sources.webm ? <source src={sources.webm} type="video/webm" /> : null}
+    <source src={sources.mp4} type="video/mp4" />
   </video>;
 }

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PillCta } from "./about-cta";
 import { TravelIcon, type IconKind } from "./icons";
+import { resolveVideoSources, shouldDeferHeavyVideo, warmVideoCache } from "./video-sources";
 import "./services-journey.css";
 
 const phases: { icon: IconKind; when: string; title: string; text: string; items: string[] }[] = [
@@ -20,13 +21,43 @@ export function ServicesJourney() {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [loadFilm, setLoadFilm] = useState(false);
+  const filmSources = loadFilm ? resolveVideoSources("/videos/dubai-services-20.mp4") : null;
 
   useEffect(() => {
     const root = section.current;
-    const film = video.current;
-    if (!root || !film) return;
+    if (!root) return;
     const follow = (event: Event) => setActive((event as CustomEvent<number>).detail);
     root.addEventListener("chapter-step", follow);
+
+    gsap.registerPlugin(ScrollTrigger);
+    const motion = gsap.matchMedia();
+    motion.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(root.querySelector(".sb-stage"), { y: 45, clipPath: "inset(5% 2% 5% 2% round 24px)" }, {
+        y: 0, clipPath: "inset(0% 0% 0% 0% round 16px)", ease: "none",
+        scrollTrigger: { trigger: root, start: "top 85%", end: "top 15%", scrub: true },
+      });
+    });
+
+    // Load light (mobile) or desktop sources once the block is near view.
+    const arm = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || shouldDeferHeavyVideo()) return;
+      setLoadFilm(true);
+      arm.disconnect();
+    }, { rootMargin: "20% 0px", threshold: .05 });
+    arm.observe(root);
+
+    return () => {
+      root.removeEventListener("chapter-step", follow);
+      arm.disconnect();
+      motion.revert();
+    };
+  }, []);
+
+  useEffect(() => {
+    const film = video.current;
+    if (!film || !filmSources) return;
+    warmVideoCache([filmSources.webm, filmSources.mp4].filter(Boolean) as string[]);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     const sync = () => {
@@ -38,24 +69,13 @@ export function ServicesJourney() {
     observer.observe(film);
     document.addEventListener("visibilitychange", sync);
     reduced.addEventListener("change", sync);
-
-    gsap.registerPlugin(ScrollTrigger);
-    const motion = gsap.matchMedia();
-    motion.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.fromTo(root.querySelector(".sb-stage"), { y: 45, clipPath: "inset(5% 2% 5% 2% round 24px)" }, {
-        y: 0, clipPath: "inset(0% 0% 0% 0% round 16px)", ease: "none",
-        scrollTrigger: { trigger: root, start: "top 85%", end: "top 15%", scrub: true },
-      });
-    });
     return () => {
-      root.removeEventListener("chapter-step", follow);
       observer.disconnect();
       document.removeEventListener("visibilitychange", sync);
       reduced.removeEventListener("change", sync);
       film.pause();
-      motion.revert();
     };
-  }, []);
+  }, [filmSources]);
 
   useEffect(() => {
     if (!section.current || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -115,8 +135,10 @@ export function ServicesJourney() {
       <div className="sb-stage">
         <figure className="sb-film">
           <video ref={video} muted playsInline loop preload="none" poster="/videos/dubai-services-20-poster.webp" aria-label="Dubai: Palm Jumeirah, Museum of the Future, Downtown Dubai and Atlantis" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onTimeUpdate={event => setElapsed(Math.floor(event.currentTarget.currentTime))}>
-            <source src="/videos/dubai-services-20.webm" type="video/webm" />
-            <source src="/videos/dubai-services-20.mp4" type="video/mp4" />
+            {filmSources ? <>
+              {filmSources.webm ? <source src={filmSources.webm} type="video/webm" /> : null}
+              <source src={filmSources.mp4} type="video/mp4" />
+            </> : null}
           </video>
           <figcaption><TravelIcon kind="pin" size={16} /><span>Dubai, UAE</span></figcaption>
           <div className="sb-film-controls"><span aria-hidden="true">00:{String(elapsed).padStart(2, "0")} / 00:20</span><button type="button" onClick={togglePlayback} aria-label={playing ? "Pause Dubai video" : "Play Dubai video"}>

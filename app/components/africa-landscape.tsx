@@ -87,7 +87,7 @@ export function AfricaLandscape() {
         <h1 id="africa-landscape-heading" data-hero>AFRICA</h1>
       </div>
       <div className="a-landscape-wildlife" aria-hidden="true">
-        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-elephants-mobile-v1.webp" /><Image src="/images/africa-scene/elephants.webp" alt="" fill sizes="100vw" loading="eager" /></picture>
+        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-elephants-mobile-v1.webp" /><Image src="/images/africa-scene/elephants.webp" alt="" fill sizes="100vw" /></picture>
       </div>
       <div className="a-landscape-story">
         <span className="a-landscape-eyebrow">Beyond the expected</span>
@@ -95,7 +95,7 @@ export function AfricaLandscape() {
         <a href="#destinations">Find your Africa <span aria-hidden="true">↗</span></a>
       </div>
       <div className="a-landscape-foreground" aria-hidden="true">
-        <Image src="/images/africa-scene/grasses.webp" alt="" fill sizes="100vw" loading="eager" />
+        <Image src="/images/africa-scene/grasses.webp" alt="" fill sizes="100vw" />
       </div>
       <div className="a-landscape-footer">
         <span>Wild places. Real connections.</span>

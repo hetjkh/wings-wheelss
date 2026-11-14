@@ -73,9 +73,9 @@ export function PartnershipHeroScene() {
 
   return <>
     <div className="j-hero-photo p-hero-scene" ref={backdrop} aria-hidden="true">
-      <div className="p-hero-lounge"><Image src="/images/partnership-hero/editorial-lounge-v2.webp" alt="" fill sizes="100vw" quality={90} preload /></div>
-      <div className="p-hero-room"><Image src="/images/partnership-hero/grounded-room-v2.webp" alt="" fill sizes="100vw" quality={90} loading="eager" /></div>
+      <div className="p-hero-lounge"><Image src="/images/partnership-hero/editorial-lounge-v2.webp" alt="" fill sizes="100vw" quality={75} preload /></div>
+      <div className="p-hero-room"><Image src="/images/partnership-hero/grounded-room-v2.webp" alt="" fill sizes="100vw" quality={75} /></div>
     </div>
-    <div className="p-hero-foreground" aria-hidden="true"><Image src="/images/partnership-hero/foliage-v2.webp" alt="" fill sizes="100vw" loading="eager" /></div>
+    <div className="p-hero-foreground" aria-hidden="true"><Image src="/images/partnership-hero/foliage-v2.webp" alt="" fill sizes="100vw" /></div>
   </>;
 }

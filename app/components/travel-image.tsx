@@ -31,8 +31,8 @@ export default function TravelImage({ sizes, quality, lockSizes = false, reveal 
     const measure = (width: number, height: number) => {
       if (!width || !height) return;
       // A landscape photo in a tall card is scaled by its height, not its box width.
-      // Leave a little headroom for the site's parallax and hover zoom effects.
-      const cover = Math.ceil(Math.max(width, height * aspect) * 1.12);
+      // Cap so tall covers never request 2K+ assets (Next still multiplies by DPR).
+      const cover = Math.min(1280, Math.ceil(Math.max(width, height * aspect) * 1.08));
       setCoverWidth(previous => previous === cover ? previous : cover);
     };
 
