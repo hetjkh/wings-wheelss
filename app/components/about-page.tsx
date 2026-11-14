@@ -93,8 +93,9 @@ export function AboutPage() {
       <MaskedHero
         id="about-title"
         eyebrow="About Wings & Wheels"
-        lines={["About the people", { text: "who travel.", accent: true }]}
-        text="Wings & Wheels is a travel management company connecting individuals, businesses and groups across the UAE, Africa and worldwide."
+        lines={["About the people", "who travel."]}
+        sub="Every journey has a reason."
+        text="Connecting individuals, businesses and groups across the UAE, Africa and worldwide."
         action={{ label: "Discover our story", href: "#who" }}
         media={{ image: "/images/about/hero-v3.webp", alt: "Two male travel consultants and a woman planning a journey in a sunlit Dubai office" }}
         tags={tags}

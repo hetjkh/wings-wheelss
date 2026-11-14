@@ -234,8 +234,8 @@
 .au-process.is-pinned { height: 100svh; padding: calc(var(--tear) + var(--u) * 1.75) 0 calc(var(--u) * 1.5); }
 .au-process.is-pinned .au-process-pin { height: 100%; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: clamp(10px, 1.4svh, 18px); min-height: 0; }
 .au-process-head { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-shrink: 0; }
-.about-page .au-process .au-h2 { color: var(--cream); font-size: min(calc(var(--u) * 3.2), 6.2svh); }
-.about-page .au-process.is-pinned .au-h2 { font-size: min(calc(var(--u) * 2.7), 5.2svh); }
+.about-page .au-process .au-h2 { color: var(--cream); font-size: min(calc(var(--u) * 4.1), 7.6svh); }
+.about-page .au-process.is-pinned .au-h2 { font-size: min(calc(var(--u) * 3.5), 6.6svh); }
 .about-page .au-process .au-h2 em { color: var(--sand); }
 .au-process .au-kicker { color: var(--sand); }
 .au-process-sub { display: grid; text-align: right; font: 400 calc(var(--u) * 1.2)/1.25 var(--heading); color: #b9a888; }
@@ -249,7 +249,7 @@
 .au-process.is-pinned .au-process-window { min-height: 0; align-self: stretch; }
 .au-pass {
   display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.1fr) calc(var(--u) * 4.5);
-  width: min(calc(var(--u) * 50), 58vw); height: min(calc(var(--u) * 22), 36svh);
+  width: min(calc(var(--u) * 50), 58vw); height: min(calc(var(--u) * 26), 44svh);
   overflow: hidden; border-radius: 22px; background: #fbf5ea; color: var(--ink);
   box-shadow: 0 40px 70px -40px #000; transition: transform .7s var(--ease), box-shadow .7s;
 }
@@ -484,7 +484,7 @@
 .au-closing em { font-style: normal; color: var(--ochre); }
 
 @media (min-width: 992px) and (max-height: 820px) {
-  .au-pass { height: min(calc(var(--u) * 22), 42svh); }
+  .au-pass { height: min(calc(var(--u) * 24), 48svh); }
   .au-services li { font-size: calc(var(--u) * 1.2); }
   .au-process.is-pinned { padding-top: calc(var(--tear) + var(--u) * 1.5); }
 }
@@ -515,7 +515,7 @@
   .about-page .au-aud-col h3 { font-size: 22px; }
   .au-aud-col p { font-size: 14px; }
 
-  .about-page .au-process .au-h2 { font-size: clamp(34px, 8vw, 56px); }
+  .about-page .au-process .au-h2 { font-size: clamp(38px, 9vw, 64px); }
   .au-process-head { flex-direction: column; align-items: flex-start; }
   .au-process-sub { text-align: left; font-size: 19px; }
   .au-process-track { padding-inline: 20px; gap: 14px; }
@@ -671,11 +671,11 @@
   .au-process.is-mobile-pinned .au-process-pin { grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; }
   .au-process.is-mobile-pinned .au-process-head { gap: 0; }
   .au-process.is-mobile-pinned .au-kicker, .au-story.is-mobile-pinned .au-kicker { margin-bottom: 8px; }
-  .about-page .au-process.is-mobile-pinned .au-h2 { font-size: clamp(24px, 6.7vw, 38px); }
+  .about-page .au-process.is-mobile-pinned .au-h2 { font-size: clamp(28px, 7.4vw, 44px); }
   .au-process.is-mobile-pinned .au-process-sub, .au-process.is-mobile-pinned .au-services { display: none; }
   .au-process.is-mobile-pinned .au-process-window { min-height: 0; overflow: hidden; }
   .au-process.is-mobile-pinned .au-process-track { gap: 14px; padding: 0 20px; }
-  .au-process.is-mobile-pinned .au-pass { width: calc(100vw - 40px); height: clamp(370px, 50svh, 410px); grid-template-columns: minmax(0, 1fr) 44px; grid-template-rows: 70% 30%; }
+  .au-process.is-mobile-pinned .au-pass { width: calc(100vw - 40px); height: clamp(400px, 54svh, 460px); grid-template-columns: minmax(0, 1fr) 44px; grid-template-rows: 70% 30%; }
   .au-process.is-mobile-pinned .au-pass-photo { grid-column: 1 / -1; margin: 8px; }
   .au-process.is-mobile-pinned .au-pass-body { justify-content: flex-start; padding: 4px 14px 12px; }
   .au-process.is-mobile-pinned .au-pass-meta strong { font-size: 24px; }

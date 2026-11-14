@@ -130,14 +130,14 @@ export default function FranchisePage() {
         <div className="f-beyond-visual" aria-hidden="false">
           <div className="f-beyond-collage">
             <figure className="f-beyond-tile f-beyond-tile-main">
-              <Image src="/images/library/franchise-local-connections.webp" alt="Two business partners reviewing plans together in an office overlooking Dubai" fill sizes="(max-width: 991px) 92vw, 32vw" />
+              <Image src="/images/library/franchise-local-connections-v3.webp" alt="Two business partners reviewing travel itineraries in a sunlit office overlooking Dubai" fill sizes="(max-width: 991px) 92vw, 32vw" />
               <figcaption>Build your market.<strong>Grow with our network.</strong></figcaption>
             </figure>
             <figure className="f-beyond-tile f-beyond-tile-top">
-              <Image src="/images/library/dubai-marina.webp" alt="Dubai Marina waterfront under a clear sky" fill sizes="(max-width: 991px) 45vw, 18vw" />
+              <Image src="/images/library/franchise-dubai-marina-v2.webp" alt="Dubai Marina towers and yachts in warm afternoon light" fill sizes="(max-width: 991px) 45vw, 18vw" />
             </figure>
             <figure className="f-beyond-tile f-beyond-tile-bottom">
-              <Image src="/images/library/franchise-partner-lounge-v2.webp" alt="Partners meeting in a sunlit lounge" fill sizes="(max-width: 991px) 45vw, 18vw" />
+              <Image src="/images/library/franchise-partner-lounge-v3.webp" alt="Three travel partners discussing an itinerary in a sunlit airport lounge" fill sizes="(max-width: 991px) 45vw, 18vw" />
             </figure>
           </div>
         </div>

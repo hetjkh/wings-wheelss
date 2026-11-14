@@ -22,8 +22,9 @@ export default function HomePage() {
       <MaskedHero
         id="home-title"
         eyebrow="Wings & Wheels · Dubai & beyond"
-        lines={["Every journey.", "A world of", "possibilities."]}
-        text="Business, leisure and everything in between. Thoughtfully planned. Personally supported."
+        lines={["Every journey.", "New possibilities."]}
+        sub="Thoughtfully planned."
+        text="Business, leisure and everything in between — personally supported."
         action={{ label: "Plan your journey", href: "/contact" }}
         settle="bottom"
         media={{ video: "/hero-v4-continuous.mp4" }}

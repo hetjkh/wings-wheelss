@@ -1,0 +1,20 @@
+{
+  "mode": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "franchise-local-connections-v3",
+      "source": "C:\\Users\\Admin\\.codex\\generated_images\\01a1d9db-966a-7e72-a4a6-11f7fbd36c61\\exec-cca5eb37-2523-4feb-993d-bf3e9a3be19e.png",
+      "prompt": "Use case: photorealistic-natural. Create one exceptionally high quality editorial photograph for a premium travel company franchise webpage. Portrait 3:4 composition. In a refined modern Dubai office with floor-to-ceiling windows, two business partners, a Middle Eastern woman in a beautifully tailored taupe suit and a man in a navy suit, sit side by side naturally discussing a travel itinerary and destination photographs on a walnut desk. Candid thoughtful expressions, authentic unretouched faces, anatomically accurate hands resting naturally on the desk. Medium wide view, both faces fully visible in the middle third, airy architectural setting and subtly defocused Dubai skyline behind them. Premium hospitality magazine photography, full-frame camera, natural window light, true-to-life colors, warm ivory, walnut and muted navy, precise fabric and skin detail, gentle contrast, clean highlights. Lower quarter mostly desk with uncluttered darker surfaces suitable for an existing HTML text overlay. No text, no logos, no watermark, no borders. Single photograph, not collage."
+    },
+    {
+      "name": "franchise-dubai-marina-v2",
+      "source": "C:\\Users\\Admin\\.codex\\generated_images\\01a1d9db-966a-7e72-a4a6-11f7fbd36c61\\exec-1c928fd9-a098-47b5-8d9a-af4827e0fe69.png",
+      "prompt": "Use case: photorealistic-natural. One exceptionally high quality architectural editorial photograph of Dubai Marina for a luxury travel company. Landscape 6:5 composition, coherent realistic skyline including the recognizable twisting Cayan Tower and varied slender marina towers, photographed across turquoise marina water with a few elegant moored yachts along the lower edge. Tall architecture entirely inside the frame, straight vertical lines, camera at waterfront level, carefully balanced composition. Clear pale blue sky and soft late afternoon warm sunlight, crisp facade detail, realistic glass reflections and subtle atmospheric depth. Sophisticated travel magazine photography with natural restrained color, no oversaturation, no excessive HDR, no artificial fantasy buildings. Single continuous photograph. No text, no logos, no watermarks, no borders."
+    },
+    {
+      "name": "franchise-partner-lounge-v3",
+      "source": "C:\\Users\\Admin\\.codex\\generated_images\\01a1d9db-966a-7e72-a4a6-11f7fbd36c61\\exec-4c5239ff-a810-475c-bdb0-d316960f8f3d.png",
+      "prompt": "Use case: photorealistic-natural. One exceptionally high quality luxury hospitality editorial photograph for a travel partnership website. Near-square 1:1 photograph in a beautiful international airport business lounge: three professional travel partners, a Middle Eastern man in navy tailoring, a woman in an ivory blazer and a Black man in a charcoal suit, seated comfortably around a low walnut coffee table discussing an itinerary. Candid relaxed professional interaction with believable facial expressions, anatomically natural hands. Medium-wide environmental composition, people clearly visible and central, heads fully inside the middle half of the photograph to survive cropping. Floor-to-ceiling windows behind reveal a sunlit airport apron and a softly defocused passenger airplane. Refined caramel leather seating, pale travertine, subtle brass accents. Soft natural morning light, beautifully controlled highlights, realistic skin texture and crisp interior details. Premium magazine photography, restrained warm neutral colors, full-frame 50mm lens aesthetic. No text, logos, watermark, borders, no collage."
+    }
+  ]
+}
