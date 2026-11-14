@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SmoothScroll } from "./components/smooth-scroll";
-import { SiteCursor } from "./components/site-cursor";
-import { SectionOverlaps } from "./components/section-overlaps";
+import { DeferredChrome } from "./components/deferred-chrome";
 import "./globals.css";
 import "./components/section-edges.css";
 
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
-      <body><SmoothScroll />{children}<SectionOverlaps /><SiteCursor /></body>
+      <body><SmoothScroll />{children}<DeferredChrome /></body>
     </html>
   );
 }

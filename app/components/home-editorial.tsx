@@ -7,6 +7,7 @@ import { HomeClientele } from "./home-clientele";
 import { HomeTestimonials } from "./home-testimonials";
 import { HomePayLater } from "./home-pay-later";
 import { HomeFaq } from "./home-faq";
+import "./home-editorial.css";
 
 function ChapterLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return <span className="e-label" data-motion-reveal><span>{number}</span><span>{children}</span></span>;

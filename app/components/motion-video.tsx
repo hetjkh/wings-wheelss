@@ -40,7 +40,7 @@ export function MotionVideo({ src, poster, className, priority = false }: { src:
   }, [src]);
 
   const webm = src.replace(/\.mp4$/i, ".webm");
-  return <video ref={video} className={className} poster={poster} muted loop playsInline preload={priority ? "metadata" : "none"} aria-hidden="true">
+  return <video ref={video} className={className} {...(poster ? { poster } : {})} muted loop playsInline preload={priority ? "metadata" : "none"} aria-hidden="true">
     {webm !== src ? <source src={webm} type="video/webm" /> : null}
     <source src={src} type={src.endsWith(".webm") ? "video/webm" : "video/mp4"} />
   </video>;

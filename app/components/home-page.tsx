@@ -1,18 +1,14 @@
+import dynamic from "next/dynamic";
 import Image from "./travel-image";
 import Link from "next/link";
 import { Arrow } from "./icons";
-import { JourneyFooter } from "./journey-footer";
-import { ServicesFinal } from "./services-final";
 import { HomeExperience, HomeHeader } from "./home-experience";
 import { MaskedHero } from "./masked-hero";
 import { HomeServices } from "./home-services";
 import { HomeEditorial } from "./home-editorial";
 import "./home.css";
-import "./home-editorial.css";
-import "./journey.css";
-import "./journey-explorer.css";
-import "./services.css";
-import "./home-ending.css";
+
+const HomeClosing = dynamic(() => import("./home-closing"));
 
 export default function HomePage() {
   return <HomeExperience>
@@ -64,8 +60,7 @@ export default function HomePage() {
       </div>
 
       <HomeEditorial />
-      <div className="journey-page services-page home-ending"><ServicesFinal /></div>
     </main>
-    <div className="journey-page home-ending"><JourneyFooter /></div>
+    <HomeClosing />
   </HomeExperience>;
 }

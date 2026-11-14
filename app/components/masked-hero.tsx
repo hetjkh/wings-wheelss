@@ -224,8 +224,9 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
       <div className="au-hero-photo-inner">
         {"video" in media
           ? <>
-              <Image src={media.poster ?? "/images/journey/hero.webp"} alt="" fill preload sizes="100vw" aria-hidden />
-              <MotionVideo priority src={media.video} poster={media.poster ?? "/images/journey/hero.webp"} />
+              {/* Optimized still for LCP — video has no poster so the raw webp is not double-fetched. */}
+              <Image src={media.poster ?? "/images/journey/hero.webp"} alt="" fill preload sizes="100vw" quality={75} aria-hidden />
+              <MotionVideo priority src={media.video} />
             </>
           : <Image src={media.image} alt={media.alt} fill preload sizes="100vw" style={media.position ? { objectPosition: media.position } : undefined} />}
       </div>
