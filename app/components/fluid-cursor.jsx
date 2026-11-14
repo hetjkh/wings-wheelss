@@ -11,24 +11,6 @@ const BRAND_COLORS = [
   { r: 0.965, g: 0.953, b: 0.933 }, // --soft #f6f3ee
 ];
 
-type FluidCursorProps = {
-  simResolution?: number;
-  dyeResolution?: number;
-  captureResolution?: number;
-  densityDissipation?: number;
-  velocityDissipation?: number;
-  pressure?: number;
-  pressureIterations?: number;
-  curl?: number;
-  splatRadius?: number;
-  splatForce?: number;
-  shading?: boolean;
-  colorUpdateSpeed?: number;
-  backColor?: { r: number; g: number; b: number };
-  transparent?: boolean;
-  className?: string;
-};
-
 /** GPU fluid wake that sits behind the plane cursor. */
 export function FluidCursor({
   simResolution: SIM_RESOLUTION = 128,
@@ -46,7 +28,7 @@ export function FluidCursor({
   backColor: BACK_COLOR = { r: 0, g: 0, b: 0 },
   transparent: TRANSPARENT = true,
   className = "",
-}: FluidCursorProps) {
+}) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
