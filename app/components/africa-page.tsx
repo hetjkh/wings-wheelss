@@ -47,20 +47,6 @@ const itinerary = [
   { name: "Dubai", role: "Home", photo: "/images/library/dubai-clouds.webp", position: "center" },
 ];
 
-const journeys = [
-  { title: "Business across borders", photo: "/images/library/business-conversation.webp", stops: [{ from: "Dubai", to: "Nairobi", why: "Executive meeting" }, { from: "Nairobi", to: "Kampala", why: "Regional visit" }, { from: "Kampala", to: "Dubai", why: "Return" }] },
-  { title: "The event. Then the next meeting.", photo: "/images/library/exhibition.webp", stops: [{ from: "Nairobi", to: "Dubai", why: "Exhibition" }, { from: "Dubai", to: "London", why: "Client meeting" }, { from: "London", to: "Nairobi", why: "Home" }] },
-  { title: "City. Safari. Coast.", photo: "/images/library/kenya-city-safari-coast-v2.webp", alt: "An editorial triptych of Nairobi's skyline, elephants in the Maasai Mara and Diani's white-sand coast", stops: [{ from: "Dubai", to: "Nairobi", why: "Arrival" }, { from: "Nairobi", to: "Maasai Mara", why: "Safari" }, { from: "Maasai Mara", to: "Diani", why: "Beach" }, { from: "Diani", to: "Dubai", why: "Home" }] },
-];
-const supportServices: { icon: IconKind; title: string; text: string }[] = [
-  { icon: "plane", title: "Flights", text: "Regional and international arrangements." },
-  { icon: "bed", title: "Hotels", text: "Business and leisure accommodation." },
-  { icon: "document", title: "Visas", text: "Documentation assistance where applicable." },
-  { icon: "car", title: "Transfers", text: "Airport and ground movements." },
-  { icon: "compass", title: "Experiences", text: "Safari, leisure and destination arrangements." },
-  { icon: "support", title: "Support", text: "Assistance when travel plans change." },
-];
-
 export default function AfricaPage() {
   return <ChapterMotion className="africa-page">
     <a className="skip-link" href="#connections">Skip to content</a>
@@ -167,29 +153,12 @@ export default function AfricaPage() {
         </div>
       </section>
 
-      <section className="a-journeys j-torn-top" id="journey-continues" aria-labelledby="journeys-heading">
-        <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">08 / People don&apos;t always travel one way</span><h2 id="journeys-heading" className="s-title a-editorial-title">The journey continues.</h2>
-          <div className="a-journey-grid">{journeys.map((journey, i) => <article className="a-journey-card" key={journey.title}>
-            <div className="a-journey-photo"><Image src={journey.photo} alt={journey.alt ?? ""} fill sizes="(max-width: 700px) 92vw, 30vw" quality={90} /><span>0{i + 1} / Journey example</span></div>
-            <div className="a-journey-copy"><h3>{journey.title}</h3><ol>{journey.stops.map(stop => <li key={`${stop.from}-${stop.to}`}><div><span>{stop.from}</span><Arrow /><strong>{stop.to}</strong></div><p>{stop.why}</p></li>)}</ol></div>
-          </article>)}</div>
-          <p className="a-journey-statement">We don&apos;t just book the flight.<br /><span>We help connect the journey.</span></p>
-        </div>
-      </section>
-
-      <section className="a-support j-torn-top" id="africa-support" aria-labelledby="support-heading">
-        <div className="j-shell"><div className="a-section-head"><div><span className="j-eyebrow s-eyebrow">09 / Africa travel support</span><h2 id="support-heading" className="s-title a-editorial-title">One journey.<br />One point of contact.</h2></div><a className="j-button j-button-olive" href="#africa-enquiry">Talk to our Africa team<Arrow /></a></div>
-          <ol className="a-support-grid">{supportServices.map((service, i) => <li key={service.title}><span className="a-support-icon"><TravelIcon kind={service.icon} size={30} /></span><span className="a-support-index">0{i + 1}</span><h3>{service.title}</h3><p>{service.text}</p>{i < supportServices.length - 1 && <span className="a-support-arrow"><Arrow /></span>}</li>)}</ol>
-        </div>
-      </section>
-
       <section className="a-enquiry j-torn-top" id="africa-enquiry" aria-labelledby="enquiry-heading">
-        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">10 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
+        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">08 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
       <ClosingScene
-        chapter="11 / Wings & Wheels"
+        chapter="09 / Wings & Wheels"
         ticket="UAE ↔ Africa ↔ Worldwide"
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}

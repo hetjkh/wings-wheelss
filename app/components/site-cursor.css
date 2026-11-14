@@ -5,8 +5,8 @@
   pointer-events: none;
 }
 
-.site-cursor-plane { z-index: 9999; }
-.site-cursor { z-index: 10000; }
+.site-cursor-plane { z-index: 10060; }
+.site-cursor { z-index: 10061; }
 .fluid-cursor { z-index: 9997; }
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .fluid-cursor { display: none; }

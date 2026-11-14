@@ -1,0 +1,129 @@
+.ck {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 10050;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.ck-sheet {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px 28px;
+  align-items: center;
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 22px 24px;
+  border: 1px solid rgba(201, 164, 108, .35);
+  border-radius: 20px 20px 12px 12px;
+  background: linear-gradient(180deg, #121c2b 0%, #0f1b2d 100%);
+  color: rgba(255, 255, 255, .82);
+  box-shadow: 0 -20px 60px -28px rgba(0, 0, 0, .65), 0 0 0 1px rgba(255, 255, 255, .04);
+  animation: ck-up .55s cubic-bezier(.2, 1.1, .3, 1) both;
+}
+
+@keyframes ck-up {
+  from { opacity: 0; transform: translateY(110%); }
+}
+
+.ck-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ck-kicker::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.ck-copy h2 {
+  margin-top: 8px;
+  color: #fff;
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.ck-copy p {
+  margin-top: 8px;
+  max-width: 54ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .72);
+}
+
+.ck-copy a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201, 164, 108, .45);
+}
+
+.ck-copy a:hover { color: #e9cf9f; }
+
+.ck-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.ck-accept,
+.ck-reject {
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+
+.ck-accept {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.ck-accept:hover {
+  background: #d6b47f;
+  transform: translateY(-1px);
+}
+
+.ck-reject {
+  border: 1px solid rgba(255, 255, 255, .28);
+  color: #fff;
+  background: transparent;
+}
+
+.ck-reject:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+@media (max-width: 760px) {
+  .ck { padding: 12px; }
+  .ck-sheet {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 16px 16px;
+    border-radius: 18px 18px 10px 10px;
+  }
+  .ck-actions {
+    justify-content: stretch;
+  }
+  .ck-accept,
+  .ck-reject {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck-sheet { animation: none; }
+}

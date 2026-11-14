@@ -72,40 +72,56 @@ export function JourneyFooter() {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return () => resize.disconnect();
     gsap.registerPlugin(ScrollTrigger);
     const cleanups: (() => void)[] = [];
+    const responsive = gsap.matchMedia();
     const context = gsap.context(() => {
       const stage = root.querySelector(".ft-stage");
       gsap.from(root.querySelectorAll(".ft-top > *"), {
         y: 70, opacity: 0, duration: 1, stagger: .1, ease: "power3.out",
         scrollTrigger: { trigger: root.querySelector(".ft-top"), start: "top 90%", once: true, refreshPriority: -1 },
       });
-      root.querySelectorAll<HTMLElement>(".ft-line").forEach((line, index) => {
-        gsap.fromTo(line.querySelectorAll(".ft-l"), { y: 0, yPercent: 105, rotate: index ? -6 : 6 }, {
-          y: 0, yPercent: 0, rotate: 0, ease: "none", stagger: .06,
-          scrollTrigger: { trigger: stage, start: "top 95%", end: "bottom bottom", scrub: true, refreshPriority: -1 },
+      responsive.add({ mobile: "(max-width: 700px)", desktop: "(min-width: 701px)" }, media => {
+        const mobile = Boolean(media.conditions?.mobile);
+        const end = mobile ? "bottom 55%" : "bottom bottom";
+        const scrub = mobile ? 1.8 : true;
+        root.querySelectorAll<HTMLElement>(".ft-line").forEach((line, index) => {
+          gsap.fromTo(line.querySelectorAll(".ft-l"), { y: 0, yPercent: 105, rotate: index ? -6 : 6 }, {
+            y: 0, yPercent: 0, rotate: 0, ease: "none", stagger: .06,
+            scrollTrigger: { trigger: stage, start: "top 95%", end, scrub, refreshPriority: -1 },
+          });
+          gsap.fromTo(line, { xPercent: index ? 12 : -12 }, {
+            xPercent: 0, ease: "none",
+            scrollTrigger: { trigger: stage, start: "top bottom", end, scrub, refreshPriority: -1 },
+          });
         });
-        gsap.fromTo(line, { xPercent: index ? 12 : -12 }, {
-          xPercent: 0, ease: "none",
-          scrollTrigger: { trigger: stage, start: "top bottom", end: "bottom bottom", scrub: true, refreshPriority: -1 },
-        });
-      });
 
-      const path = root.querySelector<SVGPathElement>(".ft-route-draw");
-      const plane = root.querySelector<SVGGElement>(".ft-plane");
-      if (path && plane) {
-        const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-        ScrollTrigger.create({
-          trigger: stage, start: "top 90%", end: "bottom bottom", scrub: true, refreshPriority: -1,
-          onUpdate: self => {
-            const at = length * self.progress;
+        const path = root.querySelector<SVGPathElement>(".ft-route-draw");
+        const plane = root.querySelector<SVGGElement>(".ft-plane");
+        if (path && plane) {
+          const length = path.getTotalLength();
+          gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+          const drawRoute = (progress: number) => {
+            const at = length * progress;
             const point = path.getPointAtLength(at);
             const ahead = path.getPointAtLength(Math.min(length, at + 1));
             const angle = Math.atan2(ahead.y - point.y, ahead.x - point.x) * 180 / Math.PI;
             path.style.strokeDashoffset = `${length - at}`;
             plane.setAttribute("transform", `translate(${point.x} ${point.y}) rotate(${angle})`);
-          },
-        });
-      }
+          };
+          if (mobile) {
+            const flight = { progress: 0 };
+            gsap.to(flight, {
+              progress: 1, ease: "none",
+              scrollTrigger: { trigger: stage, start: "top 90%", end, scrub, refreshPriority: -1 },
+              onUpdate: () => drawRoute(flight.progress),
+            });
+          } else {
+            ScrollTrigger.create({
+              trigger: stage, start: "top 90%", end: "bottom bottom", scrub: true, refreshPriority: -1,
+              onUpdate: self => drawRoute(self.progress),
+            });
+          }
+        }
+      });
     }, root);
 
     // Letters swell toward the pointer.
@@ -148,6 +164,7 @@ export function JourneyFooter() {
 
     return () => {
       resize.disconnect();
+      responsive.revert();
       context.revert();
       cleanups.forEach(cleanup => cleanup());
     };
@@ -224,6 +241,10 @@ export function JourneyFooter() {
 
     <div className="j-shell ft-bottom">
       <span>© {new Date().getFullYear()} {office.company}</span>
+      <nav className="ft-legal" aria-label="Legal">
+        <Link href="/privacy">Privacy Policy</Link>
+        <Link href="/terms">Terms &amp; Conditions</Link>
+      </nav>
       <span>Dubai · Africa · Worldwide</span>
       <button type="button" className="ft-top-button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
         <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ft-ring" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0" /></defs><text><textPath href="#ft-ring">Back to top · Back to top · Back to top ·</textPath></text></svg>

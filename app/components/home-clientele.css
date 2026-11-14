@@ -337,6 +337,8 @@
 }
 
 @media (max-width: 700px) {
+  .e-clientele-visual img,
+  .e-clientele-visual:hover img { transform: none; }
   .e-clientele { padding: 36px 0 60px; }
   .home-page .e-clientele-heading h2 { font-size: clamp(52px, 12vw, 78px); line-height: .96; }
   .e-clientele-lead > p { font-size: 15px; }
@@ -350,13 +352,14 @@
   .e-clientele-name { font-size: 9px; }
   .e-clientele-sector { display: none; }
   .e-clientele-client:nth-child(10) {
+    grid-column: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 132px;
-    padding: 24px 14px 18px;
+    min-height: 142px;
+    padding: 26px 12px 18px;
   }
   .e-clientele-client:nth-child(10) .e-clientele-logo {
     width: min(94%, 160px);

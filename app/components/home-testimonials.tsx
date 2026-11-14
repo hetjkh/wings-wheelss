@@ -149,7 +149,7 @@ export function HomeTestimonials() {
               <span>{current.kind}</span><strong>{current.route.split(" → ").at(-1)}</strong>
               <span className="e-voices-photo-route">{current.route}</span>
             </div>
-            <span className="e-voices-photo-corner" aria-hidden="true">↗</span>
+            <span className="e-voices-photo-corner" aria-hidden="true"><Arrow diagonal /></span>
           </div>
         </div>
         <div className="e-voices-bottom">
@@ -159,7 +159,7 @@ export function HomeTestimonials() {
               <button type="button" className={index === active ? "is-active" : ""} aria-pressed={index === active} aria-controls="e-voices-current" aria-label={`Read ${voice.name}'s testimonial: ${voice.route}`} onClick={() => setActive(index)}>
                 <span className="e-voices-tab-number">{String(index + 1).padStart(2, "0")}</span>
                 <span><b>{voice.kind}</b><i>{voice.route}</i></span>
-                <span className="e-voices-tab-arrow" aria-hidden="true">↗</span>
+                <span className="e-voices-tab-arrow" aria-hidden="true"><Arrow diagonal /></span>
               </button>
             </li>)}
           </ol>

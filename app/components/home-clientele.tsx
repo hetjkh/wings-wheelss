@@ -47,14 +47,17 @@ export function HomeClientele() {
 
       <div className="e-clientele-stage">
         <figure className="e-clientele-visual" data-motion-image>
-          <TravelImage
-            reveal
-            src="/images/library/clientele-global-connections-v1.webp"
-            alt="A brass globe resting above dark sand, suggesting routes across the world"
-            fill
-            sizes="(max-width: 900px) 92vw, 34vw"
-            className="n-cover"
-          />
+          <picture>
+            <source media="(max-width: 700px)" srcSet="/images/library/clientele-global-connections-mobile-v1.webp" type="image/webp" />
+            <TravelImage
+              reveal
+              src="/images/library/clientele-global-connections-v1.webp"
+              alt="A brass globe resting above dark sand, suggesting routes across the world"
+              fill
+              sizes="(max-width: 900px) 92vw, 34vw"
+              className="n-cover"
+            />
+          </picture>
           <figcaption data-motion-reveal>
             <span>From Dubai</span>
             <strong>To the organisations that move the world.</strong>

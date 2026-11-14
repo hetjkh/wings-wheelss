@@ -30,6 +30,10 @@ export function Footer() {
     </div>
     <div className="shell footer-bottom">
       <span>© {new Date().getFullYear()} {office.company}. All rights reserved.</span>
+      <nav className="footer-legal" aria-label="Legal">
+        <Link href="/privacy">Privacy Policy</Link>
+        <Link href="/terms">Terms &amp; Conditions</Link>
+      </nav>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>;

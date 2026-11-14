@@ -287,8 +287,10 @@ img { max-width: 100%; }
 .footer-col { display: grid; align-content: start; gap: 10px; }
 .footer-col h3 { margin-bottom: 8px; font-family: var(--body); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
 .footer-col a:hover { color: var(--gold); }
-.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 13px; }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 20px; padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 13px; }
 .footer-bottom a:hover { color: var(--gold); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.footer-legal a { color: rgba(255, 255, 255, .65); }
 
 /* Dialog + forms */
 .enquiry-dialog { width: min(600px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 40px; border: 0; border-radius: 6px; background: #fff; color: var(--text); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .5); }
