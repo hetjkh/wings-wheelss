@@ -10,13 +10,11 @@ import { observeScrollThreshold } from "./observe-scroll-threshold";
 
 export function HomeExperience({ children }: { children: React.ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia(root);
     media.add({ desktop: "(min-width: 1000px) and (min-height: 760px)", mobileStory: "(max-width: 767px) and (min-height: 600px)", motion: "(prefers-reduced-motion: no-preference)" }, ({ conditions }) => {
-      const animate = conditions?.motion && !paused;
-      if (!animate) return;
+      if (!conditions?.motion) return;
       const desktop = conditions?.desktop;
       if (root.current?.querySelector(".n-hero")) {
         const hero = gsap.timeline({ scrollTrigger: { id: "home-hero", trigger: ".n-hero", start: "top top", end: () => `+=${window.innerHeight * (desktop ? .7 : .6)}`, pin: !!desktop, scrub: true, invalidateOnRefresh: true, refreshPriority: 4 } });
@@ -51,8 +49,8 @@ export function HomeExperience({ children }: { children: React.ReactNode }) {
     page?.addEventListener("home-layout-change", refresh);
     document.fonts.ready.then(() => { if (live) ScrollTrigger.refresh(); });
     return () => { live = false; page?.removeEventListener("home-layout-change", refresh); media.revert(); };
-  }, [paused]);
-  return <div ref={root} className="home-page" data-motion-paused={paused}>{children}<button type="button" className="n-motion" onClick={() => setPaused(!paused)} aria-pressed={paused} aria-label={paused ? "Enable animations" : "Pause animations"}>{paused ? "▷" : "Ⅱ"}<span>{paused ? "Play motion" : "Pause motion"}</span></button></div>;
+  }, []);
+  return <div ref={root} className="home-page">{children}</div>;
 }
 
 export function HomeHeader() {

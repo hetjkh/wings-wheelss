@@ -89,7 +89,7 @@ export function ClosingScene({
         .fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42)
         .fromTo(sideA, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .32)
         .fromTo(sideB, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .36)
-        .fromTo(headline, { y: 0 }, { y: () => -window.innerHeight * (mobile ? .08 : .13), duration: .25, ease: "power2.inOut" }, .72)
+        .fromTo(headline, { y: 0 }, { y: () => mobile ? 0 : -window.innerHeight * .13, duration: .25, ease: "power2.inOut" }, .72)
         .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
         .fromTo(chipEls, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
         .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
@@ -188,7 +188,7 @@ export function ServicesFinal({ variant = "lounge" }: { variant?: "lounge" | "co
     ticket={coastal ? "The scenic route · Your next chapter" : "The departure lounge · Your next chapter"}
     left={<>Where you&apos;re<br />going matters.</>}
     right={<>So does<br />the journey.</>}
-    mobileHeadline={<>Where you&apos;re going matters.<br /><em>So does the journey.</em></>}
+    mobileHeadline={<>Going matters.<br /><em>So does the journey.</em></>}
     photo={coastal ? "/images/services/coastal-journey-desktop-v1.webp" : "/images/home/departure-lounge-desktop-v2.webp"}
     photoMobile={coastal ? "/images/services/coastal-journey-mobile-v1.webp" : "/images/home/departure-lounge-mobile-v2.webp"}
     photoPosition={coastal ? "center center" : "65% bottom"}

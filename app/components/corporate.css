@@ -495,7 +495,7 @@
     pointer-events: none; user-select: none;
   }
   .k-verb-number { font-size: calc(var(--u) * .8); margin-bottom: calc(var(--u) * .5); }
-  .k-verb { font-size: clamp(52px, 16vw, 72px); letter-spacing: -.01em; }
+  .k-verb { max-width: 100%; font-size: clamp(36px, 10.5vw, 52px); letter-spacing: -.02em; }
   .k-verb-text { grid-column: auto; font-size: calc(var(--u) * 1.05); margin-top: calc(var(--u) * .75); }
 
   /* ── 02 · Services — horizontal swipe strip ── */

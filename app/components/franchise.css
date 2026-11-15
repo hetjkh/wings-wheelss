@@ -919,15 +919,29 @@
   .franchise-page :is(.f-markets, .f-advantage, .f-build, .f-partners, .f-roles, .f-steps, .f-faq) { padding: calc(var(--tear) + 40px) 0 48px; }
   .franchise-page .f-link { min-height: 40px; font-size: 10px; letter-spacing: .1em; }
 
-  .franchise-page .f-beyond { padding: calc(var(--tear) + 28px) 20px 40px; gap: 22px; }
+  .franchise-page .f-beyond { padding: calc(var(--tear) + 28px) 20px 40px; gap: 22px; overflow-x: clip; }
   .f-beyond-tile-main figcaption { left: 16px; right: 14px; bottom: 16px; font-size: 9px; }
   .f-beyond-tile-main figcaption strong { font-size: 22px; }
-  .f-beyond .f-beyond-grid { margin: 0; padding: 0; }
-  .f-beyond-copy { gap: 16px; }
-  .f-beyond-pillars { margin-top: 4px; }
-  .f-beyond-copy .au-cta { margin-top: 2px; }
-  .f-beyond-pillars li { padding: 14px 8px 0; font-size: 11px; }
-  .f-beyond-pillars span { font-size: clamp(18px, 5vw, 26px); letter-spacing: 0; }
+  .f-beyond .f-beyond-grid { margin: 0; padding: 0; max-width: 100%; min-width: 0; }
+  .f-beyond-copy { gap: 16px; max-width: 100%; min-width: 0; }
+  .f-beyond-copy .k-body { max-width: 100%; padding-right: 2px; }
+  .f-beyond-pillars { margin-top: 4px; min-width: 0; }
+  .f-beyond-copy .au-cta {
+    margin-top: 2px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5px 5px 5px 14px;
+    font-size: 10px;
+    letter-spacing: .08em;
+    white-space: normal;
+  }
+  .f-beyond-copy .au-cta-dot { flex-shrink: 0; width: 32px; height: 32px; min-width: 32px; min-height: 32px; }
+  .f-beyond-pillars li { padding: 14px 6px 0; font-size: 10px; }
+  .f-beyond-pillars li:not(:first-child) { padding-left: 8px; }
+  .f-beyond-pillars span { font-size: clamp(14px, 3.8vw, 18px); letter-spacing: 0; }
 
   .f-markets-aside { gap: 8px; }
   .f-markets-aside .k-body { margin-top: 0; }

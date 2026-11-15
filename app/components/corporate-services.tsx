@@ -8,10 +8,11 @@ import { EnquiryButton } from "./site-controls";
 
 export type CorporateService = { icon: IconKind; title: string; photo: string; photoMobile?: string; originalQuality?: boolean; alt: string; position?: string; items: string[]; service: string };
 
-/** Six services as one expanding strip: hover, click or arrow keys open a panel. */
+/** Six services as one expanding strip: hover, click, swipe or arrow keys open a panel. */
 export function CorporateServices({ services }: { services: CorporateService[] }) {
   const [active, setActive] = useState(0);
   const fine = useRef(false);
+  const strip = useRef<HTMLDivElement>(null);
   const panels = useRef<Array<HTMLDivElement | null>>([]);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -21,6 +22,47 @@ export function CorporateServices({ services }: { services: CorporateService[] }
       if (hoverTimer.current) clearTimeout(hoverTimer.current);
     };
   }, []);
+
+  // On the mobile swipe track, open whichever card is centered — no tap needed.
+  useEffect(() => {
+    const root = strip.current;
+    if (!root) return;
+
+    const mobile = matchMedia("(max-width: 767px)");
+    const sync = () => {
+      if (!mobile.matches) return;
+      const mid = root.scrollLeft + root.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      panels.current.forEach((panel, index) => {
+        if (!panel) return;
+        const center = panel.offsetLeft + panel.offsetWidth / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = index;
+        }
+      });
+      setActive(current => current === best ? current : best);
+    };
+
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(sync);
+    };
+
+    root.addEventListener("scroll", onScroll, { passive: true });
+    mobile.addEventListener("change", sync);
+    window.addEventListener("resize", sync);
+    sync();
+    return () => {
+      cancelAnimationFrame(frame);
+      root.removeEventListener("scroll", onScroll);
+      mobile.removeEventListener("change", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, [services.length]);
 
   const open = (index: number, immediate = false) => {
     if (hoverTimer.current) {
@@ -46,6 +88,7 @@ export function CorporateServices({ services }: { services: CorporateService[] }
   };
 
   return <div
+    ref={strip}
     className="k-strip"
     role="tablist"
     aria-label="Corporate travel services"

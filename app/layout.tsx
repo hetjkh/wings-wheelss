@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { DeferredChrome } from "./components/deferred-chrome";
+import { SocialOffer, OFFER_SEEN_KEY } from "./components/social-offer";
 import "./globals.css";
 import "./components/section-edges.css";
 
@@ -29,7 +31,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
-      <body><SmoothScroll />{children}<DeferredChrome /></body>
+      <body>
+        <Script
+          id="offer-preloader-seen"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem(${JSON.stringify(OFFER_SEEN_KEY)}))document.documentElement.classList.add("so-offer-seen")}catch(e){}`,
+          }}
+        />
+        <SocialOffer />
+        <SmoothScroll />
+        {children}
+        <DeferredChrome />
+      </body>
     </html>
   );
 }

@@ -149,7 +149,6 @@ export function HomeTestimonials() {
               <span>{current.kind}</span><strong>{current.route.split(" → ").at(-1)}</strong>
               <span className="e-voices-photo-route">{current.route}</span>
             </div>
-            <span className="e-voices-photo-corner" aria-hidden="true"><Arrow diagonal /></span>
           </div>
         </div>
         <div className="e-voices-bottom">

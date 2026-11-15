@@ -121,9 +121,19 @@
     --win-w: min(52vw, 220px); --win-h: min(46svh, calc(var(--win-w) * 1.55));
     height: 100svh; min-height: 640px; gap: 0; padding-block: calc(var(--tear) + 18px) 12px;
   }
+  .sv-final.is-scene .sv-bezel { top: 58%; }
+  .sv-final.is-scene .sv-blind-handle { bottom: calc(42% - var(--win-h) / 2 + 22px); }
   .sv-final.is-scene .sv-blind { display: block; }
-  .sv-final.is-scene .sv-headline { position: absolute; left: 0; right: 0; top: 25%; font-size: clamp(30px, 8vw, 44px); }
-  .sv-final.is-scene .sv-pass { position: absolute; left: 0; right: 0; bottom: 12px; }
+  .sv-final.is-scene .sv-headline {
+    position: absolute; left: 0; right: 0; z-index: 5;
+    top: max(88px, calc(env(safe-area-inset-top, 0px) + 76px));
+    font-size: clamp(26px, 6.5vw, 36px);
+  }
+  .sv-final.is-scene .sv-pass {
+    position: absolute; left: 0; right: 0; bottom: 12px;
+    max-height: calc(100svh - 168px);
+    overflow-y: auto;
+  }
 }
 @media (max-width: 560px) {
   .sv-route { grid-template-columns: 1fr 1fr; gap: 12px; }

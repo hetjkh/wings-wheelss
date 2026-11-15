@@ -51,7 +51,7 @@ function DestinationChapter() {
         {places.map((place, index) => <Link className="e-destination" key={place.name} href={place.href} data-cursor="Explore">
           <div className="e-destination-frame">
             <div className="e-destination-photo" data-motion-image><Image reveal src={place.photo} alt={place.alt} fill sizes="(max-width: 800px) 90vw, 43vw" className="n-cover" style={{ objectPosition: place.position }} /></div>
-            <span className="e-destination-number">0{index + 1}</span><span className="e-destination-arrow" aria-hidden="true">↗</span><span className="e-destination-region">{place.region}</span>
+            <span className="e-destination-number">0{index + 1}</span><span className="e-destination-arrow" aria-hidden="true"><Arrow diagonal /></span><span className="e-destination-region">{place.region}</span>
           </div>
           <div className="e-destination-caption" data-motion-stagger><h3>{place.name}</h3><p>{place.line}</p></div>
         </Link>)}

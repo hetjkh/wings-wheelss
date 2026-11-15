@@ -54,7 +54,8 @@
 .e-destination-photo img { transition: scale .8s cubic-bezier(.2,.7,.2,1); }
 .e-destination:hover img { scale: 1.045; }
 .e-destination-number { position: absolute; z-index: 1; top: 20px; left: 24px; font: 400 25px var(--heading); color: white; text-shadow: 0 1px 12px #25271866; }
-.e-destination-arrow { position: absolute; z-index: 1; right: 20px; top: 20px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #f4efe5; font-size: 27px; transition: rotate .3s; }
+.e-destination-arrow { position: absolute; z-index: 1; right: 20px; top: 20px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #f4efe5; color: var(--ink); transition: rotate .3s; }
+.e-destination-arrow svg { display: block; width: 18px; height: 18px; }
 .e-destination:hover .e-destination-arrow { rotate: 45deg; }
 .e-destination-region { position: absolute; z-index: 1; bottom: 24px; left: 24px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #fff9ed; }
 .e-destination-caption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 19px; }
