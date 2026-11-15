@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { office } from "./data";
 import "./social-offer.css";
 
-const SEEN_KEY = "ww-social-offer-seen";
+export const OFFER_SEEN_KEY = "ww-social-offer-seen";
 
 const channels: { label: string; handle: string; href: string; icon: ReactNode }[] = [
   {
@@ -43,9 +43,9 @@ export function SocialOffer() {
   const [followed, setFollowed] = useState<string[]>([]);
 
   useEffect(() => {
-    if (sessionStorage.getItem(SEEN_KEY)) return;
+    if (sessionStorage.getItem(OFFER_SEEN_KEY)) return;
     const timer = window.setTimeout(() => {
-      sessionStorage.setItem(SEEN_KEY, "1");
+      sessionStorage.setItem(OFFER_SEEN_KEY, "1");
       dialog.current?.showModal();
     }, 1200);
     return () => window.clearTimeout(timer);
