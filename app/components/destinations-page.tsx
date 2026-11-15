@@ -19,7 +19,7 @@ import "./destinations-mobile.css";
 import "./destinations-phone-scenes.css";
 
 const moods: Mood[] = [
-  { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/library/dubai-marina.webp", alt: "Modern towers and waterfront buildings at Dubai Marina" },
+  { title: "Business & City", text: "Meetings, exhibitions and international city travel.", icon: "briefcase", photo: "/images/library/destinations-business-dubai-v2.webp", alt: "Burj Khalifa and the Downtown Dubai skyline above turquoise water in warm afternoon light", position: "center" },
   { title: "Beach & Escape", text: "Island stays, resorts and slower journeys.", icon: "sun", photo: "/images/library/maldives-reef.webp", alt: "Colourful fish and coral beneath the clear Maldivian sea" },
   { title: "Culture & Discovery", text: "Cities, heritage, food and local experiences.", icon: "compass", photo: "/images/library/destinations-rome.webp", alt: "The Colosseum in Rome in warm evening light" },
   { title: "Safari & Nature", text: "Wildlife, landscapes and extraordinary environments.", icon: "leaf", photo: "/images/library/south-africa-safari.webp", alt: "Safari guests watching lions from an open vehicle in South Africa", position: "center" },

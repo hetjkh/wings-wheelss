@@ -55,7 +55,7 @@ const teamList: { icon: IconKind; label: string }[] = [
 ];
 
 const rings = [
-  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/library/dubai-marina.webp", position: "center" },
+  { title: "UAE base", scope: "Where we start", text: "Regional coordination and international access.", photo: "/images/library/corporate-uae-base-dubai-v2.webp", position: "center" },
   { title: "Africa network", scope: "Where we know the ground", text: "Local knowledge and on-ground connections.", photo: "/images/library/corporate-africa-network-v2.webp", position: "85% center" },
   { title: "Global reach", scope: "Wherever you need to be", text: "International travel planning and coordination.", photo: "/images/library/sydney-harbour.webp", position: "center" },
 ];

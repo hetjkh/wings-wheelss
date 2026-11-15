@@ -6,14 +6,23 @@ import { MaskedHero } from "./masked-hero";
 import { BlogClosing } from "./blog-closing";
 import { Arrow, TravelIcon } from "./icons";
 import { BlogJournal } from "./blog-journal";
-import { blogPosts } from "./blog-posts";
+import type { BlogPost } from "./blog-posts";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./blog.css";
 
-export default function BlogPage() {
-  const cover = blogPosts.find(post => post.slug === "a-slower-europe")!;
-  const picks = blogPosts.filter(post => ["east-africa-seasons", "nairobi-to-dubai"].includes(post.slug));
+export default function BlogPage({ posts }: { posts: BlogPost[] }) {
+  const cover = posts.find(post => post.slug === "a-slower-europe") ?? posts[0];
+  const picks = posts.filter(post => ["east-africa-seasons", "nairobi-to-dubai"].includes(post.slug));
+  const pickList = picks.length >= 2 ? picks : posts.slice(0, 2);
+
+  if (!cover) {
+    return <div className="journey-page blog-page b-editorial">
+      <JourneyHeader introId="journal" />
+      <main><div className="b-shell" style={{ padding: "6rem 0" }}><h1>The Journal</h1><p>Stories will appear here soon.</p></div></main>
+      <JourneyFooter />
+    </div>;
+  }
 
   return <div className="journey-page blog-page b-editorial">
     <a className="skip-link" href="#journal">Skip to stories</a>
@@ -42,13 +51,13 @@ export default function BlogPage() {
             <aside className="b-editors" aria-labelledby="editors-heading">
               <div className="b-editors-intro"><span className="b-small">A note from the team</span><h2 id="editors-heading">Go somewhere.<br /><em>Feel something.</em></h2><p>The places that stay with you. The details that make a difference. Stories from a life in travel.</p></div>
               <div className="b-picks-label b-small"><span>On our reading list</span><TravelIcon kind="document" size={16} /></div>
-              {picks.map((post, index) => <Link className="b-pick" key={post.slug} href={`/blog/${post.slug}`}><span className="b-pick-photo"><Image src={post.image} alt={post.alt} fill sizes="100px" /></span><span className="b-pick-copy"><span className="b-small">0{index + 1} / {post.category}</span><span className="b-pick-title">{post.title}</span><span className="b-pick-read">{post.read} read <Arrow diagonal /></span></span></Link>)}
+              {pickList.map((post, index) => <Link className="b-pick" key={post.slug} href={`/blog/${post.slug}`}><span className="b-pick-photo"><Image src={post.image} alt={post.alt} fill sizes="100px" /></span><span className="b-pick-copy"><span className="b-small">0{index + 1} / {post.category}</span><span className="b-pick-title">{post.title}</span><span className="b-pick-read">{post.read} read <Arrow diagonal /></span></span></Link>)}
               <div className="b-editors-signoff"><span>See you out there.</span><TravelIcon kind="plane" size={28} /></div>
             </aside>
           </div>
         </div>
       </section>
-      <section className="b-journal j-torn-top" id="journal" aria-labelledby="journal-heading"><div className="b-shell"><BlogJournal /></div></section>
+      <section className="b-journal j-torn-top" id="journal" aria-labelledby="journal-heading"><div className="b-shell"><BlogJournal posts={posts} /></div></section>
       <section className="b-spotlight j-torn-top" aria-labelledby="spotlight-heading">
         <div className="b-spotlight-photo"><Image src="/images/library/blog-east-africa-v2.webp" alt="Giraffes roaming the Maasai Mara's green and golden grasslands in morning light" fill sizes="(max-width: 800px) 100vw, 57vw" /><span className="b-photo-coordinate b-small"><TravelIcon kind="pin" size={14} /> Maasai Mara, Kenya</span></div>
         <div className="b-spotlight-copy"><span className="b-small">The destination edit / 01</span><TravelIcon kind="sun" size={52} /><h2 id="spotlight-heading">Less rush.<br />More <em>wild.</em></h2><p>Some places deserve more than a pin on a map. From Nairobi mornings to the open plains, make a little more room for East Africa.</p><Link className="b-text-link" href="/blog/east-africa-seasons">Find your moment in East Africa <Arrow diagonal /></Link><div className="b-spotlight-foot b-small"><span>City. Safari. Coast.</span><span>Africa, at your pace.</span></div></div>

@@ -132,13 +132,14 @@
 .b-article-figure figcaption { display: flex; justify-content: space-between; gap: 20px; padding-top: 14px; font-size: 12px; line-height: 1.5; }
 .b-article-figure figcaption > .b-small { font-size: 9px; text-align: right; }
 .b-article-body { z-index: 2; padding: calc(var(--tear) + 70px) 0 0; background: var(--paper); scroll-margin-top: 90px; }
-.b-article-layout { display: grid; grid-template-columns: 1fr 2.5fr .5fr; gap: 55px; align-items: start; }
+.b-article-layout { display: grid; grid-template-columns: 1fr 2.5fr .5fr; gap: 55px; align-items: start; min-width: 0; }
+.b-article-layout > * { min-width: 0; }
 .b-article-margin { position: sticky; top: 100px; display: flex; flex-direction: column; align-items: flex-start; gap: 25px; padding-top: 7px; }
 .b-article-margin > .b-small, .b-article-margin > svg { color: var(--b-accent); }
 .b-article-margin p { font-size: 16px; line-height: 1.7; }
 .b-article-margin .b-text-link { font-size: 12px; gap: 12px; }
-.b-prose { max-width: 740px; }
-.b-prose > div > p { font-size: 21px; line-height: 1.85; margin-bottom: 28px; color: var(--ink); }
+.b-prose { max-width: 740px; min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+.b-prose > div > p { font-size: 21px; line-height: 1.85; margin-bottom: 28px; color: var(--ink); overflow-wrap: anywhere; word-break: break-word; }
 .b-prose > div:first-child > p::first-letter { float: left; font: 400 89px/.8 var(--heading); padding: 10px 12px 0 0; color: var(--b-accent); }
 .b-prose blockquote { position: relative; margin: 45px 0; padding: 30px 0 30px 35px; border-block: 1px solid var(--b-rule); font: italic 400 clamp(30px, 3vw, 42px)/1.25 Georgia, serif; letter-spacing: -.035em; color: var(--b-accent); }
 .b-prose blockquote > span { position: absolute; top: 22px; left: 0; font-size: 55px; }

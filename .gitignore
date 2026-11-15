@@ -22,6 +22,9 @@
 # production
 /build
 
+# uploaded blog images (stored on VPS disk)
+/uploads/
+
 # misc
 .DS_Store
 *.pem

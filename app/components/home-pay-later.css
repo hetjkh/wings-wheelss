@@ -30,11 +30,13 @@
 .home-page .e-pay-heading h2 { font-size: clamp(60px, 7.5vw, 130px); line-height: .9; letter-spacing: -.025em; }
 .e-pay-heading h2 .e-line:last-child { color: #9e8f79; }
 .e-pay-heading > p { max-width: 27em; padding-bottom: 6px; font-size: clamp(17px, 1.4vw, 22px); line-height: 1.5; }
-.e-pay-providers { display: grid; grid-template-columns: 1fr 1fr; margin-block: 60px; padding-block: 20px; }
-.e-pay-provider { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 15px 9%; }
+.e-pay-providers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block: 60px; padding-block: 20px; }
+.e-pay-provider { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 15px 8%; }
 .e-pay-provider + .e-pay-provider { border-left: 1px solid #cdbfa9; }
 .e-pay-provider img { display: block; width: 100%; height: auto; max-width: 430px; object-fit: contain; }
 .e-pay-tamara { mix-blend-mode: multiply; }
+.e-pay-provider-ziina { padding: 10px 6%; }
+.e-pay-ziina { max-width: 280px; border-radius: 18px; }
 .e-pay-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 45px; }
 .e-pay-steps li { border-top: 1px solid #cdbfa9; padding-top: 22px; }
 .e-pay-step-number { display: block; margin-bottom: 20px; font: 400 11px/1 var(--body); letter-spacing: .12em; color: #8d7558; }
@@ -67,9 +69,10 @@
   .e-pay-action p { max-width: 25em; }
 }
 @media (max-width: 700px) {
-  .e-pay-providers { grid-template-columns: 1fr 1fr; gap: 0; }
-  .e-pay-provider { padding: 12px; }
-  .e-pay-provider + .e-pay-provider { border-top: 0; border-left: 1px solid #cdbfa9; padding: 12px; }
+  .e-pay-providers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .e-pay-provider { padding: 10px; }
+  .e-pay-provider + .e-pay-provider { border-top: 0; border-left: 1px solid #cdbfa9; padding: 10px; }
+  .e-pay-ziina { max-width: 140px; border-radius: 12px; }
   .e-pay-steps { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 330px); gap: 16px; margin-inline: -20px; padding: 0 20px 18px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: thin; }
   .e-pay-steps li { min-height: 175px; padding: 20px 18px; border: 1px solid #cdbfa9; scroll-snap-align: start; }
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Arrow } from "./icons";
 import tabby from "../../public/images/Tabby.webp";
 import tamara from "../../public/images/Tamara-En.webp";
+import ziina from "../../public/brands/ZIINA Geometric Logo on Purple Aura.png";
 import "./home-pay-later.css";
 
 const steps = [
@@ -24,14 +25,17 @@ export function HomePayLater() {
             <span className="e-line"><span>Pay later.</span></span>
             <span className="e-line"><span>Fly sooner.</span></span>
           </h2>
-          <p data-editorial-reveal>Book your flight tickets today and spread the cost over easy, interest-free installments with Tabby and Tamara. No waiting—secure your seat now and pay at your own pace.</p>
+          <p data-editorial-reveal>Book your flight tickets today and spread the cost over easy, interest-free installments with Tabby, Tamara and Ziina. No waiting—secure your seat now and pay at your own pace.</p>
         </div>
         <div className="e-pay-providers" aria-label="Payment options">
           <div className="e-pay-provider" data-editorial-reveal>
-            <Image src={tabby} alt="Tabby" sizes="(max-width: 700px) 70vw, 32vw" className="e-pay-tabby" />
+            <Image src={tabby} alt="Tabby" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-tabby" />
           </div>
           <div className="e-pay-provider" data-editorial-reveal>
-            <Image src={tamara} alt="Tamara" sizes="(max-width: 700px) 70vw, 32vw" className="e-pay-tamara" />
+            <Image src={tamara} alt="Tamara" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-tamara" />
+          </div>
+          <div className="e-pay-provider e-pay-provider-ziina" data-editorial-reveal>
+            <Image src={ziina} alt="Ziina" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-ziina" />
           </div>
         </div>
         <ol className="e-pay-steps">
@@ -45,7 +49,7 @@ export function HomePayLater() {
         </ol>
         <div className="e-pay-action" data-motion-stagger>
           <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-cursor="Let's plan"><span>Book your tickets</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
-          <p>Ask us about paying with Tabby or Tamara when you book.</p>
+          <p>Ask us about paying with Tabby, Tamara or Ziina when you book.</p>
         </div>
       </div>
     </section>
