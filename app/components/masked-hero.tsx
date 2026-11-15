@@ -102,6 +102,15 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
       const desktop = Boolean(context.conditions.desktop);
       const cleanups: (() => void)[] = [];
       const lineCount = one(".au-hero-title")?.querySelectorAll(".au-line").length || 1;
+      // Safari often ignores mask repaints when only --map changes; write mask-size directly.
+      const paintMask = (targets: gsap.TweenTarget) => {
+        gsap.utils.toArray<HTMLElement>(targets).forEach(el => {
+          const map = Math.max(1, Number(gsap.getProperty(el, "--map")) || 1);
+          const size = desktop ? `auto ${90 * map}%` : `${95 * map}% auto`;
+          el.style.setProperty("-webkit-mask-size", size);
+          el.style.setProperty("mask-size", size);
+        });
+      };
 
       if (context.conditions.mobile) {
         const photo = one(".au-hero-photo");
@@ -115,7 +124,13 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
               invalidateOnRefresh: true,
             },
           });
-          mobileReveal.fromTo(photo, { "--map": 1 }, { "--map": 34, ease: "none", duration: 1 }, 0)
+          paintMask(photo);
+          mobileReveal.fromTo(photo, { "--map": 1 }, {
+            "--map": 34,
+            ease: "none",
+            duration: 1,
+            onUpdate: () => paintMask(photo),
+          }, 0)
             .to(section, { "--mobile-copy": "#fff8e9", "--mobile-accent": "#e6d3ae", "--mobile-inverse": "#3d2d20", ease: "none", duration: .12 }, .04);
           if (page) mobileReveal.to(page, { "--hero-fg": "#fff8e9", ease: "none", duration: .12 }, .04);
         }
@@ -154,7 +169,12 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             onToggle: self => section.classList.toggle("is-pinned", self.isActive),
           },
         })
-          .fromTo(q(".au-hero-photo, .au-hero-ghost"), { "--map": 1 }, { "--map": 34, ease: "power2.in", duration: 1 }, 0)
+          .fromTo(q(".au-hero-photo, .au-hero-ghost"), { "--map": 1 }, {
+            "--map": 34,
+            ease: "power2.in",
+            duration: 1,
+            onUpdate: () => paintMask(q(".au-hero-photo, .au-hero-ghost")),
+          }, 0)
           .fromTo(page, { "--hero-fg": "#3d2d20" }, { "--hero-fg": "#fff8e9", ease: "none", duration: .25 }, .3)
           .fromTo(heroInner, { scale: 1.16 }, { scale: 1, ease: "none", duration: 1 }, 0)
           .fromTo(one(".au-hero-shade"), { opacity: .35 }, { opacity: 1, ease: "none", duration: 1 }, 0)

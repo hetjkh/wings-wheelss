@@ -1,9 +1,14 @@
 /* Shared About-style header: map mask, centred type, pill button. */
+@property --map {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
 .au-hero {
   --u: var(--type-unit, 16px);
   --ink: #3d2d20; --cream: #fff8e9; --sand: #e6d3ae; --ochre: #a18d77; --paper: #f7f1e6; --text: #514235;
   --ease: cubic-bezier(.22, 1, .36, 1);
-  height: 100svh; min-height: max(640px, 100svh); overflow: clip; isolation: isolate;
+  height: 100svh; min-height: max(640px, 100svh); overflow: hidden; isolation: isolate;
   background: #f7f1e6; color: var(--ink);
 }
 /* GSAP writes an inline z-index on the spacer. While the hero is held, keep the
@@ -55,8 +60,18 @@
 .au-hero-photo, .au-hero-ghost {
   --map: 1;
   position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-  -webkit-mask: url('/images/about/africa-arabia-mask.svg') 50% 54% / auto calc(90% * var(--map)) no-repeat;
-  mask: url('/images/about/africa-arabia-mask.svg') 50% 54% / auto calc(90% * var(--map)) no-repeat;
+  /* Longhands + compositor hint: Safari often skips mask repaints when only --map changes. */
+  -webkit-mask-image: url('/images/about/africa-arabia-mask.svg');
+  -webkit-mask-position: 50% 54%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: auto calc(90% * var(--map));
+  mask-image: url('/images/about/africa-arabia-mask.svg');
+  mask-position: 50% 54%;
+  mask-repeat: no-repeat;
+  mask-size: auto calc(90% * var(--map));
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .au-hero-photo { z-index: 2; }
 .au-hero-ghost { z-index: 3; color: var(--cream); }
@@ -118,7 +133,11 @@
 @media (max-width: 991px) {
   .journey-page:has(.au-hero), .about-page:has(.au-hero), .home-page:has(.au-hero), .partnership-page:has(.au-hero), .corporate-page:has(.au-hero) { --hero-fg: #3d2d20; }
   .journey-page .au-hero.s-hero, .home-page .au-hero.s-hero, .au-hero.s-hero { --mobile-copy: #3d2d20; --mobile-accent: #a18d77; --mobile-inverse: #f7f1e6; height: auto; min-height: 100svh; display: block; padding-bottom: 0; background: var(--paper); color: var(--mobile-copy); }
-  .au-hero.s-hero .au-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; margin: 0; --map: 1; -webkit-mask-size: calc(95% * var(--map)) auto; mask-size: calc(95% * var(--map)) auto; }
+  .au-hero.s-hero .au-hero-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; margin: 0; --map: 1;
+    -webkit-mask-size: calc(95% * var(--map)) auto;
+    mask-size: calc(95% * var(--map)) auto;
+  }
   .au-hero.s-hero .au-hero-photo-inner { inset: 0; }
   .au-hero.s-hero .au-hero-shade, .au-hero.s-hero.au-hero-settle-bottom .au-hero-shade { opacity: 1; background: linear-gradient(0deg, #100c0af2 0%, #100c0ab8 32%, #100c0a55 58%, #100c0a18 78%), linear-gradient(180deg, #100c0a80, transparent 30%); }
   .au-hero.s-hero .au-hero-photo::after { height: min(36%, 220px); }
@@ -147,5 +166,9 @@
 @media (max-width: 991px) and (prefers-reduced-motion: reduce) {
   .journey-page:has(.au-hero), .about-page:has(.au-hero), .home-page:has(.au-hero), .partnership-page:has(.au-hero), .corporate-page:has(.au-hero) { --hero-fg: #fff8e9; }
   .journey-page .au-hero.s-hero, .home-page .au-hero.s-hero, .au-hero.s-hero { --mobile-copy: #fff8e9; --mobile-accent: #e6d3ae; --mobile-inverse: #3d2d20; }
-  .au-hero.s-hero .au-hero-photo { --map: 34; }
+  .au-hero.s-hero .au-hero-photo {
+    --map: 34;
+    -webkit-mask-size: calc(95% * 34) auto;
+    mask-size: calc(95% * 34) auto;
+  }
 }

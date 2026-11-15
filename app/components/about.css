@@ -48,14 +48,23 @@
 @keyframes au-marquee { to { transform: translateX(-50%); } }
 
 /* 1. Hero: the photo starts inside a map of Africa and the Gulf, then the map grows past the frame. */
-.au-hero { z-index: 1; height: 100svh; min-height: 640px; overflow: clip; isolation: isolate; background: #f7f1e6; color: var(--ink); }
+.au-hero { z-index: 1; height: 100svh; min-height: 640px; overflow: hidden; isolation: isolate; background: #f7f1e6; color: var(--ink); }
 .about-page .au-hero.is-pinned { z-index: 8; }
 /* The photo and the cream copy share one mask so their map edges always line up. */
 .au-hero-photo, .au-hero-ghost {
   --map: 1;
   position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-  -webkit-mask: url('/images/about/africa-arabia-mask.svg') 50% 54% / auto calc(90% * var(--map)) no-repeat;
-  mask: url('/images/about/africa-arabia-mask.svg') 50% 54% / auto calc(90% * var(--map)) no-repeat;
+  -webkit-mask-image: url('/images/about/africa-arabia-mask.svg');
+  -webkit-mask-position: 50% 54%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: auto calc(90% * var(--map));
+  mask-image: url('/images/about/africa-arabia-mask.svg');
+  mask-position: 50% 54%;
+  mask-repeat: no-repeat;
+  mask-size: auto calc(90% * var(--map));
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .au-hero-photo { z-index: 2; }
 .au-hero-ghost { z-index: 3; color: var(--cream); }
