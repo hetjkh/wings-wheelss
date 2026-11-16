@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getImageProps } from "next/image";
-import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
 import { PillCta } from "./about-cta";
 import { office } from "./data";
@@ -14,9 +13,56 @@ export type ClosingChip = { icon: IconKind; label: string };
 
 type ClosingAction = { label: string; href?: string; service?: string };
 
+function ClosingPhoto({
+  photo,
+  photoMobile,
+  photoPosition,
+}: {
+  photo: string;
+  photoMobile?: string;
+  photoPosition?: string;
+}) {
+  const desktop = getImageProps({
+    src: photo,
+    alt: "",
+    fill: true,
+    sizes: "(min-width: 992px) 100vw, 1px",
+    quality: 75,
+  }).props;
+  const mobile = photoMobile
+    ? getImageProps({
+        src: photoMobile,
+        alt: "",
+        fill: true,
+        sizes: "(max-width: 991px) 100vw, 1px",
+        quality: 75,
+      }).props
+    : null;
+  const { srcSet: _srcSet, ...img } = desktop;
+  const style = {
+    ...img.style,
+    position: "absolute" as const,
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover" as const,
+    objectPosition: photoPosition ?? "center 40%",
+  };
+
+  if (!mobile) {
+    return <img {...img} alt="" decoding="async" loading="eager" fetchPriority="high" style={style} />;
+  }
+
+  return <picture>
+    <source media="(max-width: 991px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+    <source media="(min-width: 992px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+    <img {...img} alt="" decoding="async" loading="eager" fetchPriority="high" style={style} />
+  </picture>;
+}
+
 /** The closing scene: a cabin window opens onto the destination, then the boarding pass arrives. */
 export function ClosingScene({
-  chapter, ticket, left, right, photo, photoMobile, photoPosition, originalQuality = false, pass = ["Boarding pass", "One journey · Every part"],
+  chapter, ticket, left, right, photo, photoMobile, photoPosition, originalQuality: _originalQuality = false, pass = ["Boarding pass", "One journey · Every part"],
   from, to, text, mobileHeadline, mobileText, chips, action, whatsapp = "WhatsApp our team",
 }: {
   chapter: string;
@@ -26,6 +72,7 @@ export function ClosingScene({
   photo: string;
   photoMobile?: string;
   photoPosition?: string;
+  /** Deprecated: images always go through the optimizer for faster loads. */
   originalQuality?: boolean;
   pass?: [string, string];
   from: string;
@@ -38,11 +85,19 @@ export function ClosingScene({
   whatsapp?: string | false;
 }) {
   const section = useRef<HTMLElement>(null);
-  const mobileImage = photoMobile ? getImageProps({ src: photoMobile, alt: "", fill: true, sizes: "(max-width: 991px) 100vw, 1px", quality: 75 }).props : null;
+  const [showPhoto, setShowPhoto] = useState(false);
 
   useEffect(() => {
     const root = section.current;
     if (!root) return;
+
+    const near = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      setShowPhoto(true);
+      near.disconnect();
+    }, { rootMargin: "60% 0px" });
+    near.observe(root);
+
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia(root);
 
@@ -54,7 +109,7 @@ export function ClosingScene({
       const mobile = !!context.conditions.mobile;
       const view = root.querySelector<HTMLElement>(".sv-view");
       const bezel = root.querySelector<HTMLElement>(".sv-bezel");
-      const photoEl = root.querySelector<HTMLElement>(".sv-view img");
+      const photoLayer = root.querySelector<HTMLElement>(".sv-view-photo");
       const shade = root.querySelector<HTMLElement>(".sv-view-shade");
       const blind = root.querySelector<HTMLElement>(".sv-blind");
       const sideA = root.querySelector<HTMLElement>(".sv-side-a");
@@ -63,41 +118,75 @@ export function ClosingScene({
       const passWrap = root.querySelector<HTMLElement>(".sv-pass");
       const chipEls = root.querySelectorAll<HTMLElement>(".sv-chip");
       const routeFill = root.querySelector<HTMLElement>(".sv-route-fill");
-      if (!view || !bezel || !photoEl || !shade || !blind || !sideA || !sideB || !headline || !passWrap || !routeFill) return;
-      const inset = () => {
+      if (!view || !bezel || !photoLayer || !shade || !blind || !sideA || !sideB || !headline || !passWrap || !routeFill) return;
+
+      const windowClip = () => {
         const box = bezel.getBoundingClientRect();
         const frame = root.getBoundingClientRect();
         const y = box.top - frame.top;
         const x = box.left - frame.left;
         return `inset(${y}px ${frame.width - x - box.width}px ${frame.height - y - box.height}px ${x}px round ${box.width / 2}px)`;
       };
+
       root.classList.add("is-scene");
+      root.classList.remove("is-lit");
+      let startClip = windowClip();
+      view.style.clipPath = startClip;
+
       const timeline = gsap.timeline({
-        defaults: { ease: "none" },
+        defaults: { ease: "none", force3D: true },
         scrollTrigger: {
-          trigger: root, start: "top top", end: mobile ? "+=145%" : "+=170%", pin: true, scrub: true,
-          anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: -1,
+          trigger: root,
+          start: "top top",
+          end: mobile ? "+=130%" : "+=170%",
+          pin: true,
+          // Mobile: scrub lag smooths touch jitter; desktop stays tight.
+          scrub: mobile ? .55 : true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          refreshPriority: -1,
+          fastScrollEnd: true,
+          onRefresh: () => {
+            startClip = windowClip();
+            if (!ScrollTrigger.isInViewport(root) || (timeline.scrollTrigger?.progress ?? 0) < .01) {
+              view.style.clipPath = startClip;
+            }
+          },
+          onUpdate: mobile ? self => {
+            root.classList.toggle("is-lit", self.progress >= .42);
+          } : undefined,
         },
       });
 
+      const scaleFrom = mobile ? 1.18 : 1.35;
+
       timeline
-        .fromTo(blind, { yPercent: 0 }, { yPercent: -100, duration: .26, ease: "power1.inOut" }, .02)
-        .fromTo(photoEl, { scale: 1.35 }, { scale: 1, duration: .8 }, 0)
-        .fromTo(view, { clipPath: inset }, { clipPath: "inset(0px 0px 0px 0px round 0px)", duration: .42, ease: "power2.inOut" }, .3)
-        .fromTo(bezel, { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.6, duration: .2 }, .3)
-        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: .3 }, .4)
-        .fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42)
+        .fromTo(blind, { yPercent: 0 }, { yPercent: -100, duration: .26, ease: "power1.inOut" }, .02);
+
+      timeline
+        .fromTo(photoLayer, { scale: scaleFrom }, { scale: 1, duration: .8 }, 0)
+        .fromTo(view, { clipPath: () => startClip }, { clipPath: "inset(0px 0px 0px 0px round 0px)", duration: .42, ease: "power2.inOut" }, .3)
+        .fromTo(bezel, { opacity: 1, scale: 1 }, { opacity: 0, scale: mobile ? 1.35 : 1.6, duration: .2 }, .3)
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: .3 }, .4);
+
+      if (!mobile) {
+        timeline.fromTo(root, { "--fg": "#3d2d20", "--fg-soft": "#8a7760" }, { "--fg": "#fff8e9", "--fg-soft": "#ecd9ad", duration: .2 }, .42);
+      }
+
+      timeline
         .fromTo(sideA, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .32)
         .fromTo(sideB, { y: 18, opacity: .7 }, { y: 0, opacity: 1, duration: .35 }, .36)
         .fromTo(headline, { y: 0 }, { y: () => mobile ? 0 : -window.innerHeight * .13, duration: .25, ease: "power2.inOut" }, .72)
         .fromTo(passWrap, { yPercent: 130, rotate: -5, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: .25, ease: "power3.out" }, .74)
         .fromTo(chipEls, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .12, stagger: .015 }, .86)
         .fromTo(routeFill, { scaleX: 0 }, { scaleX: 1, duration: .18 }, .84)
-        // Leave the completed pass readable before the following section enters.
-        .to({}, { duration: .35 });
+        .to({}, { duration: mobile ? .28 : .35 });
 
       requestAnimationFrame(() => ScrollTrigger.refresh());
-      return () => root.classList.remove("is-scene");
+      return () => {
+        root.classList.remove("is-scene", "is-lit");
+        view.style.removeProperty("clip-path");
+      };
     });
 
     const passCard = root.querySelector<HTMLElement>(".sv-pass-card");
@@ -120,15 +209,20 @@ export function ClosingScene({
       cleanups.push(() => { passCard.removeEventListener("pointermove", move); passCard.removeEventListener("pointerleave", leave); });
     }
 
-    return () => { media.revert(); cleanups.forEach(cleanup => cleanup()); };
+    return () => { near.disconnect(); media.revert(); cleanups.forEach(cleanup => cleanup()); };
   }, []);
+
+  // Re-bind timeline targets once the deferred photo mounts.
+  useEffect(() => {
+    if (!showPhoto) return;
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  }, [showPhoto]);
 
   return <section className="sv-final j-torn-top" ref={section} aria-labelledby="final-heading">
     <div className="sv-view">
-      <picture>
-        {mobileImage ? <source media="(max-width: 991px)" srcSet={originalQuality ? photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
-        <Image src={photo} alt="" fill unoptimized={originalQuality} lockSizes={originalQuality} sizes="100vw" quality={75} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
-      </picture>
+      <div className="sv-view-photo" aria-hidden="true">
+        {showPhoto ? <ClosingPhoto photo={photo} photoMobile={photoMobile} photoPosition={photoPosition} /> : null}
+      </div>
       <div className="sv-view-shade" />
       <div className="sv-blind" aria-hidden="true"><span className="sv-blind-handle" /></div>
     </div>
