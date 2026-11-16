@@ -1,9 +1,71 @@
 "use client";
 
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { useEffect, useRef } from "react";
 import { Arrow } from "./icons";
 import "./africa-landscape.css";
+
+const savannahDesktop = getImageProps({
+  src: "/images/africa-scene/savannah.webp",
+  alt: "",
+  fill: true,
+  sizes: "(min-width: 701px) 100vw, 1px",
+  quality: 75,
+}).props;
+const savannahMobile = getImageProps({
+  src: "/images/africa-mobile/header-savannah-mobile-v1.webp",
+  alt: "",
+  fill: true,
+  sizes: "(max-width: 700px) 100vw, 1px",
+  quality: 75,
+}).props;
+const elephantsDesktop = getImageProps({
+  src: "/images/africa-scene/elephants.webp",
+  alt: "",
+  fill: true,
+  sizes: "(min-width: 701px) 100vw, 1px",
+  quality: 75,
+}).props;
+const elephantsMobile = getImageProps({
+  src: "/images/africa-mobile/header-elephants-mobile-v1.webp",
+  alt: "",
+  fill: true,
+  sizes: "(max-width: 700px) 100vw, 1px",
+  quality: 75,
+}).props;
+const grasses = getImageProps({
+  src: "/images/africa-scene/grasses.webp",
+  alt: "",
+  fill: true,
+  sizes: "100vw",
+  quality: 75,
+}).props;
+
+function ScenePhoto({
+  desktop,
+  mobile,
+  priority = false,
+}: {
+  desktop: typeof savannahDesktop;
+  mobile?: typeof savannahMobile;
+  priority?: boolean;
+}) {
+  const { srcSet: _srcSet, ...img } = desktop;
+  const attrs = {
+    ...img,
+    alt: "",
+    decoding: "async" as const,
+    loading: (priority ? "eager" : "lazy") as "eager" | "lazy",
+    fetchPriority: (priority ? "high" : "low") as "high" | "low",
+    style: { ...img.style, position: "absolute" as const, inset: 0, width: "100%", height: "100%" },
+  };
+  if (!mobile) return <img {...attrs} />;
+  return <picture>
+    <source media="(max-width: 700px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+    <source media="(min-width: 701px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+    <img {...attrs} />
+  </picture>;
+}
 
 /** A photographic depth scene: sky, type, wildlife, copy, then foreground. */
 export function AfricaLandscape() {
@@ -80,7 +142,7 @@ export function AfricaLandscape() {
   return <section className="a-landscape s-hero" id="top" ref={root} aria-labelledby="africa-landscape-heading">
     <div className="a-landscape-stage">
       <div className="a-landscape-backdrop" aria-hidden="true">
-        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-savannah-mobile-v1.webp" /><Image src="/images/africa-scene/savannah.webp" alt="" fill sizes="100vw" loading="eager" fetchPriority="high" /></picture>
+        <ScenePhoto desktop={savannahDesktop} mobile={savannahMobile} priority />
       </div>
       <div className="a-landscape-atmosphere" aria-hidden="true" />
       <div className="a-landscape-title">
@@ -88,7 +150,7 @@ export function AfricaLandscape() {
         <h1 id="africa-landscape-heading" data-hero>AFRICA</h1>
       </div>
       <div className="a-landscape-wildlife" aria-hidden="true">
-        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-elephants-mobile-v1.webp" /><Image src="/images/africa-scene/elephants.webp" alt="" fill sizes="100vw" /></picture>
+        <ScenePhoto desktop={elephantsDesktop} mobile={elephantsMobile} />
       </div>
       <div className="a-landscape-story">
         <span className="a-landscape-eyebrow">Beyond the expected</span>
@@ -96,7 +158,7 @@ export function AfricaLandscape() {
         <a href="#destinations">Find your Africa <Arrow diagonal /></a>
       </div>
       <div className="a-landscape-foreground" aria-hidden="true">
-        <Image src="/images/africa-scene/grasses.webp" alt="" fill sizes="100vw" />
+        <ScenePhoto desktop={grasses} />
       </div>
       <div className="a-landscape-footer">
         <span>Wild places. Real connections.</span>

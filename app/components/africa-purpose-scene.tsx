@@ -1,5 +1,6 @@
 "use client";
 
+import { getImageProps } from "next/image";
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Arrow } from "./icons";
@@ -12,17 +13,36 @@ const chapters = [
   { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", detail: "Shared ambitions. Connected journeys.", photo: "/images/africa-purposes/groups-background-v2.webp", subject: "/images/africa-purposes/groups-delegates-v2.webp", foreground: null, alt: "A spacious conference hotel foyer with warm timber and tropical gardens", position: "50% 50%", href: "/groups-mice", link: "Plan a group journey" },
 ];
 
-const mobilePhotos = ["business", "safari", "family", "groups"].map(name => `/images/africa-mobile/${name}-mobile-v1.webp`);
+const mobileBackgrounds = ["business", "safari", "family", "groups"].map(name => getImageProps({
+  src: `/images/africa-mobile/${name}-mobile-v1.webp`,
+  alt: "",
+  fill: true,
+  sizes: "(max-width: 700px) 100vw, 1px",
+  quality: 75,
+}).props);
+
+const desktopBackgrounds = chapters.map(chapter => getImageProps({
+  src: chapter.photo,
+  alt: chapter.alt,
+  fill: true,
+  sizes: "(min-width: 701px) 100vw, 1px",
+  quality: 75,
+}).props);
 
 export function AfricaPurposeScene() {
   const root = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [enhanced, setEnhanced] = useState(false);
+  /** Assume interactive so we don't mount every chapter's media on first paint. */
+  const [enhanced, setEnhanced] = useState(true);
+  const [near, setNear] = useState(false);
+  /** Mobile-first: skip subject/depth layers until we know the viewport shows them. */
+  const [compact, setCompact] = useState(true);
 
   useEffect(() => {
     const scene = root.current;
     if (!scene) return;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const narrow = matchMedia("(max-width: 700px)");
     const pointer = matchMedia("(hover: hover) and (pointer: fine)");
     let frame = 0;
     let visible = false;
@@ -59,6 +79,7 @@ export function AfricaPurposeScene() {
     const leave = () => { targetX = 0; targetY = 0; schedule(); };
     const preference = () => {
       setEnhanced(!reduced.matches);
+      setCompact(narrow.matches);
       if (reduced.matches) {
         cancelAnimationFrame(frame);
         frame = 0;
@@ -66,6 +87,12 @@ export function AfricaPurposeScene() {
       } else schedule();
     };
     preference();
+    const nearObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      setNear(true);
+      nearObserver.disconnect();
+    }, { rootMargin: "45% 0px" });
+    nearObserver.observe(scene);
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) schedule();
@@ -77,14 +104,17 @@ export function AfricaPurposeScene() {
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     reduced.addEventListener("change", preference);
+    narrow.addEventListener("change", preference);
     return () => {
       cancelAnimationFrame(frame);
+      nearObserver.disconnect();
       observer.disconnect();
       scene.removeEventListener("pointermove", move);
       scene.removeEventListener("pointerleave", leave);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       reduced.removeEventListener("change", preference);
+      narrow.removeEventListener("change", preference);
     };
   }, []);
 
@@ -99,16 +129,30 @@ export function AfricaPurposeScene() {
   return <div ref={root} className={`a-purpose-scene${enhanced ? " is-interactive" : ""}`} role="region" aria-label="Four ways to travel Africa">
     <div className="a-purpose-stage">
       {chapters.map((chapter, index) => {
-        const loadMedia = !enhanced || Math.abs(index - active) <= 1;
+        const loadMedia = near && (!enhanced || Math.abs(index - active) <= 1);
+        const mobile = mobileBackgrounds[index];
+        const desktop = desktopBackgrounds[index];
+        const { srcSet: _srcSet, ...desktopImg } = desktop;
         return <article key={chapter.title} className={`a-purpose-slide a-purpose-slide-${index}`} data-active={active === index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`africa-purpose-${index}`} style={{ "--purpose-position": chapter.position } as CSSProperties}>
-          <div className="a-purpose-background">{loadMedia ? <picture><source media="(max-width: 700px)" srcSet={mobilePhotos[index]} /><Image src={chapter.photo} alt={chapter.alt} fill sizes="100vw" quality={75} /></picture> : null}</div>
+          <div className="a-purpose-background">{loadMedia ? <picture>
+            <source media="(max-width: 700px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+            <source media="(min-width: 701px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+            <img
+              {...desktopImg}
+              alt={chapter.alt}
+              decoding="async"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === active ? "high" : "low"}
+              style={{ ...desktopImg.style, position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: chapter.position }}
+            />
+          </picture> : null}</div>
           <div className="a-purpose-shade" aria-hidden="true" />
           <div className="a-purpose-heading">
             <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>
             <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
           </div>
-          {loadMedia ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={75} /></div> : null}
-          {loadMedia && chapter.foreground ? <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" /></div> : null}
+          {loadMedia && !compact ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={75} loading="lazy" /></div> : null}
+          {loadMedia && !compact && chapter.foreground ? <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" loading="lazy" /></div> : null}
           <div className="a-purpose-description">
             <span>{chapter.detail}</span>
             <p>{chapter.text}</p>
