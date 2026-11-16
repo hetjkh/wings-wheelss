@@ -2,6 +2,7 @@
 
 import Image from "./travel-image";
 import { useEffect, useRef, useState } from "react";
+import { Arrow } from "./icons";
 
 export type ValuePanel = { note: string; title: [string, string]; text: string; photo: string; alt: string; position?: string };
 
@@ -28,7 +29,7 @@ export function ValuePanels({ items }: { items: ValuePanel[] }) {
       <div className="p-panel-shade" />
       <span className="p-panel-note">{String(i + 1).padStart(2, "0")} / {item.note}</span>
       <div className="p-panel-copy">
-        <div><a className="p-panel-link" href="#proposal" tabIndex={hidden(i) ? -1 : undefined}>Ask about it <span>↗</span></a><h3>{item.title[0]}<br />{item.title[1]}</h3></div>
+        <div><a className="p-panel-link" href="#proposal" tabIndex={hidden(i) ? -1 : undefined}>Ask about it <Arrow diagonal /></a><h3>{item.title[0]}<br />{item.title[1]}</h3></div>
         <p>{item.text}</p>
       </div>
     </li>)}</ul>

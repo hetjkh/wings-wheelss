@@ -250,7 +250,7 @@ export default function CorporatePage() {
             <div className="k-side-shade" aria-hidden="true" />
             <span className="k-side-note">01 / Support at every step</span>
             <div className="k-side-copy">
-              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <span aria-hidden="true">↗</span></EnquiryButton><h3>For your<br />travellers</h3></div>
+              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <Arrow diagonal /></EnquiryButton><h3>For your<br />travellers</h3></div>
               <ul>{forTravellers.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>
             </div>
           </article>
@@ -259,7 +259,7 @@ export default function CorporatePage() {
             <div className="k-side-shade" aria-hidden="true" />
             <span className="k-side-note">02 / Keep your business moving</span>
             <div className="k-side-copy">
-              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <span aria-hidden="true">↗</span></EnquiryButton><h3>For your<br />business</h3></div>
+              <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <Arrow diagonal /></EnquiryButton><h3>For your<br />business</h3></div>
               <ul>{forBusiness.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>
             </div>
           </article>

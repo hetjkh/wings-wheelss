@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PillCta } from "./about-cta";
-import { TravelIcon, type IconKind } from "./icons";
+import { Arrow, TravelIcon, type IconKind } from "./icons";
 import { resolveVideoSources, shouldDeferHeavyVideo, warmVideoCache } from "./video-sources";
 import "./services-journey.css";
 
@@ -150,7 +150,7 @@ export function ServicesJourney() {
             <div className="sb-panel-top" data-stage-reveal><span>With you {phase.when.toLowerCase()}</span><span>0{index + 1} / 03</span></div>
             <h3 data-stage-reveal>{phase.title}</h3>
             <p data-stage-reveal>{phase.text}</p>
-            <ul>{phase.items.map(item => <li key={item} data-stage-reveal><span aria-hidden="true">↗</span>{item}</li>)}</ul>
+            <ul>{phase.items.map(item => <li key={item} data-stage-reveal><Arrow diagonal />{item}</li>)}</ul>
           </div>)}
           <div className="sb-contact"><PillCta light>Plan your journey</PillCta></div>
         </div>

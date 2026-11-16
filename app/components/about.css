@@ -104,7 +104,7 @@
 .au-ribbon { position: absolute; z-index: 4; inset: auto 0 0; padding: calc(var(--u) * 1) 0; border-top: 1px solid color-mix(in srgb, var(--hero-fg) 18%, transparent); --marquee: 30s; }
 .au-ribbon:hover .au-marquee-track { animation-play-state: paused; }
 .au-ribbon li { gap: calc(var(--u) * 2.2); padding-right: calc(var(--u) * 2.2); font: 400 calc(var(--u) * .8)/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--hero-fg); }
-.au-ribbon li::after { content: '✦'; color: var(--ochre); font-size: .8em; }
+.au-ribbon li::after { content: ''; width: .45em; height: .45em; background: var(--ochre); transform: rotate(45deg); flex-shrink: 0; }
 
 /* 2. Who we are */
 .au-who { z-index: 2; overflow: visible; background: var(--paper); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
@@ -422,7 +422,7 @@
 .au-core-row:hover .au-marquee-track { animation-play-state: paused; }
 .au-core-row-reverse .au-marquee-track { animation-direction: reverse; }
 .au-core-row li { gap: calc(var(--u) * 2.2); padding-right: calc(var(--u) * 2.2); font: 400 calc(var(--u) * 4.6)/1.1 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--ink); transform: skewX(var(--skew)); transition: color .35s; cursor: default; }
-.au-core-row li::after { content: '✦'; font-size: .35em; color: var(--ochre); }
+.au-core-row li::after { content: ''; width: .22em; height: .22em; background: var(--ochre); transform: rotate(45deg); flex-shrink: 0; }
 .au-core-row-reverse li { color: transparent; -webkit-text-stroke: 1px #b9a78f; }
 .au-core-row li:hover { color: var(--ochre); -webkit-text-stroke-color: var(--ochre); }
 

@@ -4,6 +4,7 @@ import { SectionEdges } from "./section-edges";
 import { useEffect, useRef, useState } from "react";
 import Image from "./travel-image";
 import Link from "next/link";
+import { Arrow } from "./icons";
 import { storyRegions } from "./story-regions";
 import { travelRegions } from "./travel-regions";
 import "./home-stories.css";
@@ -174,11 +175,11 @@ export function HomeStories() {
             <h3>{zone.title}</h3>
             <p>{zone.text}</p>
             <p className="h-story-countries">{zone.countries.join(" · ")}</p>
-            <Link href={zone.href} className="h-story-link">{zone.cta} <span aria-hidden="true">→</span></Link>
+            <Link href={zone.href} className="h-story-link">{zone.cta} <Arrow /></Link>
           </div>
           <footer className="h-story-nav">
-            <button type="button" onClick={() => setActive((active + zones.length - 1) % zones.length)}>← {zones[(active + zones.length - 1) % zones.length].name}</button>
-            <button type="button" onClick={() => setActive((active + 1) % zones.length)}>{zones[(active + 1) % zones.length].name} →</button>
+            <button type="button" onClick={() => setActive((active + zones.length - 1) % zones.length)}><Arrow back /> {zones[(active + zones.length - 1) % zones.length].name}</button>
+            <button type="button" onClick={() => setActive((active + 1) % zones.length)}>{zones[(active + 1) % zones.length].name} <Arrow /></button>
           </footer>
         </article>
       </div>

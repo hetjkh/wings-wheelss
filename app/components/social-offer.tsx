@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { office } from "./data";
+import { TravelIcon } from "./icons";
 import "./social-offer.css";
 
 export const OFFER_SEEN_KEY = "ww-social-offer-seen";
@@ -119,7 +120,7 @@ export function SocialOffer() {
               >
                 <span className="so-channel-icon"><svg viewBox="0 0 24 24" aria-hidden="true">{channel.icon}</svg></span>
                 <span className="so-channel-text"><b>{channel.label}</b><span className="sr-only">{done ? ", followed" : `, ${channel.handle}`}</span></span>
-                <span className="so-channel-tag" aria-hidden="true">{done ? "✓" : "Follow"}</span>
+                <span className="so-channel-tag" aria-hidden="true">{done ? <TravelIcon kind="check" size={14} /> : "Follow"}</span>
               </a>
             </li>;
           })}

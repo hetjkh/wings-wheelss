@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { Arrow } from "./icons";
 import "./africa-landscape.css";
 
 /** A photographic depth scene: sky, type, wildlife, copy, then foreground. */
@@ -92,7 +93,7 @@ export function AfricaLandscape() {
       <div className="a-landscape-story">
         <span className="a-landscape-eyebrow">Beyond the expected</span>
         <p>One continent.<br /><em>Endless ways to feel alive.</em></p>
-        <a href="#destinations">Find your Africa <span aria-hidden="true">↗</span></a>
+        <a href="#destinations">Find your Africa <Arrow diagonal /></a>
       </div>
       <div className="a-landscape-foreground" aria-hidden="true">
         <Image src="/images/africa-scene/grasses.webp" alt="" fill sizes="100vw" />

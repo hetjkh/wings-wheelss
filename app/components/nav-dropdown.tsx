@@ -52,7 +52,7 @@ export function NavDropdown({ link, current, open, onToggle, onClose, onOpen }: 
     </button>
     <div id={id} className="ww-dropdown-menu" hidden={!open}>
       <div className="ww-dropdown-panel">
-        <div className="ww-dropdown-heading"><span>{corporate ? "Business, without borders" : "A little more about us"}</span><span aria-hidden="true">↗</span></div>
+        <div className="ww-dropdown-heading"><span>{corporate ? "Business, without borders" : "A little more about us"}</span><Arrow diagonal /></div>
         {link.children?.map((child, index) => <Link className="ww-dropdown-item" key={child.href} href={child.href} onClick={onClose} aria-current={child.href === current ? "page" : undefined}>
           <span className="ww-dropdown-icon"><TravelIcon kind={corporate ? (index ? "people" : "plane") : (index ? "globe" : "compass")} size={22} /></span>
           <span><strong>{child.label}</strong><small>{child.note}</small></span><Arrow diagonal />

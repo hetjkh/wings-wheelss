@@ -27,7 +27,7 @@
 .a-landscape-story > a { display: inline-flex; gap: 28px; align-items: center; margin-top: 24px; padding: 10px 0; border-bottom: 1px solid #fff9ed99; font: 400 12px/1.4 var(--body); letter-spacing: .12em; text-transform: uppercase; }
 .a-landscape-story > a:focus-visible { outline: 2px solid #fff9ed; outline-offset: 6px; }
 .a-landscape-story:focus-within { opacity: 1; clip-path: none; }
-.a-landscape-story > a span { font-size: 22px; }
+.a-landscape-story > a svg { width: 18px; height: 18px; }
 .a-landscape-foreground { z-index: 5; inset: auto -7% -7%; height: 48%; mask-image: linear-gradient(transparent, #000 30%); transform: translate3d(calc(var(--scene-x) * 2.4), calc(var(--scene-y) * 1.2 + var(--scene-progress) * 180px), 0) scale(1.08); }
 .a-landscape-foreground img { object-fit: cover; object-position: center bottom; }
 .a-landscape-footer { position: absolute; z-index: 6; inset: auto 5% 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; font: 400 10px/1.5 var(--body); letter-spacing: .13em; text-transform: uppercase; }

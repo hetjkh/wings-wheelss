@@ -31,7 +31,7 @@ export function DubaiTrips() {
           strips.current.scrollTo({ left: index * width, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
         }
       }}>
-        <span className="d-dubai-number">0{index + 1}</span><span className="d-dubai-time">{trip.time}</span><strong>{trip.kind}</strong><span className="d-dubai-select" aria-hidden="true">↗</span>
+        <span className="d-dubai-number">0{index + 1}</span><span className="d-dubai-time">{trip.time}</span><strong>{trip.kind}</strong><span className="d-dubai-select" aria-hidden="true"><Arrow diagonal /></span>
       </button>)}</div>
     </div>
     <div className="d-dubai-selected" aria-live="polite"><p><strong>{trips[active].kind}.</strong> {trips[active].text}</p><a className="j-text-link" href="#destination-enquiry">Shape my Dubai journey <Arrow /></a></div>

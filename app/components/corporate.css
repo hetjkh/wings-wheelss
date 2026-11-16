@@ -360,6 +360,7 @@
 .k-side-copy { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px 36px; align-items: end; width: 100%; }
 .corporate-page .k-side-copy h3 { margin: 22px 0 0; font: 400 clamp(32px, 3vw, 58px)/1.05 var(--heading); letter-spacing: .015em; text-transform: uppercase; color: #fff9ee; }
 .k-side-explore { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 36px; padding: 9px 16px; border: 1px solid #fff9ee; border-radius: 32px; background: #fff9ee; color: #33291e; font: 400 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.k-side-explore svg { width: 14px; height: 14px; }
 .k-side-explore:hover { background: #ecd9ad; border-color: #ecd9ad; }
 .k-side-explore:focus-visible { outline: 2px solid #fff9ee; outline-offset: 4px; }
 .k-side ul { margin: 0; padding: 0; list-style: none; }

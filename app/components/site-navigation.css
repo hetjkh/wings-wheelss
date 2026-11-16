@@ -81,7 +81,7 @@
 .ww-dropdown-menu { position: absolute; top: 100%; left: -20px; width: 390px; padding-top: 21px; }
 .ww-dropdown-panel { padding: 18px 10px 0; background: var(--nav-paper); border: 1px solid #e3dccf; border-radius: 20px; box-shadow: 0 24px 70px #2d241b2b, 0 4px 12px #2d241b0a; transform-origin: 40px 0; overflow: hidden; }
 .ww-dropdown-heading { display: flex; justify-content: space-between; align-items: center; padding: 0 12px 14px; color: var(--nav-muted); font: 400 10px/1.4 var(--body); letter-spacing: .13em; text-transform: uppercase; }
-.ww-dropdown-heading > span:last-child { font-size: 18px; }
+.ww-dropdown-heading > svg { width: 14px; height: 14px; flex-shrink: 0; }
 .ww-dropdown-item { display: grid; grid-template-columns: 44px 1fr 18px; align-items: center; gap: 12px; padding: 16px 12px; border-radius: 12px; transition: background .2s; }
 .ww-dropdown-item:hover, .ww-dropdown-item:focus-visible, .ww-dropdown-item[aria-current="page"] { background: #eee7da; }
 .ww-dropdown-icon { width: 44px; height: 48px; display: grid; place-items: center; border: 1px solid #ded5c3; border-radius: 12px; background: #f1eadc; color: var(--nav-accent); }

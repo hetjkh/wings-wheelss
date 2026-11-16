@@ -166,7 +166,7 @@ export function ContactPage() {
             </div> : <form onSubmit={event => { event.preventDefault(); if (messageDone) setSent(true); else setHint("Tell us a little more about the trip — at least a sentence."); }}>
               <div className="c-rail" role="tablist" aria-label="Request steps">
                 {chapters.map((item, index) => <button key={item.n} type="button" role="tab" aria-selected={focus === index + 1} className={focus === index + 1 ? "is-current" : item.done ? "is-done" : ""} onClick={() => go(index + 1)}>
-                  <span>{item.done ? "✓" : item.n}</span>{item.title}
+                  <span>{item.done ? <TravelIcon kind="check" size={14} /> : item.n}</span>{item.title}
                 </button>)}
                 <i aria-hidden="true" style={{ transform: `scaleX(${(focus - 1) / 2})` }} />
               </div>

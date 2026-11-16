@@ -56,7 +56,7 @@ function DestinationChapter() {
           <div className="e-destination-caption" data-motion-stagger><h3>{place.name}</h3><p>{place.line}</p></div>
         </Link>)}
       </div></div>
-      <div className="e-shell e-destination-footer" data-motion-stagger><span className="n-kicker">Your next chapter is out there</span><div className="e-destination-progress" aria-hidden="true"><span /></div><span className="e-drag-note n-kicker">Keep exploring <span aria-hidden="true">→</span></span></div>
+      <div className="e-shell e-destination-footer" data-motion-stagger><span className="n-kicker">Your next chapter is out there</span><div className="e-destination-progress" aria-hidden="true"><span /></div><span className="e-drag-note n-kicker">Keep exploring <Arrow /></span></div>
     </div>
   </section>;
 }

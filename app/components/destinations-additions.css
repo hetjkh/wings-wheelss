@@ -16,7 +16,8 @@
 .d-dubai-number { position: absolute; top: 30px; font: 400 12px/1 var(--body); letter-spacing: .1em; }
 .d-dubai-time { font: 400 clamp(24px, 3vw, 58px)/1 var(--heading); text-transform: uppercase; }
 .d-dubai-strips strong { font: 400 clamp(15px, 1.4vw, 23px)/1.25 var(--body); }
-.d-dubai-select { font-size: 26px; line-height: 1; margin-top: 12px; }
+.d-dubai-select { display: inline-flex; margin-top: 12px; }
+.d-dubai-select svg { width: 22px; height: 22px; }
 .d-dubai-selected { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 25px max(4vw, 24px); border-bottom: 1px solid var(--line); }
 .d-dubai-selected p { max-width: 42em; font: 400 18px/1.45 var(--body); }
 .d-dubai-selected .j-text-link { flex-shrink: 0; margin: 0; }
@@ -98,7 +99,8 @@
 .d-enquiry-kinds input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .d-enquiry-kinds label > span { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; height: 100%; min-height: 100px; padding: 16px 8px; border: 1px solid #ded5c5; border-radius: 12px; color: #766343; text-align: center; transition: background .2s, color .2s; }
 .d-enquiry-kinds label > span > span { font-size: 12px; line-height: 1.3; }
-.d-enquiry-kinds label > span > i { position: absolute; top: 5px; right: 7px; opacity: 0; font: 400 11px/1 var(--body); }
+.d-enquiry-kinds label > span > i { position: absolute; top: 5px; right: 7px; display: grid; place-items: center; opacity: 0; }
+.d-enquiry-kinds label > span > i svg { width: 14px; height: 14px; }
 .d-enquiry-kinds label:hover > span { border-color: #a48d65; background: #f3eee4; }
 .d-enquiry-kinds input:checked + span { background: #514c3e; color: #fff8e9; border-color: #514c3e; }
 .d-enquiry-kinds input:checked + span > i { opacity: 1; }
@@ -171,7 +173,8 @@
   .d-dubai-number { position: static; font-size: 10px; }
   .d-dubai-time { font-size: 27px; }
   .d-dubai-strips strong { font-size: 16px; }
-  .d-dubai-select { margin: 0; font-size: 22px; }
+  .d-dubai-select { margin: 0; }
+  .d-dubai-select svg { width: 18px; height: 18px; }
   .d-dubai-strips button[aria-pressed="true"]::after { inset: 0 auto 0 0; width: 4px; height: auto; }
   .d-dubai-close { padding-top: 32px; }
   .d-dubai-selected { padding-inline: 24px; }

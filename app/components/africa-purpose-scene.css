@@ -25,7 +25,7 @@
 .a-purpose-description > span { font: 400 clamp(17px, 1.4vw, 24px)/1.4 var(--body); letter-spacing: .05em; }
 .a-purpose-description > p { max-width: 24em; margin: 12px auto 0; font: 400 clamp(28px, 3.4vw, 62px)/1.12 var(--heading); letter-spacing: -.02em; }
 .a-purpose-description > a { display: inline-flex; gap: 28px; align-items: center; margin-top: 20px; padding-block: 10px; border-bottom: 1px solid #fff9edbb; font: 400 14px/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; }
-.a-purpose-description > a > span { font-size: 20px; }
+.a-purpose-description > a > svg { width: 18px; height: 18px; }
 .a-purpose-description > a:focus-visible, .a-purpose-navigation > button:focus-visible { outline: 2px solid #fff9ed; outline-offset: 6px; }
 .a-purpose-navigation, .a-purpose-scroll { display: none; }
 

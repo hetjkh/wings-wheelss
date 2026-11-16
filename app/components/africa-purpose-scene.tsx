@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Arrow } from "./icons";
 import "./africa-purpose-scene.css";
 
 const chapters = [
@@ -109,7 +110,7 @@ export function AfricaPurposeScene() {
         <div className="a-purpose-description">
           <span>{chapter.detail}</span>
           <p>{chapter.text}</p>
-          <a href={chapter.href}>{chapter.link}<span aria-hidden="true">↗</span></a>
+          <a href={chapter.href}>{chapter.link}<Arrow diagonal /></a>
         </div>
       </article>)}
       <nav className="a-purpose-navigation" aria-label="Choose a travel chapter">

@@ -73,7 +73,8 @@
 .h-story-link { display: inline-flex; gap: 10px; margin-top: 22px; padding-bottom: 4px; border-bottom: 1px solid #f3ead899; color: var(--cream); font: 400 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; transition: gap .3s; }
 .h-story-link:hover { gap: 16px; }
 .h-story-nav { position: relative; display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #f3ead840; }
-.h-story-nav button { padding: 0; border: 0; background: none; color: #f3ead8b3; font: 400 11px/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: color .3s; }
+.h-story-nav button { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; color: #f3ead8b3; font: 400 11px/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: color .3s; }
+.h-story-nav button svg, .h-story-link svg { width: 14px; height: 14px; }
 .h-story-nav button:hover { color: var(--cream); }
 @keyframes h-story-in { from { opacity: 0; translate: 0 24px; } }
 

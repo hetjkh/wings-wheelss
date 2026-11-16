@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import Image from "./travel-image";
 import { PillCta } from "./about-cta";
+import { Arrow } from "./icons";
 import { storyRegions } from "./story-regions";
 import "./masked-hero.css";
 import "./services-network.css";
@@ -41,7 +42,7 @@ export function NetworkMap() {
         <g className="an-home" aria-hidden="true"><circle className="an-home-ring" cx={dubai.x} cy={dubai.y} r="10" /><circle className="an-dot" cx={dubai.x} cy={dubai.y} r="3.5" /><text x={dubai.x + 14} y={dubai.y - 2}>Dubai</text><text className="an-home-note" x={dubai.x + 14} y={dubai.y + 5}>UAE BASE</text></g>
       </svg>
       <div className="sn-map-foot"><span className="sn-hover-hint">Hover over a destination to explore</span><span className="sn-touch-hint">Tap a destination to explore</span><span>One team. Across borders.</span></div>
-      <nav className="sn-regions" aria-label="Africa network destinations">{destinations.map((place, index) => <button key={place.name} type="button" aria-pressed={selected === index} aria-controls="africa-network-details" onMouseEnter={() => setSelected(index)} onFocus={() => setSelected(index)} onClick={() => setSelected(index)}><span>0{index + 1}</span>{place.name}<span aria-hidden="true">↗</span></button>)}</nav>
+      <nav className="sn-regions" aria-label="Africa network destinations">{destinations.map((place, index) => <button key={place.name} type="button" aria-pressed={selected === index} aria-controls="africa-network-details" onMouseEnter={() => setSelected(index)} onFocus={() => setSelected(index)} onClick={() => setSelected(index)}><span>0{index + 1}</span>{place.name}<Arrow diagonal /></button>)}</nav>
     </div>
     <article className="sn-detail" id="africa-network-details" aria-label={`${point.name} connection details`}>
       <div className="sn-photo">{destinations.map((place, index) => <Image key={place.name} src={place.photo} alt={selected === index ? place.alt : ""} fill sizes="(max-width: 800px) 90vw, 33vw" className={selected === index ? "is-active" : ""} />)}<span>{point.caption}</span></div>

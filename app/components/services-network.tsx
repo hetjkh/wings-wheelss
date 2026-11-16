@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import Image from "./travel-image";
 import { PillCta } from "./about-cta";
-import { TravelIcon } from "./icons";
+import { Arrow, TravelIcon } from "./icons";
 import { storyRegions } from "./story-regions";
 import { travelRegionOrder, travelRegions } from "./travel-regions";
 import "./services-network.css";
@@ -64,7 +64,7 @@ export function ServicesNetwork() {
 
       <div className="sn-explorer">
         <div className="sn-atlas">
-          <div className="sn-map-label"><span><i /> Connected through Dubai</span><span>Explore our world ↗</span></div>
+          <div className="sn-map-label"><span><i /> Connected through Dubai</span><span>Explore our world <Arrow diagonal /></span></div>
           <svg className="sn-map" viewBox="0 0 1000 440" role="group" aria-label="Explore our travel network by region">
             <defs>{regions.map(item => <clipPath id={`${uid}-clip-${item.id}`} key={item.id}><path d={storyRegions[item.id].d} fillRule="evenodd" /></clipPath>)}</defs>
             {regions.map((item, index) => {
@@ -84,7 +84,7 @@ export function ServicesNetwork() {
             <text className="sn-dubai-label" x={home[0] + 21} y={home[1] + 22}>DUBAI</text>
           </svg>
           <div className="sn-map-foot"><span className="sn-hover-hint">Hover over the map to explore</span><span className="sn-touch-hint">Tap a region to explore</span><span>25.20° N / 55.27° E</span></div>
-          <nav className="sn-regions" aria-label="Choose a network region">{regions.map((item, index) => <button key={item.id} type="button" aria-pressed={active === index} aria-controls="network-region-details" onMouseEnter={() => select(index)} onFocus={() => select(index)} onClick={() => select(index)}><span>0{index + 1}</span>{item.name}<span aria-hidden="true">↗</span></button>)}</nav>
+          <nav className="sn-regions" aria-label="Choose a network region">{regions.map((item, index) => <button key={item.id} type="button" aria-pressed={active === index} aria-controls="network-region-details" onMouseEnter={() => select(index)} onFocus={() => select(index)} onClick={() => select(index)}><span>0{index + 1}</span>{item.name}<Arrow diagonal /></button>)}</nav>
         </div>
 
         <article className="sn-detail" id="network-region-details" aria-label={`${region.name} network details`}>

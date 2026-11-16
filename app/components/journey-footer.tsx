@@ -206,7 +206,7 @@ export function JourneyFooter() {
           <span className="ft-magnet"><EnquiryButton className="ft-cta">Plan your journey</EnquiryButton></span>
           <button type="button" className="ft-copy" onClick={copy}>
             <span>{copied ? "Copied to clipboard" : office.email}</span>
-            <span className="ft-copy-tag" aria-hidden="true">{copied ? "✓" : "Copy"}</span>
+            <span className="ft-copy-tag" aria-hidden="true">{copied ? <TravelIcon kind="check" size={14} /> : "Copy"}</span>
           </button>
         </div>
       </div>
