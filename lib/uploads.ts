@@ -13,7 +13,7 @@ export const ALLOWED_UPLOAD_TYPES: Record<string, string> = {
 
 export function getUploadDir() {
   const configured = process.env.UPLOAD_DIR?.trim() || "uploads";
-  return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
+  return path.isAbsolute(configured) ? configured : path.join(/*turbopackIgnore: true*/ process.cwd(), configured);
 }
 
 export function getUploadPublicBase() {
