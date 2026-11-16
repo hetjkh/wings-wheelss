@@ -1,4 +1,4 @@
-import Image from "./travel-image";
+import { getImageProps } from "next/image";
 import { ServicesJourney } from "./services-journey";
 import { TravelIcon, type IconKind } from "./icons";
 import { JourneyHeader } from "./journey-header";
@@ -10,6 +10,7 @@ import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { ServicesIndex, type IndexedService } from "./services-index";
 import { ServicesFinal } from "./services-final";
+import { LazyFillImage } from "./lazy-fill-image";
 import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
@@ -46,6 +47,35 @@ const examples: { type: string; route: string[]; items: { icon: IconKind; label:
   { type: "Multi-destination", route: ["Dubai", "Nairobi", "Zanzibar", "Dubai"], items: [{ icon: "people", label: "2 travellers" }, { icon: "pin", label: "3 destinations" }, { icon: "plane", label: "Flights" }, { icon: "bed", label: "Hotels" }, { icon: "compass", label: "Safari / experiences" }, { icon: "car", label: "Transfers" }] },
   { type: "Group", route: ["4 cities", "Dubai event", "Return"], items: [{ icon: "people", label: "32 travellers" }, { icon: "plane", label: "Multiple flights" }, { icon: "document", label: "Visa support" }, { icon: "bed", label: "Hotel rooms" }, { icon: "car", label: "Airport transfers" }, { icon: "route", label: "Venue movements" }] },
 ];
+
+const principleAlt = "A travel advisor speaking with a business traveller in a bright airport lounge overlooking Dubai";
+const principleDesktop = getImageProps({
+  src: "/images/library/services-principle-v4-desktop.webp",
+  alt: principleAlt,
+  fill: true,
+  sizes: "(min-width: 992px) 100vw, 1px",
+  quality: 75,
+}).props;
+const principleMobile = getImageProps({
+  src: "/images/library/services-principle-v4-mobile.webp",
+  alt: "",
+  fill: true,
+  sizes: "(max-width: 991px) 100vw, 1px",
+  quality: 75,
+}).props;
+
+function PrinciplePhoto() {
+  return <picture>
+    <source media="(max-width: 991px)" srcSet={principleMobile.srcSet} sizes={principleMobile.sizes} />
+    <source media="(min-width: 992px)" srcSet={principleDesktop.srcSet} sizes={principleDesktop.sizes} />
+    <img
+      {...principleDesktop}
+      alt={principleAlt}
+      className="j-photo s-principle-photo-desktop"
+      style={{ ...principleDesktop.style, objectPosition: "65% center", position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+    />
+  </picture>;
+}
 
 export default function ServicesPage() {
   return <ChapterMotion>
@@ -106,7 +136,7 @@ export default function ServicesPage() {
           </div>
         </div>
         <div className="s-reason-panels">{reasons.map((item, i) => <article key={item.title} className="s-reason">
-          <Image className="s-reason-photo" src={item.photo} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 40vw" style={{ objectPosition: item.position }} />
+          <LazyFillImage className="s-reason-photo" src={item.photo} alt={item.alt} sizes="(max-width: 800px) 100vw, 28vw" style={{ objectPosition: item.position }} rootMargin={i === 0 ? "30% 0px" : "12% 0px"} />
           <div className="s-reason-shade" />
           <span className="s-reason-number">{String(i + 1).padStart(2, "0")}</span>
           <div className="s-reason-copy">
@@ -137,8 +167,7 @@ export default function ServicesPage() {
 
       <section className="s-principle j-torn-top" aria-labelledby="principle-heading">
         <div className="s-principle-frame">
-          <Image className="j-photo s-principle-photo-desktop" src="/images/library/services-principle-v4-desktop.webp" alt="A travel advisor speaking with a business traveller in a bright airport lounge overlooking Dubai" fill sizes="100vw" />
-          <Image className="j-photo s-principle-photo-mobile" src="/images/library/services-principle-v4-mobile.webp" alt="" fill sizes="100vw" />
+          <PrinciplePhoto />
           <div className="s-principle-shade" />
         </div>
         <div className="j-shell s-principle-copy">

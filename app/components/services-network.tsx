@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { getImageProps } from "next/image";
 import Image from "./travel-image";
 import { PillCta } from "./about-cta";
 import { Arrow, TravelIcon } from "./icons";
@@ -48,6 +49,12 @@ const networkDetails: Record<RegionId, { title: string; note: string; text: stri
 };
 const regions = travelRegionOrder.map(id => ({ id, ...travelRegions[id], ...networkDetails[id] }));
 
+/** Map tiles need a single URL — use the image optimizer instead of full library originals. */
+const mapPhotos = Object.fromEntries(regions.map(item => {
+  const { props } = getImageProps({ src: item.photo, width: 640, height: 360, quality: 60 });
+  return [item.id, props.src];
+})) as Record<RegionId, string>;
+
 export function ServicesNetwork() {
   const [active, setActive] = useState(0);
   const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
@@ -71,7 +78,7 @@ export function ServicesNetwork() {
               const [x, y, width, height] = storyRegions[item.id].box;
               return <g key={item.id} className={`sn-region${active === index ? " is-active" : ""}`} onMouseEnter={() => select(index)} onClick={() => select(index)} role="button" tabIndex={0} aria-label={`Explore ${item.name}`} aria-pressed={active === index} aria-controls="network-region-details" onFocus={() => select(index)} onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); select(index); } }}>
                 <title>{item.name}</title>
-                <image className="sn-map-photo" href={item.photo} x={x} y={y} width={width} height={height} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${uid}-clip-${item.id})`} />
+                <image className="sn-map-photo" href={mapPhotos[item.id]} x={x} y={y} width={width} height={height} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${uid}-clip-${item.id})`} />
                 <path className="sn-land" d={storyRegions[item.id].d} />
               </g>;
             })}
