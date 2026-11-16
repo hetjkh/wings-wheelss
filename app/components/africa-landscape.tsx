@@ -80,7 +80,7 @@ export function AfricaLandscape() {
   return <section className="a-landscape s-hero" id="top" ref={root} aria-labelledby="africa-landscape-heading">
     <div className="a-landscape-stage">
       <div className="a-landscape-backdrop" aria-hidden="true">
-        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-savannah-mobile-v1.webp" /><Image src="/images/africa-scene/savannah.webp" alt="" fill sizes="100vw" preload /></picture>
+        <picture><source media="(max-width: 700px)" srcSet="/images/africa-mobile/header-savannah-mobile-v1.webp" /><Image src="/images/africa-scene/savannah.webp" alt="" fill sizes="100vw" loading="eager" fetchPriority="high" /></picture>
       </div>
       <div className="a-landscape-atmosphere" aria-hidden="true" />
       <div className="a-landscape-title">

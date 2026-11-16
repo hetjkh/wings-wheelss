@@ -73,7 +73,7 @@ export function AfricaHeroScene() {
 
   return <>
     <div className="a-hero-scene" ref={backdrop} aria-hidden="true">
-      <Image src="/images/africa-hero/waterhole-master.webp" alt="" fill sizes="100vw" preload quality={75} />
+      <Image src="/images/africa-hero/waterhole-master.webp" alt="" fill sizes="100vw" priority quality={75} />
     </div>
     <div className="a-hero-waterhole-ground" aria-hidden="true">
       <Image src="/images/africa-hero/waterhole-ground.webp" alt="" fill sizes="100vw" quality={75} />

@@ -98,21 +98,24 @@ export function AfricaPurposeScene() {
 
   return <div ref={root} className={`a-purpose-scene${enhanced ? " is-interactive" : ""}`} role="region" aria-label="Four ways to travel Africa">
     <div className="a-purpose-stage">
-      {chapters.map((chapter, index) => <article key={chapter.title} className={`a-purpose-slide a-purpose-slide-${index}`} data-active={active === index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`africa-purpose-${index}`} style={{ "--purpose-position": chapter.position } as CSSProperties}>
-        <div className="a-purpose-background"><picture><source media="(max-width: 700px)" srcSet={mobilePhotos[index]} /><Image src={chapter.photo} alt={chapter.alt} fill sizes="100vw" quality={75} priority={index === 0} /></picture></div>
-        <div className="a-purpose-shade" aria-hidden="true" />
-        <div className="a-purpose-heading">
-          <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>
-          <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
-        </div>
-        <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="110vw" quality={75} /></div>
-        {chapter.foreground && <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" /></div>}
-        <div className="a-purpose-description">
-          <span>{chapter.detail}</span>
-          <p>{chapter.text}</p>
-          <a href={chapter.href}>{chapter.link}<Arrow diagonal /></a>
-        </div>
-      </article>)}
+      {chapters.map((chapter, index) => {
+        const loadMedia = !enhanced || Math.abs(index - active) <= 1;
+        return <article key={chapter.title} className={`a-purpose-slide a-purpose-slide-${index}`} data-active={active === index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`africa-purpose-${index}`} style={{ "--purpose-position": chapter.position } as CSSProperties}>
+          <div className="a-purpose-background">{loadMedia ? <picture><source media="(max-width: 700px)" srcSet={mobilePhotos[index]} /><Image src={chapter.photo} alt={chapter.alt} fill sizes="100vw" quality={75} /></picture> : null}</div>
+          <div className="a-purpose-shade" aria-hidden="true" />
+          <div className="a-purpose-heading">
+            <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>
+            <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
+          </div>
+          {loadMedia ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={75} /></div> : null}
+          {loadMedia && chapter.foreground ? <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" /></div> : null}
+          <div className="a-purpose-description">
+            <span>{chapter.detail}</span>
+            <p>{chapter.text}</p>
+            <a href={chapter.href}>{chapter.link}<Arrow diagonal /></a>
+          </div>
+        </article>;
+      })}
       <nav className="a-purpose-navigation" aria-label="Choose a travel chapter">
         {chapters.map((chapter, index) => <button type="button" key={chapter.title} aria-current={active === index ? "step" : undefined} onClick={() => jump(index)} onKeyDown={event => {
           const target = event.key === "ArrowRight" ? (index + 1) % chapters.length : event.key === "ArrowLeft" ? (index + chapters.length - 1) % chapters.length : event.key === "Home" ? 0 : event.key === "End" ? chapters.length - 1 : -1;

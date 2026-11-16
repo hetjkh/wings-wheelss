@@ -45,7 +45,7 @@ export function NetworkMap() {
       <nav className="sn-regions" aria-label="Africa network destinations">{destinations.map((place, index) => <button key={place.name} type="button" aria-pressed={selected === index} aria-controls="africa-network-details" onMouseEnter={() => setSelected(index)} onFocus={() => setSelected(index)} onClick={() => setSelected(index)}><span>0{index + 1}</span>{place.name}<Arrow diagonal /></button>)}</nav>
     </div>
     <article className="sn-detail" id="africa-network-details" aria-label={`${point.name} connection details`}>
-      <div className="sn-photo">{destinations.map((place, index) => <Image key={place.name} src={place.photo} alt={selected === index ? place.alt : ""} fill sizes="(max-width: 800px) 90vw, 33vw" className={selected === index ? "is-active" : ""} />)}<span>{point.caption}</span></div>
+      <div className="sn-photo"><Image key={point.name} src={point.photo} alt={point.alt} fill sizes="(max-width: 800px) 90vw, 33vw" className="is-active" /><span>{point.caption}</span></div>
       <div className="sn-detail-copy" key={point.name}><span className="j-eyebrow">Dubai ↔ {point.country}</span><h3>{point.name}<br /><em>Connected through Dubai.</em></h3><p>{point.text}</p><ul aria-label="Travel coordination"><li>Flights &amp; stays</li><li>Ground arrangements</li><li>Personal support</li></ul><PillCta light href="/contact">Our Africa offices</PillCta></div>
     </article>
   </div>;

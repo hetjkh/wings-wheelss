@@ -88,7 +88,7 @@ export function ServicesNetwork() {
         </div>
 
         <article className="sn-detail" id="network-region-details" aria-label={`${region.name} network details`}>
-          <div className="sn-photo">{regions.map((item, index) => <Image key={item.id} src={item.photo} alt={active === index ? item.photoAlt : ""} fill sizes="(max-width: 800px) 90vw, 33vw" className={active === index ? "is-active" : ""} />)}<span>{region.name}</span></div>
+          <div className="sn-photo"><Image key={region.id} src={region.photo} alt={region.photoAlt} fill sizes="(max-width: 800px) 90vw, 33vw" className="is-active" /><span>{region.name}</span></div>
           <div className="sn-detail-copy" key={region.id}>
             <span className="j-eyebrow">{region.note}</span><h3>{region.title}</h3><p>{region.text}</p>
             <ul aria-label={`${region.name} connections`}>{region.countries.map(place => <li key={place}>{place}</li>)}</ul>

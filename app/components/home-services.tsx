@@ -105,14 +105,16 @@ export function HomeServices() {
       tl.to({}, { duration: .6 });
 
       // Decode the deck as it approaches, so the first reveal doesn't pay that cost.
+      // Warm only the first couple of cards — don't pull all six full-bleed photos at once on mobile.
       const warmImages = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting)) return;
-        el.querySelectorAll<HTMLImageElement>(".n-services-card img").forEach(image => {
+        el.querySelectorAll<HTMLImageElement>(".n-services-card img").forEach((image, index) => {
+          if (index > 1) return;
           image.loading = "eager";
           void image.decode().catch(() => {});
         });
         warmImages.disconnect();
-      }, { rootMargin: "100% 0px" });
+      }, { rootMargin: "40% 0px" });
       warmImages.observe(el);
 
       return () => { warmImages.disconnect(); trigger.current = null; el.classList.remove("is-mobile-story", "is-scroll-deck"); };
@@ -168,7 +170,7 @@ export function HomeServices() {
             {services.map((item, index) => (
               <figure key={item.title} className={`n-services-card${index === active ? " is-active" : ""}`} style={{ zIndex: index + 1 }}>
                 <div className="n-services-card-photo">
-                  <Image reveal src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 92vw, 44vw" className="n-cover" style={{ objectPosition: item.position }} priority={index === 0} />
+                  <Image reveal src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 92vw, 44vw" className="n-cover" style={{ objectPosition: item.position }} />
                 </div>
                 <div className="n-services-card-shade" aria-hidden="true" />
                 <figcaption className="n-services-card-caption">

@@ -41,7 +41,7 @@ export function ServicesIndex({ services }: { services: IndexedService[] }) {
         onPointerEnter={() => { if (fine.current) setActive(index); }}
         onClick={() => setActive(index)}
       >
-        <Image src={item.photo} alt="" fill lockSizes sizes="(max-width: 991px) 92vw, 70vw" style={item.position ? { objectPosition: item.position } : undefined} />
+        {Math.abs(index - active) <= 1 ? <Image src={item.photo} alt="" fill lockSizes sizes="(max-width: 991px) 92vw, 70vw" style={item.position ? { objectPosition: item.position } : undefined} /> : null}
         <span className="s-strip-shade" aria-hidden="true" />
         <span className="s-strip-index">{String(index + 1).padStart(2, "0")}</span>
         <span className="s-strip-rail" aria-hidden={open}>

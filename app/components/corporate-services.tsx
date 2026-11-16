@@ -97,7 +97,8 @@ export function CorporateServices({ services }: { services: CorporateService[] }
   >
     {services.map((item, index) => {
       const isOpen = index === active;
-      const mobileImage = item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 90 }).props : null;
+      const loadPhoto = Math.abs(index - active) <= 1;
+      const mobileImage = loadPhoto && item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 75 }).props : null;
       return <div
         key={item.title}
         ref={node => { panels.current[index] = node; }}
@@ -110,10 +111,10 @@ export function CorporateServices({ services }: { services: CorporateService[] }
         onFocus={() => open(index, true)}
         onClick={() => open(index, true)}
       >
-        <picture>
+        {loadPhoto ? <picture>
           {mobileImage ? <source media="(max-width: 767px)" srcSet={item.originalQuality ? item.photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
           <Image src={item.photo} alt="" fill unoptimized={item.originalQuality} lockSizes={item.originalQuality} sizes="(max-width: 991px) 92vw, 60vw" style={item.position ? { objectPosition: item.position } : undefined} />
-        </picture>
+        </picture> : null}
         <span className="k-panel-shade" aria-hidden="true" />
         <span className="k-panel-index">{String(index + 1).padStart(2, "0")}</span>
         <span className="k-panel-rail" aria-hidden={isOpen}>

@@ -9,9 +9,17 @@ type TravelImageProps = ImageProps & {
   reveal?: boolean;
 };
 
+/** Keep phone requests honest — never ask for more than a full viewport, never 110vw+. */
+function normalizeSizes(sizes?: string) {
+  if (!sizes) return sizes;
+  return sizes
+    .replace(/\b1(?:0[1-9]|1[0-9]{2})vw\b/g, "100vw")
+    .replace(/\b(\d{3,})vw\b/g, "100vw");
+}
+
 /**
- * Site image wrapper: no blur-up, one request, quality preserved.
- * Phone downloads stay capped by next.config deviceSizes (max 1920).
+ * Site image wrapper: no blur-up, lazy by default, mobile-safe sizes.
+ * Pass priority/preload only for the true first-screen hero.
  */
 export default function TravelImage({
   sizes,
@@ -21,14 +29,22 @@ export default function TravelImage({
   placeholder,
   blurDataURL,
   decoding,
+  loading,
+  priority,
+  fetchPriority,
   ...props
 }: TravelImageProps) {
+  const eager = Boolean(priority || loading === "eager" || (props as { preload?: boolean }).preload);
+
   return <NextImage
     {...props}
-    sizes={sizes}
+    sizes={normalizeSizes(sizes)}
     quality={quality ?? 75}
     placeholder={placeholder ?? "empty"}
     blurDataURL={blurDataURL}
     decoding={decoding ?? "async"}
+    loading={eager ? "eager" : (loading ?? "lazy")}
+    priority={priority}
+    fetchPriority={fetchPriority ?? (eager ? "high" : "auto")}
   />;
 }

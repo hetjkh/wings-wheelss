@@ -161,7 +161,7 @@ export function HomeStories() {
       <div className="h-story" aria-hidden={!open} inert={!open}>
         <button type="button" className="h-story-scrim" aria-label="Close story" tabIndex={-1} onClick={() => setOpen(false)} />
         <div className="h-story-backdrop">
-          {zones.map((item, index) => <Image key={item.id} src={item.photo} alt={item.photoAlt} fill sizes="50vw" className={index === active ? "is-active" : ""} />)}
+          <Image key={zone.id} src={zone.photo} alt={zone.photoAlt} fill sizes="(max-width: 767px) 100vw, 50vw" className="is-active" />
         </div>
         <article className="h-story-panel" key={zone.id}>
           <svg className="h-story-outline" viewBox={region.box.join(" ")} aria-hidden="true"><path d={region.d} /></svg>

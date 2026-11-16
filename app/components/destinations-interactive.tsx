@@ -26,7 +26,7 @@ export function MoodIndex({ moods }: { moods: Mood[] }) {
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) change(dx < 0 ? 1 : -1);
     }} onPointerCancel={() => { swipe.current = null; }}>
       <div className="d-mood-frame" data-frame>
-        {moods.map((item, i) => <Image key={item.title} src={item.photo} alt={item.alt} fill sizes="(max-width: 991px) 92vw, 44vw" className={i === active ? "is-active" : undefined} style={item.position ? { objectPosition: item.position } : undefined} />)}
+        <Image key={mood.title} src={mood.photo} alt={mood.alt} fill sizes="(max-width: 991px) 92vw, 44vw" className="is-active" style={mood.position ? { objectPosition: mood.position } : undefined} />
       </div>
       <div className="d-mood-phone d-mood-story" aria-live="polite"><span>Your journey, your way</span><h3 key={mood.title}>{mood.title}</h3><p>{mood.text}</p></div>
       <div className="d-mood-caption">
@@ -167,7 +167,7 @@ export function SeasonRibbon({ seasons }: { seasons: Season[] }) {
       </button>)}</div>
     </div>
     <div className="d-season" role="tabpanel" id="season-panel" aria-labelledby={`season-tab-${active}`}>
-      <div className="d-season-photo">{seasons.map((item, i) => <Image key={item.months} src={item.photo} alt={item.alt} fill sizes="(max-width: 991px) 92vw, 50vw" className={i === active ? "is-active" : undefined} />)}</div>
+      <div className="d-season-photo"><Image key={season.months} src={season.photo} alt={season.alt} fill sizes="(max-width: 991px) 92vw, 50vw" className="is-active" /></div>
       <div className="d-season-copy" key={season.months}>
         <span className="d-season-short">{season.short}</span>
         <ol className="d-picks">{season.picks.map((pick, i) => <li key={pick.place} style={{ "--i": i } as React.CSSProperties}>

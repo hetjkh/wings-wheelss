@@ -38,7 +38,7 @@ export function ClosingScene({
   whatsapp?: string | false;
 }) {
   const section = useRef<HTMLElement>(null);
-  const mobileImage = photoMobile ? getImageProps({ src: photoMobile, alt: "", fill: true, sizes: "100vw", quality: 90 }).props : null;
+  const mobileImage = photoMobile ? getImageProps({ src: photoMobile, alt: "", fill: true, sizes: "(max-width: 991px) 100vw, 1px", quality: 75 }).props : null;
 
   useEffect(() => {
     const root = section.current;
@@ -127,7 +127,7 @@ export function ClosingScene({
     <div className="sv-view">
       <picture>
         {mobileImage ? <source media="(max-width: 991px)" srcSet={originalQuality ? photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
-        <Image src={photo} alt="" fill unoptimized={originalQuality} lockSizes={originalQuality} sizes="100vw" quality={photoMobile ? 90 : undefined} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
+        <Image src={photo} alt="" fill unoptimized={originalQuality} lockSizes={originalQuality} sizes="100vw" quality={75} style={photoPosition ? { objectPosition: photoPosition } : undefined} />
       </picture>
       <div className="sv-view-shade" />
       <div className="sv-blind" aria-hidden="true"><span className="sv-blind-handle" /></div>
