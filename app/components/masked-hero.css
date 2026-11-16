@@ -137,8 +137,22 @@
     position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; margin: 0; --map: 1;
     -webkit-mask-size: calc(95% * var(--map)) auto;
     mask-size: calc(95% * var(--map)) auto;
+    /* Keep mask work on its own layer; avoid per-frame JS mask-size writes on iPhone. */
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
-  .au-hero.s-hero .au-hero-photo-inner { inset: 0; }
+  .au-hero.s-hero .au-hero-photo-inner { inset: 0; transform: translateZ(0); }
+  .au-hero.s-hero.is-mobile-lit {
+    --mobile-copy: #fff8e9;
+    --mobile-accent: #e6d3ae;
+    --mobile-inverse: #3d2d20;
+  }
+  .home-page.is-mobile-hero-lit,
+  .about-page.is-mobile-hero-lit,
+  .journey-page.is-mobile-hero-lit,
+  .partnership-page.is-mobile-hero-lit,
+  .corporate-page.is-mobile-hero-lit { --hero-fg: #fff8e9; }
   .au-hero.s-hero .au-hero-shade, .au-hero.s-hero.au-hero-settle-bottom .au-hero-shade { opacity: 1; background: linear-gradient(0deg, #100c0af2 0%, #100c0ab8 32%, #100c0a55 58%, #100c0a18 78%), linear-gradient(180deg, #100c0a80, transparent 30%); }
   .au-hero.s-hero .au-hero-photo::after { height: min(36%, 220px); }
   .au-hero.s-hero .au-hero-rise { display: none; }

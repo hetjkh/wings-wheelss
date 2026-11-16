@@ -114,31 +114,67 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
 
       if (context.conditions.mobile) {
         const photo = one(".au-hero-photo");
+        const video = one<HTMLVideoElement>("video");
         if (photo) {
-          const mobileReveal = gsap.timeline({
+          // iPhone: avoid rewriting mask-size every frame (main lag source).
+          // Registered --map + CSS mask-size is enough; scrub eases touch jitter.
+          const distance = () => Math.min(section.clientHeight * .55, window.innerHeight * .55);
+          gsap.timeline({
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: () => `+=${section.clientHeight * .7}`,
-              scrub: true,
+              end: distance,
+              scrub: .55,
               invalidateOnRefresh: true,
             },
-          });
-          paintMask(photo);
-          mobileReveal.fromTo(photo, { "--map": 1 }, {
-            "--map": 34,
-            ease: "none",
-            duration: 1,
-            onUpdate: () => paintMask(photo),
-          }, 0)
-            .to(section, { "--mobile-copy": "#fff8e9", "--mobile-accent": "#e6d3ae", "--mobile-inverse": "#3d2d20", ease: "none", duration: .12 }, .04);
-          if (page) mobileReveal.to(page, { "--hero-fg": "#fff8e9", ease: "none", duration: .12 }, .04);
-        }
-      }
+          }).fromTo(photo, { "--map": 1 }, { "--map": 34, ease: "none", duration: 1 }, 0);
 
-      gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .9, stagger: index => (index % lineCount) * .05, ease: "power3.out", force3D: true, delay: .05 });
-      gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 18, opacity: 0, duration: .75, stagger: index => (index % 3) * .05, ease: "power2.out", force3D: true, delay: .18 });
-      gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
+          // Snap text colors once — don't tween CSS vars across the whole page each frame.
+          const light = ScrollTrigger.create({
+            trigger: section,
+            start: "top top",
+            end: () => `+=${Math.min(section.clientHeight * .1, window.innerHeight * .1)}`,
+            onEnter: () => {
+              section.classList.add("is-mobile-lit");
+              page?.classList.add("is-mobile-hero-lit");
+            },
+            onLeaveBack: () => {
+              section.classList.remove("is-mobile-lit");
+              page?.classList.remove("is-mobile-hero-lit");
+            },
+          });
+          cleanups.push(() => {
+            light.kill();
+            section.classList.remove("is-mobile-lit");
+            page?.classList.remove("is-mobile-hero-lit");
+          });
+
+          // Free GPU while the mask is expanding on scroll.
+          if (video) {
+            const syncVideo = ScrollTrigger.create({
+              trigger: section,
+              start: "top top",
+              end: distance,
+              onUpdate: self => {
+                if (self.progress > .03 && self.progress < .97) video.pause();
+                else if (!document.hidden) video.play().catch(() => {});
+              },
+              onLeave: () => { if (!document.hidden) video.play().catch(() => {}); },
+              onLeaveBack: () => { if (!document.hidden) video.play().catch(() => {}); },
+            });
+            cleanups.push(() => syncVideo.kill());
+          }
+        }
+
+        // Lighter entrance — transforms only, shorter on phones.
+        gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 100, duration: .7, stagger: index => (index % lineCount) * .04, ease: "power2.out", force3D: true, delay: .04 });
+        gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 12, opacity: 0, duration: .55, stagger: index => (index % 3) * .04, ease: "power2.out", force3D: true, delay: .12 });
+        gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.1, duration: 1.05, ease: "power2.out", force3D: true });
+      } else {
+        gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .9, stagger: index => (index % lineCount) * .05, ease: "power3.out", force3D: true, delay: .05 });
+        gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 18, opacity: 0, duration: .75, stagger: index => (index % 3) * .05, ease: "power2.out", force3D: true, delay: .18 });
+        gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
+      }
 
       const heroInner = one(".au-hero-photo-inner");
       const shell = one(".au-hero-inner");
