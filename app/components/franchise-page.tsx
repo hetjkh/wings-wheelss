@@ -252,7 +252,7 @@ export default function FranchisePage() {
           <h3 className="f-cast-label">Potential partners may include</h3>
           <ul className="f-cast" data-stagger="0.08">{partners.map((item, i) => <li key={item.label} tabIndex={0} className={item.fullFrame ? "f-cast-full-frame" : undefined}>
             {item.fullFrame && <span className="f-cast-backdrop" aria-hidden="true" style={{ backgroundImage: `url(${item.photo})` }} />}
-            <Image src={item.photo} alt="" fill lockSizes quality={75} sizes="(max-width: 991px) 92vw, 60vw" style={{ objectPosition: item.position }} />
+            <Image src={item.photo} alt="" fill lockSizes quality={100} sizes="(max-width: 991px) 92vw, 60vw" style={{ objectPosition: item.position }} />
             <span className="f-cast-number">{String(i + 1).padStart(2, "0")}</span>
             <span className="f-cast-name">{item.label}</span>
             <p>{item.text}</p>

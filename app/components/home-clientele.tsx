@@ -9,7 +9,7 @@ const clienteleMobile = getImageProps({
   alt: "",
   fill: true,
   sizes: "92vw",
-  quality: 75,
+  quality: 100,
 }).props;
 
 const clients = [

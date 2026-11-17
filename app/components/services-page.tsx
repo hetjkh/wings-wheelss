@@ -54,14 +54,14 @@ const principleDesktop = getImageProps({
   alt: principleAlt,
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 const principleMobile = getImageProps({
   src: "/images/library/services-principle-v4-mobile.webp",
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 
 function PrinciplePhoto() {

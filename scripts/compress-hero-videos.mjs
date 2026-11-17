@@ -4,7 +4,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..", "public");
 
-/** Re-encode oversized looping heroes to ~720p H.264 + VP9 without changing URLs. */
+/** Re-encode looping heroes at sharp 1080p H.264 + VP9 without changing URLs. */
 const targets = [
   "hero-v4-continuous.mp4",
   "franchise-hero-markets.mp4",
@@ -34,10 +34,10 @@ for (const relative of targets) {
   await run("ffmpeg", [
     "-y", "-i", source,
     "-an",
-    "-vf", "scale='min(1280,iw)':-2,format=yuv420p",
+    "-vf", "scale='min(1920,iw)':-2,format=yuv420p",
     "-c:v", "libx264",
-    "-crf", "28",
-    "-preset", "medium",
+    "-crf", "18",
+    "-preset", "slow",
     "-movflags", "+faststart",
     tmpMp4,
   ]);
@@ -45,8 +45,8 @@ for (const relative of targets) {
     "-y", "-i", tmpMp4,
     "-an",
     "-c:v", "libvpx-vp9",
-    "-b:v", "0", "-crf", "36",
-    "-row-mt", "1", "-cpu-used", "3", "-deadline", "good",
+    "-b:v", "0", "-crf", "28",
+    "-row-mt", "1", "-cpu-used", "2", "-deadline", "good",
     "-tile-columns", "2",
     tmpWebm,
   ]);

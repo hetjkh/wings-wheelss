@@ -5,7 +5,8 @@ export type VideoSources = {
   mp4: string;
 };
 
-const MOBILE_QUERY = "(max-width: 900px), (hover: none), (pointer: coarse)";
+/** Width-only: touch desktops / hybrid laptops still get full-resolution hero video. */
+const MOBILE_QUERY = "(max-width: 900px)";
 
 export function prefersMobileVideo() {
   if (typeof window === "undefined") return false;
@@ -35,7 +36,7 @@ export function resolveVideoSources(src: string, mobile = prefersMobileVideo()):
   return { webm: src.replace(/\.mp4$/i, ".webm"), mp4: src };
 }
 
-const CACHE_NAME = "ww-motion-videos-v1";
+const CACHE_NAME = "ww-motion-videos-v2";
 
 /** Best-effort Cache Storage so the next visit can reuse the clip faster. */
 export function warmVideoCache(urls: string[]) {

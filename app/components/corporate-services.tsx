@@ -98,7 +98,7 @@ export function CorporateServices({ services }: { services: CorporateService[] }
     {services.map((item, index) => {
       const isOpen = index === active;
       const loadPhoto = Math.abs(index - active) <= 1;
-      const mobileImage = loadPhoto && item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 75 }).props : null;
+      const mobileImage = loadPhoto && item.photoMobile ? getImageProps({ src: item.photoMobile, alt: "", fill: true, sizes: "92vw", quality: 100 }).props : null;
       return <div
         key={item.title}
         ref={node => { panels.current[index] = node; }}
@@ -113,7 +113,7 @@ export function CorporateServices({ services }: { services: CorporateService[] }
       >
         {loadPhoto ? <picture>
           {mobileImage ? <source media="(max-width: 767px)" srcSet={mobileImage.srcSet} sizes="92vw" /> : null}
-          <Image src={item.photo} alt="" fill sizes="(max-width: 991px) 92vw, 60vw" quality={75} style={item.position ? { objectPosition: item.position } : undefined} />
+          <Image src={item.photo} alt="" fill sizes="(max-width: 991px) 92vw, 60vw" quality={100} style={item.position ? { objectPosition: item.position } : undefined} />
         </picture> : null}
         <span className="k-panel-shade" aria-hidden="true" />
         <span className="k-panel-index">{String(index + 1).padStart(2, "0")}</span>

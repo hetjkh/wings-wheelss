@@ -51,7 +51,7 @@ const regions = travelRegionOrder.map(id => ({ id, ...travelRegions[id], ...netw
 
 /** Map tiles need a single URL — use the image optimizer instead of full library originals. */
 const mapPhotos = Object.fromEntries(regions.map(item => {
-  const { props } = getImageProps({ src: item.photo, alt: "", width: 640, height: 360, quality: 75 });
+  const { props } = getImageProps({ src: item.photo, alt: "", width: 2048, height: 1152, quality: 100 });
   return [item.id, props.src];
 })) as Record<RegionId, string>;
 

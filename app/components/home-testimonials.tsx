@@ -140,7 +140,7 @@ export function HomeTestimonials() {
             }}>
             {voices.map((voice, index) => (
               <figure key={voice.name} className={`e-voices-frame${index === active ? " is-active" : ""}`} aria-hidden={index !== active}>
-                {Math.abs(index - active) <= 1 ? <Image reveal src={voice.photo} alt={voice.alt} fill sizes="(max-width: 700px) 90vw, 48vw" className="n-cover" style={{ objectPosition: voice.position }} /> : null}
+                {Math.abs(index - active) <= 1 ? <Image reveal src={voice.photo} alt={voice.alt} fill sizes="(max-width: 700px) 100vw, 70vw" quality={100} className="n-cover" style={{ objectPosition: voice.position }} /> : null}
               </figure>
             ))}
             <div className="e-voices-shade" />

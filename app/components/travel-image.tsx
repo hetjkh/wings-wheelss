@@ -42,7 +42,7 @@ export default function TravelImage({
   return <NextImage
     {...props}
     sizes={normalizeSizes(sizes)}
-    quality={quality ?? 75}
+    quality={quality ?? 100}
     placeholder={placeholder ?? "empty"}
     blurDataURL={blurDataURL}
     decoding={decoding ?? "async"}

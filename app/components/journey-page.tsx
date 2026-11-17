@@ -43,7 +43,7 @@ export default function JourneyPage() {
     <JourneyHeader />
     <main>
       <section className="j-hero ab-hero" id="top" aria-labelledby="journey-heading">
-        <Image className="j-photo j-hero-photo" src="/images/about/people-and-journeys.webp" alt="Travel consultants working together around a table to plan a journey" fill sizes="100vw" quality={75} preload />
+        <Image className="j-photo j-hero-photo" src="/images/about/people-and-journeys.webp" alt="Travel consultants working together around a table to plan a journey" fill sizes="100vw" quality={100} preload />
         <div className="j-hero-shade" />
         <div className="j-hero-cover-shade" aria-hidden="true" />
         <div className="j-shell j-hero-content">

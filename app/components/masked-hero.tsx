@@ -280,12 +280,11 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
       <div className="au-hero-photo-inner">
         {"video" in media
           ? <>
-              {/* Optimized still for LCP — video has no poster so the raw webp is not double-fetched. */}
-              <Image src={media.poster ?? "/images/journey/hero.webp"} alt="" fill preload sizes="100vw" quality={75} aria-hidden />
-              {/* Still is LCP; don't let the MP4 fight Safari's image decode on first paint. */}
-              <MotionVideo src={media.video} />
+              {/* High-res still for LCP — video has no poster attr so the webp is not double-fetched. */}
+              <Image src={media.poster ?? "/images/journey/hero.webp"} alt="" fill preload sizes="100vw" quality={100} aria-hidden />
+              <MotionVideo priority src={media.video} />
             </>
-          : <Image src={media.image} alt={media.alt} fill preload sizes="100vw" quality={75} style={media.position ? { objectPosition: media.position } : undefined} />}
+          : <Image src={media.image} alt={media.alt} fill preload sizes="100vw" quality={100} style={media.position ? { objectPosition: media.position } : undefined} />}
       </div>
       <div className="au-hero-shade" />
     </div>

@@ -11,35 +11,35 @@ const savannahDesktop = getImageProps({
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 const savannahMobile = getImageProps({
   src: "/images/africa-mobile/header-savannah-mobile-v1.webp",
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 const elephantsDesktop = getImageProps({
   src: "/images/africa-scene/elephants.webp",
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 const elephantsMobile = getImageProps({
   src: "/images/africa-mobile/header-elephants-mobile-v1.webp",
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 const grasses = getImageProps({
   src: "/images/africa-scene/grasses.webp",
   alt: "",
   fill: true,
   sizes: "100vw",
-  quality: 75,
+  quality: 100,
 }).props;
 
 function ScenePhoto({
