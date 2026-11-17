@@ -26,7 +26,7 @@ function ClosingPhoto({
     src: photo,
     alt: "",
     fill: true,
-    sizes: "(min-width: 992px) 100vw, 1px",
+    sizes: "100vw",
     quality: 75,
   }).props;
   const mobile = photoMobile
@@ -34,11 +34,12 @@ function ClosingPhoto({
         src: photoMobile,
         alt: "",
         fill: true,
-        sizes: "(max-width: 991px) 100vw, 1px",
+        sizes: "100vw",
         quality: 75,
       }).props
     : null;
-  const { srcSet: _srcSet, ...img } = desktop;
+  const fallback = mobile ?? desktop;
+  const { srcSet: _srcSet, ...img } = fallback;
   const style = {
     ...img.style,
     position: "absolute" as const,
@@ -54,8 +55,8 @@ function ClosingPhoto({
   }
 
   return <picture>
-    <source media="(max-width: 991px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
-    <source media="(min-width: 992px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+    <source media="(max-width: 991px)" srcSet={mobile.srcSet} sizes="100vw" />
+    <source media="(min-width: 992px)" srcSet={desktop.srcSet} sizes="100vw" />
     <img {...img} alt="" decoding="async" loading="eager" fetchPriority="high" style={style} />
   </picture>;
 }

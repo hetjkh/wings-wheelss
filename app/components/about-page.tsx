@@ -108,11 +108,11 @@ export function AboutPage() {
             <h2 className="au-who-mobile-title" data-lines><Line>Your journey.</Line><Line><em>Made personal.</em></Line></h2>
             <div className="au-who-collage">
               <div className="au-who-landscape">
-                <Image src="/images/about/mountain-v2.webp" alt="A traveller overlooking a mountain lake" fill sizes="(max-width: 767px) 76vw, 1px" />
+                <Image src="/images/about/mountain-v2.webp" alt="A traveller overlooking a mountain lake" fill sizes="76vw" />
               </div>
               <div className="au-who-seal" aria-hidden="true"><TravelIcon kind="route" size={22} /><span>People<br />first.</span></div>
               <figure className="au-who-postcard">
-                <div><Image src="/images/about/people-and-journeys.webp" alt="Travel specialists planning a journey together" fill sizes="(max-width: 767px) 45vw, 1px" /></div>
+                <div><Image src="/images/about/people-and-journeys.webp" alt="Travel specialists planning a journey together" fill sizes="45vw" /></div>
                 <figcaption>With you, all the way.</figcaption>
               </figure>
             </div>

@@ -53,26 +53,27 @@ const principleDesktop = getImageProps({
   src: "/images/library/services-principle-v4-desktop.webp",
   alt: principleAlt,
   fill: true,
-  sizes: "(min-width: 992px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 const principleMobile = getImageProps({
   src: "/images/library/services-principle-v4-mobile.webp",
   alt: "",
   fill: true,
-  sizes: "(max-width: 991px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 
 function PrinciplePhoto() {
+  const { srcSet: _srcSet, ...mobileImg } = principleMobile;
   return <picture>
-    <source media="(max-width: 991px)" srcSet={principleMobile.srcSet} sizes={principleMobile.sizes} />
-    <source media="(min-width: 992px)" srcSet={principleDesktop.srcSet} sizes={principleDesktop.sizes} />
+    <source media="(max-width: 991px)" srcSet={principleMobile.srcSet} sizes="100vw" />
+    <source media="(min-width: 992px)" srcSet={principleDesktop.srcSet} sizes="100vw" />
     <img
-      {...principleDesktop}
+      {...mobileImg}
       alt={principleAlt}
       className="j-photo s-principle-photo-desktop"
-      style={{ ...principleDesktop.style, objectPosition: "65% center", position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      style={{ ...mobileImg.style, objectPosition: "65% center", position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
     />
   </picture>;
 }

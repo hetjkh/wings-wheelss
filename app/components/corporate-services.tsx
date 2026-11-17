@@ -112,8 +112,8 @@ export function CorporateServices({ services }: { services: CorporateService[] }
         onClick={() => open(index, true)}
       >
         {loadPhoto ? <picture>
-          {mobileImage ? <source media="(max-width: 767px)" srcSet={item.originalQuality ? item.photoMobile : mobileImage.srcSet} sizes={mobileImage.sizes} /> : null}
-          <Image src={item.photo} alt="" fill unoptimized={item.originalQuality} lockSizes={item.originalQuality} sizes="(max-width: 991px) 92vw, 60vw" style={item.position ? { objectPosition: item.position } : undefined} />
+          {mobileImage ? <source media="(max-width: 767px)" srcSet={mobileImage.srcSet} sizes="92vw" /> : null}
+          <Image src={item.photo} alt="" fill sizes="(max-width: 991px) 92vw, 60vw" quality={75} style={item.position ? { objectPosition: item.position } : undefined} />
         </picture> : null}
         <span className="k-panel-shade" aria-hidden="true" />
         <span className="k-panel-index">{String(index + 1).padStart(2, "0")}</span>

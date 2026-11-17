@@ -1,6 +1,5 @@
 "use client";
 
-import { getImageProps } from "next/image";
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Arrow } from "./icons";
@@ -13,21 +12,7 @@ const chapters = [
   { title: "Groups & MICE", text: "Conferences, exhibitions and delegations.", detail: "Shared ambitions. Connected journeys.", photo: "/images/africa-purposes/groups-background-v2.webp", subject: "/images/africa-purposes/groups-delegates-v2.webp", foreground: null, alt: "A spacious conference hotel foyer with warm timber and tropical gardens", position: "50% 50%", href: "/groups-mice", link: "Plan a group journey" },
 ];
 
-const mobileBackgrounds = ["business", "safari", "family", "groups"].map(name => getImageProps({
-  src: `/images/africa-mobile/${name}-mobile-v1.webp`,
-  alt: "",
-  fill: true,
-  sizes: "(max-width: 700px) 100vw, 1px",
-  quality: 75,
-}).props);
-
-const desktopBackgrounds = chapters.map(chapter => getImageProps({
-  src: chapter.photo,
-  alt: chapter.alt,
-  fill: true,
-  sizes: "(min-width: 701px) 100vw, 1px",
-  quality: 75,
-}).props);
+const mobilePhotos = ["business", "safari", "family", "groups"].map(name => `/images/africa-mobile/${name}-mobile-v1.webp`);
 
 export function AfricaPurposeScene() {
   const root = useRef<HTMLDivElement>(null);
@@ -130,22 +115,16 @@ export function AfricaPurposeScene() {
     <div className="a-purpose-stage">
       {chapters.map((chapter, index) => {
         const loadMedia = near && (!enhanced || Math.abs(index - active) <= 1);
-        const mobile = mobileBackgrounds[index];
-        const desktop = desktopBackgrounds[index];
-        const { srcSet: _srcSet, ...desktopImg } = desktop;
         return <article key={chapter.title} className={`a-purpose-slide a-purpose-slide-${index}`} data-active={active === index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`africa-purpose-${index}`} style={{ "--purpose-position": chapter.position } as CSSProperties}>
-          <div className="a-purpose-background">{loadMedia ? <picture>
-            <source media="(max-width: 700px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
-            <source media="(min-width: 701px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
-            <img
-              {...desktopImg}
-              alt={chapter.alt}
-              decoding="async"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchPriority={index === active ? "high" : "low"}
-              style={{ ...desktopImg.style, position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: chapter.position }}
-            />
-          </picture> : null}</div>
+          <div className="a-purpose-background">{loadMedia ? <Image
+            src={compact ? mobilePhotos[index] : chapter.photo}
+            alt={chapter.alt}
+            fill
+            sizes="100vw"
+            quality={75}
+            priority={index === 0}
+            style={{ objectFit: "cover", objectPosition: chapter.position }}
+          /> : null}</div>
           <div className="a-purpose-shade" aria-hidden="true" />
           <div className="a-purpose-heading">
             <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>

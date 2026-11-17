@@ -139,7 +139,7 @@ export default function GroupsPage() {
             <h2 className="gm-arrival-title">
               <span className="gm-arrival-lead">Different cities.</span>
               <span className="gm-arrival-finale">
-                <span className="gm-arrival-photo" aria-hidden="true"><Image src="/images/library/dubai-waterfront.webp" alt="" fill sizes="(max-width: 767px) 100vw, 1px" /></span>
+                <span className="gm-arrival-photo" aria-hidden="true"><Image src="/images/library/dubai-waterfront.webp" alt="" fill sizes="100vw" /></span>
                 <svg className="gm-arrival-wave gm-arrival-wave-top" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
                   <path fill="#f6f0e6" d="M0 0H390C335 15 310 55 240 85S80 102 0 170Z" />
                   <path fill="#e8d7be" opacity=".45" d="M0 170C80 102 160 115 220 94C125 87 66 100 0 151Z" />
@@ -163,7 +163,7 @@ export default function GroupsPage() {
       </section>
 
       <section className="g-manage j-torn-top" id="manage" aria-labelledby="manage-heading">
-        <div className="gm-manage-art g-mobile-only" aria-hidden="true"><Image src="/images/library/groups-manage-cabin-mobile-v1.webp" alt="" fill sizes="(max-width: 767px) 100vw, 1px" /></div>
+        <div className="gm-manage-art g-mobile-only" aria-hidden="true"><Image src="/images/library/groups-manage-cabin-mobile-v1.webp" alt="" fill sizes="100vw" /></div>
         <div className="j-shell">
           <div className="s-split-head g-manage-head">
             <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span className="g-desktop-copy">From the first arrival</span><span className="g-desktop-copy">to the final departure.</span><span className="g-mobile-only">Every detail.<br /><em>Taken care of.</em></span></h2></div>

@@ -15,7 +15,7 @@ export function MobileGroupServices() {
     <p className="gm-intro">Flights, stays and every journey in between. All taken care of by one team.</p>
     <div className="gm-disclosures" data-stagger>{serviceGroups.map(group => <details key={group.title} name="group-mobile-services">
       <summary>
-        <span className="gm-service-photo" aria-hidden="true"><Image src={group.photo} alt="" fill sizes="(max-width: 767px) 90vw, 1px" /></span>
+        <span className="gm-service-photo" aria-hidden="true"><Image src={group.photo} alt="" fill sizes="90vw" /></span>
         <span className="gm-service-icon"><TravelIcon kind={group.icon} size={23} /></span>
         <span className="gm-service-title">{group.title}</span><span className="gm-plus" aria-hidden="true" />
       </summary>

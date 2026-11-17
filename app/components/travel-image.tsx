@@ -13,6 +13,9 @@ type TravelImageProps = ImageProps & {
 function normalizeSizes(sizes?: string) {
   if (!sizes) return sizes;
   return sizes
+    // Safari can pick a 1px art-direction candidate and show a blue "?" broken image.
+    .replace(/,\s*1px\b/gi, "")
+    .replace(/\b1px\b/gi, "100vw")
     .replace(/\b1(?:0[1-9]|1[0-9]{2})vw\b/g, "100vw")
     .replace(/\b(\d{3,})vw\b/g, "100vw");
 }

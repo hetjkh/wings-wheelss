@@ -5,32 +5,33 @@ import { useEffect, useRef } from "react";
 import { Arrow } from "./icons";
 import "./africa-landscape.css";
 
+/** Safari-safe art direction: full viewport sizes on both sources (avoid 1px candidates). */
 const savannahDesktop = getImageProps({
   src: "/images/africa-scene/savannah.webp",
   alt: "",
   fill: true,
-  sizes: "(min-width: 701px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 const savannahMobile = getImageProps({
   src: "/images/africa-mobile/header-savannah-mobile-v1.webp",
   alt: "",
   fill: true,
-  sizes: "(max-width: 700px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 const elephantsDesktop = getImageProps({
   src: "/images/africa-scene/elephants.webp",
   alt: "",
   fill: true,
-  sizes: "(min-width: 701px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 const elephantsMobile = getImageProps({
   src: "/images/africa-mobile/header-elephants-mobile-v1.webp",
   alt: "",
   fill: true,
-  sizes: "(max-width: 700px) 100vw, 1px",
+  sizes: "100vw",
   quality: 75,
 }).props;
 const grasses = getImageProps({
@@ -50,7 +51,8 @@ function ScenePhoto({
   mobile?: typeof savannahMobile;
   priority?: boolean;
 }) {
-  const { srcSet: _srcSet, ...img } = desktop;
+  const fallback = mobile ?? desktop;
+  const { srcSet: _srcSet, ...img } = fallback;
   const attrs = {
     ...img,
     alt: "",
@@ -61,8 +63,8 @@ function ScenePhoto({
   };
   if (!mobile) return <img {...attrs} />;
   return <picture>
-    <source media="(max-width: 700px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
-    <source media="(min-width: 701px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+    <source media="(max-width: 700px)" srcSet={mobile.srcSet} sizes="100vw" />
+    <source media="(min-width: 701px)" srcSet={desktop.srcSet} sizes="100vw" />
     <img {...attrs} />
   </picture>;
 }

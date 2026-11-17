@@ -1,8 +1,16 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import TravelImage from "./travel-image";
 import { Arrow } from "./icons";
 import "./home-clientele.css";
+
+const clienteleMobile = getImageProps({
+  src: "/images/library/clientele-global-connections-mobile-v1.webp",
+  alt: "",
+  fill: true,
+  sizes: "92vw",
+  quality: 75,
+}).props;
 
 const clients = [
   { name: "Médecins Sans Frontières", sector: "Humanitarian" },
@@ -48,7 +56,7 @@ export function HomeClientele() {
       <div className="e-clientele-stage">
         <figure className="e-clientele-visual" data-motion-image>
           <picture>
-            <source media="(max-width: 700px)" srcSet="/images/library/clientele-global-connections-mobile-v1.webp" type="image/webp" />
+            <source media="(max-width: 700px)" srcSet={clienteleMobile.srcSet} sizes="92vw" />
             <TravelImage
               reveal
               src="/images/library/clientele-global-connections-v1.webp"
