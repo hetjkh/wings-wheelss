@@ -16,7 +16,7 @@ function motionAllowed(element: HTMLElement | null) {
 }
 
 function Wordmark() {
-  return <span className="ww-logo-lockup"><Image src="/logo-transparent.png" alt="Wings & Wheels Travel & Tourism — Travel. Thoughtfully Managed." width={1672} height={941} sizes="200px" priority /></span>;
+  return <span className="ww-logo-lockup"><Image src="/logo-transparent.png" alt="Wings & Wheels Travel & Tourism — Travel. Thoughtfully Managed." width={1672} height={941} sizes="200px" /></span>;
 }
 
 function MobileGroup({ link, current, close, expanded, toggle, index }: {

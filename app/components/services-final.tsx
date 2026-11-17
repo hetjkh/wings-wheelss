@@ -51,13 +51,13 @@ function ClosingPhoto({
   };
 
   if (!mobile) {
-    return <img {...img} alt="" decoding="async" loading="eager" fetchPriority="high" style={style} />;
+    return <img {...img} alt="" decoding="async" loading="lazy" fetchPriority="low" style={style} />;
   }
 
   return <picture>
     <source media="(max-width: 991px)" srcSet={mobile.srcSet} sizes="100vw" />
     <source media="(min-width: 992px)" srcSet={desktop.srcSet} sizes="100vw" />
-    <img {...img} alt="" decoding="async" loading="eager" fetchPriority="high" style={style} />
+    <img {...img} alt="" decoding="async" loading="lazy" fetchPriority="low" style={style} />
   </picture>;
 }
 
@@ -96,7 +96,7 @@ export function ClosingScene({
       if (!entries.some(entry => entry.isIntersecting)) return;
       setShowPhoto(true);
       near.disconnect();
-    }, { rootMargin: "60% 0px" });
+    }, { rootMargin: "20% 0px" });
     near.observe(root);
 
     gsap.registerPlugin(ScrollTrigger);

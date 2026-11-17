@@ -76,7 +76,7 @@ export function AfricaPurposeScene() {
       if (!entries.some(entry => entry.isIntersecting)) return;
       setNear(true);
       nearObserver.disconnect();
-    }, { rootMargin: "45% 0px" });
+    }, { rootMargin: "12% 0px" });
     nearObserver.observe(scene);
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -122,7 +122,7 @@ export function AfricaPurposeScene() {
             fill
             sizes="100vw"
             quality={75}
-            priority={index === 0}
+            loading="lazy"
             style={{ objectFit: "cover", objectPosition: chapter.position }}
           /> : null}</div>
           <div className="a-purpose-shade" aria-hidden="true" />

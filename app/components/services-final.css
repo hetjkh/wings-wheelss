@@ -19,7 +19,8 @@
 }
 
 .sv-view { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #d9cdb8; }
-.sv-view-photo { position: absolute; inset: 0; will-change: transform; }
+.sv-view-photo { position: absolute; inset: 0; }
+.sv-final.is-scene .sv-view-photo { will-change: transform; }
 .sv-view img { object-fit: cover; object-position: center 40%; }
 .sv-view-shade { position: absolute; inset: 0; background: linear-gradient(180deg, #1523358c, #15233566 34%, #15233540 55%, #152335d9); }
 /* While the cabin-window scene is active, start on dark type over the cream frame. */

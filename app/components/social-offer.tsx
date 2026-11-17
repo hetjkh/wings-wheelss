@@ -69,7 +69,7 @@ export function SocialOffer() {
       </button>
 
       <div className="so-stub">
-        <Image src="/images/library/social-offer-island-flight-v1.webp" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 900px) 300px, 420px" quality={90} className="so-stub-photo" />
+        <Image src="/images/library/social-offer-island-flight-v1.webp" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 900px) 300px, 420px" quality={75} className="so-stub-photo" />
         <div className="so-stub-copy">
           <span className="so-kicker">Social fare</span>
           <p className="so-stub-big"><span>Follow &amp;</span><em>save.</em></p>

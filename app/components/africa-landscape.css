@@ -12,7 +12,10 @@
   color: #fff9ed;
 }
 .a-landscape-stage { position: sticky; top: 0; height: 100svh; min-height: 540px; overflow: clip; isolation: isolate; }
-.a-landscape-backdrop, .a-landscape-wildlife, .a-landscape-foreground { position: absolute; pointer-events: none; will-change: transform; }
+.a-landscape-backdrop, .a-landscape-wildlife, .a-landscape-foreground { position: absolute; pointer-events: none; }
+@media (hover: hover) and (pointer: fine) {
+  .a-landscape-backdrop, .a-landscape-wildlife, .a-landscape-foreground { will-change: transform; }
+}
 .a-landscape-backdrop { z-index: 0; inset: -5%; transform: translate3d(calc(var(--scene-x) * -.35), calc(var(--scene-y) * -.35 - var(--scene-progress) * 18px), 0) scale(1.04); }
 .a-landscape-backdrop img { object-fit: cover; object-position: center 55%; }
 .a-landscape-atmosphere { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(180deg, #18252c45, transparent 40%, #21180e33 72%, #20160cd9); }
