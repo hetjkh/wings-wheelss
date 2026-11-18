@@ -118,13 +118,14 @@
 
 .so .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-.so-channels { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
+.so-channels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
 .so-channels li { opacity: 0; animation: so-rise .6s cubic-bezier(.2, .8, .2, 1) forwards; }
 .so-channels li:nth-child(1) { animation-delay: .35s; }
 .so-channels li:nth-child(2) { animation-delay: .45s; }
 .so-channels li:nth-child(3) { animation-delay: .55s; }
 .so-channels li:nth-child(4) { animation-delay: .65s; }
 .so-channels li:nth-child(5) { animation-delay: .75s; }
+.so-channels li:nth-child(6) { animation-delay: .85s; }
 @keyframes so-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
 .so-channel { --brand: var(--ink); --origin: 50% 40px; position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; height: 100%; padding: 18px 8px 14px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; text-align: center; isolation: isolate; box-shadow: 0 10px 24px -20px rgba(15, 27, 45, .5); transition: border-color .3s, color .3s, transform .3s var(--ease), box-shadow .3s; }
@@ -136,6 +137,7 @@
 .so-channel[data-network="tiktok"] { --brand: linear-gradient(135deg, #111 60%, #25f4ee 60%, #25f4ee 70%, #fe2c55 70%); }
 .so-channel[data-network="facebook"] { --brand: #1877f2; }
 .so-channel[data-network="x"] { --brand: #111; }
+.so-channel[data-network="youtube"] { --brand: #ff0033; }
 .so-channel[data-network="instagram"]:hover, .so-channel[data-network="tiktok"]:hover, .so-channel[data-network="x"]:hover { box-shadow: 0 14px 28px -16px rgba(0, 0, 0, .5); }
 .so-channel-icon { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 50%; background: var(--soft); color: var(--ink); transition: background .3s, color .3s; }
 .so-channel-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
@@ -172,7 +174,7 @@
   .so { width: min(960px, calc(100% - 32px)); }
   .so-ticket { --stub: 300px; }
   .so-body { padding: 40px 32px 32px 68px; }
-  .so-channels { gap: 8px; }
+  .so-channels { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 }
 
 @media (max-width: 760px) {
@@ -198,7 +200,6 @@
   .so-steps { display: none; }
   .so-channels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-top: 14px; width: 100%; max-width: 100%; }
   .so-channels li { min-width: 0; max-width: 100%; }
-  .so-channels li:last-child { grid-column: 1 / -1; }
   .so-channel { flex-direction: row; align-items: center; gap: 8px; width: 100%; max-width: 100%; min-width: 0; padding: 10px 8px; text-align: left; border-radius: 12px; }
   .so-channel { --origin: 26px 50%; }
   .so-channel-icon { width: 30px; height: 30px; }

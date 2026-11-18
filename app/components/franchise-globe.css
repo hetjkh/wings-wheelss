@@ -116,6 +116,12 @@
   margin-top: 12px;
   margin-bottom: 0;
 }
+/* Pull the Gulf cluster apart so Cairo, Riyadh and Mumbai don't sit on Dubai. */
+.f-globe-pin[data-place="cairo"] { translate: -90% -14px; }
+.f-globe-pin[data-place="riyadh"] { translate: -8% -10px; }
+.f-globe-pin[data-place="mumbai"] { translate: -8% 4px; }
+.f-globe-pin[data-place="nairobi"] { translate: -78% 0; }
+.f-globe-pin[data-place="casablanca"] { translate: -88% 0; }
 .f-globe-pin.is-on { transform: translateY(-2px); }
 .f-globe-pin.is-link {
   background: #f4f7f5f0;

@@ -34,6 +34,11 @@ const channels: { label: string; handle: string; href: string; icon: ReactNode }
     href: office.socials.find(social => social.label === "X")!.href,
     icon: <path d="M4 4l7.2 9.2L4.5 20H7l5.1-5.9L16.8 20H20l-7.4-9.5L19.3 4H16.8l-4.7 5.4L7.5 4H4Z" fill="currentColor" stroke="none" />,
   },
+  {
+    label: "YouTube", handle: "Wings & Wheels",
+    href: "https://www.youtube.com",
+    icon: <><rect x="2.5" y="5.5" width="19" height="13" rx="4" /><path d="M10 9.5v5l4.5-2.5L10 9.5Z" fill="currentColor" stroke="none" /></>,
+  },
 ];
 
 const claim = `${office.whatsapp}?text=${encodeURIComponent("Hi Wings & Wheels! I just followed your pages and would like to unlock my discounted price.")}`;

@@ -15,14 +15,19 @@ type Place = {
   connective?: boolean;
 };
 
-/** UAE hub + Saudi / Africa / India focus, plus connective cities across the network. */
+/** One city per region so labels sit apart instead of stacking on the same part of the globe. */
 const places: Place[] = [
   { id: "dubai", city: "Dubai", country: "United Arab Emirates", code: "DXB", location: [25.2, 55.27], hub: true },
   { id: "riyadh", city: "Riyadh", country: "Saudi Arabia", code: "RUH", location: [24.71, 46.68] },
+  { id: "cairo", city: "Cairo", country: "Egypt", code: "CAI", location: [30.04, 31.24] },
+  { id: "casablanca", city: "Casablanca", country: "Morocco", code: "CMN", location: [33.57, -7.59] },
   { id: "nairobi", city: "Nairobi", country: "Kenya", code: "NBO", location: [-1.29, 36.82] },
   { id: "mumbai", city: "Mumbai", country: "India", code: "BOM", location: [19.08, 72.88] },
-  { id: "london", city: "London", country: "United Kingdom", code: "LHR", location: [51.47, -.45], connective: true },
+  { id: "london", city: "London", country: "United Kingdom", code: "LHR", location: [51.47, -0.45], connective: true },
   { id: "singapore", city: "Singapore", country: "Singapore", code: "SIN", location: [1.35, 103.82], connective: true },
+  { id: "tokyo", city: "Tokyo", country: "Japan", code: "HND", location: [35.68, 139.76], connective: true },
+  { id: "sydney", city: "Sydney", country: "Australia", code: "SYD", location: [-33.87, 151.21], connective: true },
+  { id: "newyork", city: "New York", country: "United States", code: "JFK", location: [40.64, -73.78], connective: true },
   { id: "capetown", city: "Cape Town", country: "South Africa", code: "CPT", location: [-33.92, 18.42], connective: true },
 ];
 
@@ -202,7 +207,7 @@ export function FranchiseGlobe() {
         ref={canvasRef}
         tabIndex={0}
         role="img"
-        aria-label="Spinning globe showing Wings and Wheels connections from Dubai across Saudi Arabia, Africa, India, the UK, Singapore and South Africa. Drag to explore."
+        aria-label="Spinning globe showing Wings and Wheels connections from Dubai to cities spread across Saudi Arabia, Egypt, Morocco, Kenya, South Africa, India, the United Kingdom, Singapore, Japan, Australia and the United States. Drag to explore."
         onPointerDown={e => {
           drag.current = { x: e.clientX, y: e.clientY, ...rotation.current };
           e.currentTarget.setPointerCapture(e.pointerId);
@@ -230,6 +235,7 @@ export function FranchiseGlobe() {
       {places.map(place => (
         <div
           key={place.id}
+          data-place={place.id}
           className={`f-globe-pin${place.hub ? " is-hub" : ""}${place.id === selected ? " is-on" : ""}${place.connective ? " is-link" : ""}`}
           style={anchorStyle(place.id)}
         >
@@ -237,8 +243,8 @@ export function FranchiseGlobe() {
           <span>{place.city}</span>
         </div>
       ))}
-      {networkPlaces.map(place => (
-        <div key={`arc-${place.id}`} className={`f-globe-arc${place.id === selected ? " is-on" : ""}`} style={anchorStyle(`arc-${place.id}`)}>
+      {networkPlaces.filter(place => place.id === selected).map(place => (
+        <div key={`arc-${place.id}`} className="f-globe-arc is-on" style={anchorStyle(`arc-${place.id}`)}>
           DXB → {place.code}
         </div>
       ))}
