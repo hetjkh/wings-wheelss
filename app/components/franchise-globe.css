@@ -116,12 +116,29 @@
   margin-top: 12px;
   margin-bottom: 0;
 }
-/* Pull the Gulf cluster apart so Cairo, Riyadh and Mumbai don't sit on Dubai. */
-.f-globe-pin[data-place="cairo"] { translate: -90% -14px; }
-.f-globe-pin[data-place="riyadh"] { translate: -8% -10px; }
-.f-globe-pin[data-place="mumbai"] { translate: -8% 4px; }
+/* Nudge nearby labels so country names sit on different sides of the dot. */
+.f-globe-pin[data-place="cairo"] { translate: -92% -12px; }
+.f-globe-pin[data-place="riyadh"] { translate: -6% -10px; }
+.f-globe-pin[data-place="mumbai"] { translate: -8% 6px; }
 .f-globe-pin[data-place="nairobi"] { translate: -78% 0; }
-.f-globe-pin[data-place="casablanca"] { translate: -88% 0; }
+.f-globe-pin[data-place="casablanca"] { translate: -90% 0; }
+.f-globe-pin[data-place="london"] { translate: -88% -8px; }
+.f-globe-pin[data-place="madrid"] { translate: -80% 10px; }
+.f-globe-pin[data-place="berlin"] { translate: -12% -16px; }
+.f-globe-pin[data-place="prague"] { translate: -86% 10px; }
+.f-globe-pin[data-place="vienna"] { translate: -8% 12px; }
+.f-globe-pin[data-place="zurich"] { translate: -92% 8px; }
+.f-globe-pin[data-place="stockholm"] { translate: -30% -18px; }
+.f-globe-pin[data-place="moscow"] { translate: -10% -6px; }
+.f-globe-pin[data-place="singapore"] { translate: -88% 8px; }
+.f-globe-pin[data-place="kualalumpur"] { translate: -8% 12px; }
+.f-globe-pin[data-place="hongkong"] { translate: -8% -14px; }
+.f-globe-pin[data-place="beijing"] { translate: -82% -8px; }
+.f-globe-pin[data-place="newyork"] { translate: -86% -10px; }
+.f-globe-pin[data-place="toronto"] { translate: -8% 10px; }
+.f-globe-pin[data-place="saopaulo"] { translate: -84% 0; }
+.f-globe-pin[data-place="buenosaires"] { translate: -16% 10px; }
+.f-globe-pin[data-place="auckland"] { translate: -12% -8px; }
 .f-globe-pin.is-on { transform: translateY(-2px); }
 .f-globe-pin.is-link {
   background: #f4f7f5f0;

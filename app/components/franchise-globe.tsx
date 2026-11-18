@@ -11,23 +11,39 @@ type Place = {
   country: string;
   code: string;
   location: [number, number];
+  /** Short name shown on the globe. Defaults to the city. */
+  label?: string;
   hub?: boolean;
   connective?: boolean;
 };
 
-/** One city per region so labels sit apart instead of stacking on the same part of the globe. */
+/** Dubai hub, franchise focus, and one city for each connected country. */
 const places: Place[] = [
   { id: "dubai", city: "Dubai", country: "United Arab Emirates", code: "DXB", location: [25.2, 55.27], hub: true },
   { id: "riyadh", city: "Riyadh", country: "Saudi Arabia", code: "RUH", location: [24.71, 46.68] },
-  { id: "cairo", city: "Cairo", country: "Egypt", code: "CAI", location: [30.04, 31.24] },
-  { id: "casablanca", city: "Casablanca", country: "Morocco", code: "CMN", location: [33.57, -7.59] },
+  { id: "cairo", city: "Cairo", country: "Egypt", label: "Egypt", code: "CAI", location: [30.04, 31.24] },
+  { id: "casablanca", city: "Casablanca", country: "Morocco", label: "Morocco", code: "CMN", location: [33.57, -7.59] },
   { id: "nairobi", city: "Nairobi", country: "Kenya", code: "NBO", location: [-1.29, 36.82] },
   { id: "mumbai", city: "Mumbai", country: "India", code: "BOM", location: [19.08, 72.88] },
   { id: "london", city: "London", country: "United Kingdom", code: "LHR", location: [51.47, -0.45], connective: true },
+  { id: "madrid", city: "Madrid", country: "Spain", label: "Spain", code: "MAD", location: [40.42, -3.7], connective: true },
+  { id: "berlin", city: "Berlin", country: "Germany", label: "Germany", code: "BER", location: [52.52, 13.4], connective: true },
+  { id: "prague", city: "Prague", country: "Czech Republic", label: "Czech Republic", code: "PRG", location: [50.08, 14.44], connective: true },
+  { id: "vienna", city: "Vienna", country: "Austria", label: "Austria", code: "VIE", location: [48.21, 16.37], connective: true },
+  { id: "zurich", city: "Zurich", country: "Switzerland", label: "Switzerland", code: "ZRH", location: [47.38, 8.54], connective: true },
+  { id: "stockholm", city: "Stockholm", country: "Sweden", label: "Sweden", code: "ARN", location: [59.33, 18.07], connective: true },
+  { id: "moscow", city: "Moscow", country: "Russia", label: "Russia", code: "SVO", location: [55.75, 37.62], connective: true },
   { id: "singapore", city: "Singapore", country: "Singapore", code: "SIN", location: [1.35, 103.82], connective: true },
+  { id: "kualalumpur", city: "Kuala Lumpur", country: "Malaysia", label: "Malaysia", code: "KUL", location: [3.14, 101.69], connective: true },
+  { id: "hongkong", city: "Hong Kong", country: "Hong Kong", code: "HKG", location: [22.32, 114.17], connective: true },
+  { id: "beijing", city: "Beijing", country: "China", label: "China", code: "PEK", location: [39.9, 116.41], connective: true },
   { id: "tokyo", city: "Tokyo", country: "Japan", code: "HND", location: [35.68, 139.76], connective: true },
-  { id: "sydney", city: "Sydney", country: "Australia", code: "SYD", location: [-33.87, 151.21], connective: true },
-  { id: "newyork", city: "New York", country: "United States", code: "JFK", location: [40.64, -73.78], connective: true },
+  { id: "sydney", city: "Sydney", country: "Australia", label: "Australia", code: "SYD", location: [-33.87, 151.21], connective: true },
+  { id: "auckland", city: "Auckland", country: "New Zealand", label: "New Zealand", code: "AKL", location: [-36.85, 174.76], connective: true },
+  { id: "newyork", city: "New York", country: "United States", label: "USA", code: "JFK", location: [40.64, -73.78], connective: true },
+  { id: "toronto", city: "Toronto", country: "Canada", label: "Canada", code: "YYZ", location: [43.65, -79.38], connective: true },
+  { id: "saopaulo", city: "São Paulo", country: "Brazil", label: "Brazil", code: "GRU", location: [-23.55, -46.63], connective: true },
+  { id: "buenosaires", city: "Buenos Aires", country: "Argentina", label: "Argentina", code: "EZE", location: [-34.6, -58.38], connective: true },
   { id: "capetown", city: "Cape Town", country: "South Africa", code: "CPT", location: [-33.92, 18.42], connective: true },
 ];
 
@@ -207,7 +223,7 @@ export function FranchiseGlobe() {
         ref={canvasRef}
         tabIndex={0}
         role="img"
-        aria-label="Spinning globe showing Wings and Wheels connections from Dubai to cities spread across Saudi Arabia, Egypt, Morocco, Kenya, South Africa, India, the United Kingdom, Singapore, Japan, Australia and the United States. Drag to explore."
+        aria-label="Spinning globe showing Wings and Wheels connections from Dubai across Africa, Europe, Asia, the Americas and Oceania, including China, Russia, Hong Kong, Singapore, the Czech Republic, Canada, the USA, Sweden, Australia, Austria, New Zealand, Switzerland, Malaysia, Egypt, Morocco, Spain, Argentina, Brazil and Germany. Drag to explore."
         onPointerDown={e => {
           drag.current = { x: e.clientX, y: e.clientY, ...rotation.current };
           e.currentTarget.setPointerCapture(e.pointerId);
@@ -240,7 +256,7 @@ export function FranchiseGlobe() {
           style={anchorStyle(place.id)}
         >
           <i className="f-globe-pulse" aria-hidden="true" />
-          <span>{place.city}</span>
+          <span>{place.label ?? place.city}</span>
         </div>
       ))}
       {networkPlaces.filter(place => place.id === selected).map(place => (
