@@ -22,7 +22,7 @@ const network = [{ country: "Kenya", city: "Nairobi", code: "NBO" }, { country: 
 function AfricaChapter() {
   return <section className="e-africa" aria-labelledby="e-africa-title">
     <div className="e-africa-landscape">
-      <div className="e-africa-photo" data-editorial-parallax="8" data-motion-image><Image reveal src={"/images/library/africa-dawn.webp"} alt="An elephant crossing golden Kenyan grasslands beneath an acacia tree" fill sizes="100vw" quality={100} className="n-cover" /></div>
+      <div className="e-africa-photo" data-editorial-parallax="8" data-motion-image><Image reveal src={"/images/library/africa-dawn.webp"} alt="An elephant crossing golden Kenyan grasslands beneath an acacia tree" fill sizes="(max-width: 767px) 250vw, 100vw" quality={100} className="n-cover" /></div>
       <div className="e-africa-shade" />
       <div className="e-shell e-africa-top"><ChapterLabel number="01">Our home is Dubai. Our heart goes further.</ChapterLabel><span className="n-kicker">UAE ↔ Africa</span></div>
       <div className="e-shell e-africa-title"><span className="n-kicker">A world of connections. A deeper connection.</span><h2 id="e-africa-title" data-editorial-title><Lines lines={["Africa.", "Feel closer."]} /></h2></div>
@@ -65,7 +65,7 @@ function GroupsChapter() {
   return <section className="e-together" aria-labelledby="e-together-title" data-home-cover>
     <SectionEdges />
     <div className="e-together-hero">
-      <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/home-better-together-retreat-v1.webp"} alt="Colleagues sharing a candlelit retreat dinner on a coastal terrace at sunset" fill sizes="100vw" quality={100} className="n-cover" /></div>
+      <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/home-better-together-retreat-v1.webp"} alt="Colleagues sharing a candlelit retreat dinner on a coastal terrace at sunset" fill sizes="(max-width: 767px) 250vw, 100vw" quality={100} className="n-cover" /></div>
       <div className="e-together-shade" />
       <div className="e-shell e-together-content"><ChapterLabel number="03">Groups, meetings & shared moments</ChapterLabel><h2 id="e-together-title" data-editorial-title><Lines lines={["Better", "together."]} /></h2><div className="e-together-caption" data-motion-stagger><span>One shared experience.<br />A thousand reasons to remember.</span><Link href="/groups-mice" className="n-panel-cta"><span>Bring your people</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div>
     </div>

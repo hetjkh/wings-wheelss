@@ -170,7 +170,7 @@ export function HomeServices() {
             {services.map((item, index) => (
               <figure key={item.title} className={`n-services-card${index === active ? " is-active" : ""}`} style={{ zIndex: index + 1 }}>
                 <div className="n-services-card-photo">
-                  <Image reveal src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 100vw, 70vw" quality={100} className="n-cover" style={{ objectPosition: item.position }} />
+                  <Image reveal src={item.photo} alt={item.alt} fill sizes="(max-width: 999px) 250vw, 70vw" quality={100} className="n-cover" style={{ objectPosition: item.position }} />
                 </div>
                 <div className="n-services-card-shade" aria-hidden="true" />
                 <figcaption className="n-services-card-caption">
