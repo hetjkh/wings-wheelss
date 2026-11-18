@@ -23,7 +23,7 @@
 .c-line-note { font: 300 calc(var(--u) * .9375)/1.35 var(--body); text-align: right; color: inherit; opacity: .75; }
 
 /* 02 · A travel-request ticket. The stub fills in as the form is completed. */
-.c-form { --ease: cubic-bezier(.22, 1, .36, 1); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #f3ead9; }
+.c-form { --ease: cubic-bezier(.22, 1, .36, 1); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #f3ead9; scroll-margin-top: 110px; }
 .c-form-head { margin-top: 0; }
 .c-form .s-lead { color: var(--text); }
 .c-after { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: calc(var(--u) * 2.5) 0 0; padding: 0; list-style: none; }
