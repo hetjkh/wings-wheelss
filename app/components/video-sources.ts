@@ -36,7 +36,7 @@ export function resolveVideoSources(src: string, mobile = prefersMobileVideo()):
   return { webm: src.replace(/\.mp4$/i, ".webm"), mp4: src };
 }
 
-const CACHE_NAME = "ww-motion-videos-v2";
+const CACHE_NAME = "ww-motion-videos-v3";
 
 /** Best-effort Cache Storage so the next visit can reuse the clip faster. */
 export function warmVideoCache(urls: string[]) {
