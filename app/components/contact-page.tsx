@@ -118,7 +118,11 @@ export function ContactPage() {
         sub="We're here to help."
         text="Questions, quotes or bookings: our travel consultants in Dubai are here to help."
         action={{ label: "Send a request", href: "#form" }}
-        media={{ video: "/hero-v4-continuous.mp4" }}
+        media={{
+          image: "/images/contact/travel-consultation-hero.webp",
+          alt: "A travel consultant helping a traveller plan a journey in a welcoming Dubai office",
+          position: "50% 45%",
+        }}
       />
 
       <section className="c-reach j-torn-top" id="reach" aria-labelledby="reach-heading">
