@@ -28,12 +28,19 @@ const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const open = { from: 9, to: 19 };
 const axis = { from: 6, to: 22 };
 
+/** 12-hour label, e.g. 9 AM or 7 PM. */
+function hourLabel(hour: number) {
+  const cycle = ((hour % 24) + 24) % 24;
+  return `${cycle % 12 || 12} ${cycle >= 12 ? "PM" : "AM"}`;
+}
+
 /** Dubai is UTC+4 all year, so the office clock never needs daylight-saving rules. */
 function dubaiNow() {
   const now = new Date(Date.now() + 4 * 3600 * 1000);
   const day = (now.getUTCDay() + 6) % 7;
-  const hour = now.getUTCHours() + now.getUTCMinutes() / 60;
-  const time = `${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")}`;
+  const hours = now.getUTCHours();
+  const hour = hours + now.getUTCMinutes() / 60;
+  const time = `${hours % 12 || 12}:${String(now.getUTCMinutes()).padStart(2, "0")} ${hours >= 12 ? "PM" : "AM"}`;
   return { day, hour, time, isOpen: day !== 6 && hour >= open.from && hour < open.to };
 }
 
@@ -247,7 +254,7 @@ export function ContactPage() {
             </div>
           </div>
           <figure className="c-week" aria-label="Open Monday to Saturday, 9 AM to 7 PM. Closed on Sunday.">
-            <div className="c-week-axis" aria-hidden="true">{[6, 9, 12, 15, 19, 22].map(hour => <span key={hour} style={{ "--at": (hour - axis.from) / (axis.to - axis.from) } as React.CSSProperties}>{String(hour).padStart(2, "0")}:00</span>)}</div>
+            <div className="c-week-axis" aria-hidden="true">{[6, 9, 12, 15, 19, 22].map(hour => <span key={hour} style={{ "--at": (hour - axis.from) / (axis.to - axis.from) } as React.CSSProperties}>{hourLabel(hour)}</span>)}</div>
             <ol>{days.map((day, i) => {
               const today = clock?.day === i;
               const closed = i === 6;

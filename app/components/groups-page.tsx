@@ -17,10 +17,10 @@ import "./groups.css";
 import "./groups-mobile.css";
 
 const origins = [
-  { city: "London", who: "Executives", code: "LHR", arrives: "07:10", path: "M220 90 C 340 90, 360 310, 430 310", photo: "/images/library/groups-origin-london-v1.webp", alt: "Tower Bridge and London's riverside skyline in warm morning light" },
-  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50", path: "M220 530 C 340 530, 360 310, 430 310", photo: "/images/library/groups-origin-nairobi-v1.webp", alt: "Nairobi's KICC tower above green parkland and the city skyline" },
-  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "09:35", path: "M780 90 C 660 90, 640 310, 570 310", photo: "/images/library/groups-origin-riyadh-v1.webp", alt: "Riyadh's Kingdom Centre and financial district at sunset" },
-  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "14:20", path: "M780 530 C 660 530, 640 310, 570 310", photo: "/images/library/groups-origin-mumbai-v1.webp", alt: "The Gateway of India and Taj Mahal Palace beside Mumbai's waterfront" },
+  { city: "London", who: "Executives", code: "LHR", arrives: "7:10 AM", path: "M220 90 C 340 90, 360 310, 430 310", photo: "/images/library/groups-origin-london-v1.webp", alt: "Tower Bridge and London's riverside skyline in warm morning light" },
+  { city: "Nairobi", who: "Delegates", code: "NBO", arrives: "11:50 AM", path: "M220 530 C 340 530, 360 310, 430 310", photo: "/images/library/groups-origin-nairobi-v1.webp", alt: "Nairobi's KICC tower above green parkland and the city skyline" },
+  { city: "Riyadh", who: "Sales team", code: "RUH", arrives: "9:35 AM", path: "M780 90 C 660 90, 640 310, 570 310", photo: "/images/library/groups-origin-riyadh-v1.webp", alt: "Riyadh's Kingdom Centre and financial district at sunset" },
+  { city: "Mumbai", who: "Suppliers", code: "BOM", arrives: "2:20 PM", path: "M780 530 C 660 530, 640 310, 570 310", photo: "/images/library/groups-origin-mumbai-v1.webp", alt: "The Gateway of India and Taj Mahal Palace beside Mumbai's waterfront" },
 ];
 const sequence: { icon: IconKind; label: string }[] = [
   { icon: "plane", label: "Flights" }, { icon: "pin", label: "Arrivals" }, { icon: "bed", label: "Hotels" },
@@ -48,9 +48,9 @@ const kinds = [
 const day = [
   { when: "3 weeks before", items: ["Flights coordinated", "Hotel rooms arranged", "Visa requirements", "Transfers planned"] },
   { when: "Day before", items: ["Delegates arrive", "Airport pickups", "Hotel check-ins"] },
-  { when: "08:00", items: ["Team transfer from hotel"] },
-  { when: "09:00", items: ["Arrival at venue"] },
-  { when: "10:00", items: ["Event begins"], key: true },
+  { when: "8:00 AM", items: ["Team transfer from hotel"] },
+  { when: "9:00 AM", items: ["Arrival at venue"] },
+  { when: "10:00 AM", items: ["Event begins"], key: true },
   { when: "After the event", items: ["Return transfers", "Hotel movements", "Airport departures", "Onward journeys"] },
 ];
 
@@ -89,10 +89,10 @@ const steps = [
   { step: "Group plan updated", text: "The revised schedule is shared with the group and the event team." },
 ];
 const itinerary = [
-  { time: "13:10", next: "16:10", item: "Flight arrives", detail: "Nairobi → Dubai", note: "Delayed three hours", phase: 0 },
-  { time: "13:45", next: "16:45", item: "Airport transfer", detail: "12 delegates · coach", note: "Later transfer booked", phase: 2 },
-  { time: "14:30", next: "17:20", item: "Hotel check-in", detail: "Group rooms", note: "Rooms held for the group", phase: 2 },
-  { time: "19:30", item: "Welcome dinner", detail: "With the event team", note: "Still on schedule", phase: 3 },
+  { time: "1:10 PM", next: "4:10 PM", item: "Flight arrives", detail: "Nairobi → Dubai", note: "Delayed three hours", phase: 0 },
+  { time: "1:45 PM", next: "4:45 PM", item: "Airport transfer", detail: "12 delegates · coach", note: "Later transfer booked", phase: 2 },
+  { time: "2:30 PM", next: "5:20 PM", item: "Hotel check-in", detail: "Group rooms", note: "Rooms held for the group", phase: 2 },
+  { time: "7:30 PM", item: "Welcome dinner", detail: "With the event team", note: "Still on schedule", phase: 3 },
 ];
 
 const travelProcess = [
@@ -209,7 +209,7 @@ export default function GroupsPage() {
                 <span className="g-clock-minute" />
                 <span className="g-clock-pin" />
               </div>
-              <p className="g-clock-caption">Doors open at <strong>10:00</strong></p>
+              <p className="g-clock-caption">Doors open at <strong>10:00 AM</strong></p>
             </div>
             <ol className="g-timeline">
               <span className="g-timeline-line" aria-hidden="true"><span /></span>

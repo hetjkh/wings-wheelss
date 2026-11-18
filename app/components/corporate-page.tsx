@@ -31,11 +31,11 @@ const services = [
 ];
 
 const day = [
-  { time: "06:00", label: "Departure", photo: "/images/library/corporate-day-departure-v2.webp" },
-  { time: "09:00", label: "Meeting", photo: "/images/library/business-conversation.webp" },
-  { time: "12:30", label: "Client visit", photo: "/images/library/corporate-day-client-visit-v2.webp" },
-  { time: "15:00", label: "Team meeting", photo: "/images/library/corporate-team-meeting.webp" },
-  { time: "19:30", label: "Return flight", photo: "/images/library/corporate-airport-lounge.webp" },
+  { time: "6:00 AM", label: "Departure", photo: "/images/library/corporate-day-departure-v2.webp" },
+  { time: "9:00 AM", label: "Meeting", photo: "/images/library/business-conversation.webp" },
+  { time: "12:30 PM", label: "Client visit", photo: "/images/library/corporate-day-client-visit-v2.webp" },
+  { time: "3:00 PM", label: "Team meeting", photo: "/images/library/corporate-team-meeting.webp" },
+  { time: "7:30 PM", label: "Return flight", photo: "/images/library/corporate-airport-lounge.webp" },
 ];
 
 const companies = [
