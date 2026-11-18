@@ -1,0 +1,20 @@
+{
+  "name": "romanknows-deck",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && node serve.mjs",
+    "shots": "node shoot.mjs",
+    "export": "node build.mjs && node export.mjs",
+    "export:flat": "node build.mjs && node export.mjs --flat"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "playwright-core": "^1.65.1",
+    "pptxgenjs": "^4.0.1",
+    "simple-icons": "^16.38.0",
+    "tailwindcss": "^4.3.5"
+  }
+}
