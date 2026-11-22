@@ -1,4 +1,5 @@
 import * as si from 'simple-icons';
+import { readFileSync } from 'node:fs';
 
 const TOTAL = 15;
 
@@ -31,7 +32,7 @@ const slides = [];
 // ============================================================ 01 TITLE
 slides.push(slide(1, 'bg-cover', `
   <div class="left-[110px] top-[90px]">${pill('Project Introduction', '01')}</div>
-  <img src="../assets/agent-infrastructure-cube.png" class="left-[1130px] top-[40px] w-[760px]" />
+  <img src="../assets/security-operations.png" class="left-[1130px] top-[40px] w-[760px]" />
   <h1 class="left-[100px] top-[270px] m-0 whitespace-nowrap text-[190px] leading-[1] tracking-[-0.035em]"><span style="font-family:'RK Light'">Roman</span><span style="font-family:'RK Semibold'">Knows</span></h1>
   <div class="left-[110px] top-[500px] w-[980px] text-[50px] leading-[1.15]" style="font-family:'RK Light';color:#e6f2f7">An AI-Powered Website Vulnerability Assessment System</div>
   <div class="body left-[110px] top-[660px] w-[900px] text-[28px]">Making website security assessments smarter, safer, and easier to manage.</div>
@@ -68,7 +69,7 @@ slides.push(slide(2, '', `
 // ============================================================ 03 INTRODUCTION (light)
 slides.push(slide(3, '', `
   ${bgimg('light.jpg')}
-  <img src="../assets/agent-infrastructure-cube.png" class="left-[1230px] top-[-90px] w-[640px]" style="filter:saturate(.9)" />
+  <img src="../assets/server-infrastructure.png" class="left-[1230px] top-[-90px] w-[640px]" style="filter:saturate(.9)" />
   <div class="left-[110px] top-[90px]">${pill('Introduction', '03', true)}</div>
   <div class="h1 on-light left-[110px] top-[165px] w-[1150px] text-[88px]">Website security testing <i>shouldn't be complicated.</i></div>
   <div class="body body-l left-[110px] top-[410px] w-[1100px] text-[25px] leading-[1.5]">Website vulnerability assessments often involve multiple tools, manual commands, and scattered results. This makes testing difficult to manage, especially for beginners.<br><br><span style="font-family:'RK Semibold';color:#0f1820">RomanKnows</span> is an AI-powered platform designed to simplify and coordinate authorized website security assessments through a single interface.</div>
@@ -129,7 +130,7 @@ slides.push(slide(5, '', `
   ${bgimg('light.jpg')}
   <div class="left-[110px] top-[60px]">${pill('Modules & Functionalities', '05', true)}</div>
   ${modCard(mods[0], 110, 130, false)}${modCard(mods[1], 110, 510, false)}
-  <div class="card-teal left-[610px] top-[130px] w-[700px] h-[730px]" style="background-image:url('../assets/bg/blocks.jpg');background-position:center 60%"></div>
+  <div class="card-teal left-[610px] top-[130px] w-[700px] h-[730px]" style="background-image:url('../assets/security-operations.png');background-position:center 60%"></div>
   <div class="left-[610px] top-[130px] w-[700px] h-[730px] rounded-[30px]" style="background:linear-gradient(180deg,rgba(2,12,20,.78),rgba(2,12,20,.05) 55%,rgba(2,12,20,.35))"></div>
   <div class="h1 left-[660px] top-[170px] w-[600px] text-[66px]"><b>One platform.</b> Every essential assessment function.</div>
   <div class="mono left-[660px] top-[805px]" style="color:#b9d3df">RomanKnows  ·  4 core modules</div>
@@ -173,7 +174,7 @@ const stack = [
   ['Deployment', [['siNginx', 'Nginx'], ['siPm2', 'PM2'], ['siLetsencrypt', 'SSL']]],
 ];
 slides.push(slide(7, '', `
-  ${bgimg('mosaic.jpg')}
+  ${bgimg('glow-2.jpg')}
   <div class="left-[110px] top-[90px]">${pill('Tools & Technologies', '07')}</div>
   <div class="h1 left-[110px] top-[165px] w-[900px] text-[88px]">Built with <b>modern technology.</b></div>
   <div class="body left-[110px] top-[372px] w-[760px] text-[25px]">RomanKnows combines web development, artificial intelligence, security utilities, and persistent storage.</div>
@@ -245,7 +246,7 @@ slides.push(slide(10, 'bg-cover', `
   <div class="left-[110px] top-[90px]">${pill('Analysis of System', '10')}</div>
   <div class="h1 left-[110px] top-[165px] w-[1000px] text-[78px]">How RomanKnows works <b>behind the interface.</b></div>
   <div class="body left-[110px] top-[395px] w-[820px] text-[25px]">The system separates user interaction, AI reasoning, tool execution, and evidence storage.</div>
-  <img src="../assets/authorized-website-assessment.png" class="left-[1320px] top-[20px] w-[500px]" />
+  <img src="../assets/server-infrastructure.png" class="left-[1320px] top-[20px] w-[500px]" />
   ${nodes.map(([l, t, d], i) => {
     const x = 110 + i * 440;
     return `<div class="glass left-[${x}px] top-[500px] w-[380px] h-[236px]">
@@ -331,7 +332,7 @@ slides.push(slide(13, 'bg-cover', `
 // ============================================================ 14 CONCLUSION
 const future = ['Scheduled assessments and historical comparisons', 'Improved analytics with OWASP category mapping', 'Team collaboration and role-based workflows', 'CI/CD integration for continuous authorized testing', 'Private or self-hosted LLM support', 'Advanced reporting and policy controls'];
 slides.push(slide(14, '', `
-  ${bgimg('mosaic.jpg')}
+  ${bgimg('glow-2.jpg')}
   <div class="left-[110px] top-[90px]">${pill('Conclusion & Future Scope', '14')}</div>
   <div class="h1 left-[110px] top-[165px] w-[900px] text-[84px]">A smarter way to manage <b>authorized security testing.</b></div>
   <div class="body left-[110px] top-[560px] w-[780px] text-[24px] leading-[1.5]">RomanKnows demonstrates how AI can help coordinate the different stages of a website security assessment while keeping authorization, scope, and evidence at the center.</div>
@@ -365,32 +366,9 @@ slides.push(slide(15, 'bg-cover', `
   <div class="left-[1010px] top-[900px] w-[800px] text-right"><div class="mono" style="color:#bfe6f2">Questions & Discussion</div><div class="mt-[10px] text-[25px]" style="font-family:'RK Medium';color:#e3edf2">Ronit Kaushal · Het Jani · Vaghela Mitrajsinh</div></div>
 `, 'References (Table 6.1 of the report) and close with questions.'));
 
-export const html = (cssHref) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>RomanKnows — Project-1 Presentation</title>
+const runtime = readFileSync(new URL('./runtime.js', import.meta.url), 'utf8');
+
+export const html = (cssHref) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RomanKnows — Project-1 Presentation</title>
 <link rel="stylesheet" href="${cssHref}"><style>.slide{font-family:'RK Medium',sans-serif}</style></head>
 <body><div class="deck">${slides.join('\n')}</div>
-<script>
- if(!location.search.includes('export')){
-  const bar=document.createElement('div');
-  bar.id='export-bar';
-  const icon='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>';
-  const FMT=[['pptx','Export to PPT'],['pdf','Export to PDF']];
-  bar.innerHTML=FMT.map(([k,t])=>'<button class="export-btn" data-fmt="'+k+'">'+icon+'<span>'+t+'</span></button>').join('');
-  document.body.appendChild(bar);
-  const f=()=>{const z=Math.min(1,(innerWidth-40)/1920);document.documentElement.style.zoom=z;bar.style.zoom=1/z};f();addEventListener('resize',f);
-  bar.querySelectorAll('button').forEach((btn)=>{
-    const label=btn.querySelector('span'),orig=label.textContent,fmt=btn.dataset.fmt;
-    btn.onclick=async()=>{
-      if(location.protocol==='file:'){alert('Start the preview server first:\\n\\n  cd deck\\n  npm start\\n\\nthen open http://localhost:5173 and use the Export buttons.');return}
-      bar.querySelectorAll('button').forEach((b)=>b.disabled=true);label.textContent='Exporting… (~15s)';
-      try{
-        const r=await fetch('/export?format='+fmt);
-        if(!r.ok)throw new Error(await r.text());
-        const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='RomanKnows_Presentation.'+fmt;a.click();
-        label.textContent='Downloaded ✓';
-      }catch(e){label.textContent='Export failed';alert(e.message)}
-      setTimeout(()=>{bar.querySelectorAll('button').forEach((b)=>b.disabled=false);label.textContent=orig},2500);
-    };
-  });
- }
- else document.documentElement.classList.add('export');
-</script></body></html>`;
+<script>${runtime}</script></body></html>`;

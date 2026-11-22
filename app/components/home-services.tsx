@@ -9,12 +9,12 @@ import { Arrow } from "./icons";
 import "./home-services.css";
 
 const services = [
-  { title: "Flights", phase: "Fly", photo: "/images/library/home-flights-wing-v2.webp", alt: "A silver aircraft wing above crisp white clouds and turquoise ocean reefs", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
-  { title: "Visas & documentation", phase: "Arrive", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
-  { title: "Hotels", phase: "Stay", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
-  { title: "Airport & ground transfers", phase: "Move", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
-  { title: "Holidays & experiences", phase: "Feel", photo: "/images/library/holiday-arrival.webp", alt: "Two holiday travellers with suitcases arriving beside turquoise water", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
-  { title: "Travel support", phase: "Return", photo: "/images/library/home-personal-support.webp", alt: "A concierge helping a traveller review documents at a hotel desk", position: "56% center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
+  { title: "Flights", phase: "Fly", href: "/travel-services#flights", photo: "/images/library/home-flights-wing-v2.webp", alt: "A silver aircraft wing above crisp white clouds and turquoise ocean reefs", position: "center", line: "Bookings, multi-city itineraries and international connections.", note: "The journey begins" },
+  { title: "Visas & documentation", phase: "Arrive", href: "/travel-services#visas", photo: "/images/library/passport-preparation.webp", alt: "A traveller holding a passport while packing a bag for a journey", position: "center", line: "Visa assistance, travel documents and pre-departure checks.", note: "Paperwork, handled" },
+  { title: "Hotels", phase: "Stay", href: "/travel-services#hotels", photo: "/images/library/home-palm-suite.webp", alt: "A sunlit hotel suite overlooking Palm Jumeirah and the Dubai coastline", position: "center", line: "Business hotels, resorts, family stays and longer stays.", note: "Somewhere to land" },
+  { title: "Airport & ground transfers", phase: "Move", href: "/travel-services#transfers", photo: "/images/library/airport-transfer.webp", alt: "A chauffeur helping a traveller load luggage into an executive airport transfer vehicle", position: "center", line: "Airport transfers, private vehicles and chauffeur services.", note: "Door to door" },
+  { title: "Holidays & experiences", phase: "Feel", href: "/travel-services#holidays", photo: "/images/library/holiday-arrival.webp", alt: "Two holiday travellers with suitcases arriving beside turquoise water", position: "center", line: "Family holidays, safari, beach escapes and city breaks.", note: "Time that is yours" },
+  { title: "Travel support", phase: "Return", href: "/travel-services#support", photo: "/images/library/home-personal-support.webp", alt: "A concierge helping a traveller review documents at a hotel desk", position: "56% center", line: "Changes, rebooking, cancellations and onward travel.", note: "All the way home" },
 ] as const;
 
 const total = services.length;
@@ -159,7 +159,7 @@ export function HomeServices() {
               <div className="n-services-detail" key={`detail-${active}`}>
                 <h3>{current.title}</h3>
                 <p>{current.line}</p>
-                <Link href="/travel-services#services" className="n-button">
+                <Link href={current.href} className="n-button">
                   Explore {current.title.toLowerCase()} <Arrow />
                 </Link>
               </div>

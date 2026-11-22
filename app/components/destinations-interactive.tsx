@@ -51,44 +51,11 @@ export function MoodIndex({ moods }: { moods: Mood[] }) {
 
 export type Postcard = { name: string; line: string; region: string; code: string; photo: string; alt: string; position?: string; service: string; href?: string };
 
-/** A row of postcards that can be dragged, swiped or stepped through. */
+/** A row of postcards that can be dragged or scrolled through. */
 export function PostcardRail({ cards }: { cards: Postcard[] }) {
   const rail = useRef<HTMLOListElement>(null);
   const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null);
-  const [index, setIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    const element = rail.current;
-    if (!element) return;
-    const update = () => {
-      const max = element.scrollWidth - element.clientWidth;
-      setProgress(max > 0 ? element.scrollLeft / max : 0);
-      const card = element.children[0] as HTMLElement | undefined;
-      const step = card ? card.offsetWidth + parseFloat(getComputedStyle(element).columnGap || "0") : 1;
-      setIndex(Math.min(cards.length - 1, Math.round(element.scrollLeft / step)));
-    };
-    update();
-    element.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => { element.removeEventListener("scroll", update); window.removeEventListener("resize", update); };
-  }, [cards.length]);
-
-  const go = (direction: number) => {
-    const element = rail.current;
-    const card = element?.children[Math.max(0, Math.min(cards.length - 1, index + direction))] as HTMLElement | undefined;
-    if (!element || !card) return;
-    const left = Math.min(card.offsetLeft - element.offsetLeft, element.scrollWidth - element.clientWidth);
-    const { scrollStart, scrollEnd } = element.dataset;
-    if (scrollStart && scrollEnd) {
-      // While the page drives the rail, step through it by scrolling the page instead.
-      const max = element.scrollWidth - element.clientWidth;
-      const from = Number(scrollStart);
-      window.scrollTo({ top: from + (max ? left / max : 0) * (Number(scrollEnd) - from), behavior: "smooth" });
-      return;
-    }
-    element.scrollTo({ left, behavior: "smooth" });
-  };
   const start = (event: ReactPointerEvent<HTMLOListElement>) => {
     if (event.pointerType !== "mouse" || !rail.current || rail.current.dataset.scrollStart) return;
     drag.current = { x: event.clientX, left: rail.current.scrollLeft, moved: false };
@@ -106,12 +73,6 @@ export function PostcardRail({ cards }: { cards: Postcard[] }) {
   };
 
   return <div className="d-rail-wrap">
-    <div className="d-rail-controls">
-      <span className="d-rail-count">{String(index + 1).padStart(2, "0")} <span>/ {String(cards.length).padStart(2, "0")}</span></span>
-      <span className="d-rail-bar" aria-hidden="true"><span style={{ transform: `scaleX(${.12 + progress * .88})` }} /></span>
-      <button type="button" className="d-rail-button" onClick={() => go(-1)} disabled={index === 0} aria-label="Previous destination"><Arrow back /></button>
-      <button type="button" className="d-rail-button" onClick={() => go(1)} disabled={index === cards.length - 1} aria-label="Next destination"><Arrow /></button>
-    </div>
     <ol className="d-rail" ref={rail} data-hscroll-track onPointerDown={start} onPointerMove={move} onPointerUp={end} onPointerCancel={end} onPointerLeave={end}>
       {cards.map((card, i) => <li key={card.name} className="d-postcard">
         <div className="d-postcard-photo">

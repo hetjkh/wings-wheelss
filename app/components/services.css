@@ -66,6 +66,7 @@
 
 /* 02 · One strip: the active service opens, the rest stay as a numbered rail. */
 .s-services { --tear-face: var(--paper); background: var(--paper); }
+.s-strip-panel { scroll-margin-top: 96px; }
 .s-strip { --ease: cubic-bezier(.22, 1, .36, 1); display: flex; gap: 8px; height: min(68vh, 680px); min-height: 460px; margin-top: calc(var(--u) * 3.5); }
 .s-strip-panel { position: relative; isolation: isolate; overflow: clip; flex: .62 1 0; min-width: 0; background: #17212a; color: var(--cream); cursor: pointer; outline: none; transition: flex-grow .7s var(--ease); }
 .s-strip-panel.is-active { flex-grow: 5.4; cursor: default; }

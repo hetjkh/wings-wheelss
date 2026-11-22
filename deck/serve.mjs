@@ -10,6 +10,7 @@ const ROOT = path.resolve('.');
 const FORMATS = {
   pptx: { script: 'export.mjs', file: path.join(ROOT, 'out', 'RomanKnows_Presentation.pptx'), name: 'RomanKnows_Presentation.pptx',
     type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' },
+  mp4: { script: 'record.mjs', file: path.join(ROOT, 'out', 'RomanKnows_Presentation.mp4'), name: 'RomanKnows_Presentation.mp4', type: 'video/mp4' },
   pdf: { script: 'pdf.mjs', file: path.join(ROOT, 'out', 'RomanKnows_Presentation.pdf'), name: 'RomanKnows_Presentation.pdf', type: 'application/pdf' },
 };
 const TYPES = {
@@ -27,7 +28,7 @@ const exportDeck = async (fmt) => {
   try { await exporting; } finally { exporting = null; }
 };
 
-http.createServer(async (req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   if (url.pathname === '/export') {
     try {
@@ -54,4 +55,6 @@ http.createServer(async (req, res) => {
   }
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream' });
   createReadStream(file).pipe(res);
-}).listen(PORT, () => console.log(`Deck preview: http://localhost:${PORT}  (Export to PPT / PDF buttons are top-right)`));
+});
+server.requestTimeout = 0; // video export takes a few minutes
+server.listen(PORT, () => console.log(`Deck preview: http://localhost:${PORT}  (Export PPT / PDF / Video buttons are top-right)`));

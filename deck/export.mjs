@@ -3,7 +3,8 @@
 //   node export.mjs --flat         -> also out/RomanKnows_Presentation_flat.pptx (each slide is one image)
 import { chromium } from 'playwright-core';
 import pptxgen from 'pptxgenjs';
-import { mkdirSync, readFileSync } from 'node:fs';
+import JSZip from 'jszip';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
@@ -146,7 +147,19 @@ function build(file, mode) {
     }
     if (s.notes) sl.addNotes(s.notes);
   });
-  return pptx.writeFile({ fileName: file });
+  return withTransitions(file, pptx);
+}
+
+// pptxgenjs has no transition API, so add a smooth fade to every slide in the XML
+async function withTransitions(file, pptx) {
+  const zip = await JSZip.loadAsync(await pptx.write({ outputType: 'nodebuffer' }));
+  const T = '<p:transition spd="slow"><p:fade/></p:transition>';
+  for (const name of Object.keys(zip.files).filter((f) => /^ppt\/slides\/slide\d+\.xml$/.test(f))) {
+    let xml = await zip.file(name).async('string');
+    if (!xml.includes('<p:transition')) xml = xml.replace('</p:clrMapOvr>', '</p:clrMapOvr>' + T);
+    zip.file(name, xml);
+  }
+  writeFileSync(file, await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' }));
 }
 
 await build('out/RomanKnows_Presentation.pptx', 'hybrid');

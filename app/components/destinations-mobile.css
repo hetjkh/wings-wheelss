@@ -29,8 +29,6 @@
   .destinations-page .d-mood-number { display: block; font-size: 9px; padding: 0; align-self: center; }
   .destinations-page :is(.d-mood-icon,.d-mood-text) { display: none; }
   .destinations-page .d-rail-wrap { margin-top: 20px; }
-  .destinations-page .d-rail-controls { width: calc(100% - 40px); margin-bottom: 10px; gap: 14px; }
-  .destinations-page .d-rail-button { width: 44px; height: 44px; }
   .destinations-page .d-rail { gap: 16px; padding: 10px 20px 24px; scroll-padding-inline: 20px; }
   .destinations-page .d-postcard { flex-basis: calc(100vw - 64px); padding: 0; transform: none; border-radius: 0; background: transparent; box-shadow: none; }
   .destinations-page .d-postcard-photo { aspect-ratio: 4 / 4.2; border-radius: 0; }

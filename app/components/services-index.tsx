@@ -5,7 +5,7 @@ import Image from "./travel-image";
 import { TravelIcon, type IconKind } from "./icons";
 import { PillCta } from "./about-cta";
 
-export type IndexedService = { icon: IconKind; title: string; line: string; photo: string; alt: string; position?: string; items: string[]; cta: string; service?: string };
+export type IndexedService = { id: string; icon: IconKind; title: string; line: string; photo: string; alt: string; position?: string; items: string[]; cta: string; service?: string };
 
 /** Six services as one expanding strip: hover, click or arrow keys open a panel. */
 export function ServicesIndex({ services }: { services: IndexedService[] }) {
@@ -25,6 +25,23 @@ export function ServicesIndex({ services }: { services: IndexedService[] }) {
     return () => media.removeEventListener("change", sync);
   }, []);
 
+  useEffect(() => {
+    const openFromHash = () => {
+      const id = location.hash.replace(/^#/, "");
+      if (!id) return;
+      const index = services.findIndex(item => item.id === id);
+      if (index < 0) return;
+      setActive(index);
+      // Let the layout settle (pins / torn edges) before bringing the strip into view.
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      });
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [services]);
+
   const move = (event: KeyboardEvent<HTMLDivElement>) => {
     const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
     const back = event.key === "ArrowLeft" || event.key === "ArrowUp";
@@ -40,6 +57,7 @@ export function ServicesIndex({ services }: { services: IndexedService[] }) {
       const open = index === active;
       return <div
         key={item.title}
+        id={item.id}
         ref={node => { panels.current[index] = node; }}
         className={`s-strip-panel${open ? " is-active" : ""}`}
         role="tab"

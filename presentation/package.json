@@ -1,0 +1,16 @@
+{
+  "name": "romanknows-presentation-tools",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build-vendor.mjs" },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "esbuild": "^0.25.0",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^3.0.0",
+    "pptxgenjs": "^4.0.1",
+    "playwright-core": "^1.56.0",
+    "simple-icons": "^15.0.0"
+  }
+}
