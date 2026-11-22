@@ -9,10 +9,9 @@ import { office, pageLinks } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import "./journey-footer.css";
 
-// YouTube is a placeholder until the real profile exists.
 const socials = [
   ...office.socials,
-  { label: "YouTube", href: "https://www.youtube.com" },
+  { label: "YouTube", href: "https://www.youtube.com/@Wingswheels.travel" },
 ];
 
 const icons: Record<string, ReactNode> = {
