@@ -21,6 +21,7 @@ const zones: {
   countries: string[];
   photo: string;
   photoAlt: string;
+  hoverPhoto: string;
   inset: string;
   insetAlt: string;
   href: string;
@@ -29,6 +30,7 @@ const zones: {
   {
     ...travelRegions.africa,
     id: "africa",
+    hoverPhoto: "/images/stories/africa-hover-v1.webp",
     kicker: "Closer than you think",
     title: "Kenya & Tanzania",
     text: "Safari mornings, city weeks and island time. South Africa, Kenya, Tanzania, Morocco, Egypt, Mauritius and Seychelles — planned by people who know the roads.",
@@ -40,6 +42,7 @@ const zones: {
   {
     ...travelRegions.europe,
     id: "europe",
+    hoverPhoto: "/images/stories/europe-hover-v1.webp",
     kicker: "Slow summers",
     title: "The Mediterranean",
     text: "Island light, coastal drives and long lunches by the water. France, Italy, Switzerland, Greece, Spain and the United Kingdom — every connection timed so the holiday starts the moment you land.",
@@ -51,6 +54,7 @@ const zones: {
   {
     ...travelRegions.gulf,
     id: "gulf",
+    hoverPhoto: "/images/stories/gulf-hover-v1.webp",
     kicker: "Where every journey starts",
     title: "Dubai",
     text: "Our home, and the place most journeys begin. UAE, Oman, Qatar, Saudi Arabia and Jordan — skyline stays, desert evenings and a team that knows every arrival gate by heart.",
@@ -62,6 +66,7 @@ const zones: {
   {
     ...travelRegions.asia,
     id: "asia",
+    hoverPhoto: "/images/stories/asia-hover-v1.webp",
     kicker: "Far, made simple",
     title: "Kyoto & beyond",
     text: "Lantern-lit streets, tropical islands and southern coastlines. Japan, Thailand, Singapore, Indonesia, Maldives, Australia and New Zealand — long-haul made easy.",
@@ -73,6 +78,7 @@ const zones: {
   {
     ...travelRegions.americas,
     id: "americas",
+    hoverPhoto: "/images/stories/americas-hover-v1.webp",
     kicker: "Across the Atlantic",
     title: "Mountains & cities",
     text: "Wild national parks, city weeks and journeys further south. USA, Canada, Mexico, Brazil, Peru and Argentina — planned from Dubai, looked after end to end.",
@@ -82,8 +88,6 @@ const zones: {
     cta: "Plan the long haul",
   }
 ];
-
-const optimized = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=3840&q=100`;
 
 export function HomeStories() {
   const [active, setActive] = useState(0);
@@ -126,7 +130,7 @@ export function HomeStories() {
           const [x, y, w, h] = storyRegions[item.id].box;
           return (
             <g key={item.id} data-region={item.id} data-cursor="View story" className={`h-zone${index === active ? " is-active" : ""}`} onMouseEnter={() => setActive(index)} onClick={() => openZone(index)}>
-              <image className="h-zone-photo" href={optimized(item.photo)} x={x} y={y} width={w} height={h} preserveAspectRatio="xMidYMid slice" clipPath={`url(#h-clip-${item.id})`} />
+              <image className="h-zone-photo" href={item.hoverPhoto} x={x} y={y} width={w} height={h} preserveAspectRatio="xMidYMid slice" clipPath={`url(#h-clip-${item.id})`} />
               <path className="h-zone-shape" d={storyRegions[item.id].d} />
             </g>
           );

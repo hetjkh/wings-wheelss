@@ -1,0 +1,33 @@
+{
+  "tool": "Built-in image_gen",
+  "images": [
+    {
+      "variant": "desktop",
+      "path": "public/images/services/coastal-journey-desktop-v2.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-screen scenic background for a premium travel website's closing boarding-pass section. Scene: a sweeping Mediterranean coastal road curves around rugged cliffs toward an elegant village of white stone houses and terracotta roofs, dark cypress trees, a secluded turquoise cove opening into deep blue sea, distant layered mountains. Golden-hour sunlight, rich realistic water texture and individual ripples, fine stonework, detailed natural vegetation, premium editorial aerial travel photography. Single coherent realistic scene. No text, logos, borders, UI, collage or watermarks. Generate at 3840 x 2160 pixels, landscape 16:9, native 4K detail. Broad panoramic composition, coastal road in upper-left, village in upper-center, cove at center and open sea across lower half. Keep the sides visually calm for overlay headings; boarding pass overlays the lower center.",
+      "generatedDimensions": [
+        1672,
+        941
+      ],
+      "exportDimensions": [
+        3840,
+        2160
+      ],
+      "processing": "Upscaled with Lanczos3 and encoded as WebP at quality 94. Export dimensions are not native generation resolution."
+    },
+    {
+      "variant": "mobile",
+      "path": "public/images/services/coastal-journey-mobile-v2.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-screen scenic background for a premium travel website's closing boarding-pass section. Scene: a sweeping Mediterranean coastal road curves around rugged cliffs toward an elegant village of white stone houses and terracotta roofs, dark cypress trees, a secluded turquoise cove opening into deep blue sea, distant layered mountains. Golden-hour sunlight, rich realistic water texture and individual ripples, fine stonework, detailed natural vegetation, premium editorial aerial travel photography. Single coherent realistic scene. No text, logos, borders, UI, collage or watermarks. Generate at 2160 x 3840 pixels, portrait 9:16, native 4K detail. Portrait composition with the winding road entering from upper left, cliffside village in upper third, turquoise cove in middle, deep blue water in lower half. Scenic subject within central 70% so it stays visible under responsive cropping. Leave lower half visually calm for a boarding-pass overlay.",
+      "generatedDimensions": [
+        941,
+        1672
+      ],
+      "exportDimensions": [
+        2160,
+        3840
+      ],
+      "processing": "Upscaled with Lanczos3 and encoded as WebP at quality 94. Export dimensions are not native generation resolution."
+    }
+  ]
+}

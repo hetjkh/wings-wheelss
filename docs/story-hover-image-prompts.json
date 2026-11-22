@@ -1,0 +1,30 @@
+{
+  "tool": "Built-in image_gen",
+  "images": [
+    {
+      "region": "africa",
+      "path": "public/images/stories/africa-hover-v1.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: luxury travel website region hover photograph, clipped inside continent outlines. Primary request: Portrait composition: East African savannah, two giraffes and a small elephant herd in the middle distance, acacia trees, golden grass and distant hazy mountains. Main animals centered, large and readable. Style: premium editorial travel photography, realistic natural textures, crisp fine detail, rich natural colors, cohesive warm sunlight. Fill the entire frame with a single continuous scene, subject readable at small size, minimal empty sky. No text, no logo, no watermark, no borders, no collage, no map silhouettes."
+    },
+    {
+      "region": "europe",
+      "path": "public/images/stories/europe-hover-v1.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: luxury travel website region hover photograph, clipped inside continent outlines. Primary request: Landscape composition: Amalfi Coast Italy, pastel hillside village above vivid turquoise Mediterranean water, terraces, a small beach and dramatic coastal cliffs. Buildings centered and clearly readable. Style: premium editorial travel photography, realistic natural textures, crisp fine detail, rich natural colors, cohesive warm sunlight. Fill the entire frame with a single continuous scene, subject readable at small size, minimal empty sky. No text, no logo, no watermark, no borders, no collage, no map silhouettes."
+    },
+    {
+      "region": "gulf",
+      "path": "public/images/stories/gulf-hover-v1.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: luxury travel website region hover photograph, clipped inside continent outlines. Primary request: Landscape composition: sweeping amber Arabian desert dunes at sunset with a small camel caravan crossing the middle of the frame, detailed wind-sculpted sand ridges, warm golden light. Style: premium editorial travel photography, realistic natural textures, crisp fine detail, rich natural colors, cohesive warm sunlight. Fill the entire frame with a single continuous scene, subject readable at small size, minimal empty sky. No text, no logo, no watermark, no borders, no collage, no map silhouettes."
+    },
+    {
+      "region": "asia",
+      "path": "public/images/stories/asia-hover-v1.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: luxury travel website region hover photograph, clipped inside continent outlines. Primary request: Wide landscape composition: a traditional Japanese vermilion pagoda among cherry blossoms, Mount Fuji in the distance and tranquil blue lake, lush foreground. Main pagoda centered and clearly readable. Style: premium editorial travel photography, realistic natural textures, crisp fine detail, rich natural colors, cohesive warm sunlight. Fill the entire frame with a single continuous scene, subject readable at small size, minimal empty sky. No text, no logo, no watermark, no borders, no collage, no map silhouettes."
+    },
+    {
+      "region": "americas",
+      "path": "public/images/stories/americas-hover-v1.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: luxury travel website region hover photograph, clipped inside continent outlines. Primary request: Portrait composition: Canadian Rockies, luminous turquoise alpine lake surrounded by evergreen forest, dramatic rugged mountain peaks, clear soft blue sky, rocky shore in the foreground. Mountain and lake centered. Style: premium editorial travel photography, realistic natural textures, crisp fine detail, rich natural colors, cohesive warm sunlight. Fill the entire frame with a single continuous scene, subject readable at small size, minimal empty sky. No text, no logo, no watermark, no borders, no collage, no map silhouettes."
+    }
+  ]
+}
