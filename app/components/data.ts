@@ -38,7 +38,7 @@ export const office = {
   socials: [
     { label: "Facebook", href: "https://www.facebook.com/people/Wings-Wheels/61579511346391/" },
     { label: "Instagram", href: "https://www.instagram.com/wingsandwheels.travel" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/wingsandwheels" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/wwtravel/" },
     { label: "TikTok", href: "https://www.tiktok.com/@wingswheels.travel" },
     { label: "X", href: "https://x.com/wingswheels1978" },
   ],
