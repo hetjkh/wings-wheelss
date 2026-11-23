@@ -45,7 +45,7 @@ function MobileGroup({ link, current, close, expanded, toggle, index }: {
           <span>{child.label}<small>{child.note}</small></span><Arrow diagonal />
         </Link>)}
       </div>
-    </> : <Link href={link.href === "/contact" ? "/contact#form" : link.href} className="ww-mobile-link" onClick={() => { close(); if (link.href === "/contact" && current === "/contact") document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} aria-current={current === link.href ? "page" : undefined}>
+    </> : <Link href={link.href} className="ww-mobile-link" onClick={close} aria-current={current === link.href ? "page" : undefined}>
       <small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span><Arrow diagonal />
     </Link>}
   </div>;
@@ -129,11 +129,11 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
       <div className="ww-header-bar">
         <Link href="/" className="ww-brand" aria-label="Wings and Wheels home"><Wordmark /></Link>
         <nav className="ww-desktop-nav" aria-label="Main navigation">
-          {siteLinks.filter(link => enquiry || link.href !== "/contact").map(link => link.children ?
+          {siteLinks.map(link => link.children ?
             <NavDropdown key={link.href} link={link} current={pathname} open={dropdown === link.href}
               onOpen={() => setDropdown(link.href)} onClose={() => setDropdown(value => value === link.href ? null : value)}
               onToggle={() => setDropdown(value => value === link.href ? null : link.href)} /> :
-            <Link className="ww-nav-link" key={link.href} href={link.href === "/contact" ? formHref : link.href} aria-current={pathname === link.href ? "page" : undefined} onClick={link.href === "/contact" ? openForm : undefined} onPointerEnter={() => setDropdown(null)} onFocus={() => setDropdown(null)}>{link.label}</Link>)}
+            <Link className="ww-nav-link" key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} onPointerEnter={() => setDropdown(null)} onFocus={() => setDropdown(null)}>{link.label}</Link>)}
         </nav>
         <div className="ww-header-actions">
           <Link href={formHref} className="ww-header-cta" onClick={openForm}><span>{enquiry ? "Plan a journey" : "Let’s talk"}</span><span className="ww-header-cta-dot"><Arrow /></span></Link>
