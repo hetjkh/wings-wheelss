@@ -34,7 +34,11 @@ export default function BlogPage({ posts }: { posts: BlogPost[] }) {
         lines={["Stories from", "the places", { text: "we travel.", accent: true }]}
         text="Planning notes, destination timing and the weeks we arrange for people travelling together."
         action={{ label: "Read the journal", href: "#journal" }}
-        media={{ video: "/hero-v4-continuous.mp4" }}
+        media={{
+          image: "/images/library/blog-journal-riviera-v3.webp",
+          alt: "A coastal train winding along Mediterranean cliffs toward a colorful Italian Riviera village above blue seas",
+          position: "center center",
+        }}
         tags={["Destinations", "Planning", "Business travel", "Groups", "Africa"]}
       />
       <section className="b-opening j-torn-top" aria-labelledby="blog-heading">

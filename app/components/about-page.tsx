@@ -18,7 +18,7 @@ const tags = ["Business", "Leisure", "Groups", "MICE", "International travel"];
 
 const audiences: Audience[] = [
   { title: "Business", text: "Meetings, projects and regional travel — coordinated so the work can take the lead.", href: "/corporate-travel", image: "/images/library/about-business-traveller.webp", alt: "A business traveller working on a laptop at a table in an airport lounge", icon: "briefcase" },
-  { title: "Leisure", text: "Holidays and slower journeys, planned with the same care as any business trip.", href: "/destinations", image: "/images/about/leisure-bay-v2.webp", alt: "Turquoise water and white sand along a palm-lined bay", icon: "sun" },
+  { title: "Leisure", text: "Holidays and slower journeys, planned with the same care as any business trip.", href: "/destinations", image: "/images/about/leisure-seychelles-v3.webp", alt: "Sculptural granite boulders and coconut palms framing a white sand beach and clear turquoise water in the Seychelles", icon: "sun" },
   { title: "Groups & MICE", text: "Organised travel for teams, events and exhibitions across multiple travellers.", href: "/groups-mice", image: "/images/about/conference-v2.webp", alt: "Delegates gathered in a sunlit conference hall", icon: "people" },
   { title: "Connections", text: "Between the UAE, Africa and worldwide — with people who know the way.", href: "/africa", image: "/images/about/dubai-v2.webp", alt: "The Dubai skyline reflected in the waterfront at dusk", icon: "globe" },
 ];

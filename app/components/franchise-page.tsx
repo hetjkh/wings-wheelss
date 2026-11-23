@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "./travel-image";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
-import { EnquiryButton } from "./site-controls";
+import { FranchiseApplication, FranchiseApplyLink } from "./franchise-application";
 import { PillCta } from "./about-cta";
 import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
@@ -151,7 +151,7 @@ export default function FranchisePage() {
               <li><span>Local</span>leadership.</li>
               <li><span>Connected</span>markets.</li>
             </ul>
-            <PillCta service="Franchise opportunity">Explore franchise opportunities</PillCta>
+            <PillCta href="#apply">Explore franchise opportunities</PillCta>
           </div>
         </div>
       </section>
@@ -162,7 +162,7 @@ export default function FranchisePage() {
             <div><span className="j-eyebrow s-eyebrow">02 / Where we&apos;re expanding</span><FranchiseHeading id="markets-heading" mobile={<>Three markets.<br /><em>Your next chapter.</em></>}><span>Three markets.</span><span className="k-soft">Three opportunities</span><span className="k-soft">to grow.</span></FranchiseHeading></div>
             <div className="f-markets-aside">
               <p className="k-body">Each market brings its own travellers and commercial strengths. We are inviting conversations with partners who know them well.</p>
-              <EnquiryButton className="f-link" service="Franchise opportunity">Explore the markets</EnquiryButton>
+              <FranchiseApplyLink className="f-link">Apply for a market <Arrow /></FranchiseApplyLink>
             </div>
           </div>
           <ol className="f-market-grid" data-stagger="0.12">{markets.map((market, i) => <li key={market.id} className="f-market">
@@ -172,7 +172,7 @@ export default function FranchisePage() {
               <h3>{market.name}</h3>
               <p className="f-market-title">{market.title}</p>
               <p>{market.text}</p>
-              <EnquiryButton className="f-link" service={`Franchise opportunity: ${market.name}`}>Learn more</EnquiryButton>
+              <FranchiseApplyLink className="f-link" market={market.name}>Apply for {market.name} <Arrow /></FranchiseApplyLink>
             </div>
           </li>)}</ol>
           <GalleryProgress count={markets.length} />
@@ -293,15 +293,10 @@ export default function FranchisePage() {
             <p>{step.text}</p>
           </li>)}</ol>
           <div className="f-step-action">
-            <EnquiryButton
-              className="f-step-cta"
-              service="General enquiry"
-              message="I’m interested in becoming a Wings & Wheels travel partner."
-              icon={false}
-            >
+            <FranchiseApplyLink className="f-step-cta">
               <span>Become a travel partner</span>
               <span className="f-step-cta-dot"><Arrow /></span>
-            </EnquiryButton>
+            </FranchiseApplyLink>
           </div>
           <p className="f-legal"><TravelIcon kind="document" size={16} />This page is an invitation to discuss prospective franchise opportunities. It is not an offer, and no territory or exclusivity is promised. Each market is subject to its own franchise, licensing, ownership and disclosure requirements, and a confidential franchise prospectus is shared only with qualified applicants.</p>
         </div>
@@ -319,26 +314,41 @@ export default function FranchisePage() {
         </div>
       </section>
 
+      <section className="f-apply j-torn-top" aria-labelledby="apply-heading">
+        <div className="j-shell">
+          <div className="f-apply-head">
+            <div>
+              <span className="j-eyebrow s-eyebrow">10 / Franchise partnership application</span>
+              <FranchiseHeading id="apply-heading" mobile={<>About your business.<br /><em>What&apos;s possible.</em></>}><span>About your business.</span><span className="k-soft">What&apos;s possible.</span></FranchiseHeading>
+            </div>
+            <p className="k-body">Please complete the application below to help our expansion team understand your background, preferred market and partnership objectives.</p>
+          </div>
+          <div id="apply" className="fa-anchor">
+            <FranchiseApplication markets={markets} dubai={dubai} />
+          </div>
+        </div>
+      </section>
+
       <ClosingScene
-        chapter="10 / Wings & Wheels"
+        chapter="11 / Wings & Wheels"
         ticket="Franchise opportunities"
         left={<>Let&apos;s build the<br />next chapter.</>}
-        right={<>Together, in<br /><em>three markets.</em></>}
-        mobileHeadline={<>Your market.<br /><em>Our next chapter.</em></>}
+        right={<>Your market.<br /><em>Our shared future.</em></>}
+        mobileHeadline={<>Your market.<br /><em>Our shared future.</em></>}
         photo="/images/library/franchise-partner-lounge-v2.webp"
         photoPosition="center"
         pass={["Boarding pass", "Saudi · Egypt · Morocco"]}
         from="Your market"
         to="Our network"
-        mobileText="Local ambition, international support and one shared plan."
-        text="We are looking to connect with ambitious partners who share our belief in thoughtful travel management, strong local relationships and international collaboration."
+        mobileText="Whether you operate an established travel business or are exploring a new commercial opportunity, we would welcome an introduction."
+        text="Whether you operate an established travel business or are exploring a new commercial opportunity, we would welcome an introduction. Let's discuss how your local expertise and our international outlook could create a meaningful partnership."
         chips={[
           { icon: "handshake", label: "Partners" },
           { icon: "globe", label: "Markets" },
           { icon: "briefcase", label: "Business" },
           { icon: "support", label: "Support" },
         ]}
-        action={{ label: "Become a franchise partner" }}
+        action={{ label: "Become a franchise partner", href: "#apply" }}
       />
     </main>
     <JourneyFooter />

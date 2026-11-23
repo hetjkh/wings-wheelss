@@ -1,0 +1,55 @@
+{
+  "tool": "Built-in image_gen",
+  "images": [
+    {
+      "id": "khartoum",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium Africa travel website destination image, used inside a portrait continent silhouette and an adjacent detail panel. An evocative aerial view inspired by Khartoum, Sudan: broad blue Nile river bending past sandy riverbanks, palms, warm low-rise city buildings and a distant urban skyline in soft golden light. Focus on river landscape and city character, no invented prominent landmark. Single coherent editorial travel photograph, portrait 3:4 composition, centered scene that stays legible under irregular map clipping, detailed foreground and background, minimal empty sky, rich natural colors, exceptional clarity. Request 2160 x 2880 high-resolution output. No text, logo, watermark, map outlines, graphic overlays or collage.",
+      "path": "public/images/africa/network/khartoum-v1.webp",
+      "exportDimensions": [
+        2160,
+        2880
+      ],
+      "processing": "Lanczos3 upscale from generated original, WebP quality 92. Export dimensions are not native generation dimensions."
+    },
+    {
+      "id": "juba",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium Africa travel website destination image, used inside a portrait continent silhouette and an adjacent detail panel. An evocative aerial landscape inspired by Juba, South Sudan: the broad White Nile flowing through lush green riverbanks beside a low-rise city, scattered palms and distant green hills under clear morning light. Focus on natural river landscape, no invented prominent landmark. Single coherent editorial travel photograph, portrait 3:4 composition, centered scene that stays legible under irregular map clipping, detailed foreground and background, minimal empty sky, rich natural colors, exceptional clarity. Request 2160 x 2880 high-resolution output. No text, logo, watermark, map outlines, graphic overlays or collage.",
+      "path": "public/images/africa/network/juba-v1.webp",
+      "exportDimensions": [
+        2160,
+        2880
+      ],
+      "processing": "Lanczos3 upscale from generated original, WebP quality 92. Export dimensions are not native generation dimensions."
+    },
+    {
+      "id": "kampala",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium Africa travel website destination image, used inside a portrait continent silhouette and an adjacent detail panel. Kampala Uganda: lush rolling green city hills with red-roofed buildings, leafy avenues, modern mid-rise buildings in the center, soft distant Lake Victoria atmosphere, rich emerald vegetation and warm afternoon sunlight. Elevated panoramic view. Single coherent editorial travel photograph, portrait 3:4 composition, centered scene that stays legible under irregular map clipping, detailed foreground and background, minimal empty sky, rich natural colors, exceptional clarity. Request 2160 x 2880 high-resolution output. No text, logo, watermark, map outlines, graphic overlays or collage.",
+      "path": "public/images/africa/network/kampala-v1.webp",
+      "exportDimensions": [
+        2160,
+        2880
+      ],
+      "processing": "Lanczos3 upscale from generated original, WebP quality 92. Export dimensions are not native generation dimensions."
+    },
+    {
+      "id": "nairobi",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium Africa travel website destination image, used inside a portrait continent silhouette and an adjacent detail panel. Nairobi Kenya: modern central skyline rising above a broad canopy of lush urban park trees, distinctive mix of glass towers and warm concrete architecture, distant hazy Ngong hills, clear bright morning light, premium elevated city photograph. Single coherent editorial travel photograph, portrait 3:4 composition, centered scene that stays legible under irregular map clipping, detailed foreground and background, minimal empty sky, rich natural colors, exceptional clarity. Request 2160 x 2880 high-resolution output. No text, logo, watermark, map outlines, graphic overlays or collage.",
+      "path": "public/images/africa/network/nairobi-v1.webp",
+      "exportDimensions": [
+        2160,
+        2880
+      ],
+      "processing": "Lanczos3 upscale from generated original, WebP quality 92. Export dimensions are not native generation dimensions."
+    },
+    {
+      "id": "tanzania",
+      "prompt": "Use case: photorealistic-natural. Asset type: premium Africa travel website destination image, used inside a portrait continent silhouette and an adjacent detail panel. Tanzania: majestic snow-capped Mount Kilimanjaro above an expansive golden savannah with acacia trees, a small elephant family crossing the middle ground, crisp warm morning light and detailed natural textures. Single coherent editorial travel photograph, portrait 3:4 composition, centered scene that stays legible under irregular map clipping, detailed foreground and background, minimal empty sky, rich natural colors, exceptional clarity. Request 2160 x 2880 high-resolution output. No text, logo, watermark, map outlines, graphic overlays or collage.",
+      "path": "public/images/africa/network/tanzania-v1.webp",
+      "exportDimensions": [
+        2160,
+        2880
+      ],
+      "processing": "Lanczos3 upscale from generated original, WebP quality 92. Export dimensions are not native generation dimensions."
+    }
+  ]
+}
