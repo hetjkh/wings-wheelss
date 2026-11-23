@@ -216,16 +216,16 @@ export default function PartnershipPage() {
       <ClosingScene
         chapter="08 / Wings & Wheels"
         ticket="Corporate partnerships"
-        left={<>Your business is<br />going places.</>}
-        right={<>Let&apos;s build a<br />partnership <em>that goes with it.</em></>}
-        mobileHeadline={<>Your business.<br /><em>One travel partner.</em></>}
+        left={<>Your business.</>}
+        right={<><em>Our partnership.</em></>}
+        mobileHeadline={<>Your business.<br /><em>Our partnership.</em></>}
         photo="/images/library/corporate-partnership-lounge.webp"
         photoPosition="30% center"
         pass={["Boarding pass", "A partner in how you move"]}
         from="Your company"
         to="How you travel"
         mobileText="Rates, support and a plan built around your people."
-        text="Let's build a partnership that goes with your business — rates, support and a plan that matches how your people move."
+        text="Rates, support and a plan that matches how your people move."
         chips={[
           { icon: "briefcase", label: "Corporate" },
           { icon: "handshake", label: "Partnership" },
