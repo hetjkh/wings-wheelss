@@ -168,11 +168,14 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
 
         // Lighter entrance — transforms only, shorter on phones.
         gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 100, duration: .7, stagger: index => (index % lineCount) * .04, ease: "power2.out", force3D: true, delay: .04 });
-        gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 12, opacity: 0, duration: .55, stagger: index => (index % 3) * .04, ease: "power2.out", force3D: true, delay: .12 });
+        gsap.from(q(".au-hero-eyebrow, .au-hero-aside"), { y: 12, opacity: 0, duration: .55, stagger: index => (index % 3) * .04, ease: "power2.out", force3D: true, delay: .12 });
         gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.1, duration: 1.05, ease: "power2.out", force3D: true });
       } else {
         gsap.from(q(".au-hero-title .au-line > span"), { yPercent: 105, duration: .9, stagger: index => (index % lineCount) * .05, ease: "power3.out", force3D: true, delay: .05 });
-        gsap.from(q(".au-hero-eyebrow, .au-hero-aside > *"), { y: 18, opacity: 0, duration: .75, stagger: index => (index % 3) * .05, ease: "power2.out", force3D: true, delay: .18 });
+        // Animate the aside container on entrance. Its children are positioned
+        // by the scroll timeline; sharing transforms lets a late entrance frame
+        // overwrite their settled positions after a direct jump to the form.
+        gsap.from(q(".au-hero-eyebrow, .au-hero-aside"), { y: 18, opacity: 0, duration: .75, stagger: index => (index % 3) * .05, ease: "power2.out", force3D: true, delay: .18 });
         gsap.from(q(".au-hero-photo-inner > *"), { scale: 1.3, duration: 1.8, ease: "power3.out" });
       }
 
