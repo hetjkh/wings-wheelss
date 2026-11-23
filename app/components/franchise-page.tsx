@@ -71,8 +71,12 @@ const matters = [
 ];
 
 const roles = [
-  { id: "local", label: "Local partner responsibilities", items: ["Market development", "Local licensing", "Staffing", "Customer relationships", "Sales", "Day-to-day operations"] },
-  { id: "network", label: "Wings & Wheels network role", items: ["Brand direction", "Agreed operating frameworks", "Potential regional collaboration", "Service guidelines", "Marketing coordination"] },
+  { theme: "Growth", you: "Market development", youText: "Find and win business in your market.", us: "Brand direction", usText: "A recognised name to grow under." },
+  { theme: "Licences", you: "Local licensing", youText: "Permits and legal setup where you operate.", us: "Operating frameworks", usText: "Agreed ways of working from day one." },
+  { theme: "People", you: "Staffing", youText: "Hire and lead your local team.", us: "Service guidelines", usText: "One standard for every consultant." },
+  { theme: "Clients", you: "Customer relationships", youText: "Look after travellers on the ground.", us: "Regional collaboration", usText: "Referrals across the UAE and Africa." },
+  { theme: "Sales", you: "Sales", youText: "Drive bookings and revenue.", us: "Marketing coordination", usText: "Campaigns and brand support." },
+  { theme: "Operations", you: "Day-to-day operations", youText: "Run the office and the bookings.", us: "Ongoing guidance", usText: "Help when you need it." },
 ];
 
 const steps = [
@@ -285,17 +289,22 @@ export default function FranchisePage() {
       <section className="f-roles j-torn-top" id="standards" aria-labelledby="standards-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">07 / Local leadership. Shared standards.</span><FranchiseHeading id="standards-heading" mobile={<>You know the market.<br /><em>We share the vision.</em></>}><span>Your market expertise.</span><span className="k-soft">Our shared vision.</span></FranchiseHeading></div>
-            <p className="k-body">The proposed franchise approach is built around a balance between local ownership and consistent brand standards.</p>
+            <div><span className="j-eyebrow s-eyebrow">07 / Who does what</span><FranchiseHeading id="standards-heading" mobile={<>You run the market.<br /><em>We back the brand.</em></>}><span>You run the market.</span><span className="k-soft">We back the brand.</span></FranchiseHeading></div>
+            <p className="k-body">Local ownership, shared standards. Here is how the work is split — each thing you lead has something from us behind it.</p>
           </div>
-          <div className="f-roles-grid" data-stagger="0.12">{roles.map((role, i) => <div key={role.id} className={`f-role f-role-${role.id}`}>
-            <span className="f-role-tag">{i === 0 ? "You" : "Us"}</span>
-            <h3>{role.label}</h3>
-            <ul>{role.items.map(item => <li key={item}>{item}</li>)}</ul>
-          </div>)}
-            <span className="f-roles-join" aria-hidden="true">+</span>
+          <div className="f-duo">
+            <div className="f-duo-head">
+              <div className="f-duo-side f-duo-side-you"><span className="f-role-tag">You</span><h3>Local partner</h3><p>Leads on the ground.</p></div>
+              <span className="f-duo-seal" aria-hidden="true"><TravelIcon kind="handshake" size={26} /></span>
+              <div className="f-duo-side f-duo-side-us"><span className="f-role-tag">Us</span><h3>Wings &amp; Wheels</h3><p>Backs you from the network.</p></div>
+            </div>
+            <ol className="f-duo-rows" data-stagger="0.07">{roles.map(row => <li key={row.theme} tabIndex={0}>
+              <div className="f-duo-you"><span className="f-duo-who">You</span><h4>{row.you}</h4><p>{row.youText}</p></div>
+              <span className="f-duo-theme">{row.theme}</span>
+              <div className="f-duo-us"><span className="f-duo-who">Us</span><h4>{row.us}</h4><p>{row.usText}</p></div>
+            </li>)}</ol>
           </div>
-          <p className="f-roles-together"><span>Together</span>The objective is to build a recognisable travel brand while allowing each market to develop according to its commercial realities.</p>
+          <p className="f-roles-together"><span>Together</span>One recognisable travel brand — run locally, shaped by each market.</p>
         </div>
       </section>
 

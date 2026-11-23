@@ -727,22 +727,42 @@
 /* 07 · Local leadership, shared standards: two halves of one arrangement. */
 .f-roles { --tear-face: #fff; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #fff; }
 .f-roles .s-split-head .k-body { max-width: 26em; }
-.f-roles-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.f-role { position: relative; padding: calc(var(--u) * 2.5) calc(var(--u) * 2.5) calc(var(--u) * 2.75); border-radius: 18px; }
-.f-role-local { background: #efe6d4; color: var(--ink); }
-.f-role-network { background: var(--night); color: var(--cream); }
-.f-role-network::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: url('/images/world-map.svg') 80% 30% / 160% auto no-repeat; opacity: .07; filter: invert(1); pointer-events: none; }
+/* A split ledger: cream for the partner, night for the network. Each row pairs what you lead with what backs it. */
+.f-duo { --duo-mid: clamp(120px, 11vw, 168px); --duo-cols: minmax(0, 1fr) var(--duo-mid) minmax(0, 1fr); position: relative; overflow: hidden; border-radius: 22px; background: linear-gradient(90deg, #efe6d4 0 50%, var(--night) 50% 100%); }
+.f-duo::before { content: ''; position: absolute; inset: 0 0 0 50%; background: url('/images/world-map.svg') 30% 40% / 190% auto no-repeat; opacity: .06; filter: invert(1); pointer-events: none; }
+.f-duo::after { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px dashed #c9a56a8c; pointer-events: none; }
+.f-duo-head, .f-duo-rows > li { position: relative; z-index: 1; display: grid; grid-template-columns: var(--duo-cols); align-items: center; }
+.f-duo-head { padding: calc(var(--u) * 2.25) 0 calc(var(--u) * 1.75); border-bottom: 1px solid #c9a56a4d; }
+.f-duo-side { display: grid; gap: calc(var(--u) * .6); padding-inline: calc(var(--u) * 2.5); }
+.f-duo-side-you { justify-items: end; text-align: right; color: var(--ink); }
+.f-duo-side-us { justify-items: start; color: var(--cream); }
 .f-role-tag { display: inline-block; padding: 7px 14px; border: 1px solid currentColor; border-radius: 99px; font: 400 calc(var(--u) * .625)/1 var(--body); letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
-.services-page .f-role h3 { margin-top: calc(var(--u) * 1.5); font: 400 calc(var(--u) * 2)/1.02 var(--heading); letter-spacing: .02em; text-transform: uppercase; color: inherit; }
-.f-role ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 calc(var(--u) * 1.5); margin-top: calc(var(--u) * 1.75); border-top: 1px solid #3d2d2026; }
-.f-role-network ul { border-top-color: #fff8e924; }
-.f-role li { position: relative; padding: calc(var(--u) * .85) 0 calc(var(--u) * .85) calc(var(--u) * 1.25); border-bottom: 1px solid #3d2d2026; font: 300 calc(var(--u) * 1)/1.3 var(--body); }
-.f-role-network li { border-bottom-color: #fff8e924; }
-.f-role li::before { content: ''; position: absolute; left: 0; top: calc(var(--u) * 1.35); width: 6px; height: 6px; border-radius: 50%; background: var(--terra); }
-.f-role-network li::before { background: var(--sand); }
-.f-roles-join { position: absolute; top: 50%; left: 50%; z-index: 1; display: grid; place-items: center; width: calc(var(--u) * 3.5); height: calc(var(--u) * 3.5); border: 6px solid #fff; border-radius: 50%; background: var(--terra); font: 300 calc(var(--u) * 1.75)/1 var(--body); color: #fff; translate: -50% -50%; }
-.f-roles-together { display: grid; grid-template-columns: auto 1fr; gap: calc(var(--u) * 2); align-items: baseline; max-width: 64em; margin-top: calc(var(--u) * 3); font: 400 calc(var(--u) * 1.5)/1.3 var(--heading); color: var(--ink); }
-.f-roles-together span { font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--terra); }
+.franchise-page .f-duo-side h3 { margin: 0; font: 400 calc(var(--u) * 2)/1 var(--heading); letter-spacing: .02em; text-transform: uppercase; color: inherit; }
+.f-duo-side p { margin: 0; font: 300 calc(var(--u) * .95)/1.4 var(--body); opacity: .72; }
+.f-duo-seal { justify-self: center; display: grid; place-items: center; width: calc(var(--u) * 4.25); height: calc(var(--u) * 4.25); border: 6px solid #fff; border-radius: 50%; background: var(--terra); color: #fff; box-shadow: 0 14px 30px -14px #3d2d2099; }
+
+.f-duo-rows { margin: 0; padding: 0; list-style: none; }
+.f-duo-rows > li { outline: none; border-bottom: 1px solid #c9a56a33; cursor: default; }
+.f-duo-rows > li:last-child { border-bottom: 0; }
+.f-duo-you, .f-duo-us { display: grid; gap: 4px; padding: calc(var(--u) * 1.35) calc(var(--u) * 2.5); transition: background .4s, translate .5s var(--ease); }
+.f-duo-you { text-align: right; color: var(--ink); }
+.f-duo-us { color: var(--cream); }
+.franchise-page .f-duo-rows h4 { margin: 0; font: 400 calc(var(--u) * 1.4)/1.1 var(--heading); letter-spacing: .01em; color: inherit; }
+.f-duo-rows p { margin: 0; font: 300 calc(var(--u) * .9)/1.4 var(--body); opacity: .68; transition: opacity .4s; }
+.f-duo-who { display: none; }
+/* The theme pill sits on the seam; a line draws across the row when it is active. */
+.f-duo-theme { position: relative; justify-self: center; z-index: 1; padding: 8px 14px; border: 1px solid #c9a56a; border-radius: 99px; background: #fbf6ec; font: 400 calc(var(--u) * .625)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--terra); white-space: nowrap; transition: background .4s, color .4s, border-color .4s, scale .4s var(--ease); }
+.f-duo-theme::before { content: ''; position: absolute; top: 50%; left: calc(50% - var(--duo-mid) / 2); right: calc(50% - var(--duo-mid) / 2); z-index: -2; height: 1px; background: var(--terra); scale: 0 1; transition: scale .6s var(--ease); }
+.f-duo-theme::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: inherit; }
+.f-duo-rows > li:is(:hover, :focus-visible) .f-duo-theme { background: var(--terra); border-color: var(--terra); color: #fff; scale: 1.06; }
+.f-duo-rows > li:is(:hover, :focus-visible) .f-duo-theme::before { scale: 1 1; }
+.f-duo-rows > li:is(:hover, :focus-visible) .f-duo-you { background: #e6d9bf; translate: -6px 0; }
+.f-duo-rows > li:is(:hover, :focus-visible) .f-duo-us { background: #1b2a30; translate: 6px 0; }
+.f-duo-rows > li:is(:hover, :focus-visible) p { opacity: 1; }
+
+.f-roles-together { display: grid; justify-items: center; gap: calc(var(--u) * .9); max-width: 40em; margin: calc(var(--u) * 3) auto 0; text-align: center; font: 400 calc(var(--u) * 1.6)/1.25 var(--heading); color: var(--ink); }
+.f-roles-together span { display: flex; align-items: center; gap: 14px; font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--terra); }
+.f-roles-together span::before, .f-roles-together span::after { content: ''; width: 36px; height: 1px; background: currentColor; }
 
 /* 08 · Five steps along a line that fills as you scroll. */
 .f-steps { --tear-face: #efe6d4; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #efe6d4; }
@@ -858,7 +878,9 @@
   }
   .f-market-grid { grid-template-columns: 1fr; max-width: 560px; }
   .f-advantage-note { text-align: left; }
-  .f-roles-grid { grid-template-columns: 1fr; gap: 8px; }
+  .f-duo { --duo-mid: 104px; }
+  .f-duo-side, .f-duo-you, .f-duo-us { padding-inline: 20px; }
+  .f-duo-seal { width: 54px; height: 54px; border-width: 4px; }
   .f-partners-head, .f-matters-head, .f-matters-list { grid-template-columns: 1fr; gap: 16px; }
   .f-partners-aside { max-width: none; padding-bottom: 0; }
   .f-matters-head p { justify-self: start; text-align: left; }
@@ -906,9 +928,22 @@
   .f-beyond-pillars span { font-size: 22px; }
   .f-advantage-grid, .f-step-row { grid-template-columns: 1fr; }
   .f-advantage-grid li { padding: 24px 20px; }
-  .f-role { padding: 28px 22px; }
-  .f-role ul { grid-template-columns: 1fr; }
-  .f-roles-together { grid-template-columns: 1fr; gap: 10px; font-size: 20px; }
+  /* Phones: each pair becomes its own card — cream half for you, night half for us. */
+  .f-duo { overflow: visible; border-radius: 0; background: none; }
+  .f-duo::before, .f-duo::after, .f-duo-head { display: none; }
+  .f-duo-rows { display: grid; gap: 12px; }
+  .f-duo-rows > li { grid-template-columns: 1fr; overflow: hidden; border: 0; border-radius: 16px; box-shadow: 0 18px 36px -28px #3d2d2099; }
+  .f-duo-theme { order: -1; justify-self: stretch; padding: 10px 16px; border: 0; border-radius: 0; background: var(--terra); color: #fff; text-align: left; }
+  .f-duo-theme::before { display: none; }
+  .f-duo-you, .f-duo-us { gap: 5px; padding: 16px 18px; text-align: left; }
+  .f-duo-you { background: #efe6d4; }
+  .f-duo-us { background: var(--night); }
+  .f-duo-who { display: block; font: 400 9px/1 var(--body); letter-spacing: .18em; text-transform: uppercase; opacity: .6; }
+  .franchise-page .f-duo-rows h4 { font-size: 20px; }
+  .f-duo-rows p { font-size: 13px; opacity: .8; }
+  .f-duo-rows > li:is(:hover, :focus-visible) :is(.f-duo-you, .f-duo-us) { translate: none; }
+  .f-duo-rows > li:is(:hover, :focus-visible) .f-duo-theme { scale: 1; }
+  .f-roles-together { gap: 10px; font-size: 20px; }
   .f-cast li, .f-cast li:first-child { height: 240px; }
   .f-matters-head h3 { font-size: 28px; }
   .f-step-row li { display: grid; grid-template-columns: 56px 1fr; column-gap: 18px; }
@@ -1031,13 +1066,6 @@
   .f-matters-list strong { font-size: 18px; }
   .f-matters-list li > span:last-child { font-size: 13px; }
 
-  .f-role { padding: 22px 18px; border-radius: 16px; }
-  .services-page .f-role h3 { font-size: 25px; margin-top: 16px; }
-  .f-role ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; margin-top: 18px; }
-  .f-role li { font-size: 12px; line-height: 1.4; padding: 11px 0 11px 12px; }
-  .f-role li::before { top: 17px; width: 4px; height: 4px; }
-  .f-roles-grid { gap: 18px; }
-  .f-roles-join { display: none; }
   .f-roles-together { margin-top: 24px; font-size: 18px; }
 
   .f-step-row { gap: 0; }
@@ -1068,9 +1096,6 @@
   .f-mobile-pinned .f-market-copy { justify-content: flex-start; padding: 14px 18px; }
   .f-mobile-pinned .f-market p { font-size: 12px; line-height: 1.4; }
   .f-mobile-pinned .f-gallery-progress { flex-shrink: 0; margin-top: 18px; }
-  .f-roles { overflow: visible; }
-  .f-role { position: sticky; top: 84px; }
-  .f-role-network { top: 102px; }
   .franchise-page .f-steps .s-split-head { position: sticky; top: 64px; z-index: 2; padding: 18px 0; background: #efe6d4; }
 }
 

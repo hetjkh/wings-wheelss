@@ -127,7 +127,7 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
     const target = document.getElementById("form");
     if (!target) return;
     const go = () => {
-      const top = target.getBoundingClientRect().top + window.scrollY - (window.matchMedia("(max-width: 767px)").matches ? 88 : 100);
+      const top = target.getBoundingClientRect().top + window.scrollY + (window.matchMedia("(max-width: 767px)").matches ? 120 : 160);
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
       history.replaceState(null, "", "#form");
     };

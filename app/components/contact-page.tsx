@@ -132,7 +132,8 @@ export function ContactPage() {
       const target = document.getElementById("form");
       if (!target || cancelled) return;
       void revealHeader();
-      const top = target.getBoundingClientRect().top + window.scrollY - (window.matchMedia("(max-width: 767px)").matches ? 88 : 100);
+      // Land further into the form so the title stays partly above the fold.
+      const top = target.getBoundingClientRect().top + window.scrollY + (window.matchMedia("(max-width: 767px)").matches ? 120 : 160);
       window.scrollTo({ top: Math.max(0, top), behavior: smooth ? "smooth" : "instant" });
       history.replaceState(null, "", "#form");
     };

@@ -1,5 +1,14 @@
 /* The journal: warm paper, generous photography, and the rhythm of a travel magazine. */
 .blog-page.b-editorial { --b-accent: #87663e; --b-rule: #d6cebf; --b-green: #303c32; --paper: #f8f5ee; --ink: #3d332a; --text: #665e53; background: var(--paper); }
+/* Slight bottom shade so hero copy stays readable on bright harbour photos. */
+.blog-page .au-hero-shade {
+  background:
+    linear-gradient(0deg, #0f0b08f2 0%, #0f0b08bf 28%, #0f0b0859 52%, transparent 70%);
+}
+.blog-page .au-hero-photo::after {
+  height: min(52%, 420px);
+  background: linear-gradient(0deg, #0c0907eb 0%, #0c0907b8 34%, #0c090766 62%, transparent 100%);
+}
 .b-shell { width: min(1440px, calc(100% - 80px)); margin-inline: auto; }
 .b-editorial main > section:not(.au-hero):not(.sv-final) { min-height: 0; }
 .b-editorial :where(.b-opening, .b-journal, .b-spotlight, .b-article-body, .b-related) em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-style: italic; letter-spacing: -.055em; color: var(--b-accent); }
