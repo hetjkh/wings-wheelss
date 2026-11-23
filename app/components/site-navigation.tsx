@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { siteLinks, type SiteLink } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import { NavDropdown } from "./nav-dropdown";
-import { markContactFormIntent } from "./contact-form-nav";
+import { ContactFormLink } from "./contact-form-link";
 import "./site-navigation.css";
 
 function motionAllowed(element: HTMLElement | null) {
@@ -117,9 +117,7 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
     };
   }, [open]);
 
-  const formHref = "/contact";
   const openForm = (event: { preventDefault: () => void }) => {
-    markContactFormIntent();
     if (pathname !== "/contact") return;
     event.preventDefault();
     if (header.current) {
@@ -158,7 +156,7 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
             <Link className="ww-nav-link" key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} onPointerEnter={() => setDropdown(null)} onFocus={() => setDropdown(null)}>{link.label}</Link>)}
         </nav>
         <div className="ww-header-actions">
-          <Link href={formHref} className="ww-header-cta" onClick={openForm}><span>{enquiry ? "Plan a journey" : "Let’s talk"}</span><span className="ww-header-cta-dot"><Arrow /></span></Link>
+          <ContactFormLink className="ww-header-cta" onClick={openForm}><span>{enquiry ? "Plan a journey" : "Let’s talk"}</span><span className="ww-header-cta-dot"><Arrow /></span></ContactFormLink>
           <button className="ww-menu-toggle" type="button" aria-expanded={open} aria-controls={id} aria-haspopup="dialog" aria-label="Open navigation" onClick={() => {
             setDropdown(null); setExpanded(null); dialog.current?.showModal(); setOpen(true);
           }}><span className="ww-menu-label">Menu</span><span className="ww-menu-lines" aria-hidden="true"><i /><i /></span></button>
@@ -175,7 +173,7 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
         <nav aria-label="Mobile navigation">
           {siteLinks.map((link, index) => <MobileGroup key={link.href} link={link} current={pathname} index={index} close={closeMenu} expanded={expanded === link.href} toggle={() => setExpanded(value => value === link.href ? null : link.href)} />)}
         </nav>
-        <div className="ww-drawer-footer"><Link href={formHref} className="ww-drawer-cta" onClick={event => { openForm(event); closeMenu(); }}><span>Let’s plan something<br /><strong>worth going for.</strong></span><Arrow diagonal /></Link><p><span className="ww-status-dot" />From Dubai. To your next chapter.</p></div>
+        <div className="ww-drawer-footer"><ContactFormLink className="ww-drawer-cta" onClick={event => { openForm(event); closeMenu(); }}><span>Let’s plan something<br /><strong>worth going for.</strong></span><Arrow diagonal /></ContactFormLink><p><span className="ww-status-dot" />From Dubai. To your next chapter.</p></div>
       </div>
     </dialog>
   </>;

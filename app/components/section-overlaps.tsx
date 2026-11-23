@@ -53,6 +53,14 @@ export function SectionOverlaps() {
             const cleanups: (() => void)[] = [];
 
             sections = findSections();
+            // GSAP folds CSS translate into a pin's transform while measuring.
+            // A refresh below the hero must measure its original position,
+            // before the cover timeline restores its current scroll progress.
+            const resetCoverOffsets = () => {
+              sections.forEach(section => section.style.setProperty("--section-cover-y", "0px"));
+            };
+            ScrollTrigger.addEventListener("refreshInit", resetCoverOffsets);
+            cleanups.push(() => ScrollTrigger.removeEventListener("refreshInit", resetCoverOffsets));
             sections.forEach(section => {
               const flow = section.parentElement?.classList.contains("pin-spacer") ? section.parentElement : section;
               const sibling = flow.nextElementSibling;

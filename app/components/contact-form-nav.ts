@@ -24,7 +24,8 @@ export function shouldOpenContactForm() {
 /** Use on any in-site CTA that should open the contact form. */
 export function contactFormProps() {
   return {
-    href: "/contact" as const,
+    href: "/contact#form" as const,
+    scroll: false,
     onClick: () => { markContactFormIntent(); },
   };
 }

@@ -20,8 +20,9 @@ export function ContactFormLink({
       scroll={false}
       {...props}
       onClick={event => {
-        markContactFormIntent();
         onClick?.(event);
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.currentTarget.target === "_blank") return;
+        markContactFormIntent();
       }}
     />
   );
