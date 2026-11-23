@@ -248,7 +248,6 @@ export default function CorporatePage() {
           <article className="k-side k-side-travellers">
             <div className="k-side-photo"><Image src="/images/library/corporate-traveller-support-v2.webp" alt="A business traveller with a suitcase and phone walking through a sunlit airport terminal" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
             <div className="k-side-shade" aria-hidden="true" />
-            <span className="k-side-note">01 / Support at every step</span>
             <div className="k-side-copy">
               <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <Arrow diagonal /></EnquiryButton><h3>For your<br />travellers</h3></div>
               <ul>{forTravellers.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>
@@ -257,7 +256,6 @@ export default function CorporatePage() {
           <article className="k-side k-side-business">
             <div className="k-side-photo"><div className="k-side-photo-frame"><Image src="/images/library/travel-planning-v2.webp" alt="A travel coordinator reviewing a printed itinerary beside a laptop" fill sizes="(max-width: 800px) 100vw, 50vw" /></div></div>
             <div className="k-side-shade" aria-hidden="true" />
-            <span className="k-side-note">02 / Keep your business moving</span>
             <div className="k-side-copy">
               <div><EnquiryButton className="k-side-explore" service="Corporate travel" icon={false}>Explore <Arrow diagonal /></EnquiryButton><h3>For your<br />business</h3></div>
               <ul>{forBusiness.map(item => <li key={item}><svg viewBox="0 0 24 24" aria-hidden="true"><path data-trace pathLength={1} d="M5 12.5 10 17.5 19 7" /></svg>{item}</li>)}</ul>

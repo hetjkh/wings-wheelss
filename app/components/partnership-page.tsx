@@ -25,10 +25,10 @@ const compare = [
 ];
 
 const values: ValuePanel[] = [
-  { note: "Pay less on the routes you fly", title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/library/corporate-preferred-rates.webp", alt: "A business traveller in an airport lounge overlooking Dubai at dusk" },
-  { note: "Someone who knows your team", title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/library/corporate-account-manager.webp", alt: "An account manager coordinating travel at a desk overlooking Dubai", position: "center" },
-  { note: "Comfort for every traveller", title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/library/corporate-travel-benefits.webp", alt: "A traveller relaxing in an airport lounge at sunset", position: "center" },
-  { note: "Less time on paperwork", title: ["Simpler", "work"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/library/corporate-simpler-work.webp", alt: "A corporate travel coordinator reviewing bookings and reports on office monitors", position: "center" },
+  { title: ["Preferred", "corporate rates"], text: "Airfares and hotel rates arranged around your company's routes, travel volume and regular destinations.", photo: "/images/library/corporate-preferred-rates.webp", alt: "A business traveller in an airport lounge overlooking Dubai at dusk" },
+  { title: ["Dedicated", "account manager"], text: "One named contact who knows your travellers, your policy and the way your business likes to move.", photo: "/images/library/corporate-account-manager.webp", alt: "An account manager coordinating travel at a desk overlooking Dubai", position: "center" },
+  { title: ["Exclusive", "travel benefits"], text: "Partner-only benefits that add comfort and flexibility for your travellers, agreed in your proposal.", photo: "/images/library/corporate-travel-benefits.webp", alt: "A traveller relaxing in an airport lounge at sunset", position: "center" },
+  { title: ["Simpler", "work"], text: "Consolidated invoicing, clear records and regular reporting, so finance spends less time on travel.", photo: "/images/library/corporate-simpler-work.webp", alt: "A corporate travel coordinator reviewing bookings and reports on office monitors", position: "center" },
 ];
 
 const levels = [
