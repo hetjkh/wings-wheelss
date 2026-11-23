@@ -35,8 +35,8 @@ export default function BlogPage({ posts }: { posts: BlogPost[] }) {
         text="Planning notes, destination timing and the weeks we arrange for people travelling together."
         action={{ label: "Read the journal", href: "#journal" }}
         media={{
-          image: "/images/library/blog-journal-harbor-v4.webp",
-          alt: "Colorful Italian Riviera waterfront houses and wooden boats reflected in a clear turquoise harbor",
+          image: "/images/mediterranean-waterfront-village.png",
+          alt: "Colorful Mediterranean waterfront houses and wooden boats reflected in a clear turquoise harbor",
           position: "center center",
         }}
         tags={["Destinations", "Planning", "Business travel", "Groups", "Africa"]}
