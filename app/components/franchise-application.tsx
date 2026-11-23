@@ -138,7 +138,11 @@ export function FranchiseApplication({ markets, dubai }: { markets: ApplicationM
           <legend><span>02 —</span> Business information</legend>
           <div className="fa-grid">
             <label className="fa-field">Company name <small>(if applicable)</small><input name="company" autoComplete="organization" maxLength={120} /></label>
-            <label className="fa-field">Company website <small>(if available)</small><input name="website" type="url" inputMode="url" maxLength={200} placeholder="https://" /></label>
+            <label className="fa-field">Company website <small>(if available)</small><input name="website" type="text" inputMode="url" maxLength={200} placeholder="www.yourcompany.com" onBlur={event => {
+              const value = event.currentTarget.value.trim();
+              if (value && !/^https?:\/\//i.test(value)) event.currentTarget.value = `https://${value}`;
+              read();
+            }} /></label>
           </div>
           <div className="fa-question">
             <p>Current business type *</p>

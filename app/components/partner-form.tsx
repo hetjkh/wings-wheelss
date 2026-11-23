@@ -259,7 +259,11 @@ export function PartnerForm() {
         <fieldset data-step="0" hidden={step !== 0} aria-labelledby="partner-step-heading">
           <div className="fa-grid">
             <label className="fa-field">Registered company name *<input name="company" autoComplete="organization" required minLength={2} maxLength={120} placeholder="Your organisation" /></label>
-            <label className="fa-field">Company website *<input name="website" type="url" inputMode="url" required maxLength={200} placeholder="https://" /></label>
+            <label className="fa-field">Company website *<input name="website" type="text" inputMode="url" required maxLength={200} placeholder="www.yourcompany.com" onBlur={event => {
+              const value = event.currentTarget.value.trim();
+              if (value && !/^https?:\/\//i.test(value)) event.currentTarget.value = `https://${value}`;
+              read();
+            }} /></label>
             <label className="fa-field">Industry / business sector *<input name="industry" required maxLength={100} placeholder="e.g. Energy, Finance, Logistics" /></label>
             <label className="fa-field">Number of employees *<input name="employees" required maxLength={40} placeholder="e.g. 50–100" /></label>
             <label className="fa-field">Country of registration *<input name="country" autoComplete="country-name" required maxLength={80} placeholder="Where is the company registered?" /></label>
