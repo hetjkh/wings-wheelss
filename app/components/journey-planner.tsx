@@ -33,7 +33,6 @@ export function JourneyPlanner() {
     </fieldset>
     <div className="s-planner-actions">
       <button type="submit" className="au-cta"><span>Plan my journey</span><span className="au-cta-dot"><Arrow /></span></button>
-      <a className="au-cta" href={office.whatsapp} target="_blank" rel="noreferrer"><span>WhatsApp our team</span><span className="au-cta-dot"><Arrow /></span></a>
     </div>
     <p className="s-planner-note">Preview form · Your details won&apos;t be sent or stored.</p>
   </form>;

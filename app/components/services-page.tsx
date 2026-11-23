@@ -153,10 +153,10 @@ export default function ServicesPage() {
 
       <section className="s-scale j-torn-top" id="journeys" aria-labelledby="scale-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>04 / Every journey is different</span><span>Simple · Multi-destination · Group</span></div>
+          <div className="j-section-label s-draw"><span>04 / Every journey is different</span><span>Simple · Complex · Group</span></div>
           <div className="s-split-head">
-            <h2 id="scale-heading" className="s-title s-rows"><span>One flight or</span><span>twelve moving parts.</span></h2>
-            <p className="s-lead">Whether it&apos;s a quick return trip or a group arriving from four cities, every detail is held in one plan.</p>
+            <h2 id="scale-heading" className="s-title s-rows"><span>One booking or</span><span>many moving parts.</span></h2>
+            <p className="s-lead">A single return flight or a group arriving from several cities — we keep every detail in one clear plan.</p>
           </div>
           <div className="s-tickets">{examples.map(example => <article key={example.type} className="s-ticket">
             <header><span className="j-eyebrow">{example.type}</span><span className="s-ticket-count">{example.items.length} parts coordinated</span></header>
@@ -178,7 +178,7 @@ export default function ServicesPage() {
           <p>One point of contact. One coordinated plan.</p>
           <PillCta light>Plan your journey</PillCta>
         </div>
-        <div className="j-shell s-principle-foot" aria-hidden="true"><span>Simple</span><span>Multi-destination</span><span>Group</span></div>
+        <div className="j-shell s-principle-foot" aria-hidden="true"><span>Simple</span><span>Complex</span><span>Group</span></div>
       </section>
 
       <ServicesJourney />

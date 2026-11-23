@@ -31,11 +31,11 @@ const services = [
 ];
 
 const day = [
-  { time: "6:00 AM", label: "Departure", photo: "/images/library/corporate-day-departure-v2.webp" },
-  { time: "9:00 AM", label: "Meeting", photo: "/images/library/business-conversation.webp" },
-  { time: "12:30 PM", label: "Client visit", photo: "/images/library/corporate-day-client-visit-v2.webp" },
-  { time: "3:00 PM", label: "Team meeting", photo: "/images/library/corporate-team-meeting.webp" },
-  { time: "7:30 PM", label: "Return flight", photo: "/images/library/corporate-airport-lounge.webp" },
+  { time: "6:00 AM", label: "Early flight out", photo: "/images/library/corporate-day-departure-v2.webp" },
+  { time: "9:00 AM", label: "Morning meeting", photo: "/images/library/business-conversation.webp" },
+  { time: "12:30 PM", label: "Client lunch", photo: "/images/library/corporate-day-client-visit-v2.webp" },
+  { time: "3:00 PM", label: "Team catch-up", photo: "/images/library/corporate-team-meeting.webp" },
+  { time: "7:30 PM", label: "Flight home", photo: "/images/library/corporate-airport-lounge.webp" },
 ];
 
 const companies = [
@@ -150,8 +150,8 @@ export default function CorporatePage() {
         <div className="j-shell k-day-grid">
           <div className="k-day-copy">
             <span className="j-eyebrow s-eyebrow">03 / A day in corporate travel</span>
-            <h2 id="day-heading" className="s-title s-rows"><span>Different roles.</span><span>Different destinations.</span><span className="k-soft">One team.</span></h2>
-            <p className="k-body">From early morning meetings to multi-city trips, we coordinate the details so your team can focus on what&apos;s ahead.</p>
+            <h2 id="day-heading" className="s-title s-rows"><span>One busy day.</span><span className="k-soft">We plan all of it.</span></h2>
+            <p className="k-body">From the early flight out to the flight home, we handle the travel so your team can focus on the work.</p>
           </div>
           <div className="k-clock" aria-hidden="true">
             <span className="k-clock-window k-clock-time"><span className="k-clock-track">{day.map(stop => <span key={stop.time}>{stop.time}</span>)}</span></span>

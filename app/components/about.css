@@ -106,7 +106,8 @@
 .au-ribbon li { gap: calc(var(--u) * 2.2); padding-right: calc(var(--u) * 2.2); font: 400 calc(var(--u) * .8)/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--hero-fg); }
 .au-ribbon li::after { content: ''; width: .45em; height: .45em; background: var(--ochre); transform: rotate(45deg); flex-shrink: 0; }
 
-/* 2. Who we are */
+/* 2. Who we are — negative margin lands Discover our story a bit further into the chapter */
+.about-page #who { scroll-margin-top: -120px; }
 .au-who { z-index: 2; overflow: visible; background: var(--paper); padding: calc(var(--tear) + var(--u) * 2.5) 0 var(--tear-clear); }
 .about-page .au-who .j-shell { overflow: visible; }
 .au-who-head { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 8%; margin-top: calc(var(--u) * 4); align-items: start; }

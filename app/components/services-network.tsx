@@ -47,7 +47,14 @@ const networkDetails: Record<RegionId, { title: string; note: string; text: stri
     "href": "/contact#form"
   }
 };
-const regions = travelRegionOrder.map(id => ({ id, ...travelRegions[id], ...networkDetails[id] }));
+const networkPhotos: Record<RegionId, { photo: string; photoAlt: string }> = {
+  africa: { photo: "/images/services/network-africa-v2.webp", photoAlt: "An elephant on golden East African grasslands beneath acacia trees and Mount Kilimanjaro" },
+  europe: { photo: "/images/services/network-europe-v2.webp", photoAlt: "The Eiffel Tower above the Seine and historic Parisian architecture in clear daylight" },
+  gulf: { photo: "/images/services/network-gulf-v2.webp", photoAlt: "The Burj Khalifa rising above Dubai's skyline and turquoise fountain lake" },
+  asia: { photo: "/images/services/network-asia-v2.webp", photoAlt: "A red Japanese pagoda and cherry blossoms beneath snow-capped Mount Fuji" },
+  americas: { photo: "/images/services/network-americas-v2.webp", photoAlt: "The Statue of Liberty overlooking New York Harbor and the Lower Manhattan skyline" },
+};
+const regions = travelRegionOrder.map(id => ({ id, ...travelRegions[id], ...networkDetails[id], ...networkPhotos[id] }));
 
 /** Map tiles need a single URL — use the image optimizer instead of full library originals. */
 const mapPhotos = Object.fromEntries(regions.map(item => {

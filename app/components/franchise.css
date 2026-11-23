@@ -683,17 +683,16 @@
 
 /* 06 · Who we're looking for */
 .f-partners { --tear-face: var(--paper); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: var(--paper); }
-.f-partners-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: calc(var(--u) * 1.5) 5%; }
-.f-kicker { margin-top: calc(var(--u) * 1.25); font: 400 calc(var(--u) * .75)/1.3 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--terra); }
-.services-page .f-partners-title { display: grid; gap: calc(var(--u) * .5); font: 400 calc(var(--u) * 3)/1.02 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--ink); }
-.f-partners-title s { position: relative; text-decoration: none; color: #b4a690; }
-.f-partners-title s::after { content: ''; position: absolute; left: -2%; right: -2%; top: 52%; height: 3px; background: var(--terra); transform: rotate(-3deg); }
-.f-partners-title em { font-style: normal; color: var(--terra); }
-.f-partners-head .k-body { grid-column: 2; max-width: 36em; }
-.services-page .f-cast-label, .services-page .f-matters h3 { margin-top: calc(var(--u) * 3.5); font: 400 calc(var(--u) * .6875)/1.3 var(--body); letter-spacing: .16em; text-transform: uppercase; color: #8a7b66; }
+.f-partners-head { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 8% calc(var(--u) * 2); align-items: end; }
+.f-partners-aside { display: grid; gap: calc(var(--u) * 1.1); max-width: 28em; padding-bottom: calc(var(--u) * .35); }
+.f-kicker { margin: 0; font: 400 calc(var(--u) * .75)/1.3 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--terra); }
+.f-partners-aside .k-body { margin: 0; max-width: none; }
+.f-cast-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: calc(var(--u) * 3.25); }
+.f-cast-label { margin: 0; font: 400 calc(var(--u) * .6875)/1.3 var(--body); letter-spacing: .16em; text-transform: uppercase; color: #8a7b66; }
+.f-cast-head > p { margin: 0; font: 400 calc(var(--u) * .75)/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: #b4a690; }
 
 /* Five partner profiles: the hovered (or first) one opens to tell its story. */
-.f-cast { display: flex; gap: 6px; height: clamp(440px, 62svh, 620px); margin-top: calc(var(--u) * 1.25); }
+.f-cast { display: flex; gap: 6px; height: clamp(440px, 62svh, 620px); margin-top: calc(var(--u) * 1.1); }
 .f-cast li { position: relative; flex: 1; min-width: 0; overflow: hidden; border-radius: 6px; color: var(--cream); cursor: default; isolation: isolate; outline: none; transition: flex .8s cubic-bezier(.2, .7, .2, 1); }
 .f-cast li img { z-index: -2; object-fit: cover; filter: grayscale(.85) brightness(.75); transition: filter .8s, scale 1.2s cubic-bezier(.2, .7, .2, 1); }
 .f-cast li::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #0d171c66, transparent 35%, #0d171c99 65%, #0d171cf2); }
@@ -714,11 +713,16 @@
 .f-cast:has(li:is(:hover, :focus)) li:first-child:not(:hover, :focus) p { opacity: 0; translate: 0 20px; transition: opacity .3s, translate .3s; }
 .f-cast:has(li:is(:hover, :focus)) li:first-child:not(:hover, :focus) .f-cast-name { opacity: 1; }
 
-/* What matters most, set as a single line of type. */
-.f-matters { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 5%; align-items: start; margin-top: calc(var(--u) * 3.5); padding-top: calc(var(--u) * 2); border-top: 1px solid var(--rule); }
-.services-page .f-matters h3 { margin-top: calc(var(--u) * .5); color: var(--terra); }
-.f-matters p { font: 400 calc(var(--u) * 1.75)/1.3 var(--heading); color: var(--ink); }
-.f-matters i { margin: 0 .45em; font-style: normal; color: var(--terra); }
+/* What matters most — five criteria as a designed strip, not a loose slash line. */
+.f-matters { margin-top: calc(var(--u) * 3.25); padding-top: calc(var(--u) * 2.25); border-top: 1px solid var(--rule); }
+.f-matters-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 8%; align-items: end; margin-bottom: calc(var(--u) * 1.75); }
+.f-matters-head h3 { margin: 0; font: 400 calc(var(--u) * 2)/1.05 var(--heading); letter-spacing: .01em; text-transform: uppercase; color: var(--ink); }
+.f-matters-head p { margin: 0; max-width: 28em; font: 300 calc(var(--u) * 1.05)/1.45 var(--body); color: var(--text); justify-self: end; text-align: right; }
+.f-matters-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--rule); border: 1px solid var(--rule); }
+.f-matters-list li { display: grid; gap: calc(var(--u) * .7); min-height: 100%; padding: calc(var(--u) * 1.6) calc(var(--u) * 1.35) calc(var(--u) * 1.7); background: #fffdf8; }
+.f-matters-no { font: 400 calc(var(--u) * .6875)/1 var(--body); letter-spacing: .16em; color: var(--terra); }
+.f-matters-list strong { font: 400 calc(var(--u) * 1.35)/1.15 var(--heading); letter-spacing: .01em; color: var(--ink); }
+.f-matters-list li > span:last-child { font: 300 calc(var(--u) * .9)/1.4 var(--body); color: var(--text); }
 
 /* 07 · Local leadership, shared standards: two halves of one arrangement. */
 .f-roles { --tear-face: #fff; padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 5); background: #fff; }
@@ -831,6 +835,10 @@
   .f-advantage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .f-step-row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: calc(var(--u) * 2.5); }
   .f-step-row::before, .f-step-row::after { display: none; }
+  .f-partners-head { gap: 28px 6%; }
+  .f-matters-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .f-matters-list li:nth-child(4) { grid-column: 1; }
+  .f-matters-list li:nth-child(5) { grid-column: 2; }
 }
 @media (max-width: 991px) {
   .franchise-page .s-title { font-size: 44px; }
@@ -851,14 +859,17 @@
   .f-market-grid { grid-template-columns: 1fr; max-width: 560px; }
   .f-advantage-note { text-align: left; }
   .f-roles-grid { grid-template-columns: 1fr; gap: 8px; }
-  .f-partners-head, .f-matters { grid-template-columns: 1fr; gap: 16px; }
-  .f-partners-head .k-body { grid-column: auto; }
-  .services-page .f-partners-title { font-size: 40px; }
+  .f-partners-head, .f-matters-head, .f-matters-list { grid-template-columns: 1fr; gap: 16px; }
+  .f-partners-aside { max-width: none; padding-bottom: 0; }
+  .f-matters-head p { justify-self: start; text-align: left; }
+  .f-matters-list { gap: 8px; background: transparent; border: 0; }
+  .f-matters-list li { padding: 18px 16px; border: 1px solid var(--rule); }
   .f-cast { flex-direction: column; height: auto; }
   .f-cast li, .f-cast li:first-child { flex: none; height: 300px; }
   .f-cast li img, .f-cast li:first-child img { filter: none; }
   .f-cast li p { opacity: 1; translate: 0 0; font-size: 24px; }
   .f-cast .f-cast-name { display: none; }
+  .f-cast-head > p { display: none; }
   .f-network { padding-top: var(--tear); padding-bottom: calc(var(--u) * 3); }
   .f-network-grid { margin-top: var(--u); grid-template-columns: 1fr; gap: 30px; width: calc(100% - 40px); }
   .f-network-route { width: calc(100% - 40px); margin-top: calc(var(--u) * 2); }
@@ -898,9 +909,8 @@
   .f-role { padding: 28px 22px; }
   .f-role ul { grid-template-columns: 1fr; }
   .f-roles-together { grid-template-columns: 1fr; gap: 10px; font-size: 20px; }
-  .services-page .f-partners-title { font-size: 30px; }
   .f-cast li, .f-cast li:first-child { height: 240px; }
-  .f-matters p { font-size: 21px; }
+  .f-matters-head h3 { font-size: 28px; }
   .f-step-row li { display: grid; grid-template-columns: 56px 1fr; column-gap: 18px; }
   .f-step-number { grid-row: span 2; width: 52px; height: 52px; }
   .services-page .f-step-row h3 { margin-top: 12px; }
@@ -1002,19 +1012,24 @@
   .f-network-note { padding-left: 16px; font-size: 19px; }
 
   .f-partners-head { gap: 16px; }
-  .f-partners-head .k-body { margin: 0; }
+  .f-partners-aside .k-body { margin: 0; }
   .f-kicker { display: none; }
-  .services-page .f-cast-label { margin-top: 24px; font-size: 9px; }
+  .f-cast-head { margin-top: 24px; }
+  .f-cast-label { font-size: 9px; }
   .f-cast { flex-direction: row; height: auto; gap: 12px; margin: 14px -20px 0; padding: 0 20px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: none; }
   .franchise-page .f-cast li, .franchise-page .f-cast li:first-child, .franchise-page .f-cast:has(li:is(:hover, :focus)) li { flex: 0 0 78vw; height: min(54svh, 400px); min-height: 290px; border-radius: 12px; scroll-snap-align: start; }
   .franchise-page .f-cast li img { filter: none; scale: 1; }
   .franchise-page .f-cast li .f-cast-name { display: block; left: 18px; right: 18px; bottom: 86px; writing-mode: horizontal-tb; white-space: normal; rotate: none; opacity: 1; font-size: 27px; }
   .franchise-page .f-cast li p { left: 18px; right: 18px; bottom: 22px; opacity: 1; translate: none; font: 300 13px/1.45 var(--body); }
   .f-cast-number { top: 18px; left: 18px; }
-  .f-matters { margin-top: 24px; padding-top: 18px; gap: 12px; }
-  .f-matters p { display: flex; flex-wrap: wrap; gap: 8px; font: 400 11px/1.4 var(--body); }
-  .f-matters p > span { padding: 8px 12px; border: 1px solid var(--rule); border-radius: 16px; }
-  .f-matters i { display: none; }
+  .f-matters { margin-top: 24px; padding-top: 18px; }
+  .f-matters-head { margin-bottom: 14px; gap: 10px; }
+  .f-matters-head h3 { font-size: 24px; }
+  .f-matters-head p { font-size: 14px; }
+  .f-matters-list { grid-template-columns: 1fr; gap: 8px; }
+  .f-matters-list li { padding: 14px 14px 15px; }
+  .f-matters-list strong { font-size: 18px; }
+  .f-matters-list li > span:last-child { font-size: 13px; }
 
   .f-role { padding: 22px 18px; border-radius: 16px; }
   .services-page .f-role h3 { font-size: 25px; margin-top: 16px; }

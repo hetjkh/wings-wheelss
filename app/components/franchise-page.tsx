@@ -62,7 +62,13 @@ const partners = [
   { label: "Destination management", text: "Destination management companies interested in broader regional collaboration.", photo: "/images/library/franchise-destination-partners-v2.webp", position: "center top", fullFrame: true },
 ];
 
-const matters = ["Local market knowledge", "Financial capability", "Operational commitment", "Regulatory compliance", "A long-term approach to developing the Wings & Wheels brand"];
+const matters = [
+  { label: "Local knowledge", text: "You know the market and its travellers." },
+  { label: "Financial readiness", text: "Capital to launch and sustain the business." },
+  { label: "Operational grit", text: "A team ready to run the day to day." },
+  { label: "Compliance", text: "Licensing and regulation taken seriously." },
+  { label: "Long game", text: "Building the brand — not a quick exit." },
+];
 
 const roles = [
   { id: "local", label: "Local partner responsibilities", items: ["Market development", "Local licensing", "Staffing", "Customer relationships", "Sales", "Day-to-day operations"] },
@@ -242,14 +248,17 @@ export default function FranchisePage() {
           <div className="f-partners-head">
             <div>
               <span className="j-eyebrow s-eyebrow">06 / Who we&apos;re looking for</span>
-              <p className="f-kicker">The right partner matters</p>
+              <FranchiseHeading id="partners-heading" mobile={<>Partners<br /><em>who build.</em></>}><span>Partners</span><span className="k-soft">who build.</span></FranchiseHeading>
             </div>
-            <h2 id="partners-heading" className="f-partners-title f-desktop-copy"><span>Partners</span><span><em>who build.</em></span></h2>
-            <h2 className="s-title f-mobile-copy">Partners<br /><em>who build.</em></h2>
-            <p className="k-body f-desktop-copy">We are interested in discussing franchise opportunities with individuals and organisations that bring local market expertise, commercial ambition and a commitment to service quality.</p>
-            <p className="k-body f-mobile-copy">Local expertise. Commercial ambition. A commitment to looking after travellers.</p>
+            <div className="f-partners-aside">
+              <p className="f-kicker">The right partner matters</p>
+              <p className="k-body">Local expertise. Commercial ambition. Care for every traveller. If that sounds like you, we would like to talk.</p>
+            </div>
           </div>
-          <h3 className="f-cast-label">Potential partners may include</h3>
+          <div className="f-cast-head">
+            <h3 className="f-cast-label">Who this is for</h3>
+            <p>Hover a profile to read more.</p>
+          </div>
           <ul className="f-cast" data-stagger="0.08">{partners.map((item, i) => <li key={item.label} tabIndex={0} className={item.fullFrame ? "f-cast-full-frame" : undefined}>
             {item.fullFrame && <span className="f-cast-backdrop" aria-hidden="true" style={{ backgroundImage: `url(${item.photo})` }} />}
             <Image src={item.photo} alt="" fill lockSizes quality={100} sizes="(max-width: 991px) 92vw, 60vw" style={{ objectPosition: item.position }} />
@@ -258,8 +267,17 @@ export default function FranchisePage() {
             <p>{item.text}</p>
           </li>)}</ul>
           <div className="f-matters">
-            <h3>What matters most</h3>
-            <p>{matters.map((item, i) => <span key={item}>{item}{i < matters.length - 1 && <i aria-hidden="true">/</i>}</span>)}</p>
+            <div className="f-matters-head">
+              <h3>What matters most</h3>
+              <p>Five signals we look for before a conversation goes further.</p>
+            </div>
+            <ol className="f-matters-list">
+              {matters.map((item, i) => <li key={item.label}>
+                <span className="f-matters-no">{String(i + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <span>{item.text}</span>
+              </li>)}
+            </ol>
           </div>
         </div>
       </section>
