@@ -885,7 +885,10 @@
   .f-partners-aside { max-width: none; padding-bottom: 0; }
   .f-matters-head p { justify-self: start; text-align: left; }
   .f-matters-list { gap: 8px; background: transparent; border: 0; }
-  .f-matters-list li { padding: 18px 16px; border: 1px solid var(--rule); }
+  /* Clear the tablet 3-up placement so phones stay one card per row. */
+  .f-matters-list li:nth-child(4),
+  .f-matters-list li:nth-child(5) { grid-column: auto; }
+  .f-matters-list li { padding: 18px 16px; border: 1px solid var(--rule); width: auto; max-width: none; }
   .f-cast { flex-direction: column; height: auto; }
   .f-cast li, .f-cast li:first-child { flex: none; height: 300px; }
   .f-cast li img, .f-cast li:first-child img { filter: none; }
