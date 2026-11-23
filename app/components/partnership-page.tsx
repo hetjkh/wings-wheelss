@@ -9,11 +9,11 @@ import { MaskedHero } from "./masked-hero";
 import { ClosingScene } from "./services-final";
 import { PartnerForm } from "./partner-form";
 import { ValuePanels, type ValuePanel } from "./value-panels";
-import { office } from "./data";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
 import "./corporate.css";
+import "./franchise.css";
 import "./partnership.css";
 
 const compare = [
@@ -89,7 +89,7 @@ export default function PartnershipPage() {
         lines={["Not just", "corporate travel."]}
         sub="A corporate travel partnership."
         text="Your business deserves more than standard travel rates. We build an arrangement around how your company really travels."
-        action={{ label: "Become a corporate partner", service: "Corporate travel" }}
+        action={{ label: "Become a corporate partner", href: "#apply" }}
         settle="bottom"
         media={{ video: "/videos/Businessmen_discussing_partnersh…_83486b7b_1080p.mp4", poster: "/images/library/corporate-partnership-hero-v2.webp" }}
       />
@@ -197,19 +197,18 @@ export default function PartnershipPage() {
         </div>
       </section>
 
-      <section className="p-proposal j-torn-top" id="proposal" aria-labelledby="proposal-heading">
-        <div className="j-shell p-proposal-grid">
-          <div className="p-proposal-copy">
-            <span className="j-eyebrow s-eyebrow">07 / Corporate partnership enquiry</span>
-            <h2 id="proposal-heading" className="s-title s-rows"><span>Let&apos;s design</span><span>an arrangement</span><span className="k-soft">around your business.</span></h2>
-            <p className="k-body">Tell us a little about how your company travels. Our corporate team will prepare a proposal for your business alone.</p>
-            <dl className="p-direct">
-              <div><dt>Call</dt><dd><a href={office.phones[0].href}>{office.phones[0].label}</a></dd></div>
-              <div><dt>Email</dt><dd><a href={`mailto:${office.email}`}>{office.email}</a></dd></div>
-              <div><dt>WhatsApp</dt><dd><a href={office.whatsapp} target="_blank" rel="noreferrer">Message our team</a></dd></div>
-            </dl>
+      <section className="p-apply j-torn-top" aria-labelledby="apply-heading">
+        <div className="j-shell">
+          <div className="p-apply-head">
+            <div>
+              <span className="j-eyebrow s-eyebrow">07 / Corporate partnership application</span>
+              <h2 id="apply-heading" className="s-title s-rows"><span>Become a corporate</span><span className="k-soft">travel partner.</span></h2>
+            </div>
+            <p className="k-body">Better travel arrangements, built around your business. Complete the form below so our partnerships team can prepare rates, services and benefits suited to how your company travels.</p>
           </div>
-          <PartnerForm />
+          <div id="apply" className="fa-anchor">
+            <PartnerForm />
+          </div>
         </div>
       </section>
 
@@ -232,7 +231,7 @@ export default function PartnershipPage() {
           { icon: "globe", label: "Regions" },
           { icon: "support", label: "Support" },
         ]}
-        action={{ label: "Become a corporate partner", service: "Corporate travel" }}
+        action={{ label: "Become a corporate partner", href: "#apply" }}
       />
     </main>
     <JourneyFooter />

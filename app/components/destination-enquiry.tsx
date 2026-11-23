@@ -36,6 +36,9 @@ export function DestinationEnquiry({ destination = "", heading = "Where are you 
     const date = (value: FormDataEntryValue | null) => value ? String(value).split("-").reverse().join("/") : "To be decided";
     const message = [
       "I'd like to start planning a journey with Wings & Wheels.",
+      `Name: ${data.get("name")}`,
+      `Email: ${data.get("email")}`,
+      `Phone number: ${data.get("phone")}`,
       `Destination: ${data.get("destination")}`,
       `Departure city: ${data.get("departure")}`,
       `Preferred dates: ${date(data.get("start"))} to ${date(data.get("end"))}${flexible ? " (flexible)" : ""}`,
@@ -52,6 +55,9 @@ export function DestinationEnquiry({ destination = "", heading = "Where are you 
     <div className="d-enquiry-card-head"><span className="d-enquiry-card-kicker"><TravelIcon kind="compass" size={18} />Your personal travel brief<span className="dp-edition">W&amp;W / 0{step + 1}</span></span><h3>{[heading, "When will you make time for yourself?", "Who is coming along?", "How should this journey feel?"][step]}</h3><p>{["Start with a place. Or let us help you find one.", "Exact dates or a little flexibility. Either is a good start.", "Your favourite people. Your own pace.", "Choose what speaks to you. We will connect the details."][step]}</p></div>
     <fieldset className="d-enquiry-group" data-step="0" hidden={step !== 0}><legend><span>01</span>The places</legend>
     <div className="d-enquiry-fields">
+      <label className="d-enquiry-wide">Full name<input name="name" placeholder="Your full name" autoComplete="name" maxLength={120} required /></label>
+      <label>Email address<input name="email" type="email" placeholder="you@example.com" autoComplete="email" maxLength={160} required /></label>
+      <label>Phone number<input name="phone" type="tel" placeholder="Include your country code" autoComplete="tel" minLength={7} maxLength={30} required /></label>
       <label>Destination / Not sure yet<input name="destination" defaultValue={destination} placeholder="A place, a few stops, or not sure yet" maxLength={160} required list="destination-suggestions" /></label>
       <datalist id="destination-suggestions">{["Kenya", "Tanzania", "Uganda", "Dubai & UAE", "Maldives", "Europe", "Not sure yet"].map(place => <option key={place} value={place} />)}</datalist>
       <label>Departure city<input name="departure" placeholder="Where will you be starting?" maxLength={100} required autoComplete="off" /></label>

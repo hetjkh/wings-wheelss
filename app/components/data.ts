@@ -41,6 +41,7 @@ export const office = {
     { label: "LinkedIn", href: "https://www.linkedin.com/company/wwtravel/" },
     { label: "TikTok", href: "https://www.tiktok.com/@wingswheels.travel" },
     { label: "X", href: "https://x.com/wingswheels1978" },
+    { label: "YouTube", href: "https://www.youtube.com/@Wingswheels.travel" },
   ],
 };
 
