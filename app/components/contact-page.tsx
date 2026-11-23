@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { countries } from "./countries";
 import { office } from "./data";
 import { Arrow, TravelIcon, type IconKind } from "./icons";
@@ -9,6 +9,7 @@ import { JourneyHeader } from "./journey-header";
 import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
+import { shouldOpenContactForm } from "./contact-form-nav";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -106,6 +107,79 @@ export function ContactPage() {
     setHint("");
   };
 
+  // Stop the browser jumping into the hero pin gap before GSAP is ready.
+  useLayoutEffect(() => {
+    if (window.location.hash !== "#form") return;
+    const previousRestoration = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+    window.scrollTo({ top: 0, behavior: "instant" });
+    return () => { history.scrollRestoration = previousRestoration; };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const openForm = shouldOpenContactForm();
+
+    const revealHeader = async () => {
+      const nav = document.querySelector<HTMLElement>(".ww-header");
+      if (!nav) return;
+      const { default: gsap } = await import("gsap");
+      gsap.killTweensOf(nav);
+      gsap.set(nav, { opacity: 1, y: 0, clearProps: "transform,opacity" });
+    };
+
+    const scrollToForm = (smooth = true) => {
+      const target = document.getElementById("form");
+      if (!target || cancelled) return;
+      void revealHeader();
+      const top = target.getBoundingClientRect().top + window.scrollY - (window.matchMedia("(max-width: 767px)").matches ? 88 : 100);
+      window.scrollTo({ top: Math.max(0, top), behavior: smooth ? "smooth" : "instant" });
+      history.replaceState(null, "", "#form");
+    };
+
+    const waitForHeroPin = async () => {
+      if (!window.matchMedia("(min-width: 992px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)").matches) return;
+      for (let attempt = 0; attempt < 60 && !cancelled; attempt += 1) {
+        if (document.querySelector(".pin-spacer > .au-hero, .pin-spacer:has(> .au-hero)")) return;
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
+    };
+
+    const settleOnForm = async () => {
+      if (!openForm && window.location.hash !== "#form") return;
+      history.scrollRestoration = "manual";
+      window.scrollTo({ top: 0, behavior: "instant" });
+      await revealHeader();
+      await document.fonts.ready;
+      if (cancelled) return;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      if (cancelled) return;
+      await waitForHeroPin();
+      if (cancelled) return;
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      if (cancelled) return;
+      // Measure pins at the top, before the overlap transition moves the hero.
+      // Refreshing after the jump can bake that offset into the pin transform.
+      ScrollTrigger.refresh();
+      scrollToForm(false);
+      await revealHeader();
+    };
+
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.('a[href="#form"]');
+      if (!(link instanceof HTMLAnchorElement)) return;
+      event.preventDefault();
+      scrollToForm(true);
+    };
+
+    void settleOnForm();
+    document.addEventListener("click", onClick);
+    return () => {
+      cancelled = true;
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+
   return <ChapterMotion className="contact-page">
     <a className="skip-link" href="#form">Skip to the form</a>
     <div className="s-progress" aria-hidden="true"><span /></div>
@@ -154,8 +228,9 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="c-form j-torn-top" id="form" aria-labelledby="form-heading">
+      <section className="c-form j-torn-top" aria-labelledby="form-heading">
         <div className="j-shell">
+          <div id="form" className="c-form-anchor">
           <div className="s-split-head c-form-head">
             <div>
               <span className="j-eyebrow s-eyebrow">02 / Get in touch</span>
@@ -234,6 +309,7 @@ export function ContactPage() {
                 </div>
               </div>
             </form>}
+          </div>
           </div>
 
           <div className="c-office">

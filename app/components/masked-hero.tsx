@@ -202,6 +202,9 @@ export function MaskedHero({ id, eyebrow, lines, sub, text, action, media, tags,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             refreshPriority: page.classList.contains("home-page") ? 4 : 0,
+            // Refresh restores timeline progress with tween callbacks suppressed.
+            // Repaint the Safari mask longhands to match the restored --map value.
+            onRefresh: () => paintMask(q(".au-hero-photo, .au-hero-ghost")),
             onToggle: self => section.classList.toggle("is-pinned", self.isActive),
           },
         })

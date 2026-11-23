@@ -1,12 +1,12 @@
 import { faqs } from "./faqs";
 import Image from "./travel-image";
-import Link from "next/link";
 import { Arrow, TravelIcon } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { JourneyHeader } from "./journey-header";
 import { JourneyMotion } from "./journey-motion";
 import { JourneyFooter } from "./journey-footer";
 import { AboutJourneyProcess } from "./about-journey-process";
+import { ContactFormLink } from "./contact-form-link";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./about-sections.css";
@@ -102,7 +102,7 @@ export default function JourneyPage() {
             <div className="j-story-copy ab-story-copy">
               <p>Wings &amp; Wheels began with a simple belief: travel should feel easier to manage. That starts with listening, understanding your plans and taking care of the details that connect them.</p>
               <p>Today, we bring local knowledge, regional connections and international capability to journeys that can begin almost anywhere. And wherever you&apos;re going, there&apos;s a real person with you along the way.</p>
-              <Link href="/contact" className="j-story-link">Start a conversation with us <span><Arrow diagonal /></span></Link>
+              <ContactFormLink className="j-story-link">Start a conversation with us <span><Arrow diagonal /></span></ContactFormLink>
             </div>
           </div>
         </div>
@@ -164,11 +164,11 @@ export default function JourneyPage() {
           <h2 id="team-heading">The people<br />behind W&amp;W</h2>
           <p>Real people. Regional knowledge. A shared commitment to making every journey feel easier.</p>
           <dl className="j-people-facts">{[{ value: "6 regional locations", label: "Close to your journey" }, { value: "100+ travel partners", label: "A connected network" }, { value: "Global destinations", label: "Further together" }, { value: "One thoughtful team", label: "Personally considered" }].map(fact => <div key={fact.value}><dt>{fact.label}</dt><dd>{fact.value}</dd><span aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m12 0 2.1 8.4L22.4 6l-6.2 6 6.2 6-8.3-2.4L12 24l-2.1-8.4L1.6 18l6.2-6-6.2-6 8.3 2.4Z" /></svg></span></div>)}</dl>
-          <Link href="/contact" className="j-people-link">Meet your travel partner <Arrow diagonal /></Link>
+          <ContactFormLink className="j-people-link">Meet your travel partner <Arrow diagonal /></ContactFormLink>
         </div>
       </section>
 
-      <section className="j-faq j-paper" id="faqs" aria-labelledby="faq-heading"><div className="j-shell j-faq-grid"><div><span className="j-eyebrow">Good to know</span><h2 id="faq-heading">FAQs</h2><p>A few things you<br />might be wondering.</p><Link className="j-text-link" href="/contact">Let’s talk <Arrow /></Link></div><div className="j-faq-list">{faqs.map((faq, index) => <details key={faq.question} name="journey-faq"><summary>{String(index + 1).padStart(2, "0")} — {faq.question}<span className="j-chevron" aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div></div></section>
+      <section className="j-faq j-paper" id="faqs" aria-labelledby="faq-heading"><div className="j-shell j-faq-grid"><div><span className="j-eyebrow">Good to know</span><h2 id="faq-heading">FAQs</h2><p>A few things you<br />might be wondering.</p><ContactFormLink className="j-text-link">Let’s talk <Arrow /></ContactFormLink></div><div className="j-faq-list">{faqs.map((faq, index) => <details key={faq.question} name="journey-faq"><summary>{String(index + 1).padStart(2, "0")} — {faq.question}<span className="j-chevron" aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div></div></section>
     </main>
     <JourneyFooter />
   </JourneyMotion>;

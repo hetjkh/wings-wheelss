@@ -6,6 +6,7 @@ import { MaskedHero } from "./masked-hero";
 import { BlogClosing } from "./blog-closing";
 import { BlogStoryCard } from "./blog-story-card";
 import type { BlogPost } from "./blog-posts";
+import { ContactFormLink } from "./contact-form-link";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./blog.css";
@@ -23,11 +24,11 @@ export function BlogArticle({ post, posts }: { post: BlogPost; posts: BlogPost[]
         eyebrow={post.category}
         lines={post.lines.map((text, index) => index === post.lines.length - 1 ? { text, accent: true } : text)}
         text={`${post.date} · ${post.read} read`}
-        action={{ label: "Plan a journey like this", href: "/contact" }}
+        action={{ label: "Plan a journey like this", href: "/contact#form" }}
         media={{ image: post.image, alt: post.alt, position: post.position }}
         back={{ href: "/blog", label: "All stories" }}
       />
-      <article id="story" className="b-article-body j-torn-top" aria-label={post.title}><div className="b-shell b-article-layout"><aside className="b-article-margin"><span className="b-small">In the field</span><TravelIcon kind="compass" size={37} /><p>A few notes.<br />A fresh perspective.<br />Your next departure.</p><Link href="/contact" className="b-text-link">Plan a journey like this <Arrow diagonal /></Link></aside><div className="b-prose">{post.paragraphs.map((paragraph, index) => <div key={paragraph}><p>{paragraph}</p>{index === 0 && post.pull && <blockquote><span aria-hidden="true">“</span>{post.pull}</blockquote>}</div>)}<div className="b-article-colophon"><TravelIcon kind="plane" size={24} /><span className="b-small">People. Places. Further together.</span></div><div className="b-article-enquiry"><span className="b-small">Inspired to go?</span><h2>Let’s put you<br /><em>in the picture.</em></h2><Link href="/contact" className="b-solid-link">Start your own journey <Arrow diagonal /></Link></div></div></div></article>
+      <article id="story" className="b-article-body j-torn-top" aria-label={post.title}><div className="b-shell b-article-layout"><aside className="b-article-margin"><span className="b-small">In the field</span><TravelIcon kind="compass" size={37} /><p>A few notes.<br />A fresh perspective.<br />Your next departure.</p><ContactFormLink className="b-text-link">Plan a journey like this <Arrow diagonal /></ContactFormLink></aside><div className="b-prose">{post.paragraphs.map((paragraph, index) => <div key={paragraph}><p>{paragraph}</p>{index === 0 && post.pull && <blockquote><span aria-hidden="true">“</span>{post.pull}</blockquote>}</div>)}<div className="b-article-colophon"><TravelIcon kind="plane" size={24} /><span className="b-small">People. Places. Further together.</span></div><div className="b-article-enquiry"><span className="b-small">Inspired to go?</span><h2>Let’s put you<br /><em>in the picture.</em></h2><ContactFormLink className="b-solid-link">Start your own journey <Arrow diagonal /></ContactFormLink></div></div></div></article>
       <section className="b-related j-torn-top" aria-labelledby="related-heading"><div className="b-shell"><div className="b-section-rule b-small"><span>The journey continues</span><Link href="/blog">All stories <Arrow diagonal /></Link></div><div className="b-journal-heading"><h2 id="related-heading">One more<br /><em>before you go.</em></h2><p>A different place. Another perspective.<br />There’s always more to the story.</p></div><ul className="b-story-grid b-related-grid">{related.map((item, index) => <li key={item.slug}><BlogStoryCard post={item} index={index} /></li>)}</ul></div></section>
       <BlogClosing />
     </main>

@@ -21,7 +21,7 @@ export default function HomePage() {
         lines={["Every journey.", "New possibilities."]}
         sub="Thoughtfully planned."
         text="Business, leisure and everything in between — personally supported."
-        action={{ label: "Plan your journey", href: "/contact" }}
+        action={{ label: "Plan your journey", href: "/contact#form" }}
         settle="bottom"
         media={{ video: "/hero-v4-continuous.mp4" }}
       />

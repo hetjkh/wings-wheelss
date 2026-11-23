@@ -4,6 +4,7 @@ import Link from "next/link";
 import { office } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import { EnquiryButton } from "./site-controls";
+import { ContactFormLink } from "./contact-form-link";
 
 const marquee = ["Flights", "Hotels", "Visas", "Transfers", "Groups & MICE", "Safaris", "Experiences", "24/7 Support"];
 
@@ -237,7 +238,7 @@ export function Team() {
         <SectionMark index="06" label="The people behind W&W" />
         <h2 id="team-heading" className="ww-title">Travel is still <em>a people<br />business.</em></h2>
         <p>Behind every Wings & Wheels journey is a team coordinating the details, communicating with travellers and helping keep plans moving.</p>
-        <Link href="/contact" className="button button-dark ww-button">Meet our team <Arrow /></Link>
+        <ContactFormLink className="button button-dark ww-button">Meet our team <Arrow /></ContactFormLink>
       </div>
       <div className="ww-people-media" data-reveal>
         <div className="ww-people-photo"><Image src="/images/library/solo-consultant.webp" alt="A travel consultant reviewing routes and reservations at her office desk" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>

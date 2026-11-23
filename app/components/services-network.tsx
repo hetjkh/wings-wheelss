@@ -16,7 +16,7 @@ const networkDetails: Record<RegionId, { title: string; note: string; text: stri
     "note": "Dubai & the Middle East",
     "text": "From the UAE to Oman, Qatar, Saudi Arabia and Jordan, our Dubai team coordinates your bookings, arrivals and onward travel.",
     "cta": "Plan your Dubai journey",
-    "href": "/contact"
+    "href": "/contact#form"
   },
   "africa": {
     "title": "Closer connections. Further possibilities.",
@@ -44,7 +44,7 @@ const networkDetails: Record<RegionId, { title: string; note: string; text: stri
     "note": "Global reach",
     "text": "Travel across the Atlantic, with your flights, accommodation and onward arrangements brought together by our Dubai team.",
     "cta": "Plan your next journey",
-    "href": "/contact"
+    "href": "/contact#form"
   }
 };
 const regions = travelRegionOrder.map(id => ({ id, ...travelRegions[id], ...networkDetails[id] }));

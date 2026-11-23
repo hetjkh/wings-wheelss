@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { siteLinks, type SiteLink } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import { NavDropdown } from "./nav-dropdown";
+import { markContactFormIntent } from "./contact-form-nav";
 import "./site-navigation.css";
 
 function motionAllowed(element: HTMLElement | null) {
@@ -70,12 +71,20 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
     }, context => {
       if (context.conditions?.reduce || !header.current) return;
       const mobile = Boolean(context.conditions?.mobile);
+      // Always finish visible — never leave the nav stuck at opacity 0 after a route change.
       gsap.fromTo(header.current, { y: mobile ? -8 : -16, opacity: 0 }, {
         y: 0, opacity: 1, duration: mobile ? .35 : .65, ease: "power3.out",
         clearProps: "transform,opacity",
+        onInterrupt: () => { if (header.current) gsap.set(header.current, { clearProps: "transform,opacity" }); },
       });
     });
-    return () => media.revert();
+    return () => {
+      media.revert();
+      if (header.current) {
+        gsap.killTweensOf(header.current);
+        gsap.set(header.current, { clearProps: "transform,opacity" });
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -108,11 +117,24 @@ export function SiteNavigation({ scrolled, enquiry = false }: { scrolled: boolea
     };
   }, [open]);
 
-  const formHref = "/contact#form";
+  const formHref = "/contact";
   const openForm = (event: { preventDefault: () => void }) => {
+    markContactFormIntent();
     if (pathname !== "/contact") return;
     event.preventDefault();
-    document.getElementById("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (header.current) {
+      gsap.killTweensOf(header.current);
+      gsap.set(header.current, { opacity: 1, y: 0, clearProps: "transform,opacity" });
+    }
+    const target = document.getElementById("form");
+    if (!target) return;
+    const go = () => {
+      const top = target.getBoundingClientRect().top + window.scrollY - (window.matchMedia("(max-width: 767px)").matches ? 88 : 100);
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      history.replaceState(null, "", "#form");
+    };
+    go();
+    window.setTimeout(go, 280);
   };
 
   function closeMenu() {

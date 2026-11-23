@@ -1,7 +1,7 @@
 import Image, { getImageProps } from "next/image";
-import Link from "next/link";
 import TravelImage from "./travel-image";
 import { Arrow } from "./icons";
+import { ContactFormLink } from "./contact-form-link";
 import "./home-clientele.css";
 
 const clienteleMobile = getImageProps({
@@ -97,10 +97,10 @@ export function HomeClientele() {
 
           <div className="e-clientele-foot" data-motion-stagger>
             <p>Your people. <em>Our priority.</em></p>
-            <Link href="/contact" className="n-panel-cta n-panel-cta-dark e-clientele-contact">
+            <ContactFormLink className="n-panel-cta n-panel-cta-dark e-clientele-contact">
               <span>Let’s talk travel</span>
               <span className="n-panel-cta-dot"><Arrow /></span>
-            </Link>
+            </ContactFormLink>
           </div>
         </div>
       </div>

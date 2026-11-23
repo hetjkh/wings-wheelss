@@ -270,7 +270,7 @@ export function AboutPage() {
             </div>
             <div className="au-people-intro">
               <p data-au-reveal>Behind every Wings &amp; Wheels journey is a team coordinating the details, communicating with travellers and helping keep plans moving.</p>
-              <div data-au-reveal><Cta href="/contact">Meet our team</Cta></div>
+              <div data-au-reveal><Cta href="/contact#form">Meet our team</Cta></div>
             </div>
           </div>
           <div className="au-crew">

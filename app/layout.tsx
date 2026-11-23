@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Script from "next/script";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { DeferredChrome } from "./components/deferred-chrome";
-import { SocialOffer, OFFER_SEEN_KEY } from "./components/social-offer";
+import { SocialOffer } from "./components/social-offer";
+import { OfferSeenScript } from "./components/offer-seen-script";
 import "./globals.css";
 import "./components/section-edges.css";
 
@@ -30,15 +30,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${heading.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        <OfferSeenScript />
+      </head>
       <body>
-        <Script
-          id="offer-preloader-seen"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem(${JSON.stringify(OFFER_SEEN_KEY)}))document.documentElement.classList.add("so-offer-seen")}catch(e){}`,
-          }}
-        />
         <SocialOffer />
         <SmoothScroll />
         {children}

@@ -23,12 +23,13 @@
 .c-line-note { font: 300 calc(var(--u) * .9375)/1.35 var(--body); text-align: right; color: inherit; opacity: .75; }
 
 /* 02 · A travel-request ticket. The stub fills in as the form is completed. */
-.c-form { --ease: cubic-bezier(.22, 1, .36, 1); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #f3ead9; scroll-margin-top: 110px; }
+.c-form { --ease: cubic-bezier(.22, 1, .36, 1); padding: calc(var(--tear) + var(--u) * 5) 0 calc(var(--u) * 6); background: #f3ead9; }
 .c-form-head { margin-top: 0; }
 .c-form .s-lead { color: var(--text); }
 .c-after { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: calc(var(--u) * 2.5) 0 0; padding: 0; list-style: none; }
 .c-after li { display: flex; align-items: baseline; gap: 12px; padding: calc(var(--u) * 1) 0; border-top: 1px solid #3d2d2024; font: 400 calc(var(--u) * 1.15)/1.25 var(--heading); color: var(--ink); }
 .c-after span { font: 400 calc(var(--u) * .72)/1 var(--body); letter-spacing: .14em; color: var(--ochre); }
+.c-form-anchor { scroll-margin-top: 100px; }
 .c-ticket { margin-top: calc(var(--u) * 2.5); padding: calc(var(--u) * 1.6) calc(var(--u) * 2) calc(var(--u) * 1.75); border-radius: 28px; background: #fbf6ec; box-shadow: 0 40px 80px -48px #3d2d2080; }
 .c-rail { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding-bottom: calc(var(--u) * 1.1); border-bottom: 1px solid #3d2d2018; }
 .c-rail > i { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform-origin: left; transition: transform .45s var(--ease); }

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Image from "./travel-image";
-import Link from "next/link";
 import { Arrow } from "./icons";
 import { EnquiryButton } from "./site-controls";
 import { office } from "./data";
+import { ContactFormLink } from "./contact-form-link";
 import "./home-reminders.css";
 
 const tips = [
@@ -110,7 +110,7 @@ export function HomeReminders() {
             </div>
             <div className="e-reminders-actions">
               <EnquiryButton className="n-button e-reminders-button" service="Travel support">Submit an inquiry</EnquiryButton>
-              <Link href="/contact" className="e-link">Talk to our experts<Arrow /></Link>
+              <ContactFormLink className="e-link">Talk to our experts<Arrow /></ContactFormLink>
             </div>
           </div>
         </div>

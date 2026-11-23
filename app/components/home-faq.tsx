@@ -1,6 +1,6 @@
 import { faqs } from "./faqs";
-import Link from "next/link";
 import { Arrow } from "./icons";
+import { ContactFormLink } from "./contact-form-link";
 import "./home-faq.css";
 
 
@@ -14,7 +14,7 @@ export function HomeFaq() {
             <span className="e-line"><span>FAQs</span></span>
           </h2>
           <p data-editorial-reveal>A few things you might be wondering before you travel with us.</p>
-          <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-editorial-reveal><span>Let’s talk</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
+          <ContactFormLink className="n-panel-cta n-panel-cta-dark" data-editorial-reveal><span>Let’s talk</span><span className="n-panel-cta-dot"><Arrow /></span></ContactFormLink>
         </div>
 
         <div className="e-faq-list">

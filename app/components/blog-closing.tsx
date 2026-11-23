@@ -20,7 +20,7 @@ export function BlogClosing() {
       { icon: "briefcase", label: "Business" },
       { icon: "people", label: "Groups" },
     ]}
-    action={{ label: "Plan your journey", href: "/contact" }}
+    action={{ label: "Plan your journey", href: "/contact#form" }}
     whatsapp="WhatsApp us"
   />;
 }

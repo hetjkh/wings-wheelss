@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Arrow } from "./icons";
+import { ContactFormLink } from "./contact-form-link";
 import tabby from "../../public/images/Tabby.webp";
 import tamara from "../../public/images/Tamara-En.webp";
 import ziina from "../../public/brands/ZIINA Geometric Logo on Purple Aura.png";
@@ -48,7 +48,7 @@ export function HomePayLater() {
           ))}
         </ol>
         <div className="e-pay-action" data-motion-stagger>
-          <Link href="/contact" className="n-panel-cta n-panel-cta-dark" data-cursor="Let's plan"><span>Book your tickets</span><span className="n-panel-cta-dot"><Arrow /></span></Link>
+          <ContactFormLink className="n-panel-cta n-panel-cta-dark" data-cursor="Let's plan"><span>Book your tickets</span><span className="n-panel-cta-dot"><Arrow /></span></ContactFormLink>
           <p>Ask us about paying with Tabby, Tamara or Ziina when you book.</p>
         </div>
       </div>
