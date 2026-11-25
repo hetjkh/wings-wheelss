@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { Arrow, TravelIcon } from "./icons";
 import { office } from "./data";
 
@@ -145,6 +146,8 @@ export function PartnerForm() {
   const [lastVisitedStep, setLastVisitedStep] = useState(0);
   const [values, setValues] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const read = () => {
     if (!form.current) return;
@@ -190,7 +193,7 @@ export function PartnerForm() {
     if (top < 96 || bottom > window.innerHeight) target.scrollIntoView({ block: "start" });
   };
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step < steps.length - 1) { goTo(step + 1); return; }
     const invalid = Array.from(event.currentTarget.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea")).find(field => !field.checkValidity());
@@ -203,6 +206,67 @@ export function PartnerForm() {
       setStep(!selected("services").length ? 2 : 3);
       return;
     }
+    setSending(true);
+    setError("");
+    const data = new FormData(event.currentTarget);
+    const servicesSelected = data.getAll("services").map(String);
+    const benefitsSelected = data.getAll("benefits").map(String);
+    const message = [
+      "Corporate partnership application",
+      `Company: ${data.get("company")}`,
+      `Website: ${data.get("website")}`,
+      `Industry: ${data.get("industry")}`,
+      `Employees: ${data.get("employees")}`,
+      `Country: ${data.get("country")}`,
+      `City: ${data.get("city")}`,
+      `Licence: ${data.get("licence") || "Not provided"}`,
+      `Contact: ${data.get("fullName")}`,
+      `Job title: ${data.get("jobTitle")}`,
+      `Email: ${data.get("email")}`,
+      `Phone: ${data.get("phone")}`,
+      `Department: ${data.get("department")}`,
+      `Travel frequency: ${data.get("frequency")}`,
+      `Travellers / month: ${data.get("travellers")}`,
+      `Annual spend: ${data.get("spend")}`,
+      `Services: ${servicesSelected.join(", ")}`,
+      `Routes: ${data.get("routes") || "Not provided"}`,
+      `Benefits: ${benefitsSelected.join(", ")}`,
+      `Travel management: ${data.get("management")}`,
+      `Current agency: ${data.get("agency")}`,
+      `Preferred start: ${data.get("timeline")}`,
+      data.get("comments") ? `Comments: ${data.get("comments")}` : "",
+    ].filter(Boolean).join("\n");
+    const result = await submitEnquiry({
+      ...enquiryFromFormData("corporate-partnership", data, {
+        name: String(data.get("fullName") || ""),
+        message,
+        service: "Corporate partnership",
+        fields: {
+          company: String(data.get("company") || ""),
+          website: String(data.get("website") || ""),
+          industry: String(data.get("industry") || ""),
+          employees: String(data.get("employees") || ""),
+          country: String(data.get("country") || ""),
+          city: String(data.get("city") || ""),
+          licence: String(data.get("licence") || ""),
+          fullName: String(data.get("fullName") || ""),
+          jobTitle: String(data.get("jobTitle") || ""),
+          department: String(data.get("department") || ""),
+          frequency: String(data.get("frequency") || ""),
+          travellers: String(data.get("travellers") || ""),
+          spend: String(data.get("spend") || ""),
+          services: servicesSelected,
+          routes: String(data.get("routes") || ""),
+          benefits: benefitsSelected,
+          management: String(data.get("management") || ""),
+          agency: String(data.get("agency") || ""),
+          timeline: String(data.get("timeline") || ""),
+          comments: String(data.get("comments") || ""),
+        },
+      }),
+    });
+    setSending(false);
+    if (!result.ok) { setError(result.error); return; }
     setSent(true);
     requestAnimationFrame(() => reveal(confirmation.current));
   };
@@ -347,18 +411,19 @@ export function PartnerForm() {
 
       <div className="fa-actions">
         {step > 0 ? <button type="button" className="fa-back" onClick={() => goTo(step - 1)}><Arrow back />Back</button> : <span />}
-        <button type="submit" className="f-step-cta fa-next">
-          <span>{step < steps.length - 1 ? `Next: ${steps[step + 1].label}` : "Request corporate partnership"}</span>
+        <button type="submit" className="f-step-cta fa-next" disabled={sending}>
+          <span>{step < steps.length - 1 ? `Next: ${steps[step + 1].label}` : sending ? "Sending…" : "Request corporate partnership"}</span>
           <span className="f-step-cta-dot"><Arrow /></span>
         </button>
       </div>
+      {error ? <p className="fa-legal" role="alert">{error}</p> : null}
       <p className="fa-legal"><TravelIcon kind="document" size={16} />Preferred rates and benefits are subject to travel volume, routes, supplier availability, commercial assessment and agreed partnership terms. Submission of this form does not guarantee specific discounts, benefits or credit facilities.</p>
 
       {sent && <div className="fa-sent" role="status">
         <span className="fa-sent-stamp"><TravelIcon kind="check" size={40} /></span>
-        <h3 ref={confirmation} tabIndex={-1}>Your application is ready.</h3>
-        <p>This form is a preview, so your application hasn&apos;t been sent yet. For now, please call {office.phones[0].label} or email {office.email} and our corporate partnerships team will be in touch.</p>
-        <button type="button" className="fa-back" onClick={() => { setSent(false); goTo(0); }}><Arrow back />Review my application</button>
+        <h3 ref={confirmation} tabIndex={-1}>Your application has been sent.</h3>
+        <p>Our corporate partnerships team has received your enquiry and will be in touch. You can also reach us on {office.phones[0].label} or {office.email}.</p>
+        <button type="button" className="fa-back" onClick={() => { setSent(false); setError(""); goTo(0); }}><Arrow back />Review my application</button>
       </div>}
     </form>
 

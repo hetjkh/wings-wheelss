@@ -97,7 +97,7 @@ export default function ServicesPage() {
       <section className="s-approach j-torn-top" id="approach" aria-labelledby="approach-heading" data-steps="6">
         <div className="j-shell">
           <div className="s-approach-stage">
-            <div className="j-section-label s-draw"><span>01 / How we think about travel</span><span>One journey. Every part.</span></div>
+            <div className="j-section-label s-draw"><span>How we think about travel</span><span>One journey. Every part.</span></div>
             <div className="s-split-head">
               <h2 id="approach-heading" className="s-title">A flight is only<br />one part of<br />the journey.</h2>
               <p className="s-lead">You need to get to the airport. You may need a visa. You need somewhere to stay. Someone may need to meet you when you arrive. And sometimes plans change.</p>
@@ -122,7 +122,7 @@ export default function ServicesPage() {
       <section className="s-services j-torn-top" id="services" aria-labelledby="services-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / Our travel services</span><h2 id="services-heading" className="s-title">Whatever the<br />journey needs.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Our travel services</span><h2 id="services-heading" className="s-title">Whatever the<br />journey needs.</h2></div>
             <p className="s-lead">A complete travel service, coordinated around you. Choose one part, or let us bring every part together.</p>
           </div>
           <ServicesIndex services={services} />
@@ -132,7 +132,7 @@ export default function ServicesPage() {
       <section className="s-reasons j-torn-top" id="reasons" aria-labelledby="reasons-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">03 / Travel for different reasons</span><h2 id="reasons-heading" className="s-title">Not every journey<br />looks the same.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Travel for different reasons</span><h2 id="reasons-heading" className="s-title">Not every journey<br />looks the same.</h2></div>
             <p className="s-lead">The reason you travel shapes everything around it. The care we bring to it stays the same.</p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function ServicesPage() {
 
       <section className="s-scale j-torn-top" id="journeys" aria-labelledby="scale-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>04 / Every journey is different</span><span>Simple · Complex · Group</span></div>
+          <div className="j-section-label s-draw"><span>Every journey is different</span><span>Simple · Complex · Group</span></div>
           <div className="s-split-head">
             <h2 id="scale-heading" className="s-title s-rows"><span>One booking or</span><span>many moving parts.</span></h2>
             <p className="s-lead">A single return flight or a group arriving from several cities — we keep every detail in one clear plan.</p>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
       <section className="s-plan j-torn-top" id="plan" aria-labelledby="plan-heading">
         <div className="j-shell s-plan-grid">
           <div className="s-plan-copy">
-            <span className="j-eyebrow s-eyebrow">07 / Start here</span>
+            <span className="j-eyebrow s-eyebrow">Start here</span>
             <h2 id="plan-heading" className="s-title">Just tell us<br />about the journey.</h2>
             <p className="s-lead-body">Where you&apos;re starting, where you need to be and why. We&apos;ll shape the rest around it.</p>
             <dl className="s-plan-contact">

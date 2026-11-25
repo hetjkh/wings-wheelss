@@ -10,6 +10,7 @@ import { JourneyFooter } from "./journey-footer";
 import { ChapterMotion } from "./chapter-motion";
 import { MaskedHero } from "./masked-hero";
 import { shouldOpenContactForm } from "./contact-form-nav";
+import { submitEnquiry } from "../../lib/submit-enquiry";
 import "./journey.css";
 import "./journey-explorer.css";
 import "./services.css";
@@ -75,6 +76,7 @@ export function ContactPage() {
   const [whatsapp, setWhatsapp] = useState("");
   const [focus, setFocus] = useState(1);
   const [hint, setHint] = useState("");
+  const [sending, setSending] = useState(false);
 
   const detailsDone = name.trim().length >= 2 && email.includes("@") && phone.trim().length >= 7 && nationality !== "";
   const serviceDone = service !== "";
@@ -202,7 +204,7 @@ export function ContactPage() {
 
       <section className="c-reach j-torn-top" id="reach" aria-labelledby="reach-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>01 / Four ways to reach us</span><span>Pick whichever suits you</span></div>
+          <div className="j-section-label s-draw"><span>Four ways to reach us</span><span>Pick whichever suits you</span></div>
           <h2 id="reach-heading" className="s-title c-reach-title">Call, write,<br />message or visit.</h2>
           <ul className="c-lines" data-stagger="0.1">
             <li className="c-line">
@@ -234,7 +236,7 @@ export function ContactPage() {
           <div id="form" className="c-form-anchor">
           <div className="s-split-head c-form-head">
             <div>
-              <span className="j-eyebrow s-eyebrow">02 / Get in touch</span>
+              <span className="j-eyebrow s-eyebrow">Get in touch</span>
               <h2 id="form-heading" className="s-title">Send us your<br />travel request.</h2>
             </div>
             <p className="s-lead">Need flight options, visa help or a full holiday plan? Fill in the form and a consultant will reply with options and a quote.</p>
@@ -248,9 +250,41 @@ export function ContactPage() {
             {sent ? <div className="c-done" role="status">
               <TravelIcon kind="check" size={34} />
               <h3>Thank you for contacting us</h3>
-              <p>This form is a preview, so your details haven&apos;t been sent or saved yet. For now, please call, email or WhatsApp our team directly.</p>
+              <p>Your request has been sent to our team. A consultant will reply with options and a quote.</p>
               <button type="button" className="c-send" onClick={reset}>Send another request <Arrow /></button>
-            </div> : <form onSubmit={event => { event.preventDefault(); if (messageDone) setSent(true); else setHint("Tell us a little more about the trip — at least a sentence."); }}>
+            </div> : <form onSubmit={async event => {
+              event.preventDefault();
+              if (!messageDone) { setHint("Tell us a little more about the trip — at least a sentence."); return; }
+              setSending(true);
+              setHint("");
+              const result = await submitEnquiry({
+                source: "contact",
+                name,
+                email,
+                phone,
+                whatsapp,
+                service,
+                destination,
+                message: [
+                  `Nationality: ${nationality}`,
+                  whatsapp ? `WhatsApp: ${whatsapp}` : "",
+                  destination ? `Destination: ${destination}` : "",
+                  `Service: ${service}`,
+                  "",
+                  message,
+                ].filter(line => line !== "").join("\n"),
+                fields: {
+                  nationality,
+                  whatsapp,
+                  destination,
+                  service,
+                  message,
+                },
+              });
+              setSending(false);
+              if (!result.ok) { setHint(result.error); return; }
+              setSent(true);
+            }}>
               <div className="c-rail" role="tablist" aria-label="Request steps">
                 {chapters.map((item, index) => <button key={item.n} type="button" role="tab" aria-selected={focus === index + 1} className={focus === index + 1 ? "is-current" : item.done ? "is-done" : ""} onClick={() => go(index + 1)}>
                   <span>{item.done ? <TravelIcon kind="check" size={14} /> : item.n}</span>{item.title}
@@ -301,12 +335,12 @@ export function ContactPage() {
               </div>
               {hint && <p className="c-hint" role="status">{hint}</p>}
               <div className="c-submit">
-                <p>Preview form · Your details won&apos;t be sent or stored.</p>
+                <p>Your enquiry is emailed to our team and stored securely.</p>
                 <div className="c-nav">
                   {focus > 1 && <button type="button" className="c-back" onClick={() => go(focus - 1)}>Back</button>}
                   {focus < 3
                     ? <button type="button" className="c-send" onClick={() => go(focus + 1)}>Continue <Arrow /></button>
-                    : <button type="submit" className="c-send">Send request <Arrow /></button>}
+                    : <button type="submit" className="c-send" disabled={sending}>{sending ? "Sending…" : "Send request"}{!sending && <Arrow />}</button>}
                 </div>
               </div>
             </form>}
@@ -326,7 +360,7 @@ export function ContactPage() {
       <section className="c-hours j-torn-top" id="hours" aria-labelledby="hours-heading">
         <div className="j-shell">
           <div className="s-split-head c-hours-head">
-            <div><span className="j-eyebrow s-eyebrow">03 / Office hours</span><h2 id="hours-heading" className="s-title">When you&apos;ll<br />find us in.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Office hours</span><h2 id="hours-heading" className="s-title">When you&apos;ll<br />find us in.</h2></div>
             <div className="c-visit">
               <span>Our office</span>
               <strong>{office.address[0]}</strong>

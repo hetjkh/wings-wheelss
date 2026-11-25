@@ -49,7 +49,7 @@ export default function BlogPage({ posts }: { posts: BlogPost[] }) {
           <div className="b-cover-grid">
             <article className="b-cover">
               <Image src={cover.image} alt={cover.alt} fill sizes="(max-width: 800px) 100vw, 66vw" />
-              <div className="b-cover-top b-small"><span>The cover story</span><span>01 / Europe</span></div>
+              <div className="b-cover-top b-small"><span>The cover story</span><span>Europe</span></div>
               <div className="b-cover-copy"><p className="b-small">Destinations <span /> {cover.read} read</p><h2><Link href={`/blog/${cover.slug}`}>Take the<br /><em>scenic route.</em></Link></h2><p>{cover.excerpt}</p><Link className="b-cover-link b-small" href={`/blog/${cover.slug}`}>A slower way to cross Europe <span><Arrow diagonal /></span></Link></div>
             </article>
             <aside className="b-editors" aria-labelledby="editors-heading">

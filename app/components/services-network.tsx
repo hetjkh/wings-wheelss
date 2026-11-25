@@ -72,7 +72,7 @@ export function ServicesNetwork() {
   return <section className="s-network sn-network j-torn-top" id="network" aria-labelledby="network-heading">
     <div className="sn-shell">
       <header className="sn-heading">
-        <div><span className="j-eyebrow">06 / Our network</span><h2 id="network-heading">Local connections.<br /><em>A world within reach.</em></h2></div>
+        <div><span className="j-eyebrow">Our network</span><h2 id="network-heading">Local connections.<br /><em>A world within reach.</em></h2></div>
         <p>Our home is Dubai. Our connections go further. Explore the places and people behind your next journey.</p>
       </header>
 

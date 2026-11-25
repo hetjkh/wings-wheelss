@@ -122,7 +122,7 @@ export function ServicesJourney() {
   return <section ref={section} id="beyond" className="s-beyond sb-journey j-torn-top" data-steps="3" data-step-anchor=".sb-tabs" aria-labelledby="beyond-heading">
     <div className="sb-shell">
       <header className="sb-heading">
-        <div><span className="j-eyebrow">05 / Before. During. After.</span><h2 id="beyond-heading">Every step.<br /><em>Someone there.</em></h2></div>
+        <div><span className="j-eyebrow">Before. During. After.</span><h2 id="beyond-heading">Every step.<br /><em>Someone there.</em></h2></div>
         <p>Good travel support doesn&apos;t begin at take-off or end at landing. We think beyond departure.</p>
       </header>
 

@@ -85,7 +85,7 @@ export default function DestinationsPage() {
 
       <section className="d-moods j-torn-top" id="find" aria-labelledby="find-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>01 / Find your journey</span><span>Six ways to begin</span></div>
+          <div className="j-section-label s-draw"><span>Find your journey</span><span>Six ways to begin</span></div>
           <div className="s-split-head">
             <h2 id="find-heading" className="s-title"><span className="d-desktop-copy">Sometimes you know where.<br /><span className="d-title-soft">Sometimes you just know why.</span></span><span className="d-mobile-copy">Find your<br /><em>kind of escape.</em></span></h2>
             <div>
@@ -99,7 +99,7 @@ export default function DestinationsPage() {
 
       <section className="d-featured j-torn-top" id="featured" data-hscroll aria-labelledby="featured-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">02 / Featured destinations</span>
+          <span className="j-eyebrow s-eyebrow">Featured destinations</span>
           <h2 id="featured-heading" className="s-title"><span className="d-desktop-copy">Places worth<br />going further for.</span><span className="d-mobile-copy">Your next<br /><em>somewhere.</em></span></h2>
         </div>
         <PostcardRail cards={postcards} />
@@ -113,7 +113,7 @@ export default function DestinationsPage() {
         <div className="d-africa-shade" />
         <div className="j-shell d-africa-grid">
           <div className="d-africa-copy">
-            <span className="j-eyebrow s-eyebrow">03 / Closer to Africa</span>
+            <span className="j-eyebrow s-eyebrow">Closer to Africa</span>
             <h2 id="africa-heading" className="s-title"><span className="d-desktop-copy">Some of our strongest connections are here.</span><span className="d-mobile-copy">Africa.<br /><em>Closer than ever.</em></span></h2>
             <p className="s-lead-body d-body"><span className="d-desktop-copy">Wings &amp; Wheels combines UAE-based travel expertise with an established network across key African markets, helping travellers move between the Middle East, Africa and beyond.</span><span className="d-mobile-copy">From the UAE to Africa, our people and partners keep every journey beautifully connected.</span></p>
             <Link className="j-button j-button-cream" href="/africa">Discover Africa <Arrow /></Link>
@@ -139,7 +139,7 @@ export default function DestinationsPage() {
 
       <section className="d-many j-torn-top" id="combine" aria-labelledby="combine-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>04 / One destination. Many ways to experience it.</span><span>Dubai, through your eyes</span></div>
+          <div className="j-section-label s-draw"><span>One destination. Many ways to experience it.</span><span>Dubai, through your eyes</span></div>
           <div className="s-split-head"><h2 id="combine-heading" className="s-title">Dubai isn&apos;t<br />one kind of trip.</h2><p className="s-lead">One skyline. Five different reasons to be here.</p></div>
         </div>
         <DubaiTrips />
@@ -148,7 +148,7 @@ export default function DestinationsPage() {
 
       <section className="d-seasons j-torn-top" id="seasons" data-steps={seasons.length} aria-labelledby="seasons-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>05 / Where to go, and when</span><span>A travel year, from October</span></div>
+          <div className="j-section-label s-draw"><span>Where to go, and when</span><span>A travel year, from October</span></div>
           <div className="s-split-head">
             <h2 id="seasons-heading" className="s-title"><span className="d-desktop-copy">Seasonal<br />highlights.</span><span className="d-mobile-copy">A year of <em>escapes.</em></span></h2>
             <div>
@@ -163,7 +163,7 @@ export default function DestinationsPage() {
       <section className="d-four j-torn-top" id="ideas" aria-labelledby="ideas-heading">
         <div className="j-shell d-four-grid">
           <div className="d-four-copy">
-            <span className="j-eyebrow s-eyebrow">06 / Not sure where to go?</span>
+            <span className="j-eyebrow s-eyebrow">Not sure where to go?</span>
             <h2 id="ideas-heading" className="s-title">Tell us<br />four things.</h2>
             <p className="s-lead-body d-body">Just a few details to get started — and we&apos;ll help you find the right destination for your next journey.</p>
             <EnquiryButton className="j-button j-button-outline-light" service="Leisure & holidays">Get destination ideas</EnquiryButton>
@@ -175,7 +175,7 @@ export default function DestinationsPage() {
       <DestinationPlanning />
 
       <ClosingScene
-        chapter="07 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="Your next destination"
         left={<>Some journeys start<br />with a place.</>}
         right={<>Others start<br />with <em>an idea.</em></>}

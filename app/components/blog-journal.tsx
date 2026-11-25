@@ -19,7 +19,7 @@ export function BlogJournal({ posts }: { posts: BlogPost[] }) {
   }, [category, query]);
 
   return <>
-    <div className="b-section-rule b-small"><span>01 / The reading room</span><span>Stories to take you further <Arrow diagonal /></span></div>
+    <div className="b-section-rule b-small"><span>The reading room</span><span>Stories to take you further <Arrow diagonal /></span></div>
     <div className="b-journal-heading"><h2 id="journal-heading">A good place<br />to <em>get lost.</em></h2><p>Travel ideas, local perspectives, and the<br className="b-desktop-break" /> little things we’ve learnt along the way.</p></div>
     <div className="b-browse"><div className="b-filters" role="group" aria-label="Filter stories by category">{filters.map(filter => <button key={filter} type="button" className={filter === category ? "is-active" : undefined} aria-pressed={filter === category} onClick={() => setCategory(filter)}>{filter}{filter === category && <Arrow diagonal />}</button>)}</div><label className="b-search"><TravelIcon kind="search" size={18} /><span className="j-sr-only">Search stories</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Find a little inspiration" /></label></div>
     <p className="b-results b-small" role="status" aria-live="polite">{String(filtered.length).padStart(2, "0")} {filtered.length === 1 ? "story" : "stories"}{category !== "All stories" ? ` / ${category}` : " / A world of possibilities"}{query.trim() ? ` / Matching “${query.trim()}”` : ""}</p>

@@ -2,7 +2,7 @@ import { ClosingScene } from "./services-final";
 
 export function BlogClosing() {
   return <ClosingScene
-    chapter="03 / Wings & Wheels"
+    chapter="Wings & Wheels"
     ticket="From a story"
     left={<>Some trips start<br />with a place.</>}
     right={<>Others start<br />with <em>a question.</em></>}

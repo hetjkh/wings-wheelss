@@ -153,7 +153,7 @@ export default function FranchisePage() {
         </div>
         <div className="f-beyond-grid">
           <div className="f-beyond-copy">
-            <span className="j-eyebrow s-eyebrow">01 / Growing beyond borders</span>
+            <span className="j-eyebrow s-eyebrow">Growing beyond borders</span>
             <FranchiseHeading id="beyond-heading" mobile={<>Global vision.<br /><em>Local connections.</em></>}><span>Global vision.</span><span className="k-soft">Local connections.</span></FranchiseHeading>
             <p className="k-body">We bring global travel expertise together with local insight, strong partnerships, and consistently exceptional service.</p>
             <ul className="f-beyond-pillars" data-stagger="0.1">
@@ -169,7 +169,7 @@ export default function FranchisePage() {
       <section className="f-markets j-torn-top" id="markets" aria-labelledby="markets-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / Where we&apos;re expanding</span><FranchiseHeading id="markets-heading" mobile={<>Three markets.<br /><em>Your next chapter.</em></>}><span>Three markets.</span><span className="k-soft">Three opportunities</span><span className="k-soft">to grow.</span></FranchiseHeading></div>
+            <div><span className="j-eyebrow s-eyebrow">Where we&apos;re expanding</span><FranchiseHeading id="markets-heading" mobile={<>Three markets.<br /><em>Your next chapter.</em></>}><span>Three markets.</span><span className="k-soft">Three opportunities</span><span className="k-soft">to grow.</span></FranchiseHeading></div>
             <div className="f-markets-aside">
               <p className="k-body">Each market brings its own travellers and commercial strengths. We are inviting conversations with partners who know them well.</p>
               <FranchiseApplyLink className="f-link">Apply for a market <Arrow /></FranchiseApplyLink>
@@ -192,7 +192,7 @@ export default function FranchisePage() {
       <section className="f-advantage j-torn-top" id="advantage" aria-labelledby="advantage-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">03 / The partnership advantage</span><FranchiseHeading id="advantage-heading" mobile={<>Local ambition.<br /><em>Shared strengths.</em></>}><span>Build locally.</span><span className="k-soft">Connect internationally.</span></FranchiseHeading></div>
+            <div><span className="j-eyebrow s-eyebrow">The partnership advantage</span><FranchiseHeading id="advantage-heading" mobile={<>Local ambition.<br /><em>Shared strengths.</em></>}><span>Build locally.</span><span className="k-soft">Connect internationally.</span></FranchiseHeading></div>
             <p className="f-advantage-note">A proven brand.<br />A shared vision.<br /><em>A growing network.</em></p>
           </div>
           <ul className="f-advantage-grid" data-stagger="0.07">{advantages.map((item, i) => <li key={item.title}>
@@ -207,7 +207,7 @@ export default function FranchisePage() {
       <section className="f-build j-torn-top" id="build" aria-labelledby="build-heading">
         <div className="j-shell f-build-head">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">04 / What you can build</span><FranchiseHeading id="build-heading" mobile={<>One brand.<br /><em>Room to grow.</em></>}><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></FranchiseHeading></div>
+            <div><span className="j-eyebrow s-eyebrow">What you can build</span><FranchiseHeading id="build-heading" mobile={<>One brand.<br /><em>Room to grow.</em></>}><span>One brand.</span><span className="k-soft">Multiple business opportunities.</span></FranchiseHeading></div>
           </div>
         </div>
         <div className="j-shell f-build-wrap">
@@ -218,7 +218,7 @@ export default function FranchisePage() {
       <section className="f-network j-torn-top" id="network" aria-labelledby="network-heading">
         <div className="j-shell f-network-grid">
           <div className="f-network-copy">
-            <span className="j-eyebrow s-eyebrow">05 / The UAE + Africa advantage</span>
+            <span className="j-eyebrow s-eyebrow">The UAE + Africa advantage</span>
             <h2 id="network-heading" className="f-network-heading">
               <span>Connecting</span>
               <em>more than</em>
@@ -251,7 +251,7 @@ export default function FranchisePage() {
         <div className="j-shell">
           <div className="f-partners-head">
             <div>
-              <span className="j-eyebrow s-eyebrow">06 / Who we&apos;re looking for</span>
+              <span className="j-eyebrow s-eyebrow">Who we&apos;re looking for</span>
               <FranchiseHeading id="partners-heading" mobile={<>Partners<br /><em>who build.</em></>}><span>Partners</span><span className="k-soft">who build.</span></FranchiseHeading>
             </div>
             <div className="f-partners-aside">
@@ -289,7 +289,7 @@ export default function FranchisePage() {
       <section className="f-roles j-torn-top" id="standards" aria-labelledby="standards-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">07 / Who does what</span><FranchiseHeading id="standards-heading" mobile={<>You run the market.<br /><em>We back the brand.</em></>}><span>You run the market.</span><span className="k-soft">We back the brand.</span></FranchiseHeading></div>
+            <div><span className="j-eyebrow s-eyebrow">Who does what</span><FranchiseHeading id="standards-heading" mobile={<>You run the market.<br /><em>We back the brand.</em></>}><span>You run the market.</span><span className="k-soft">We back the brand.</span></FranchiseHeading></div>
             <p className="k-body">Local ownership, shared standards. Here is how the work is split — each thing you lead has something from us behind it.</p>
           </div>
           <div className="f-duo">
@@ -311,7 +311,7 @@ export default function FranchisePage() {
       <section className="f-steps j-torn-top" id="how" aria-labelledby="how-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">08 / How it works</span><FranchiseHeading id="how-heading" mobile={<>A conversation.<br /><em>Then a clear path.</em></>}><span>From first conversation</span><span className="k-soft">to market launch.</span></FranchiseHeading></div>
+            <div><span className="j-eyebrow s-eyebrow">How it works</span><FranchiseHeading id="how-heading" mobile={<>A conversation.<br /><em>Then a clear path.</em></>}><span>From first conversation</span><span className="k-soft">to market launch.</span></FranchiseHeading></div>
             <p className="k-body">A considered process for both sides, so every new market starts on solid ground.</p>
           </div>
           <ol className="f-step-row" data-progress="top 75%" data-progress-end="bottom 60%">{steps.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -332,7 +332,7 @@ export default function FranchisePage() {
       <section className="f-faq j-torn-top" id="faq" aria-labelledby="faq-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">09 / Frequently asked questions</span><h2 id="faq-heading" className="s-title s-rows"><span>Your questions.</span><span className="k-soft">Our answers.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Frequently asked questions</span><h2 id="faq-heading" className="s-title s-rows"><span>Your questions.</span><span className="k-soft">Our answers.</span></h2></div>
           </div>
           <div className="f-faq-list">{faqs.map(faq => <details key={faq.question} className="f-faq-item">
             <summary>{faq.question}<span className="f-faq-toggle" aria-hidden="true" /></summary>
@@ -345,7 +345,7 @@ export default function FranchisePage() {
         <div className="j-shell">
           <div className="f-apply-head">
             <div>
-              <span className="j-eyebrow s-eyebrow">10 / Franchise partnership application</span>
+              <span className="j-eyebrow s-eyebrow">Franchise partnership application</span>
               <FranchiseHeading id="apply-heading" mobile={<>About your business.<br /><em>What&apos;s possible.</em></>}><span>About your business.</span><span className="k-soft">What&apos;s possible.</span></FranchiseHeading>
             </div>
             <p className="k-body">Please complete the application below to help our expansion team understand your background, preferred market and partnership objectives.</p>
@@ -357,7 +357,7 @@ export default function FranchisePage() {
       </section>
 
       <ClosingScene
-        chapter="11 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="Franchise opportunities"
         left={<>Let&apos;s build the<br />next chapter.</>}
         right={<>Your market.<br /><em>Our shared future.</em></>}

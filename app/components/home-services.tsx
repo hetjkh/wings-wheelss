@@ -137,7 +137,7 @@ export function HomeServices() {
     <section className="n-services" id="home-services" aria-labelledby="home-services-title" ref={root}>
       <div className="n-services-pin">
         <div className="n-services-bar n-shell">
-          <span className="n-kicker"><span className="n-services-bar-num">01 /</span> Travel services</span>
+          <span className="n-kicker">Travel services</span>
           <span className="n-kicker n-services-bar-list" aria-hidden="true">{services.map(s => s.phase).join(" · ")}</span>
         </div>
 

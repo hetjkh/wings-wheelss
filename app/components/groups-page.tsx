@@ -124,7 +124,7 @@ export default function GroupsPage() {
         <div className="j-shell g-converge-inner">
           <div className="g-converge-head">
             <div>
-              <span className="j-eyebrow s-eyebrow">01 / Many cities, one venue</span>
+              <span className="j-eyebrow s-eyebrow">Many cities, one venue</span>
               <h2 id="people-heading" className="s-title s-rows"><span className="g-desktop-copy">Many cities.</span><span className="g-soft g-desktop-copy">One event.</span><span className="g-mobile-only">Many cities.<br /><em>One event.</em></span></h2>
             </div>
             <div className="g-converge-copy">
@@ -135,7 +135,7 @@ export default function GroupsPage() {
             <GroupsConverge origins={origins} sequence={sequence} />
           </div>
           <figure className="gm-arrival g-mobile-only">
-            <span className="gm-arrival-kicker">01 / Many cities, one venue</span>
+            <span className="gm-arrival-kicker">Many cities, one venue</span>
             <h2 className="gm-arrival-title">
               <span className="gm-arrival-lead">Different cities.</span>
               <span className="gm-arrival-finale">
@@ -166,7 +166,7 @@ export default function GroupsPage() {
         <div className="gm-manage-art g-mobile-only" aria-hidden="true"><Image src="/images/library/groups-manage-cabin-mobile-v1.webp" alt="" fill sizes="100vw" /></div>
         <div className="j-shell">
           <div className="s-split-head g-manage-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span className="g-desktop-copy">From the first arrival</span><span className="g-desktop-copy">to the final departure.</span><span className="g-mobile-only">Every detail.<br /><em>Taken care of.</em></span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">What we manage</span><h2 id="manage-heading" className="s-title s-rows"><span className="g-desktop-copy">From the first arrival</span><span className="g-desktop-copy">to the final departure.</span><span className="g-mobile-only">Every detail.<br /><em>Taken care of.</em></span></h2></div>
             <p className="g-runsheet-tag"><span>Run sheet</span><span>8 items · All coordinated</span></p>
           </div>
           <ol className="g-runsheet">{managed.map((item, i) => <li key={item.title}>
@@ -180,7 +180,7 @@ export default function GroupsPage() {
 
       <section className="g-kinds j-torn-top" id="events" aria-labelledby="events-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>03 / Built for different kinds of events</span><span>Meetings · Incentives · Conferences · Exhibitions</span></div>
+          <div className="j-section-label s-draw"><span>Built for different kinds of events</span><span>Meetings · Incentives · Conferences · Exhibitions</span></div>
           <h2 id="events-heading" className="s-title g-kinds-title">Not every group travels<br />for the same reason.</h2>
           <ol className="g-deck">{kinds.map((kind, i) => <li key={kind.word} className="g-card" style={{ "--i": i } as React.CSSProperties}>
             <div className="g-card-photo"><Image src={kind.photo} alt="" fill sizes="(max-width: 800px) 92vw, 56vw" style={{ objectPosition: kind.position }} /></div>
@@ -198,7 +198,7 @@ export default function GroupsPage() {
         <div className="j-shell">
           <div className="s-split-head">
             <h2 id="day-heading" className="s-title s-rows"><span>Ready before</span><span className="g-soft">doors open.</span></h2>
-            <span className="j-eyebrow s-eyebrow g-day-eyebrow">04 / Exhibition day</span>
+            <span className="j-eyebrow s-eyebrow g-day-eyebrow">Exhibition day</span>
           </div>
           <div className="g-day-grid" data-progress="top 70%" data-progress-end="bottom 70%">
             <div className="g-clock-wrap">
@@ -226,7 +226,7 @@ export default function GroupsPage() {
 
       <section className="g-forty j-torn-top" id="journeys" aria-labelledby="forty-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">05 / One group. Different journeys.</span>
+          <span className="j-eyebrow s-eyebrow">One group. Different journeys.</span>
           <h2 id="forty-heading" className="s-title">40 people.<br />One plan.</h2>
           <div className="g-forty-grid">
             <div className="g-crowd">
@@ -249,7 +249,7 @@ export default function GroupsPage() {
       <section className="g-expo j-torn-top" id="exhibitions" aria-labelledby="expo-heading">
         <div className="j-shell g-expo-grid">
           <div className="g-expo-copy">
-            <span className="j-eyebrow s-eyebrow">06 / Exhibiting in Dubai?</span>
+            <span className="j-eyebrow s-eyebrow">Exhibiting in Dubai?</span>
             <h2 id="expo-heading" className="s-title">Your stand is only one part of the plan.</h2>
             <p className="s-lead-body g-body">Before your team reaches the exhibition floor, there are flights, visas, hotel rooms, airport arrivals, local transfers and schedules to coordinate.</p>
             <EnquiryButton className="j-button j-button-olive" service="Groups & MICE" message="We're exhibiting and need travel for our team.">Plan exhibition travel</EnquiryButton>
@@ -278,7 +278,7 @@ export default function GroupsPage() {
       <section className="g-regions j-torn-top" aria-labelledby="regions-heading">
         <Image className="g-regions-map" src="/images/world-map.svg" alt="" fill unoptimized />
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">07 / Bringing groups across regions</span>
+          <span className="j-eyebrow s-eyebrow">Bringing groups across regions</span>
           <h2 id="regions-heading" className="g-regions-title">
             <span className="g-region"><span className="g-region-word">Africa</span><small>Khartoum · Juba · Nairobi</small></span>
             <svg className="g-region-arrow" viewBox="0 0 120 20" aria-hidden="true"><path data-trace pathLength={1} d="M2 10h112" /><path data-trace pathLength={1} d="M104 2l10 8-10 8" /></svg>
@@ -297,7 +297,7 @@ export default function GroupsPage() {
       <section className="g-ground j-torn-top" aria-labelledby="ground-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">08 / On the ground</span><h2 id="ground-heading" className="s-title">Getting there doesn&apos;t<br />end at the airport.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">On the ground</span><h2 id="ground-heading" className="s-title">Getting there doesn&apos;t<br />end at the airport.</h2></div>
             <p className="s-lead">One movement plan. Fewer things for your team to manage.</p>
           </div>
           <figure className="g-metro">
@@ -324,7 +324,7 @@ export default function GroupsPage() {
       <section className="g-change j-torn-top" aria-labelledby="change-heading">
         <div className="j-shell g-change-grid" data-progress="top 60%" data-progress-end="bottom 85%">
           <div className="g-change-copy">
-            <span className="j-eyebrow s-eyebrow">09 / When plans change</span>
+            <span className="j-eyebrow s-eyebrow">When plans change</span>
             <h2 id="change-heading" className="s-title"><span className="g-desktop-copy">The plan needs<br />to move too.</span><span className="g-mobile-only">Plans change.<br /><em>We stay with you.</em></span></h2>
             <p className="s-lead-body g-body">Group travel rarely remains perfectly static. Wings &amp; Wheels stays involved when requirements change.</p>
             <ol className="g-steps">{steps.map((item, i) => <li key={item.step} style={{ "--ph": `var(--p${i})` } as React.CSSProperties}>
@@ -352,7 +352,7 @@ export default function GroupsPage() {
       <section className="g-brief j-torn-top" id="brief" aria-labelledby="brief-heading">
         <div className="j-shell g-brief-grid-outer">
           <div className="g-brief-copy">
-            <span className="j-eyebrow s-eyebrow">10 / Event brief</span>
+            <span className="j-eyebrow s-eyebrow">Event brief</span>
             <h2 id="brief-heading" className="s-title">Tell us about<br />your event.</h2>
             <p className="s-lead-body g-body">A few details are enough to start. We&apos;ll come back with a coordinated plan for flights, hotels, transfers and everything in between.</p>
             <a className="g-whatsapp" href={office.whatsapp} target="_blank" rel="noreferrer">
@@ -367,7 +367,7 @@ export default function GroupsPage() {
 
       <section className="g-process j-torn-top" id="how-it-works" aria-labelledby="process-heading">
         <div className="j-shell">
-          <span className="j-eyebrow s-eyebrow">11 / How Group &amp; MICE travel works</span>
+          <span className="j-eyebrow s-eyebrow">How Group &amp; MICE travel works</span>
           <h2 id="process-heading" className="s-title g-new-title">From brief to arrival.</h2>
           <div className="g-process-route-label" aria-hidden="true"><span><i />Your event brief</span><span>One connected travel plan</span><span>Ongoing support<TravelIcon kind="check" size={16} /></span></div>
           <ol className="g-process-grid" data-progress="top 85%" data-progress-end="bottom 75%">{travelProcess.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -379,7 +379,7 @@ export default function GroupsPage() {
       </section>
 
       <ClosingScene
-        chapter="12 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="Groups & MICE"
         left={<>Everyone has<br />arrived.</>}
         right={<>Now the event<br /><em>can begin.</em></>}

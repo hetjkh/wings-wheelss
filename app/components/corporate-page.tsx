@@ -119,7 +119,7 @@ export default function CorporatePage() {
       <section className="k-verbs j-torn-top" id="people" aria-labelledby="people-heading">
         <div className="j-shell k-verbs-grid">
           <div>
-            <span className="j-eyebrow s-eyebrow">01 / More than bookings</span>
+            <span className="j-eyebrow s-eyebrow">More than bookings</span>
             <h2 id="people-heading" className="s-title">Corporate travel is about people,<span className="k-soft">plans and progress.</span></h2>
             <p className="s-lead-body k-body">Whether it&apos;s a meeting, a project, an event or ongoing travel, corporate journeys involve more than just a flight. We bring flights, accommodation, visas, transfers and traveller support together — with one team coordinating the journey from planning to return.</p>
           </div>
@@ -134,7 +134,7 @@ export default function CorporatePage() {
       <section className="k-services j-torn-top" id="services" aria-labelledby="services-heading">
         <div className="j-shell">
           <div className="s-split-head k-services-head">
-            <div><span className="j-eyebrow s-eyebrow">02 / Our corporate travel services</span><h2 id="services-heading" className="s-title">Everything your<br />business trip needs.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Our corporate travel services</span><h2 id="services-heading" className="s-title">Everything your<br />business trip needs.</h2></div>
             <div className="k-services-aside">
               <p>A complete travel service, coordinated around your people, your schedules and your business requirements.</p>
               <EnquiryButton className="j-button j-button-cream" service="Corporate travel">Discuss your requirements</EnquiryButton>
@@ -149,7 +149,7 @@ export default function CorporatePage() {
         <div className="k-day-shade" aria-hidden="true" />
         <div className="j-shell k-day-grid">
           <div className="k-day-copy">
-            <span className="j-eyebrow s-eyebrow">03 / A day in corporate travel</span>
+            <span className="j-eyebrow s-eyebrow">A day in corporate travel</span>
             <h2 id="day-heading" className="s-title s-rows"><span>One busy day.</span><span className="k-soft">We plan all of it.</span></h2>
             <p className="k-body">From the early flight out to the flight home, we handle the travel so your team can focus on the work.</p>
           </div>
@@ -166,7 +166,7 @@ export default function CorporatePage() {
       <section className="k-companies j-torn-top" id="companies" aria-labelledby="companies-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">04 / Travel for real business needs</span><h2 id="companies-heading" className="s-title">Every company<br />travels differently.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Travel for real business needs</span><h2 id="companies-heading" className="s-title">Every company<br />travels differently.</h2></div>
             <p className="s-lead">We support businesses of all sizes across different industries, with travel solutions that fit their exact requirements.</p>
           </div>
           <ul className="k-scale" data-stagger="0.12">{companies.map(company => <li key={company.title}>
@@ -183,7 +183,7 @@ export default function CorporatePage() {
       <section className="k-team j-torn-top" id="teams" aria-labelledby="team-heading">
         <div className="j-shell s-split-head k-team-head-row">
           <div>
-            <span className="j-eyebrow s-eyebrow">05 / Business teams on the move</span>
+            <span className="j-eyebrow s-eyebrow">Business teams on the move</span>
             <h2 id="team-heading" className="s-title s-rows"><span>One team travelling.</span><span className="k-team-soft">Not ten journeys to manage.</span></h2>
           </div>
           <p className="k-body">Retreats, sales meetings or exhibitions: every traveller, booking and movement stays connected.</p>
@@ -218,7 +218,7 @@ export default function CorporatePage() {
       <section className="k-network j-torn-top" id="network" aria-labelledby="network-heading" data-cover="after">
         <div className="j-shell">
           <div className="s-split-head k-network-head">
-            <div><span className="j-eyebrow s-eyebrow">06 / UAE → Africa → Worldwide</span><h2 id="network-heading" className="s-title">A connected network<br />for a global business.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">UAE → Africa → Worldwide</span><h2 id="network-heading" className="s-title">A connected network<br />for a global business.</h2></div>
             <div className="k-network-intro">
               <p className="k-body">With our UAE base and regional network across key African markets, we support business travel within the region and beyond — connecting your teams to where they need to be.</p>
               <a className="j-button j-button-outline-light" href="/africa">Explore our Africa network <Arrow /></a>
@@ -280,7 +280,7 @@ export default function CorporatePage() {
       <section className="k-steps j-torn-top" id="how" aria-labelledby="how-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">07 / How it works</span><h2 id="how-heading" className="s-title s-rows"><span>Simple for your team.</span><span>Managed by ours.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">How it works</span><h2 id="how-heading" className="s-title s-rows"><span>Simple for your team.</span><span>Managed by ours.</span></h2></div>
             <p className="s-lead">Five steps from the first message to the journey home.</p>
           </div>
           <ol className="k-stairs" data-stagger="0.12">{steps.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -294,7 +294,7 @@ export default function CorporatePage() {
       </section>
 
       <ClosingScene
-        chapter="08 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="Corporate travel"
         left={<>Your people have<br />somewhere to be.</>}
         right={<>Let us take care<br />of <em>what happens in between.</em></>}

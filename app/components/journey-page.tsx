@@ -83,7 +83,7 @@ export default function JourneyPage() {
 
       <section className="j-story j-paper ab-story" id="story" aria-labelledby="story-heading">
         <div className="j-shell">
-          <div className="j-section-label"><span>02 / A little about us</span><span>Rooted in Dubai. Connected to the world.</span></div>
+          <div className="j-section-label"><span>A little about us</span><span>Rooted in Dubai. Connected to the world.</span></div>
           <div className="ab-story-head">
             <div>
               <span className="j-eyebrow">The people behind the journey</span>
@@ -118,7 +118,7 @@ export default function JourneyPage() {
       <section className="j-network ab-net j-torn-top" id="network" aria-labelledby="network-heading">
         <div className="j-shell">
           <div className="ab-net-top">
-            <span className="j-eyebrow">03 / Our network</span>
+            <span className="j-eyebrow">Our network</span>
             <p>Based in the UAE, with a growing network across key African markets and destinations worldwide.</p>
           </div>
           <h2 id="network-heading" className="ab-net-title">

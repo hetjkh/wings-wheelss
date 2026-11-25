@@ -191,7 +191,6 @@
 .e-people { background: #faf7f2; padding: 80px 0 105px; }
 .e-section-bar { display: flex; justify-content: space-between; align-items: center; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid #b8ad9566; }
 .e-section-bar > .n-kicker { font-size: 10px; }
-.e-label > span:first-child::after { content: ' /'; }
 .home-page .e-people-title { margin-block: 70px; font-size: clamp(52px, 7.3vw, 130px); line-height: .94; letter-spacing: -.02em; }
 .e-people-line { display: flex; align-items: center; gap: .2em; }
 .e-people-line + .e-people-line { margin-top: .17em; justify-content: flex-end; color: #9e8f79; }

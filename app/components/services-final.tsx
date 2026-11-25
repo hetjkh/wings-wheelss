@@ -279,7 +279,7 @@ export function ClosingScene({
 export function ServicesFinal({ variant = "lounge" }: { variant?: "lounge" | "coastal" }) {
   const coastal = variant === "coastal";
   return <ClosingScene
-    chapter="08 / Wings & Wheels"
+    chapter="Wings & Wheels"
     ticket={coastal ? "The scenic route · Your next chapter" : "The departure lounge · Your next chapter"}
     left={<>Where you&apos;re<br />going matters.</>}
     right={<>So does<br />the journey.</>}

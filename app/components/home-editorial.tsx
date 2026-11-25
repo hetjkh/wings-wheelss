@@ -9,8 +9,8 @@ import { HomePayLater } from "./home-pay-later";
 import { HomeFaq } from "./home-faq";
 import "./home-editorial.css";
 
-function ChapterLabel({ number, children }: { number: string; children: React.ReactNode }) {
-  return <span className="e-label" data-motion-reveal><span>{number}</span><span>{children}</span></span>;
+function ChapterLabel({ children }: { children: React.ReactNode }) {
+  return <span className="e-label" data-motion-reveal><span>{children}</span></span>;
 }
 
 function Lines({ lines }: { lines: string[] }) {
@@ -24,7 +24,7 @@ function AfricaChapter() {
     <div className="e-africa-landscape">
       <div className="e-africa-photo" data-editorial-parallax="8" data-motion-image><Image reveal src={"/images/library/africa-dawn.webp"} alt="An elephant crossing golden Kenyan grasslands beneath an acacia tree" fill sizes="(max-width: 767px) 250vw, 100vw" quality={100} className="n-cover" /></div>
       <div className="e-africa-shade" />
-      <div className="e-shell e-africa-top"><ChapterLabel number="01">Our home is Dubai. Our heart goes further.</ChapterLabel><span className="n-kicker">UAE ↔ Africa</span></div>
+      <div className="e-shell e-africa-top"><ChapterLabel>Our home is Dubai. Our heart goes further.</ChapterLabel><span className="n-kicker">UAE ↔ Africa</span></div>
       <div className="e-shell e-africa-title"><span className="n-kicker">A world of connections. A deeper connection.</span><h2 id="e-africa-title" data-editorial-title><Lines lines={["Africa.", "Feel closer."]} /></h2></div>
       <div className="e-africa-fieldnote" data-motion-reveal><span className="e-field-cross" aria-hidden="true">+</span><span>Room to feel small.<br />A world to feel part of.</span></div>
       <div className="e-africa-bottom e-shell" data-motion-stagger><p>For the wild.<br />For the work.<br />For the welcome home.</p><span className="n-kicker">Local knowledge.<br />Extraordinary possibilities.</span></div>
@@ -67,7 +67,7 @@ function GroupsChapter() {
     <div className="e-together-hero">
       <div className="e-together-photo" data-editorial-parallax="7" data-motion-image><Image reveal src={"/images/library/home-better-together-retreat-v1.webp"} alt="Colleagues sharing a candlelit retreat dinner on a coastal terrace at sunset" fill sizes="(max-width: 767px) 250vw, 100vw" quality={100} className="n-cover" /></div>
       <div className="e-together-shade" />
-      <div className="e-shell e-together-content"><ChapterLabel number="03">Groups, meetings & shared moments</ChapterLabel><h2 id="e-together-title" data-editorial-title><Lines lines={["Better", "together."]} /></h2><div className="e-together-caption" data-motion-stagger><span>One shared experience.<br />A thousand reasons to remember.</span><Link href="/groups-mice" className="n-panel-cta"><span>Bring your people</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div>
+      <div className="e-shell e-together-content"><ChapterLabel>Groups, meetings & shared moments</ChapterLabel><h2 id="e-together-title" data-editorial-title><Lines lines={["Better", "together."]} /></h2><div className="e-together-caption" data-motion-stagger><span>One shared experience.<br />A thousand reasons to remember.</span><Link href="/groups-mice" className="n-panel-cta"><span>Bring your people</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div>
     </div>
     <div className="e-together-details"><div className="e-shell"><div className="e-together-intro"><h3 data-editorial-title><Lines lines={["You bring the people.", "We bring the plan."]} /></h3><div><p data-motion-reveal>Flights from different cities. Rooms for the whole team. Every arrival, every transfer, every moment in between.</p><Link href="/groups-mice" className="n-panel-cta n-panel-cta-dark e-together-cta" data-motion-reveal><span>Discover groups & MICE</span><span className="n-panel-cta-dot"><Arrow /></span></Link></div></div><ul className="e-together-types" data-motion-stagger><li>01<span>Meetings & conferences</span></li><li>02<span>Team escapes</span></li><li>03<span>Exhibitions & events</span></li><li>04<span>Shared celebrations</span></li></ul></div></div>
   </section>;

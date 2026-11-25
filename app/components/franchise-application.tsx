@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { Arrow, TravelIcon } from "./icons";
 import { office } from "./data";
 
@@ -52,6 +53,8 @@ export function FranchiseApplication({ markets, dubai }: { markets: ApplicationM
   const [step, setStep] = useState(0);
   const [values, setValues] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const read = () => {
     if (!form.current) return;
@@ -89,7 +92,7 @@ export function FranchiseApplication({ markets, dubai }: { markets: ApplicationM
     if (top < 0) form.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step < steps.length - 1) { goTo(step + 1); return; }
     const invalid = Array.from(event.currentTarget.querySelectorAll<HTMLInputElement>("input, textarea")).find(field => !field.checkValidity());
@@ -98,6 +101,54 @@ export function FranchiseApplication({ markets, dubai }: { markets: ApplicationM
       requestAnimationFrame(() => invalid.reportValidity());
       return;
     }
+    setSending(true);
+    setError("");
+    const data = new FormData(event.currentTarget);
+    const message = [
+      "Franchise partnership application",
+      `Name: ${data.get("fullName")}`,
+      `Email: ${data.get("email")}`,
+      `Phone: ${data.get("phone")}`,
+      `Country: ${data.get("country")}`,
+      `Job title: ${data.get("jobTitle") || "Not provided"}`,
+      `Company: ${data.get("company") || "Not provided"}`,
+      `Website: ${data.get("website") || "Not provided"}`,
+      `Business type: ${data.get("businessType")}`,
+      `Business experience: ${data.get("businessYears")}`,
+      `Tourism experience: ${data.get("tourismYears")}`,
+      `Preferred market: ${data.get("market")}`,
+      `City / territory: ${data.get("city")}`,
+      `Investment: ${data.get("investment")}`,
+      `Timeline: ${data.get("timeline")}`,
+      data.get("interest") ? `Interest: ${data.get("interest")}` : "",
+      data.get("overview") ? `Overview: ${data.get("overview")}` : "",
+    ].filter(Boolean).join("\n");
+    const result = await submitEnquiry({
+      ...enquiryFromFormData("franchise", data, {
+        name: String(data.get("fullName") || ""),
+        message,
+        service: "Franchise",
+        destination: String(data.get("market") || ""),
+        fields: {
+          fullName: String(data.get("fullName") || ""),
+          jobTitle: String(data.get("jobTitle") || ""),
+          company: String(data.get("company") || ""),
+          website: String(data.get("website") || ""),
+          country: String(data.get("country") || ""),
+          businessType: String(data.get("businessType") || ""),
+          businessYears: String(data.get("businessYears") || ""),
+          tourismYears: String(data.get("tourismYears") || ""),
+          market: String(data.get("market") || ""),
+          city: String(data.get("city") || ""),
+          investment: String(data.get("investment") || ""),
+          timeline: String(data.get("timeline") || ""),
+          interest: String(data.get("interest") || ""),
+          overview: String(data.get("overview") || ""),
+        },
+      }),
+    });
+    setSending(false);
+    if (!result.ok) { setError(result.error); return; }
     setSent(true);
     requestAnimationFrame(reveal);
   };
@@ -208,19 +259,20 @@ export function FranchiseApplication({ markets, dubai }: { markets: ApplicationM
 
       <div className="fa-actions">
         {step > 0 ? <button type="button" className="fa-back" onClick={() => goTo(step - 1)}><Arrow back />Back</button> : <span />}
-        <button type="submit" className="f-step-cta fa-next">
-          <span>{step < steps.length - 1 ? `Next: ${steps[step + 1].label}` : "Submit franchise enquiry"}</span>
+        <button type="submit" className="f-step-cta fa-next" disabled={sending}>
+          <span>{step < steps.length - 1 ? `Next: ${steps[step + 1].label}` : sending ? "Sending…" : "Submit franchise enquiry"}</span>
           <span className="f-step-cta-dot"><Arrow /></span>
         </button>
       </div>
+      {error ? <p className="fa-legal" role="alert">{error}</p> : null}
       <p className="fa-legal"><TravelIcon kind="document" size={16} />All applications are subject to evaluation. Submission does not constitute franchise approval, an offer of territorial exclusivity or a binding commercial agreement.</p>
 
       {sent && <div className="fa-sent" role="status">
         <span className="fa-sent-stamp"><TravelIcon kind="check" size={40} /></span>
         <span className="j-eyebrow">Application received</span>
         <h3>Thank you{values.fullName ? `, ${values.fullName.split(" ")[0]}` : ""}.</h3>
-        <p>This form is a preview, so your application hasn&apos;t been sent yet. For now, please call {office.phones[0].label} or email {office.email} and our expansion team will be in touch.</p>
-        <button type="button" className="fa-back" onClick={() => { setSent(false); setStep(0); }}><Arrow back />Review my application</button>
+        <p>Your franchise enquiry has been sent to our expansion team. We&apos;ll be in touch soon. You can also reach us on {office.phones[0].label} or {office.email}.</p>
+        <button type="button" className="fa-back" onClick={() => { setSent(false); setStep(0); setError(""); }}><Arrow back />Review my application</button>
       </div>}
     </form>
 

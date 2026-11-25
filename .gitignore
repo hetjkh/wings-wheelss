@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/whatsapp/node_modules
+/whatsapp/auth_info
 /.pnp
 .pnp.*
 .yarn/*
@@ -49,5 +51,6 @@ next-env.d.ts
 
 # Local review artifacts and raw editing footage (keep out of GitHub).
 /tmp/
+/assets/
 /public/dubai.mp4
 

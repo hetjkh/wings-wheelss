@@ -21,10 +21,19 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const email = typeof body.email === "string" ? body.email : "";
-    const password = typeof body.password === "string" ? body.password : "";
+    const email = typeof body.email === "string" ? body.email.trim() : "";
+    const password = typeof body.password === "string" ? body.password.trim() : "";
 
     if (!verifyAdminLogin(email, password)) {
+      if (process.env.NODE_ENV !== "production") {
+        const expected = getAdminCredentials();
+        console.warn("Admin login mismatch", {
+          gotEmail: email,
+          expectedEmail: expected.email,
+          gotPasswordLength: password.length,
+          expectedPasswordLength: expected.password.length,
+        });
+      }
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
     }
 

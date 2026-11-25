@@ -439,3 +439,142 @@
     padding: 0;
   }
 }
+
+.admin-top-main {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.admin-nav a {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 27, 45, 0.12);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.admin-nav a.is-active,
+.admin-nav a:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+.admin-delivery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.admin-delivery span {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.admin-delivery .is-ok {
+  background: rgba(34, 98, 64, 0.12);
+  color: #226240;
+}
+
+.admin-delivery .is-miss {
+  background: rgba(143, 47, 47, 0.1);
+  color: #8f2f2f;
+}
+
+.admin-enquiry-detail {
+  margin-top: 1.25rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 27, 45, 0.08);
+}
+
+.admin-enquiry-detail h2 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.25rem;
+}
+
+.admin-enquiry-detail p {
+  margin: 0.25rem 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.admin-enquiry-detail pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: var(--body);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.admin-whatsapp-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .admin-whatsapp-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.admin-whatsapp-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.15rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 27, 45, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.admin-whatsapp-card h2 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.6rem;
+}
+
+.admin-whatsapp-meta {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.admin-whatsapp-meta div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.admin-whatsapp-meta dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.admin-whatsapp-meta dd {
+  margin: 0;
+}
+
+.admin-whatsapp-qr {
+  place-items: center;
+  text-align: center;
+}
+
+.admin-whatsapp-qr img {
+  width: min(280px, 100%);
+  height: auto;
+  border-radius: 16px;
+  background: white;
+  padding: 0.75rem;
+}

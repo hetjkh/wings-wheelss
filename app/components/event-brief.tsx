@@ -1,24 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { Arrow, TravelIcon } from "./icons";
-import { office } from "./data";
 
 const eventTypes = ["Conference", "Exhibition", "Corporate meeting", "Incentive travel", "Delegation", "Product launch", "Training programme", "Company event", "Other"];
 const help = ["Flights", "Hotels", "Visas", "Airport transfers", "Local transportation", "Executive travel", "Delegate travel", "Group coordination", "Full travel management"];
 
-/** An event brief laid out like a working document. The form is a preview and sends nothing. */
 export function EventBrief() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSending(true);
+    setError("");
+    const data = new FormData(event.currentTarget);
+    const helpNeeded = data.getAll("help").map(String);
+    const message = [
+      "Groups & MICE event brief",
+      `Company: ${data.get("company")}`,
+      `Contact: ${data.get("name")}`,
+      `Email: ${data.get("email")}`,
+      `Phone: ${data.get("phone") || "Not provided"}`,
+      `Event type: ${data.get("type") || "Not specified"}`,
+      `Destination: ${data.get("destination") || "Not specified"}`,
+      `Dates: ${data.get("dates") || "Not specified"}`,
+      `Travellers: ${data.get("travellers") || "Not specified"}`,
+      `Origins: ${data.get("origins") || "Not specified"}`,
+      `Help needed: ${helpNeeded.join(", ") || "To be discussed"}`,
+      data.get("notes") ? `Notes: ${data.get("notes")}` : "",
+    ].filter(Boolean).join("\n");
+    const result = await submitEnquiry({
+      ...enquiryFromFormData("groups-mice", data, {
+        message,
+        service: String(data.get("type") || "Groups & MICE"),
+        fields: { help: helpNeeded },
+      }),
+    });
+    setSending(false);
+    if (!result.ok) { setError(result.error); return; }
+    setSent(true);
+  };
+
   if (sent) return <div className="g-brief-sheet g-brief-done" role="status">
     <TravelIcon kind="check" size={40} />
     <span className="j-eyebrow">Brief received</span>
     <h3>Thank you</h3>
-    <p>This form is a preview, so your brief hasn&apos;t been sent yet. For now, please call {office.phones[0].label}, email {office.email} or message our team on WhatsApp.</p>
-    <button type="button" className="j-button j-button-outline" onClick={() => setSent(false)}>Edit the brief</button>
+    <p>Your event brief has been sent to our Groups &amp; MICE team. We&apos;ll be in touch shortly.</p>
+    <button type="button" className="j-button j-button-outline" onClick={() => { setSent(false); setError(""); }}>Edit the brief</button>
   </div>;
 
-  return <form className="g-brief-sheet" onSubmit={event => { event.preventDefault(); setSent(true); }}>
+  return <form className="g-brief-sheet" onSubmit={onSubmit}>
     <div className="g-brief-head" aria-hidden="true"><span>Event brief</span><span>Groups &amp; MICE · W&amp;W</span></div>
     <fieldset>
       <legend><span>01</span>About you</legend>
@@ -48,8 +82,8 @@ export function EventBrief() {
       <textarea className="g-brief-notes" name="notes" rows={3} maxLength={1000} aria-label="Tell us about your event or group" placeholder="Tell us about your event or group" />
     </fieldset>
     <div className="g-brief-actions">
-      <button type="submit" className="j-button j-button-olive">Plan my group travel <Arrow /></button>
-      <p>Preview form · Your details won&apos;t be sent or stored.</p>
+      <button type="submit" className="j-button j-button-olive" disabled={sending}>{sending ? "Sending…" : "Plan my group travel"}{!sending && <Arrow />}</button>
+      {error ? <p role="alert">{error}</p> : <p>Your enquiry is emailed to our team and stored securely.</p>}
     </div>
   </form>;
 }

@@ -127,7 +127,7 @@ export function AfricaPurposeScene() {
           /> : null}</div>
           <div className="a-purpose-shade" aria-hidden="true" />
           <div className="a-purpose-heading">
-            <span className="a-purpose-kicker">{String(index + 1).padStart(2, "0")} / Find your reason</span>
+            <span className="a-purpose-kicker">Find your reason</span>
             <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
           </div>
           {loadMedia && !compact ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={100} loading="lazy" /></div> : null}

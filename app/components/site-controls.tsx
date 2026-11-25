@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { office, pageLinks as navLinks } from "./data";
 import { Arrow, TravelIcon } from "./icons";
 import { observeScrollThreshold } from "./observe-scroll-threshold";
@@ -11,21 +12,37 @@ const serviceOptions = ["General enquiry", "Flights", "Hotels", "Visa assistance
 export function EnquiryButton({ children = "Request a quote", className = "button button-gold", service = "General enquiry", destination = "", message = "", icon = true }: { children?: React.ReactNode; className?: string; service?: string; destination?: string; message?: string; icon?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [complete, setComplete] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSending(true);
+    setError("");
+    const result = await submitEnquiry(enquiryFromFormData("quote-dialog", new FormData(event.currentTarget)));
+    setSending(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+    setComplete(true);
+  };
+
   return <>
-    <button type="button" className={className} onClick={() => { setComplete(false); dialog.current?.showModal(); }}>{children}{icon && <Arrow />}</button>
+    <button type="button" className={className} onClick={() => { setComplete(false); setError(""); dialog.current?.showModal(); }}>{children}{icon && <Arrow />}</button>
     <dialog className="enquiry-dialog" ref={dialog} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }} aria-label="Request a quote">
       <button type="button" className="dialog-close" onClick={() => dialog.current?.close()} aria-label="Close">×</button>
       {complete ? <div className="enquiry-success">
         <TravelIcon kind="check" size={34} />
         <span className="eyebrow">Request received</span>
         <h2>Thank you</h2>
-        <p>This form is a preview, so your details haven&apos;t been sent yet. For now, please call {office.phones[0].label} or email {office.email}.</p>
+        <p>Your details have been sent to our team. We&apos;ll be in touch shortly.</p>
         <button type="button" className="button button-dark" onClick={() => dialog.current?.close()}>Close <Arrow /></button>
       </div> : <>
         <span className="eyebrow">Request a quote</span>
         <h2>Tell us about your trip</h2>
         <p className="dialog-intro">Share a few details and a travel consultant will get back to you.</p>
-        <form onSubmit={event => { event.preventDefault(); setComplete(true); }}>
+        <form onSubmit={onSubmit}>
           <div className="form-row">
             <label>Full name *<input name="name" autoComplete="name" required minLength={2} maxLength={100} /></label>
             <label>Email address *<input name="email" type="email" autoComplete="email" required /></label>
@@ -35,8 +52,8 @@ export function EnquiryButton({ children = "Request a quote", className = "butto
             <label>Destination<input name="destination" defaultValue={destination} maxLength={100} /></label>
           </div>
           <label>Your requirements *<textarea key={message} name="message" defaultValue={message} placeholder="Travel dates, number of travellers, anything we should know" rows={3} required minLength={10} maxLength={1000} /></label>
-          <p className="demo-note">Preview form · Your details won&apos;t be sent or stored.</p>
-          <button type="submit" className="button button-dark">Send request <Arrow /></button>
+          {error ? <p className="demo-note" role="alert">{error}</p> : <p className="demo-note">Your enquiry is emailed to our team and stored securely.</p>}
+          <button type="submit" className="button button-dark" disabled={sending}>{sending ? "Sending…" : "Send request"}{!sending && <Arrow />}</button>
         </form>
       </>}
     </dialog>

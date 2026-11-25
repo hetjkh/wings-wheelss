@@ -57,7 +57,7 @@ export default function AfricaPage() {
 
       <section className="a-connections j-torn-top" id="connections" aria-labelledby="connections-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>01 / A continent of connections</span><span>Individuals · Companies · Groups · Organisations</span></div>
+          <div className="j-section-label s-draw"><span>A continent of connections</span><span>Individuals · Companies · Groups · Organisations</span></div>
         </div>
         <h2 id="connections-heading" className="j-sr-only">A continent of connections. Four ways to travel Africa.</h2>
         <AfricaPurposeScene />
@@ -66,7 +66,7 @@ export default function AfricaPage() {
       <section className="a-network sn-network j-torn-top" id="network" aria-labelledby="network-heading">
         <div className="sn-shell">
           <header className="sn-heading">
-            <div><span className="j-eyebrow">02 / Our Africa network</span><h2 id="network-heading">Local connections.<br /><em>Dubai to Africa.</em></h2></div>
+            <div><span className="j-eyebrow">Our Africa network</span><h2 id="network-heading">Local connections.<br /><em>Dubai to Africa.</em></h2></div>
             <p>Offices, partners and people who know the way. Explore our African connections, coordinated through Dubai.</p>
           </header>
           <NetworkMap />
@@ -77,7 +77,7 @@ export default function AfricaPage() {
       <section className="a-corridor j-torn-top" id="corridor" aria-labelledby="corridor-heading">
         <div className="j-shell a-corridor-content">
           <div className="a-corridor-head">
-            <span className="j-eyebrow s-eyebrow">03 / Two regions. One travel network.</span>
+            <span className="j-eyebrow s-eyebrow">Two regions. One travel network.</span>
             <h2 id="corridor-heading" className="s-title">Two regions.<br /><em>One travel network.</em></h2><p className="ac-intro">Across borders, a familiar welcome. Discover journeys between Africa and the UAE, connected by people who know the way.</p>
           </div>
           <AfricaCorridor />
@@ -88,7 +88,7 @@ export default function AfricaPage() {
         <div className="j-shell a-business-grid">
           <div className="a-business-photo" data-frame><Image src="/images/library/executive-lounge.webp" alt="A traveller waiting in a quiet airport lounge overlooking the city" fill sizes="(max-width: 991px) 100vw, 42vw" /></div>
           <div className="a-business-copy">
-            <span className="j-eyebrow s-eyebrow">04 / Business across borders</span>
+            <span className="j-eyebrow s-eyebrow">Business across borders</span>
             <h2 id="business-heading" className="s-title a-title-md">Business that crosses borders.</h2>
             <p className="s-lead-body a-body">From executives travelling between Dubai and Nairobi to project teams moving across regional markets, W&amp;W can coordinate business journeys across multiple locations.</p>
             <EnquiryButton className="j-button j-button-olive" service="Corporate travel">Explore corporate travel</EnquiryButton>
@@ -103,7 +103,7 @@ export default function AfricaPage() {
       <section className="a-destinations j-torn-top" id="destinations" aria-labelledby="destinations-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">05 / Experience Africa</span><h2 id="destinations-heading" className="s-title">The Africa<br />you came for.</h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Experience Africa</span><h2 id="destinations-heading" className="s-title">The Africa<br />you came for.</h2></div>
             <p className="s-lead">Wide horizons, wild places and warm coasts, planned with the same care as every other part of the journey.</p>
           </div>
           <div className="a-destination-grid">
@@ -127,7 +127,7 @@ export default function AfricaPage() {
 
       <section className="a-multi j-torn-top" id="multi" aria-labelledby="multi-heading">
         <div className="j-shell">
-          <div className="j-section-label s-draw"><span>06 / One trip. More than one Africa.</span><span>Flights · Accommodation · Transfers · Experiences</span></div>
+          <div className="j-section-label s-draw"><span>One trip. More than one Africa.</span><span>Flights · Accommodation · Transfers · Experiences</span></div>
           <div className="s-split-head">
             <h2 id="multi-heading" className="s-title">Why stop at<br />one destination?</h2>
             <div>
@@ -154,11 +154,11 @@ export default function AfricaPage() {
       </section>
 
       <section className="a-enquiry j-torn-top" id="africa-enquiry" aria-labelledby="enquiry-heading">
-        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">08 / Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
+        <div className="j-shell a-enquiry-grid"><div className="a-enquiry-intro"><span className="j-eyebrow s-eyebrow">Africa enquiry</span><h2 id="enquiry-heading" className="s-title a-editorial-title">Where does your<br />journey connect?</h2><p className="a-body">From a single trip to a multi-country itinerary, tell us where you need to be. Our Africa team will help bring the journey together.</p><div className="a-enquiry-route"><span>UAE</span><Arrow /><span>Africa</span><Arrow /><span>Worldwide</span></div><a className="j-text-link" href={office.whatsapp} target="_blank" rel="noreferrer"><TravelIcon kind="chat" size={20} />WhatsApp our Africa travel team<Arrow /></a></div><AfricaEnquiry /></div>
       </section>
 
       <ClosingScene
-        chapter="09 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="UAE ↔ Africa ↔ Worldwide"
         left={<>Different<br />countries.</>}
         right={<>One connected<br /><em>journey.</em></>}

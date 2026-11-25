@@ -97,7 +97,7 @@ export default function PartnershipPage() {
       <section className="p-why j-torn-top" id="why" aria-labelledby="why-heading">
         <div className="j-shell p-why-grid">
           <div className="p-why-copy">
-            <span className="j-eyebrow s-eyebrow">01 / Why a partnership</span>
+            <span className="j-eyebrow s-eyebrow">Why a partnership</span>
             <h2 id="why-heading" className="s-title s-rows"><span>A partner in</span><span className="k-soft">how you move.</span></h2>
             <p className="k-body">A company sending people across the region and beyond needs more than individual bookings. It needs someone who understands its travellers, its policy and its priorities, and who is accountable for getting every journey right.</p>
             <p className="p-why-note">Your travel shapes the arrangement. Not the other way around.</p>
@@ -129,7 +129,7 @@ export default function PartnershipPage() {
       <section className="p-levels j-torn-top" id="levels" aria-labelledby="levels-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">03 / Partnership levels</span><h2 id="levels-heading" className="s-title s-rows"><span>Your company.</span><span>Your travel patterns.</span><span className="k-soft">Your arrangement.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Partnership levels</span><h2 id="levels-heading" className="s-title s-rows"><span>Your company.</span><span>Your travel patterns.</span><span className="k-soft">Your arrangement.</span></h2></div>
             <p className="k-body">Three starting points. Every partnership is then shaped around your travellers, routes and volume.</p>
           </div>
           <ol className="p-level-grid" data-stagger="0.12">{levels.map(level => <li key={level.id} className={`p-level p-level-${level.id}`}>
@@ -149,7 +149,7 @@ export default function PartnershipPage() {
         <Image className="p-regions-map" src="/images/world-map.svg" alt="" fill unoptimized />
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">04 / UAE + Africa</span><h2 id="regions-heading" className="s-title s-rows"><span>Two regions.</span><span className="k-soft">One connected travel partnership.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">UAE + Africa</span><h2 id="regions-heading" className="s-title s-rows"><span>Two regions.</span><span className="k-soft">One connected travel partnership.</span></h2></div>
             <div className="p-regions-aside">
               <p className="k-body">With our UAE base and partner network across key African markets, we support organisations managing travel between Dubai and the places their business depends on.</p>
               <Link className="j-button j-button-cream" href="/africa">Explore regional travel <Arrow /></Link>
@@ -165,7 +165,7 @@ export default function PartnershipPage() {
       <section className="p-advantages j-torn-top" id="advantages" aria-labelledby="advantages-heading">
         <div className="j-shell">
           <div className="s-split-head">
-            <div><span className="j-eyebrow s-eyebrow">05 / Why partner with us</span><h2 id="advantages-heading" className="s-title s-rows"><span>The advantage of having</span><span>a travel partner.</span></h2></div>
+            <div><span className="j-eyebrow s-eyebrow">Why partner with us</span><h2 id="advantages-heading" className="s-title s-rows"><span>The advantage of having</span><span>a travel partner.</span></h2></div>
             <p className="k-body">Everything a growing business needs from its travel, handled by one team in Dubai.</p>
           </div>
           <div className="p-bento" data-stagger="0.07">
@@ -187,7 +187,7 @@ export default function PartnershipPage() {
         <div className="p-steps-photo"><Image src="/images/library/partnership-boardroom.webp" alt="A modern executive boardroom prepared for a corporate meeting" fill sizes="(max-width: 991px) 100vw, 46vw" style={{ objectPosition: "center" }} /></div>
         <div className="j-shell p-steps-grid">
           <div className="p-steps-side">
-            <span className="j-eyebrow s-eyebrow">06 / How it works</span>
+            <span className="j-eyebrow s-eyebrow">How it works</span>
             <h2 id="how-heading" className="s-title s-rows"><span>Four steps to a better</span><span>travel arrangement.</span></h2>
           </div>
           <ol className="p-step-list" data-progress="top 70%" data-progress-end="bottom 55%">{steps.map((step, i) => <li key={step.title} style={{ "--i": i } as React.CSSProperties}>
@@ -201,7 +201,7 @@ export default function PartnershipPage() {
         <div className="j-shell">
           <div className="p-apply-head">
             <div>
-              <span className="j-eyebrow s-eyebrow">07 / Corporate partnership application</span>
+              <span className="j-eyebrow s-eyebrow">Corporate partnership application</span>
               <h2 id="apply-heading" className="s-title s-rows"><span>Become a corporate</span><span className="k-soft">travel partner.</span></h2>
             </div>
             <p className="k-body">Better travel arrangements, built around your business. Complete the form below so our partnerships team can prepare rates, services and benefits suited to how your company travels.</p>
@@ -213,7 +213,7 @@ export default function PartnershipPage() {
       </section>
 
       <ClosingScene
-        chapter="08 / Wings & Wheels"
+        chapter="Wings & Wheels"
         ticket="Corporate partnerships"
         left={<>Your business.</>}
         right={<><em>Our partnership.</em></>}

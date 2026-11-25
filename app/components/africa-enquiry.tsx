@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { Arrow, TravelIcon } from "./icons";
 import { office } from "./data";
 
@@ -9,17 +10,20 @@ const purposes = ["Business", "Leisure", "Safari", "Family", "Group", "Exhibitio
 export function AfricaEnquiry() {
   const [brief, setBrief] = useState("");
   const [departure, setDeparture] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [sent, setSent] = useState(false);
   useEffect(() => {
     let active = true;
     // The reviewed brief changes the height of this scrolling chapter.
     import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => { if (active) ScrollTrigger.refresh(); });
     return () => { active = false; };
-  }, [brief]);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  }, [brief, sent]);
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const date = (name: string) => data.get(name) ? String(data.get(name)).split("-").reverse().join("/") : "To be confirmed";
-    setBrief([
+    const message = [
       "I'd like to plan an Africa journey with Wings & Wheels.",
       `Travelling from: ${data.get("from")}`,
       `Travelling to: ${data.get("to")}`,
@@ -29,9 +33,30 @@ export function AfricaEnquiry() {
       `Email: ${data.get("email")}`,
       `Travelling for: ${data.getAll("purpose").join(", ") || "To be discussed"}`,
       data.get("notes") ? `Plans: ${data.get("notes")}` : "",
-    ].filter(Boolean).join("\n"));
+    ].filter(Boolean).join("\n");
+    setBrief(message);
+    setSending(true);
+    setError("");
+    const result = await submitEnquiry({
+      ...enquiryFromFormData("africa", data, {
+        message,
+        destination: String(data.get("to") || ""),
+        fields: {
+          from: String(data.get("from") || ""),
+          to: String(data.get("to") || ""),
+          start: String(data.get("start") || ""),
+          end: String(data.get("end") || ""),
+          travellers: String(data.get("travellers") || ""),
+          purposes: data.getAll("purpose").map(String),
+          notes: String(data.get("notes") || ""),
+        },
+      }),
+    });
+    setSending(false);
+    if (!result.ok) { setError(result.error); return; }
+    setSent(true);
   };
-  return <form className="a-enquiry-form" onSubmit={submit} onChange={() => setBrief("")}>
+  return <form className="a-enquiry-form" onSubmit={submit} onChange={() => { setBrief(""); setSent(false); setError(""); }}>
     <div className="a-form-header"><TravelIcon kind="route" size={22} /><span>Your Africa journey</span></div>
     <fieldset><legend><span>01</span>Where your journey connects</legend>
       <div className="a-form-fields">
@@ -48,11 +73,11 @@ export function AfricaEnquiry() {
       <div className="a-form-purposes">{purposes.map(purpose => <label key={purpose}><input type="checkbox" name="purpose" value={purpose} /><span>{purpose}</span></label>)}</div>
     </fieldset>
     <label className="a-form-notes">Tell us what you&apos;re planning<textarea name="notes" rows={4} maxLength={2000} placeholder="Your route, event, accommodation or anything you need help with." /></label>
-    <button className="j-button j-button-olive" type="submit">Plan my Africa journey<Arrow /></button>
-    {brief && <div className="a-enquiry-ready" role="status">
-      <strong>Your Africa journey brief is ready.</strong><p>Review your details, then share them with our Africa travel team.</p><pre>{brief}</pre>
-      <div className="s-actions"><a className="j-button j-button-olive" href={`${office.whatsapp}?text=${encodeURIComponent(brief)}`} target="_blank" rel="noreferrer">Continue on WhatsApp<TravelIcon kind="chat" size={18} /></a>
-      <a className="j-text-link" href={`mailto:${office.email}?subject=${encodeURIComponent("Africa journey enquiry")}&body=${encodeURIComponent(brief)}`}>Send by email<Arrow /></a></div>
+    <button className="j-button j-button-olive" type="submit" disabled={sending}>{sending ? "Sending…" : "Plan my Africa journey"}{!sending && <Arrow />}</button>
+    {error ? <p className="a-form-direct" role="alert">{error}</p> : null}
+    {sent && brief && <div className="a-enquiry-ready" role="status">
+      <strong>Your Africa journey brief has been sent.</strong><p>Our Africa travel team has received your details and will be in touch shortly.</p><pre>{brief}</pre>
+      <div className="s-actions"><a className="j-button j-button-olive" href={`${office.whatsapp}?text=${encodeURIComponent(brief)}`} target="_blank" rel="noreferrer">Also message on WhatsApp<TravelIcon kind="chat" size={18} /></a></div>
     </div>}
     <p className="a-form-direct">Prefer to speak directly? <a href={office.whatsapp} target="_blank" rel="noreferrer">WhatsApp our Africa travel team.</a></p>
   </form>;

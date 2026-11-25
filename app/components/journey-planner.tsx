@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { office } from "./data";
+import { useState, type FormEvent } from "react";
+import { enquiryFromFormData, submitEnquiry } from "../../lib/submit-enquiry";
 import { Arrow, TravelIcon } from "./icons";
 
 const reasons = ["Business", "Holiday", "Event", "Family", "Group", "Other"];
@@ -10,15 +10,42 @@ const travellers = ["1 traveller", "2 travellers", "3 – 5 travellers", "6 – 
 export function JourneyPlanner() {
   const [reason, setReason] = useState("");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSending(true);
+    setError("");
+    const data = new FormData(event.currentTarget);
+    const message = [
+      "I'd like to plan a journey with Wings & Wheels.",
+      `From: ${data.get("from")}`,
+      `To: ${data.get("to")}`,
+      `Travel dates: ${data.get("dates") || "To be decided"}`,
+      `Travellers: ${data.get("travellers")}`,
+      `Reason: ${data.get("reason") || reason || "Not specified"}`,
+    ].join("\n");
+    const result = await submitEnquiry({
+      ...enquiryFromFormData("journey-planner", data, {
+        message,
+        service: String(data.get("reason") || reason || "Travel planning"),
+        destination: String(data.get("to") || ""),
+      }),
+    });
+    setSending(false);
+    if (!result.ok) { setError(result.error); return; }
+    setSent(true);
+  };
 
   if (sent) return <div className="s-planner s-planner-done" role="status">
     <TravelIcon kind="check" size={34} />
     <h3>Thank you. We&apos;ll take it from here.</h3>
-    <p>This form is a preview, so your details haven&apos;t been sent yet. For now, call {office.phones[0].label} or message our team on WhatsApp.</p>
-    <button type="button" className="j-text-link" onClick={() => { setSent(false); setReason(""); }}>Plan another journey <Arrow /></button>
+    <p>Your journey details have been sent to our team. We&apos;ll be in touch shortly.</p>
+    <button type="button" className="j-text-link" onClick={() => { setSent(false); setReason(""); setError(""); }}>Plan another journey <Arrow /></button>
   </div>;
 
-  return <form className="s-planner" onSubmit={event => { event.preventDefault(); setSent(true); }}>
+  return <form className="s-planner" onSubmit={onSubmit}>
     <div className="s-planner-grid">
       <label>Travelling from<input name="from" placeholder="City / airport" autoComplete="off" required maxLength={80} /></label>
       <label>Travelling to<input name="to" placeholder="Destination / multi-stop" autoComplete="off" required maxLength={120} /></label>
@@ -32,8 +59,8 @@ export function JourneyPlanner() {
       </label>)}</div>
     </fieldset>
     <div className="s-planner-actions">
-      <button type="submit" className="au-cta"><span>Plan my journey</span><span className="au-cta-dot"><Arrow /></span></button>
+      <button type="submit" className="au-cta" disabled={sending}><span>{sending ? "Sending…" : "Plan my journey"}</span><span className="au-cta-dot"><Arrow /></span></button>
     </div>
-    <p className="s-planner-note">Preview form · Your details won&apos;t be sent or stored.</p>
+    {error ? <p className="s-planner-note" role="alert">{error}</p> : <p className="s-planner-note">Your enquiry is emailed to our team and stored securely.</p>}
   </form>;
 }

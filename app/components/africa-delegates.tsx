@@ -47,7 +47,7 @@ export function AfricaDelegates() {
     <div className="dl">
       <header className="dl-head">
         <div>
-          <span className="j-eyebrow dl-eyebrow">07 / Exhibitions &amp; delegations</span>
+          <span className="j-eyebrow dl-eyebrow">Exhibitions &amp; delegations</span>
           <h2 id="delegates-heading">Bringing your team<br /><em>to Dubai?</em></h2>
         </div>
         <div className="dl-intro">

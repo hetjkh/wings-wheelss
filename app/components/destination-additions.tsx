@@ -14,7 +14,7 @@ const support = ["Flights", "Hotels", "Visas", "Transfers", "Experiences", "Supp
 export function DestinationConnections() {
   return <section className="d-connections j-torn-top" id="onward" aria-labelledby="onward-heading">
     <div className="j-shell">
-      <div className="j-section-label s-draw"><span>07 / Your journey can start in more than one place</span><span>Every part connected</span></div>
+      <div className="j-section-label s-draw"><span>Your journey can start in more than one place</span><span>Every part connected</span></div>
       <div className="s-split-head"><h2 className="s-title" id="onward-heading">Wherever you&apos;re starting from.<br /><span className="d-title-soft">We can help connect what comes next.</span></h2><p className="s-lead">One team to bring the places, plans and practical details together.</p></div>
       <div className="d-departure-board">
         <div className="d-board-head" aria-hidden="true"><span>From</span><span>To</span><span>Your journey</span></div>

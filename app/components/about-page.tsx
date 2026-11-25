@@ -103,7 +103,7 @@ export function AboutPage() {
 
       <section className="au-who au-torn" id="who" aria-labelledby="who-label">
         <div className="j-shell">
-          <div className="au-bar"><span id="who-label">01 / Who we are</span><span>Every journey has a reason</span></div>
+          <div className="au-bar"><span id="who-label">Who we are</span><span>Every journey has a reason</span></div>
           <div className="au-who-mobile">
             <h2 className="au-who-mobile-title" data-lines><Line>Your journey.</Line><Line><em>Made personal.</em></Line></h2>
             <div className="au-who-collage">
@@ -134,7 +134,7 @@ export function AboutPage() {
         <div className="au-process-pin">
           <div className="j-shell au-process-head">
             <div>
-              <span className="au-kicker">02 / What we do</span>
+              <span className="au-kicker">What we do</span>
               <h2 id="process-title" className="au-h2" data-lines><Line>We connect the parts</Line><Line><em>of the journey.</em></Line></h2>
             </div>
             <p className="au-process-sub" data-au-reveal>The booking is one part.<span>The journey is the whole picture.</span></p>
@@ -171,7 +171,7 @@ export function AboutPage() {
       <section className="au-story au-torn" id="story" aria-labelledby="story-title">
         <div className="j-shell au-story-stage">
           <div className="au-story-copy">
-            <span className="au-kicker">03 / Our story</span>
+            <span className="au-kicker">Our story</span>
             <h2 id="story-title" className="au-h2" data-lines><Line>Built around</Line><Line><em>real journeys.</em></Line></h2>
             <ol className="au-chapters">
               {story.map((item, index) => <li className={`au-chapter${index ? "" : " is-active"}`} key={item.caption}>
@@ -206,7 +206,7 @@ export function AboutPage() {
 
       <section className="au-network au-torn" id="network" aria-labelledby="network-title">
         <div className="j-shell">
-          <div className="au-bar"><span>04 / Our network</span><span>UAE · Africa · Worldwide</span></div>
+          <div className="au-bar"><span>Our network</span><span>UAE · Africa · Worldwide</span></div>
           <h2 id="network-title" className="au-net-title">
             <span className="au-net-row"><b>Local</b><span>where it<br />matters.</span></span>
             <span className="au-net-row au-net-row-end"><b>Connected</b><span>where you&apos;re<br />going.</span></span>
@@ -231,7 +231,7 @@ export function AboutPage() {
       <section className="au-values au-torn" id="values" aria-labelledby="values-title">
         <div className="j-shell au-values-grid">
           <div className="au-values-side">
-            <span className="au-kicker">05 / Our principles</span>
+            <span className="au-kicker">Our principles</span>
             <h2 id="values-title" className="au-h2" data-lines><Line>What</Line><Line><em>guides us.</em></Line></h2>
             <ol className="au-values-steps" aria-hidden="true">
               {principles.map((item, index) => <li key={item.title} className={index ? undefined : "is-active"}><span>{`0${index + 1}`}</span>{item.title}</li>)}
@@ -265,7 +265,7 @@ export function AboutPage() {
         <div className="j-shell">
           <div className="au-people-head">
             <div>
-              <span className="au-kicker">06 / The people behind W&amp;W</span>
+              <span className="au-kicker">The people behind W&amp;W</span>
               <h2 id="people-title" className="au-h2" data-lines><Line>Travel is still a</Line><Line><em>people business.</em></Line></h2>
             </div>
             <div className="au-people-intro">

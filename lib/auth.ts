@@ -56,8 +56,8 @@ export function verifySessionToken(token: string | undefined | null) {
 
 export function verifyAdminLogin(email: string, password: string) {
   const credentials = getAdminCredentials();
-  const emailOk = email.trim().toLowerCase() === credentials.email.toLowerCase();
-  const passwordOk = password === credentials.password;
+  const emailOk = email.trim().toLowerCase() === credentials.email.trim().toLowerCase();
+  const passwordOk = password.trim() === credentials.password.trim();
   return emailOk && passwordOk;
 }
 
