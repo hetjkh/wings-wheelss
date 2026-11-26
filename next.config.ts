@@ -2,13 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // WebP only: some iPhone Safari builds accept AVIF then fail to decode it (blue ? icon).
-    formats: ["image/webp"],
-    qualities: [75, 90, 100],
-    // Full Next defaults — desktop/retina heroes need 2048/3840, not a 1200–1920 cap.
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [64, 96, 128, 256, 384, 640],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [480, 768, 1080, 1440, 1920],
+    imageSizes: [64, 128, 256, 384],
+    // 78 supports photo quality={78}; 80 for heroes. Cap below former q=100.
+    qualities: [60, 75, 78, 80],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: "https",
@@ -40,6 +39,8 @@ const nextConfig: NextConfig = {
       { source: "/:path*.mp4", headers: cache },
       { source: "/:path*.webm", headers: cache },
       { source: "/images/:path*", headers: cache },
+      { source: "/brands/:path*", headers: cache },
+      { source: "/_next/static/:path*", headers: cache },
       { source: "/_next/image", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
     ];
   },

@@ -14,7 +14,7 @@ function DayPhoto({ stop, index }: { stop: DayStop; index: number }) {
       alt=""
       fill
       sizes="(max-width: 800px) 92vw, 100vw"
-      loading="eager"
+      loading={index === 0 ? "eager" : "lazy"}
       onLoad={async event => {
         const image = event.currentTarget;
         try {

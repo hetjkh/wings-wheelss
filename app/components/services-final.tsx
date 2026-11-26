@@ -27,7 +27,7 @@ function ClosingPhoto({
     alt: "",
     fill: true,
     sizes: "100vw",
-    quality: 100,
+    quality: 78,
   }).props;
   const mobile = photoMobile
     ? getImageProps({
@@ -35,7 +35,7 @@ function ClosingPhoto({
         alt: "",
         fill: true,
         sizes: "100vw",
-        quality: 100,
+        quality: 78,
       }).props
     : null;
   const fallback = mobile ?? desktop;

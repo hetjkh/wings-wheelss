@@ -54,3 +54,6 @@ next-env.d.ts
 /assets/
 /public/dubai.mp4
 
+# Oversized image backups from scripts/optimize-images.mjs
+/public/images-original/
+

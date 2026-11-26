@@ -276,7 +276,7 @@ export default function GroupsPage() {
       </section>
 
       <section className="g-regions j-torn-top" aria-labelledby="regions-heading">
-        <Image className="g-regions-map" src="/images/world-map.svg" alt="" fill unoptimized />
+        <Image className="g-regions-map" src="/images/world-map.svg" alt="" fill sizes="100vw" unoptimized />
         <div className="j-shell">
           <span className="j-eyebrow s-eyebrow">Bringing groups across regions</span>
           <h2 id="regions-heading" className="g-regions-title">

@@ -1,4 +1,4 @@
-import Image, { getImageProps } from "next/image";
+import { getImageProps } from "next/image";
 import TravelImage from "./travel-image";
 import { Arrow } from "./icons";
 import { ContactFormLink } from "./contact-form-link";
@@ -9,7 +9,7 @@ const clienteleMobile = getImageProps({
   alt: "",
   fill: true,
   sizes: "92vw",
-  quality: 100,
+  quality: 78,
 }).props;
 
 const clients = [
@@ -89,7 +89,9 @@ export function HomeClientele() {
               <span className="e-clientele-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <span className="e-clientele-sector">{client.sector}</span>
               <div className="e-clientele-logo">
-                <Image src={client.src} alt={client.name} fill sizes="(max-width: 600px) 42vw, (max-width: 1000px) 29vw, 14vw" />
+                {/* SVG logos: no raster optimizer benefit */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={client.src} alt={client.name} width={168} height={64} loading="lazy" decoding="async" />
               </div>
               <span className="e-clientele-name">{client.name}</span>
             </li>)}

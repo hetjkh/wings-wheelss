@@ -9,17 +9,17 @@ type TravelImageProps = ImageProps & {
   reveal?: boolean;
 };
 
-/** Keep broken 1px candidates out. Allow up to 280vw so tall mobile panels can request a retina file. */
+/** Keep broken 1px candidates out. Cap oversized vw hints so we never request beyond viewport. */
 function normalizeSizes(sizes?: string) {
   if (!sizes) return sizes;
   return sizes
     .replace(/,\s*1px\b/gi, "")
     .replace(/\b1px\b/gi, "100vw")
-    .replace(/\b(\d{3,})vw\b/g, (match, width: string) => Number(width) > 280 ? "100vw" : match);
+    .replace(/\b(\d{3,})vw\b/g, (match, width: string) => Number(width) > 100 ? "100vw" : match);
 }
 
 /**
- * Site image wrapper: no blur-up, lazy by default, mobile-safe sizes.
+ * Site image wrapper: lazy by default, viewport-safe sizes, photo-quality default.
  * Pass priority/preload only for the true first-screen hero.
  */
 export default function TravelImage({
@@ -40,7 +40,7 @@ export default function TravelImage({
   return <NextImage
     {...props}
     sizes={normalizeSizes(sizes)}
-    quality={quality ?? 100}
+    quality={quality ?? 78}
     placeholder={placeholder ?? "empty"}
     blurDataURL={blurDataURL}
     decoding={decoding ?? "async"}

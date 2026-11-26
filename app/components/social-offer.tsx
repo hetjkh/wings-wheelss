@@ -43,17 +43,18 @@ const channels: { label: string; handle: string; href: string; icon: ReactNode }
 
 const claim = `${office.whatsapp}?text=${encodeURIComponent("Hi Wings & Wheels! I just followed your pages and would like to unlock my discounted price.")}`;
 
-/** Landing offer: follow our socials to unlock a discounted fare. Shown once per session. */
-export function SocialOffer() {
+function SocialOfferDialog() {
   const dialog = useRef<HTMLDialogElement>(null);
   const [followed, setFollowed] = useState<string[]>([]);
+  const [showPhoto, setShowPhoto] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem(OFFER_SEEN_KEY)) return;
     const timer = window.setTimeout(() => {
       sessionStorage.setItem(OFFER_SEEN_KEY, "1");
+      setShowPhoto(true);
       dialog.current?.showModal();
-    }, 1200);
+    }, 400);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -74,7 +75,17 @@ export function SocialOffer() {
       </button>
 
       <div className="so-stub">
-        <Image src="/images/library/social-offer-island-flight-v1.webp" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 900px) 300px, 420px" quality={100} className="so-stub-photo" />
+        {showPhoto ? (
+          <Image
+            src="/images/library/social-offer-island-flight-v1.webp"
+            alt=""
+            fill
+            sizes="(max-width: 760px) 100vw, (max-width: 900px) 300px, 420px"
+            quality={78}
+            loading="lazy"
+            className="so-stub-photo"
+          />
+        ) : null}
         <div className="so-stub-copy">
           <span className="so-kicker">Social fare</span>
           <p className="so-stub-big"><span>Follow &amp;</span><em>save.</em></p>
@@ -148,4 +159,31 @@ export function SocialOffer() {
       </div>
     </div>
   </dialog>;
+}
+
+/** Landing offer: follow our socials to unlock a discounted fare. Shown once per session, after the page is interactive. */
+export function SocialOffer() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(OFFER_SEEN_KEY)) return;
+
+    let timer = 0;
+    const arm = () => {
+      timer = window.setTimeout(() => setReady(true), 800);
+    };
+
+    if (document.readyState === "complete") arm();
+    else {
+      window.addEventListener("load", arm, { once: true });
+    }
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("load", arm);
+    };
+  }, []);
+
+  if (!ready) return null;
+  return <SocialOfferDialog />;
 }

@@ -121,7 +121,7 @@ export function AfricaPurposeScene() {
             alt={chapter.alt}
             fill
             sizes="100vw"
-            quality={100}
+            quality={78}
             loading="lazy"
             style={{ objectFit: "cover", objectPosition: chapter.position }}
           /> : null}</div>
@@ -130,7 +130,7 @@ export function AfricaPurposeScene() {
             <span className="a-purpose-kicker">Find your reason</span>
             <h3 id={`africa-purpose-${index}`}>{chapter.title}</h3>
           </div>
-          {loadMedia && !compact ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={100} loading="lazy" /></div> : null}
+          {loadMedia && !compact ? <div className="a-purpose-subject" aria-hidden="true"><Image src={chapter.subject} alt="" fill sizes="100vw" quality={78} loading="lazy" /></div> : null}
           {loadMedia && !compact && chapter.foreground ? <div className="a-purpose-depth" aria-hidden="true"><Image src={chapter.foreground} alt="" fill sizes="100vw" loading="lazy" /></div> : null}
           <div className="a-purpose-description">
             <span>{chapter.detail}</span>

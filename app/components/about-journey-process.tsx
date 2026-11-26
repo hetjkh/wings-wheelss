@@ -65,7 +65,7 @@ export function AboutJourneyProcess() {
       </header>
       <div className="ab-process-scenes">
         {steps.map((step, index) => <article key={step.label} id={`journey-panel-${index}`} className="ab-process-scene" data-active={active === index} data-past={active > index} aria-hidden={enhanced && active !== index} inert={enhanced && active !== index} aria-labelledby={`journey-title-${index}`}>
-          <div className="ab-process-image"><Image src={`/images/library/${step.photo}.webp`} alt={step.alt} fill sizes="100vw" quality={100} /></div>
+          <div className="ab-process-image"><Image src={`/images/library/${step.photo}.webp`} alt={step.alt} fill sizes="100vw" quality={78} /></div>
           <div className="ab-process-wash" aria-hidden="true" />
           <div className="ab-process-copy">
             <span className="ab-process-kicker">0{index + 1} / 05 <span>{step.note}</span></span>

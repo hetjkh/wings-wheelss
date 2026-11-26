@@ -29,13 +29,13 @@ export function HomePayLater() {
         </div>
         <div className="e-pay-providers" aria-label="Payment options">
           <div className="e-pay-provider" data-editorial-reveal>
-            <Image src={tabby} alt="Tabby" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-tabby" />
+            <Image src={tabby} alt="Tabby" width={200} height={80} sizes="200px" quality={80} className="e-pay-tabby" />
           </div>
           <div className="e-pay-provider" data-editorial-reveal>
-            <Image src={tamara} alt="Tamara" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-tamara" />
+            <Image src={tamara} alt="Tamara" width={200} height={28} sizes="200px" quality={80} className="e-pay-tamara" />
           </div>
           <div className="e-pay-provider e-pay-provider-ziina" data-editorial-reveal>
-            <Image src={ziina} alt="Ziina" sizes="(max-width: 700px) 40vw, 28vw" className="e-pay-ziina" />
+            <Image src={ziina} alt="Ziina" width={160} height={160} sizes="160px" quality={80} className="e-pay-ziina" />
           </div>
         </div>
         <ol className="e-pay-steps">

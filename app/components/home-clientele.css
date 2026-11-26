@@ -260,6 +260,9 @@
   height: 64px;
 }
 .e-clientele-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   filter: grayscale(1);
   opacity: .78;

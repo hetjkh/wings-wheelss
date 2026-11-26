@@ -146,7 +146,7 @@ export default function PartnershipPage() {
       </section>
 
       <section className="p-regions j-torn-top" id="regions" aria-labelledby="regions-heading">
-        <Image className="p-regions-map" src="/images/world-map.svg" alt="" fill unoptimized />
+        <Image className="p-regions-map" src="/images/world-map.svg" alt="" fill sizes="100vw" unoptimized />
         <div className="j-shell">
           <div className="s-split-head">
             <div><span className="j-eyebrow s-eyebrow">UAE + Africa</span><h2 id="regions-heading" className="s-title s-rows"><span>Two regions.</span><span className="k-soft">One connected travel partnership.</span></h2></div>
